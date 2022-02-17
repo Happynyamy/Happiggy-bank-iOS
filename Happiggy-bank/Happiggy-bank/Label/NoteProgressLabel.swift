@@ -11,7 +11,6 @@ class NoteProgressLabel: UIView {
     
     var noteIcon: UIImageView!
     var noteTextLabel: UILabel!
-    var noteGoalLabel: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

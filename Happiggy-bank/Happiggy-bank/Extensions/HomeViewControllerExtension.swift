@@ -1,5 +1,5 @@
 //
-//  MainViewControllerExtension.swift
+//  HomeViewControllerExtension.swift
 //  Happiggy-bank
 //
 //  Created by 권은빈 on 2022/02/17.
@@ -56,14 +56,6 @@ extension HomeViewController: UIPageViewControllerDataSource {
         return self.makePageContentViewController(with: index)
     }
     // swiftlint:enable force_cast
-    
-    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return self.pageImages.count
-    }
-    
-    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        return currentIndex
-    }
 }
 
 extension HomeViewController: UIPageViewControllerDelegate { }

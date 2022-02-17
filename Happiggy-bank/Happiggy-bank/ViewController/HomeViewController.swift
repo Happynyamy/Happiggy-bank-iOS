@@ -20,7 +20,7 @@ class HomeViewController: UIViewController {
     var openBeforeFinishedButton: UIButton!
     
     /// 유리병 리스트 버튼
-    var userJarListButton: UIButton!
+    var bottleListButton: UIButton!
     
     /// 현재까지의 쪽지와 목표치를 나타내는 라벨
     var noteProgressLabel: UIView!
@@ -35,18 +35,18 @@ class HomeViewController: UIViewController {
     var currentIndex: Int = 0
     
     /// 최초인지 아닌지 확인
-    private var isUserHaveJar: Bool = true
+    private var hasBottle: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.pageImages = []
         configureView()
         configureConstraints()
-        if !isUserHaveJar {
+        if !hasBottle {
             hideUnusedButtonAndLabels()
             setInitialImage()
         }
-        if isUserHaveJar {
+        if hasBottle {
             self.pageImages = ["image1", "image2", "image3", "image4"]
             configurePageViewController()
             configurePageViewConstraints()
@@ -86,10 +86,10 @@ class HomeViewController: UIViewController {
     private func configureButtons() {
         self.settingsButton = SettingsButton()
         self.openBeforeFinishedButton = OpenBeforeFinishedButton()
-        self.userJarListButton = UserJarListButton()
+        self.bottleListButton = UserJarListButton()
         self.view.addSubview(settingsButton)
         self.view.addSubview(openBeforeFinishedButton)
-        self.view.addSubview(userJarListButton)
+        self.view.addSubview(bottleListButton)
         self.settingsButton.addTarget(
             self,
             action: #selector(settingsButtonDidTap(_:)),
@@ -100,7 +100,7 @@ class HomeViewController: UIViewController {
             action: #selector(openBeforeFinishedButtonDidTap(_:)),
             for: .touchUpInside
         )
-        self.userJarListButton.addTarget(
+        self.bottleListButton.addTarget(
             self,
             action: #selector(userJarListButtonDidTap(_:)),
             for: .touchUpInside
@@ -152,7 +152,7 @@ class HomeViewController: UIViewController {
     private func configureButtonConstraints() {
         self.settingsButton.translatesAutoresizingMaskIntoConstraints = false
         self.openBeforeFinishedButton.translatesAutoresizingMaskIntoConstraints = false
-        self.userJarListButton.translatesAutoresizingMaskIntoConstraints = false
+        self.bottleListButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             settingsButton.topAnchor.constraint(
@@ -170,11 +170,11 @@ class HomeViewController: UIViewController {
                 equalTo: self.view.safeAreaLayoutGuide.bottomAnchor,
                 constant: -24
             ),
-            userJarListButton.leadingAnchor.constraint(
+            bottleListButton.leadingAnchor.constraint(
                 equalTo: self.view.leadingAnchor,
                 constant: 88
             ),
-            userJarListButton.bottomAnchor.constraint(
+            bottleListButton.bottomAnchor.constraint(
                 equalTo: self.view.safeAreaLayoutGuide.bottomAnchor,
                 constant: -24
             ),
@@ -182,8 +182,8 @@ class HomeViewController: UIViewController {
             settingsButton.heightAnchor.constraint(equalToConstant: 48),
             openBeforeFinishedButton.widthAnchor.constraint(equalToConstant: 48),
             openBeforeFinishedButton.heightAnchor.constraint(equalToConstant: 48),
-            userJarListButton.widthAnchor.constraint(equalToConstant: 48),
-            userJarListButton.heightAnchor.constraint(equalToConstant: 48)
+            bottleListButton.widthAnchor.constraint(equalToConstant: 48),
+            bottleListButton.heightAnchor.constraint(equalToConstant: 48)
         ])
     }
     
@@ -231,7 +231,7 @@ class HomeViewController: UIViewController {
     /// 진행중이 유리병이 없을시, 하단 버튼과 라벨 숨김
     private func hideUnusedButtonAndLabels() {
         self.openBeforeFinishedButton.isHidden = true
-        self.userJarListButton.isHidden = true
+        self.bottleListButton.isHidden = true
         self.noteProgressLabel.isHidden = true
     }
     

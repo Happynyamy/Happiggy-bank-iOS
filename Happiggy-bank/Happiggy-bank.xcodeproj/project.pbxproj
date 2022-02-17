@@ -15,7 +15,7 @@
 		A8BD833F27BE30B400E0DE41 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833E27BE30B400E0DE41 /* Constants.swift */; };
 		A8BD834127BE325000E0DE41 /* UserJarListButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD834027BE325000E0DE41 /* UserJarListButton.swift */; };
 		A8BD834727BE337900E0DE41 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD834627BE337900E0DE41 /* HomeView.swift */; };
-		A8BD834A27BE346D00E0DE41 /* MainViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD834927BE346D00E0DE41 /* MainViewControllerExtension.swift */; };
+		A8BD834A27BE346D00E0DE41 /* HomeViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD834927BE346D00E0DE41 /* HomeViewControllerExtension.swift */; };
 		A8BD834D27BE39D600E0DE41 /* NoteProgressLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD834C27BE39D600E0DE41 /* NoteProgressLabel.swift */; };
 		A8FC07C827B3ECF00077A758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC07C727B3ECF00077A758 /* AppDelegate.swift */; };
 		A8FC07CA27B3ECF00077A758 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC07C927B3ECF00077A758 /* SceneDelegate.swift */; };
@@ -34,7 +34,7 @@
 		A8BD833E27BE30B400E0DE41 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A8BD834027BE325000E0DE41 /* UserJarListButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserJarListButton.swift; sourceTree = "<group>"; };
 		A8BD834627BE337900E0DE41 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		A8BD834927BE346D00E0DE41 /* MainViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerExtension.swift; sourceTree = "<group>"; };
+		A8BD834927BE346D00E0DE41 /* HomeViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerExtension.swift; sourceTree = "<group>"; };
 		A8BD834C27BE39D600E0DE41 /* NoteProgressLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteProgressLabel.swift; sourceTree = "<group>"; };
 		A8FC07C427B3ECF00077A758 /* Happiggy-bank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Happiggy-bank.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8FC07C727B3ECF00077A758 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 		A8BD834B27BE347700E0DE41 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A8BD834927BE346D00E0DE41 /* MainViewControllerExtension.swift */,
+				A8BD834927BE346D00E0DE41 /* HomeViewControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -303,7 +303,7 @@
 				A8BD833527BE106C00E0DE41 /* PageContentViewController.swift in Sources */,
 				A8FC07CA27B3ECF00077A758 /* SceneDelegate.swift in Sources */,
 				A8BD833327BE104900E0DE41 /* HomeViewController.swift in Sources */,
-				A8BD834A27BE346D00E0DE41 /* MainViewControllerExtension.swift in Sources */,
+				A8BD834A27BE346D00E0DE41 /* HomeViewControllerExtension.swift in Sources */,
 				A8BD833F27BE30B400E0DE41 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
