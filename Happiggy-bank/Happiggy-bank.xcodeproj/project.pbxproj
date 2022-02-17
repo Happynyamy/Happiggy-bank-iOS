@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		1D0983103E258E710197F000 /* Pods_Happiggy_bank.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F6015B01A2C2F80C2FC1BF /* Pods_Happiggy_bank.framework */; };
+		A8BD833327BE104900E0DE41 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833227BE104900E0DE41 /* MainViewController.swift */; };
+		A8BD833527BE106C00E0DE41 /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833427BE106C00E0DE41 /* PageContentViewController.swift */; };
+		A8BD833B27BE261600E0DE41 /* OpenBeforeFinishedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833A27BE261600E0DE41 /* OpenBeforeFinishedButton.swift */; };
+		A8BD833D27BE2FF900E0DE41 /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833C27BE2FF900E0DE41 /* SettingsButton.swift */; };
+		A8BD833F27BE30B400E0DE41 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833E27BE30B400E0DE41 /* Constants.swift */; };
+		A8BD834127BE325000E0DE41 /* UserJarListButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD834027BE325000E0DE41 /* UserJarListButton.swift */; };
+		A8BD834727BE337900E0DE41 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD834627BE337900E0DE41 /* MainView.swift */; };
+		A8BD834A27BE346D00E0DE41 /* MainViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD834927BE346D00E0DE41 /* MainViewControllerExtension.swift */; };
+		A8BD834D27BE39D600E0DE41 /* NoteProgressLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD834C27BE39D600E0DE41 /* NoteProgressLabel.swift */; };
 		A8FC07C827B3ECF00077A758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC07C727B3ECF00077A758 /* AppDelegate.swift */; };
 		A8FC07CA27B3ECF00077A758 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC07C927B3ECF00077A758 /* SceneDelegate.swift */; };
 		A8FC07CC27B3ECF00077A758 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC07CB27B3ECF00077A758 /* ViewController.swift */; };
@@ -18,6 +27,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A8BD833227BE104900E0DE41 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		A8BD833427BE106C00E0DE41 /* PageContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
+		A8BD833A27BE261600E0DE41 /* OpenBeforeFinishedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenBeforeFinishedButton.swift; sourceTree = "<group>"; };
+		A8BD833C27BE2FF900E0DE41 /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
+		A8BD833E27BE30B400E0DE41 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A8BD834027BE325000E0DE41 /* UserJarListButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserJarListButton.swift; sourceTree = "<group>"; };
+		A8BD834627BE337900E0DE41 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		A8BD834927BE346D00E0DE41 /* MainViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerExtension.swift; sourceTree = "<group>"; };
+		A8BD834C27BE39D600E0DE41 /* NoteProgressLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteProgressLabel.swift; sourceTree = "<group>"; };
 		A8FC07C427B3ECF00077A758 /* Happiggy-bank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Happiggy-bank.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8FC07C727B3ECF00077A758 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8FC07C927B3ECF00077A758 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +79,66 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A8BD834227BE32EB00E0DE41 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				A8BD834027BE325000E0DE41 /* UserJarListButton.swift */,
+				A8BD833C27BE2FF900E0DE41 /* SettingsButton.swift */,
+				A8BD833A27BE261600E0DE41 /* OpenBeforeFinishedButton.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		A8BD834327BE330000E0DE41 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A8BD833227BE104900E0DE41 /* MainViewController.swift */,
+				A8BD833427BE106C00E0DE41 /* PageContentViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A8BD834427BE331500E0DE41 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A8BD833E27BE30B400E0DE41 /* Constants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		A8BD834527BE332100E0DE41 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				A8FC07CD27B3ECF00077A758 /* Main.storyboard */,
+				A8FC07D227B3ECF30077A758 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		A8BD834827BE338200E0DE41 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A8BD834627BE337900E0DE41 /* MainView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A8BD834B27BE347700E0DE41 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A8BD834927BE346D00E0DE41 /* MainViewControllerExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A8BD834E27BE39DE00E0DE41 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				A8BD834C27BE39D600E0DE41 /* NoteProgressLabel.swift */,
+			);
+			path = Label;
+			sourceTree = "<group>";
+		};
 		A8FC07BB27B3ECF00077A758 = {
 			isa = PBXGroup;
 			children = (
@@ -86,9 +164,14 @@
 				A8FC07C727B3ECF00077A758 /* AppDelegate.swift */,
 				A8FC07C927B3ECF00077A758 /* SceneDelegate.swift */,
 				A8FC07CB27B3ECF00077A758 /* ViewController.swift */,
-				A8FC07CD27B3ECF00077A758 /* Main.storyboard */,
+				A8BD834827BE338200E0DE41 /* View */,
+				A8BD834327BE330000E0DE41 /* ViewController */,
+				A8BD834227BE32EB00E0DE41 /* Button */,
+				A8BD834E27BE39DE00E0DE41 /* Label */,
+				A8BD834427BE331500E0DE41 /* Utils */,
+				A8BD834527BE332100E0DE41 /* Storyboard */,
+				A8BD834B27BE347700E0DE41 /* Extensions */,
 				A8FC07D027B3ECF30077A758 /* Assets.xcassets */,
-				A8FC07D227B3ECF30077A758 /* LaunchScreen.storyboard */,
 				A8FC07D527B3ECF30077A758 /* Info.plist */,
 			);
 			path = "Happiggy-bank";
@@ -210,9 +293,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8BD834127BE325000E0DE41 /* UserJarListButton.swift in Sources */,
+				A8BD834D27BE39D600E0DE41 /* NoteProgressLabel.swift in Sources */,
 				A8FC07CC27B3ECF00077A758 /* ViewController.swift in Sources */,
+				A8BD833D27BE2FF900E0DE41 /* SettingsButton.swift in Sources */,
+				A8BD834727BE337900E0DE41 /* MainView.swift in Sources */,
 				A8FC07C827B3ECF00077A758 /* AppDelegate.swift in Sources */,
+				A8BD833B27BE261600E0DE41 /* OpenBeforeFinishedButton.swift in Sources */,
+				A8BD833527BE106C00E0DE41 /* PageContentViewController.swift in Sources */,
 				A8FC07CA27B3ECF00077A758 /* SceneDelegate.swift in Sources */,
+				A8BD833327BE104900E0DE41 /* MainViewController.swift in Sources */,
+				A8BD834A27BE346D00E0DE41 /* MainViewControllerExtension.swift in Sources */,
+				A8BD833F27BE30B400E0DE41 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
