@@ -56,6 +56,7 @@ class HomeViewController: UIViewController {
     
     // MARK: Actions
     
+    /// 현재 인덱스로 PageContentViewController 생성
     func makePageContentViewController(with index: Int) -> PageContentViewController {
         let pageContentViewController: PageContentViewController = PageContentViewController()
         
@@ -68,17 +69,20 @@ class HomeViewController: UIViewController {
     
     // MARK: UI Configurations
     
+    /// 홈 뷰 UI 요소들 생성 및 HomeViewController의 하위 뷰로 추가
     private func configureView() {
         configureMainView()
         configureButtons()
         configureLabel()
     }
     
+    /// 홈 뷰 생성 및 추가
     private func configureMainView() {
         self.homeView = HomeView()
         self.view.addSubview(homeView)
     }
     
+    /// 버튼 생성,  타겟 설정 및 추가
     private func configureButtons() {
         self.settingsButton = SettingsButton()
         self.openBeforeFinishedButton = OpenBeforeFinishedButton()
@@ -103,6 +107,7 @@ class HomeViewController: UIViewController {
         )
     }
     
+    /// 라벨 생성 및 추가
     private func configureLabel() {
         self.noteProgressLabel = NoteProgressLabel()
         self.view.addSubview(noteProgressLabel)
@@ -111,6 +116,7 @@ class HomeViewController: UIViewController {
     
     // MARK: Controller Configurations
     
+    /// PageViewController 구성
     private func configurePageViewController() {
         let startViewController: PageContentViewController = self.makePageContentViewController(
             with: currentIndex
@@ -136,11 +142,13 @@ class HomeViewController: UIViewController {
     
     // MARK: Constraints
     
+    /// 홈 뷰 UI 요소(버튼, 라벨)의 오토레이아웃 적용
     private func configureConstraints() {
         configureButtonConstraints()
         configureLabelConstraints()
     }
     
+    /// 버튼의 오토 레이아웃 적용
     private func configureButtonConstraints() {
         self.settingsButton.translatesAutoresizingMaskIntoConstraints = false
         self.openBeforeFinishedButton.translatesAutoresizingMaskIntoConstraints = false
@@ -179,6 +187,7 @@ class HomeViewController: UIViewController {
         ])
     }
     
+    /// PageViewController의 뷰 오토 레이아웃 적용
     private func configurePageViewConstraints() {
         self.pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
 
@@ -198,6 +207,7 @@ class HomeViewController: UIViewController {
         ])
     }
     
+    /// 라벨의 오토 레이아웃 적용
     private func configureLabelConstraints() {
         self.noteProgressLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -218,12 +228,14 @@ class HomeViewController: UIViewController {
     
     // MARK: Initial View Setting
     
+    /// 진행중이 유리병이 없을시, 하단 버튼과 라벨 숨김
     private func hideUnusedButtonAndLabels() {
         self.openBeforeFinishedButton.isHidden = true
         self.userJarListButton.isHidden = true
         self.noteProgressLabel.isHidden = true
     }
     
+    /// 진행중인 유리병이 없을시, 초기 이미지로 홈 뷰 구성
     private func setInitialImage() {
         let initialImageView: UIImageView = UIImageView(image: UIImage(named: "image0"))
         let tapGesture = UITapGestureRecognizer(
@@ -243,18 +255,22 @@ class HomeViewController: UIViewController {
     
     // MARK: Button Actions
     
+    /// 환경설정 버튼 탭할 시 실행되는 함수
     @objc func settingsButtonDidTap(_ sender: UIButton) {
         print("Move to Settings View")
     }
     
+    /// 개봉 버튼 탭할 시 실행되는 함수
     @objc func openBeforeFinishedButtonDidTap(_ sender: UIButton) {
         print("Open the jar")
     }
     
+    /// 유리병 리스트 버튼 탭할 시 실행되는 함수
     @objc func userJarListButtonDidTap(_ sender: UIButton) {
         print("Move to User Jar List View")
     }
     
+    /// 진행중인 유리병이 없을 시에 나타나는 초기 이미지 탭할 시 실행되는 함수
     @objc func initialImageViewDidTap(_ sender: UITapGestureRecognizer) {
         print("Make new jar")
     }
