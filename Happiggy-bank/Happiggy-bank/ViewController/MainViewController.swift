@@ -34,12 +34,23 @@ class MainViewController: UIViewController {
     /// 현재 페이지 인덱스
     var currentIndex: Int = 0
     
+    /// 최초인지 아닌지 확인
+    private var isUserHaveJar: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.pageImages = ["image1", "image2", "image3", "image4"]
+        self.pageImages = []
         configureView()
-        configurePageViewController()
         configureConstraints()
+        if !isUserHaveJar {
+            hideUnusedButtonAndLabels()
+            setInitialImage()
+        }
+        if isUserHaveJar {
+            self.pageImages = ["image1", "image2", "image3", "image4"]
+            configurePageViewController()
+            configurePageViewConstraints()
+        }
     }
     
     func makePageContentViewController(with index: Int) -> PageContentViewController {
@@ -120,7 +131,6 @@ class MainViewController: UIViewController {
     // MARK: Constraints
     
     private func configureConstraints() {
-        configurePageViewController()
         configureButtonConstraints()
         configureLabelConstraints()
     }
@@ -199,6 +209,30 @@ class MainViewController: UIViewController {
         ])
     }
     
+    // MARK: Initial View Setting
+    
+    private func hideUnusedButtonAndLabels() {
+        self.openBeforeFinishedButton.isHidden = true
+        self.userJarListButton.isHidden = true
+        self.noteProgressLabel.isHidden = true
+    }
+    
+    private func setInitialImage() {
+        let initialImageView: UIImageView = UIImageView(image: UIImage(named: "image0"))
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(initialImageViewDidTap(_:))
+        )
+        self.view.addSubview(initialImageView)
+        initialImageView.isUserInteractionEnabled = true
+        initialImageView.addGestureRecognizer(tapGesture)
+        initialImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            initialImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            initialImageView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+        ])
+    }
+    
     // MARK: Button Action
     
     @objc func settingsButtonDidTap(_ sender: UIButton) {
@@ -211,5 +245,9 @@ class MainViewController: UIViewController {
     
     @objc func userJarListButtonDidTap(_ sender: UIButton) {
         print("Move to User Jar List View")
+    }
+    
+    @objc func initialImageViewDidTap(_ sender: UITapGestureRecognizer) {
+        print("Make new jar")
     }
 }
