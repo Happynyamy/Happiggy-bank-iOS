@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension MainViewController: UIPageViewControllerDataSource {
+extension HomeViewController: UIPageViewControllerDataSource {
     func pageViewController(
         _ pageViewController: UIPageViewController,
         didFinishAnimating finished: Bool,
@@ -66,4 +66,4 @@ extension MainViewController: UIPageViewControllerDataSource {
     }
 }
 
-extension MainViewController: UIPageViewControllerDelegate { }
+extension HomeViewController: UIPageViewControllerDelegate { }

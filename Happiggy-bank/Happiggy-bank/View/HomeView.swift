@@ -1,5 +1,5 @@
 //
-//  MainView.swift
+//  HomeView.swift
 //  Happiggy-bank
 //
 //  Created by 권은빈 on 2022/02/17.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainView: UIView {
+class HomeView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

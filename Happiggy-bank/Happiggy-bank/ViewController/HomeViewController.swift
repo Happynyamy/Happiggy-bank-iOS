@@ -1,5 +1,5 @@
 //
-//  MainPageViewController.swift
+//  HomePageViewController.swift
 //  Happiggy-bank
 //
 //  Created by 권은빈 on 2022/02/16.
@@ -8,10 +8,10 @@
 import UIKit
 
 /// 메인 화면 전체를 관리하는 컨트롤러
-class MainViewController: UIViewController {
+class HomeViewController: UIViewController {
     
     /// 메인 뷰
-    var mainView: UIView!
+    var homeView: UIView!
     
     /// 환경설정 버튼
     var settingsButton: UIButton!
@@ -75,8 +75,8 @@ class MainViewController: UIViewController {
     }
     
     private func configureMainView() {
-        self.mainView = MainView()
-        self.view.addSubview(mainView)
+        self.homeView = HomeView()
+        self.view.addSubview(homeView)
     }
     
     private func configureButtons() {
@@ -130,7 +130,7 @@ class MainViewController: UIViewController {
             completion: nil
         )
         self.addChild(self.pageViewController)
-        self.mainView.addSubview(self.pageViewController.view)
+        self.homeView.addSubview(self.pageViewController.view)
     }
     
     
@@ -184,16 +184,16 @@ class MainViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             pageViewController.view.topAnchor.constraint(
-                equalTo: self.mainView.topAnchor
+                equalTo: self.homeView.topAnchor
             ),
             pageViewController.view.bottomAnchor.constraint(
-                equalTo: self.mainView.bottomAnchor
+                equalTo: self.homeView.bottomAnchor
             ),
             pageViewController.view.leadingAnchor.constraint(
-                equalTo: self.mainView.leadingAnchor
+                equalTo: self.homeView.leadingAnchor
             ),
             pageViewController.view.trailingAnchor.constraint(
-                equalTo: self.mainView.trailingAnchor
+                equalTo: self.homeView.trailingAnchor
             )
         ])
     }
