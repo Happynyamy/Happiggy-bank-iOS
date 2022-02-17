@@ -53,6 +53,9 @@ class MainViewController: UIViewController {
         }
     }
     
+    
+    // MARK: Actions
+    
     func makePageContentViewController(with index: Int) -> PageContentViewController {
         let pageContentViewController: PageContentViewController = PageContentViewController()
         
@@ -62,7 +65,8 @@ class MainViewController: UIViewController {
         return pageContentViewController
     }
     
-    // MARK: UI Configuration
+    
+    // MARK: UI Configurations
     
     private func configureView() {
         configureMainView()
@@ -104,7 +108,8 @@ class MainViewController: UIViewController {
         self.view.addSubview(noteProgressLabel)
     }
     
-    // MARK: Controller Configuration
+    
+    // MARK: Controller Configurations
     
     private func configurePageViewController() {
         let startViewController: PageContentViewController = self.makePageContentViewController(
@@ -127,6 +132,7 @@ class MainViewController: UIViewController {
         self.addChild(self.pageViewController)
         self.mainView.addSubview(self.pageViewController.view)
     }
+    
     
     // MARK: Constraints
     
@@ -209,6 +215,7 @@ class MainViewController: UIViewController {
         ])
     }
     
+    
     // MARK: Initial View Setting
     
     private func hideUnusedButtonAndLabels() {
@@ -233,7 +240,8 @@ class MainViewController: UIViewController {
         ])
     }
     
-    // MARK: Button Action
+    
+    // MARK: Button Actions
     
     @objc func settingsButtonDidTap(_ sender: UIButton) {
         print("Move to Settings View")
