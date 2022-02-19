@@ -11,14 +11,12 @@
 		A499318127BF3A38009FF5A8 /* BottleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499318027BF3A38009FF5A8 /* BottleViewModel.swift */; };
 		A499318327BF5158009FF5A8 /* BottleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499318227BF5158009FF5A8 /* BottleImageView.swift */; };
 		A49931A527BFD20E009FF5A8 /* UIImage+AssetImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49931A427BFD20E009FF5A8 /* UIImage+AssetImages.swift */; };
+		A81742FF27C108DC0016C921 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81742FE27C108DC0016C921 /* HomeViewModel.swift */; };
+		A817430127C112D00016C921 /* HomeViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A817430027C112D00016C921 /* HomeViewButton.swift */; };
 		A8BD833327BE104900E0DE41 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833227BE104900E0DE41 /* HomeViewController.swift */; };
 		A8BD833527BE106C00E0DE41 /* BottleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833427BE106C00E0DE41 /* BottleViewController.swift */; };
-		A8BD833B27BE261600E0DE41 /* OpenBeforeFinishedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833A27BE261600E0DE41 /* OpenBeforeFinishedButton.swift */; };
-		A8BD833D27BE2FF900E0DE41 /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833C27BE2FF900E0DE41 /* SettingsButton.swift */; };
 		A8BD833F27BE30B400E0DE41 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833E27BE30B400E0DE41 /* Constants.swift */; };
-		A8BD834127BE325000E0DE41 /* UserJarListButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD834027BE325000E0DE41 /* UserJarListButton.swift */; };
 		A8BD834727BE337900E0DE41 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD834627BE337900E0DE41 /* HomeView.swift */; };
-		A8BD834A27BE346D00E0DE41 /* HomeViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD834927BE346D00E0DE41 /* HomeViewControllerExtension.swift */; };
 		A8BD834D27BE39D600E0DE41 /* NoteProgressLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD834C27BE39D600E0DE41 /* NoteProgressLabel.swift */; };
 		A8FC07C827B3ECF00077A758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC07C727B3ECF00077A758 /* AppDelegate.swift */; };
 		A8FC07CA27B3ECF00077A758 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC07C927B3ECF00077A758 /* SceneDelegate.swift */; };
@@ -33,14 +31,12 @@
 		A499318027BF3A38009FF5A8 /* BottleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleViewModel.swift; sourceTree = "<group>"; };
 		A499318227BF5158009FF5A8 /* BottleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleImageView.swift; sourceTree = "<group>"; };
 		A49931A427BFD20E009FF5A8 /* UIImage+AssetImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AssetImages.swift"; sourceTree = "<group>"; };
+		A81742FE27C108DC0016C921 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		A817430027C112D00016C921 /* HomeViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewButton.swift; sourceTree = "<group>"; };
 		A8BD833227BE104900E0DE41 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A8BD833427BE106C00E0DE41 /* BottleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleViewController.swift; sourceTree = "<group>"; };
-		A8BD833A27BE261600E0DE41 /* OpenBeforeFinishedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenBeforeFinishedButton.swift; sourceTree = "<group>"; };
-		A8BD833C27BE2FF900E0DE41 /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
 		A8BD833E27BE30B400E0DE41 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		A8BD834027BE325000E0DE41 /* UserJarListButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserJarListButton.swift; sourceTree = "<group>"; };
 		A8BD834627BE337900E0DE41 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		A8BD834927BE346D00E0DE41 /* HomeViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerExtension.swift; sourceTree = "<group>"; };
 		A8BD834C27BE39D600E0DE41 /* NoteProgressLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteProgressLabel.swift; sourceTree = "<group>"; };
 		A8FC07C427B3ECF00077A758 /* Happiggy-bank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Happiggy-bank.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8FC07C727B3ECF00077A758 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				A499318027BF3A38009FF5A8 /* BottleViewModel.swift */,
+				A81742FE27C108DC0016C921 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -96,9 +93,7 @@
 		A8BD834227BE32EB00E0DE41 /* Button */ = {
 			isa = PBXGroup;
 			children = (
-				A8BD834027BE325000E0DE41 /* UserJarListButton.swift */,
-				A8BD833C27BE2FF900E0DE41 /* SettingsButton.swift */,
-				A8BD833A27BE261600E0DE41 /* OpenBeforeFinishedButton.swift */,
+				A817430027C112D00016C921 /* HomeViewButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -141,7 +136,6 @@
 		A8BD834B27BE347700E0DE41 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A8BD834927BE346D00E0DE41 /* HomeViewControllerExtension.swift */,
 				A49931A427BFD20E009FF5A8 /* UIImage+AssetImages.swift */,
 			);
 			path = Extensions;
@@ -311,19 +305,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				A499318327BF5158009FF5A8 /* BottleImageView.swift in Sources */,
-				A8BD834127BE325000E0DE41 /* UserJarListButton.swift in Sources */,
 				A8BD834D27BE39D600E0DE41 /* NoteProgressLabel.swift in Sources */,
 				A8FC07CC27B3ECF00077A758 /* ViewController.swift in Sources */,
-				A8BD833D27BE2FF900E0DE41 /* SettingsButton.swift in Sources */,
 				A8BD834727BE337900E0DE41 /* HomeView.swift in Sources */,
 				A8FC07C827B3ECF00077A758 /* AppDelegate.swift in Sources */,
-				A8BD833B27BE261600E0DE41 /* OpenBeforeFinishedButton.swift in Sources */,
 				A8BD833527BE106C00E0DE41 /* BottleViewController.swift in Sources */,
 				A8FC07CA27B3ECF00077A758 /* SceneDelegate.swift in Sources */,
+				A81742FF27C108DC0016C921 /* HomeViewModel.swift in Sources */,
+				A817430127C112D00016C921 /* HomeViewButton.swift in Sources */,
 				A8BD833327BE104900E0DE41 /* HomeViewController.swift in Sources */,
 				A499318127BF3A38009FF5A8 /* BottleViewModel.swift in Sources */,
 				A49931A527BFD20E009FF5A8 /* UIImage+AssetImages.swift in Sources */,
-				A8BD834A27BE346D00E0DE41 /* HomeViewControllerExtension.swift in Sources */,
 				A8BD833F27BE30B400E0DE41 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

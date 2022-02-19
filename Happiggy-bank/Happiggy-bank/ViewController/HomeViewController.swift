@@ -10,6 +10,8 @@ import UIKit
 /// 메인 화면 전체를 관리하는 컨트롤러
 class HomeViewController: UIViewController {
     
+    // MARK: - Properties
+    
     /// 메인 뷰
     var homeView: UIView!
     
@@ -28,47 +30,65 @@ class HomeViewController: UIViewController {
     /// 페이지 뷰를 관리하는 컨트롤러
     var pageViewController: UIPageViewController!
     
-    /// 각 페이지에 들어갈 이미지 이름 배열
-    var pageImages: [String]!
+    /// 홈 뷰의 뷰모델
+    private var homeViewModel: HomeViewModel = HomeViewModel()
     
-    /// 현재 페이지 인덱스
-    var currentIndex: Int = 0
     
-    /// 최초인지 아닌지 확인
-    private var hasBottle: Bool = true
+    // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.pageImages = []
         configureView()
         configureConstraints()
-        if !hasBottle {
+        if !homeViewModel.hasBottle {
             hideUnusedButtonAndLabels()
             setInitialImage()
         }
-        if hasBottle {
-            self.pageImages = ["image1", "image2", "image3", "image4"]
+        if homeViewModel.hasBottle {
             configurePageViewController()
             configurePageViewConstraints()
         }
     }
     
     
-    // MARK: Actions
+    // MARK: - Button Actions(@objc functions)
     
-    /// 현재 인덱스로 BottleViewController 생성
-    func makePageContentViewController(with index: Int) -> BottleViewController {
-        let pageContentViewController: BottleViewController = BottleViewController()
-        let pageContentViewModel = BottleViewModel()
-        // TODO: currentIndex 의 bottleID 넘겨주기
-        pageContentViewModel.bottleID = UUID().hashValue
-        pageContentViewController.viewModel = pageContentViewModel
-        pageContentViewController.index = index
-        return pageContentViewController
+    /// 환경설정 버튼 탭할 시 실행되는 함수
+    @objc func settingsButtonDidTap(_ sender: UIButton) {
+        print("Move to Settings View")
+    }
+    
+    /// 개봉 버튼 탭할 시 실행되는 함수
+    @objc func openBeforeFinishedButtonDidTap(_ sender: UIButton) {
+        print("Open the jar")
+    }
+    
+    /// 유리병 리스트 버튼 탭할 시 실행되는 함수
+    @objc func userJarListButtonDidTap(_ sender: UIButton) {
+        print("Move to User Jar List View")
+    }
+    
+    /// 진행중인 유리병이 없을 시에 나타나는 초기 이미지 탭할 시 실행되는 함수
+    @objc func initialImageViewDidTap(_ sender: UITapGestureRecognizer) {
+        print("Make new jar")
     }
     
     
-    // MARK: UI Configurations
+    // MARK: - Actions
+    
+    /// 현재 인덱스로 BottleViewController 생성
+    func makePageContentViewController(with index: Int) -> BottleViewController {
+        let bottleViewController: BottleViewController = BottleViewController()
+        let bottleViewModel = BottleViewModel()
+        // TODO: currentIndex 의 bottleID 넘겨주기
+        bottleViewModel.bottleID = UUID().hashValue
+        bottleViewController.viewModel = bottleViewModel
+        bottleViewController.index = index
+        return bottleViewController
+    }
+    
+    
+    // MARK: - UI Configurations
     
     /// 홈 뷰 UI 요소들 생성 및 HomeViewController의 하위 뷰로 추가
     private func configureView() {
@@ -85,9 +105,9 @@ class HomeViewController: UIViewController {
     
     /// 버튼 생성,  타겟 설정 및 추가
     private func configureButtons() {
-        self.settingsButton = SettingsButton()
-        self.openBeforeFinishedButton = OpenBeforeFinishedButton()
-        self.bottleListButton = UserJarListButton()
+        self.settingsButton = HomeViewButton(imageName: "gearshape")
+        self.openBeforeFinishedButton = HomeViewButton(imageName: "hammer")
+        self.bottleListButton = HomeViewButton(imageName: "list.bullet")
         self.view.addSubview(settingsButton)
         self.view.addSubview(openBeforeFinishedButton)
         self.view.addSubview(bottleListButton)
@@ -115,14 +135,14 @@ class HomeViewController: UIViewController {
     }
     
     
-    // MARK: Controller Configurations
+    // MARK: - Controller Configurations
     
     /// PageViewController 구성
     private func configurePageViewController() {
         let startViewController: BottleViewController = self.makePageContentViewController(
-            with: currentIndex
+            with: homeViewModel.currentIndex
         )
-        let viewControllerArray: NSArray = NSArray(object: startViewController)
+        let viewControllerArray: [UIViewController] = [startViewController]
         
         self.pageViewController = UIPageViewController(
             transitionStyle: .scroll,
@@ -131,7 +151,7 @@ class HomeViewController: UIViewController {
         self.pageViewController.dataSource = self
         self.pageViewController.delegate = self
         self.pageViewController.setViewControllers(
-            viewControllerArray as? [UIViewController],
+            viewControllerArray,
             direction: .forward,
             animated: false,
             completion: nil
@@ -141,7 +161,7 @@ class HomeViewController: UIViewController {
     }
     
     
-    // MARK: Constraints
+    // MARK: - Constraints
     
     /// 홈 뷰 UI 요소(버튼, 라벨)의 오토레이아웃 적용
     private func configureConstraints() {
@@ -173,7 +193,7 @@ class HomeViewController: UIViewController {
             ),
             bottleListButton.leadingAnchor.constraint(
                 equalTo: self.view.leadingAnchor,
-                constant: 88
+                constant: Metric.listButtonLeadingPadding
             ),
             bottleListButton.bottomAnchor.constraint(
                 equalTo: self.view.safeAreaLayoutGuide.bottomAnchor,
@@ -229,7 +249,7 @@ class HomeViewController: UIViewController {
     }
     
     
-    // MARK: Initial View Setting
+    // MARK: - Initial View Setting
     
     /// 진행중이 유리병이 없을시, 하단 버튼과 라벨 숨김
     private func hideUnusedButtonAndLabels() {
@@ -240,41 +260,92 @@ class HomeViewController: UIViewController {
     
     /// 진행중인 유리병이 없을시, 초기 이미지로 홈 뷰 구성
     private func setInitialImage() {
-        let initialImageView: UIImageView = UIImageView(image: UIImage(named: "image0"))
+        let initialImageView: UIImageView = BottleImageView(image: UIImage.initialBottle)
         let tapGesture = UITapGestureRecognizer(
             target: self,
             action: #selector(initialImageViewDidTap(_:))
         )
-        self.view.addSubview(initialImageView)
+        self.homeView.addSubview(initialImageView)
         initialImageView.isUserInteractionEnabled = true
         initialImageView.addGestureRecognizer(tapGesture)
         initialImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            initialImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            initialImageView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+            initialImageView.widthAnchor.constraint(
+                equalTo: self.homeView.widthAnchor,
+                constant: -Metric.verticalPadding * 2),
+            initialImageView.heightAnchor.constraint(
+                equalTo: self.homeView.widthAnchor,
+                multiplier: Metric.pageViewHeightWidthRatio),
+            initialImageView.bottomAnchor.constraint(
+                equalTo: self.noteProgressLabel.topAnchor,
+                constant: -Metric.spacing),
+            initialImageView.centerXAnchor.constraint(equalTo: self.homeView.centerXAnchor)
         ])
     }
+}
+
+
+// MARK: - DataSource
+
+extension HomeViewController: UIPageViewControllerDataSource {
     
+    // TODO: ViewModel 로 옮기기
+    /// 종료되지 않은 유리병의 존재 여부
+    private var hasBottleInProgress: Bool { false }
     
-    // MARK: Button Actions
-    
-    /// 환경설정 버튼 탭할 시 실행되는 함수
-    @objc func settingsButtonDidTap(_ sender: UIButton) {
-        print("Move to Settings View")
+    // swiftlint:disable force_cast
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        viewControllerBefore viewController: UIViewController
+    ) -> UIViewController? {
+        let viewController: BottleViewController = viewController as! BottleViewController
+        var index = viewController.index as Int
+        
+        if index <= 0 {
+            return nil
+        }
+        index -= 1
+        return self.makePageContentViewController(with: index)
     }
     
-    /// 개봉 버튼 탭할 시 실행되는 함수
-    @objc func openBeforeFinishedButtonDidTap(_ sender: UIButton) {
-        print("Open the jar")
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        viewControllerAfter viewController: UIViewController
+    ) -> UIViewController? {
+        let viewController: BottleViewController = viewController as! BottleViewController
+        var index = viewController.index as Int
+        let numberOfBottles = self.homeViewModel.pageImages.count
+        
+        if  (index + 1 == numberOfBottles && self.hasBottleInProgress)
+              || index >= numberOfBottles {
+            return nil
+        }
+        
+        index += 1
+        
+        if index == numberOfBottles {
+            print("Add New Jar")
+        }
+        return self.makePageContentViewController(with: index)
     }
-    
-    /// 유리병 리스트 버튼 탭할 시 실행되는 함수
-    @objc func userJarListButtonDidTap(_ sender: UIButton) {
-        print("Move to User Jar List View")
-    }
-    
-    /// 진행중인 유리병이 없을 시에 나타나는 초기 이미지 탭할 시 실행되는 함수
-    @objc func initialImageViewDidTap(_ sender: UITapGestureRecognizer) {
-        print("Make new jar")
+    // swiftlint:enable force_cast
+}
+
+
+// MARK: - Delegate
+
+extension HomeViewController: UIPageViewControllerDelegate {
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        didFinishAnimating finished: Bool,
+        previousViewControllers: [UIViewController],
+        transitionCompleted completed: Bool
+    ) {
+        if completed {
+            if let currentViewController = pageViewController.viewControllers![0]
+                as? BottleViewController {
+                homeViewModel.updatedIndex = currentViewController.index
+            }
+        }
     }
 }

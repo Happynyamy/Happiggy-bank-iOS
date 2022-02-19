@@ -7,7 +7,8 @@
 
 import UIKit
 
-class HomeView: UIView {
+/// BottleViewController의 뷰, InitialImage 뷰를 나타낼 HomeView
+final class HomeView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
