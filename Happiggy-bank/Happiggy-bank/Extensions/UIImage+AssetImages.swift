@@ -9,7 +9,10 @@ import UIKit
 
 extension UIImage {
     
-    //FIXME: 개봉/미개봉 유리병의 이미지가 다르므로 네이밍 변경 필요
+    // FIXME: 개봉/미개봉 유리병의 이미지가 다르므로 네이밍 변경 필요
+    /// bottle 초기 생성시의 이미지
+    static let initialBottle = UIImage(named: "initialBottle")
+    
     /// bottle 이 0% 이상 ~ 10% 미만으로 채워졌을 때의 이미지
     static let bottle0 = UIImage(named: "bottle0")
     
