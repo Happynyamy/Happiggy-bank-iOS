@@ -56,13 +56,14 @@ class HomeViewController: UIViewController {
     
     // MARK: Actions
     
-    /// 현재 인덱스로 PageContentViewController 생성
-    func makePageContentViewController(with index: Int) -> PageContentViewController {
-        let pageContentViewController: PageContentViewController = PageContentViewController()
-        
-        pageContentViewController.imageName = self.pageImages[index]
+    /// 현재 인덱스로 BottleViewController 생성
+    func makePageContentViewController(with index: Int) -> BottleViewController {
+        let pageContentViewController: BottleViewController = BottleViewController()
+        let pageContentViewModel = BottleViewModel()
+        // TODO: currentIndex 의 bottleID 넘겨주기
+        pageContentViewModel.bottleID = UUID().hashValue
+        pageContentViewController.viewModel = pageContentViewModel
         pageContentViewController.index = index
-        
         return pageContentViewController
     }
     
@@ -118,7 +119,7 @@ class HomeViewController: UIViewController {
     
     /// PageViewController 구성
     private func configurePageViewController() {
-        let startViewController: PageContentViewController = self.makePageContentViewController(
+        let startViewController: BottleViewController = self.makePageContentViewController(
             with: currentIndex
         )
         let viewControllerArray: NSArray = NSArray(object: startViewController)
@@ -160,15 +161,15 @@ class HomeViewController: UIViewController {
             ),
             settingsButton.trailingAnchor.constraint(
                 equalTo: self.view.trailingAnchor,
-                constant: -24
+                constant: -Metric.verticalPadding
             ),
             openBeforeFinishedButton.leadingAnchor.constraint(
                 equalTo: self.view.leadingAnchor,
-                constant: 24
+                constant: Metric.verticalPadding
             ),
             openBeforeFinishedButton.bottomAnchor.constraint(
                 equalTo: self.view.safeAreaLayoutGuide.bottomAnchor,
-                constant: -24
+                constant: -Metric.verticalPadding
             ),
             bottleListButton.leadingAnchor.constraint(
                 equalTo: self.view.leadingAnchor,
@@ -176,35 +177,35 @@ class HomeViewController: UIViewController {
             ),
             bottleListButton.bottomAnchor.constraint(
                 equalTo: self.view.safeAreaLayoutGuide.bottomAnchor,
-                constant: -24
+                constant: -Metric.verticalPadding
             ),
-            settingsButton.widthAnchor.constraint(equalToConstant: 48),
-            settingsButton.heightAnchor.constraint(equalToConstant: 48),
-            openBeforeFinishedButton.widthAnchor.constraint(equalToConstant: 48),
-            openBeforeFinishedButton.heightAnchor.constraint(equalToConstant: 48),
-            bottleListButton.widthAnchor.constraint(equalToConstant: 48),
-            bottleListButton.heightAnchor.constraint(equalToConstant: 48)
+            settingsButton.widthAnchor.constraint(equalToConstant: Metric.buttonWidth),
+            settingsButton.heightAnchor.constraint(equalToConstant: Metric.buttonHeight),
+            openBeforeFinishedButton.widthAnchor.constraint(
+                equalToConstant: Metric.buttonWidth
+            ),
+            openBeforeFinishedButton.heightAnchor.constraint(
+                equalToConstant: Metric.buttonHeight
+            ),
+            bottleListButton.widthAnchor.constraint(equalToConstant: Metric.buttonWidth),
+            bottleListButton.heightAnchor.constraint(equalToConstant: Metric.buttonHeight)
         ])
     }
     
     /// PageViewController의 뷰 오토 레이아웃 적용
     private func configurePageViewConstraints() {
         self.pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
-
         NSLayoutConstraint.activate([
-            pageViewController.view.topAnchor.constraint(
-                equalTo: self.homeView.topAnchor
-            ),
+            pageViewController.view.widthAnchor.constraint(equalTo: view.widthAnchor),
+            pageViewController.view.heightAnchor.constraint(
+                equalTo: view.widthAnchor,
+                multiplier: Metric.pageViewHeightWidthRatio),
             pageViewController.view.bottomAnchor.constraint(
-                equalTo: self.homeView.bottomAnchor
-            ),
-            pageViewController.view.leadingAnchor.constraint(
-                equalTo: self.homeView.leadingAnchor
-            ),
-            pageViewController.view.trailingAnchor.constraint(
-                equalTo: self.homeView.trailingAnchor
-            )
+                equalTo: self.noteProgressLabel.topAnchor,
+                constant: -Metric.spacing),
+            pageViewController.view.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
+        pageViewController.view.backgroundColor = .systemOrange
     }
     
     /// 라벨의 오토 레이아웃 적용
@@ -214,14 +215,16 @@ class HomeViewController: UIViewController {
         NSLayoutConstraint.activate([
             noteProgressLabel.bottomAnchor.constraint(
                 equalTo: self.view.safeAreaLayoutGuide.bottomAnchor,
-                constant: -24
+                constant: -Metric.verticalPadding
             ),
             noteProgressLabel.trailingAnchor.constraint(
                 equalTo: self.view.trailingAnchor,
-                constant: -24
+                constant: -Metric.verticalPadding
             ),
-            noteProgressLabel.widthAnchor.constraint(equalToConstant: 126),
-            noteProgressLabel.heightAnchor.constraint(equalToConstant: 48)
+            noteProgressLabel.widthAnchor.constraint(
+                equalToConstant: Metric.noteProgressLabelWidth
+            ),
+            noteProgressLabel.heightAnchor.constraint(equalToConstant: Metric.labelHeight)
         ])
     }
     

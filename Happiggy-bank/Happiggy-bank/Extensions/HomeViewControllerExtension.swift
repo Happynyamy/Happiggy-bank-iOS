@@ -8,6 +8,11 @@
 import UIKit
 
 extension HomeViewController: UIPageViewControllerDataSource {
+    
+    // TODO: ViewModel 로 옮기기
+    /// 종료되지 않은 유리병의 존재 여부
+    private var hasBottleInProgress: Bool { false }
+    
     func pageViewController(
         _ pageViewController: UIPageViewController,
         didFinishAnimating finished: Bool,
@@ -15,7 +20,8 @@ extension HomeViewController: UIPageViewControllerDataSource {
         transitionCompleted completed: Bool
     ) {
         if completed {
-            if let currentViewController = pageViewController.viewControllers![0] as? PageContentViewController {
+            if let currentViewController = pageViewController.viewControllers![0]
+                as? BottleViewController {
                 currentIndex = currentViewController.index
             }
         }
@@ -26,10 +32,10 @@ extension HomeViewController: UIPageViewControllerDataSource {
         _ pageViewController: UIPageViewController,
         viewControllerBefore viewController: UIViewController
     ) -> UIViewController? {
-        let viewController: PageContentViewController = viewController as! PageContentViewController
+        let viewController: BottleViewController = viewController as! BottleViewController
         var index = viewController.index as Int
         
-        if index == 0 || index == NSNotFound {
+        if index <= 0 {
             return nil
         }
         index -= 1
@@ -40,18 +46,19 @@ extension HomeViewController: UIPageViewControllerDataSource {
         _ pageViewController: UIPageViewController,
         viewControllerAfter viewController: UIViewController
     ) -> UIViewController? {
-        let viewController: PageContentViewController = viewController as! PageContentViewController
+        let viewController: BottleViewController = viewController as! BottleViewController
         var index = viewController.index as Int
+        let numberOfBottles = self.pageImages.count
         
-        if index == NSNotFound {
+        if  (index + 1 == numberOfBottles && self.hasBottleInProgress)
+              || index >= numberOfBottles {
             return nil
         }
         
         index += 1
         
-        if index == self.pageImages.count {
+        if index == numberOfBottles {
             print("Add New Jar")
-            return nil
         }
         return self.makePageContentViewController(with: index)
     }
