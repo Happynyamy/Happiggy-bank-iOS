@@ -54,6 +54,7 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        print("HomeViewController will appear")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -61,7 +62,6 @@ class HomeViewController: UIViewController {
         
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-    
     
     // MARK: - Button Actions(@objc functions)
     
@@ -117,9 +117,9 @@ class HomeViewController: UIViewController {
     
     /// 버튼 생성,  타겟 설정 및 추가
     private func configureButtons() {
-        self.settingsButton = HomeViewButton(imageName: "gearshape")
-        self.openBeforeFinishedButton = HomeViewButton(imageName: "hammer")
-        self.bottleListButton = HomeViewButton(imageName: "list.bullet")
+        self.settingsButton = DefaultButton(imageName: "gearshape")
+        self.openBeforeFinishedButton = DefaultButton(imageName: "hammer")
+        self.bottleListButton = DefaultButton(imageName: "list.bullet")
         self.view.addSubview(settingsButton)
         self.view.addSubview(openBeforeFinishedButton)
         self.view.addSubview(bottleListButton)

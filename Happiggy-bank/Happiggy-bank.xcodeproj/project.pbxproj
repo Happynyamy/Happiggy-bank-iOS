@@ -11,8 +11,18 @@
 		A499318127BF3A38009FF5A8 /* BottleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499318027BF3A38009FF5A8 /* BottleViewModel.swift */; };
 		A499318327BF5158009FF5A8 /* BottleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499318227BF5158009FF5A8 /* BottleImageView.swift */; };
 		A49931A527BFD20E009FF5A8 /* UIImage+AssetImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49931A427BFD20E009FF5A8 /* UIImage+AssetImages.swift */; };
+		A4CF2C5427C48DA1001B01B1 /* NewNotePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C5327C48DA1001B01B1 /* NewNotePopupViewController.swift */; };
+		A4CF2C7827C4EBEE001B01B1 /* UIViewController+Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C7727C4EBEE001B01B1 /* UIViewController+Popup.swift */; };
+		A4CF2C7A27C61867001B01B1 /* NewNotePopupTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C7927C61867001B01B1 /* NewNotePopupTopBar.swift */; };
+		A4CF2C7C27C71FF5001B01B1 /* CATransition+PopupAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C7B27C71FF5001B01B1 /* CATransition+PopupAnimation.swift */; };
+		A4CF2C7E27C72991001B01B1 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C7D27C72991001B01B1 /* ColorPalette.swift */; };
+		A4CF2C8027C733FE001B01B1 /* ColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C7F27C733FE001B01B1 /* ColorButton.swift */; };
+		A4CF2C8227C73B42001B01B1 /* UIColor+AssetColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C8127C73B42001B01B1 /* UIColor+AssetColors.swift */; };
+		A4CF2C8C27CB6FA9001B01B1 /* NoteTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C8B27CB6FA9001B01B1 /* NoteTextView.swift */; };
+		A4CF2C8E27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C8D27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift */; };
+		A4CF2C9027CBA66F001B01B1 /* NSNotificaion.Name+CustomNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C8F27CBA66F001B01B1 /* NSNotificaion.Name+CustomNotifications.swift */; };
 		A81742FF27C108DC0016C921 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81742FE27C108DC0016C921 /* HomeViewModel.swift */; };
-		A817430127C112D00016C921 /* HomeViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A817430027C112D00016C921 /* HomeViewButton.swift */; };
+		A817430127C112D00016C921 /* DefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A817430027C112D00016C921 /* DefaultButton.swift */; };
 		A8BD833327BE104900E0DE41 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833227BE104900E0DE41 /* HomeViewController.swift */; };
 		A8BD833527BE106C00E0DE41 /* BottleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833427BE106C00E0DE41 /* BottleViewController.swift */; };
 		A8BD833F27BE30B400E0DE41 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833E27BE30B400E0DE41 /* Constants.swift */; };
@@ -30,8 +40,18 @@
 		A499318027BF3A38009FF5A8 /* BottleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleViewModel.swift; sourceTree = "<group>"; };
 		A499318227BF5158009FF5A8 /* BottleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleImageView.swift; sourceTree = "<group>"; };
 		A49931A427BFD20E009FF5A8 /* UIImage+AssetImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AssetImages.swift"; sourceTree = "<group>"; };
+		A4CF2C5327C48DA1001B01B1 /* NewNotePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNotePopupViewController.swift; sourceTree = "<group>"; };
+		A4CF2C7727C4EBEE001B01B1 /* UIViewController+Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Popup.swift"; sourceTree = "<group>"; };
+		A4CF2C7927C61867001B01B1 /* NewNotePopupTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNotePopupTopBar.swift; sourceTree = "<group>"; };
+		A4CF2C7B27C71FF5001B01B1 /* CATransition+PopupAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CATransition+PopupAnimation.swift"; sourceTree = "<group>"; };
+		A4CF2C7D27C72991001B01B1 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
+		A4CF2C7F27C733FE001B01B1 /* ColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorButton.swift; path = "Happiggy-bank/Button/ColorButton.swift"; sourceTree = SOURCE_ROOT; };
+		A4CF2C8127C73B42001B01B1 /* UIColor+AssetColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AssetColors.swift"; sourceTree = "<group>"; };
+		A4CF2C8B27CB6FA9001B01B1 /* NoteTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTextView.swift; sourceTree = "<group>"; };
+		A4CF2C8D27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NotificationCenter.swift"; sourceTree = "<group>"; };
+		A4CF2C8F27CBA66F001B01B1 /* NSNotificaion.Name+CustomNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotificaion.Name+CustomNotifications.swift"; sourceTree = "<group>"; };
 		A81742FE27C108DC0016C921 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		A817430027C112D00016C921 /* HomeViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewButton.swift; sourceTree = "<group>"; };
+		A817430027C112D00016C921 /* DefaultButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButton.swift; sourceTree = "<group>"; };
 		A8BD833227BE104900E0DE41 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A8BD833427BE106C00E0DE41 /* BottleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleViewController.swift; sourceTree = "<group>"; };
 		A8BD833E27BE30B400E0DE41 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -91,7 +111,8 @@
 		A8BD834227BE32EB00E0DE41 /* Button */ = {
 			isa = PBXGroup;
 			children = (
-				A817430027C112D00016C921 /* HomeViewButton.swift */,
+				A817430027C112D00016C921 /* DefaultButton.swift */,
+				A4CF2C7F27C733FE001B01B1 /* ColorButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -101,6 +122,7 @@
 			children = (
 				A8BD833227BE104900E0DE41 /* HomeViewController.swift */,
 				A8BD833427BE106C00E0DE41 /* BottleViewController.swift */,
+				A4CF2C5327C48DA1001B01B1 /* NewNotePopupViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -125,6 +147,9 @@
 		A8BD834827BE338200E0DE41 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A4CF2C8B27CB6FA9001B01B1 /* NoteTextView.swift */,
+				A4CF2C7D27C72991001B01B1 /* ColorPalette.swift */,
+				A4CF2C7927C61867001B01B1 /* NewNotePopupTopBar.swift */,
 				A8BD834627BE337900E0DE41 /* HomeView.swift */,
 				A499318227BF5158009FF5A8 /* BottleImageView.swift */,
 			);
@@ -134,7 +159,12 @@
 		A8BD834B27BE347700E0DE41 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A4CF2C8F27CBA66F001B01B1 /* NSNotificaion.Name+CustomNotifications.swift */,
+				A4CF2C7B27C71FF5001B01B1 /* CATransition+PopupAnimation.swift */,
 				A49931A427BFD20E009FF5A8 /* UIImage+AssetImages.swift */,
+				A4CF2C7727C4EBEE001B01B1 /* UIViewController+Popup.swift */,
+				A4CF2C8D27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift */,
+				A4CF2C8127C73B42001B01B1 /* UIColor+AssetColors.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -197,6 +227,7 @@
 				A8FC07C127B3ECF00077A758 /* Frameworks */,
 				A8FC07C227B3ECF00077A758 /* Resources */,
 				A8FC07DB27B3EDC10077A758 /* ShellScript */,
+				8EAE824FC9B9DE2A431664D4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -277,6 +308,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		8EAE824FC9B9DE2A431664D4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Happiggy-bank/Pods-Happiggy-bank-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Happiggy-bank/Pods-Happiggy-bank-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Happiggy-bank/Pods-Happiggy-bank-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A8FC07DB27B3EDC10077A758 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -301,17 +349,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4CF2C7A27C61867001B01B1 /* NewNotePopupTopBar.swift in Sources */,
 				A499318327BF5158009FF5A8 /* BottleImageView.swift in Sources */,
+				A4CF2C8E27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift in Sources */,
 				A8BD834D27BE39D600E0DE41 /* NoteProgressLabel.swift in Sources */,
 				A8BD834727BE337900E0DE41 /* HomeView.swift in Sources */,
+				A4CF2C7C27C71FF5001B01B1 /* CATransition+PopupAnimation.swift in Sources */,
 				A8FC07C827B3ECF00077A758 /* AppDelegate.swift in Sources */,
+				A4CF2C7827C4EBEE001B01B1 /* UIViewController+Popup.swift in Sources */,
+				A4CF2C8C27CB6FA9001B01B1 /* NoteTextView.swift in Sources */,
 				A8BD833527BE106C00E0DE41 /* BottleViewController.swift in Sources */,
+				A4CF2C8027C733FE001B01B1 /* ColorButton.swift in Sources */,
+				A4CF2C8227C73B42001B01B1 /* UIColor+AssetColors.swift in Sources */,
 				A8FC07CA27B3ECF00077A758 /* SceneDelegate.swift in Sources */,
 				A81742FF27C108DC0016C921 /* HomeViewModel.swift in Sources */,
-				A817430127C112D00016C921 /* HomeViewButton.swift in Sources */,
+				A4CF2C9027CBA66F001B01B1 /* NSNotificaion.Name+CustomNotifications.swift in Sources */,
+				A817430127C112D00016C921 /* DefaultButton.swift in Sources */,
+				A4CF2C5427C48DA1001B01B1 /* NewNotePopupViewController.swift in Sources */,
 				A8BD833327BE104900E0DE41 /* HomeViewController.swift in Sources */,
 				A499318127BF3A38009FF5A8 /* BottleViewModel.swift in Sources */,
 				A49931A527BFD20E009FF5A8 /* UIImage+AssetImages.swift in Sources */,
+				A4CF2C7E27C72991001B01B1 /* ColorPalette.swift in Sources */,
 				A8BD833F27BE30B400E0DE41 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,7 +520,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4L7K3ZV8H2;
+				DEVELOPMENT_TEAM = WA6PY6NL25;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Happiggy-bank/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -492,7 +550,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4L7K3ZV8H2;
+				DEVELOPMENT_TEAM = WA6PY6NL25;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Happiggy-bank/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

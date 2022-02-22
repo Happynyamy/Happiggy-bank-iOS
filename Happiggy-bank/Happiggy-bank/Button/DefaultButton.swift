@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewButton: UIButton {
+class DefaultButton: UIButton {
     
     private var buttonFrame: CGRect = CGRect(
         x: 0,
@@ -20,6 +20,16 @@ class HomeViewButton: UIButton {
         super.init(frame: frame)
     }
     
+    convenience init() {
+        let frame = CGRect(
+            x: 0,
+            y: 0,
+            width: Metric.buttonWidth,
+            height: Metric.buttonHeight
+        )
+        self.init(frame: frame)
+    }
+    
     init(imageName: String) {
         super.init(frame: buttonFrame)
         
@@ -28,6 +38,14 @@ class HomeViewButton: UIButton {
             withConfiguration: UIImage.SymbolConfiguration(scale: .large))
         
         self.setImage(buttonImage, for: .normal)
+    }
+    
+    init(title: String) {
+        super.init(frame: buttonFrame)
+        
+        self.setTitle(title, for: .normal)
+        self.setTitleColor(.systemBlue, for: .normal)
+        self.setTitleColor(.systemGray, for: .disabled)
     }
     
     required init?(coder: NSCoder) {
