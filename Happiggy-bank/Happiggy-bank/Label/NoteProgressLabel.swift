@@ -7,9 +7,13 @@
 
 import UIKit
 
-class NoteProgressLabel: UIView {
+/// 쪽지 개수 보여주는 라벨
+final class NoteProgressLabel: UIView {
     
+    /// 쪽지 아이콘
     var noteIcon: UIImageView!
+    
+    /// 쪽지 개수 라벨
     var noteTextLabel: UILabel!
     
     override init(frame: CGRect) {
@@ -27,6 +31,7 @@ class NoteProgressLabel: UIView {
         super.init(coder: coder)
     }
     
+    /// 쪽지 아이콘 설정
     private func configureNoteIcon() {
         self.noteIcon = UIImageView()
         self.noteIcon.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
@@ -34,6 +39,7 @@ class NoteProgressLabel: UIView {
         self.addSubview(noteIcon)
     }
     
+    /// 쪽지 개수 라벨 설정
     private func configureNoteLabel() {
         self.noteTextLabel = UILabel()
         self.noteTextLabel.frame = CGRect(x: 0, y: 0, width: 60, height: 16)
@@ -42,6 +48,7 @@ class NoteProgressLabel: UIView {
         self.addSubview(noteTextLabel)
     }
     
+    /// 하위 뷰 constraints 설정
     private func configureConstraintsOfSubview() {
         self.noteIcon.translatesAutoresizingMaskIntoConstraints = false
         self.noteTextLabel.translatesAutoresizingMaskIntoConstraints = false

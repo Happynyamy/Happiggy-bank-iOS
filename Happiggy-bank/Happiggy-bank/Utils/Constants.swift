@@ -49,7 +49,7 @@ extension BottleViewController {
     }
 }
 
-extension HomeViewButton {
+extension DefaultButton {
 
     /// HomeViewButton 에서 설정하는 layout에 적용할 상수값
     enum Metric {
@@ -59,5 +59,118 @@ extension HomeViewButton {
         
         /// 버튼 너비
         static let buttonWidth: CGFloat = HomeViewController.Metric.buttonWidth
+    }
+}
+
+extension HomeView {
+    
+    /// HomeView 에서 설정하는 layout에 적용할 상수값
+    enum Metric {
+        
+        /// 디바이스 스크린 높이
+        static let screenHeight: CGFloat = UIScreen.main.bounds.height
+        
+        /// 디바이스 스크린 너비
+        static let screenWidth: CGFloat = UIScreen.main.bounds.width
+    }
+}
+
+extension CreateNewBottlePopupView {
+    
+    /// CreateNewBottlePopupView에서 설정하는 layout에 적용할 상수값
+    enum Metric {
+        /// 팝업 뷰 너비
+        static let viewWidth: CGFloat = HomeView.Metric.screenWidth * 0.872
+        
+        /// 팝업 뷰 높이
+        static let viewHeight: CGFloat = 443
+        
+        /// 팝업 뷰 양 사이드 padding
+        static let horizontalPadding: CGFloat = 24
+        
+        /// 팝업 뷰 제출 버튼  너비
+        static let submitButtonWidth: CGFloat = viewWidth - horizontalPadding * 2
+        
+        /// 팝업 뷰 제출 버튼 높이
+        static let submitButtonHeight: CGFloat = 56
+        
+        /// 팝업 뷰 제출 버튼 위 아래 padding
+        static let submitButtonVerticalPadding: CGFloat = 40
+    }
+}
+
+extension PopupTopBar {
+    
+    /// PopupTopBar에서 설정하는 layout에 적용할 상수값
+    enum Metric {
+        
+        /// 상단 바 너비
+        static let viewWidth: CGFloat
+        = CreateNewBottlePopupView.Metric.viewWidth
+        - cancelButtonLeadingPadding * 2
+        
+        /// 상단 바 높이
+        static let viewHeight: CGFloat = 64
+        
+        /// 상단 바 취소 버튼 leading padding 16
+        static let cancelButtonLeadingPadding: CGFloat = 16
+        
+        /// 상단 바 취소 버튼 vertical padding 8
+        static let cancelButtonVerticalPadding: CGFloat = 8
+        
+        /// 상단 바 제목 라벨 top padding 21
+        static let titleLabelTopPadding: CGFloat = 21
+    }
+}
+
+extension PopupTextInputField {
+    
+    /// PopupTextInputField에서 설정하는 layout에 적용할 상수값
+    enum Metric {
+        
+        /// 유리병 이름 입력 뷰 너비
+        static let viewWidth: CGFloat
+        = CreateNewBottlePopupView.Metric.viewWidth
+        - CreateNewBottlePopupView.Metric.horizontalPadding * 2
+        
+        /// 유리병 이름 입력 뷰 높이
+        static let viewHeight: CGFloat = 90
+        
+        /// 유리병 이름 입력 뷰 텍스트필드 높이
+        static let textFieldHeight: CGFloat = 56
+        
+        /// 유리병 이름 입력 뷰 top padding 32
+        static let topPadding: CGFloat = 32
+        
+        /// 유리병 이름 입력 뷰 텍스트필드 top padding 16
+        static let innerPadding: CGFloat = 16
+    }
+}
+
+extension PopupPeriodSelectionField {
+    
+    /// PopupPeriodSelectionField에서 설정하는 layout에 적용할 상수값
+    enum Metric {
+        
+        /// 유리병 개봉 기간 선택 뷰 너비
+        static let viewWidth: CGFloat = PopupTextInputField.Metric.viewWidth
+        
+        /// 유리병 개봉 기간 선택 뷰 높이
+        static let viewHeight: CGFloat = 90
+
+        /// 유리병 개봉 기간 선택 뷰 버튼 높이
+        static let buttonHeight: CGFloat = 56
+        
+        /// 유리병 개봉 기간 선택 뷰 버튼 너비
+        static let buttonWidth: CGFloat = 48
+        
+        /// 유리병 개봉 기간 선택 뷰 top padding 32
+        static let topPadding: CGFloat = 32
+        
+        /// 유리병 개봉 기간 선택 뷰 버튼들 top padding 16
+        static let innerPadding: CGFloat = 16
+        
+        /// 유리병 개봉 기간 선택 뷰 버튼 간 padding 8
+        static let buttonPadding: CGFloat = 8
     }
 }
