@@ -165,18 +165,9 @@ final class CreateNewBottlePopupViewController: UIViewController {
         
         // TopBar's cancel Button
         NSLayoutConstraint.activate([
-            createNewBottlePopupView.topBar.cancelButton.leadingAnchor.constraint(
-                equalTo: createNewBottlePopupView.topBar.leadingAnchor
-            ),
             createNewBottlePopupView.topBar.cancelButton.topAnchor.constraint(
                 equalTo: self.createNewBottlePopupView.topAnchor,
                 constant: PopupTopBar.Metric.cancelButtonVerticalPadding
-            ),
-            createNewBottlePopupView.topBar.cancelButton.widthAnchor.constraint(
-                equalToConstant: DefaultButton.Metric.buttonWidth
-            ),
-            createNewBottlePopupView.topBar.cancelButton.heightAnchor.constraint(
-                equalToConstant: DefaultButton.Metric.buttonHeight
             )
         ])
         
@@ -194,8 +185,6 @@ final class CreateNewBottlePopupViewController: UIViewController {
     
     /// 팝업 뷰의 유리병 이름 입력 필드 Constraints 설정
     private func configureTextFieldConstraints() {
-        
-        // Text Input Field View
         NSLayoutConstraint.activate([
             createNewBottlePopupView.textInputField.topAnchor.constraint(
                 equalTo: createNewBottlePopupView.topBar.bottomAnchor,
@@ -216,36 +205,10 @@ final class CreateNewBottlePopupViewController: UIViewController {
                 equalToConstant: PopupTextInputField.Metric.viewHeight
             )
         ])
-        
-        // Text Input Field's description Label
-        NSLayoutConstraint.activate([
-            createNewBottlePopupView.textInputField.descriptionLabel.topAnchor.constraint(
-                equalTo: createNewBottlePopupView.textInputField.topAnchor
-            ),
-            createNewBottlePopupView.textInputField.descriptionLabel.leadingAnchor.constraint(
-                equalTo: createNewBottlePopupView.textInputField.leadingAnchor
-            )
-        ])
-        
-        // Text Input Field's textField
-        NSLayoutConstraint.activate([
-            createNewBottlePopupView.textInputField.textField.topAnchor.constraint(
-                equalTo: createNewBottlePopupView.textInputField.descriptionLabel.bottomAnchor,
-                constant: PopupTextInputField.Metric.innerPadding
-            ),
-            createNewBottlePopupView.textInputField.textField.widthAnchor.constraint(
-                equalTo: createNewBottlePopupView.textInputField.widthAnchor
-            ),
-            createNewBottlePopupView.textInputField.textField.heightAnchor.constraint(
-                equalToConstant: PopupTextInputField.Metric.textFieldHeight
-            )
-        ])
     }
     
     /// 팝업 뷰의 기간 선택 필드 Constraints 설정
     private func configurePeriodSelectionFieldConstraints() {
-        
-        // Period Selection Field View
         NSLayoutConstraint.activate([
             createNewBottlePopupView.periodSelectionField.topAnchor.constraint(
                 equalTo: createNewBottlePopupView.textInputField.bottomAnchor,
@@ -266,45 +229,6 @@ final class CreateNewBottlePopupViewController: UIViewController {
                 equalToConstant: PopupPeriodSelectionField.Metric.viewHeight
             )
         ])
-        
-        // Period Selection Field's description Label
-        NSLayoutConstraint.activate([
-            createNewBottlePopupView.periodSelectionField.descriptionLabel.topAnchor.constraint(
-                equalTo: createNewBottlePopupView.periodSelectionField.topAnchor
-            ),
-            createNewBottlePopupView.periodSelectionField.descriptionLabel.leadingAnchor.constraint(
-                equalTo: createNewBottlePopupView.periodSelectionField.leadingAnchor
-            )
-        ])
-        
-        // Period Selection Field's period Buttons
-        let buttons = createNewBottlePopupView.periodSelectionField.periodButtons
-        
-        for (index, button) in buttons.enumerated() {
-            NSLayoutConstraint.activate([
-                button.widthAnchor.constraint(
-                    equalToConstant: PopupPeriodSelectionField.Metric.buttonWidth
-                ),
-                button.heightAnchor.constraint(
-                    equalToConstant: PopupPeriodSelectionField.Metric.buttonHeight
-                ),
-                button.topAnchor.constraint(
-                    equalTo: createNewBottlePopupView.periodSelectionField.descriptionLabel.bottomAnchor,
-                    constant: PopupPeriodSelectionField.Metric.innerPadding
-                )
-            ])
-            
-            if index == 0 {
-                button.leadingAnchor.constraint(
-                    equalTo: createNewBottlePopupView.periodSelectionField.leadingAnchor
-                ).isActive = true
-            } else {
-                button.leadingAnchor.constraint(
-                    equalTo: buttons[index - 1].trailingAnchor,
-                    constant: PopupPeriodSelectionField.Metric.buttonPadding
-                ).isActive = true
-            }
-        }
     }
     
     /// 팝업 뷰의 제출 버튼 Constraints 설정

@@ -27,10 +27,15 @@ final class PopupPeriodSelectionField: UIView {
         configureView()
         configureButtons()
         addComponents()
+        setInnerConstraints()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        configureView()
+        configureButtons()
+        addComponents()
+        setInnerConstraints()
     }
     
     /// 기간 선택 필드 뷰 설정
@@ -73,6 +78,48 @@ final class PopupPeriodSelectionField: UIView {
         self.addSubview(descriptionLabel)
         for button in periodButtons {
             self.addSubview(button)
+        }
+    }
+    
+    /// 기간 선택 필드 하위 뷰 Constraints
+    private func setInnerConstraints() {
+        
+        // description Label
+        NSLayoutConstraint.activate([
+            self.descriptionLabel.topAnchor.constraint(
+                equalTo: self.topAnchor
+            ),
+            self.descriptionLabel.leadingAnchor.constraint(
+                equalTo: self.leadingAnchor
+            )
+        ])
+        
+        // period Buttons
+        
+        for (index, button) in periodButtons.enumerated() {
+            NSLayoutConstraint.activate([
+                button.widthAnchor.constraint(
+                    equalToConstant: Metric.buttonWidth
+                ),
+                button.heightAnchor.constraint(
+                    equalToConstant: Metric.buttonHeight
+                ),
+                button.topAnchor.constraint(
+                    equalTo: self.descriptionLabel.bottomAnchor,
+                    constant: Metric.innerPadding
+                )
+            ])
+            
+            if index == 0 {
+                button.leadingAnchor.constraint(
+                    equalTo: self.leadingAnchor
+                ).isActive = true
+            } else {
+                button.leadingAnchor.constraint(
+                    equalTo: periodButtons[index - 1].trailingAnchor,
+                    constant: Metric.buttonPadding
+                ).isActive = true
+            }
         }
     }
 }

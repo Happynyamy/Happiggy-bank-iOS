@@ -28,10 +28,14 @@ final class PopupTopBar: UIView {
         super.init(frame: frame)
         configureView()
         addComponents()
+        setInnerConstraints()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        configureView()
+        addComponents()
+        setInnerConstraints()
     }
     
     /// 상단 바 구성
@@ -60,5 +64,22 @@ final class PopupTopBar: UIView {
     private func addComponents() {
         self.addSubview(cancelButton)
         self.addSubview(titleLabel)
+    }
+    
+    /// 상단 바 하위 뷰 Constraints
+    private func setInnerConstraints() {
+        
+        // cancel Button
+        NSLayoutConstraint.activate([
+            self.cancelButton.leadingAnchor.constraint(
+                equalTo: self.leadingAnchor
+            ),
+            self.cancelButton.widthAnchor.constraint(
+                equalToConstant: DefaultButton.Metric.buttonWidth
+            ),
+            self.cancelButton.heightAnchor.constraint(
+                equalToConstant: DefaultButton.Metric.buttonHeight
+            )
+        ])
     }
 }

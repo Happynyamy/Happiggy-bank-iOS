@@ -43,10 +43,14 @@ final class PopupTextInputField: UIView {
         super.init(frame: frame)
         configureView()
         addComponents()
+        setInnerConstraints()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        configureView()
+        addComponents()
+        setInnerConstraints()
     }
     
     /// 유리병 이름 입력 필드 설정
@@ -63,5 +67,31 @@ final class PopupTextInputField: UIView {
     private func addComponents() {
         self.addSubview(descriptionLabel)
         self.addSubview(textField)
+    }
+    
+    private func setInnerConstraints() {
+        // Text Input Field's description Label
+        NSLayoutConstraint.activate([
+            self.descriptionLabel.topAnchor.constraint(
+                equalTo: self.topAnchor
+            ),
+            self.descriptionLabel.leadingAnchor.constraint(
+                equalTo: self.leadingAnchor
+            )
+        ])
+        
+        // Text Input Field's textField
+        NSLayoutConstraint.activate([
+            self.textField.topAnchor.constraint(
+                equalTo: self.descriptionLabel.bottomAnchor,
+                constant: Metric.innerPadding
+            ),
+            self.textField.widthAnchor.constraint(
+                equalTo: self.widthAnchor
+            ),
+            self.textField.heightAnchor.constraint(
+                equalToConstant: Metric.textFieldHeight
+            )
+        ])
     }
 }
