@@ -61,3 +61,42 @@ extension HomeViewButton {
         static let buttonWidth: CGFloat = HomeViewController.Metric.buttonWidth
     }
 }
+
+extension NotesViewController {
+    
+    /// NotesViewController 에서 설정하는 레이아웃에 적용할 상수들
+    enum Metric {
+        
+        /// 상하좌우 패딩 값 : 16
+        static let padding: CGFloat = 16
+        
+        /// notes view cell 높이/너비 비율
+        private static let cellHeightWidthRatio: CGFloat = 96 / 162
+        
+        /// notes view cell 너비
+        private static let cellWidth: CGFloat = (UIScreen.main.bounds.width - 3 * padding) / 2
+        
+        /// notes view cell 너비와 높이
+        static let cellSize = CGSize(
+            width: cellWidth,
+            height: cellWidth * cellHeightWidthRatio
+        )
+        
+        /// notes view cell 간 간격
+        static let spacing: CGFloat = padding
+    }
+    
+    /// NotesViewController 에서 설정하는 제목들
+    enum StringLiteral {
+        
+        /// 쪽지가 한 개도 없을 때 라벨에 나타낼 텍스트 : 럴수럴수이럴수...쪽지가 없어요ㅠ
+        static let emptyNotesLabelText = "럴수럴수이럴수...쪽지가 없어요ㅠ"
+        
+        /// 뒤로가기 버튼 제목
+        static let backButtonTitle = ""
+        
+    }
+}
+
+/// 대한민국 local identifier
+let krLocalIdentifier = "ko_KR"

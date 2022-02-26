@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Then
+
 /// 각 bottle 의 뷰를 관리하는 컨트롤러
 final class BottleViewController: UIViewController {
     
@@ -39,8 +41,16 @@ final class BottleViewController: UIViewController {
     /// 개봉되지 않았고, 아직 오늘의 note 를 안 쓴 경우 경우 새로운 쪽지를 추가함
     @objc private func bottleDidTap(_ sender: UITapGestureRecognizer) {
         if sender.state == .ended {
+            
+            // TODO: 데이터 바인딩 후 지우기
+            // 테스트 용으로 첫번째 화면에서만 리스트, 나머지에서는 팝업을 보기 위한 코드
+            self.viewModel.isOpen = (self.index == 0) ? true : false
+            
             if self.viewModel.isOpen {
-                print("show notes list")
+                let notesViewController = NotesViewController(title: viewModel.bottleName).then {
+                    $0.viewModel = NotesViewModel()
+                }
+                self.show(notesViewController, sender: self)
                 return
             }
             if self.viewModel.hasTodaysNote {
