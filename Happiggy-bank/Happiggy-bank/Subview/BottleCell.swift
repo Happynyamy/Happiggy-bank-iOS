@@ -59,6 +59,7 @@ class BottleCell: UITableViewCell {
     
     /// 셀 속성 설정
     private func configureCell() {
+        self.selectionStyle = .none
         self.backgroundColor = UIColor(hex: BottleListViewController.Color.tableViewBackground)
     }
     

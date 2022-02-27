@@ -11,6 +11,7 @@ import Then
 
 // TODO: Bottle Model 수정 및 기간 계산 로직 추가
 struct Bottle {
+    var id: Int
     var title: String
     var date: String
 }
@@ -25,7 +26,7 @@ class BottleListViewController: UIViewController {
         var bottles = [Bottle]()
         
         for index in 0...3 {
-            let bottle = Bottle(title: "bottle \(index)", date: "2022.01.01 ~ 2022.01.31")
+            let bottle = Bottle(id: index, title: "bottle \(index)", date: "2022.01.01 ~ 2022.01.31")
             bottles.append(bottle)
         }
         
@@ -155,5 +156,13 @@ extension BottleListViewController: UITableViewDataSource {
 }
 
 extension BottleListViewController: UITableViewDelegate {
-    // Delegate
+    
+    // TODO: GET from server
+    // TODO: HomeVC currentIndex update
+    /// 특정 행을 선택했을 때 호출되는 함수
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let bottleId = bottleList[indexPath.row].id
+        print("get bottle data from db with \(bottleId)")
+        self.navigationController?.popViewController(animated: true)
+    }
 }
