@@ -234,3 +234,92 @@ extension PopupPeriodSelectionField {
         static let descriptionLabel: CGFloat = 16
     }
 }
+
+extension BottleListViewController {
+    
+    /// BottleListViewController에서 설정하는 layout 상수값
+    enum Metric {
+        
+        /// 테이블뷰 행 높이
+        static let tableViewRowHeight: CGFloat = 112
+    }
+    
+    /// BottleListViewController에서 설정하는 Color 상수값
+    enum Color {
+        
+        /// 테이블뷰 배경색
+        static let tableViewBackground: Int = 0xE1C2BC
+        
+        /// 내비게이션 바 Item 색상
+        static let navigationBar: Int = 0x000000
+    }
+    
+    /// BottleListViewController에서 설정하는 글자 크기 상수값
+    enum FontSize {
+        
+        /// 리스트가 빈 경우 표시되는 라벨 글자 크기
+        static let emptyListLabelTitle: CGFloat = 16
+    }
+    
+    /// BottleListViewController에서 설정하는 문자열
+    enum StringLiteral {
+        
+        /// 리스트가 빈 경우 표시되는 내비게이션 타이틀
+        static let emptyListNavigationBarTitle: String = "지난 유리병"
+        
+        /// 리스트가 차있는 경우 표시되는 내비게이션 타이틀
+        static let fullListNavigationBarTitle: String = "지난 유리병 목록"
+        
+        /// 리스트가 빈 경우 테이블뷰에 표시되는 라벨
+        static let emptyListLabelTitle: String = "이전에 사용한 유리병이 없습니다."
+    }
+}
+
+extension BottleCell {
+    
+    /// Bottle Cell에서 설정하는 layout 상수값
+    enum Metric {
+        
+        /// 셀 배경 너비
+        static let cellBackgroundWidth: CGFloat =
+        UIScreen.main.bounds.width - cellHorizontalPadding * 2
+        
+        /// 셀 배경 높이
+        static let cellBackgroundHeight: CGFloat = 96
+        
+        /// 셀 수평 패딩
+        static let cellHorizontalPadding: CGFloat = 16
+        
+        /// 셀 수직 패딩
+        static let cellVerticalPadding: CGFloat = 16
+        
+        /// 셀 내부 앞쪽 패딩
+        static let cellInnerLeadingPadding: CGFloat = 16
+        
+        /// 셀 내부 뒤쪽 패딩
+        static let cellInnerTrailingPadding: CGFloat = 56
+        
+        /// 셀 내부 수직 패딩
+        static let cellInnerVerticalPadding: CGFloat = 24
+        
+        /// 셀 내부 라벨 간 패딩
+        static let cellLabelPadding: CGFloat = 12
+    }
+    
+    /// Bottle Cell에서 설정하는 글자 크기
+    enum FontSize {
+        
+        /// 유리병 제목 라벨 글자 크기
+        static let titleLabel: CGFloat = 16
+        
+        /// 유리병 기간 라벨 글자 크기
+        static let dateLabel: CGFloat = 16
+    }
+    
+    /// Bottle Cell에서 설정하는 색상 상수값
+    enum Color {
+        
+        /// 유리병 기간 라벨 색상
+        static let dateLabelText: Int = 0xA19491
+    }
+}

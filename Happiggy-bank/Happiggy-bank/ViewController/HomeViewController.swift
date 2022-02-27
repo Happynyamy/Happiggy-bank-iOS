@@ -78,7 +78,9 @@ final class HomeViewController: UIViewController {
     
     /// 유리병 리스트 버튼 탭할 시 실행되는 함수
     @objc func userJarListButtonDidTap(_ sender: UIButton) {
-        print("Move to User Jar List View")
+        let bottleListViewController: BottleListViewController = BottleListViewController()
+        self.navigationItem.backButtonTitle = ""
+        self.navigationController?.pushViewController(bottleListViewController, animated: true)
     }
     
     /// 진행중인 유리병이 없을 시에 나타나는 초기 이미지 탭할 시 실행되는 함수
