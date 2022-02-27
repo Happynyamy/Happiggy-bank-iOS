@@ -27,7 +27,6 @@
 		A8EB5E8B27C8B087005704F2 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EB5E8A27C8B087005704F2 /* UIButton+Extension.swift */; };
 		A8FC07C827B3ECF00077A758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC07C727B3ECF00077A758 /* AppDelegate.swift */; };
 		A8FC07CA27B3ECF00077A758 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC07C927B3ECF00077A758 /* SceneDelegate.swift */; };
-		A8FC07CC27B3ECF00077A758 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC07CB27B3ECF00077A758 /* ViewController.swift */; };
 		A8FC07CF27B3ECF00077A758 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8FC07CD27B3ECF00077A758 /* Main.storyboard */; };
 		A8FC07D127B3ECF30077A758 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8FC07D027B3ECF30077A758 /* Assets.xcassets */; };
 		A8FC07D427B3ECF30077A758 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8FC07D227B3ECF30077A758 /* LaunchScreen.storyboard */; };
@@ -55,7 +54,6 @@
 		A8FC07C427B3ECF00077A758 /* Happiggy-bank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Happiggy-bank.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8FC07C727B3ECF00077A758 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8FC07C927B3ECF00077A758 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A8FC07CB27B3ECF00077A758 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A8FC07CE27B3ECF00077A758 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A8FC07D027B3ECF30077A758 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A8FC07D327B3ECF30077A758 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -203,7 +201,6 @@
 				A499317F27BF3A2C009FF5A8 /* ViewModel */,
 				A8FC07C727B3ECF00077A758 /* AppDelegate.swift */,
 				A8FC07C927B3ECF00077A758 /* SceneDelegate.swift */,
-				A8FC07CB27B3ECF00077A758 /* ViewController.swift */,
 				A8BD834827BE338200E0DE41 /* View */,
 				A8BD834327BE330000E0DE41 /* ViewController */,
 				A8BD834227BE32EB00E0DE41 /* Button */,
@@ -353,7 +350,6 @@
 			files = (
 				A499318327BF5158009FF5A8 /* BottleImageView.swift in Sources */,
 				A8BD834D27BE39D600E0DE41 /* NoteProgressLabel.swift in Sources */,
-				A8FC07CC27B3ECF00077A758 /* ViewController.swift in Sources */,
 				A8EB5E8927C8A7B9005704F2 /* PopupPeriodSelectionField.swift in Sources */,
 				A8509E6E27C89A1200855153 /* UIColor+Extension.swift in Sources */,
 				A8BD834727BE337900E0DE41 /* HomeView.swift in Sources */,
