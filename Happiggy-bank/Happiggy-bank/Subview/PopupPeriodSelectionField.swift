@@ -15,7 +15,7 @@ final class PopupPeriodSelectionField: UIView {
     /// 기간 선택 필드 라벨
     let descriptionLabel = UILabel().then {
         $0.text = "유리병 개봉 기간"
-        $0.font = .systemFont(ofSize: 16, weight: .bold)
+        $0.font = .systemFont(ofSize: FontSize.descriptionLabel, weight: .bold)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -62,11 +62,11 @@ final class PopupPeriodSelectionField: UIView {
                     height: Metric.buttonHeight
                 )
                 $0.layer.cornerRadius = 10
-                $0.layer.borderColor = UIColor(hex: 0xD6D6D6).cgColor
+                $0.layer.borderColor = UIColor(hex: Color.buttonNormalBorder).cgColor
                 $0.layer.borderWidth = 1.0
                 $0.setTitle(buttonTitles[index], for: .normal)
-                $0.setTitleColor(UIColor(hex: 0x777777), for: .normal)
-                $0.setTitleColor(UIColor(hex: 0xFFFFFF), for: .selected)
+                $0.setTitleColor(UIColor(hex: Color.buttonNormalTitle), for: .normal)
+                $0.setTitleColor(UIColor(hex: Color.buttonSelectedTitle), for: .selected)
                 $0.translatesAutoresizingMaskIntoConstraints = false
             }
             self.periodButtons.append(button)

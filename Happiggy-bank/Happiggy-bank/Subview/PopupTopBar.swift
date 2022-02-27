@@ -20,7 +20,7 @@ final class PopupTopBar: UIView {
     /// 상단 바 타이틀 라벨
     let titleLabel = UILabel().then {
         $0.text = "유리병 추가하기"
-        $0.font = .systemFont(ofSize: 17)
+        $0.font = .systemFont(ofSize: FontSize.titleLabel)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -56,7 +56,7 @@ final class PopupTopBar: UIView {
             width: Metric.viewWidth,
             height: thickness
         )
-        bottomBorder.backgroundColor = UIColor(hex: 0xEFEFEF).cgColor
+        bottomBorder.backgroundColor = UIColor(hex: Color.bottomBorder).cgColor
         self.layer.addSublayer(bottomBorder)
     }
     

@@ -331,7 +331,7 @@ extension HomeViewController: UIPageViewControllerDataSource {
         if index == numberOfBottles {
             print("Add New Jar")
             
-            // TODO: 한 번만 되고, index가 움직이지 않으면 안 됨 => Need to Fix -
+            // TODO: 팝업 뜨는 시점 수정
             let createNewBottleViewController: CreateNewBottlePopupViewController
             = CreateNewBottlePopupViewController()
             

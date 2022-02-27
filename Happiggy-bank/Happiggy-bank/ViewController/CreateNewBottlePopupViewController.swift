@@ -45,26 +45,38 @@ final class CreateNewBottlePopupViewController: UIViewController {
         sender.isSelected.toggle()
         
         if sender.isSelected {
-            sender.backgroundColor = UIColor(hex: 0xF6666C)
+            sender.backgroundColor = UIColor(
+                hex: PopupPeriodSelectionField.Color.buttonSelectedBackground
+            )
             sender.layer.borderColor = UIColor.clear.cgColor
             if self.selectedPeriodButton != sender {
                 self.selectedPeriodButton?.isSelected = false
-                self.selectedPeriodButton?.backgroundColor = UIColor.white
-                self.selectedPeriodButton?.layer.borderColor = UIColor(hex: 0xD6D6D6).cgColor
+                self.selectedPeriodButton?.backgroundColor = UIColor(
+                    hex: PopupPeriodSelectionField.Color.buttonNormalBackground
+                )
+                self.selectedPeriodButton?.layer.borderColor = UIColor(
+                    hex: PopupPeriodSelectionField.Color.buttonNormalBorder
+                ).cgColor
             }
             self.selectedPeriodButton = sender
         } else {
-            sender.backgroundColor = UIColor.white
-            sender.layer.borderColor = UIColor(hex: 0xD6D6D6).cgColor
+            sender.backgroundColor = UIColor(
+                hex: PopupPeriodSelectionField.Color.buttonNormalBackground
+            )
+            sender.layer.borderColor = UIColor(
+                hex: PopupPeriodSelectionField.Color.buttonNormalBorder
+            ).cgColor
             self.selectedPeriodButton = nil
         }
     }
     
+    // TODO: - POST, Alert
     /// 팝업 뷰의 제출 버튼을 눌렀을 때 발생하는 이벤트. 서버에 해당 내용이 저장된다.
     @objc func submitNewBottleData(_ sender: UIButton) {
         print("submit datas")
         print("title: \(String(describing: createNewBottlePopupView.textInputField.textField.text))")
         print("period: \(String(describing: self.selectedPeriodButton?.titleLabel?.text))")
+        self.dismiss(animated: false)
     }
     
     
@@ -72,7 +84,7 @@ final class CreateNewBottlePopupViewController: UIViewController {
     
     /// 팝업 컨트롤러의 뷰를 투명한 검은색으로 만드는 함수. 팝업 뷰와 최근 뷰를 구분짓는다.
     private func configureBackground() {
-        self.view.backgroundColor = .black.withAlphaComponent(0.5)
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
     }
     
     /// 팝업 뷰를 구성하는 함수.

@@ -121,6 +121,20 @@ extension PopupTopBar {
         /// 상단 바 제목 라벨 top padding 21
         static let titleLabelTopPadding: CGFloat = 21
     }
+    
+    /// PopupTopBar에서 설정하는 Color
+    enum Color {
+        
+        /// bar 하단 border 색상
+        static let bottomBorder: Int = 0xEFEFEF
+    }
+    
+    /// PopupTopBar에서 설정하는 Font Size
+    enum FontSize {
+        
+        /// bar 타이틀 라벨 크기
+        static let titleLabel: CGFloat = 17
+    }
 }
 
 extension PopupTextInputField {
@@ -144,6 +158,26 @@ extension PopupTextInputField {
         
         /// 유리병 이름 입력 뷰 텍스트필드 top padding 16
         static let innerPadding: CGFloat = 16
+    }
+    
+    /// PopupTextInputField에서 사용하는 Color hex값
+    enum Color {
+        
+        /// 플레이스홀더 글자 색상
+        static let placeHolder: Int = 0xECA7A7
+        
+        /// 텍스트필드 배경 색상
+        static let textFieldBackground: Int = 0xFFF9F9
+    }
+    
+    /// PopupTextInputField에서 사용하는 Font Size
+    enum FontSize {
+        
+        /// desctiption label 글자 크기
+        static let descriptionLabel: CGFloat = 16
+        
+        /// 플레이스홀더의 글자 크기
+        static let placeHolder: CGFloat = 18
     }
 }
 
@@ -172,5 +206,31 @@ extension PopupPeriodSelectionField {
         
         /// 유리병 개봉 기간 선택 뷰 버튼 간 padding 8
         static let buttonPadding: CGFloat = 8
+    }
+    
+    /// PopupPeriodSelectionField에서 설정하는 Color
+    enum Color {
+        
+        /// 선택 버튼 .normal인 경우 border 색상
+        static let buttonNormalBorder: Int = 0xD6D6D6
+        
+        /// 선택 버튼 .normal인 경우 글자 색상
+        static let buttonNormalTitle: Int = 0x777777
+        
+        /// 선택 버튼 .normal인 경우 배경 색상
+        static let buttonNormalBackground: Int = 0xFFFFFF
+        
+        /// 선택 버튼 .selected인 경우 글자 색상
+        static let buttonSelectedTitle: Int = 0xFFFFFF
+        
+        /// 선택 버튼 .selected인 경우 배경 색상
+        static let buttonSelectedBackground: Int = 0xF6666C
+    }
+    
+    /// PopupPeriodSelectionField에서 설정하는 Font Size
+    enum FontSize {
+        
+        /// description label 글자 크기
+        static let descriptionLabel: CGFloat = 16
     }
 }

@@ -15,7 +15,7 @@ final class PopupTextInputField: UIView {
     /// 유리병 이름 입력 필드 라벨
     let descriptionLabel = UILabel().then {
         $0.text = "유리병 이름"
-        $0.font = .systemFont(ofSize: 16, weight: .bold)
+        $0.font = .systemFont(ofSize: FontSize.descriptionLabel, weight: .bold)
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -24,10 +24,10 @@ final class PopupTextInputField: UIView {
         $0.attributedPlaceholder = NSAttributedString(
             string: "이름을 입력하세요.",
             attributes: [
-                .foregroundColor: UIColor(hex: 0xECA7A7),
-                .font: UIFont.systemFont(ofSize: 18)
+                .foregroundColor: UIColor(hex: Color.placeHolder),
+                .font: UIFont.systemFont(ofSize: FontSize.placeHolder)
             ])
-        $0.backgroundColor = UIColor(hex: 0xFFF9F9)
+        $0.backgroundColor = UIColor(hex: Color.textFieldBackground)
         $0.leftView = UIView(
             frame: CGRect(
                 x: 0,
@@ -58,8 +58,8 @@ final class PopupTextInputField: UIView {
         self.frame = CGRect(
             x: 0,
             y: 0,
-            width: PopupTextInputField.Metric.viewWidth - 48,
-            height: 90
+            width: Metric.viewWidth,
+            height: Metric.viewHeight
         )
     }
     
