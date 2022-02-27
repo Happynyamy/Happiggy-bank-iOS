@@ -10,7 +10,7 @@ import UIKit
 import Then
 
 /// 유리병 리스트의 셀
-class BottleCell: UITableViewCell {
+final class BottleCell: UITableViewCell {
     
     // MARK: Properties
     // TODO: 이미지로 교체

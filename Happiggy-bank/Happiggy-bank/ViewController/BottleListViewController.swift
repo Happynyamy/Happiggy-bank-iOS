@@ -9,17 +9,11 @@ import UIKit
 
 import Then
 
-// TODO: Bottle Model 수정 및 기간 계산 로직 추가
-struct Bottle {
-    var id: Int
-    var title: String
-    var date: String
-}
-
 /// 유리병 리스트 뷰 컨트롤러
-class BottleListViewController: UIViewController {
+final class BottleListViewController: UIViewController {
     
     // MARK: Properties
+    
     // TODO: View Model로 이동
     /// 유리병 리스트(임시)
     lazy var bottleList: [Bottle] = {
