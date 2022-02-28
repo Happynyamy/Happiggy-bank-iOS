@@ -7,8 +7,9 @@
 
 import UIKit
 
+// TODO: Then 사용해서 property 초기화
 /// 메인 화면 전체를 관리하는 컨트롤러
-class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -82,7 +83,11 @@ class HomeViewController: UIViewController {
     
     /// 진행중인 유리병이 없을 시에 나타나는 초기 이미지 탭할 시 실행되는 함수
     @objc func initialImageViewDidTap(_ sender: UITapGestureRecognizer) {
-        print("Make new jar")
+        let createNewBottleViewController: CreateNewBottlePopupViewController
+        = CreateNewBottlePopupViewController()
+        
+        createNewBottleViewController.modalPresentationStyle = .overCurrentContext
+        present(createNewBottleViewController, animated: false)
     }
     
     
@@ -337,6 +342,13 @@ extension HomeViewController: UIPageViewControllerDataSource {
         
         if index == numberOfBottles {
             print("Add New Jar")
+            
+            // TODO: 팝업 뜨는 시점 수정
+            let createNewBottleViewController: CreateNewBottlePopupViewController
+            = CreateNewBottlePopupViewController()
+            
+            createNewBottleViewController.modalPresentationStyle = .overCurrentContext
+            self.present(createNewBottleViewController, animated: false)
         }
         return self.makePageContentViewController(with: index)
     }
