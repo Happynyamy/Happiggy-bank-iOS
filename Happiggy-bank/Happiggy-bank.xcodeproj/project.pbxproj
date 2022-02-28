@@ -26,6 +26,9 @@
 		A8509E6727C85AC900855153 /* PopupTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509E6627C85AC900855153 /* PopupTopBar.swift */; };
 		A8509E6C27C8991100855153 /* PopupTextInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509E6B27C8991100855153 /* PopupTextInputField.swift */; };
 		A8509E6E27C89A1200855153 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509E6D27C89A1200855153 /* UIColor+Extension.swift */; };
+		A89CBEDB27CBDD99005549F6 /* BottleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89CBEDA27CBDD99005549F6 /* BottleCell.swift */; };
+		A89CBEDD27CBDEA2005549F6 /* BottleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89CBEDC27CBDEA2005549F6 /* BottleListViewController.swift */; };
+		A89CBEE027CC023B005549F6 /* Bottle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89CBEDF27CC023B005549F6 /* Bottle.swift */; };
 		A8BD833327BE104900E0DE41 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833227BE104900E0DE41 /* HomeViewController.swift */; };
 		A8BD833527BE106C00E0DE41 /* BottleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833427BE106C00E0DE41 /* BottleViewController.swift */; };
 		A8BD833F27BE30B400E0DE41 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833E27BE30B400E0DE41 /* Constants.swift */; };
@@ -62,6 +65,9 @@
 		A8509E6627C85AC900855153 /* PopupTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupTopBar.swift; sourceTree = "<group>"; };
 		A8509E6B27C8991100855153 /* PopupTextInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupTextInputField.swift; sourceTree = "<group>"; };
 		A8509E6D27C89A1200855153 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		A89CBEDA27CBDD99005549F6 /* BottleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleCell.swift; sourceTree = "<group>"; };
+		A89CBEDC27CBDEA2005549F6 /* BottleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleListViewController.swift; sourceTree = "<group>"; };
+		A89CBEDF27CC023B005549F6 /* Bottle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bottle.swift; sourceTree = "<group>"; };
 		A8BD833227BE104900E0DE41 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A8BD833427BE106C00E0DE41 /* BottleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleViewController.swift; sourceTree = "<group>"; };
 		A8BD833E27BE30B400E0DE41 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -128,8 +134,17 @@
 				A8509E6627C85AC900855153 /* PopupTopBar.swift */,
 				A8509E6B27C8991100855153 /* PopupTextInputField.swift */,
 				A8EB5E8827C8A7B9005704F2 /* PopupPeriodSelectionField.swift */,
+				A89CBEDA27CBDD99005549F6 /* BottleCell.swift */,
 			);
 			path = Subview;
+			sourceTree = "<group>";
+		};
+		A89CBEDE27CC0233005549F6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A89CBEDF27CC023B005549F6 /* Bottle.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A8BD834227BE32EB00E0DE41 /* Button */ = {
@@ -148,6 +163,7 @@
 				A8BD833427BE106C00E0DE41 /* BottleViewController.swift */,
 				A4CF2C5327C48DA1001B01B1 /* NewNotePopupViewController.swift */,
 				A8E9B2A727C606D4006403E2 /* CreateNewBottlePopupViewController.swift */,
+				A89CBEDC27CBDEA2005549F6 /* BottleListViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -227,6 +243,7 @@
 		A8FC07C627B3ECF00077A758 /* Happiggy-bank */ = {
 			isa = PBXGroup;
 			children = (
+				A89CBEDE27CC0233005549F6 /* Model */,
 				A87DCD3727C785D800AB0537 /* Subview */,
 				A499317F27BF3A2C009FF5A8 /* ViewModel */,
 				A8FC07C727B3ECF00077A758 /* AppDelegate.swift */,
@@ -402,11 +419,14 @@
 				A8E9B2AA27C6070C006403E2 /* CreateNewBottlePopupView.swift in Sources */,
 				A8EB5E8B27C8B087005704F2 /* UIButton+Extension.swift in Sources */,
 				A8E9B2A827C606D4006403E2 /* CreateNewBottlePopupViewController.swift in Sources */,
+				A89CBEE027CC023B005549F6 /* Bottle.swift in Sources */,
 				A8BD833327BE104900E0DE41 /* HomeViewController.swift in Sources */,
 				A499318127BF3A38009FF5A8 /* BottleViewModel.swift in Sources */,
+				A89CBEDB27CBDD99005549F6 /* BottleCell.swift in Sources */,
 				A49931A527BFD20E009FF5A8 /* UIImage+AssetImages.swift in Sources */,
 				A4CF2C7E27C72991001B01B1 /* ColorPalette.swift in Sources */,
 				A8BD833F27BE30B400E0DE41 /* Constants.swift in Sources */,
+				A89CBEDD27CBDEA2005549F6 /* BottleListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
