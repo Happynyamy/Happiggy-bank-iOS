@@ -63,7 +63,6 @@ final class HomeViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    
     // MARK: - Button Actions(@objc functions)
     
     /// 환경설정 버튼 탭할 시 실행되는 함수

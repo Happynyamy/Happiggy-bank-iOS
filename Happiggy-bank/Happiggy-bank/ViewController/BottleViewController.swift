@@ -26,6 +26,7 @@ final class BottleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.addObservers()
         self.configureImageView()
         self.configureImageViewConstraints()
     }
@@ -48,14 +49,29 @@ final class BottleViewController: UIViewController {
                 return
             }
             if !self.viewModel.hasTodaysNote {
+                self.showNewNotePopup()
                 print("show add new note popup")
-                return 
+                return
             }
         }
     }
     
+    /// 쪽지 진행 정도가 바뀌었다는 알림을 받았을 때 호출되는 메서드
+    @objc private func noteProgressDidChange(_ notification: Notification) {
+        self.view.backgroundColor = .systemIndigo
+        print("update bottle image")
+    }
+    
     
     // MARK: - Functions
+    
+    /// NotificationCenter.default 에 observer 들을 추가
+    private func addObservers() {
+        self.observe(
+            selector: #selector(noteProgressDidChange(_:)),
+            name: .noteProgressDidUpdate
+        )
+    }
     
     /// bottle 이미지가 나타날 imageView 를 생성하고 추가하는 메서드
     /// 유저의 탭 제스처를 인식할 수 있도록 타겟-액션 추가

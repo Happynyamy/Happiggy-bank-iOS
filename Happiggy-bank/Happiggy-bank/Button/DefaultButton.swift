@@ -7,8 +7,7 @@
 
 import UIKit
 
-/// 기본 버튼
-final class DefaultButton: UIButton {
+class DefaultButton: UIButton {
     
     /// 버튼 프레임
     private var buttonFrame: CGRect = CGRect(
@@ -20,6 +19,16 @@ final class DefaultButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+    }
+    
+    convenience init() {
+        let frame = CGRect(
+            x: 0,
+            y: 0,
+            width: Metric.buttonWidth,
+            height: Metric.buttonHeight
+        )
+        self.init(frame: frame)
     }
     
     /// 이미지 이름으로 초기화
@@ -38,8 +47,9 @@ final class DefaultButton: UIButton {
         super.init(frame: buttonFrame)
         
         self.setTitle(buttonTitle, for: .normal)
-        self.setTitleColor(.black, for: .normal)
-        self.setTitleColor(.gray, for: .highlighted)
+        self.setTitleColor(.systemBlue, for: .normal)
+        self.setTitleColor(.systemGray, for: .disabled)
+        self.setTitleColor(.systemGray, for: .highlighted)
     }
     
     required init?(coder: NSCoder) {
