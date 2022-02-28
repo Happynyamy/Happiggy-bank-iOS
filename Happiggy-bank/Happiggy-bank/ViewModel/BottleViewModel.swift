@@ -7,13 +7,17 @@
 
 import UIKit
 
+// TODO: add access control
 /// 서버에서 받은 데이터를 Bottle 뷰에 필요한 형식으로 변환해 주는 뷰 모델
 final class BottleViewModel {
     
     // MARK: - Properties
-    
     /// bottle 의 고유한 ID
     var bottleID: Int!
+    
+    var bottleName: String! {
+        "행복냠냠이"
+    }
     
     /// bottle의 채워진 정도에 따른 적절한 이미지
     var image: UIImage? {
@@ -41,12 +45,12 @@ final class BottleViewModel {
     }
     
     /// bottle 의 개봉 여부
-    var isOpen: Bool {
+    var isOpen: Bool = {
         // TODO: 서버 API 받으면 수정
         // 1. bottle 의 종료 시점을 받아온다
         // 2. 현재 시점이 종료 시점보다 이르면 false, 같거나 느리면 true
         return false
-    }
+    }()
     
     /// 오늘 note 작성 여부
     var hasTodaysNote: Bool {

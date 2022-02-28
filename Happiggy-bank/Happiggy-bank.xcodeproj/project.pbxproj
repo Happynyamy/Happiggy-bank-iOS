@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1D0983103E258E710197F000 /* Pods_Happiggy_bank.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F6015B01A2C2F80C2FC1BF /* Pods_Happiggy_bank.framework */; };
+		A456657E27CC77A9007CF70A /* Date+Formatted.swift in Sources */ = {isa = PBXBuildFile; fileRef = A456657D27CC77A9007CF70A /* Date+Formatted.swift */; };
+		A4CF2C8527CA29DC001B01B1 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C8427CA29DC001B01B1 /* NotesViewController.swift */; };
+		A4CF2C8827CA3CC7001B01B1 /* NotesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C8727CA3CC7001B01B1 /* NotesViewCell.swift */; };
+		A4CF2C8A27CA3D96001B01B1 /* NotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C8927CA3D96001B01B1 /* NotesViewModel.swift */; };
 		A456657C27CC66FD007CF70A /* DefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A817430027C112D00016C921 /* DefaultButton.swift */; };
 		A499318127BF3A38009FF5A8 /* BottleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499318027BF3A38009FF5A8 /* BottleViewModel.swift */; };
 		A499318327BF5158009FF5A8 /* BottleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499318227BF5158009FF5A8 /* BottleImageView.swift */; };
@@ -47,9 +51,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A456657D27CC77A9007CF70A /* Date+Formatted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatted.swift"; sourceTree = "<group>"; };
 		A499318027BF3A38009FF5A8 /* BottleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleViewModel.swift; sourceTree = "<group>"; };
 		A499318227BF5158009FF5A8 /* BottleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleImageView.swift; sourceTree = "<group>"; };
 		A49931A427BFD20E009FF5A8 /* UIImage+AssetImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AssetImages.swift"; sourceTree = "<group>"; };
+		A4CF2C8427CA29DC001B01B1 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
+		A4CF2C8727CA3CC7001B01B1 /* NotesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewCell.swift; sourceTree = "<group>"; };
+		A4CF2C8927CA3D96001B01B1 /* NotesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewModel.swift; sourceTree = "<group>"; };
 		A4CF2C5327C48DA1001B01B1 /* NewNotePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNotePopupViewController.swift; sourceTree = "<group>"; };
 		A4CF2C7727C4EBEE001B01B1 /* UIViewController+Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Popup.swift"; sourceTree = "<group>"; };
 		A4CF2C7927C61867001B01B1 /* NewNotePopupTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNotePopupTopBar.swift; sourceTree = "<group>"; };
@@ -124,6 +132,7 @@
 			children = (
 				A499318027BF3A38009FF5A8 /* BottleViewModel.swift */,
 				A81742FE27C108DC0016C921 /* HomeViewModel.swift */,
+				A4CF2C8927CA3D96001B01B1 /* NotesViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -159,6 +168,7 @@
 		A8BD834327BE330000E0DE41 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				A4CF2C8427CA29DC001B01B1 /* NotesViewController.swift */,
 				A8BD833227BE104900E0DE41 /* HomeViewController.swift */,
 				A8BD833427BE106C00E0DE41 /* BottleViewController.swift */,
 				A4CF2C5327C48DA1001B01B1 /* NewNotePopupViewController.swift */,
@@ -188,6 +198,7 @@
 		A8BD834827BE338200E0DE41 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A4CF2C8727CA3CC7001B01B1 /* NotesViewCell.swift */,
 				A4CF2C8B27CB6FA9001B01B1 /* NoteTextView.swift */,
 				A4CF2C7D27C72991001B01B1 /* ColorPalette.swift */,
 				A4CF2C7927C61867001B01B1 /* NewNotePopupTopBar.swift */,
@@ -204,6 +215,7 @@
 				A4CF2C8F27CBA66F001B01B1 /* NSNotificaion.Name+CustomNotifications.swift */,
 				A4CF2C7B27C71FF5001B01B1 /* CATransition+PopupAnimation.swift */,
 				A49931A427BFD20E009FF5A8 /* UIImage+AssetImages.swift */,
+				A456657D27CC77A9007CF70A /* Date+Formatted.swift */,
 				A4CF2C7727C4EBEE001B01B1 /* UIViewController+Popup.swift */,
 				A4CF2C8D27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift */,
 				A4CF2C8127C73B42001B01B1 /* UIColor+AssetColors.swift */,
@@ -403,6 +415,8 @@
 				A8EB5E8927C8A7B9005704F2 /* PopupPeriodSelectionField.swift in Sources */,
 				A8509E6E27C89A1200855153 /* UIColor+Extension.swift in Sources */,
 				A8BD834727BE337900E0DE41 /* HomeView.swift in Sources */,
+				A4CF2C8A27CA3D96001B01B1 /* NotesViewModel.swift in Sources */,
+				A4CF2C8527CA29DC001B01B1 /* NotesViewController.swift in Sources */,
 				A4CF2C7C27C71FF5001B01B1 /* CATransition+PopupAnimation.swift in Sources */,
 				A8FC07C827B3ECF00077A758 /* AppDelegate.swift in Sources */,
 				A4CF2C7827C4EBEE001B01B1 /* UIViewController+Popup.swift in Sources */,
@@ -411,6 +425,7 @@
 				A4CF2C8027C733FE001B01B1 /* ColorButton.swift in Sources */,
 				A4CF2C8227C73B42001B01B1 /* UIColor+AssetColors.swift in Sources */,
 				A8FC07CA27B3ECF00077A758 /* SceneDelegate.swift in Sources */,
+				A456657E27CC77A9007CF70A /* Date+Formatted.swift in Sources */,
 				A8509E6C27C8991100855153 /* PopupTextInputField.swift in Sources */,
 				A81742FF27C108DC0016C921 /* HomeViewModel.swift in Sources */,
 				A4CF2C9027CBA66F001B01B1 /* NSNotificaion.Name+CustomNotifications.swift in Sources */,
@@ -426,6 +441,7 @@
 				A49931A527BFD20E009FF5A8 /* UIImage+AssetImages.swift in Sources */,
 				A4CF2C7E27C72991001B01B1 /* ColorPalette.swift in Sources */,
 				A8BD833F27BE30B400E0DE41 /* Constants.swift in Sources */,
+				A4CF2C8827CA3CC7001B01B1 /* NotesViewCell.swift in Sources */,
 				A89CBEDD27CBDEA2005549F6 /* BottleListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

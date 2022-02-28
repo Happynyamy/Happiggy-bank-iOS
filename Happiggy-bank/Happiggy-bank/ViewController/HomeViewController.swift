@@ -39,6 +39,9 @@ final class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.backButtonTitle = ""
+        
         configureView()
         configureConstraints()
         if !homeViewModel.hasBottle {
