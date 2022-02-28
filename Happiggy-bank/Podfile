@@ -8,4 +8,5 @@ target 'Happiggy-bank' do
   # Pods for Happiggy-bank
   pod 'SwiftLint'
   pod 'Then'
+
 end
