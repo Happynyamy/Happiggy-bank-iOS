@@ -26,6 +26,7 @@
 		A4CF2C8E27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C8D27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift */; };
 		A4CF2C9027CBA66F001B01B1 /* NSNotificaion.Name+CustomNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C8F27CBA66F001B01B1 /* NSNotificaion.Name+CustomNotifications.swift */; };
 		A81742FF27C108DC0016C921 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81742FE27C108DC0016C921 /* HomeViewModel.swift */; };
+		A824A0B027CE72C000B99E9A /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = A824A0AF27CE72C000B99E9A /* Then */; };
 		A8509E6727C85AC900855153 /* PopupTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509E6627C85AC900855153 /* PopupTopBar.swift */; };
 		A8509E6C27C8991100855153 /* PopupTextInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509E6B27C8991100855153 /* PopupTextInputField.swift */; };
 		A8509E6E27C89A1200855153 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509E6D27C89A1200855153 /* UIColor+Extension.swift */; };
@@ -99,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A824A0B027CE72C000B99E9A /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +268,9 @@
 			dependencies = (
 			);
 			name = "Happiggy-bank";
+			packageProductDependencies = (
+				A824A0AF27CE72C000B99E9A /* Then */,
+			);
 			productName = "Happiggy-bank";
 			productReference = A8FC07C427B3ECF00077A758 /* Happiggy-bank.app */;
 			productType = "com.apple.product-type.application";
@@ -294,6 +299,9 @@
 				Base,
 			);
 			mainGroup = A8FC07BB27B3ECF00077A758;
+			packageReferences = (
+				A824A0AE27CE72C000B99E9A /* XCRemoteSwiftPackageReference "Then" */,
+			);
 			productRefGroup = A8FC07C527B3ECF00077A758 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -333,7 +341,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -599,6 +607,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A824A0AE27CE72C000B99E9A /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A824A0AF27CE72C000B99E9A /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A824A0AE27CE72C000B99E9A /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A8FC07BC27B3ECF00077A758 /* Project object */;
 }
