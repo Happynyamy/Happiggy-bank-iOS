@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A44E901727D5EB130053AC57 /* Happiggy-bank.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A44E901527D5EB130053AC57 /* Happiggy-bank.xcdatamodeld */; };
 		A456657C27CC66FD007CF70A /* DefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A817430027C112D00016C921 /* DefaultButton.swift */; };
 		A456657E27CC77A9007CF70A /* Date+Formatted.swift in Sources */ = {isa = PBXBuildFile; fileRef = A456657D27CC77A9007CF70A /* Date+Formatted.swift */; };
+		A491018527D6EDE90012DFDD /* PersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A491018427D6EDE90012DFDD /* PersistenceStore.swift */; };
+		A491018727D6F37C0012DFDD /* NSManagedObject+EntityName.swift in Sources */ = {isa = PBXBuildFile; fileRef = A491018627D6F37C0012DFDD /* NSManagedObject+EntityName.swift */; };
 		A499318127BF3A38009FF5A8 /* BottleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499318027BF3A38009FF5A8 /* BottleViewModel.swift */; };
 		A499318327BF5158009FF5A8 /* BottleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499318227BF5158009FF5A8 /* BottleImageView.swift */; };
 		A49931A527BFD20E009FF5A8 /* UIImage+AssetImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49931A427BFD20E009FF5A8 /* UIImage+AssetImages.swift */; };
@@ -51,7 +54,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A44E901627D5EB130053AC57 /* Happigy-bank.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Happigy-bank.xcdatamodel"; sourceTree = "<group>"; };
 		A456657D27CC77A9007CF70A /* Date+Formatted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatted.swift"; sourceTree = "<group>"; };
+		A491018427D6EDE90012DFDD /* PersistenceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceStore.swift; sourceTree = "<group>"; };
+		A491018627D6F37C0012DFDD /* NSManagedObject+EntityName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+EntityName.swift"; sourceTree = "<group>"; };
 		A499318027BF3A38009FF5A8 /* BottleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleViewModel.swift; sourceTree = "<group>"; };
 		A499318227BF5158009FF5A8 /* BottleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleImageView.swift; sourceTree = "<group>"; };
 		A49931A427BFD20E009FF5A8 /* UIImage+AssetImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AssetImages.swift"; sourceTree = "<group>"; };
@@ -107,6 +113,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A491016F27D605C40012DFDD /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				A491018427D6EDE90012DFDD /* PersistenceStore.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		A499317F27BF3A2C009FF5A8 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +215,7 @@
 				A4CF2C8127C73B42001B01B1 /* UIColor+AssetColors.swift */,
 				A8509E6D27C89A1200855153 /* UIColor+Extension.swift */,
 				A8EB5E8A27C8B087005704F2 /* UIButton+Extension.swift */,
+				A491018627D6F37C0012DFDD /* NSManagedObject+EntityName.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -233,6 +248,7 @@
 		A8FC07C627B3ECF00077A758 /* Happiggy-bank */ = {
 			isa = PBXGroup;
 			children = (
+				A491016F27D605C40012DFDD /* CoreData */,
 				A89CBEDE27CC0233005549F6 /* Model */,
 				A87DCD3727C785D800AB0537 /* Subview */,
 				A499317F27BF3A2C009FF5A8 /* ViewModel */,
@@ -247,6 +263,7 @@
 				A8BD834B27BE347700E0DE41 /* Extensions */,
 				A8FC07D027B3ECF30077A758 /* Assets.xcassets */,
 				A8FC07D527B3ECF30077A758 /* Info.plist */,
+				A44E901527D5EB130053AC57 /* Happiggy-bank.xcdatamodeld */,
 			);
 			path = "Happiggy-bank";
 			sourceTree = "<group>";
@@ -341,7 +358,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -363,6 +380,7 @@
 				A4CF2C7C27C71FF5001B01B1 /* CATransition+PopupAnimation.swift in Sources */,
 				A8FC07C827B3ECF00077A758 /* AppDelegate.swift in Sources */,
 				A4CF2C7827C4EBEE001B01B1 /* UIViewController+Popup.swift in Sources */,
+				A491018727D6F37C0012DFDD /* NSManagedObject+EntityName.swift in Sources */,
 				A4CF2C8C27CB6FA9001B01B1 /* NoteTextView.swift in Sources */,
 				A8BD833527BE106C00E0DE41 /* BottleViewController.swift in Sources */,
 				A4CF2C8027C733FE001B01B1 /* ColorButton.swift in Sources */,
@@ -375,12 +393,14 @@
 				A4CF2C5427C48DA1001B01B1 /* NewNotePopupViewController.swift in Sources */,
 				A8509E6727C85AC900855153 /* PopupTopBar.swift in Sources */,
 				A8E9B2AA27C6070C006403E2 /* CreateNewBottlePopupView.swift in Sources */,
+				A491018527D6EDE90012DFDD /* PersistenceStore.swift in Sources */,
 				A8EB5E8B27C8B087005704F2 /* UIButton+Extension.swift in Sources */,
 				A8E9B2A827C606D4006403E2 /* CreateNewBottlePopupViewController.swift in Sources */,
 				A89CBEE027CC023B005549F6 /* Bottle.swift in Sources */,
 				A8BD833327BE104900E0DE41 /* HomeViewController.swift in Sources */,
 				A499318127BF3A38009FF5A8 /* BottleViewModel.swift in Sources */,
 				A89CBEDB27CBDD99005549F6 /* BottleCell.swift in Sources */,
+				A44E901727D5EB130053AC57 /* Happiggy-bank.xcdatamodeld in Sources */,
 				A49931A527BFD20E009FF5A8 /* UIImage+AssetImages.swift in Sources */,
 				A4CF2C7E27C72991001B01B1 /* ColorPalette.swift in Sources */,
 				A8BD833F27BE30B400E0DE41 /* Constants.swift in Sources */,
@@ -626,6 +646,19 @@
 			productName = Then;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		A44E901527D5EB130053AC57 /* Happiggy-bank.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A44E901627D5EB130053AC57 /* Happigy-bank.xcdatamodel */,
+			);
+			currentVersion = A44E901627D5EB130053AC57 /* Happigy-bank.xcdatamodel */;
+			path = "Happiggy-bank.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A8FC07BC27B3ECF00077A758 /* Project object */;
 }
