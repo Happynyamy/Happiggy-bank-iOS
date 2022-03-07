@@ -580,3 +580,51 @@ extension BottleCell {
         static let dateLabelText: Int = 0xA19491
     }
 }
+
+extension Bottle {
+    
+    /// Bottle 엔티티에서 설정하는 문자열
+    enum StringLiteral {
+        
+        
+        /// 엔티티 이름
+        static let entityName = "Bottle"
+        
+        /// 제목 디폴트 값: "?"
+        static let title = "?"
+    }
+    
+}
+
+/// 쪽지 색상들을 모아둔 enum 으로 상황별로 기본 문자열에 이하 문자열을 접두사/접미사로 붙여서 불러올 애셋 이름을 완성
+/// e.g MainViewNote + NoteColors.white
+enum NoteColor {
+    
+    /// 기본 쪽지 색깔
+    static let `default` = NoteColor.white
+    
+    /// 흰색 쪽지
+    static let white = "white"
+    
+    /// 분홍 쪽지
+    static let pink = "pink"
+    
+    /// 보라 쪽지
+    static let purple = "purple"
+    
+    /// 노랑 쪽지
+    static let yellow = "yellow"
+    
+    /// 연두 쪽지
+    static let green = "green"
+}
+
+extension PersistenceStore {
+    
+    /// Persistence Store 에서 사용되는 문자열들
+    enum StringLiteral {
+        
+        /// 공유 persistence store 의 이름 : "Happiggy-bank"
+        static let sharedPersistenceStoreName = "Happiggy-bank"
+    }
+}
