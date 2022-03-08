@@ -585,13 +585,20 @@ extension Bottle {
     
     /// Bottle 엔티티에서 설정하는 문자열
     enum StringLiteral {
-        
-        
-        /// 엔티티 이름
-        static let entityName = "Bottle"
-        
+
         /// 제목 디폴트 값: "?"
         static let title = "?"
+    }
+    
+}
+
+extension Note {
+    
+    /// Note 엔티티에서 설정하는 문자열
+    enum StringLiteral {
+
+        /// 내용 디폴트 값: "?"
+        static let content = "?"
     }
     
 }

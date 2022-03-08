@@ -7,10 +7,10 @@
 
 import Foundation
 
-// TODO: Bottle Model 수정 및 기간 계산 로직 추가
+// FIXME: 엔티티 Bottle 과 겹쳐서 주석 처리
 /// 유리병 데이터 모델
-struct Bottle {
-    var id: Int
-    var title: String
-    var date: String
-}
+//struct Bottle {
+//    var id: Int
+//    var title: String
+//    var date: String
+//}
