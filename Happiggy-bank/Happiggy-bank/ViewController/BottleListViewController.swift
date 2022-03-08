@@ -20,7 +20,9 @@ final class BottleListViewController: UIViewController {
         var bottles = [Bottle]()
         
         for index in 0...3 {
-            let bottle = Bottle(id: index, title: "bottle \(index)", date: "2022.01.01 ~ 2022.01.31")
+            // FIXME: 코어데이터 엔티티 생성하면서 주석 처리 및 밑에 일단 임시 인스턴스 생성
+//            let bottle = Bottle(id: index, title: "bottle \(index)", date: "2022.01.01 ~ 2022.01.31")
+            let bottle = Bottle(title: "유리병 \(index + 1)", startDate: Date(), endDate: Date())
             bottles.append(bottle)
         }
         
@@ -136,7 +138,8 @@ extension BottleListViewController: UITableViewDataSource {
         
         resetReusableCellAttribute(cell)
         cell.titleLabel.text = bottle.title
-        cell.dateLabel.text = bottle.date
+        // FIXME: 코어데이터 엔티티 생성하면서 주석 처리
+//        cell.dateLabel.text = bottle.startDate.description
         
         return cell
     }

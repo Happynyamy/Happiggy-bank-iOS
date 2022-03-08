@@ -12,6 +12,8 @@
 		A456657E27CC77A9007CF70A /* Date+Formatted.swift in Sources */ = {isa = PBXBuildFile; fileRef = A456657D27CC77A9007CF70A /* Date+Formatted.swift */; };
 		A491018527D6EDE90012DFDD /* PersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A491018427D6EDE90012DFDD /* PersistenceStore.swift */; };
 		A491018727D6F37C0012DFDD /* NSManagedObject+EntityName.swift in Sources */ = {isa = PBXBuildFile; fileRef = A491018627D6F37C0012DFDD /* NSManagedObject+EntityName.swift */; };
+		A491018D27D7358B0012DFDD /* Bottle+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A491018C27D7358B0012DFDD /* Bottle+CoreDataClass.swift */; };
+		A491018F27D735920012DFDD /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A491018E27D735920012DFDD /* Note+CoreDataClass.swift */; };
 		A499318127BF3A38009FF5A8 /* BottleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499318027BF3A38009FF5A8 /* BottleViewModel.swift */; };
 		A499318327BF5158009FF5A8 /* BottleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499318227BF5158009FF5A8 /* BottleImageView.swift */; };
 		A49931A527BFD20E009FF5A8 /* UIImage+AssetImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49931A427BFD20E009FF5A8 /* UIImage+AssetImages.swift */; };
@@ -58,6 +60,8 @@
 		A456657D27CC77A9007CF70A /* Date+Formatted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatted.swift"; sourceTree = "<group>"; };
 		A491018427D6EDE90012DFDD /* PersistenceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceStore.swift; sourceTree = "<group>"; };
 		A491018627D6F37C0012DFDD /* NSManagedObject+EntityName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+EntityName.swift"; sourceTree = "<group>"; };
+		A491018C27D7358B0012DFDD /* Bottle+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bottle+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A491018E27D735920012DFDD /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A499318027BF3A38009FF5A8 /* BottleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleViewModel.swift; sourceTree = "<group>"; };
 		A499318227BF5158009FF5A8 /* BottleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleImageView.swift; sourceTree = "<group>"; };
 		A49931A427BFD20E009FF5A8 /* UIImage+AssetImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AssetImages.swift"; sourceTree = "<group>"; };
@@ -116,6 +120,8 @@
 		A491016F27D605C40012DFDD /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				A491018E27D735920012DFDD /* Note+CoreDataClass.swift */,
+				A491018C27D7358B0012DFDD /* Bottle+CoreDataClass.swift */,
 				A491018427D6EDE90012DFDD /* PersistenceStore.swift */,
 			);
 			path = CoreData;
@@ -394,8 +400,10 @@
 				A8509E6727C85AC900855153 /* PopupTopBar.swift in Sources */,
 				A8E9B2AA27C6070C006403E2 /* CreateNewBottlePopupView.swift in Sources */,
 				A491018527D6EDE90012DFDD /* PersistenceStore.swift in Sources */,
+				A491018D27D7358B0012DFDD /* Bottle+CoreDataClass.swift in Sources */,
 				A8EB5E8B27C8B087005704F2 /* UIButton+Extension.swift in Sources */,
 				A8E9B2A827C606D4006403E2 /* CreateNewBottlePopupViewController.swift in Sources */,
+				A491018F27D735920012DFDD /* Note+CoreDataClass.swift in Sources */,
 				A89CBEE027CC023B005549F6 /* Bottle.swift in Sources */,
 				A8BD833327BE104900E0DE41 /* HomeViewController.swift in Sources */,
 				A499318127BF3A38009FF5A8 /* BottleViewModel.swift in Sources */,
