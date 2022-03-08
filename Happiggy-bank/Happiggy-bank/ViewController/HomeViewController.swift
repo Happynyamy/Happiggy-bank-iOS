@@ -1,5 +1,5 @@
 //
-//  HomePageViewController.swift
+//  HomeViewController.swift
 //  Happiggy-bank
 //
 //  Created by 권은빈 on 2022/02/16.
@@ -13,8 +13,8 @@ final class HomeViewController: UIViewController {
     
     // MARK: - Properties
     
-    /// 메인 뷰
-    var homeView: UIView!
+    /// HomeViewController의 뷰
+    @IBOutlet var homeView: UIView!
     
     /// 환경설정 버튼
     var settingsButton: UIButton!
@@ -28,8 +28,8 @@ final class HomeViewController: UIViewController {
     /// 현재까지의 쪽지와 목표치를 나타내는 라벨
     var noteProgressLabel: UIView!
     
-    /// 페이지 뷰를 관리하는 컨트롤러
-    var pageViewController: UIPageViewController!
+    /// 유리병 뷰를 관리하는 컨트롤러
+    var bottleViewController: BottleViewController!
     
     /// 홈 뷰의 뷰모델
     private var homeViewModel: HomeViewModel = HomeViewModel()
@@ -39,18 +39,10 @@ final class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationItem.backButtonTitle = ""
-        
         configureView()
         configureConstraints()
         if !homeViewModel.hasBottle {
             hideUnusedButtonAndLabels()
-            setInitialImage()
-        }
-        if homeViewModel.hasBottle {
-            configurePageViewController()
-            configurePageViewConstraints()
         }
     }
     
@@ -98,13 +90,12 @@ final class HomeViewController: UIViewController {
     // MARK: - Actions
     
     /// 현재 인덱스로 BottleViewController 생성
-    func makePageContentViewController(with index: Int) -> BottleViewController {
+    func makeBottleViewController() -> BottleViewController {
         let bottleViewController: BottleViewController = BottleViewController()
         let bottleViewModel = BottleViewModel()
         // TODO: currentIndex 의 bottleID 넘겨주기
         bottleViewModel.bottleID = UUID().hashValue
         bottleViewController.viewModel = bottleViewModel
-        bottleViewController.index = index
         return bottleViewController
     }
     
@@ -113,15 +104,16 @@ final class HomeViewController: UIViewController {
     
     /// 홈 뷰 UI 요소들 생성 및 HomeViewController의 하위 뷰로 추가
     private func configureView() {
-        configureMainView()
+        configureHomeView()
         configureButtons()
         configureLabel()
     }
     
     /// 홈 뷰 생성 및 추가
-    private func configureMainView() {
-        self.homeView = HomeView()
-        self.view.addSubview(homeView)
+    private func configureHomeView() {
+        navigationItem.backButtonTitle = ""
+        configureBottleViewController()
+
     }
     
     /// 버튼 생성,  타겟 설정 및 추가
@@ -129,9 +121,9 @@ final class HomeViewController: UIViewController {
         self.settingsButton = DefaultButton(imageName: "gearshape")
         self.openBeforeFinishedButton = DefaultButton(imageName: "hammer")
         self.bottleListButton = DefaultButton(imageName: "list.bullet")
-        self.view.addSubview(settingsButton)
-        self.view.addSubview(openBeforeFinishedButton)
-        self.view.addSubview(bottleListButton)
+        self.homeView.addSubview(settingsButton)
+        self.homeView.addSubview(openBeforeFinishedButton)
+        self.homeView.addSubview(bottleListButton)
         self.settingsButton.addTarget(
             self,
             action: #selector(settingsButtonDidTap(_:)),
@@ -152,33 +144,22 @@ final class HomeViewController: UIViewController {
     /// 라벨 생성 및 추가
     private func configureLabel() {
         self.noteProgressLabel = NoteProgressLabel()
-        self.view.addSubview(noteProgressLabel)
+        self.homeView.addSubview(noteProgressLabel)
     }
     
     
     // MARK: - Controller Configurations
     
     /// PageViewController 구성
-    private func configurePageViewController() {
-        let startViewController: BottleViewController = self.makePageContentViewController(
-            with: homeViewModel.currentIndex
-        )
-        let viewControllerArray: [UIViewController] = [startViewController]
+    private func configureBottleViewController() {
+        self.bottleViewController = BottleViewController()
+        let bottleViewModel = BottleViewModel()
+        // TODO: currentIndex 의 bottleID 넘겨주기
+        bottleViewModel.bottleID = UUID().hashValue
+        bottleViewController.viewModel = bottleViewModel
         
-        self.pageViewController = UIPageViewController(
-            transitionStyle: .scroll,
-            navigationOrientation: .horizontal
-        )
-        self.pageViewController.dataSource = self
-        self.pageViewController.delegate = self
-        self.pageViewController.setViewControllers(
-            viewControllerArray,
-            direction: .forward,
-            animated: false,
-            completion: nil
-        )
-        self.addChild(self.pageViewController)
-        self.homeView.addSubview(self.pageViewController.view)
+        self.addChild(bottleViewController)
+        self.homeView.addSubview(bottleViewController.view)
     }
     
     
@@ -188,6 +169,7 @@ final class HomeViewController: UIViewController {
     private func configureConstraints() {
         configureButtonConstraints()
         configureLabelConstraints()
+        configureBottleViewConstraints()
     }
     
     /// 버튼의 오토 레이아웃 적용
@@ -198,26 +180,26 @@ final class HomeViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             settingsButton.topAnchor.constraint(
-                equalTo: self.view.safeAreaLayoutGuide.topAnchor
+                equalTo: self.homeView.safeAreaLayoutGuide.topAnchor
             ),
             settingsButton.trailingAnchor.constraint(
-                equalTo: self.view.trailingAnchor,
+                equalTo: self.homeView.trailingAnchor,
                 constant: -Metric.verticalPadding
             ),
             openBeforeFinishedButton.leadingAnchor.constraint(
-                equalTo: self.view.leadingAnchor,
+                equalTo: self.homeView.leadingAnchor,
                 constant: Metric.verticalPadding
             ),
             openBeforeFinishedButton.bottomAnchor.constraint(
-                equalTo: self.view.safeAreaLayoutGuide.bottomAnchor,
+                equalTo: self.homeView.safeAreaLayoutGuide.bottomAnchor,
                 constant: -Metric.verticalPadding
             ),
             bottleListButton.leadingAnchor.constraint(
-                equalTo: self.view.leadingAnchor,
+                equalTo: self.homeView.leadingAnchor,
                 constant: Metric.listButtonLeadingPadding
             ),
             bottleListButton.bottomAnchor.constraint(
-                equalTo: self.view.safeAreaLayoutGuide.bottomAnchor,
+                equalTo: self.homeView.safeAreaLayoutGuide.bottomAnchor,
                 constant: -Metric.verticalPadding
             ),
             settingsButton.widthAnchor.constraint(equalToConstant: Metric.buttonWidth),
@@ -233,20 +215,20 @@ final class HomeViewController: UIViewController {
         ])
     }
     
-    /// PageViewController의 뷰 오토 레이아웃 적용
-    private func configurePageViewConstraints() {
-        self.pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
+    /// BottleViewController의 뷰 오토 레이아웃 적용
+    private func configureBottleViewConstraints() {
+        self.bottleViewController.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            pageViewController.view.widthAnchor.constraint(equalTo: view.widthAnchor),
-            pageViewController.view.heightAnchor.constraint(
+            bottleViewController.view.widthAnchor.constraint(equalTo: view.widthAnchor),
+            bottleViewController.view.heightAnchor.constraint(
                 equalTo: view.widthAnchor,
                 multiplier: Metric.pageViewHeightWidthRatio),
-            pageViewController.view.bottomAnchor.constraint(
+            bottleViewController.view.bottomAnchor.constraint(
                 equalTo: self.noteProgressLabel.topAnchor,
                 constant: -Metric.spacing),
-            pageViewController.view.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            bottleViewController.view.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-        pageViewController.view.backgroundColor = .systemOrange
+        bottleViewController.view.backgroundColor = .systemOrange
     }
     
     /// 라벨의 오토 레이아웃 적용
@@ -255,11 +237,11 @@ final class HomeViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             noteProgressLabel.bottomAnchor.constraint(
-                equalTo: self.view.safeAreaLayoutGuide.bottomAnchor,
+                equalTo: self.homeView.safeAreaLayoutGuide.bottomAnchor,
                 constant: -Metric.verticalPadding
             ),
             noteProgressLabel.trailingAnchor.constraint(
-                equalTo: self.view.trailingAnchor,
+                equalTo: self.homeView.trailingAnchor,
                 constant: -Metric.verticalPadding
             ),
             noteProgressLabel.widthAnchor.constraint(
@@ -277,103 +259,5 @@ final class HomeViewController: UIViewController {
         self.openBeforeFinishedButton.isHidden = true
         self.bottleListButton.isHidden = true
         self.noteProgressLabel.isHidden = true
-    }
-    
-    /// 진행중인 유리병이 없을시, 초기 이미지로 홈 뷰 구성
-    private func setInitialImage() {
-        let initialImageView: UIImageView = BottleImageView(image: UIImage.initialBottle)
-        let tapGesture = UITapGestureRecognizer(
-            target: self,
-            action: #selector(initialImageViewDidTap(_:))
-        )
-        self.homeView.addSubview(initialImageView)
-        initialImageView.isUserInteractionEnabled = true
-        initialImageView.addGestureRecognizer(tapGesture)
-        initialImageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            initialImageView.widthAnchor.constraint(
-                equalTo: self.homeView.widthAnchor,
-                constant: -Metric.verticalPadding * 2),
-            initialImageView.heightAnchor.constraint(
-                equalTo: self.homeView.widthAnchor,
-                multiplier: Metric.pageViewHeightWidthRatio),
-            initialImageView.bottomAnchor.constraint(
-                equalTo: self.noteProgressLabel.topAnchor,
-                constant: -Metric.spacing),
-            initialImageView.centerXAnchor.constraint(equalTo: self.homeView.centerXAnchor)
-        ])
-    }
-}
-
-
-// MARK: - DataSource
-
-extension HomeViewController: UIPageViewControllerDataSource {
-    
-    // TODO: ViewModel 로 옮기기
-    /// 종료되지 않은 유리병의 존재 여부
-    private var hasBottleInProgress: Bool { false }
-    
-    // swiftlint:disable force_cast
-    func pageViewController(
-        _ pageViewController: UIPageViewController,
-        viewControllerBefore viewController: UIViewController
-    ) -> UIViewController? {
-        let viewController: BottleViewController = viewController as! BottleViewController
-        var index = viewController.index as Int
-        
-        if index <= 0 {
-            return nil
-        }
-        index -= 1
-        return self.makePageContentViewController(with: index)
-    }
-    
-    func pageViewController(
-        _ pageViewController: UIPageViewController,
-        viewControllerAfter viewController: UIViewController
-    ) -> UIViewController? {
-        let viewController: BottleViewController = viewController as! BottleViewController
-        var index = viewController.index as Int
-        let numberOfBottles = self.homeViewModel.pageImages.count
-        
-        if  (index + 1 == numberOfBottles && self.hasBottleInProgress)
-              || index >= numberOfBottles {
-            return nil
-        }
-        
-        index += 1
-        
-        if index == numberOfBottles {
-            print("Add New Jar")
-            
-            // TODO: 팝업 뜨는 시점 수정
-            let createNewBottleViewController: CreateNewBottlePopupViewController
-            = CreateNewBottlePopupViewController()
-            
-            createNewBottleViewController.modalPresentationStyle = .overCurrentContext
-            self.present(createNewBottleViewController, animated: false)
-        }
-        return self.makePageContentViewController(with: index)
-    }
-    // swiftlint:enable force_cast
-}
-
-
-// MARK: - Delegate
-
-extension HomeViewController: UIPageViewControllerDelegate {
-    func pageViewController(
-        _ pageViewController: UIPageViewController,
-        didFinishAnimating finished: Bool,
-        previousViewControllers: [UIViewController],
-        transitionCompleted completed: Bool
-    ) {
-        if completed {
-            if let currentViewController = pageViewController.viewControllers![0]
-                as? BottleViewController {
-                homeViewModel.updatedIndex = currentViewController.index
-            }
-        }
     }
 }
