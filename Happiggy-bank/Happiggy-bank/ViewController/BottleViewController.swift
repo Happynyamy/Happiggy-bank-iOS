@@ -9,6 +9,7 @@ import UIKit
 
 import Then
 
+// TODO: 진행중인 유리병 있는지 없는지에 따라 초기 화면 구성 및 동작 수행 필요
 /// 각 bottle 의 뷰를 관리하는 컨트롤러
 final class BottleViewController: UIViewController {
     
