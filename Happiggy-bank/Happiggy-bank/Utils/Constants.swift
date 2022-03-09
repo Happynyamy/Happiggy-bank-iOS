@@ -36,6 +36,13 @@ extension HomeViewController {
         /// list Button의 앞쪽 패딩
         static let listButtonLeadingPadding: CGFloat = 88
     }
+    
+    /// HomeViewController 에서 사용하는 문자열
+    enum StringLiteral {
+        
+        /// "showBottleView" segue identifier 
+        static let showBottleViewIdentifier = "showBottleView"
+    }
 }
 
 extension BottleViewController {

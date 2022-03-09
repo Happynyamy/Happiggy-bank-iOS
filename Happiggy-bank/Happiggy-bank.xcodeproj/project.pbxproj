@@ -17,6 +17,7 @@
 		A499318127BF3A38009FF5A8 /* BottleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499318027BF3A38009FF5A8 /* BottleViewModel.swift */; };
 		A499318327BF5158009FF5A8 /* BottleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499318227BF5158009FF5A8 /* BottleImageView.swift */; };
 		A49931A527BFD20E009FF5A8 /* UIImage+AssetImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49931A427BFD20E009FF5A8 /* UIImage+AssetImages.swift */; };
+		A4B285FD27D8A060008769EB /* Calendar+Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B285FC27D8A060008769EB /* Calendar+Duration.swift */; };
 		A4CF2C5427C48DA1001B01B1 /* NewNotePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C5327C48DA1001B01B1 /* NewNotePopupViewController.swift */; };
 		A4CF2C7827C4EBEE001B01B1 /* UIViewController+Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C7727C4EBEE001B01B1 /* UIViewController+Popup.swift */; };
 		A4CF2C7A27C61867001B01B1 /* NewNotePopupTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C7927C61867001B01B1 /* NewNotePopupTopBar.swift */; };
@@ -37,7 +38,6 @@
 		A8509E6E27C89A1200855153 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509E6D27C89A1200855153 /* UIColor+Extension.swift */; };
 		A89CBEDB27CBDD99005549F6 /* BottleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89CBEDA27CBDD99005549F6 /* BottleCell.swift */; };
 		A89CBEDD27CBDEA2005549F6 /* BottleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89CBEDC27CBDEA2005549F6 /* BottleListViewController.swift */; };
-		A89CBEE027CC023B005549F6 /* Bottle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89CBEDF27CC023B005549F6 /* Bottle.swift */; };
 		A8BD833327BE104900E0DE41 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833227BE104900E0DE41 /* HomeViewController.swift */; };
 		A8BD833527BE106C00E0DE41 /* BottleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833427BE106C00E0DE41 /* BottleViewController.swift */; };
 		A8BD833F27BE30B400E0DE41 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833E27BE30B400E0DE41 /* Constants.swift */; };
@@ -65,6 +65,7 @@
 		A499318027BF3A38009FF5A8 /* BottleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleViewModel.swift; sourceTree = "<group>"; };
 		A499318227BF5158009FF5A8 /* BottleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleImageView.swift; sourceTree = "<group>"; };
 		A49931A427BFD20E009FF5A8 /* UIImage+AssetImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AssetImages.swift"; sourceTree = "<group>"; };
+		A4B285FC27D8A060008769EB /* Calendar+Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Duration.swift"; sourceTree = "<group>"; };
 		A4CF2C5327C48DA1001B01B1 /* NewNotePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNotePopupViewController.swift; sourceTree = "<group>"; };
 		A4CF2C7727C4EBEE001B01B1 /* UIViewController+Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Popup.swift"; sourceTree = "<group>"; };
 		A4CF2C7927C61867001B01B1 /* NewNotePopupTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNotePopupTopBar.swift; sourceTree = "<group>"; };
@@ -85,7 +86,6 @@
 		A8509E6D27C89A1200855153 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		A89CBEDA27CBDD99005549F6 /* BottleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleCell.swift; sourceTree = "<group>"; };
 		A89CBEDC27CBDEA2005549F6 /* BottleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleListViewController.swift; sourceTree = "<group>"; };
-		A89CBEDF27CC023B005549F6 /* Bottle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bottle.swift; sourceTree = "<group>"; };
 		A8BD833227BE104900E0DE41 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A8BD833427BE106C00E0DE41 /* BottleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleViewController.swift; sourceTree = "<group>"; };
 		A8BD833E27BE30B400E0DE41 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -151,7 +151,6 @@
 		A89CBEDE27CC0233005549F6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A89CBEDF27CC023B005549F6 /* Bottle.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -222,6 +221,7 @@
 				A8509E6D27C89A1200855153 /* UIColor+Extension.swift */,
 				A8EB5E8A27C8B087005704F2 /* UIButton+Extension.swift */,
 				A491018627D6F37C0012DFDD /* NSManagedObject+EntityName.swift */,
+				A4B285FC27D8A060008769EB /* Calendar+Duration.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -398,13 +398,13 @@
 				A4CF2C9027CBA66F001B01B1 /* NSNotificaion.Name+CustomNotifications.swift in Sources */,
 				A4CF2C5427C48DA1001B01B1 /* NewNotePopupViewController.swift in Sources */,
 				A8509E6727C85AC900855153 /* PopupTopBar.swift in Sources */,
+				A4B285FD27D8A060008769EB /* Calendar+Duration.swift in Sources */,
 				A8E9B2AA27C6070C006403E2 /* CreateNewBottlePopupView.swift in Sources */,
 				A491018527D6EDE90012DFDD /* PersistenceStore.swift in Sources */,
 				A491018D27D7358B0012DFDD /* Bottle+CoreDataClass.swift in Sources */,
 				A8EB5E8B27C8B087005704F2 /* UIButton+Extension.swift in Sources */,
 				A8E9B2A827C606D4006403E2 /* CreateNewBottlePopupViewController.swift in Sources */,
 				A491018F27D735920012DFDD /* Note+CoreDataClass.swift in Sources */,
-				A89CBEE027CC023B005549F6 /* Bottle.swift in Sources */,
 				A8BD833327BE104900E0DE41 /* HomeViewController.swift in Sources */,
 				A499318127BF3A38009FF5A8 /* BottleViewModel.swift in Sources */,
 				A89CBEDB27CBDD99005549F6 /* BottleCell.swift in Sources */,

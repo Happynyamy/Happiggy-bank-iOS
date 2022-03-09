@@ -13,16 +13,16 @@ import Then
 /// 각 bottle 의 뷰를 관리하는 컨트롤러
 final class BottleViewController: UIViewController {
     
-    // MARK: - Properties
-    
-    /// 유리병 순서(현재 페이지) 인덱스
-    var index: Int!
-
-    /// BottleViewController 에 필요한 형태로 데이터를 가공해주는 View Model
-    var viewModel: BottleViewModel!
+    // MARK: - @IBOutlet
 
     /// 유리병 이미지를 보여주는 뷰
-    private var imageView: UIImageView!
+    @IBOutlet var imageView: BottleImageView!
+    
+    
+    // MARK: - Properties
+    
+    /// BottleViewController 에 필요한 형태로 데이터를 가공해주는 View Model
+    var viewModel: BottleViewModel!
     
     
     // MARK: - View Lifecycle
@@ -30,47 +30,44 @@ final class BottleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addObservers()
-        self.configureImageView()
-        self.configureImageViewConstraints()
+        self.view.backgroundColor = .systemGray
+        configureBottleImage()
+    }
+    
+    
+    // MARK: - @IBActions
+    
+    /// 저금통 이미지를 탭할 시 실행되는 메서드
+    /// 1. 저금통이 없는 경우 저금통 추가 팝업을 띄우고,
+    /// 2. 저금통이 있으나 기한이 종료되어 개봉을 기다리는 경우 저금통을 개봉하고
+    /// 3 - 1. 저금통이 있고 아직 진행중인 경우에는 쪽지를 쓸 수 있는 날이 있는 경우 쪽지 추가 팝업을,
+    /// 3 - 2. 그 외에는 쪽지 작성 불가 알림을 띄운다.
+    @IBAction func bottleDidTap(_ sender: UITapGestureRecognizer) {
+        guard let bottle = self.viewModel.bottle
+        else {
+            print("show add new bottle popup")
+            return
+        }
+        if !bottle.isInProgress {
+            print("show some opening animation")
+            return
+        }
+        if bottle.hasEmptyDate {
+            print("show some alert that no notes are writable")
+            return
+        }
+        if !bottle.hasEmptyDate {
+            print("show add note popup")
+        }
     }
     
     
     // MARK: - @objc
     
-    // FIXME: 단순히 개봉, 미개봉이 아니고 4가지 상태 고려 필요 BottleViewModel 의 isOpen 도 같이 수정 필요
-    /// bottle 이미지를 탭할 시 실행되는 메서드
-    /// bottle 이 개봉된 경우 note 리스트를 보여주고,
-    /// 개봉되지 않았고, 아직 오늘의 note 를 안 쓴 경우 경우 새로운 쪽지를 추가함
-    @objc private func bottleDidTap(_ sender: UITapGestureRecognizer) {
-        if sender.state == .ended {
-            
-            // TODO: 데이터 바인딩 후 지우기
-            // 테스트 용으로 첫번째 화면에서만 리스트, 나머지에서는 팝업을 보기 위한 코드
-            self.viewModel.isOpen = (self.index == 0) ? true : false
-            
-            if self.viewModel.isOpen {
-                let notesViewController = NotesViewController(title: viewModel.bottleName).then {
-                    $0.viewModel = NotesViewModel()
-                }
-                self.show(notesViewController, sender: self)
-                return
-            }
-            if self.viewModel.hasTodaysNote {
-                print("already wrote a note today")
-                return
-            }
-            if !self.viewModel.hasTodaysNote {
-                self.showNewNotePopup()
-                print("show add new note popup")
-                return
-            }
-        }
-    }
-    
     /// 쪽지 진행 정도가 바뀌었다는 알림을 받았을 때 호출되는 메서드
     @objc private func noteProgressDidChange(_ notification: Notification) {
-        self.view.backgroundColor = .systemIndigo
-        print("update bottle image")
+        self.view.backgroundColor = .systemBrown
+        print("show note adding animation")
     }
     
     
@@ -84,30 +81,27 @@ final class BottleViewController: UIViewController {
         )
     }
     
-    /// bottle 이미지가 나타날 imageView 를 생성하고 추가하는 메서드
-    /// 유저의 탭 제스처를 인식할 수 있도록 타겟-액션 추가
-    private func configureImageView() {
-        self.imageView = BottleImageView(image: viewModel.image)
-        self.imageView.isUserInteractionEnabled = true
-        let tapGestureRecognizer = UITapGestureRecognizer(
-            target: self,
-            action: #selector(bottleDidTap(_:))
-        )
-        self.imageView.addGestureRecognizer(tapGestureRecognizer)
-        self.view.addSubview(imageView)
-    }
-    
-    /// imageView 에 오토 레이아웃 적용
-    private func configureImageViewConstraints() {
-        self.imageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.imageView.widthAnchor.constraint(
-                equalTo: view.widthAnchor,
-                constant: -Metric.verticalPadding * 2
-            ),
-            self.imageView.heightAnchor.constraint(equalTo: view.heightAnchor),
-            self.imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            self.imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
+    /// 저금통 상태에 따른 저금통 이미지/애니메이션 등을 나타냄
+    /// 저금통을 새로 추가하는 경우, 현재 진행중인 저금통이 있는 경우, 개봉을 기다리는 경우의 세 가지 상태가 있음
+    private func configureBottleImage() {
+        guard let bottle = self.viewModel.bottle
+        else {
+            print("show add new bottle image")
+            self.imageView.backgroundColor = .systemIndigo
+            return
+        }
+        
+        /// 현재 채우는 저금통 있음
+        if bottle.isInProgress {
+            print("show bottle in progress")
+            self.imageView.backgroundColor = .systemYellow
+            return
+        }
+        
+        /// 기한 종료로 개봉 대기중
+        if !bottle.isInProgress {
+            print("show bottle ready to open")
+            self.imageView.backgroundColor = .orange
+        }
     }
 }

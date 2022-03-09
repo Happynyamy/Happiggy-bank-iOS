@@ -25,9 +25,6 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backButtonTitle = ""
-        configureBottleViewController()
-        configureViewHierarchy()
-        configureBottleViewConstraints()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,48 +40,17 @@ final class HomeViewController: UIViewController {
     }
     
     
-    // MARK: - Controller Configurations
+    // MARK: - Navigation
     
-    /// BottleViewController 구성 및 추가
-    private func configureBottleViewController() {
-        self.bottleViewController = BottleViewController()
-        let bottleViewModel = BottleViewModel()
-        // TODO: 현재 진행중인 유리병의 bottleID 넘겨주기
-        bottleViewModel.bottleID = UUID().hashValue
-        bottleViewController.viewModel = bottleViewModel
-    }
-    
-    
-    // MARK: - View Hierarchy
-    
-    private func configureViewHierarchy() {
-        self.addChild(bottleViewController)
-        self.homeView.addSubview(bottleViewController.view)
-    }
-    
-    
-    // MARK: - Constraints
-
-    // TODO: UI 디자인 확정시 변경
-    /// BottleViewController의 뷰 오토 레이아웃 적용
-    private func configureBottleViewConstraints() {
-        self.bottleViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            bottleViewController.view.widthAnchor.constraint(
-                equalTo: view.widthAnchor
-            ),
-            bottleViewController.view.heightAnchor.constraint(
-                equalTo: view.widthAnchor,
-                multiplier: Metric.pageViewHeightWidthRatio
-            ),
-            bottleViewController.view.bottomAnchor.constraint(
-                equalTo: self.homeView.safeAreaLayoutGuide.bottomAnchor,
-                constant: -Metric.spacing
-            ),
-            bottleViewController.view.centerXAnchor.constraint(
-                equalTo: view.centerXAnchor
-            )
-        ])
-        bottleViewController.view.backgroundColor = .systemOrange
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == StringLiteral.showBottleViewIdentifier {
+            guard let bottleViewController = segue.destination as? BottleViewController
+            else { return }
+            
+            let viewModel = BottleViewModel()
+            // TODO: 홈뷰에서 데이터 넘겨받기
+            viewModel.bottle = Bottle(title: "행복냠냠이", startDate: Date(), endDate: Date())
+            bottleViewController.viewModel = viewModel
+        }
     }
 }
