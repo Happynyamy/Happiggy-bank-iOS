@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dSD-O6-Yej">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
@@ -14,10 +14,26 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmA-fx-uIw">
+                                <rect key="frame" x="24" y="249" width="327" height="440"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="dmA-fx-uIw" secondAttribute="height" multiplier="327:440" id="W8J-jy-WPj"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="FVx-vN-7Xe" kind="embed" identifier="showBottleView" id="rLd-zf-USa"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dmA-fx-uIw" secondAttribute="trailing" constant="24" id="26A-HR-Krh"/>
+                            <constraint firstItem="dmA-fx-uIw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="8sb-a4-2KC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dmA-fx-uIw" secondAttribute="bottom" constant="40" id="eMu-1s-Pwo"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="P6e-3z-28Z"/>
                     <connections>
@@ -33,7 +49,7 @@
             <objects>
                 <viewController id="zPZ-4s-ZPb" customClass="BottleListViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g3S-Jh-zW0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="cUP-8i-uYm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -51,7 +67,7 @@
                     <tabBarItem key="tabBarItem" title="Home" id="Eeg-1d-ksO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wRZ-jI-V9m">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -69,8 +85,9 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="dSD-O6-Yej" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tog-A2-SCB">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                     </tabBar>
                     <connections>
                         <segue destination="LDk-3h-IzZ" kind="relationship" relationship="viewControllers" id="MHL-oV-ZTp"/>
@@ -89,7 +106,7 @@
                     <tabBarItem key="tabBarItem" title="Bottle List" id="RUG-PV-yjD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PEg-Az-WTy">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -106,7 +123,7 @@
             <objects>
                 <viewController id="IlI-sf-Vas" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pEH-8i-4vx">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="NL0-gI-uP8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -124,7 +141,7 @@
                     <tabBarItem key="tabBarItem" title="Settings" id="LtB-vV-jcX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1ha-RM-7e9">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -136,10 +153,52 @@
             </objects>
             <point key="canvasLocation" x="1738" y="868"/>
         </scene>
+        <!--Bottle View Controller-->
+        <scene sceneID="p7l-16-uR7">
+            <objects>
+                <viewController id="FVx-vN-7Xe" customClass="BottleViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jBg-oD-Piv">
+                        <rect key="frame" x="0.0" y="0.0" width="327" height="440"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aPw-QS-DfD" customClass="BottleImageView" customModule="Happiggy_bank" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="327" height="440"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="gEH-ha-I0H" appends="YES" id="QLb-IG-GgB"/>
+                                </connections>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hOc-mc-UUR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="hOc-mc-UUR" firstAttribute="bottom" secondItem="aPw-QS-DfD" secondAttribute="bottom" id="JRd-fe-BtE"/>
+                            <constraint firstItem="hOc-mc-UUR" firstAttribute="trailing" secondItem="aPw-QS-DfD" secondAttribute="trailing" id="qRi-o4-8OR"/>
+                            <constraint firstItem="aPw-QS-DfD" firstAttribute="leading" secondItem="hOc-mc-UUR" secondAttribute="leading" id="scu-QN-pBy"/>
+                            <constraint firstItem="aPw-QS-DfD" firstAttribute="top" secondItem="jBg-oD-Piv" secondAttribute="top" id="sj0-1P-5dd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="aPw-QS-DfD" id="8ju-QE-j4a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4hG-r2-cSC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="gEH-ha-I0H">
+                    <connections>
+                        <action selector="bottleDidTap:" destination="FVx-vN-7Xe" id="mVI-j8-MCV"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="47.200000000000003" y="2285.4679802955666"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -75,12 +75,33 @@ public class Bottle: NSManagedObject {
     }
     
     /// 시작 날짜
-    var startDate: Date { startDate_ ?? Date() }
+    var startDate: Date {
+        startDate_ ?? Date()
+    }
     
     /// 개봉 예정 날짜
-    var endDate: Date { endDate_ ?? Date() }
+    var endDate: Date {
+        endDate_ ?? Date()
+    }
     
     /// 해당 저금통에 들어있는 쪽지들의 Set
-    var notes: Set<Note> { notes_ as? Set<Note> ?? [] }
+    var notes: Set<Note> {
+        notes_ as? Set<Note> ?? []
+    }
     
+    // TODO: 유저가 앱을 켜놓은 상태에서 기한이 지나면?
+    /// 저금통이 진행 중인지 혹은 종료 후 미개봉 상태인지 나타냄
+    var isInProgress: Bool {
+        self.endDate < Date()
+    }
+    
+    /// 저금 기간 (1주, 1개월, 3개월, 6개월, 1년)
+    var duration: Int {
+        Calendar.daysBetween(start: self.startDate, end: self.endDate)
+    }
+    
+    /// 현재까지의 날짜 중에서 쪽지를 쓰지 않은 날짜가 있는지 나타냄
+    var hasEmptyDate: Bool {
+        Calendar.daysBetween(start: self.startDate, end: Date()) > self.notes.count
+    }
 }
