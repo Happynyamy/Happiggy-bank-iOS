@@ -43,7 +43,7 @@ final class HomeViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == StringLiteral.showBottleViewIdentifier {
+        if segue.identifier == SegueIdentifier.showBottleView {
             guard let bottleViewController = segue.destination as? BottleViewController
             else { return }
             

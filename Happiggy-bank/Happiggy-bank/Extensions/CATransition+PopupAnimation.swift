@@ -10,9 +10,9 @@ import UIKit
 extension CATransition {
     
     /// 뷰가 사라질 때 페이드 아웃 효과를 나타냄
-    func fadeTransition() -> CATransition {
+    static func fadeTransition() -> CATransition {
         let transition = CATransition()
-        transition.duration = 0.2
+        transition.duration = self.transitionDuration
         transition.type = CATransitionType.fade
         transition.subtype = CATransitionSubtype.fromRight
 

@@ -7,6 +7,7 @@
 
 import UIKit
 
+// swiftlint:disable file_length
 extension HomeViewController {
     
     /// HomeViewController 에서  설정하는 layout 에 적용할 상수값들을 모아놓은 enum
@@ -35,13 +36,6 @@ extension HomeViewController {
         
         /// list Button의 앞쪽 패딩
         static let listButtonLeadingPadding: CGFloat = 88
-    }
-    
-    /// HomeViewController 에서 사용하는 문자열
-    enum StringLiteral {
-        
-        /// "showBottleView" segue identifier 
-        static let showBottleViewIdentifier = "showBottleView"
     }
 }
 
@@ -641,4 +635,29 @@ extension PersistenceStore {
         /// 공유 persistence store 의 이름 : "Happiggy-bank"
         static let sharedPersistenceStoreName = "Happiggy-bank"
     }
+}
+
+/// 스토리보드에서 사용하는 segue identifier 들
+enum SegueIdentifier {
+    
+    /// 홈 뷰컨트롤러에서 보틀뷰 컨트롤러를 띄울 때 사용
+    static let showBottleView = "showBottleView"
+    
+    /// 보틀뷰 컨트롤러에서 새 쪽지 날짜 피커뷰 컨트롤러를 띄울 때 사용
+    static let presentNewNoteDatePicker = "presentNewNoteDatePicker"
+    
+    /// 새 쪽지 날짜 피커에서 색깔 피커를 띄울 때 사용
+    static let presentNewNoteColorPicker = "presentNewNoteColorPicker"
+    
+    /// 색깔 피커에서 새 쪽지 작성뷰 컨트롤러를 띄울 때 사용
+    static let presentNewNoteTextView = "presentNewNoteTextView"
+    
+    /// 쪽지 작성뷰 컨트롤러에서 보틀뷰 컨트롤러로 돌아갈 때 사용
+    static let unwindToBotteView = "unwindToBotteView"
+}
+
+extension CATransition {
+    
+    /// 애니메이션 지속 시간
+    static let transitionDuration: CFTimeInterval = 0.2
 }

@@ -315,11 +315,11 @@ final class NewNotePopupViewController: UIViewController {
         }
     }
     
-    /// 팝업이 사라질 때 페이드아웃 효과를 줌
-    private func fadeOut() {
-        self.view.window!.layer.add(CATransition().fadeTransition(), forKey: kCATransition)
-        self.view.isHidden = true
-    }
+//    /// 팝업이 사라질 때 페이드아웃 효과를 줌
+//    private func fadeOut() {
+//        self.view.window!.layer.add(CATransition.fadeTransition(), forKey: kCATransition)
+//        self.view.isHidden = true
+//    }
     
     /// 현재 글자수 라벨을 업데이트
     private func updateLetterCountLabel(count: Int) {

@@ -7,8 +7,6 @@
 
 import UIKit
 
-import Then
-
 // TODO: 진행중인 유리병 있는지 없는지에 따라 초기 화면 구성 및 동작 수행 필요
 /// 각 bottle 의 뷰를 관리하는 컨트롤러
 final class BottleViewController: UIViewController {
@@ -30,7 +28,6 @@ final class BottleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addObservers()
-        self.view.backgroundColor = .systemGray
         configureBottleImage()
     }
     
@@ -52,14 +49,21 @@ final class BottleViewController: UIViewController {
             print("show some opening animation")
             return
         }
-        if bottle.hasEmptyDate {
+        if !bottle.hasEmptyDate {
             print("show some alert that no notes are writable")
             return
         }
-        if !bottle.hasEmptyDate {
-            print("show add note popup")
+        if bottle.hasEmptyDate {
+            /// 날짜 피커 띄우기
+            self.performSegue(
+                withIdentifier: SegueIdentifier.presentNewNoteDatePicker,
+                sender: sender
+            )
         }
     }
+    
+    /// 현재 뷰 컨트롤러로 unwind 하라는 호출을 받았을 때 실행되는 액션메서드
+    @IBAction func unwindCallDidArrive(segue: UIStoryboardSegue) {}
     
     
     // MARK: - @objc
