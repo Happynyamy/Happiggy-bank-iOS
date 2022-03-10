@@ -179,14 +179,26 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bI2-ak-dCN" customClass="UIDatePickerView">
+                                <rect key="frame" x="27.666666666666657" y="298" width="320" height="216"/>
+                                <connections>
+                                    <outlet property="delegate" destination="moi-e1-3hQ" id="awF-j2-ach"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Xam-7g-OPV"/>
                         <color key="backgroundColor" systemColor="systemTealColor"/>
+                        <constraints>
+                            <constraint firstItem="bI2-ak-dCN" firstAttribute="centerX" secondItem="sBx-5w-9Me" secondAttribute="centerX" id="7XD-ch-KDR"/>
+                            <constraint firstItem="bI2-ak-dCN" firstAttribute="centerY" secondItem="sBx-5w-9Me" secondAttribute="centerY" id="dvP-OM-mIk"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KqF-zH-uxO"/>
                     <size key="freeformSize" width="375" height="812"/>
                     <connections>
+                        <outlet property="datePickerView" destination="bI2-ak-dCN" id="nAo-sX-4gj"/>
                         <outlet property="navigationBar" destination="x5u-uo-squ" id="TZk-W8-eWp"/>
+                        <outlet property="nextButton" destination="gJA-eJ-60b" id="b3c-Ya-Azk"/>
                         <segue destination="g5l-hv-0de" kind="presentation" identifier="presentNewNoteColorPicker" id="MBC-MA-0pk"/>
                     </connections>
                 </viewController>

@@ -612,19 +612,19 @@ enum NoteColor {
     static let `default` = NoteColor.white
     
     /// 흰색 쪽지
-    static let white = "white"
+    static let white = "White"
     
     /// 분홍 쪽지
-    static let pink = "pink"
+    static let pink = "Pink"
     
     /// 보라 쪽지
-    static let purple = "purple"
+    static let purple = "Purple"
     
     /// 노랑 쪽지
-    static let yellow = "yellow"
+    static let yellow = "Yellow"
     
     /// 연두 쪽지
-    static let green = "green"
+    static let green = "Green"
 }
 
 extension PersistenceStore {
@@ -660,4 +660,18 @@ extension CATransition {
     
     /// 애니메이션 지속 시간
     static let transitionDuration: CFTimeInterval = 0.2
+}
+
+extension NewNoteDatePickerViewController {
+    
+    /// NewNoteDatePickerViewController 에서 사용하는 상수값
+    enum Metric {
+        
+        /// 영역 수: 1개
+        static let numberOfComponents = 1
+        
+        /// 영역 수가 1개이므로 항상 0으로 고정
+        static let defaultComponentIndex = 0
+        
+    }
 }

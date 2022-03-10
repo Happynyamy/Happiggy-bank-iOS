@@ -11,17 +11,26 @@ import Then
 
 extension Date {
     
-    /// 한글로는 "xxxx년 x월 x일", 영어로는 "February 28, 2022" 형태로 날짜를 변환하는 date formatter
+    /// DateFormat case 에 맞게 날짜를 변환하는 date formatter
     /// 현재는 한글로 픽스, internationalize 시 변경 필요
-    private static let formatter = DateFormatter().then {
-        // need to make dateStyle medium for eng..
-        $0.dateStyle = .long
-        $0.timeStyle = .none
-        $0.locale = Locale(identifier: krLocalIdentifier)
+    private static func formatter(type: DateFormat) -> DateFormatter {
+        DateFormatter().then {
+            switch type {
+            case .dots:
+                $0.dateFormat = "yyyy.MM.dd"
+            case .letters:
+                // need to make dateStyle medium for eng..
+                $0.dateStyle = .long
+                $0.timeStyle = .none
+            }
+            $0.locale = Locale(identifier: krLocalIdentifier)
+        }
     }
     
-    /// 날짜를 한글로는 "xxxx년 x월 x일", 영어로는 "February 28, 2022" 형태의 문자열로 변환해 반환하는 메서드
-    func customFormatted() -> String {
-        Date.formatter.string(from: self)
+    /// DateFormate 케이스에 맞게 날짜를 문자열로 변환해주는 메서드
+    /// .dots : 2022.02.05
+    /// .letters : 2022년 2월 5일
+    func customFormatted(type: DateFormat) -> String {
+        Date.formatter(type: type).string(from: self)
     }
 }

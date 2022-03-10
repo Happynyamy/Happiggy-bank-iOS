@@ -123,7 +123,7 @@ extension NotesViewController {
         
         // TODO: color 가 아니라 이미지 변경, 날짜도 뷰모델에서 받아오기
         cell.contentView.backgroundColor = viewModel.image(for: note)
-        cell.dateLabel.text = Date().customFormatted()
+        cell.dateLabel.text = Date().customFormatted(type: .letters)
         return cell
     }
 }

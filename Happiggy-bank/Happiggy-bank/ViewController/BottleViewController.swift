@@ -108,4 +108,19 @@ final class BottleViewController: UIViewController {
             self.imageView.backgroundColor = .orange
         }
     }
+    
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueIdentifier.presentNewNoteDatePicker {
+            guard let datePickerViewController = segue.destination as? NewNoteDatePickerViewController,
+                  let bottle = self.viewModel.bottle
+            else { return }
+            
+            let viewModel = NewNoteDatePickerViewModel()
+            viewModel.bottle = bottle
+            datePickerViewController.viewModel = viewModel
+        }
+    }
 }
