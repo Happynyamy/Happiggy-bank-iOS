@@ -654,10 +654,92 @@ enum SegueIdentifier {
     
     /// 쪽지 작성뷰 컨트롤러에서 보틀뷰 컨트롤러로 돌아갈 때 사용
     static let unwindToBotteView = "unwindToBotteView"
+    
+    /// 새 유리병 이름 텍스트필드 팝업 띄울 때 사용
+    static let presentNewBottleNameField = "presentNewBottleNameField"
+    
+    /// 새 유리병 개봉 날짜 피커 띄울 때 사용
+    static let presentNewBottleDatePicker = "presentNewBottleDatePicker"
+    
+    static let unwindFromNewBottlePopupToBottleView = "unwindFromNewBottlePopupToBottleView"
 }
 
 extension CATransition {
     
     /// 애니메이션 지속 시간
     static let transitionDuration: CFTimeInterval = 0.2
+}
+
+extension NewBottleNameFieldViewController {
+    
+    /// NewBottleNameFieldViewController에서 사용하는 문자열
+    enum StringLiteral {
+        
+        /// 상단 라벨의 문자열
+        static let topLabel = "저금통 이름을 입력해주세요"
+        
+        /// 텍스트필드 플레이스홀더 문자열
+        static let placeholder = "최대 15글자까지 입력 가능합니다"
+        
+        /// 하단 라벨의 문자열
+        static let bottomLabel = "저금통 이름은 나중에 1회 변경할 수 있습니다"
+    }
+    
+    /// NewBottleNameFieldViewController에서 사용하는 색상
+    enum Color {
+        
+        /// 하단 라벨 텍스트 색상
+        static let bottomLabelText: Int = 0x666666
+    }
+    
+    /// NewBottleNameFieldViewController에서 사용하는 폰트 크기
+    enum FontSize {
+        
+        /// 상단 라벨 텍스트 크기
+        static let topLabelText: CGFloat = 17
+        
+        /// 하단 라벨 텍스트 크기
+        static let bottomLabelText: CGFloat = 14
+    }
+    
+    /// NewBottleNameFieldViewController에서 설정하는 layout 상수값
+    enum Metric {
+        
+        /// 상단 라벨 topAnchor
+        static let topLabelTopAnchor: CGFloat = 226
+        
+        /// 텍스트필드 topAnchor
+        static let textFieldTopAnchor: CGFloat = 50
+        
+        /// 하단 라벨 topAnchor
+        static let bottomLabelTopAnchor: CGFloat = 32
+    }
+}
+
+extension NewBottleDatePickerViewController {
+    
+    /// NewBottleDatePickerViewController의 Picker 선택지
+    static let pickerValues = ["일주일", "한달", "3달", "6달", "일년"]
+    
+    /// NewBottleDatePickerViewController에서 사용하는 문자열
+    enum StringLiteral {
+        
+        /// 상단 라벨의 문자열
+        static let topLabel = "저금통을 개봉할 기간을 선택해주세요"
+    }
+    
+    /// NewBottleDatePickerViewController에서 사용하는 폰트 크기
+    enum FontSize {
+        
+        /// 상단 라벨 텍스트 크기
+        static let topLabelText: CGFloat = 17
+    }
+    
+    /// NewBottleDatePickerViewController에서 설정하는 layout 상수값
+    enum Metric {
+        
+        /// 상단 라벨 topAnchor
+        static let topLabelTopAnchor: CGFloat = 226
+
+    }
 }

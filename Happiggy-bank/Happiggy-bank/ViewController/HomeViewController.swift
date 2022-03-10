@@ -49,7 +49,7 @@ final class HomeViewController: UIViewController {
             
             let viewModel = BottleViewModel()
             // TODO: 홈뷰에서 데이터 넘겨받기
-            viewModel.bottle = Bottle(title: "행복냠냠이", startDate: Date(), endDate: Date())
+//            viewModel.bottle = Bottle(title: "행복냠냠이", startDate: Date(), endDate: Date())
             bottleViewController.viewModel = viewModel
         }
     }

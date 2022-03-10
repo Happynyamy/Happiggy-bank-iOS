@@ -75,7 +75,7 @@ final class CreateNewBottlePopupViewController: UIViewController {
     @objc func submitNewBottleData(_ sender: UIButton) {
         print("submit datas")
         print("title: \(String(describing: createNewBottlePopupView.textInputField.textField.text))")
-        print("period: \(String(describing: self.selectedPeriodButton?.titleLabel?.text))")
+        print("periodIndex: \(String(describing: self.selectedPeriodButton?.titleLabel?.text))")
         self.dismiss(animated: false)
     }
     
