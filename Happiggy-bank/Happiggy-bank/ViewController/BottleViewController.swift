@@ -42,7 +42,10 @@ final class BottleViewController: UIViewController {
     @IBAction func bottleDidTap(_ sender: UITapGestureRecognizer) {
         guard let bottle = self.viewModel.bottle
         else {
-            print("show add new bottle popup")
+            self.performSegue(
+                withIdentifier: SegueIdentifier.presentNewBottleNameField,
+                sender: sender
+            )
             return
         }
         if !bottle.isInProgress {
