@@ -25,7 +25,7 @@ public class Bottle: NSManagedObject {
             ascending: false
         )]
     ) -> NSFetchRequest<Bottle> {
-        NSFetchRequest<Bottle>(entityName: NSManagedObject.entityName).then {
+        NSFetchRequest<Bottle>(entityName: Bottle.name).then {
             $0.predicate = predicate
             $0.sortDescriptors = sortDescriptor
         }
@@ -41,7 +41,7 @@ public class Bottle: NSManagedObject {
             ascending: false
         )]
     ) -> NSFetchRequest<Bottle> {
-        NSFetchRequest<Bottle>(entityName: NSManagedObject.entityName).then {
+        NSFetchRequest<Bottle>(entityName: Bottle.name).then {
             $0.sortDescriptors = sortDescriptor
             $0.predicate = NSPredicate(format: "isOpen_ == %@", argumentArray: [isOpen])
             $0.sortDescriptors = sortDescriptor
@@ -92,7 +92,7 @@ public class Bottle: NSManagedObject {
     // TODO: 유저가 앱을 켜놓은 상태에서 기한이 지나면?
     /// 저금통이 진행 중인지 혹은 종료 후 미개봉 상태인지 나타냄
     var isInProgress: Bool {
-        self.endDate < Date()
+        return self.endDate > Date()
     }
     
     /// 저금 기간 (1주, 1개월, 3개월, 6개월, 1년)
@@ -100,8 +100,39 @@ public class Bottle: NSManagedObject {
         Calendar.daysBetween(start: self.startDate, end: self.endDate)
     }
     
+    /// 오늘이 저금통 시작일을 포함해서 며칠째인지
+    var numberOfDaysSinceStartDate: Int {
+        Calendar.daysBetween(start: self.startDate, end: Date())
+    }
+    
     /// 현재까지의 날짜 중에서 쪽지를 쓰지 않은 날짜가 있는지 나타냄
     var hasEmptyDate: Bool {
-        Calendar.daysBetween(start: self.startDate, end: Date()) > self.notes.count
+        self.numberOfDaysSinceStartDate > self.notes.count
     }
+}
+
+extension Bottle {
+    
+    private static func nthDayFromToday(_ value: Int) -> Date {
+        Calendar.current.date(byAdding: .day, value: value, to: Date())!
+    }
+    
+    /// 테스트용 목 데이터
+    static let foo: Bottle = {
+        
+        let startDate = nthDayFromToday(-10)
+        let endDate = nthDayFromToday(10)
+        
+        let bottle = Bottle(title: "행복냠냠이", startDate: startDate, endDate: endDate)
+        
+        _ = Note(date: startDate, color: NoteColor.green, content: "시작!", bottle: bottle)
+        _ = Note(date: nthDayFromToday(-9), color: NoteColor.pink, content: "둘째!", bottle: bottle)
+        _ = Note(date: nthDayFromToday(-3), color: NoteColor.white, content: "셋째!", bottle: bottle)
+        _ = Note(date: nthDayFromToday(-8), color: NoteColor.purple, content: "넷째!", bottle: bottle)
+        _ = Note(date: nthDayFromToday(-1), color: NoteColor.yellow, content: "다섯째!", bottle: bottle)
+        _ = Note(date: nthDayFromToday(0), color: NoteColor.yellow, content: "다섯째!", bottle: bottle)
+
+        
+        return bottle
+    }()
 }
