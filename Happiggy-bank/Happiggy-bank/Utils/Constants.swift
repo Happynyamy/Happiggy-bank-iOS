@@ -333,166 +333,6 @@ extension HomeView {
     }
 }
 
-extension CreateNewBottlePopupView {
-    
-    /// CreateNewBottlePopupView에서 설정하는 layout에 적용할 상수값
-    enum Metric {
-        /// 팝업 뷰 너비
-        static let viewWidth: CGFloat = HomeView.Metric.screenWidth * 0.872
-        
-        /// 팝업 뷰 높이
-        static let viewHeight: CGFloat = 443
-        
-        /// 팝업 뷰 양 사이드 padding
-        static let horizontalPadding: CGFloat = 24
-        
-        /// 팝업 뷰 제출 버튼  너비
-        static let submitButtonWidth: CGFloat = viewWidth - horizontalPadding * 2
-        
-        /// 팝업 뷰 제출 버튼 높이
-        static let submitButtonHeight: CGFloat = 56
-        
-        /// 팝업 뷰 제출 버튼 위 아래 padding
-        static let submitButtonVerticalPadding: CGFloat = 40
-    }
-}
-
-extension PopupTopBar {
-    
-    /// PopupTopBar에서 설정하는 layout에 적용할 상수값
-    enum Metric {
-        
-        /// 상단 바 너비
-        static let viewWidth: CGFloat
-        = CreateNewBottlePopupView.Metric.viewWidth
-        - cancelButtonLeadingPadding * 2
-        
-        /// 상단 바 높이
-        static let viewHeight: CGFloat = 64
-        
-        /// 상단 바 취소 버튼 leading padding 16
-        static let cancelButtonLeadingPadding: CGFloat = 16
-        
-        /// 상단 바 취소 버튼 vertical padding 8
-        static let cancelButtonVerticalPadding: CGFloat = 8
-        
-        /// 상단 바 제목 라벨 top padding 21
-        static let titleLabelTopPadding: CGFloat = 21
-    }
-    
-    /// PopupTopBar에서 설정하는 Color
-    enum Color {
-        
-        /// bar 하단 border 색상
-        static let bottomBorder: Int = 0xEFEFEF
-    }
-    
-    /// PopupTopBar에서 설정하는 Font Size
-    enum FontSize {
-        
-        /// bar 타이틀 라벨 크기
-        static let titleLabel: CGFloat = 17
-    }
-}
-
-extension PopupTextInputField {
-    
-    /// PopupTextInputField에서 설정하는 layout에 적용할 상수값
-    enum Metric {
-        
-        /// 유리병 이름 입력 뷰 너비
-        static let viewWidth: CGFloat
-        = CreateNewBottlePopupView.Metric.viewWidth
-        - CreateNewBottlePopupView.Metric.horizontalPadding * 2
-        
-        /// 유리병 이름 입력 뷰 높이
-        static let viewHeight: CGFloat = 90
-        
-        /// 유리병 이름 입력 뷰 텍스트필드 높이
-        static let textFieldHeight: CGFloat = 56
-        
-        /// 유리병 이름 입력 뷰 top padding 32
-        static let topPadding: CGFloat = 32
-        
-        /// 유리병 이름 입력 뷰 텍스트필드 top padding 16
-        static let innerPadding: CGFloat = 16
-    }
-    
-    /// PopupTextInputField에서 사용하는 Color hex값
-    enum Color {
-        
-        /// 플레이스홀더 글자 색상
-        static let placeHolder: Int = 0xECA7A7
-        
-        /// 텍스트필드 배경 색상
-        static let textFieldBackground: Int = 0xFFF9F9
-    }
-    
-    /// PopupTextInputField에서 사용하는 Font Size
-    enum FontSize {
-        
-        /// desctiption label 글자 크기
-        static let descriptionLabel: CGFloat = 16
-        
-        /// 플레이스홀더의 글자 크기
-        static let placeHolder: CGFloat = 18
-    }
-}
-
-extension PopupPeriodSelectionField {
-    
-    /// PopupPeriodSelectionField에서 설정하는 layout에 적용할 상수값
-    enum Metric {
-        
-        /// 유리병 개봉 기간 선택 뷰 너비
-        static let viewWidth: CGFloat = PopupTextInputField.Metric.viewWidth
-        
-        /// 유리병 개봉 기간 선택 뷰 높이
-        static let viewHeight: CGFloat = 90
-
-        /// 유리병 개봉 기간 선택 뷰 버튼 높이
-        static let buttonHeight: CGFloat = 56
-        
-        /// 유리병 개봉 기간 선택 뷰 버튼 너비
-        static let buttonWidth: CGFloat = 48
-        
-        /// 유리병 개봉 기간 선택 뷰 top padding 32
-        static let topPadding: CGFloat = 32
-        
-        /// 유리병 개봉 기간 선택 뷰 버튼들 top padding 16
-        static let innerPadding: CGFloat = 16
-        
-        /// 유리병 개봉 기간 선택 뷰 버튼 간 padding 8
-        static let buttonPadding: CGFloat = 8
-    }
-    
-    /// PopupPeriodSelectionField에서 설정하는 Color
-    enum Color {
-        
-        /// 선택 버튼 .normal인 경우 border 색상
-        static let buttonNormalBorder: Int = 0xD6D6D6
-        
-        /// 선택 버튼 .normal인 경우 글자 색상
-        static let buttonNormalTitle: Int = 0x777777
-        
-        /// 선택 버튼 .normal인 경우 배경 색상
-        static let buttonNormalBackground: Int = 0xFFFFFF
-        
-        /// 선택 버튼 .selected인 경우 글자 색상
-        static let buttonSelectedTitle: Int = 0xFFFFFF
-        
-        /// 선택 버튼 .selected인 경우 배경 색상
-        static let buttonSelectedBackground: Int = 0xF6666C
-    }
-    
-    /// PopupPeriodSelectionField에서 설정하는 Font Size
-    enum FontSize {
-        
-        /// description label 글자 크기
-        static let descriptionLabel: CGFloat = 16
-    }
-}
-
 extension BottleListViewController {
     
     /// BottleListViewController에서 설정하는 layout 상수값
@@ -654,6 +494,14 @@ enum SegueIdentifier {
     
     /// 쪽지 작성뷰 컨트롤러에서 보틀뷰 컨트롤러로 돌아갈 때 사용
     static let unwindToBotteView = "unwindToBotteView"
+    
+    /// 새 유리병 이름 텍스트필드 팝업 띄울 때 사용
+    static let presentNewBottleNameField = "presentNewBottleNameField"
+    
+    /// 새 유리병 개봉 날짜 피커 띄울 때 사용
+    static let presentNewBottleDatePicker = "presentNewBottleDatePicker"
+    
+    static let unwindFromNewBottlePopupToBottleView = "unwindFromNewBottlePopupToBottleView"
 }
 
 extension CATransition {
@@ -672,6 +520,78 @@ extension NewNoteDatePickerViewController {
         
         /// 영역 수가 1개이므로 항상 0으로 고정
         static let defaultComponentIndex = 0
+    }
+}
+
+extension NewBottleNameFieldViewController {
+    
+    /// NewBottleNameFieldViewController에서 사용하는 문자열
+    enum StringLiteral {
         
+        /// 상단 라벨의 문자열
+        static let topLabel = "저금통 이름을 입력해주세요"
+        
+        /// 텍스트필드 플레이스홀더 문자열
+        static let placeholder = "최대 15글자까지 입력 가능합니다"
+        
+        /// 하단 라벨의 문자열
+        static let bottomLabel = "저금통 이름은 나중에 1회 변경할 수 있습니다"
+    }
+    
+    /// NewBottleNameFieldViewController에서 사용하는 색상
+    enum Color {
+        
+        /// 하단 라벨 텍스트 색상
+        static let bottomLabelText: Int = 0x666666
+    }
+    
+    /// NewBottleNameFieldViewController에서 사용하는 폰트 크기
+    enum FontSize {
+        
+        /// 상단 라벨 텍스트 크기
+        static let topLabelText: CGFloat = 17
+        
+        /// 하단 라벨 텍스트 크기
+        static let bottomLabelText: CGFloat = 14
+    }
+    
+    /// NewBottleNameFieldViewController에서 설정하는 layout 상수값
+    enum Metric {
+        
+        /// 상단 라벨 topAnchor
+        static let topLabelTopAnchor: CGFloat = 226
+        
+        /// 텍스트필드 topAnchor
+        static let textFieldTopAnchor: CGFloat = 50
+        
+        /// 하단 라벨 topAnchor
+        static let bottomLabelTopAnchor: CGFloat = 32
+    }
+}
+
+extension NewBottleDatePickerViewController {
+    
+    /// NewBottleDatePickerViewController의 Picker 선택지
+    static let pickerValues = ["일주일", "한달", "3달", "6달", "일년"]
+    
+    /// NewBottleDatePickerViewController에서 사용하는 문자열
+    enum StringLiteral {
+        
+        /// 상단 라벨의 문자열
+        static let topLabel = "저금통을 개봉할 기간을 선택해주세요"
+    }
+    
+    /// NewBottleDatePickerViewController에서 사용하는 폰트 크기
+    enum FontSize {
+        
+        /// 상단 라벨 텍스트 크기
+        static let topLabelText: CGFloat = 17
+    }
+    
+    /// NewBottleDatePickerViewController에서 설정하는 layout 상수값
+    enum Metric {
+        
+        /// 상단 라벨 topAnchor
+        static let topLabelTopAnchor: CGFloat = 226
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dSD-O6-Yej">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
@@ -14,11 +14,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmA-fx-uIw">
-                                <rect key="frame" x="24" y="249" width="327" height="440"/>
+                                <rect key="frame" x="24" y="280.5" width="366" height="492.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dmA-fx-uIw" secondAttribute="height" multiplier="327:440" id="W8J-jy-WPj"/>
                                 </constraints>
@@ -49,7 +49,7 @@
             <objects>
                 <viewController id="zPZ-4s-ZPb" customClass="BottleListViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g3S-Jh-zW0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="cUP-8i-uYm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -67,7 +67,7 @@
                     <tabBarItem key="tabBarItem" title="Home" id="Eeg-1d-ksO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wRZ-jI-V9m">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -106,7 +106,7 @@
                     <tabBarItem key="tabBarItem" title="Bottle List" id="RUG-PV-yjD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PEg-Az-WTy">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -123,7 +123,7 @@
             <objects>
                 <viewController id="IlI-sf-Vas" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pEH-8i-4vx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="NL0-gI-uP8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -141,7 +141,7 @@
                     <tabBarItem key="tabBarItem" title="Settings" id="LtB-vV-jcX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1ha-RM-7e9">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -293,11 +293,11 @@
             <objects>
                 <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="FVx-vN-7Xe" customClass="BottleViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jBg-oD-Piv">
-                        <rect key="frame" x="0.0" y="0.0" width="327" height="440"/>
+                        <rect key="frame" x="0.0" y="0.0" width="366" height="492.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aPw-QS-DfD" customClass="BottleImageView" customModule="Happiggy_bank" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="327" height="440"/>
+                                <rect key="frame" x="0.0" y="0.0" width="366" height="492.5"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="gEH-ha-I0H" appends="YES" id="QLb-IG-GgB"/>
@@ -317,6 +317,7 @@
                     <connections>
                         <outlet property="imageView" destination="aPw-QS-DfD" id="8ju-QE-j4a"/>
                         <segue destination="moi-e1-3hQ" kind="presentation" identifier="presentNewNoteDatePicker" id="71M-g6-wMS"/>
+                        <segue destination="abG-42-vcb" kind="presentation" identifier="presentNewBottleNameField" id="Qcc-qq-Xqy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hG-r2-cSC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -329,8 +330,133 @@
             </objects>
             <point key="canvasLocation" x="47.200000000000003" y="2285.4679802955666"/>
         </scene>
+        <!--New Bottle Name Field View Controller-->
+        <scene sceneID="BI8-5q-YxJ">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="abG-42-vcb" customClass="NewBottleNameFieldViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WlO-Nw-5og">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-light" translatesAutoresizingMaskIntoConstraints="NO" id="Y0g-Of-Hc9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q2G-YG-J6m">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="oYX-cq-wRf">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="prominent"/>
+                            </visualEffectView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TMP-Xq-oob">
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <navigationItem id="Lgm-t3-sGF">
+                                        <barButtonItem key="leftBarButtonItem" title="Dismiss" image="xmark" catalog="system" id="upW-c9-QKq">
+                                            <connections>
+                                                <action selector="cancelButtonDidTap:" destination="abG-42-vcb" id="9KU-pi-JFY"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Next" image="chevron.right" catalog="system" id="N6W-GB-0vx">
+                                            <connections>
+                                                <action selector="nextButtonDidTap:" destination="abG-42-vcb" id="gc6-4g-ndh"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RSm-cn-bbP"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Q2G-YG-J6m" firstAttribute="leading" secondItem="RSm-cn-bbP" secondAttribute="leading" id="2Zt-MD-VYd"/>
+                            <constraint firstItem="Q2G-YG-J6m" firstAttribute="trailing" secondItem="RSm-cn-bbP" secondAttribute="trailing" id="Lz3-QA-aiv"/>
+                            <constraint firstItem="Q2G-YG-J6m" firstAttribute="top" secondItem="WlO-Nw-5og" secondAttribute="top" id="WxD-2r-eUY"/>
+                            <constraint firstItem="Y0g-Of-Hc9" firstAttribute="trailing" secondItem="RSm-cn-bbP" secondAttribute="trailing" id="axK-Kx-glI"/>
+                            <constraint firstItem="Y0g-Of-Hc9" firstAttribute="leading" secondItem="RSm-cn-bbP" secondAttribute="leading" id="p40-si-Zzv"/>
+                            <constraint firstAttribute="bottom" secondItem="Y0g-Of-Hc9" secondAttribute="bottom" id="phW-Vn-2RJ"/>
+                            <constraint firstAttribute="bottom" secondItem="Q2G-YG-J6m" secondAttribute="bottom" id="tfT-CW-Rf2"/>
+                            <constraint firstItem="Y0g-Of-Hc9" firstAttribute="top" secondItem="WlO-Nw-5og" secondAttribute="top" id="vAJ-tS-XXb"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="375" height="812"/>
+                    <connections>
+                        <outlet property="navigationBar" destination="TMP-Xq-oob" id="VIp-dn-27J"/>
+                        <segue destination="Twr-BC-vZ7" kind="presentation" identifier="presentNewBottleDatePicker" id="scL-PP-Gda"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8DE-rs-fK7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1197.5999999999999" y="3009.6059113300494"/>
+        </scene>
+        <!--New Bottle Date Picker View Controller-->
+        <scene sceneID="JKs-7X-Gkc">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="Twr-BC-vZ7" customClass="NewBottleDatePickerViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c3L-CD-aRg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-light" translatesAutoresizingMaskIntoConstraints="NO" id="ZTA-2c-CT6">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cf6-8s-LIU">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aBU-Hc-4Zg">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="prominent"/>
+                            </visualEffectView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VaU-DG-hJr">
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="hGp-fl-a7F">
+                                        <barButtonItem key="leftBarButtonItem" title="Previous" image="chevron.left" catalog="system" id="APE-Ku-0Vd">
+                                            <connections>
+                                                <action selector="backButtonDidTap:" destination="Twr-BC-vZ7" id="dtH-SJ-dIQ"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Save" image="checkmark" catalog="system" id="A6t-Pu-i3C">
+                                            <connections>
+                                                <action selector="saveButtonDidTap:" destination="Twr-BC-vZ7" id="Bnp-OK-6UJ"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3Tj-oo-gq3"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ZTA-2c-CT6" secondAttribute="bottom" id="SM0-Je-jMP"/>
+                            <constraint firstItem="ZTA-2c-CT6" firstAttribute="top" secondItem="c3L-CD-aRg" secondAttribute="top" id="TD5-4c-pmD"/>
+                            <constraint firstAttribute="bottom" secondItem="cf6-8s-LIU" secondAttribute="bottom" id="XIp-71-OvV"/>
+                            <constraint firstItem="cf6-8s-LIU" firstAttribute="top" secondItem="c3L-CD-aRg" secondAttribute="top" id="c4l-k6-aHd"/>
+                            <constraint firstItem="ZTA-2c-CT6" firstAttribute="leading" secondItem="3Tj-oo-gq3" secondAttribute="leading" id="j0k-Ba-7AH"/>
+                            <constraint firstItem="cf6-8s-LIU" firstAttribute="leading" secondItem="3Tj-oo-gq3" secondAttribute="leading" id="mpV-Ls-GSi"/>
+                            <constraint firstItem="cf6-8s-LIU" firstAttribute="trailing" secondItem="3Tj-oo-gq3" secondAttribute="trailing" id="srJ-hz-jfw"/>
+                            <constraint firstItem="ZTA-2c-CT6" firstAttribute="trailing" secondItem="3Tj-oo-gq3" secondAttribute="trailing" id="zD3-wd-cu6"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="oav-0T-kPd"/>
+                    <size key="freeformSize" width="375" height="812"/>
+                    <connections>
+                        <outlet property="navigationBar" destination="VaU-DG-hJr" id="DcT-tm-v6Y"/>
+                        <segue destination="rAE-WY-Wyc" kind="unwind" identifier="unwindFromNewBottlePopupToBottleView" animates="NO" unwindAction="unwindCallDidArriveWithSegue:" id="Gkp-Op-ezN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jnb-AF-gmu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1197.5999999999999" y="3741.8719211822663"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="background-light" width="375" height="812"/>
         <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
