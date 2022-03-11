@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -156,11 +157,22 @@
         <!--New Note Date Picker View Controller-->
         <scene sceneID="b0a-93-uoW">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="moi-e1-3hQ" customClass="NewNoteDatePickerViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="moi-e1-3hQ" customClass="NewNoteDatePickerViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sBx-5w-9Me">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-light" translatesAutoresizingMaskIntoConstraints="NO" id="ecq-uy-9fg">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dd7-XA-V87">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uJY-xw-RUX">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="prominent"/>
+                            </visualEffectView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x5u-uo-squ">
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -179,18 +191,25 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bI2-ak-dCN" customClass="UIDatePickerView">
-                                <rect key="frame" x="27.666666666666657" y="298" width="320" height="216"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bI2-ak-dCN">
+                                <rect key="frame" x="27.5" y="298" width="320" height="216"/>
                                 <connections>
                                     <outlet property="delegate" destination="moi-e1-3hQ" id="awF-j2-ach"/>
                                 </connections>
                             </pickerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Xam-7g-OPV"/>
-                        <color key="backgroundColor" systemColor="systemTealColor"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ecq-uy-9fg" secondAttribute="trailing" id="1Rn-06-dXq"/>
                             <constraint firstItem="bI2-ak-dCN" firstAttribute="centerX" secondItem="sBx-5w-9Me" secondAttribute="centerX" id="7XD-ch-KDR"/>
+                            <constraint firstItem="ecq-uy-9fg" firstAttribute="top" secondItem="sBx-5w-9Me" secondAttribute="top" id="9Io-pv-JfF"/>
+                            <constraint firstAttribute="bottom" secondItem="dd7-XA-V87" secondAttribute="bottom" id="IFg-sm-Mbk"/>
+                            <constraint firstItem="dd7-XA-V87" firstAttribute="leading" secondItem="sBx-5w-9Me" secondAttribute="leading" id="Oi1-0L-u0P"/>
+                            <constraint firstAttribute="bottom" secondItem="ecq-uy-9fg" secondAttribute="bottom" id="Q7r-AA-HOx"/>
+                            <constraint firstAttribute="trailing" secondItem="dd7-XA-V87" secondAttribute="trailing" id="QF0-n5-q4L"/>
+                            <constraint firstItem="dd7-XA-V87" firstAttribute="top" secondItem="sBx-5w-9Me" secondAttribute="top" id="RCE-RN-zYt"/>
                             <constraint firstItem="bI2-ak-dCN" firstAttribute="centerY" secondItem="sBx-5w-9Me" secondAttribute="centerY" id="dvP-OM-mIk"/>
+                            <constraint firstItem="ecq-uy-9fg" firstAttribute="leading" secondItem="sBx-5w-9Me" secondAttribute="leading" id="nGs-xg-N4u"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KqF-zH-uxO"/>
@@ -203,6 +222,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4WR-mG-PvL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="b2J-do-ybm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1151" y="3010"/>
         </scene>
@@ -214,6 +234,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-light" translatesAutoresizingMaskIntoConstraints="NO" id="zdk-OZ-ARX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5n5-oc-L2U">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qXv-8C-5wX">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="prominent"/>
+                            </visualEffectView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rms-YT-wWN">
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -235,6 +266,16 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bn6-rM-p0H"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zdk-OZ-ARX" firstAttribute="top" secondItem="1PQ-Bn-66w" secondAttribute="top" id="LCO-5U-VpZ"/>
+                            <constraint firstItem="5n5-oc-L2U" firstAttribute="top" secondItem="1PQ-Bn-66w" secondAttribute="top" id="LQw-hr-mIa"/>
+                            <constraint firstAttribute="trailing" secondItem="zdk-OZ-ARX" secondAttribute="trailing" id="SOY-Fb-5qo"/>
+                            <constraint firstItem="5n5-oc-L2U" firstAttribute="leading" secondItem="1PQ-Bn-66w" secondAttribute="leading" id="ZHy-YV-ECA"/>
+                            <constraint firstAttribute="bottom" secondItem="5n5-oc-L2U" secondAttribute="bottom" id="ana-Oz-l1Q"/>
+                            <constraint firstAttribute="trailing" secondItem="5n5-oc-L2U" secondAttribute="trailing" id="j7v-eL-na2"/>
+                            <constraint firstAttribute="bottom" secondItem="zdk-OZ-ARX" secondAttribute="bottom" id="ptb-WJ-9K8"/>
+                            <constraint firstItem="zdk-OZ-ARX" firstAttribute="leading" secondItem="1PQ-Bn-66w" secondAttribute="leading" id="yQ9-4g-N5g"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OdQ-rH-b8B"/>
                     <size key="freeformSize" width="375" height="812"/>
@@ -245,7 +286,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbT-jH-6dB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1151" y="4482"/>
+            <point key="canvasLocation" x="-1151.449275362319" y="4481.9196428571422"/>
         </scene>
         <!--New Note Color Picker View Controller-->
         <scene sceneID="bf8-Au-5CK">
@@ -255,6 +296,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-light" translatesAutoresizingMaskIntoConstraints="NO" id="8FB-Yv-nda">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FyN-dG-dSj">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xP2-eU-RBs">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="prominent"/>
+                            </visualEffectView>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BKz-1X-hoY">
+                                <rect key="frame" x="40" y="379.5" width="295" height="53"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XNy-hM-5pb" customClass="ColorButton" customModule="Happiggy_bank" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="52.5" height="53"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="XNy-hM-5pb" secondAttribute="height" multiplier="1:1" id="XMw-lx-br2"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="colorButtonDidTap:" destination="g5l-hv-0de" eventType="valueChanged" id="7Le-IR-qCr"/>
+                                        </connections>
+                                    </view>
+                                    <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O0C-ft-6eI" customClass="ColorButton" customModule="Happiggy_bank" customModuleProvider="target">
+                                        <rect key="frame" x="60.5" y="0.0" width="52.5" height="53"/>
+                                        <connections>
+                                            <action selector="colorButtonDidTap:" destination="g5l-hv-0de" eventType="valueChanged" id="vCa-yz-mjI"/>
+                                        </connections>
+                                    </view>
+                                    <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3bT-Qz-LIr" customClass="ColorButton" customModule="Happiggy_bank" customModuleProvider="target">
+                                        <rect key="frame" x="121" y="0.0" width="53" height="53"/>
+                                        <connections>
+                                            <action selector="colorButtonDidTap:" destination="g5l-hv-0de" eventType="valueChanged" id="6zJ-bd-bEx"/>
+                                        </connections>
+                                    </view>
+                                    <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PXQ-aW-7XM" customClass="ColorButton" customModule="Happiggy_bank" customModuleProvider="target">
+                                        <rect key="frame" x="182" y="0.0" width="52.5" height="53"/>
+                                        <connections>
+                                            <action selector="colorButtonDidTap:" destination="g5l-hv-0de" eventType="valueChanged" id="zVh-RT-ZnC"/>
+                                        </connections>
+                                    </view>
+                                    <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LzH-V8-aJh" customClass="ColorButton" customModule="Happiggy_bank" customModuleProvider="target">
+                                        <rect key="frame" x="242.5" y="0.0" width="52.5" height="53"/>
+                                        <connections>
+                                            <action selector="colorButtonDidTap:" destination="g5l-hv-0de" eventType="valueChanged" id="waj-LV-zTv"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="O0C-ft-6eI" firstAttribute="width" secondItem="XNy-hM-5pb" secondAttribute="width" id="KrC-mI-wgq"/>
+                                    <constraint firstItem="LzH-V8-aJh" firstAttribute="width" secondItem="XNy-hM-5pb" secondAttribute="width" id="RzP-Ba-rBt"/>
+                                    <constraint firstItem="PXQ-aW-7XM" firstAttribute="width" secondItem="XNy-hM-5pb" secondAttribute="width" id="SNf-HG-O5H"/>
+                                    <constraint firstItem="3bT-Qz-LIr" firstAttribute="width" secondItem="XNy-hM-5pb" secondAttribute="width" id="hlR-JZ-LlV"/>
+                                    <constraint firstItem="XNy-hM-5pb" firstAttribute="height" secondItem="BKz-1X-hoY" secondAttribute="height" id="o4b-Ty-c2Z"/>
+                                </constraints>
+                            </stackView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MqT-Ah-3Uq">
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -275,18 +372,37 @@
                             </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0NK-Mm-KBY"/>
-                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="8FB-Yv-nda" secondAttribute="bottom" id="1fz-6y-srW"/>
+                            <constraint firstItem="BKz-1X-hoY" firstAttribute="leading" secondItem="t95-o1-XLO" secondAttribute="leadingMargin" constant="24" id="68I-Pw-O3M"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BKz-1X-hoY" secondAttribute="trailing" constant="24" id="B00-RW-oW7"/>
+                            <constraint firstAttribute="bottom" secondItem="FyN-dG-dSj" secondAttribute="bottom" id="JVW-Nf-eLX"/>
+                            <constraint firstAttribute="trailing" secondItem="8FB-Yv-nda" secondAttribute="trailing" id="Q47-I3-k4l"/>
+                            <constraint firstItem="8FB-Yv-nda" firstAttribute="leading" secondItem="t95-o1-XLO" secondAttribute="leading" id="Xjv-R1-yEA"/>
+                            <constraint firstItem="FyN-dG-dSj" firstAttribute="top" secondItem="t95-o1-XLO" secondAttribute="top" id="YfN-AB-892"/>
+                            <constraint firstItem="FyN-dG-dSj" firstAttribute="leading" secondItem="t95-o1-XLO" secondAttribute="leading" id="dex-L3-uV1"/>
+                            <constraint firstItem="BKz-1X-hoY" firstAttribute="centerY" secondItem="t95-o1-XLO" secondAttribute="centerY" id="gtY-Bc-XA0"/>
+                            <constraint firstItem="BKz-1X-hoY" firstAttribute="centerX" secondItem="t95-o1-XLO" secondAttribute="centerX" id="hzI-gP-J3g"/>
+                            <constraint firstItem="8FB-Yv-nda" firstAttribute="top" secondItem="t95-o1-XLO" secondAttribute="top" id="o4I-A9-Npz"/>
+                            <constraint firstAttribute="trailing" secondItem="FyN-dG-dSj" secondAttribute="trailing" id="u2G-J9-2J5"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7jK-EQ-u4a"/>
                     <size key="freeformSize" width="375" height="812"/>
                     <connections>
                         <outlet property="navigationBar" destination="MqT-Ah-3Uq" id="yBg-1F-rGN"/>
+                        <outletCollection property="colorButtons" destination="XNy-hM-5pb" collectionClass="NSMutableArray" id="XzE-wt-7dn"/>
+                        <outletCollection property="colorButtons" destination="O0C-ft-6eI" collectionClass="NSMutableArray" id="HoT-11-dra"/>
+                        <outletCollection property="colorButtons" destination="3bT-Qz-LIr" collectionClass="NSMutableArray" id="dpp-pm-YWq"/>
+                        <outletCollection property="colorButtons" destination="PXQ-aW-7XM" collectionClass="NSMutableArray" id="1NZ-Su-1Qq"/>
+                        <outletCollection property="colorButtons" destination="LzH-V8-aJh" collectionClass="NSMutableArray" id="G57-mR-WPL"/>
                         <segue destination="FuI-qc-1fd" kind="presentation" identifier="presentNewNoteTextView" id="JPj-QX-xRf"/>
+                        <segue destination="b2J-do-ybm" kind="unwind" identifier="unwindToNewNoteDatePicker" unwindAction="unwindToNewNoteDatePickerCallDidArriveWithSegue:" id="kNO-Ue-1nh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MZX-4l-0Ef" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1151" y="3742"/>
+            <point key="canvasLocation" x="-1151.449275362319" y="3741.9642857142853"/>
         </scene>
         <!--Bottle View Controller-->
         <scene sceneID="p7l-16-uR7">
@@ -447,7 +563,6 @@
                     <size key="freeformSize" width="375" height="812"/>
                     <connections>
                         <outlet property="navigationBar" destination="VaU-DG-hJr" id="DcT-tm-v6Y"/>
-                        <segue destination="rAE-WY-Wyc" kind="unwind" identifier="unwindFromNewBottlePopupToBottleView" animates="NO" unwindAction="unwindCallDidArriveWithSegue:" id="Gkp-Op-ezN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jnb-AF-gmu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -466,12 +581,6 @@
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

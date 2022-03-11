@@ -27,11 +27,11 @@ class NewNoteDatePickerViewController: UIViewController {
     /// 날짜 피커에서 필요한 형태로 데이터를 변환해주는 뷰모델
     var viewModel: NewNoteDatePickerViewModel!
     
-    /// 피커에서 선택한 날짜
-    private lazy var selectedDate: Date = {
-        self.viewModel.mostRecentEmptyDate
-    }()
-    
+    /// 새로 추가할 쪽지의 날짜, 색깔, 저금통 정보
+    private lazy var newNote = NewNote(
+        date: self.viewModel.mostRecentEmptyDate,
+        bottle: self.viewModel.bottle
+    )
     
     // MARK: - Life Cycle
     
@@ -63,6 +63,16 @@ class NewNoteDatePickerViewController: UIViewController {
         )
     }
     
+    /// 현재 뷰 컨트롤러로 unwind 하라는 호출을 받았을 때 실행되는 액션메서드
+    @IBAction func unwindToNewNoteDatePickerCallDidArrive(segue: UIStoryboardSegue) {
+        if segue.identifier == SegueIdentifier.unwindToNewNoteDatePicker {
+            guard let colorPickerViewController = segue.source as? NewNoteColorPickerViewController
+            else { return }
+            
+            self.newNote = colorPickerViewController.newNote
+        }
+    }
+    
     
     // MARK: - Functions
     
@@ -78,11 +88,10 @@ class NewNoteDatePickerViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.presentNewNoteColorPicker {
             
-//            guard let viewController = segue.destination as? NewNoteColorPickerViewController
-//            else { return }
+            guard let colorPickerviewController = segue.destination as? NewNoteColorPickerViewController
+            else { return }
             
-            // TODO: 뷰모델 주입(bottle 전달), selectedDate 전달
-            print("\(self.viewModel.bottle.title) \(self.selectedDate.customFormatted(type: .letters))")
+            colorPickerviewController.newNote = self.newNote
         }
     }
 }
@@ -117,7 +126,7 @@ extension NewNoteDatePickerViewController: UIPickerViewDelegate {
         
         rowView.dateLabel.text = source.date.customFormatted(type: .dots)
         if let color = source.color {
-            rowView.colorImageView.backgroundColor = UIColor(named: "note"+color)
+            rowView.colorImageView.backgroundColor = UIColor.note(color: color)
         }
         
         return rowView
@@ -137,7 +146,7 @@ extension NewNoteDatePickerViewController: UIPickerViewDelegate {
         }
         
         self.nextButton.isEnabled = true
-        self.selectedDate = source.date
+        self.newNote.date = source.date
     }
     
     /// 0보다 작은 인덱스가 들어오면 0, 최대 개수보다 큰 값이 들어오면 마지막 인덱스로 바꿔주는 메서드
