@@ -240,38 +240,19 @@ extension NewNotePopupTopBar {
     }
 }
 
-extension ColorPalette {
-    
-    /// Color Palette 의 레이아웃에 사용하는 상수들
-    enum Metric {
-        
-        /// 버튼 크기
-        static let buttonSize = CGSize(
-            width: DefaultButton.Metric.buttonWidth,
-            height: DefaultButton.Metric.buttonHeight
-        )
-        
-        /// 하이라이트 뷰 크기
-        static let highlightViewSize = CGSize(width: buttonSize.width, height: buttonSize.height)
-        
-        /// 하이라이트 뷰 corner radius
-        static let highlightViewCornerRadius: CGFloat = ColorButton.Metric.cornerRadius
-        
-        /// 하이라이트 뷰 테두리 선 두께
-        static let highlightBorderWidth: CGFloat = 2
-    }
-}
-
 extension ColorButton {
     
-    /// 컬러 버튼의 레이아웃에 사용하는 상수값들
+    /// 컬러 버튼의 상수값들
     enum Metric {
-        
-        /// 버튼의 corner radius
-        static let cornerRadius: CGFloat = 8
         
         /// 버튼 테두리 선 두께
         static let borderWidth: CGFloat = 1
+        
+        /// 컬러 버튼 상하좌우 패딩 
+        static let colorButtonInset: CGFloat = 2
+        
+        /// 애니메이션 지속 시간: 0.2
+        static let animationDuration = CATransition.transitionDuration
     }
 }
 
@@ -502,11 +483,14 @@ enum SegueIdentifier {
     static let presentNewBottleDatePicker = "presentNewBottleDatePicker"
     
     static let unwindFromNewBottlePopupToBottleView = "unwindFromNewBottlePopupToBottleView"
+    
+    /// 새 쪽지 색깔 피커에서 날짜 피커로 돌아갈 때 사용
+    static let unwindToNewNoteDatePicker = "unwindToNewNoteDatePicker"
 }
 
 extension CATransition {
     
-    /// 애니메이션 지속 시간
+    /// 애니메이션 지속 시간: 0.2
     static let transitionDuration: CFTimeInterval = 0.2
 }
 
@@ -594,4 +578,14 @@ extension NewBottleDatePickerViewController {
         /// 상단 라벨 topAnchor
         static let topLabelTopAnchor: CGFloat = 226
     }
+}
+
+/// 애셋에 추가한 색깔들의 이름을 쉽게 불러오기 위한 enum
+enum AssetColor: String {
+    
+    /// 쪽지 하이라이트 색상 (새 쪽지 컬러피커에서 사용)
+    case noteHighlight
+    
+    /// 쪽지 색상
+    case note
 }

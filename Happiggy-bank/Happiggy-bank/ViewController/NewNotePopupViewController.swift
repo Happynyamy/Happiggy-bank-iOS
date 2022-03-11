@@ -41,17 +41,12 @@ final class NewNotePopupViewController: UIViewController {
     /// note 내용을 작성하는 textView
     private lazy var noteTextView = NoteTextView().then {
         $0.frame = CGRect(origin: .zero, size: Metric.noteTextViewSize)
-        $0.backgroundColor = noteColors.first!
+        $0.backgroundColor = .white
         $0.delegate = self
     }
     
     /// note 의 선택 가능한 색상들
-    private let noteColors = [UIColor.noteYellow, .noteGreen, .notePurple, .notePink, .noteWhite]
-    
-    /// note 의 색상을 선택할 수 있는 색깔 팔레트
-    private lazy var colorPalette = ColorPalette(colors: noteColors).then {
-        $0.frame = CGRect(origin: .zero, size: Metric.paletteSize)
-    }
+    private let noteColors = [UIColor.white]
     
     
     // MARK: - Init
@@ -138,11 +133,6 @@ final class NewNotePopupViewController: UIViewController {
     /// 컬러 팔레트에서 선택 색상이 변경되었을 때 호출되는 메서드
     /// 변경된 색상에 맞게 note text view 의 색상 변경
     /// 추후에 이미지 에셋 받으면 변경할 예정
-    @objc private func colorPaletteSelctionDidChange(_ sender: ColorPalette) {
-        print("change note writing view background color to \(sender.selectedColor)")
-        self.noteTextView.backgroundColor = sender.selectedColor
-    }
-    
     
     // MARK: - Functions
     
@@ -152,7 +142,6 @@ final class NewNotePopupViewController: UIViewController {
         self.configureViewHierarchy()
         self.addTapGestureRecoginzers()
         self.configureTopBar()
-        self.configureColorPalette()
     }
     
     /// 뷰 체계 관리
@@ -164,7 +153,6 @@ final class NewNotePopupViewController: UIViewController {
         popupView.addArrangedSubview(colorPaletteContainer)
 
         topBarContainer.addSubview(topBar)
-        colorPaletteContainer.addSubview(colorPalette)
     }
     
     // Topbar 관련 설정 및 target-action 추가
@@ -183,15 +171,6 @@ final class NewNotePopupViewController: UIViewController {
             for: .touchUpInside
         )
     }
-    
-    // color palette 관련 설정 및 target-action 추가
-    private func configureColorPalette() {
-        colorPalette.addTarget(
-            self,
-            action: #selector(colorPaletteSelctionDidChange(_:)),
-            for: .valueChanged
-        )
-    }
 
     /// 뷰들의 오토레이아웃 설정
     private func congifureConstraints() {
@@ -200,7 +179,6 @@ final class NewNotePopupViewController: UIViewController {
         configureTopBarConstraints()
         configureNoteTextViewConstraints()
         configureColorPaletteContainerConstraints()
-        configureColorPaletteConstraints()
     }
     
     /// 팝업 뷰의 오토레이아웃 설정
@@ -266,17 +244,6 @@ final class NewNotePopupViewController: UIViewController {
         ])
     }
             
-    /// palette view 의 오토레이아웃 설정
-    private func configureColorPaletteConstraints() {
-        colorPalette.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            colorPalette.widthAnchor.constraint(equalToConstant: Metric.paletteSize.width),
-            colorPalette.heightAnchor.constraint(equalToConstant: Metric.paletteSize.height),
-            colorPalette.centerXAnchor.constraint(equalTo: colorPaletteContainer.centerXAnchor),
-            colorPalette.centerYAnchor.constraint(equalTo: colorPaletteContainer.centerYAnchor)
-        ])
-    }
-    
     /// 화면을 탭하면 현재 상태, 터치한 부분에 따라 필요한 반응을 하도록 tap gesture recognizer 들을 추가
     private func addTapGestureRecoginzers() {
         self.view.addGestureRecognizer(tapGestureRecognizer(

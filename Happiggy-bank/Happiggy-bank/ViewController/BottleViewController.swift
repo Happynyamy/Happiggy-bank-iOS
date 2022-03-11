@@ -66,7 +66,7 @@ final class BottleViewController: UIViewController {
     }
     
     /// 현재 뷰 컨트롤러로 unwind 하라는 호출을 받았을 때 실행되는 액션메서드
-    @IBAction func unwindCallDidArrive(segue: UIStoryboardSegue) {}
+    @IBAction func unwindCallDidArrive(segue: UIStoryboardSegue) { }
     
     
     // MARK: - @objc
