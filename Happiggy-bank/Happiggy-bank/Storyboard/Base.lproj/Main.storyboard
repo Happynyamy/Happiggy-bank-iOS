@@ -563,6 +563,7 @@
                     <size key="freeformSize" width="375" height="812"/>
                     <connections>
                         <outlet property="navigationBar" destination="VaU-DG-hJr" id="DcT-tm-v6Y"/>
+                        <segue destination="rAE-WY-Wyc" kind="unwind" identifier="unwindFromNewBottlePopupToBottleView" unwindAction="unwindCallDidArriveWithSegue:" id="voH-uq-YvW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jnb-AF-gmu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
