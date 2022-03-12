@@ -117,13 +117,16 @@ final class BottleViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.presentNewNoteDatePicker {
-            guard let datePickerViewController = segue.destination as? NewNoteDatePickerViewController,
+            guard let dateViewController = segue.destination as? NewNoteDatePickerViewController,
                   let bottle = self.viewModel.bottle
             else { return }
             
             let viewModel = NewNoteDatePickerViewModel()
             viewModel.bottle = bottle
-            datePickerViewController.viewModel = viewModel
+            dateViewController.viewModel = viewModel
+
+            let newNote =  NewNote(date: viewModel.mostRecentEmptyDate, bottle: viewModel.bottle)
+            dateViewController.newNote = newNote
         }
     }
 }

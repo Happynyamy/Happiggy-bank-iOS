@@ -177,7 +177,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="날짜 선택" id="Dya-aA-mUT">
+                                    <navigationItem id="Dya-aA-mUT">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" image="xmark" catalog="system" id="Phw-2k-dd2">
                                             <connections>
                                                 <action selector="cancelButtonDidTap:" destination="moi-e1-3hQ" id="u3a-bF-N2P"/>
@@ -185,7 +185,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Next" image="chevron.right" catalog="system" id="gJA-eJ-60b">
                                             <connections>
-                                                <action selector="nextButtonDidTap:" destination="moi-e1-3hQ" id="349-pU-kF0"/>
+                                                <action selector="rightButtonDidTap:" destination="moi-e1-3hQ" id="iBf-dW-9PK"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -217,8 +217,9 @@
                     <connections>
                         <outlet property="datePickerView" destination="bI2-ak-dCN" id="nAo-sX-4gj"/>
                         <outlet property="navigationBar" destination="x5u-uo-squ" id="TZk-W8-eWp"/>
-                        <outlet property="nextButton" destination="gJA-eJ-60b" id="b3c-Ya-Azk"/>
+                        <outlet property="rightButton" destination="gJA-eJ-60b" id="7KR-sK-CZp"/>
                         <segue destination="g5l-hv-0de" kind="presentation" identifier="presentNewNoteColorPicker" id="MBC-MA-0pk"/>
+                        <segue destination="9EN-Ff-rq1" kind="unwind" identifier="unwindFromNoteDatePickerToTextView" unwindAction="unwindCallToNoteTexViewDidArriveWithSegue:" id="Ovp-ZJ-8aW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4WR-mG-PvL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -237,25 +238,24 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-light" translatesAutoresizingMaskIntoConstraints="NO" id="zdk-OZ-ARX">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5n5-oc-L2U">
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zyJ-fc-VeQ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qXv-8C-5wX">
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="AQV-hZ-GYn">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="prominent"/>
                             </visualEffectView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rms-YT-wWN">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rms-YT-wWN">
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="쪽지 작성" id="rjR-Ha-zae">
+                                    <navigationItem id="rjR-Ha-zae">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" image="xmark" catalog="system" id="zKb-tM-XLc">
                                             <connections>
                                                 <action selector="cancelButtonDidTap:" destination="FuI-qc-1fd" id="KZ1-Lf-r9d"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Save" image="checkmark" catalog="system" id="HRF-q1-cdw">
+                                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Save" image="checkmark" catalog="system" id="HRF-q1-cdw">
                                             <connections>
                                                 <action selector="saveButtonDidTap:" destination="FuI-qc-1fd" id="syQ-nR-mdU"/>
                                             </connections>
@@ -263,30 +263,114 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GeA-rS-UHc">
+                                <rect key="frame" x="0.0" y="88" width="375" height="400"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="8gy-me-kK7"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fvK-sf-BF4">
+                                <rect key="frame" x="24" y="168" width="327" height="240"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="FuI-qc-1fd" id="t1C-fw-N6e"/>
+                                </connections>
+                            </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Qg8-yI-fTV" userLabel="DateStack">
+                                <rect key="frame" x="24" y="112" width="37.5" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FkO-oW-q1n" userLabel="YearLabel">
+                                        <rect key="frame" x="0.0" y="0.0" width="37.5" height="18"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pgg-tQ-Rgj" userLabel="MonthAndDayLabel">
+                                        <rect key="frame" x="0.0" y="22" width="37.5" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="ehJ-R0-kWf" appends="YES" id="rgU-kY-kzn"/>
+                                </connections>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQ3-jl-6Wm" userLabel="ColorButton" customClass="ColorButton" customModule="Happiggy_bank" customModuleProvider="target">
+                                <rect key="frame" x="24" y="432" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="6fW-ne-2bf"/>
+                                    <constraint firstAttribute="height" constant="32" id="eig-xC-7Gx"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="colorButtonDidTap:" destination="FuI-qc-1fd" eventType="valueChanged" id="7fe-td-WZi"/>
+                                </connections>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HX4-ny-KZ7" userLabel="LetterCountLabel">
+                                <rect key="frame" x="307.5" y="438" width="43.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bn6-rM-p0H"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="zyJ-fc-VeQ" firstAttribute="leading" secondItem="1PQ-Bn-66w" secondAttribute="leading" id="4d0-P3-e47"/>
+                            <constraint firstItem="zyJ-fc-VeQ" firstAttribute="top" secondItem="1PQ-Bn-66w" secondAttribute="top" id="AL2-ob-Bi3"/>
+                            <constraint firstItem="fvK-sf-BF4" firstAttribute="leading" secondItem="Qg8-yI-fTV" secondAttribute="leading" id="FRT-hw-tFd"/>
+                            <constraint firstItem="Rms-YT-wWN" firstAttribute="top" secondItem="1PQ-Bn-66w" secondAttribute="top" constant="44" id="Gyw-ql-9vl"/>
+                            <constraint firstItem="Rms-YT-wWN" firstAttribute="leading" secondItem="bn6-rM-p0H" secondAttribute="leading" id="LBS-sy-BL8"/>
                             <constraint firstItem="zdk-OZ-ARX" firstAttribute="top" secondItem="1PQ-Bn-66w" secondAttribute="top" id="LCO-5U-VpZ"/>
-                            <constraint firstItem="5n5-oc-L2U" firstAttribute="top" secondItem="1PQ-Bn-66w" secondAttribute="top" id="LQw-hr-mIa"/>
                             <constraint firstAttribute="trailing" secondItem="zdk-OZ-ARX" secondAttribute="trailing" id="SOY-Fb-5qo"/>
-                            <constraint firstItem="5n5-oc-L2U" firstAttribute="leading" secondItem="1PQ-Bn-66w" secondAttribute="leading" id="ZHy-YV-ECA"/>
-                            <constraint firstAttribute="bottom" secondItem="5n5-oc-L2U" secondAttribute="bottom" id="ana-Oz-l1Q"/>
-                            <constraint firstAttribute="trailing" secondItem="5n5-oc-L2U" secondAttribute="trailing" id="j7v-eL-na2"/>
+                            <constraint firstItem="HX4-ny-KZ7" firstAttribute="centerY" secondItem="aQ3-jl-6Wm" secondAttribute="centerY" id="Sfu-bF-AIC"/>
+                            <constraint firstItem="GeA-rS-UHc" firstAttribute="trailing" secondItem="bn6-rM-p0H" secondAttribute="trailing" id="blO-Yz-toF"/>
+                            <constraint firstItem="fvK-sf-BF4" firstAttribute="top" secondItem="Qg8-yI-fTV" secondAttribute="bottom" constant="16" id="buI-x5-kRu"/>
+                            <constraint firstItem="HX4-ny-KZ7" firstAttribute="leading" relation="lessThanOrEqual" secondItem="aQ3-jl-6Wm" secondAttribute="trailing" priority="250" constant="251.5" id="fSf-Z0-wdc"/>
+                            <constraint firstItem="aQ3-jl-6Wm" firstAttribute="top" secondItem="fvK-sf-BF4" secondAttribute="bottom" constant="24" id="g0o-ZS-UsS"/>
+                            <constraint firstItem="aQ3-jl-6Wm" firstAttribute="leading" secondItem="Qg8-yI-fTV" secondAttribute="leading" id="hFf-vR-uap"/>
+                            <constraint firstItem="GeA-rS-UHc" firstAttribute="top" secondItem="Rms-YT-wWN" secondAttribute="bottom" id="icx-zT-zme"/>
+                            <constraint firstItem="Qg8-yI-fTV" firstAttribute="leading" secondItem="GeA-rS-UHc" secondAttribute="leading" constant="24" id="jBj-0H-fJK"/>
+                            <constraint firstItem="aQ3-jl-6Wm" firstAttribute="bottom" secondItem="GeA-rS-UHc" secondAttribute="bottom" constant="-24" id="kro-9y-s7q"/>
+                            <constraint firstAttribute="trailing" secondItem="zyJ-fc-VeQ" secondAttribute="trailing" id="mWo-a2-i0l"/>
                             <constraint firstAttribute="bottom" secondItem="zdk-OZ-ARX" secondAttribute="bottom" id="ptb-WJ-9K8"/>
+                            <constraint firstAttribute="bottom" secondItem="zyJ-fc-VeQ" secondAttribute="bottom" id="sLz-yu-ixk"/>
+                            <constraint firstItem="HX4-ny-KZ7" firstAttribute="trailing" secondItem="fvK-sf-BF4" secondAttribute="trailing" id="sfh-vj-k42"/>
+                            <constraint firstItem="Qg8-yI-fTV" firstAttribute="top" secondItem="Rms-YT-wWN" secondAttribute="bottom" constant="24" id="u1Q-xA-r8X"/>
                             <constraint firstItem="zdk-OZ-ARX" firstAttribute="leading" secondItem="1PQ-Bn-66w" secondAttribute="leading" id="yQ9-4g-N5g"/>
+                            <constraint firstItem="fvK-sf-BF4" firstAttribute="trailing" secondItem="GeA-rS-UHc" secondAttribute="trailing" constant="-24" id="yfR-Cy-RSM"/>
+                            <constraint firstItem="GeA-rS-UHc" firstAttribute="leading" secondItem="bn6-rM-p0H" secondAttribute="leading" id="zHW-UQ-8kk"/>
+                            <constraint firstItem="Rms-YT-wWN" firstAttribute="trailing" secondItem="bn6-rM-p0H" secondAttribute="trailing" id="zQB-22-wf2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OdQ-rH-b8B"/>
                     <size key="freeformSize" width="375" height="812"/>
                     <connections>
+                        <outlet property="colorButton" destination="aQ3-jl-6Wm" id="raw-nb-RiP"/>
+                        <outlet property="imageView" destination="GeA-rS-UHc" id="alk-uD-7oL"/>
+                        <outlet property="imageViewHeightConstraint" destination="8gy-me-kK7" id="XfX-ew-NHd"/>
+                        <outlet property="letterCountLabel" destination="HX4-ny-KZ7" id="QER-9Z-2kQ"/>
+                        <outlet property="monthAndDayLabel" destination="Pgg-tQ-Rgj" id="mq0-dy-vpm"/>
                         <outlet property="navigationBar" destination="Rms-YT-wWN" id="i1C-it-zIw"/>
+                        <outlet property="saveButton" destination="HRF-q1-cdw" id="hMf-gh-cGy"/>
+                        <outlet property="textView" destination="fvK-sf-BF4" id="dpT-J6-CUB"/>
+                        <outlet property="yearLabel" destination="FkO-oW-q1n" id="aGW-vS-I1J"/>
                         <segue destination="rAE-WY-Wyc" kind="unwind" identifier="unwindToBotteView" animates="NO" unwindAction="unwindCallDidArriveWithSegue:" id="S89-mV-zbI"/>
+                        <segue destination="moi-e1-3hQ" kind="presentation" identifier="presentDatePickerFromNoteTextView" id="7wk-af-F5w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbT-jH-6dB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="9EN-Ff-rq1" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="ehJ-R0-kWf">
+                    <connections>
+                        <action selector="dateLabelsDidTap:" destination="FuI-qc-1fd" id="JLb-L6-4xJ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1151.449275362319" y="4481.9196428571422"/>
+            <point key="canvasLocation" x="-1151.449275362319" y="4481.25"/>
         </scene>
         <!--New Note Color Picker View Controller-->
         <scene sceneID="bf8-Au-5CK">
@@ -356,7 +440,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="색깔 선택" id="DM1-Z5-JBN">
+                                    <navigationItem id="DM1-Z5-JBN">
                                         <barButtonItem key="leftBarButtonItem" title="Back" image="chevron.left" catalog="system" id="CIr-tB-YaV">
                                             <connections>
                                                 <action selector="backButtonDidTap:" destination="g5l-hv-0de" id="pas-6F-NnN"/>
@@ -571,12 +655,18 @@
             <point key="canvasLocation" x="1197.5999999999999" y="3741.8719211822663"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="7wk-af-F5w"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="background-light" width="375" height="812"/>
         <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

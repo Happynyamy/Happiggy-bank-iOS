@@ -51,6 +51,9 @@ class NewNoteColorPickerViewController: UIViewController {
     
     /// 선택한 색깔이 바뀌었을 때 호출되는 액션 메서드 : 선택에 따라 UI 업데이트 및 선택 색깔 기록
     @IBAction func colorButtonDidTap(_ sender: ColorButton) {
+        guard sender.color != self.newNote.color
+        else { return }
+        
         self.colorButtons.forEach { $0.updateState(isSelected: $0.color == sender.color)}
         self.newNote.color = sender.color
     }
@@ -74,14 +77,16 @@ class NewNoteColorPickerViewController: UIViewController {
         }
     }
     
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == SegueIdentifier.presentNewNoteTextView {
+            
+            guard let textViewController = segue.destination as? NewNoteTextViewController
+            else { return }
+            
+            textViewController.newNote = self.newNote
+        }
     }
-    */
-
 }

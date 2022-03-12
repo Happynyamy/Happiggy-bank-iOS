@@ -20,16 +20,16 @@ enum NoteColor: String, CaseIterable {
     /// 보라 쪽지
     case purple
 
-    /// 노랑 쪽지
-    case yellow
-
     /// 연두 쪽지
     case green
+
+    /// 노랑 쪽지
+    case yellow
     
     /// 기본 쪽지 색깔
     static let `default` = white
     
-    /// 이미지 애셋은 현재 "noteYellow" 와 같은 형태라 rawValue 의 첫 글자를 대문자로 바꿔주기 위함
+    /// 이미지 에셋은 현재 "noteYellow" 와 같은 형태라 rawValue 의 첫 글자를 대문자로 바꿔주기 위함
     var capitalizedString: String {
         self.rawValue.capitalized
     }
