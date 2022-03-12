@@ -8,7 +8,7 @@
 import Foundation
 
 /// 새 쪽지를 추가할 때 사용하는 모델
-struct NewNote {
+struct NewNote: Equatable {
     
     /// 작성 날짜
     var date: Date

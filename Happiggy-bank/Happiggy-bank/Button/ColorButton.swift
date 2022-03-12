@@ -23,12 +23,7 @@ final class ColorButton: UIControl {
     
     /// 버튼의 색깔
     var color: NoteColor!
-    
-    /// 이미 선택된 상태인지 나타냄
-    private var isAlreadySelected: Bool {
-        self.highlightView.backgroundColor != .clear
-    }
-    
+
     
     // MARK: - Init
     
@@ -49,9 +44,6 @@ final class ColorButton: UIControl {
     
     /// 버튼을 눌렀을 때 호출되는 메서드 : 자신이 선택되었음을 전달
     @IBAction func buttonDidTap(_ sender: UIButton) {
-        guard !self.isAlreadySelected
-        else { return }
-
         self.sendActions(for: .valueChanged)
     }
     

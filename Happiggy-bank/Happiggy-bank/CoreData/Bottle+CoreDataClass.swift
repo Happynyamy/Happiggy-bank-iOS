@@ -125,13 +125,12 @@ extension Bottle {
         
         let bottle = Bottle(title: "행복냠냠이", startDate: startDate, endDate: endDate)
         
-        _ = Note(date: startDate, color: NoteColor.green, content: "시작!", bottle: bottle)
-        _ = Note(date: nthDayFromToday(-9), color: NoteColor.pink, content: "둘째!", bottle: bottle)
-        _ = Note(date: nthDayFromToday(-3), color: NoteColor.white, content: "셋째!", bottle: bottle)
-        _ = Note(date: nthDayFromToday(-8), color: NoteColor.purple, content: "넷째!", bottle: bottle)
-        _ = Note(date: nthDayFromToday(-1), color: NoteColor.yellow, content: "다섯째!", bottle: bottle)
-        _ = Note(date: nthDayFromToday(0), color: NoteColor.yellow, content: "다섯째!", bottle: bottle)
-
+        Note.create(date: startDate, color: NoteColor.green, content: "시작!", bottle: bottle)
+        Note.create(date: nthDayFromToday(-9), color: NoteColor.pink, content: "둘째!", bottle: bottle)
+        Note.create(date: nthDayFromToday(-3), color: NoteColor.white, content: "셋째!", bottle: bottle)
+        Note.create(date: nthDayFromToday(-8), color: NoteColor.purple, content: "넷째!", bottle: bottle)
+        Note.create(date: nthDayFromToday(-1), color: NoteColor.yellow, content: "다섯째!", bottle: bottle)
+        Note.create(date: nthDayFromToday(0), color: NoteColor.yellow, content: "여섯째!", bottle: bottle)
         
         return bottle
     }()
