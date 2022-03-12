@@ -40,6 +40,7 @@
 		A4F5714927DA589100E7DF9B /* NoteDatePickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F5714827DA589100E7DF9B /* NoteDatePickerData.swift */; };
 		A4F5715227DB715100E7DF9B /* ColorButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F5715127DB715100E7DF9B /* ColorButton.xib */; };
 		A4F5715427DB8B6500E7DF9B /* NewNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F5715327DB8B6400E7DF9B /* NewNote.swift */; };
+		A4F5715827DC459B00E7DF9B /* NoteColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F5715727DC459B00E7DF9B /* NoteColor.swift */; };
 		A81742FF27C108DC0016C921 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81742FE27C108DC0016C921 /* HomeViewModel.swift */; };
 		A824A0B027CE72C000B99E9A /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = A824A0AF27CE72C000B99E9A /* Then */; };
 		A843331F27DA013800A12A54 /* NewBottleNameFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A843331E27DA013800A12A54 /* NewBottleNameFieldViewController.swift */; };
@@ -95,6 +96,7 @@
 		A4F5714827DA589100E7DF9B /* NoteDatePickerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDatePickerData.swift; sourceTree = "<group>"; };
 		A4F5715127DB715100E7DF9B /* ColorButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorButton.xib; sourceTree = "<group>"; };
 		A4F5715327DB8B6400E7DF9B /* NewNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNote.swift; sourceTree = "<group>"; };
+		A4F5715727DC459B00E7DF9B /* NoteColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteColor.swift; sourceTree = "<group>"; };
 		A81742FE27C108DC0016C921 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		A817430027C112D00016C921 /* DefaultButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButton.swift; sourceTree = "<group>"; };
 		A843331E27DA013800A12A54 /* NewBottleNameFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBottleNameFieldViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				A4F5714627DA467900E7DF9B /* DateFormat.swift */,
+				A4F5715727DC459B00E7DF9B /* NoteColor.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				A843331F27DA013800A12A54 /* NewBottleNameFieldViewController.swift in Sources */,
 				A491018F27D735920012DFDD /* Note+CoreDataClass.swift in Sources */,
 				A4B2860727D9A55C008769EB /* NewNoteColorPickerViewController.swift in Sources */,
+				A4F5715827DC459B00E7DF9B /* NoteColor.swift in Sources */,
 				A8BD833327BE104900E0DE41 /* HomeViewController.swift in Sources */,
 				A499318127BF3A38009FF5A8 /* BottleViewModel.swift in Sources */,
 				A89CBEDB27CBDD99005549F6 /* BottleCell.swift in Sources */,

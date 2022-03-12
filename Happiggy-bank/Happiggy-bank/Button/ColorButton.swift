@@ -22,7 +22,7 @@ final class ColorButton: UIControl {
     // MARK: - Properties
     
     /// 버튼의 색깔
-    var color: String!
+    var color: NoteColor!
     
     /// 이미 선택된 상태인지 나타냄
     private var isAlreadySelected: Bool {

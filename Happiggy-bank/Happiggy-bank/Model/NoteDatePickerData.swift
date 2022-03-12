@@ -13,6 +13,6 @@ struct NoteDatePickerData {
     /// 날짜
     var date: Date
     
-    /// 해당 날짜에 쪽지가 있다면 쪽지의 색깔을 나타내는 String, 없다면 nil
-    var color: String?
+    /// 해당 날짜에 쪽지가 있다면 쪽지의 색깔을 나타내는 NoteColor case, 없다면 nil
+    var color: NoteColor?
 }
