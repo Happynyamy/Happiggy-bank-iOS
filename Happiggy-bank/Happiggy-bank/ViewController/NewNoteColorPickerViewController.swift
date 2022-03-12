@@ -21,15 +21,8 @@ class NewNoteColorPickerViewController: UIViewController {
     /// 새로 추가할 쪽지의 날짜, 색깔, 저금통 정보
     var newNote: NewNote!
     
-    // TODO: 이거 enum 으로 바꾸는 거 물어보기
     /// 선택 가능한 색깔들
-    private var colors = [
-        NoteColor.white,
-        NoteColor.pink,
-        NoteColor.purple,
-        NoteColor.green,
-        NoteColor.yellow
-    ]
+    private var colors = NoteColor.allCases
     
     
     // MARK: - Life Cycle

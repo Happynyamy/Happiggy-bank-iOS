@@ -125,10 +125,11 @@ extension NewNoteDatePickerViewController: UIPickerViewDelegate {
         let source = self.viewModel.data[row]
         
         rowView.dateLabel.text = source.date.customFormatted(type: .dots)
+        
         if let color = source.color {
             rowView.colorImageView.backgroundColor = UIColor.note(color: color)
         }
-        
+    
         return rowView
     }
     

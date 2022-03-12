@@ -425,29 +425,6 @@ extension Note {
     
 }
 
-/// 쪽지 색상들을 모아둔 enum 으로 상황별로 기본 문자열에 이하 문자열을 접두사/접미사로 붙여서 불러올 애셋 이름을 완성
-/// e.g MainViewNote + NoteColors.white
-enum NoteColor {
-    
-    /// 기본 쪽지 색깔
-    static let `default` = NoteColor.white
-    
-    /// 흰색 쪽지
-    static let white = "White"
-    
-    /// 분홍 쪽지
-    static let pink = "Pink"
-    
-    /// 보라 쪽지
-    static let purple = "Purple"
-    
-    /// 노랑 쪽지
-    static let yellow = "Yellow"
-    
-    /// 연두 쪽지
-    static let green = "Green"
-}
-
 extension PersistenceStore {
     
     /// Persistence Store 에서 사용되는 문자열들
