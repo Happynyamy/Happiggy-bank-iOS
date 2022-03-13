@@ -541,7 +541,7 @@
             <objects>
                 <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="FVx-vN-7Xe" customClass="BottleViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jBg-oD-Piv">
-                        <rect key="frame" x="0.0" y="0.0" width="327" height="440"/>
+                        <rect key="frame" x="0.0" y="0.0" width="366" height="492"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aPw-QS-DfD" customClass="BottleImageView" customModule="Happiggy_bank" customModuleProvider="target">
@@ -633,6 +633,7 @@
                     <size key="freeformSize" width="375" height="812"/>
                     <connections>
                         <outlet property="navigationBar" destination="TMP-Xq-oob" id="VIp-dn-27J"/>
+                        <outlet property="nextButton" destination="N6W-GB-0vx" id="ksh-Tj-Uhv"/>
                         <segue destination="Twr-BC-vZ7" kind="presentation" identifier="presentNewBottleDatePicker" id="scL-PP-Gda"/>
                     </connections>
                 </viewController>
