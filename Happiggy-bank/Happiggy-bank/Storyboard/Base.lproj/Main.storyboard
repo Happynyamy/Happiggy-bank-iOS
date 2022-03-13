@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dSD-O6-Yej">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
@@ -15,11 +15,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmA-fx-uIw">
-                                <rect key="frame" x="24" y="280.5" width="366" height="492.5"/>
+                                <rect key="frame" x="24" y="249" width="327" height="440"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dmA-fx-uIw" secondAttribute="height" multiplier="327:440" id="W8J-jy-WPj"/>
                                 </constraints>
@@ -43,23 +43,71 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="48" y="1688"/>
+            <point key="canvasLocation" x="-1154" y="1643"/>
         </scene>
         <!--Bottle List View Controller-->
         <scene sceneID="IHR-JB-pwa">
             <objects>
                 <viewController id="zPZ-4s-ZPb" customClass="BottleListViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g3S-Jh-zW0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="cUP-8i-uYm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="l40-Fa-bkL"/>
+                    <connections>
+                        <segue destination="KE3-2Z-kiH" kind="show" identifier="showNoteList" id="5xR-d5-VEn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QCW-48-qYH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="893" y="1688"/>
+            <point key="canvasLocation" x="892" y="1643"/>
+        </scene>
+        <!--Note List View Controller-->
+        <scene sceneID="jaT-d5-7R3">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="KE3-2Z-kiH" customClass="NoteListViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="96q-VD-T5D">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="QYn-0Q-jnc">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteCell" id="1iU-C4-Ykx" customClass="NoteCell" customModule="Happiggy_bank" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1iU-C4-Ykx" id="S15-cC-Gxi">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="KE3-2Z-kiH" id="9Bk-6o-K3E"/>
+                                    <outlet property="delegate" destination="KE3-2Z-kiH" id="9ol-Mz-6fU"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="dO5-e2-qa6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="QYn-0Q-jnc" firstAttribute="top" secondItem="dO5-e2-qa6" secondAttribute="top" id="DZZ-fW-GOZ"/>
+                            <constraint firstItem="dO5-e2-qa6" firstAttribute="trailing" secondItem="QYn-0Q-jnc" secondAttribute="trailing" id="KxE-qy-Adj"/>
+                            <constraint firstItem="QYn-0Q-jnc" firstAttribute="leading" secondItem="dO5-e2-qa6" secondAttribute="leading" id="Vnt-XQ-Bt4"/>
+                            <constraint firstItem="dO5-e2-qa6" firstAttribute="bottom" secondItem="QYn-0Q-jnc" secondAttribute="bottom" id="nDq-ev-SEG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="6cw-er-3yd"/>
+                    <connections>
+                        <outlet property="tableView" destination="QYn-0Q-jnc" id="hjF-0v-h7m"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2zj-Wn-JrU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="892" y="2446"/>
         </scene>
         <!--Home-->
         <scene sceneID="YE7-1s-WX3">
@@ -68,7 +116,7 @@
                     <tabBarItem key="tabBarItem" title="Home" id="Eeg-1d-ksO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wRZ-jI-V9m">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -78,7 +126,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YF6-5E-brh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="49" y="868"/>
+            <point key="canvasLocation" x="-1154" y="867"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="y3u-6K-UTc">
@@ -107,7 +155,7 @@
                     <tabBarItem key="tabBarItem" title="Bottle List" id="RUG-PV-yjD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PEg-Az-WTy">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -124,7 +172,7 @@
             <objects>
                 <viewController id="IlI-sf-Vas" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pEH-8i-4vx">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="NL0-gI-uP8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -133,7 +181,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aNi-4h-ywR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1738" y="1688"/>
+            <point key="canvasLocation" x="2966" y="1643"/>
         </scene>
         <!--Settings-->
         <scene sceneID="vw8-MY-aV0">
@@ -142,7 +190,7 @@
                     <tabBarItem key="tabBarItem" title="Settings" id="LtB-vV-jcX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1ha-RM-7e9">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -152,7 +200,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zeo-ty-sXm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1738" y="868"/>
+            <point key="canvasLocation" x="2967" y="867"/>
         </scene>
         <!--New Note Date Picker View Controller-->
         <scene sceneID="b0a-93-uoW">
@@ -192,7 +240,7 @@
                                 </items>
                             </navigationBar>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bI2-ak-dCN">
-                                <rect key="frame" x="27.5" y="298" width="320" height="216"/>
+                                <rect key="frame" x="27.666666666666657" y="298" width="320" height="216"/>
                                 <connections>
                                     <outlet property="delegate" destination="moi-e1-3hQ" id="awF-j2-ach"/>
                                 </connections>
@@ -225,7 +273,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4WR-mG-PvL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="b2J-do-ybm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1151" y="3010"/>
+            <point key="canvasLocation" x="-2116" y="3037"/>
         </scene>
         <!--New Note Text View Controller-->
         <scene sceneID="f85-ew-CtQ">
@@ -270,26 +318,26 @@
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fvK-sf-BF4">
-                                <rect key="frame" x="24" y="168" width="327" height="240"/>
+                                <rect key="frame" x="24" y="172.66666666666663" width="327" height="235.33333333333337"/>
                                 <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
                                     <outlet property="delegate" destination="FuI-qc-1fd" id="t1C-fw-N6e"/>
                                 </connections>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Qg8-yI-fTV" userLabel="DateStack">
-                                <rect key="frame" x="24" y="112" width="37.5" height="40"/>
+                                <rect key="frame" x="24.000000000000004" y="112.00000000000001" width="41.333333333333343" height="44.666666666666671"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FkO-oW-q1n" userLabel="YearLabel">
-                                        <rect key="frame" x="0.0" y="0.0" width="37.5" height="18"/>
-                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="41.333333333333336" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pgg-tQ-Rgj" userLabel="MonthAndDayLabel">
-                                        <rect key="frame" x="0.0" y="22" width="37.5" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <rect key="frame" x="0.0" y="24.333333333333343" width="41.333333333333336" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -310,7 +358,7 @@
                                 </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HX4-ny-KZ7" userLabel="LetterCountLabel">
-                                <rect key="frame" x="307.5" y="438" width="43.5" height="20.5"/>
+                                <rect key="frame" x="307.66666666666669" y="438" width="43.333333333333314" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -370,7 +418,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1151.449275362319" y="4481.25"/>
+            <point key="canvasLocation" x="-2116" y="4595"/>
         </scene>
         <!--New Note Color Picker View Controller-->
         <scene sceneID="bf8-Au-5CK">
@@ -392,10 +440,10 @@
                                 <blurEffect style="prominent"/>
                             </visualEffectView>
                             <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BKz-1X-hoY">
-                                <rect key="frame" x="40" y="379.5" width="295" height="53"/>
+                                <rect key="frame" x="40" y="379.66666666666669" width="295" height="52.666666666666686"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XNy-hM-5pb" customClass="ColorButton" customModule="Happiggy_bank" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="52.5" height="53"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="52.666666666666664" height="52.666666666666664"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="XNy-hM-5pb" secondAttribute="height" multiplier="1:1" id="XMw-lx-br2"/>
                                         </constraints>
@@ -404,25 +452,25 @@
                                         </connections>
                                     </view>
                                     <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O0C-ft-6eI" customClass="ColorButton" customModule="Happiggy_bank" customModuleProvider="target">
-                                        <rect key="frame" x="60.5" y="0.0" width="52.5" height="53"/>
+                                        <rect key="frame" x="60.666666666666671" y="0.0" width="52.666666666666671" height="52.666666666666664"/>
                                         <connections>
                                             <action selector="colorButtonDidTap:" destination="g5l-hv-0de" eventType="valueChanged" id="vCa-yz-mjI"/>
                                         </connections>
                                     </view>
                                     <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3bT-Qz-LIr" customClass="ColorButton" customModule="Happiggy_bank" customModuleProvider="target">
-                                        <rect key="frame" x="121" y="0.0" width="53" height="53"/>
+                                        <rect key="frame" x="121.33333333333333" y="0.0" width="52.333333333333329" height="52.666666666666664"/>
                                         <connections>
                                             <action selector="colorButtonDidTap:" destination="g5l-hv-0de" eventType="valueChanged" id="6zJ-bd-bEx"/>
                                         </connections>
                                     </view>
                                     <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PXQ-aW-7XM" customClass="ColorButton" customModule="Happiggy_bank" customModuleProvider="target">
-                                        <rect key="frame" x="182" y="0.0" width="52.5" height="53"/>
+                                        <rect key="frame" x="181.66666666666666" y="0.0" width="52.666666666666657" height="52.666666666666664"/>
                                         <connections>
                                             <action selector="colorButtonDidTap:" destination="g5l-hv-0de" eventType="valueChanged" id="zVh-RT-ZnC"/>
                                         </connections>
                                     </view>
                                     <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LzH-V8-aJh" customClass="ColorButton" customModule="Happiggy_bank" customModuleProvider="target">
-                                        <rect key="frame" x="242.5" y="0.0" width="52.5" height="53"/>
+                                        <rect key="frame" x="242.33333333333329" y="0.0" width="52.666666666666657" height="52.666666666666664"/>
                                         <connections>
                                             <action selector="colorButtonDidTap:" destination="g5l-hv-0de" eventType="valueChanged" id="waj-LV-zTv"/>
                                         </connections>
@@ -486,18 +534,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MZX-4l-0Ef" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1151.449275362319" y="3741.9642857142853"/>
+            <point key="canvasLocation" x="-2116" y="3819"/>
         </scene>
         <!--Bottle View Controller-->
         <scene sceneID="p7l-16-uR7">
             <objects>
                 <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="FVx-vN-7Xe" customClass="BottleViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jBg-oD-Piv">
-                        <rect key="frame" x="0.0" y="0.0" width="366" height="492.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="327" height="440"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aPw-QS-DfD" customClass="BottleImageView" customModule="Happiggy_bank" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="366" height="492.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="327" height="440"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="gEH-ha-I0H" appends="YES" id="QLb-IG-GgB"/>
@@ -528,7 +576,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="47.200000000000003" y="2285.4679802955666"/>
+            <point key="canvasLocation" x="-1154" y="2308"/>
         </scene>
         <!--New Bottle Name Field View Controller-->
         <scene sceneID="BI8-5q-YxJ">
@@ -590,7 +638,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8DE-rs-fK7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1197.5999999999999" y="3009.6059113300494"/>
+            <point key="canvasLocation" x="-330" y="3037"/>
         </scene>
         <!--New Bottle Date Picker View Controller-->
         <scene sceneID="JKs-7X-Gkc">
@@ -652,7 +700,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jnb-AF-gmu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1197.5999999999999" y="3741.8719211822663"/>
+            <point key="canvasLocation" x="-330" y="3819"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

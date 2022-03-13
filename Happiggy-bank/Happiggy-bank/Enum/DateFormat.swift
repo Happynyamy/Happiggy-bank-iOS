@@ -11,7 +11,7 @@ import Foundation
 enum DateFormat {
     
     /// 2022.02.05 형태
-    case dots
+    case dot
     /// 2022년 2월 5일 형태
     case letters
 }
