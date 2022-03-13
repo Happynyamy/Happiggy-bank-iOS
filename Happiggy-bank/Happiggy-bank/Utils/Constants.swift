@@ -318,6 +318,9 @@ extension NewBottleNameFieldViewController {
     /// NewBottleNameFieldViewController에서 사용하는 문자열
     enum StringLiteral {
         
+        /// 키보드 언어 설정이 한글인 경우
+        static let korean = "ko-KR"
+        
         /// 상단 라벨의 문자열
         static let topLabel = "저금통 이름을 입력해주세요"
         
@@ -326,6 +329,9 @@ extension NewBottleNameFieldViewController {
         
         /// 하단 라벨의 문자열
         static let bottomLabel = "저금통 이름은 나중에 1회 변경할 수 있습니다"
+        
+        /// 경고 라벨의 문자열
+        static let warningLabel = "저금통 이름이 없어요!"
     }
     
     /// NewBottleNameFieldViewController에서 사용하는 색상
@@ -333,6 +339,9 @@ extension NewBottleNameFieldViewController {
         
         /// 하단 라벨 텍스트 색상
         static let bottomLabelText: Int = 0x666666
+        
+        /// 경고 라벨 텍스트 색상
+        static let warningLabelText: Int = 0xFF0000
     }
     
     /// NewBottleNameFieldViewController에서 사용하는 폰트 크기
@@ -343,10 +352,19 @@ extension NewBottleNameFieldViewController {
         
         /// 하단 라벨 텍스트 크기
         static let bottomLabelText: CGFloat = 14
+    
+        /// 경고 라벨 텍스트 색상
+        static let warningLabelText: CGFloat = 14
     }
     
     /// NewBottleNameFieldViewController에서 설정하는 layout 상수값
     enum Metric {
+        
+        /// 글자수 제한
+        static let textFieldMaxLength = 15
+        
+        /// 한글 글자수 제한
+        static let textFieldKoreanMaxLength = textFieldMaxLength + 1
         
         /// 상단 라벨 topAnchor
         static let topLabelTopAnchor: CGFloat = 226
@@ -356,13 +374,26 @@ extension NewBottleNameFieldViewController {
         
         /// 하단 라벨 topAnchor
         static let bottomLabelTopAnchor: CGFloat = 32
+        
+        // MARK: 임시값
+        /// 경고 라벨 topAnchor
+        static let warningLabelTopAnchor: CGFloat = 10
     }
 }
 
 extension NewBottleDatePickerViewController {
     
     /// NewBottleDatePickerViewController의 Picker 선택지
-    static let pickerValues = ["일주일", "한달", "3달", "6달", "일년"]
+    static let pickerValues = ["일주일", "한 달", "3달", "6달", "일 년"]
+    
+    /// DateComponents를 만들기 위한 Picker의 상수값
+    static let pickerConstants: [String: Int] = [
+        pickerValues[0] : 7,
+        pickerValues[1] : 1,
+        pickerValues[2] : 3,
+        pickerValues[3] : 6,
+        pickerValues[4] : 1
+    ]
     
     /// NewBottleDatePickerViewController에서 사용하는 문자열
     enum StringLiteral {

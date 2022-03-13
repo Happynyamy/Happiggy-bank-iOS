@@ -44,6 +44,8 @@
 		A4F5715427DB8B6500E7DF9B /* NewNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F5715327DB8B6400E7DF9B /* NewNote.swift */; };
 		A4F5715827DC459B00E7DF9B /* NoteColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F5715727DC459B00E7DF9B /* NoteColor.swift */; };
 		A81742FF27C108DC0016C921 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81742FE27C108DC0016C921 /* HomeViewModel.swift */; };
+		A819CF9F27DDD97C00DE8E72 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A819CF9E27DDD97C00DE8E72 /* HapticManager.swift */; };
+		A819CFA127DE034F00DE8E72 /* NewBottle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A819CFA027DE034F00DE8E72 /* NewBottle.swift */; };
 		A824A0B027CE72C000B99E9A /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = A824A0AF27CE72C000B99E9A /* Then */; };
 		A843331F27DA013800A12A54 /* NewBottleNameFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A843331E27DA013800A12A54 /* NewBottleNameFieldViewController.swift */; };
 		A843332127DA026D00A12A54 /* NewBottleDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A843332027DA026D00A12A54 /* NewBottleDatePickerViewController.swift */; };
@@ -103,6 +105,8 @@
 		A4F5715727DC459B00E7DF9B /* NoteColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteColor.swift; sourceTree = "<group>"; };
 		A81742FE27C108DC0016C921 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		A817430027C112D00016C921 /* DefaultButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButton.swift; sourceTree = "<group>"; };
+		A819CF9E27DDD97C00DE8E72 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		A819CFA027DE034F00DE8E72 /* NewBottle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBottle.swift; sourceTree = "<group>"; };
 		A843331E27DA013800A12A54 /* NewBottleNameFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBottleNameFieldViewController.swift; sourceTree = "<group>"; };
 		A843332027DA026D00A12A54 /* NewBottleDatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBottleDatePickerViewController.swift; sourceTree = "<group>"; };
 		A843332327DA397800A12A54 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 			children = (
 				A4F5714827DA589100E7DF9B /* NoteDatePickerData.swift */,
 				A4F5715327DB8B6400E7DF9B /* NewNote.swift */,
+				A819CFA027DE034F00DE8E72 /* NewBottle.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -224,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				A8BD833E27BE30B400E0DE41 /* Constants.swift */,
+				A819CF9E27DDD97C00DE8E72 /* HapticManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -424,6 +430,7 @@
 			files = (
 				A4B2860F27D9F539008769EB /* NewNoteDatePickerViewModel.swift in Sources */,
 				A467B5C827DA258700AC702D /* NewNoteDatePickerRowView.swift in Sources */,
+				A819CFA127DE034F00DE8E72 /* NewBottle.swift in Sources */,
 				A456657C27CC66FD007CF70A /* DefaultButton.swift in Sources */,
 				A499318327BF5158009FF5A8 /* BottleImageView.swift in Sources */,
 				A4CF2C8E27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift in Sources */,
@@ -439,6 +446,7 @@
 				A8BD833527BE106C00E0DE41 /* BottleViewController.swift in Sources */,
 				A4CF2C8027C733FE001B01B1 /* ColorButton.swift in Sources */,
 				A4CF2C8227C73B42001B01B1 /* UIColor+AssetColors.swift in Sources */,
+				A819CF9F27DDD97C00DE8E72 /* HapticManager.swift in Sources */,
 				A843332427DA397800A12A54 /* DataProvider.swift in Sources */,
 				A4B2860B27D9B434008769EB /* UIViewController+FadeOut.swift in Sources */,
 				A4B2860927D9A56A008769EB /* NewNoteTextViewController.swift in Sources */,
@@ -618,7 +626,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WA6PY6NL25;
+				DEVELOPMENT_TEAM = 4L7K3ZV8H2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Happiggy-bank/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -647,7 +655,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WA6PY6NL25;
+				DEVELOPMENT_TEAM = 4L7K3ZV8H2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Happiggy-bank/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

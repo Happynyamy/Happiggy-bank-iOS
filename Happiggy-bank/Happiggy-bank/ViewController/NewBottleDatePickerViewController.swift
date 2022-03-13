@@ -63,13 +63,69 @@ final class NewBottleDatePickerViewController: UIViewController {
     
     /// 새 유리병 데이터를 코어데이터에 저장하고 Bottle 뷰 컨트롤러로 되돌아가는 save button 액션
     @IBAction func saveButtonDidTap(_ sender: UIBarButtonItem) {
-        // TODO: Save Data
-        
         self.performSegue(
             withIdentifier: SegueIdentifier.unwindFromNewBottlePopupToBottleView,
             sender: sender
         )
         self.fadeOut()
+        
+        // TODO: Save Data
+//        saveNewBottle()
+    }
+    
+    
+    // MARK: Functions
+    
+    /// 새 저금통 저장하는 메서드
+    private func saveNewBottle() {
+        guard let title = self.bottleData?.name,
+              let periodIndex = self.bottleData?.periodIndex
+        else { return }
+        
+        let newBottle = Bottle(context: PersistenceStore.shared.context)
+        newBottle.title_ = title
+        newBottle.startDate_ = Date()
+        newBottle.endDate_ = endDate(from: Date(), after: periodIndex)
+        
+        PersistenceStore.shared.save()
+    }
+    
+    /// 선택된 period의 index에 따라 종료 날짜 생성
+    private func endDate(from startDate: Date, after periodIndex: Int) -> Date {
+        let period = NewBottleDatePickerViewController.pickerValues[periodIndex]
+        let constant = NewBottleDatePickerViewController.pickerConstants[period]
+        
+        // week
+        if periodIndex == 0 {
+            guard let endDate = Calendar.current.date(
+                byAdding: DateComponents(day: constant),
+                to: startDate
+            )
+            else { return Date() }
+            return endDate
+        }
+        
+        // month
+        if (1...3) ~= periodIndex {
+            guard let endDate = Calendar.current.date(
+                byAdding: DateComponents(month: constant),
+                to: startDate
+            )
+            else { return Date() }
+            return endDate
+        }
+        
+        // year
+        if periodIndex == 4 {
+            guard let endDate = Calendar.current.date(
+                byAdding: DateComponents(year: constant),
+                to: startDate
+            )
+            else { return Date() }
+            return endDate
+        }
+        
+        return Date()
     }
     
     
