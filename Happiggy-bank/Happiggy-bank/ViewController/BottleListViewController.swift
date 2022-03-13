@@ -8,6 +8,7 @@
 import UIKit
 
 import Then
+import CoreData
 
 /// 유리병 리스트 뷰 컨트롤러
 final class BottleListViewController: UIViewController {
@@ -150,6 +151,25 @@ extension BottleListViewController: UITableViewDataSource {
         cell.titleLabel.text = ""
         cell.dateLabel.text = ""
     }
+    
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueIdentifier.showNoteList {
+            guard let noteListViewController = segue.destination as? NoteListViewController
+//                  let bottle = sender as? Bottle
+            else { return }
+            
+            let viewModel = NoteListViewModel()
+//            let notes = bottle.notes
+            let notes = Bottle.foo.notes
+            viewModel.notes = notes.map { $0 }
+            viewModel.notes.sort { $0.date < $1.date }
+            
+            noteListViewController.viewModel = viewModel
+        }
+    }
 }
 
 extension BottleListViewController: UITableViewDelegate {
@@ -160,6 +180,6 @@ extension BottleListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let bottleId = bottleList[indexPath.row].id
         print("get bottle data from db with \(bottleId)")
-        self.navigationController?.popViewController(animated: true)
+        self.performSegue(withIdentifier: SegueIdentifier.showNoteList, sender: bottleList[indexPath.row])
     }
 }

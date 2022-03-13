@@ -12,6 +12,10 @@
 		A456657E27CC77A9007CF70A /* Date+Formatted.swift in Sources */ = {isa = PBXBuildFile; fileRef = A456657D27CC77A9007CF70A /* Date+Formatted.swift */; };
 		A467B5C827DA258700AC702D /* NewNoteDatePickerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467B5C727DA258700AC702D /* NewNoteDatePickerRowView.swift */; };
 		A467B5CA27DA289600AC702D /* NewNoteDatePickerRowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A467B5C927DA289500AC702D /* NewNoteDatePickerRowView.xib */; };
+		A490AC4E27DD945E00B04CE1 /* NoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A490AC4D27DD945E00B04CE1 /* NoteListViewController.swift */; };
+		A490AC5027DD9D2E00B04CE1 /* NoteListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A490AC4F27DD9D2E00B04CE1 /* NoteListViewModel.swift */; };
+		A490AC5527DDA0CA00B04CE1 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A490AC5327DDA0CA00B04CE1 /* NoteCell.swift */; };
+		A490AC5627DDA0CA00B04CE1 /* NoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A490AC5427DDA0CA00B04CE1 /* NoteCell.xib */; };
 		A491018527D6EDE90012DFDD /* PersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A491018427D6EDE90012DFDD /* PersistenceStore.swift */; };
 		A491018727D6F37C0012DFDD /* NSObject+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = A491018627D6F37C0012DFDD /* NSObject+Name.swift */; };
 		A491018D27D7358B0012DFDD /* Bottle+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A491018C27D7358B0012DFDD /* Bottle+CoreDataClass.swift */; };
@@ -25,17 +29,15 @@
 		A4B2860927D9A56A008769EB /* NewNoteTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2860827D9A56A008769EB /* NewNoteTextViewController.swift */; };
 		A4B2860B27D9B434008769EB /* UIViewController+FadeOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2860A27D9B434008769EB /* UIViewController+FadeOut.swift */; };
 		A4B2860F27D9F539008769EB /* NewNoteDatePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2860E27D9F539008769EB /* NewNoteDatePickerViewModel.swift */; };
-		A4CF2C5427C48DA1001B01B1 /* NewNotePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C5327C48DA1001B01B1 /* NewNotePopupViewController.swift */; };
-		A4CF2C7A27C61867001B01B1 /* NewNotePopupTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C7927C61867001B01B1 /* NewNotePopupTopBar.swift */; };
 		A4CF2C7C27C71FF5001B01B1 /* CATransition+PopupAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C7B27C71FF5001B01B1 /* CATransition+PopupAnimation.swift */; };
 		A4CF2C8027C733FE001B01B1 /* ColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C7F27C733FE001B01B1 /* ColorButton.swift */; };
 		A4CF2C8227C73B42001B01B1 /* UIColor+AssetColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C8127C73B42001B01B1 /* UIColor+AssetColors.swift */; };
 		A4CF2C8527CA29DC001B01B1 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C8427CA29DC001B01B1 /* NotesViewController.swift */; };
 		A4CF2C8827CA3CC7001B01B1 /* NotesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C8727CA3CC7001B01B1 /* NotesViewCell.swift */; };
 		A4CF2C8A27CA3D96001B01B1 /* NotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C8927CA3D96001B01B1 /* NotesViewModel.swift */; };
-		A4CF2C8C27CB6FA9001B01B1 /* NoteTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C8B27CB6FA9001B01B1 /* NoteTextView.swift */; };
 		A4CF2C8E27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C8D27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift */; };
 		A4CF2C9027CBA66F001B01B1 /* NSNotificaion.Name+CustomNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C8F27CBA66F001B01B1 /* NSNotificaion.Name+CustomNotifications.swift */; };
+		A4D9CDE627DE151500B14033 /* String+BoldAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D9CDE527DE151500B14033 /* String+BoldAttributedString.swift */; };
 		A4F5714727DA467900E7DF9B /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F5714627DA467900E7DF9B /* DateFormat.swift */; };
 		A4F5714927DA589100E7DF9B /* NoteDatePickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F5714827DA589100E7DF9B /* NoteDatePickerData.swift */; };
 		A4F5715227DB715100E7DF9B /* ColorButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F5715127DB715100E7DF9B /* ColorButton.xib */; };
@@ -68,6 +70,10 @@
 		A456657D27CC77A9007CF70A /* Date+Formatted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatted.swift"; sourceTree = "<group>"; };
 		A467B5C727DA258700AC702D /* NewNoteDatePickerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteDatePickerRowView.swift; sourceTree = "<group>"; };
 		A467B5C927DA289500AC702D /* NewNoteDatePickerRowView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewNoteDatePickerRowView.xib; sourceTree = "<group>"; };
+		A490AC4D27DD945E00B04CE1 /* NoteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewController.swift; sourceTree = "<group>"; };
+		A490AC4F27DD9D2E00B04CE1 /* NoteListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewModel.swift; sourceTree = "<group>"; };
+		A490AC5327DDA0CA00B04CE1 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
+		A490AC5427DDA0CA00B04CE1 /* NoteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteCell.xib; sourceTree = "<group>"; };
 		A491018427D6EDE90012DFDD /* PersistenceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceStore.swift; sourceTree = "<group>"; };
 		A491018627D6F37C0012DFDD /* NSObject+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Name.swift"; sourceTree = "<group>"; };
 		A491018C27D7358B0012DFDD /* Bottle+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bottle+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -81,17 +87,15 @@
 		A4B2860827D9A56A008769EB /* NewNoteTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteTextViewController.swift; sourceTree = "<group>"; };
 		A4B2860A27D9B434008769EB /* UIViewController+FadeOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+FadeOut.swift"; sourceTree = "<group>"; };
 		A4B2860E27D9F539008769EB /* NewNoteDatePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteDatePickerViewModel.swift; sourceTree = "<group>"; };
-		A4CF2C5327C48DA1001B01B1 /* NewNotePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNotePopupViewController.swift; sourceTree = "<group>"; };
-		A4CF2C7927C61867001B01B1 /* NewNotePopupTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNotePopupTopBar.swift; sourceTree = "<group>"; };
 		A4CF2C7B27C71FF5001B01B1 /* CATransition+PopupAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CATransition+PopupAnimation.swift"; sourceTree = "<group>"; };
 		A4CF2C7F27C733FE001B01B1 /* ColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorButton.swift; path = "Happiggy-bank/Button/ColorButton.swift"; sourceTree = SOURCE_ROOT; };
 		A4CF2C8127C73B42001B01B1 /* UIColor+AssetColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AssetColors.swift"; sourceTree = "<group>"; };
 		A4CF2C8427CA29DC001B01B1 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		A4CF2C8727CA3CC7001B01B1 /* NotesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewCell.swift; sourceTree = "<group>"; };
 		A4CF2C8927CA3D96001B01B1 /* NotesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewModel.swift; sourceTree = "<group>"; };
-		A4CF2C8B27CB6FA9001B01B1 /* NoteTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTextView.swift; sourceTree = "<group>"; };
 		A4CF2C8D27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NotificationCenter.swift"; sourceTree = "<group>"; };
 		A4CF2C8F27CBA66F001B01B1 /* NSNotificaion.Name+CustomNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotificaion.Name+CustomNotifications.swift"; sourceTree = "<group>"; };
+		A4D9CDE527DE151500B14033 /* String+BoldAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+BoldAttributedString.swift"; sourceTree = "<group>"; };
 		A4F5714627DA467900E7DF9B /* DateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
 		A4F5714827DA589100E7DF9B /* NoteDatePickerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDatePickerData.swift; sourceTree = "<group>"; };
 		A4F5715127DB715100E7DF9B /* ColorButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorButton.xib; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 				A81742FE27C108DC0016C921 /* HomeViewModel.swift */,
 				A4CF2C8927CA3D96001B01B1 /* NotesViewModel.swift */,
 				A4B2860E27D9F539008769EB /* NewNoteDatePickerViewModel.swift */,
+				A490AC4F27DD9D2E00B04CE1 /* NoteListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				A89CBEDA27CBDD99005549F6 /* BottleCell.swift */,
+				A490AC5327DDA0CA00B04CE1 /* NoteCell.swift */,
 			);
 			path = Subview;
 			sourceTree = "<group>";
@@ -203,13 +209,13 @@
 				A4CF2C8427CA29DC001B01B1 /* NotesViewController.swift */,
 				A8BD833227BE104900E0DE41 /* HomeViewController.swift */,
 				A8BD833427BE106C00E0DE41 /* BottleViewController.swift */,
-				A4CF2C5327C48DA1001B01B1 /* NewNotePopupViewController.swift */,
 				A843331E27DA013800A12A54 /* NewBottleNameFieldViewController.swift */,
 				A843332027DA026D00A12A54 /* NewBottleDatePickerViewController.swift */,
 				A89CBEDC27CBDEA2005549F6 /* BottleListViewController.swift */,
 				A4B2860427D9A546008769EB /* NewNoteDatePickerViewController.swift */,
 				A4B2860627D9A55C008769EB /* NewNoteColorPickerViewController.swift */,
 				A4B2860827D9A56A008769EB /* NewNoteTextViewController.swift */,
+				A490AC4D27DD945E00B04CE1 /* NoteListViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -225,6 +231,7 @@
 		A8BD834527BE332100E0DE41 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				A490AC5427DDA0CA00B04CE1 /* NoteCell.xib */,
 				A4F5715127DB715100E7DF9B /* ColorButton.xib */,
 				A8FC07CD27B3ECF00077A758 /* Main.storyboard */,
 				A467B5C927DA289500AC702D /* NewNoteDatePickerRowView.xib */,
@@ -238,8 +245,6 @@
 			children = (
 				A467B5C727DA258700AC702D /* NewNoteDatePickerRowView.swift */,
 				A4CF2C8727CA3CC7001B01B1 /* NotesViewCell.swift */,
-				A4CF2C8B27CB6FA9001B01B1 /* NoteTextView.swift */,
-				A4CF2C7927C61867001B01B1 /* NewNotePopupTopBar.swift */,
 				A8BD834627BE337900E0DE41 /* HomeView.swift */,
 				A499318227BF5158009FF5A8 /* BottleImageView.swift */,
 			);
@@ -260,6 +265,7 @@
 				A8EB5E8A27C8B087005704F2 /* UIButton+Extension.swift */,
 				A491018627D6F37C0012DFDD /* NSObject+Name.swift */,
 				A4B285FC27D8A060008769EB /* Calendar+Duration.swift */,
+				A4D9CDE527DE151500B14033 /* String+BoldAttributedString.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -379,6 +385,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A490AC5627DDA0CA00B04CE1 /* NoteCell.xib in Resources */,
 				A8FC07DD27B3EF030077A758 /* .swiftlint.yml in Resources */,
 				A467B5CA27DA289600AC702D /* NewNoteDatePickerRowView.xib in Resources */,
 				A8FC07D427B3ECF30077A758 /* LaunchScreen.storyboard in Resources */,
@@ -418,18 +425,17 @@
 				A4B2860F27D9F539008769EB /* NewNoteDatePickerViewModel.swift in Sources */,
 				A467B5C827DA258700AC702D /* NewNoteDatePickerRowView.swift in Sources */,
 				A456657C27CC66FD007CF70A /* DefaultButton.swift in Sources */,
-				A4CF2C7A27C61867001B01B1 /* NewNotePopupTopBar.swift in Sources */,
 				A499318327BF5158009FF5A8 /* BottleImageView.swift in Sources */,
 				A4CF2C8E27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift in Sources */,
 				A8BD834D27BE39D600E0DE41 /* NoteProgressLabel.swift in Sources */,
 				A8509E6E27C89A1200855153 /* UIColor+Extension.swift in Sources */,
+				A490AC4E27DD945E00B04CE1 /* NoteListViewController.swift in Sources */,
 				A8BD834727BE337900E0DE41 /* HomeView.swift in Sources */,
 				A4CF2C8A27CA3D96001B01B1 /* NotesViewModel.swift in Sources */,
 				A4CF2C8527CA29DC001B01B1 /* NotesViewController.swift in Sources */,
 				A4CF2C7C27C71FF5001B01B1 /* CATransition+PopupAnimation.swift in Sources */,
 				A8FC07C827B3ECF00077A758 /* AppDelegate.swift in Sources */,
 				A491018727D6F37C0012DFDD /* NSObject+Name.swift in Sources */,
-				A4CF2C8C27CB6FA9001B01B1 /* NoteTextView.swift in Sources */,
 				A8BD833527BE106C00E0DE41 /* BottleViewController.swift in Sources */,
 				A4CF2C8027C733FE001B01B1 /* ColorButton.swift in Sources */,
 				A4CF2C8227C73B42001B01B1 /* UIColor+AssetColors.swift in Sources */,
@@ -442,11 +448,11 @@
 				A456657E27CC77A9007CF70A /* Date+Formatted.swift in Sources */,
 				A81742FF27C108DC0016C921 /* HomeViewModel.swift in Sources */,
 				A4CF2C9027CBA66F001B01B1 /* NSNotificaion.Name+CustomNotifications.swift in Sources */,
-				A4CF2C5427C48DA1001B01B1 /* NewNotePopupViewController.swift in Sources */,
 				A4B285FD27D8A060008769EB /* Calendar+Duration.swift in Sources */,
 				A4B2860527D9A546008769EB /* NewNoteDatePickerViewController.swift in Sources */,
 				A491018527D6EDE90012DFDD /* PersistenceStore.swift in Sources */,
 				A491018D27D7358B0012DFDD /* Bottle+CoreDataClass.swift in Sources */,
+				A490AC5027DD9D2E00B04CE1 /* NoteListViewModel.swift in Sources */,
 				A4F5714927DA589100E7DF9B /* NoteDatePickerData.swift in Sources */,
 				A8EB5E8B27C8B087005704F2 /* UIButton+Extension.swift in Sources */,
 				A843331F27DA013800A12A54 /* NewBottleNameFieldViewController.swift in Sources */,
@@ -458,8 +464,10 @@
 				A89CBEDB27CBDD99005549F6 /* BottleCell.swift in Sources */,
 				A44E901727D5EB130053AC57 /* Happiggy-bank.xcdatamodeld in Sources */,
 				A49931A527BFD20E009FF5A8 /* UIImage+AssetImages.swift in Sources */,
+				A4D9CDE627DE151500B14033 /* String+BoldAttributedString.swift in Sources */,
 				A8BD833F27BE30B400E0DE41 /* Constants.swift in Sources */,
 				A4CF2C8827CA3CC7001B01B1 /* NotesViewCell.swift in Sources */,
+				A490AC5527DDA0CA00B04CE1 /* NoteCell.swift in Sources */,
 				A4F5714727DA467900E7DF9B /* DateFormat.swift in Sources */,
 				A89CBEDD27CBDEA2005549F6 /* BottleListViewController.swift in Sources */,
 			);

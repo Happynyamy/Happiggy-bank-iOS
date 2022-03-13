@@ -16,8 +16,8 @@ extension Date {
     private static func formatter(type: DateFormat) -> DateFormatter {
         DateFormatter().then {
             switch type {
-            case .dots:
-                $0.dateFormat = "yyyy.MM.dd"
+            case .dot:
+                $0.dateFormat = "yyyy MM.dd"
             case .letters:
                 // need to make dateStyle medium for eng..
                 $0.dateStyle = .long
@@ -27,10 +27,27 @@ extension Date {
         }
     }
     
-    /// DateFormate 케이스에 맞게 날짜를 문자열로 변환해주는 메서드
-    /// .dots : 2022.02.05
+    /// 변환하고 싶은 문자열 포맷을 입력하면 해당 포맷의 문자열로 반환
+    private static func format(dateFormat: String, date: Date) -> String {
+        DateFormatter().then {
+            $0.dateFormat = dateFormat
+        }.string(from: date)
+    }
+    
+    /// DateFormat 케이스에 맞게 날짜를 문자열로 변환해주는 메서드
+    /// .dots : 2022 02.05
     /// .letters : 2022년 2월 5일
     func customFormatted(type: DateFormat) -> String {
         Date.formatter(type: type).string(from: self)
+    }
+    
+    /// 연도를 "2022" 형태의 문자열로 반환
+    var yearString: String {
+        Date.format(dateFormat: "yyyy", date: self)
+    }
+    
+    /// 월, 일을 "02.05" 형태의 문자열로 반환
+    var monthDotDayString: String {
+        Date.format(dateFormat: "MM.dd", date: self)
     }
 }

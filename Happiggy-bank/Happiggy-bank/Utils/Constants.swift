@@ -50,111 +50,6 @@ extension BottleViewController {
     }
 }
 
-extension NewNotePopupViewController {
-    
-    /// NewNotePopupViewController 에서 설정하는 layout 에 적용할 상수값들을 모아놓은 enum
-    enum Metric {
-        
-        /// 상하 패딩 값
-        static let verticalPadding: CGFloat = HomeViewController.Metric.verticalPadding
-        
-        /// 좌우 패딩 값
-        static let horizontalPadding: CGFloat = verticalPadding
-        
-        /// 팝업 뷰 top anchor constraint
-        static let popupViewTopAnchor: CGFloat = 120
-        
-        /// 팝업 뷰 너비, 높이
-        static let popupViewSize = CGSize(
-            width: UIScreen.main.bounds.width - 2 * verticalPadding,
-            height: 438
-        )
-        
-        /// 버튼 너비, 높이
-        static let buttonSize = CGSize(
-            width: HomeViewController.Metric.buttonWidth,
-            height: HomeViewController.Metric.buttonHeight
-        )
-        
-        /// 버튼 상하 패딩
-        static let buttonVerticalPadding: CGFloat = 8
-        
-        /// 버튼 좌우 패딩
-        static let buttonHorizontalPadding: CGFloat = 16
-        
-        /// 팝업 뷰 corner radius
-        static let popupCornerRadius: CGFloat = 16
-        
-        /// top bar container 의 너비, 높이
-        static let topbarContainerSize = CGSize(
-            width: popupViewSize.width,
-            height: buttonSize.height + 2 * buttonVerticalPadding
-        )
-        
-        /// top bar 의 너비, 높이
-        static let topBarSize = CGSize(
-            width: topbarContainerSize.width - 2 * buttonHorizontalPadding,
-            height: buttonSize.height
-        )
-        
-        /// note text view 너비, 높이
-        static let noteTextViewSize = CGSize(
-            width: popupViewSize.width,
-            height: popupViewSize.height
-            - paletteContainerSize.height
-            - topbarContainerSize.height
-        )
-        
-        /// palette container view 너비, 높이
-        static let paletteContainerSize = CGSize(
-            width: popupViewSize.width,
-            height: buttonSize.height + 2 * verticalPadding
-        )
-        
-        /// palette 너비, 높이
-        static let paletteSize = CGSize(
-            width: paletteContainerSize.width - 2 * verticalPadding,
-            height: buttonSize.height
-        )
-        
-        /// note 의 최대 작성 가능 길이 : 100 자
-        static let noteTextMaxLength = 100
-        
-        /// 팝업 뷰 페이드인 효과 시 스케일 이펙트 정도: 0.9
-        static let transformScale: CGFloat = 0.9
-        
-        /// 팝업 뷰 애니메이션 지속 정도: 0.3
-        static let animationDuration: CGFloat = 0.3
-        
-        /// 배경 화면 어두운 정도: 0.2
-        static let blackAlpha: CGFloat = 0.2
-    }
-    
-    /// NewNotePopupViewController 의 폰트 크기 상수들
-    enum Font {
-        
-        /// body text 의 폰트 크기
-        static let body = UIFont.systemFont(ofSize: 18)
-    }
-    
-    /// NewNotePopupViewController 에서 설정하는 제목들
-    enum StringLiteral {
-        
-        /// note text view 의 place holder
-        static let noteTextViewPlaceHolder = "하루 한 번,\n100 글자로 행복을 기록하세요:)"
-
-        /// 글자 수 라벨의 최댓값
-        static let maximumLetterCount = "/\(Metric.noteTextMaxLength)"
-        
-        /// 글자 수 라벨의 최초 상태
-        static let letterCountLabel = "0" + maximumLetterCount
-        
-        /// 키보드 언어 설정이 한글인 경우
-        static let korean = "ko-KR"
-        
-    }
-}
-
 extension DefaultButton {
 
     /// HomeViewButton 에서 설정하는 layout에 적용할 상수값
@@ -207,39 +102,6 @@ extension NotesViewController {
 /// 대한민국 local identifier
 let krLocalIdentifier = "ko_KR"
 
-extension NewNotePopupTopBar {
-    
-    /// 노트 추가 팝업의 상단바에서 설정하는 레이아웃에 적용할 상수들
-    enum Metric {
-        
-        /// 버튼 너비, 높이
-        static let buttonSize = CGSize(
-            width: HomeViewController.Metric.buttonWidth,
-            height: HomeViewController.Metric.buttonHeight
-        )
-    }
-    
-    /// 노트 추가 팝업의 상단바에서 설정하는 제목들
-    enum StringLiteral {
-        
-        /// 취소 버튼 제목
-        static let cancelButtonTitle = "취소"
-        
-        /// 저장 버튼 제목
-        static let saveButtonTitle = "저장"
-        
-        /// 팝업 제목
-        static let title = "쪽지 추가하기"
-    }
-    
-    /// 노트 추가 팝업의 상단바에서 설정하는 폰트 크기들
-    enum Font {
-        
-        /// title 수준의 폰트 크기
-        static let title = UIFont.systemFont(ofSize: 20)
-    }
-}
-
 extension ColorButton {
     
     /// 컬러 버튼의 상수값들
@@ -253,51 +115,6 @@ extension ColorButton {
         
         /// 애니메이션 지속 시간: 0.2
         static let animationDuration = CATransition.transitionDuration
-    }
-}
-
-extension NoteTextView {
-    
-    /// note text view 의 레이아웃에 사용하는 상수값들
-    enum Metric {
-        
-        /// 상하 패딩
-        static let verticalPadding: CGFloat = HomeViewController.Metric.verticalPadding
-        
-        /// 좌우 패딩
-        static let horizontalPadding: CGFloat = verticalPadding
-        
-        /// note 의 최대 작성 가능 길이
-        static let noteTextMaxLength = 100
-        
-        /// 글자 수 라벨의 trailing anchor 를 구하기 위해 note text view 의 leading anchor 에  더할 상수
-        static let letterCountLabelTrailingConstant: CGFloat =
-            NewNotePopupViewController.Metric.noteTextViewSize.width - horizontalPadding
-        
-        /// 글자 수 라벨의 bottom anchor 를 구하기 위해 note text view 의 top anchor 에 더할 상수
-        static let letterCountLabelBottomConstant: CGFloat =
-            NewNotePopupViewController.Metric.noteTextViewSize.height - verticalPadding
-    }
-    
-    /// note text view 에서 사용되는 폰트 크기 상수들
-    enum Font {
-        
-        /// body text 의 폰트 크기
-        static let body = UIFont.systemFont(ofSize: 18)
-    }
-    
-    /// note text view 에서 설정하는 제목들
-    enum StringLiteral {
-        
-        /// note text view 의 place holder
-        static let noteTextViewPlaceHolder = "하루 한 번,\n100 글자로 행복을 기록하세요:)"
-
-        /// 글자 수 라벨의 최댓값
-        static let maximumLetterCount = "/\(Metric.noteTextMaxLength)"
-        
-        /// 글자 수 라벨의 최초 상태
-        static let letterCountLabel = "0" + maximumLetterCount
-        
     }
 }
 
@@ -463,6 +280,15 @@ enum SegueIdentifier {
     
     /// 새 쪽지 색깔 피커에서 날짜 피커로 돌아갈 때 사용
     static let unwindToNewNoteDatePicker = "unwindToNewNoteDatePicker"
+    
+    /// 저금통 리스트에서 쪽지 리스트로 넘어갈 때 사용
+    static let showNoteList = "showNoteList"
+    
+    /// 새 쪽지 텍스트 뷰에서 날짜 피커 띄울 때 사용
+    static let presentDatePickerFromNoteTextView = "presentDatePickerFromNoteTextView"
+    
+    /// 새 쪽지 날짜 피커에서 텍스트뷰로 돌아갈 때 사용
+    static let unwindFromNoteDatePickerToTextView = "unwindFromNoteDatePickerToTextView"
 }
 
 extension CATransition {
@@ -565,4 +391,126 @@ enum AssetColor: String {
     
     /// 쪽지 색상
     case note
+}
+
+extension NoteListViewController {
+    
+    /// NoteListViewController 에서 사용하는 상수값
+    enum Metric {
+        
+        /// note cell 세로:가로 비율 : 42/327
+        private static let cellSizeRatio: CGFloat = 242/327
+        
+        /// 좌우 패딩: 24
+        private static let horizontalPadding: CGFloat = 24
+        
+        /// 화면 가로 길이
+        static let screenWidth: CGFloat = UIScreen.main.bounds.width
+        
+        /// note cell 사이 간격: 16
+        static let cellSpacing: CGFloat = 16
+        
+        /// note cell 높이 : 스크린 가로 길이에서 좌우 패딩값을 뺀 다음 지정한 비율을 곱해서 계산
+        static let cellHeight = (screenWidth - 2 * horizontalPadding) * cellSizeRatio
+        
+        /// note cell 의 (흰색) 쪽지 이미지 뷰 외곽선 굵기: 1
+        static let noteImageViewBorderWidth: CGFloat = 1
+    }
+}
+
+extension NoteCell {
+    
+    /// NoteCell 에서 사용하는 상수들
+    enum Metric {
+        
+        /// 쪽지 이미지뷰 모서리 둥근 정도: 8
+        static let cornerRadius: CGFloat = 8
+    }
+}
+
+extension NewNoteTextViewController {
+    
+    /// NewNoteTextViewController에서 사용하는 상수값
+    enum Metric {
+        
+        /// 텍스트 뷰 컨테이너 인셋: (위: 16, 왼쪽: 24, 아래: 24, 오른쪽: 24)
+        static let textViewInset = UIEdgeInsets(
+            top: 16,
+            left: 24,
+            bottom: 24,
+            right: 24
+        )
+        
+        /// note 의 최대 작성 가능 길이 : 100 자
+        static let noteTextMaxLength = 100
+        
+        /// 한국 글자수 제한을 위한 오버플로우 cap 추가 값: 1
+        static let krOverflowCap = noteTextMaxLength + 1
+        
+        /// 애니메이션 지속 시간: 0.2
+        static let animationDuration = CATransition.transitionDuration
+        
+        /// 이미지 뷰가 내비게이션바, safe area top inset, 키보드 크기를 제외한 나머지 영역을 다 차지할 수 있도록 높이를 계산해서 리턴
+        static func imageViewHeight(
+            keyboardFrame: CGRect,
+            navigationBarFrame: CGRect
+        ) -> CGFloat {
+            let keyboardHeight = keyboardFrame.size.height
+            let navigationBarHeight = navigationBarFrame.size.height
+            let screenHeight = UIScreen.main.bounds.height
+            let safeAreaTopInset = navigationBarFrame.origin.y
+            
+            return screenHeight - safeAreaTopInset - navigationBarHeight - keyboardHeight
+        }
+    }
+    
+    /// NewNoteTextViewController 의 폰트 크기 상수들
+    enum Font {
+        
+        /// body text 의 폰트 크기: 20
+        static let body = UIFont.systemFont(ofSize: 20)
+        
+        /// 날짜 라벨들 폰트 크기: 17
+        static let dateLabelFontSize: CGFloat = 17
+        
+        /// 연도 라벨 폰트 크기: bold 17
+        static let yearLabelFont = UIFont.boldSystemFont(ofSize: dateLabelFontSize)
+    }
+    
+    /// NewNoteTextViewController 에서 설정하는 제목들
+    enum StringLiteral {
+        
+        /// note text view 의 place holder
+        static let noteTextViewPlaceHolder = "하루 한 번,\n100 글자로 행복을 기록하세요:)"
+        
+        /// 키보드 언어 설정이 한글인 경우
+        static let korean = "ko-KR"
+        
+        /// 글자수 라벨 텍스트를 반환
+        static func letterCountText(count: Int) -> String {
+            "\(count)/\(Metric.noteTextMaxLength)"
+        }
+    }
+}
+
+extension NewNoteDatePickerViewModel {
+    
+    /// NoteNoteDatePickerViewModel 에서 지정하는 폰트 크기
+    enum Font {
+        
+        /// 날짜라벨 폰트 크기: 17
+        static let dateLabelFontSize: CGFloat = 17
+        
+    }
+}
+
+extension NoteListViewModel {
+    
+    /// NoteListViewModel 에서 지정하는 폰트 크기
+    enum Font {
+        
+        /// 날짜라벨 폰트 크기: 17
+        static let dateLabelFontSize: CGFloat = 17
+        
+    }
 }
