@@ -159,13 +159,13 @@ extension NewNoteDatePickerViewController: UIPickerViewDelegate {
         
         let row = self.validatedRow(row)
         let rowView = view as? NewNoteDatePickerRowView ?? NewNoteDatePickerRowView()
-        let source = self.viewModel.data[row]
+        let data = self.viewModel.data[row]
         
         /// 데이터에 맞게 행의 모습(날짜 라벨 텍스트와 쪽지 이미지 색깔) 업데이트
         
-        rowView.dateLabel.text = source.date.customFormatted(type: .dots)
+        rowView.dateLabel.attributedText = self.viewModel.attributedDateString(for: data)
         
-        if let color = source.color {
+        if let color = data.color {
             // TODO: 에셋으로 갈아끼기
             rowView.colorImageView.backgroundColor = UIColor.note(color: color)
         }

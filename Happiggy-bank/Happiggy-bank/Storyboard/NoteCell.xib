@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoteCell" rowHeight="256" id="KGk-i7-Jjw" customClass="NoteCell" customModule="Happiggy_bank" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="327" height="242"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="327" height="242"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cL4-kp-d58">
+                        <rect key="frame" x="16" y="8" width="295" height="226"/>
+                        <color key="backgroundColor" name="noteGreen"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbq-Tz-IcI">
+                        <rect key="frame" x="143" y="111" width="41.5" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gz4-u7-xg9">
+                        <rect key="frame" x="32" y="24" width="41.5" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97k-pG-TgR">
+                        <rect key="frame" x="32" y="52.5" width="263" height="23"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="wbq-Tz-IcI" firstAttribute="centerX" secondItem="cL4-kp-d58" secondAttribute="centerX" id="GnB-is-11l"/>
+                    <constraint firstItem="97k-pG-TgR" firstAttribute="trailing" secondItem="cL4-kp-d58" secondAttribute="trailing" constant="-16" id="Kz8-yY-XdN"/>
+                    <constraint firstAttribute="trailing" secondItem="cL4-kp-d58" secondAttribute="trailing" constant="16" id="P3d-aG-y6K"/>
+                    <constraint firstItem="97k-pG-TgR" firstAttribute="leading" secondItem="gz4-u7-xg9" secondAttribute="leading" id="QIA-g9-QDv"/>
+                    <constraint firstAttribute="bottom" secondItem="cL4-kp-d58" secondAttribute="bottom" constant="8" id="R6a-40-KyS"/>
+                    <constraint firstItem="gz4-u7-xg9" firstAttribute="leading" secondItem="cL4-kp-d58" secondAttribute="leading" constant="16" id="b2R-Rb-JSL"/>
+                    <constraint firstItem="cL4-kp-d58" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="bN2-YG-06e"/>
+                    <constraint firstItem="97k-pG-TgR" firstAttribute="top" secondItem="gz4-u7-xg9" secondAttribute="bottom" constant="8" id="dKc-r8-Kve"/>
+                    <constraint firstItem="wbq-Tz-IcI" firstAttribute="centerY" secondItem="cL4-kp-d58" secondAttribute="centerY" id="qua-zL-hP1"/>
+                    <constraint firstItem="gz4-u7-xg9" firstAttribute="top" secondItem="cL4-kp-d58" secondAttribute="top" constant="16" id="rhV-hr-tOW"/>
+                    <constraint firstItem="cL4-kp-d58" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="tye-y5-iSc"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="backDateLabel" destination="gz4-u7-xg9" id="iBM-v9-r9m"/>
+                <outlet property="contentLabel" destination="97k-pG-TgR" id="AON-tl-kY3"/>
+                <outlet property="frontDateLabel" destination="wbq-Tz-IcI" id="RuD-Ow-0fr"/>
+                <outlet property="imageView" destination="cL4-kp-d58" id="eDp-fM-acV"/>
+                <outlet property="noteImageView" destination="cL4-kp-d58" id="fSX-yA-GZw"/>
+            </connections>
+            <point key="canvasLocation" x="-8" y="123"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="noteGreen">
+            <color red="0.4309999942779541" green="0.79000002145767212" blue="0.6809999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

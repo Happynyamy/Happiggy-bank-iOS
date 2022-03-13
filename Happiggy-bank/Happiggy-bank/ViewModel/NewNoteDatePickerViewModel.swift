@@ -48,4 +48,14 @@ class NewNoteDatePickerViewModel {
     private(set) lazy var mostRecentEmptyDate: Date = {
         self.data[self.mostRecentEmptyDateIndex].date
     }()
+    
+    
+    // MARK: - Function
+    
+    /// 날짜를 "2022 02.05" 형태의 문자열로 월, 일만 볼드 처리해서 변환
+    func attributedDateString(for source: NoteDatePickerData) -> NSMutableAttributedString {
+        source.date
+            .customFormatted(type: .dot)
+            .bold(targetString: source.date.monthDotDayString, fontSize: Font.dateLabelFontSize)
+    }
 }

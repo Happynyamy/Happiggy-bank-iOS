@@ -168,6 +168,9 @@ extension BottleListViewController {
         
         /// 리스트가 빈 경우 테이블뷰에 표시되는 라벨
         static let emptyListLabelTitle: String = "이전에 사용한 유리병이 없습니다."
+        
+        /// 쪽지 리스트로 넘어갔을 때 뒤로가기 버튼의 제목을 비워두기 위해 사용
+        static let emptyString = ""
     }
 }
 
@@ -281,6 +284,9 @@ enum SegueIdentifier {
     /// 새 쪽지 색깔 피커에서 날짜 피커로 돌아갈 때 사용
     static let unwindToNewNoteDatePicker = "unwindToNewNoteDatePicker"
     
+    /// 저금통 리스트에서 쪽지 리스트로 넘어갈 때 사용
+    static let showNoteList = "showNoteList"
+    
     /// 새 쪽지 텍스트 뷰에서 날짜 피커 띄울 때 사용
     static let presentDatePickerFromNoteTextView = "presentDatePickerFromNoteTextView"
     
@@ -390,6 +396,41 @@ enum AssetColor: String {
     case note
 }
 
+extension NoteListViewController {
+    
+    /// NoteListViewController 에서 사용하는 상수값
+    enum Metric {
+        
+        /// note cell 세로:가로 비율 : 42/327
+        private static let cellSizeRatio: CGFloat = 242/327
+        
+        /// 좌우 패딩: 24
+        private static let horizontalPadding: CGFloat = 24
+        
+        /// 화면 가로 길이
+        static let screenWidth: CGFloat = UIScreen.main.bounds.width
+        
+        /// note cell 사이 간격: 16
+        static let cellSpacing: CGFloat = 16
+        
+        /// note cell 높이 : 스크린 가로 길이에서 좌우 패딩값을 뺀 다음 지정한 비율을 곱해서 계산
+        static let cellHeight = (screenWidth - 2 * horizontalPadding) * cellSizeRatio
+        
+        /// note cell 의 (흰색) 쪽지 이미지 뷰 외곽선 굵기: 1
+        static let noteImageViewBorderWidth: CGFloat = 1
+    }
+}
+
+extension NoteCell {
+    
+    /// NoteCell 에서 사용하는 상수들
+    enum Metric {
+        
+        /// 쪽지 이미지뷰 모서리 둥근 정도: 8
+        static let cornerRadius: CGFloat = 8
+    }
+}
+
 extension NewNoteTextViewController {
     
     /// NewNoteTextViewController에서 사용하는 상수값
@@ -429,13 +470,13 @@ extension NewNoteTextViewController {
     /// NewNoteTextViewController 의 폰트 크기 상수들
     enum Font {
         
-        /// body text 의 폰트 크기: 18
-        static let body = UIFont.systemFont(ofSize: 18)
+        /// body text 의 폰트 크기: 19
+        static let body = UIFont.systemFont(ofSize: 19)
         
-        /// 날짜 라벨들 폰트 크기: 15
-        static let dateLabelFontSize: CGFloat = 15
+        /// 날짜 라벨들 폰트 크기: 17
+        static let dateLabelFontSize: CGFloat = 17
         
-        /// 연도 라벨 폰트 크기: bold 15
+        /// 연도 라벨 폰트 크기: bold 17
         static let yearLabelFont = UIFont.boldSystemFont(ofSize: dateLabelFontSize)
     }
     
@@ -452,6 +493,34 @@ extension NewNoteTextViewController {
         static func letterCountText(count: Int) -> String {
             "\(count)/\(Metric.noteTextMaxLength)"
         }
+    }
+}
+
+extension NewNoteDatePickerViewModel {
+    
+    /// NoteNoteDatePickerViewModel 에서 지정하는 폰트 크기
+    enum Font {
         
+        /// 날짜라벨 폰트 크기: 17
+        static let dateLabelFontSize: CGFloat = 17
+        
+    }
+}
+
+extension NoteListViewModel {
+    
+    /// NoteListViewModel 에서 지정하는 폰트 크기
+    enum Font {
+        
+        /// 날짜라벨 폰트 크기: 17
+        static let dateLabelFontSize: CGFloat = 17
+        
+    }
+    
+    /// NoteListViewModel 에서 사용하는 문자열
+    enum StringLiteral {
+        
+        /// 빈 문자열: 저금통 제목을 불러올 수 없을 때 사용
+        static let emptyString = ""
     }
 }
