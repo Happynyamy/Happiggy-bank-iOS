@@ -82,11 +82,11 @@ final class NewBottleDatePickerViewController: UIViewController {
               let periodIndex = self.bottleData?.periodIndex
         else { return }
         
-        let newBottle = Bottle(context: PersistenceStore.shared.context)
-        newBottle.title_ = title
-        newBottle.startDate_ = Date()
-        newBottle.endDate_ = endDate(from: Date(), after: periodIndex)
-        
+        Bottle(
+            title: title,
+            startDate: Date(),
+            endDate: endDate(from: Date(), after: periodIndex)
+        )
         PersistenceStore.shared.save()
     }
     
