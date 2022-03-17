@@ -137,14 +137,11 @@ extension BottleListViewController {
     enum Metric {
         
         /// 테이블뷰 행 높이
-        static let tableViewRowHeight: CGFloat = 112
+        static let cellHeight: CGFloat = BottleCell.Metric.cellHeight + BottleCell.Metric.horizontalPadding
     }
     
     /// BottleListViewController에서 설정하는 Color 상수값
     enum Color {
-        
-        /// 테이블뷰 배경색
-        static let tableViewBackground: Int = 0xE1C2BC
         
         /// 내비게이션 바 Item 색상
         static let navigationBar: Int = 0x000000
@@ -176,40 +173,57 @@ extension BottleListViewController {
 
 extension BottleCell {
     
+    /// 리유저블 ID 이름
+    static var reuseIdentifier: String {
+        return "\(self)"
+    }
+    
+    /// 인터페이스 빌더 파일 이름
+    static var nibName: String {
+        return "\(self)"
+    }
+    
+    // TODO: 에셋 교체시 이름 통일
+    /// Bottle Cell에서 사용하는 문자열
+    enum StringLiteral {
+        
+        /// 셀 배경 이미지 이름
+        static let backgroundImage: String = "bottleCellBackground"
+        
+        /// 셀 저금통 프레임 이미지 이름
+        static let bottleFrameImage: String = "bottleInList"
+        
+        /// 셀 저금통 뚜껑 이미지 이름
+        static let bottleCapImage: String = "cap"
+    }
+    
     /// Bottle Cell에서 설정하는 layout 상수값
     enum Metric {
+
+        /// bottle cell 세로:가로 비율
+        private static let cellSizeRatio: CGFloat = 262/327
         
-        /// 셀 배경 너비
-        static let cellBackgroundWidth: CGFloat =
-        UIScreen.main.bounds.width - cellHorizontalPadding * 2
+        /// 좌우 패딩: 24
+        static let horizontalPadding: CGFloat = 24
         
-        /// 셀 배경 높이
-        static let cellBackgroundHeight: CGFloat = 96
+        /// 화면 가로 길이
+        static let screenWidth: CGFloat = UIScreen.main.bounds.width
         
-        /// 셀 수평 패딩
-        static let cellHorizontalPadding: CGFloat = 16
+        /// bottle cell 사이 간격: 16
+        static let cellSpacing: CGFloat = 16
         
-        /// 셀 수직 패딩
-        static let cellVerticalPadding: CGFloat = 16
+        /// bottle cell 높이 : 스크린 가로 길이에서 좌우 패딩값을 뺀 다음 지정한 비율을 곱해서 계산
+        static let cellHeight = (screenWidth - 2 * horizontalPadding) * cellSizeRatio
         
-        /// 셀 내부 앞쪽 패딩
-        static let cellInnerLeadingPadding: CGFloat = 16
-        
-        /// 셀 내부 뒤쪽 패딩
-        static let cellInnerTrailingPadding: CGFloat = 56
-        
-        /// 셀 내부 수직 패딩
-        static let cellInnerVerticalPadding: CGFloat = 24
-        
-        /// 셀 내부 라벨 간 패딩
-        static let cellLabelPadding: CGFloat = 12
+        /// corner radius
+        static let cornerRadius: CGFloat = 15
     }
     
     /// Bottle Cell에서 설정하는 글자 크기
     enum FontSize {
         
         /// 유리병 제목 라벨 글자 크기
-        static let titleLabel: CGFloat = 16
+        static let titleLabel: CGFloat = 17
         
         /// 유리병 기간 라벨 글자 크기
         static let dateLabel: CGFloat = 16
@@ -219,7 +233,7 @@ extension BottleCell {
     enum Color {
         
         /// 유리병 기간 라벨 색상
-        static let dateLabelText: Int = 0xA19491
+        static let dateLabelText: Int = 0x6D6E78
     }
 }
 
@@ -230,8 +244,10 @@ extension Bottle {
 
         /// 제목 디폴트 값: "?"
         static let title = "?"
+        
+        /// date 라벨 중간 문자
+        static let center: String = " ~ "
     }
-    
 }
 
 extension Note {

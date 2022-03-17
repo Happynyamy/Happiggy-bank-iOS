@@ -17,11 +17,13 @@ extension Date {
         DateFormatter().then {
             switch type {
             case .dot:
-                $0.dateFormat = "yyyy MM.dd"
+                $0.dateFormat = "yyyy.MM.dd"
             case .letters:
                 // need to make dateStyle medium for eng..
                 $0.dateStyle = .long
                 $0.timeStyle = .none
+            case .spaceAndDot:
+                $0.dateFormat = "yyyy MM.dd"
             }
             $0.locale = Locale(identifier: krLocalIdentifier)
         }
@@ -35,8 +37,9 @@ extension Date {
     }
     
     /// DateFormat 케이스에 맞게 날짜를 문자열로 변환해주는 메서드
-    /// .dots : 2022 02.05
+    /// .spaceAndDot : 2022 02.05
     /// .letters : 2022년 2월 5일
+    /// .dot : 2022.02.05
     func customFormatted(type: DateFormat) -> String {
         Date.formatter(type: type).string(from: self)
     }

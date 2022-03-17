@@ -59,6 +59,8 @@
 		A8BD834727BE337900E0DE41 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD834627BE337900E0DE41 /* HomeView.swift */; };
 		A8BD834D27BE39D600E0DE41 /* NoteProgressLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD834C27BE39D600E0DE41 /* NoteProgressLabel.swift */; };
 		A8EB5E8B27C8B087005704F2 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EB5E8A27C8B087005704F2 /* UIButton+Extension.swift */; };
+		A8ECD4A527E30FF300886BC0 /* BottleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8ECD4A427E30FF300886BC0 /* BottleCell.xib */; };
+		A8ECD4A727E33BFA00886BC0 /* BottleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ECD4A627E33BFA00886BC0 /* BottleListViewModel.swift */; };
 		A8FC07C827B3ECF00077A758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC07C727B3ECF00077A758 /* AppDelegate.swift */; };
 		A8FC07CA27B3ECF00077A758 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC07C927B3ECF00077A758 /* SceneDelegate.swift */; };
 		A8FC07CF27B3ECF00077A758 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8FC07CD27B3ECF00077A758 /* Main.storyboard */; };
@@ -119,6 +121,8 @@
 		A8BD834627BE337900E0DE41 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A8BD834C27BE39D600E0DE41 /* NoteProgressLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteProgressLabel.swift; sourceTree = "<group>"; };
 		A8EB5E8A27C8B087005704F2 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		A8ECD4A427E30FF300886BC0 /* BottleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottleCell.xib; sourceTree = "<group>"; };
+		A8ECD4A627E33BFA00886BC0 /* BottleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleListViewModel.swift; sourceTree = "<group>"; };
 		A8FC07C427B3ECF00077A758 /* Happiggy-bank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Happiggy-bank.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8FC07C727B3ECF00077A758 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8FC07C927B3ECF00077A758 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 				A4CF2C8927CA3D96001B01B1 /* NotesViewModel.swift */,
 				A4B2860E27D9F539008769EB /* NewNoteDatePickerViewModel.swift */,
 				A490AC4F27DD9D2E00B04CE1 /* NoteListViewModel.swift */,
+				A8ECD4A627E33BFA00886BC0 /* BottleListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -242,6 +247,7 @@
 				A8FC07CD27B3ECF00077A758 /* Main.storyboard */,
 				A467B5C927DA289500AC702D /* NewNoteDatePickerRowView.xib */,
 				A8FC07D227B3ECF30077A758 /* LaunchScreen.storyboard */,
+				A8ECD4A427E30FF300886BC0 /* BottleCell.xib */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -392,6 +398,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A490AC5627DDA0CA00B04CE1 /* NoteCell.xib in Resources */,
+				A8ECD4A527E30FF300886BC0 /* BottleCell.xib in Resources */,
 				A8FC07DD27B3EF030077A758 /* .swiftlint.yml in Resources */,
 				A467B5CA27DA289600AC702D /* NewNoteDatePickerRowView.xib in Resources */,
 				A8FC07D427B3ECF30077A758 /* LaunchScreen.storyboard in Resources */,
@@ -447,6 +454,7 @@
 				A4CF2C8027C733FE001B01B1 /* ColorButton.swift in Sources */,
 				A4CF2C8227C73B42001B01B1 /* UIColor+AssetColors.swift in Sources */,
 				A819CF9F27DDD97C00DE8E72 /* HapticManager.swift in Sources */,
+				A8ECD4A727E33BFA00886BC0 /* BottleListViewModel.swift in Sources */,
 				A843332427DA397800A12A54 /* DataProvider.swift in Sources */,
 				A4B2860B27D9B434008769EB /* UIViewController+FadeOut.swift in Sources */,
 				A4B2860927D9A56A008769EB /* NewNoteTextViewController.swift in Sources */,

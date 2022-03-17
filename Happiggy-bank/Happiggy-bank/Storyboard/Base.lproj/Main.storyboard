@@ -46,23 +46,40 @@
             <point key="canvasLocation" x="-1154" y="1643"/>
         </scene>
         <!--Bottle List View Controller-->
-        <scene sceneID="IHR-JB-pwa">
+        <scene sceneID="U6G-8e-yzH">
             <objects>
-                <viewController id="zPZ-4s-ZPb" customClass="BottleListViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="g3S-Jh-zW0">
+                <viewController id="E5t-46-ohL" customClass="BottleListViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nEt-Kx-IF1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="cUP-8i-uYm"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7lz-OX-uTB">
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="E5t-46-ohL" id="VMd-vD-An3"/>
+                                    <outlet property="delegate" destination="E5t-46-ohL" id="b9k-2H-pR0"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="s8t-Ug-AZj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7lz-OX-uTB" firstAttribute="top" secondItem="s8t-Ug-AZj" secondAttribute="top" id="A7W-qt-cMK"/>
+                            <constraint firstItem="7lz-OX-uTB" firstAttribute="leading" secondItem="s8t-Ug-AZj" secondAttribute="leading" id="VPP-OW-XjZ"/>
+                            <constraint firstItem="7lz-OX-uTB" firstAttribute="bottom" secondItem="s8t-Ug-AZj" secondAttribute="bottom" id="XjT-Kh-7cY"/>
+                            <constraint firstItem="7lz-OX-uTB" firstAttribute="trailing" secondItem="s8t-Ug-AZj" secondAttribute="trailing" id="gGT-Jv-0y2"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="l40-Fa-bkL"/>
+                    <navigationItem key="navigationItem" id="s9o-ei-caC"/>
                     <connections>
-                        <segue destination="KE3-2Z-kiH" kind="show" identifier="showNoteList" id="5xR-d5-VEn"/>
+                        <outlet property="tableView" destination="7lz-OX-uTB" id="G1k-rO-CCo"/>
+                        <segue destination="KE3-2Z-kiH" kind="show" identifier="showNoteList" id="YHT-qE-7jg"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QCW-48-qYH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8wb-hW-wCd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="892" y="1643"/>
+            <point key="canvasLocation" x="892" y="1642.6108374384237"/>
         </scene>
         <!--Note List View Controller-->
         <scene sceneID="jaT-d5-7R3">
@@ -160,7 +177,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="zPZ-4s-ZPb" kind="relationship" relationship="rootViewController" id="D9l-Ev-kMS"/>
+                        <segue destination="E5t-46-ohL" kind="relationship" relationship="rootViewController" id="IYY-fJ-Uet"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2lx-ry-UpU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -541,7 +558,7 @@
             <objects>
                 <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="FVx-vN-7Xe" customClass="BottleViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jBg-oD-Piv">
-                        <rect key="frame" x="0.0" y="0.0" width="366" height="492"/>
+                        <rect key="frame" x="0.0" y="0.0" width="327" height="440"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aPw-QS-DfD" customClass="BottleImageView" customModule="Happiggy_bank" customModuleProvider="target">

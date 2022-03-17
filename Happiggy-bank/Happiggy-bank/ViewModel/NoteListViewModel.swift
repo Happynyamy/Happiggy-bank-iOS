@@ -37,7 +37,7 @@ class NoteListViewModel {
     /// 날짜를 "2022 02.05" 형태의 문자열로 연도만 볼드 처리해서 변환
     func attributedDateString(for note: Note) -> NSMutableAttributedString {
         note.date
-            .customFormatted(type: .dot)
+            .customFormatted(type: .spaceAndDot)
             .bold(targetString: note.date.yearString, fontSize: Font.dateLabelFontSize)
     }
 }
