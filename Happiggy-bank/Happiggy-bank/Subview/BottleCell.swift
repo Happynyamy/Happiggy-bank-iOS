@@ -9,141 +9,79 @@ import UIKit
 
 import Then
 
-/// 유리병 리스트의 셀
+// TODO: bottleContentView 필요 -> 쪽지 채워진 모양
+
+/// 저금통 리스트의 셀
 final class BottleCell: UITableViewCell {
     
-    // MARK: Properties
-    // TODO: 이미지로 교체
-    /// 배경
-    let background = UIView().then {
-        $0.frame = CGRect(
-            x: 0,
-            y: 0,
-            width: Metric.cellBackgroundWidth,
-            height: Metric.cellBackgroundHeight
+    // MARK: - Properties
+
+    /// 셀 배경이미지
+    @IBOutlet var bottleCellBackground: UIImageView!
+    
+    /// 저금통 프레임 이미지
+    @IBOutlet var bottleFrameImage: UIImageView!
+
+    /// 저금통 뚜껑 이미지
+    @IBOutlet var bottleCapImage: UIImageView!
+    
+    /// 저금통 제목 라벨
+    @IBOutlet var bottleTitleLabel: UILabel!
+
+    /// 저금통 기간 라벨
+    @IBOutlet var bottleDateLabel: UILabel!
+
+    
+    // MARK: - override func
+    
+    override func awakeFromNib() {
+        configureCellBackground()
+        configureCellBottleFrame()
+        configureCellBottleCap()
+        configureLabels()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        contentView.frame = contentView.frame.inset(
+            by: UIEdgeInsets(
+                top: Metric.cellSpacing,
+                left: Metric.horizontalPadding,
+                bottom: 0,
+                right: Metric.horizontalPadding
+            )
         )
-        $0.backgroundColor = UIColor.white
-        $0.layer.cornerRadius = 10
-        $0.translatesAutoresizingMaskIntoConstraints = false
-    }
-    
-    /// 유리병 제목 라벨
-    let titleLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: FontSize.titleLabel, weight: .bold)
-        $0.translatesAutoresizingMaskIntoConstraints = false
-    }
-    
-    /// 유리병 기간 라벨
-    let dateLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: FontSize.dateLabel)
-        $0.textColor = UIColor(hex: Color.dateLabelText)
-        $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
     
-    // MARK: override func
+    // MARK: - cell settings
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configureCell()
-        configureViewHierarchy()
-        configureConstraints()
+    // TODO: 인터페이스 빌더 상에 바로 추가?
+    // TODO: 에셋 이미지 이름 수정
+    /// 셀 배경 이미지 설정
+    private func configureCellBackground() {
+        self.bottleCellBackground.image = UIImage(named: StringLiteral.backgroundImage)
+        self.bottleCellBackground.contentMode = .scaleAspectFill
+        self.bottleCellBackground.layer.cornerRadius = Metric.cornerRadius
     }
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+    /// 셀 저금통 프레임 이미지 설정
+    private func configureCellBottleFrame() {
+        self.bottleFrameImage.image = UIImage(named: StringLiteral.bottleFrameImage)
+        self.bottleFrameImage.contentMode = .scaleAspectFill
     }
     
-    
-    // MARK: cell settings
-    
-    /// 셀 속성 설정
-    private func configureCell() {
-        self.selectionStyle = .none
-        self.backgroundColor = UIColor(hex: BottleListViewController.Color.tableViewBackground)
+    /// 셀 저금통 뚜껑 이미지 설정
+    private func configureCellBottleCap() {
+        self.bottleCapImage.image = UIImage(named: StringLiteral.bottleCapImage)
+        self.bottleCapImage.contentMode = .scaleAspectFill
     }
     
-    
-    // MARK: View Hierarchy
-    
-    /// 뷰 계층 설정
-    private func configureViewHierarchy() {
-        self.addSubview(background)
-        self.background.addSubview(titleLabel)
-        self.background.addSubview(dateLabel)
-    }
-    
-    
-    // MARK: Constraints
-    
-    /// Constraints 메서드 호출하는 함수
-    private func configureConstraints() {
-        configureBackgroundConstraints()
-        configureTitleLabelConstraints()
-        configureDateLabelConstraints()
-    }
-    
-    /// 배경 Constraints 설정
-    private func configureBackgroundConstraints() {
-        NSLayoutConstraint.activate([
-            self.background.leadingAnchor.constraint(
-                equalTo: self.leadingAnchor,
-                constant: Metric.cellVerticalPadding
-            ),
-            self.background.trailingAnchor.constraint(
-                equalTo: self.trailingAnchor,
-                constant: -Metric.cellVerticalPadding
-            ),
-            self.background.topAnchor.constraint(
-                equalTo: self.topAnchor,
-                constant: Metric.cellHorizontalPadding
-            ),
-            self.background.widthAnchor.constraint(
-                equalToConstant: Metric.cellBackgroundWidth
-            ),
-            self.background.heightAnchor.constraint(
-                equalToConstant: Metric.cellBackgroundHeight
-            )
-        ])
-    }
-    
-    /// 유리병 제목 라벨 Constraints 설정
-    private func configureTitleLabelConstraints() {
-        NSLayoutConstraint.activate([
-            self.titleLabel.leadingAnchor.constraint(
-                equalTo: self.background.leadingAnchor,
-                constant: Metric.cellInnerLeadingPadding
-            ),
-            self.titleLabel.trailingAnchor.constraint(
-                equalTo: self.background.trailingAnchor,
-                constant: -Metric.cellInnerTrailingPadding
-            ),
-            self.titleLabel.topAnchor.constraint(
-                equalTo: self.background.topAnchor,
-                constant: Metric.cellInnerVerticalPadding
-            )
-        ])
-    }
-    
-    /// 유리병 기간 라벨 Constraints 설정
-    private func configureDateLabelConstraints() {
-        NSLayoutConstraint.activate([
-            self.dateLabel.leadingAnchor.constraint(
-                equalTo: self.background.leadingAnchor,
-                constant: Metric.cellInnerLeadingPadding
-            ),
-            self.dateLabel.trailingAnchor.constraint(
-                equalTo: self.background.trailingAnchor,
-                constant: -Metric.cellInnerTrailingPadding
-            ),
-            self.dateLabel.topAnchor.constraint(
-                equalTo: self.titleLabel.bottomAnchor,
-                constant: Metric.cellLabelPadding
-            ),
-            self.dateLabel.bottomAnchor.constraint(
-                equalTo: self.background.bottomAnchor,
-                constant: -Metric.cellInnerVerticalPadding
-            )
-        ])
+    /// 셀 라벨 폰트사이즈, 색상 설정
+    private func configureLabels() {
+        self.bottleTitleLabel.font = .systemFont(ofSize: FontSize.titleLabel)
+        self.bottleDateLabel.font = .systemFont(ofSize: FontSize.dateLabel)
+        self.bottleDateLabel.textColor = UIColor(hex: Color.dateLabelText)
     }
 }

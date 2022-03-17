@@ -109,6 +109,12 @@ public class Bottle: NSManagedObject {
     var hasEmptyDate: Bool {
         self.numberOfDaysSinceStartDate > self.notes.count
     }
+    
+    /// 시작 날짜부터 끝 날짜까지의 텍스트 라벨
+    /// 2022.02.05 ~ 2022.02.05 형식
+    var dateLabel: String {
+        self.startDate.customFormatted(type: .dot) + StringLiteral.center + self.endDate.customFormatted(type: .dot)
+    }
 }
 
 extension Bottle {

@@ -14,4 +14,6 @@ enum DateFormat {
     case dot
     /// 2022년 2월 5일 형태
     case letters
+    /// 2022 02.05 형태
+    case spaceAndDot
 }
