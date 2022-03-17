@@ -8,7 +8,7 @@
 import UIKit
 
 /// 쪽지 리스트에서 사용할 셀
-class NoteCell: UITableViewCell {
+final class NoteCell: UITableViewCell {
     
     // MARK: - @IBOulet
     
@@ -29,18 +29,41 @@ class NoteCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.configureNoteImageView()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
+        guard selected
+        else { return }
+        
+        self.updateLabelStates()
+        self.animateLabelStateUpdates()
     }
     
-    /// 쪽지 이미지뷰 초기 설정: 모서리 둥글게 설정
-    private func configureNoteImageView() {
-        self.noteImageView.image = UIImage()
-        self.noteImageView.layer.cornerRadius = Metric.cornerRadius
+    /// (선택된 경우에 호출하는 메서드로) 내용 라벨과 뒷면 날짜 라벨을 나타내고, 앞면 날짜 라벨을 숨김 처리
+    private func updateLabelStates() {
+        self.frontDateLabel.isHidden = true
+        self.contentLabel.isHidden = false
+        self.backDateLabel.isHidden = false
+    }
+    
+    /// (선택된 경우에 호출하는 메서드로) 날짜 라벨이 이동하면 내용 라벨이 페이드인하는 효과를 나타냄
+    private func animateLabelStateUpdates() {
+        /// 페이드 인 효과를 위해 투명도 0으로 설정
+        self.contentLabel.alpha = .zero
+        /// 이동 효과 주기 위해 프레임을 가운데로 변경
+        self.backDateLabel.frame = self.frontDateLabel.frame
+
+        UIView.animateKeyframes(withDuration: Metric.animationDuration, delay: .zero) {
+            /// 날짜 라벨 이동 애니메이션
+            UIView.addKeyframe(withRelativeStartTime: .zero, relativeDuration: Metric.half) {
+                self.layoutIfNeeded()
+            }
+            /// 내용 라벨 페이드 인 애니메이션
+            UIView.addKeyframe(withRelativeStartTime: Metric.half, relativeDuration: Metric.half) {
+                self.contentLabel.alpha = .one
+            }
+        }
     }
 }

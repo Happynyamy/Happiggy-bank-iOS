@@ -63,42 +63,6 @@ extension DefaultButton {
     }
 }
 
-extension NotesViewController {
-    
-    /// NotesViewController 에서 설정하는 레이아웃에 적용할 상수들
-    enum Metric {
-        
-        /// 상하좌우 패딩 값 : 16
-        static let padding: CGFloat = 16
-        
-        /// notes view cell 높이/너비 비율
-        private static let cellHeightWidthRatio: CGFloat = 96 / 162
-        
-        /// notes view cell 너비
-        private static let cellWidth: CGFloat = (UIScreen.main.bounds.width - 3 * padding) / 2
-        
-        /// notes view cell 너비와 높이
-        static let cellSize = CGSize(
-            width: cellWidth,
-            height: cellWidth * cellHeightWidthRatio
-        )
-        
-        /// notes view cell 간 간격
-        static let spacing: CGFloat = padding
-    }
-    
-    /// NotesViewController 에서 설정하는 제목들
-    enum StringLiteral {
-        
-        /// 쪽지가 한 개도 없을 때 라벨에 나타낼 텍스트 : 럴수럴수이럴수...쪽지가 없어요ㅠ
-        static let emptyNotesLabelText = "럴수럴수이럴수...쪽지가 없어요ㅠ"
-        
-        /// 뒤로가기 버튼 제목
-        static let backButtonTitle = ""
-        
-    }
-}
-
 /// 대한민국 local identifier
 let krLocalIdentifier = "ko_KR"
 
@@ -448,23 +412,23 @@ extension NoteListViewController {
     /// NoteListViewController 에서 사용하는 상수값
     enum Metric {
         
-        /// note cell 세로:가로 비율 : 42/327
-        private static let cellSizeRatio: CGFloat = 242/327
+        /// note cell 세로:가로 비율 : 242/327
+        private static let noteImageSizeRatio: CGFloat = 242/327
         
         /// 좌우 패딩: 24
         private static let horizontalPadding: CGFloat = 24
         
-        /// 화면 가로 길이
-        static let screenWidth: CGFloat = UIScreen.main.bounds.width
+        /// 쪽지 이미지 사이 간격: 16
+        private static let noteImageSpacing: CGFloat = 16
         
-        /// note cell 사이 간격: 16
-        static let cellSpacing: CGFloat = 16
+        /// 쪽지 이미지 너비
+        static let noteImageWidth = UIScreen.main.bounds.width - 2 * horizontalPadding
         
-        /// note cell 높이 : 스크린 가로 길이에서 좌우 패딩값을 뺀 다음 지정한 비율을 곱해서 계산
-        static let cellHeight = (screenWidth - 2 * horizontalPadding) * cellSizeRatio
+        /// 쪽지 이미지 높이
+        static let noteImageHeight = noteImageWidth * noteImageSizeRatio
         
-        /// note cell 의 (흰색) 쪽지 이미지 뷰 외곽선 굵기: 1
-        static let noteImageViewBorderWidth: CGFloat = 1
+        /// note cell 높이 : 쪽지 이미지 높이 + 2 * spacing
+        static let cellHeight = noteImageHeight + noteImageSpacing
     }
 }
 
@@ -473,8 +437,11 @@ extension NoteCell {
     /// NoteCell 에서 사용하는 상수들
     enum Metric {
         
-        /// 쪽지 이미지뷰 모서리 둥근 정도: 8
-        static let cornerRadius: CGFloat = 8
+        /// 애니메이션 지속 시간: 0.6
+        static let animationDuration: TimeInterval = 0.6
+        
+        /// 0.5
+        static let half: Double = 0.5
     }
 }
 
@@ -569,5 +536,8 @@ extension NoteListViewModel {
         
         /// 빈 문자열: 저금통 제목을 불러올 수 없을 때 사용
         static let emptyString = ""
+        
+        /// 쪽지 이미지 에셋 호출을 위해 앞에 붙일 접두사
+        static var listNote: String = "listNote"
     }
 }

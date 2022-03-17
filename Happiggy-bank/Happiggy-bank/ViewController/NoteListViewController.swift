@@ -8,7 +8,7 @@
 import UIKit
 
 /// 개봉한 저금통의 쪽지를 확인할 수 있는 쪽지 리스트(테이블뷰)를 관리하는 뷰 컨트롤러
-class NoteListViewController: UIViewController {
+final class NoteListViewController: UIViewController {
     
     // MARK: - IBOutlet
     
@@ -48,28 +48,22 @@ class NoteListViewController: UIViewController {
     // TODO: 전체 개봉 버튼 구현
     /// 모든 쪽지를 개봉하는 메서드
     private func openAllNotes() {
-        // TODO: animation if first open
+        var newlyOpenedNoteIndexPaths = [IndexPath]()
         
         for (index, note) in self.viewModel.notes.enumerated() {
             guard !note.isOpen
             else { return }
             
             note.isOpen.toggle()
-            let indexPath = IndexPath(row: index, section: .zero)
-            self.tableView.reloadRows(at: [indexPath], with: .top)
+            newlyOpenedNoteIndexPaths.append(IndexPath(row: index, section: .zero))
+        }
+        
+        // TODO: check if this calls tableview(didSelect:) (it needs to!)
+        self.tableView.indexPathsForVisibleRows?
+            .filter { newlyOpenedNoteIndexPaths.contains($0) }
+            .forEach { self.tableView.selectRow(at: $0, animated: false, scrollPosition: .none)
         }
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
 
 
@@ -102,29 +96,20 @@ extension NoteListViewController: UITableViewDataSource {
     }
     // swiftlint:enable force_cast
     
-    /// 쪽지의 색깔에 맞게 배경/이미지 업데이트
-    private func configureNoteImageView(cell: NoteCell, note: Note) {
-        cell.noteImageView.backgroundColor = UIColor.note(color: note.color)
-        
-        /// 흰색이면 외곽선 표현
-        if note.color == .white {
-            cell.noteImageView.layer.borderWidth = Metric.noteImageViewBorderWidth
-            cell.noteImageView.layer.borderColor = UIColor.highlight(color: note.color).cgColor
-        }
-    }
-    
     /// 셀 재사용 시 이전에 설정했던 속성들 리셋
     private func clearCell(cell: NoteCell) {
         cell.frontDateLabel.attributedText = nil
         cell.backDateLabel.attributedText = nil
         cell.contentLabel.text = nil
-        cell.noteImageView.backgroundColor = nil
-        cell.noteImageView.layer.borderWidth = .zero
-        cell.noteImageView.layer.borderColor = .none
-        
+        cell.noteImageView.image = UIImage()
     }
     
-    /// 개봉 여부에 따라 앞면 혹은 뒷면으로 나타나도록 설정
+    /// 쪽지의 색깔에 맞게 배경/이미지 업데이트
+    private func configureNoteImageView(cell: NoteCell, note: Note) {
+        cell.noteImageView.image = self.viewModel.image(for: note)
+    }
+    
+    /// 쪽지 내용 라벨들 내용 업데이트
     private func configureContents(cell: NoteCell, note: Note) {
         /// 내용 입력
         cell.frontDateLabel.attributedText = self.viewModel.attributedDateString(for: note)
@@ -133,8 +118,8 @@ extension NoteListViewController: UITableViewDataSource {
         
         /// 개봉 여부에 따라 숨김 처리
         cell.frontDateLabel.isHidden = note.isOpen
-        cell.contentLabel.isHidden = !note.isOpen
         cell.backDateLabel.isHidden = !note.isOpen
+        cell.contentLabel.isHidden = !note.isOpen
     }
 }
 
@@ -152,25 +137,22 @@ extension NoteListViewController: UITableViewDelegate {
               indexPath.row < self.viewModel.numberOfTotalNotes
         else { return nil }
         
-        // FIXME: 일단 개발 시 편의를 위해 토글로 둠
         /// 이미 개봉되었으면 다시 누르는 것 방지
-//        let note = self.viewModel.notes[indexPath.row]
-//        return note.isOpen ? nil : indexPath
-        return indexPath
+        let note = self.viewModel.notes[indexPath.row]
+        return note.isOpen ? nil : indexPath
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard indexPath.row >= .zero,
               indexPath.row < self.viewModel.numberOfTotalNotes
         else { return }
-        
-        // TODO: animation if first open
-        
-        /// 쪽지를 개봉하고 뷰를 다시 로드해서 반영
+
         let note = self.viewModel.notes[indexPath.row]
+        
         note.isOpen.toggle()
         // TODO: activate core data saving
 //        PersistenceStore.shared.save()
-        self.tableView.reloadRows(at: [indexPath], with: .top)
+        /// 최초 개봉 애니메이션이 스크롤할 떄 마다 다시 나타나는 것 방지
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 }
