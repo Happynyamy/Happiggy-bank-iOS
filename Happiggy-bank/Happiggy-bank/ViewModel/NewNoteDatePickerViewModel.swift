@@ -56,6 +56,7 @@ class NewNoteDatePickerViewModel {
     func attributedDateString(for source: NoteDatePickerData) -> NSMutableAttributedString {
         source.date
             .customFormatted(type: .spaceAndDot)
+            .nsMutableAttributedStringify()
             .bold(targetString: source.date.monthDotDayString, fontSize: Font.dateLabelFontSize)
     }
 }
