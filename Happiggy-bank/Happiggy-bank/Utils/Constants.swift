@@ -398,7 +398,7 @@ extension NewBottleDatePickerViewController {
 }
 
 /// 애셋에 추가한 색깔들의 이름을 쉽게 불러오기 위한 enum
-enum AssetColor: String {
+enum Asset: String {
     
     /// 쪽지 하이라이트 색상 (새 쪽지 컬러피커에서 사용)
     case noteHighlight
