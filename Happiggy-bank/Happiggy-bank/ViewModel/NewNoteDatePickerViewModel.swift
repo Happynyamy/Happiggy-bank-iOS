@@ -5,11 +5,10 @@
 //  Created by sun on 2022/03/10.
 //
 
-import Foundation
 import UIKit
 
 /// 새 쪽지 추가 날짜 피커에 필요한 형식으로 데이터를 변환해주는 뷰모델
-class NewNoteDatePickerViewModel {
+final class NewNoteDatePickerViewModel {
     
     // MARK: - Properties
     
@@ -22,7 +21,7 @@ class NewNoteDatePickerViewModel {
         let startDate = self.bottle.startDate
         
         /// 날짜 먼저 전부 기록
-        for value in 0..<self.numberOfRows {
+        for value in .zero..<self.numberOfRows {
             let date = Calendar.current.date(byAdding: .day, value: value, to: startDate) ?? Date()
             source.append(NoteDatePickerData(date: date))
         }
@@ -54,10 +53,20 @@ class NewNoteDatePickerViewModel {
     // MARK: - Function
     
     /// 날짜를 "2022 02.05" 형태의 문자열로 월, 일만 볼드 처리해서 변환
-    func attributedDateString(for source: NoteDatePickerData) -> NSMutableAttributedString {
-        source.date
+    func attributedDateString(
+        for source: NoteDatePickerData,
+        isSelected: Bool = false
+    ) -> NSMutableAttributedString {
+
+        var color = UIColor.label
+        if isSelected {
+            color = (source.color == nil) ? .customLabel : .customGray
+        }
+        
+        return source.date
             .customFormatted(type: .spaceAndDot)
             .nsMutableAttributedStringify()
+            .color(color: color)
             .bold(targetString: source.date.monthDotDayString, fontSize: Font.dateLabelFontSize)
     }
     
@@ -67,5 +76,15 @@ class NewNoteDatePickerViewModel {
         else { return nil}
         
         return UIImage.note(color: color)
+    }
+    
+    /// 선택 가능한 가능 최근 날짜 혹은 이전에 선택한 날짜에 해당하는 행 위치를 리턴
+    func initialRow(for newNote: NewNote) -> Int {
+        Calendar.daysBetween(start: self.bottle.startDate, end: newNote.date) - 1
+    }
+    
+    /// 선택한 행의 날짜에 쪽지를 쓸 수 있는 지 리턴
+    func selectedDateIsAvailable(for row: Int) -> Bool {
+        noteData[row].color == nil
     }
 }

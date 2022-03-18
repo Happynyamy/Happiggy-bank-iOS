@@ -7,19 +7,23 @@
 
 import UIKit
 
+// FIXME: - 다른 앱 갔다 오면 선택 시 색깔 바꾼 게 사라짐
 /// 새로운 쪽지를 추가하기 위한 날짜 피커 뷰를 관리하는 뷰 컨트롤러
-class NewNoteDatePickerViewController: UIViewController {
+final class NewNoteDatePickerViewController: UIViewController {
     
     // MARK: - @IBOutlet
     
     /// 취소 버튼과 다음 버튼을 담고 있는 내비게이션 바
-    @IBOutlet var navigationBar: UINavigationBar!
+    @IBOutlet weak var navigationBar: UINavigationBar!
     
     /// 컬러피커로 넘어가거나 쪽지 텍스트뷰로 돌아가는 버튼
-    @IBOutlet var rightButton: UIBarButtonItem!
+    @IBOutlet weak var rightButton: UIBarButtonItem!
     
     /// 새로 쪽지를 작성할 날짜를 나타내는 날짜 피커
-    @IBOutlet var datePickerView: UIPickerView!
+    @IBOutlet weak var datePickerView: UIPickerView!
+    
+    /// 이미 쪽지를 작성한 날짜를 선택했을 때 나타나는 경고 라벨
+    @IBOutlet weak var warningLabel: UILabel!
     
     
     // MARK: - Properties
@@ -30,11 +34,14 @@ class NewNoteDatePickerViewController: UIViewController {
     /// 새로 추가할 쪽지의 날짜, 색깔, 저금통 정보
     var newNote: NewNote!
     
-    /// 텍스트뷰에서 날짜 피커로 넘어온 다음 날짜 피커를 이동했다가 그냥 취소를 눌렀을 때 선택 초기화 용도
-    private var initialNote: NewNote!
-    
     /// source 가 어디인지에 따라 기본 셋팅과 메서드 작동 방식 다르게 하기 위함
     var isFromNoteTextView = false
+    
+    /// 경고 라벨 애니메이션을 위해 필요
+    var showWarningLabel = false
+    
+    /// 텍스트뷰에서 날짜 피커로 넘어온 다음 날짜 피커를 이동했다가 그냥 취소를 눌렀을 때 선택 초기화 용도
+    private var initialNote: NewNote!
     
     
     // MARK: - Life Cycle
@@ -46,6 +53,7 @@ class NewNoteDatePickerViewController: UIViewController {
         self.scrollToInitialPosition()
         self.configureRightButton()
         self.initialNote = self.newNote
+        self.configureSelectionIndicator()
     }
 
     
@@ -70,6 +78,17 @@ class NewNoteDatePickerViewController: UIViewController {
     
     /// 오른쪽 버튼을 눌렀을 때 호출되는 액션 메서드 : 컬러 피커를 띄우거나 쪽지 텍스트뷰로 돌아감
     @IBAction func rightButtonDidTap(_ sender: UIBarButtonItem) {
+        
+        let row = self.datePickerView.selectedRow(inComponent: .zero)
+        
+        guard row >= 0,
+              self.viewModel.selectedDateIsAvailable(for: row)
+        else {
+            /// 이미 작성한 날짜를 선택한 상태에서 오른쪽 버튼을 누르는 경우 햅틱 알림
+            HapticManager.instance.notification(type: .error)
+            return
+        }
+        
         if !self.isFromNoteTextView {
             self.performSegue(
                 withIdentifier: SegueIdentifier.presentNewNoteColorPicker,
@@ -103,20 +122,79 @@ class NewNoteDatePickerViewController: UIViewController {
         self.navigationBar.shadowImage = UIImage()
     }
     
-    /// 선택 가능한 가능 최근 날짜 혹은 이전에 선택한 날짜로 스크롤
+    // TODO: 메서드 정리하고 설명달기
+    
+    /// 날짜 피커의 셀렉션 인디케이터를 흰색으로 변경
+    private func configureSelectionIndicator() {
+        /// 기존 인디케이터 투명 처리
+        let formerSelectionIndicator = self.datePickerView.subviews[1]
+        formerSelectionIndicator.backgroundColor = .clear
+        
+        /// 흰색의 새로운 인디케이터 생성
+        let newSelectionIndictor = UIView().then {
+            $0.frame = formerSelectionIndicator.frame
+            $0.layer.cornerRadius = formerSelectionIndicator.layer.cornerRadius
+            $0.backgroundColor = .pickerSelectionColor
+        }
+        
+        /// 뷰 체계에 삽입 및 오토 레이아웃 설정
+        self.view.insertSubview(newSelectionIndictor, belowSubview: self.datePickerView)
+        newSelectionIndictor.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            newSelectionIndictor.centerXAnchor.constraint(
+                equalTo: formerSelectionIndicator.centerXAnchor
+            ),
+            newSelectionIndictor.centerYAnchor.constraint(
+                equalTo: formerSelectionIndicator.centerYAnchor
+            ),
+            newSelectionIndictor.widthAnchor.constraint(
+                equalTo: formerSelectionIndicator.widthAnchor
+            ),
+            newSelectionIndictor.heightAnchor.constraint(
+                equalTo: formerSelectionIndicator.heightAnchor
+            )
+        ])
+    }
+    
+    /// 선택 가능한 가장 최근 날짜 혹은 이전에 선택한 날짜로 스크롤
     private func scrollToInitialPosition() {
+        let row = self.viewModel.initialRow(for: self.newNote)
         self.datePickerView.selectRow(
-            Calendar.daysBetween(start: self.viewModel.bottle.startDate, end: self.newNote.date)-1,
+            row,
             inComponent: Metric.defaultComponentIndex,
             animated: false
+        )
+        
+        self.updateSelectedRowView(
+            self.datePickerView,
+            forRow: row,
+            forComponent: .zero,
+            noteData: self.viewModel.noteData[row]
         )
     }
     
     /// 소스가 보틀뷰면 그대로 사용하고 쪽지 텍스트뷰면 확인 버튼으로 변경
     private func configureRightButton() {
         if self.isFromNoteTextView {
-            rightButton.image = .checkmark
+            rightButton.image = UIImage(systemName: "checkmark")
         }
+    }
+    
+    /// 선택된 행의 글자 색깔 업데이트: 작성 가능한 경우 파랑, 불가능한 경우 회색
+    private func updateSelectedRowView(
+        _ pickerView: UIPickerView,
+        forRow row: Int,
+        forComponent component: Int,
+        noteData: NoteDatePickerData
+    ) {
+        guard let rowView = pickerView.view(forRow: row, forComponent: component)
+                as? NewNoteDatePickerRowView
+        else { return }
+        
+        rowView.dateLabel.attributedText = self.viewModel.attributedDateString(
+            for: noteData,
+            isSelected: true
+        )
     }
     
     
@@ -157,9 +235,14 @@ extension NewNoteDatePickerViewController: UIPickerViewDelegate {
         reusing view: UIView?
     ) -> UIView {
         
+        if self.showWarningLabel {
+            self.warningLabel.fadeOut()
+            self.showWarningLabel = false
+        }
+        
         let row = self.validatedRow(row)
-        let rowView = view as? NewNoteDatePickerRowView ?? NewNoteDatePickerRowView()
         let noteData = self.viewModel.noteData[row]
+        let rowView = view as? NewNoteDatePickerRowView ?? NewNoteDatePickerRowView()
         
         /// 데이터에 맞게 행의 모습(날짜 라벨 텍스트와 쪽지 이미지 색깔) 업데이트
         rowView.dateLabel.attributedText = self.viewModel.attributedDateString(for: noteData)
@@ -174,17 +257,26 @@ extension NewNoteDatePickerViewController: UIPickerViewDelegate {
         inComponent component: Int
     ) {
         let row = self.validatedRow(row)
-        let source = self.viewModel.noteData[row]
+        let noteData = self.viewModel.noteData[row]
         
-        guard source.color == nil
+        self.updateSelectedRowView(
+            pickerView,
+            forRow: row,
+            forComponent: component,
+            noteData: noteData
+        )
+
+        guard self.viewModel.selectedDateIsAvailable(for: row)
         else {
-            /// 쪽지를 이미 작성한 날짜는 선택 불가
-            self.rightButton.isEnabled = false
+            /// 이미 작성한 날짜면 경고 라벨 띄우고 버튼 회색 처리
+            self.warningLabel.fadeIn()
+            self.showWarningLabel = true
+            self.rightButton.tintColor = .customGray
             return
         }
         
-        self.rightButton.isEnabled = true
-        self.newNote.date = source.date
+        self.rightButton.tintColor = .systemBlue
+        self.newNote.date = noteData.date
     }
     
     /// 0보다 작은 인덱스가 들어오면 0, 최대 개수보다 큰 값이 들어오면 마지막 인덱스로 바꿔주는 메서드

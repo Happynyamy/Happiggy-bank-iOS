@@ -33,6 +33,7 @@
 		A4C1AFC227E47AD80096CD3E /* String+EmptyString.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1AFC127E47AD80096CD3E /* String+EmptyString.swift */; };
 		A4C1AFC427E47DC50096CD3E /* String+NSMutableAttributedStringify.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1AFC327E47DC50096CD3E /* String+NSMutableAttributedStringify.swift */; };
 		A4C1AFC627E482E10096CD3E /* CGFloat+Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1AFC527E482E10096CD3E /* CGFloat+Values.swift */; };
+		A4C1AFCE27E4F8150096CD3E /* UIView+FadeInOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1AFCD27E4F8150096CD3E /* UIView+FadeInOut.swift */; };
 		A4CF2C7C27C71FF5001B01B1 /* CATransition+PopupAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C7B27C71FF5001B01B1 /* CATransition+PopupAnimation.swift */; };
 		A4CF2C8027C733FE001B01B1 /* ColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C7F27C733FE001B01B1 /* ColorButton.swift */; };
 		A4CF2C8227C73B42001B01B1 /* UIColor+AssetColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C8127C73B42001B01B1 /* UIColor+AssetColors.swift */; };
@@ -95,6 +96,7 @@
 		A4C1AFC127E47AD80096CD3E /* String+EmptyString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+EmptyString.swift"; sourceTree = "<group>"; };
 		A4C1AFC327E47DC50096CD3E /* String+NSMutableAttributedStringify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+NSMutableAttributedStringify.swift"; sourceTree = "<group>"; };
 		A4C1AFC527E482E10096CD3E /* CGFloat+Values.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Values.swift"; sourceTree = "<group>"; };
+		A4C1AFCD27E4F8150096CD3E /* UIView+FadeInOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+FadeInOut.swift"; sourceTree = "<group>"; };
 		A4CF2C7B27C71FF5001B01B1 /* CATransition+PopupAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CATransition+PopupAnimation.swift"; sourceTree = "<group>"; };
 		A4CF2C7F27C733FE001B01B1 /* ColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorButton.swift; path = "Happiggy-bank/Button/ColorButton.swift"; sourceTree = SOURCE_ROOT; };
 		A4CF2C8127C73B42001B01B1 /* UIColor+AssetColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AssetColors.swift"; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				A4C1AFC127E47AD80096CD3E /* String+EmptyString.swift */,
 				A4C1AFC327E47DC50096CD3E /* String+NSMutableAttributedStringify.swift */,
 				A4C1AFC527E482E10096CD3E /* CGFloat+Values.swift */,
+				A4C1AFCD27E4F8150096CD3E /* UIView+FadeInOut.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				A8BD834727BE337900E0DE41 /* HomeView.swift in Sources */,
 				A4CF2C7C27C71FF5001B01B1 /* CATransition+PopupAnimation.swift in Sources */,
 				A8FC07C827B3ECF00077A758 /* AppDelegate.swift in Sources */,
+				A4C1AFCE27E4F8150096CD3E /* UIView+FadeInOut.swift in Sources */,
 				A491018727D6F37C0012DFDD /* NSObject+Name.swift in Sources */,
 				A8BD833527BE106C00E0DE41 /* BottleViewController.swift in Sources */,
 				A4CF2C8027C733FE001B01B1 /* ColorButton.swift in Sources */,

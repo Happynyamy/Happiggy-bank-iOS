@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -235,12 +236,25 @@
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uJY-xw-RUX">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="작성 날짜를 선택해주세요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JzG-sV-z0R">
+                                            <rect key="frame" x="102.33333333333333" y="228" width="170.66666666666669" height="20.333333333333343"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="해당 날짜에는 이미 쪽지를 작성했어요!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1u-nY-DW6">
+                                            <rect key="frame" x="73.666666666666686" y="546" width="228" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" name="warningLabelColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </view>
                                 <blurEffect style="prominent"/>
                             </visualEffectView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x5u-uo-squ">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x5u-uo-squ">
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem id="Dya-aA-mUT">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" image="xmark" catalog="system" id="Phw-2k-dd2">
@@ -265,15 +279,22 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Xam-7g-OPV"/>
                         <constraints>
+                            <constraint firstItem="x5u-uo-squ" firstAttribute="top" secondItem="Xam-7g-OPV" secondAttribute="top" id="0Jm-aw-g2w"/>
                             <constraint firstAttribute="trailing" secondItem="ecq-uy-9fg" secondAttribute="trailing" id="1Rn-06-dXq"/>
+                            <constraint firstItem="x5u-uo-squ" firstAttribute="leading" secondItem="Xam-7g-OPV" secondAttribute="leading" id="1ff-Tv-2kf"/>
                             <constraint firstItem="bI2-ak-dCN" firstAttribute="centerX" secondItem="sBx-5w-9Me" secondAttribute="centerX" id="7XD-ch-KDR"/>
                             <constraint firstItem="ecq-uy-9fg" firstAttribute="top" secondItem="sBx-5w-9Me" secondAttribute="top" id="9Io-pv-JfF"/>
+                            <constraint firstItem="JzG-sV-z0R" firstAttribute="top" secondItem="x5u-uo-squ" secondAttribute="bottom" constant="140" id="E1L-xG-WN3"/>
                             <constraint firstAttribute="bottom" secondItem="dd7-XA-V87" secondAttribute="bottom" id="IFg-sm-Mbk"/>
+                            <constraint firstItem="JzG-sV-z0R" firstAttribute="centerX" secondItem="bI2-ak-dCN" secondAttribute="centerX" id="Iji-Bm-waj"/>
+                            <constraint firstItem="x1u-nY-DW6" firstAttribute="top" secondItem="bI2-ak-dCN" secondAttribute="bottom" constant="32" id="K7H-2V-sQd"/>
                             <constraint firstItem="dd7-XA-V87" firstAttribute="leading" secondItem="sBx-5w-9Me" secondAttribute="leading" id="Oi1-0L-u0P"/>
                             <constraint firstAttribute="bottom" secondItem="ecq-uy-9fg" secondAttribute="bottom" id="Q7r-AA-HOx"/>
                             <constraint firstAttribute="trailing" secondItem="dd7-XA-V87" secondAttribute="trailing" id="QF0-n5-q4L"/>
                             <constraint firstItem="dd7-XA-V87" firstAttribute="top" secondItem="sBx-5w-9Me" secondAttribute="top" id="RCE-RN-zYt"/>
+                            <constraint firstItem="x1u-nY-DW6" firstAttribute="centerX" secondItem="bI2-ak-dCN" secondAttribute="centerX" id="a5g-vh-d1E"/>
                             <constraint firstItem="bI2-ak-dCN" firstAttribute="centerY" secondItem="sBx-5w-9Me" secondAttribute="centerY" id="dvP-OM-mIk"/>
+                            <constraint firstItem="x5u-uo-squ" firstAttribute="trailing" secondItem="Xam-7g-OPV" secondAttribute="trailing" id="hld-b3-XZk"/>
                             <constraint firstItem="ecq-uy-9fg" firstAttribute="leading" secondItem="sBx-5w-9Me" secondAttribute="leading" id="nGs-xg-N4u"/>
                         </constraints>
                     </view>
@@ -283,6 +304,7 @@
                         <outlet property="datePickerView" destination="bI2-ak-dCN" id="nAo-sX-4gj"/>
                         <outlet property="navigationBar" destination="x5u-uo-squ" id="TZk-W8-eWp"/>
                         <outlet property="rightButton" destination="gJA-eJ-60b" id="7KR-sK-CZp"/>
+                        <outlet property="warningLabel" destination="x1u-nY-DW6" id="pn9-Am-SuF"/>
                         <segue destination="g5l-hv-0de" kind="presentation" identifier="presentNewNoteColorPicker" id="MBC-MA-0pk"/>
                         <segue destination="9EN-Ff-rq1" kind="unwind" identifier="unwindFromNoteDatePickerToTextView" unwindAction="unwindCallToNoteTexViewDidArriveWithSegue:" id="Ovp-ZJ-8aW"/>
                     </connections>
@@ -290,7 +312,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4WR-mG-PvL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="b2J-do-ybm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-2116" y="3037"/>
+            <point key="canvasLocation" x="-2116" y="3036.9458128078818"/>
         </scene>
         <!--New Note Text View Controller-->
         <scene sceneID="f85-ew-CtQ">
@@ -387,7 +409,7 @@
                             <constraint firstItem="zyJ-fc-VeQ" firstAttribute="leading" secondItem="1PQ-Bn-66w" secondAttribute="leading" id="4d0-P3-e47"/>
                             <constraint firstItem="zyJ-fc-VeQ" firstAttribute="top" secondItem="1PQ-Bn-66w" secondAttribute="top" id="AL2-ob-Bi3"/>
                             <constraint firstItem="fvK-sf-BF4" firstAttribute="leading" secondItem="Qg8-yI-fTV" secondAttribute="leading" id="FRT-hw-tFd"/>
-                            <constraint firstItem="Rms-YT-wWN" firstAttribute="top" secondItem="1PQ-Bn-66w" secondAttribute="top" constant="44" id="Gyw-ql-9vl"/>
+                            <constraint firstItem="Rms-YT-wWN" firstAttribute="top" secondItem="bn6-rM-p0H" secondAttribute="top" id="Gyw-ql-9vl"/>
                             <constraint firstItem="Rms-YT-wWN" firstAttribute="leading" secondItem="bn6-rM-p0H" secondAttribute="leading" id="LBS-sy-BL8"/>
                             <constraint firstItem="zdk-OZ-ARX" firstAttribute="top" secondItem="1PQ-Bn-66w" secondAttribute="top" id="LCO-5U-VpZ"/>
                             <constraint firstAttribute="trailing" secondItem="zdk-OZ-ARX" secondAttribute="trailing" id="SOY-Fb-5qo"/>
@@ -501,9 +523,8 @@
                                     <constraint firstItem="XNy-hM-5pb" firstAttribute="height" secondItem="BKz-1X-hoY" secondAttribute="height" id="o4b-Ty-c2Z"/>
                                 </constraints>
                             </stackView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MqT-Ah-3Uq">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MqT-Ah-3Uq">
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem id="DM1-Z5-JBN">
                                         <barButtonItem key="leftBarButtonItem" title="Back" image="chevron.left" catalog="system" id="CIr-tB-YaV">
@@ -523,7 +544,9 @@
                         <viewLayoutGuide key="safeArea" id="0NK-Mm-KBY"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="8FB-Yv-nda" secondAttribute="bottom" id="1fz-6y-srW"/>
+                            <constraint firstItem="MqT-Ah-3Uq" firstAttribute="leading" secondItem="0NK-Mm-KBY" secondAttribute="leading" id="1wD-UR-C5a"/>
                             <constraint firstItem="BKz-1X-hoY" firstAttribute="leading" secondItem="t95-o1-XLO" secondAttribute="leadingMargin" constant="24" id="68I-Pw-O3M"/>
+                            <constraint firstItem="MqT-Ah-3Uq" firstAttribute="top" secondItem="0NK-Mm-KBY" secondAttribute="top" id="7Rx-Tn-DMY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BKz-1X-hoY" secondAttribute="trailing" constant="24" id="B00-RW-oW7"/>
                             <constraint firstAttribute="bottom" secondItem="FyN-dG-dSj" secondAttribute="bottom" id="JVW-Nf-eLX"/>
                             <constraint firstAttribute="trailing" secondItem="8FB-Yv-nda" secondAttribute="trailing" id="Q47-I3-k4l"/>
@@ -534,6 +557,7 @@
                             <constraint firstItem="BKz-1X-hoY" firstAttribute="centerX" secondItem="t95-o1-XLO" secondAttribute="centerX" id="hzI-gP-J3g"/>
                             <constraint firstItem="8FB-Yv-nda" firstAttribute="top" secondItem="t95-o1-XLO" secondAttribute="top" id="o4I-A9-Npz"/>
                             <constraint firstAttribute="trailing" secondItem="FyN-dG-dSj" secondAttribute="trailing" id="u2G-J9-2J5"/>
+                            <constraint firstItem="MqT-Ah-3Uq" firstAttribute="trailing" secondItem="0NK-Mm-KBY" secondAttribute="trailing" id="yWV-eM-fPO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7jK-EQ-u4a"/>
@@ -722,6 +746,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="MBC-MA-0pk"/>
         <segue reference="7wk-af-F5w"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -730,6 +755,9 @@
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="warningLabelColor">
+            <color red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
