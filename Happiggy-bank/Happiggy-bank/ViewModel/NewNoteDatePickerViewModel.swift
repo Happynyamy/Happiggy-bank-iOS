@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 /// 새 쪽지 추가 날짜 피커에 필요한 형식으로 데이터를 변환해주는 뷰모델
 class NewNoteDatePickerViewModel {
@@ -16,7 +17,7 @@ class NewNoteDatePickerViewModel {
     var bottle: Bottle!
     
     /// 날짜 피커에 나타낼 데이터 소스 : 시작일부터의 오늘까지의 모든 날짜와, 해당 날짜에 쪽지를 이미 썼으면 컬러가 없으면 nil이 담겨있음
-    private(set) lazy var data: [NoteDatePickerData] = {
+    private(set) lazy var noteData: [NoteDatePickerData] = {
         var source = [NoteDatePickerData]()
         let startDate = self.bottle.startDate
         
@@ -41,12 +42,12 @@ class NewNoteDatePickerViewModel {
     
     /// 쪽지를 쓰지 않은 가장 최근 날짜의 인덱스
     private(set) lazy var mostRecentEmptyDateIndex: Int = {
-        self.data.lastIndex { $0.color == nil } ?? self.numberOfRows - 1
+        self.noteData.lastIndex { $0.color == nil } ?? self.numberOfRows - 1
     }()
     
     /// 쪽지를 쓰지 않은 가장 최근 날짜
     private(set) lazy var mostRecentEmptyDate: Date = {
-        self.data[self.mostRecentEmptyDateIndex].date
+        self.noteData[self.mostRecentEmptyDateIndex].date
     }()
     
     
@@ -58,5 +59,13 @@ class NewNoteDatePickerViewModel {
             .customFormatted(type: .spaceAndDot)
             .nsMutableAttributedStringify()
             .bold(targetString: source.date.monthDotDayString, fontSize: Font.dateLabelFontSize)
+    }
+    
+    /// 쪽지 에셋 이미지 리턴
+    func image(for noteData: NoteDatePickerData) -> UIImage? {
+        guard let color = noteData.color
+        else { return nil}
+        
+        return UIImage.note(color: color)
     }
 }

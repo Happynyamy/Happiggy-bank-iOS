@@ -115,7 +115,7 @@ class NewNoteDatePickerViewController: UIViewController {
     /// 소스가 보틀뷰면 그대로 사용하고 쪽지 텍스트뷰면 확인 버튼으로 변경
     private func configureRightButton() {
         if self.isFromNoteTextView {
-            rightButton.image = UIImage(systemName: "checkmark")
+            rightButton.image = .checkmark
         }
     }
     
@@ -159,16 +159,11 @@ extension NewNoteDatePickerViewController: UIPickerViewDelegate {
         
         let row = self.validatedRow(row)
         let rowView = view as? NewNoteDatePickerRowView ?? NewNoteDatePickerRowView()
-        let data = self.viewModel.data[row]
+        let noteData = self.viewModel.noteData[row]
         
         /// 데이터에 맞게 행의 모습(날짜 라벨 텍스트와 쪽지 이미지 색깔) 업데이트
-        
-        rowView.dateLabel.attributedText = self.viewModel.attributedDateString(for: data)
-        
-        if let color = data.color {
-            // TODO: 에셋으로 갈아끼기
-            rowView.colorImageView.backgroundColor = UIColor.note(color: color)
-        }
+        rowView.dateLabel.attributedText = self.viewModel.attributedDateString(for: noteData)
+        rowView.colorImageView.image = self.viewModel.image(for: noteData)
     
         return rowView
     }
@@ -179,7 +174,7 @@ extension NewNoteDatePickerViewController: UIPickerViewDelegate {
         inComponent component: Int
     ) {
         let row = self.validatedRow(row)
-        let source = self.viewModel.data[row]
+        let source = self.viewModel.noteData[row]
         
         guard source.color == nil
         else {
@@ -195,8 +190,8 @@ extension NewNoteDatePickerViewController: UIPickerViewDelegate {
     /// 0보다 작은 인덱스가 들어오면 0, 최대 개수보다 큰 값이 들어오면 마지막 인덱스로 바꿔주는 메서드
     private func validatedRow(_ row: Int) -> Int {
         var selectedRow = row
-        if selectedRow < 0 {
-            selectedRow = 0
+        if selectedRow < .zero {
+            selectedRow = .zero
         }
         if selectedRow > self.viewModel.numberOfRows {
             selectedRow = self.viewModel.numberOfRows - 1
