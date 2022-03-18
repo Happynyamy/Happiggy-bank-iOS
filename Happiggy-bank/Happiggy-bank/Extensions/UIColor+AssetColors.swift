@@ -9,6 +9,33 @@ import UIKit
 
 extension UIColor {
     
+    // MARK: - Properties
+    
+    /// 환경 설정에 사용하는 회색
+    static let customGray = uicolor(named: "customGray")
+    
+    /// 저금통 리스트 날짜 라벨 색상
+    static let bottleListDateLabel = uicolor(named: "bottleListDateLabelColor")
+    
+    /// 저금통 텍스트필드 플레이스홀더 색상
+    static let customPlaceholderText = uicolor(named: "placeholderTextColor")
+    
+    /// 메인 라벨 색상: 저금통 텍스트필드 텍스트, 피커 선택 행 텍스트, 저금통 리스트 저금통 제목, 환경설정 알림 토글버튼에 사용
+    static let primaryLableColor = uicolor(named: "primaryLabelColor")
+    
+    /// 두번째 라벨 색상: 저금통 텍스트 필드 아래 안내 라벨, 환경 설정 버전 정보 라벨에 사용
+    static let secondaryLabelColor = uicolor(named: "secondaryLabelColor")
+    
+    /// 경고 라벨 색상: 저금통 텍스트 필드, 쪽지 날짜 피커, 쪽지 텍스트 뷰에서 내용이 없을 때 경고하는 데 사용
+    static let warningLabelColor = UIColor(named: "warningLabelColor")
+    
+    
+    // MARK: - Functions
+    
+    private static func uicolor(named name: String) -> UIColor {
+        UIColor(named: name) ?? .label
+    }
+    
     /// 애셋에 추가한 쪽지 하이라이트 색상을 반환하는 메서드
     static func highlight(color: NoteColor) -> UIColor {
         UIColor(named: Asset.noteHighlight.rawValue + color.capitalizedString) ?? .systemGray3
