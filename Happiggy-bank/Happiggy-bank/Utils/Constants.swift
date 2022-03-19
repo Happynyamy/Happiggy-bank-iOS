@@ -557,12 +557,28 @@ extension NoteListViewController {
         
         /// note cell 높이 : 쪽지 이미지 높이 + spacing
         static let cellHeight = noteImageHeight + noteImageSpacing
+        
+        /// 애니메이션 딜레이 시간: 0.5
+        static let animationDelay: TimeInterval = 0.5
 
         /// note cell 세로:가로 비율 : 242/327
         private static let noteImageSizeRatio: CGFloat = 242/327
         
         /// 쪽지 이미지 사이 간격: 16
         private static let noteImageSpacing: CGFloat = 16
+    }
+    
+    /// NoteNoteDatePickerViewModel 에서 사용하는 문자열
+    enum StringLiteral {
+        
+        /// 알림 제목
+        static let alertTitle = "전체 쪽지를 개봉하시겠습니까?"
+        
+        /// 취소 버튼 제목
+        static let cancelButtonTitle = "아니오"
+        
+        /// 확인 버튼 제목
+        static let confirmButtonTitle = "네"
     }
 }
 
@@ -579,6 +595,12 @@ extension NoteCell {
         
         /// 좌우 패딩: 25
         static let horizontalPadding = NoteListViewController.Metric.horizontalPadding
+        
+        /// 내용 라벨 줄 간격: 8
+        static let lineSpacing: CGFloat = 8
+        
+        /// 내용 라벨 자간: 0.5
+        static let characterSpacing: CGFloat = 0.5
     }
 }
 
@@ -613,7 +635,7 @@ extension NewNoteTextViewController {
             let navigationBarHeight = navigationBarFrame.size.height
             let screenHeight = UIScreen.main.bounds.height
             let safeAreaTopInset = navigationBarFrame.origin.y
-            
+
             return screenHeight - safeAreaTopInset - navigationBarHeight - keyboardHeight
         }
         
@@ -639,7 +661,6 @@ extension NewNoteDatePickerViewModel {
         
         /// 날짜라벨 폰트 크기: 17
         static let dateLabelFontSize: CGFloat = 17
-        
     }
 }
 
@@ -660,7 +681,10 @@ extension NoteListViewModel {
         static let emptyString = ""
         
         /// 쪽지 이미지 에셋 호출을 위해 앞에 붙일 접두사
-        static var listNote: String = "listNote"
+        static let listNote: String = "listNote"
+        
+        /// 쪽지 개수 라벨에서 개수 뒤에 붙일 문자열: 리턴 "행복 n개"
+        static func noteCountLabelString(count: Int) -> String { "행복 \(count)개" }
     }
 }
 
@@ -685,5 +709,15 @@ extension NewNoteTextViewModel {
         
         /// 글자수 라벨 폰트 크기: 17
         static let letterCountLabel = dateLabel
+    }
+}
+
+extension CapsuleButton {
+    
+    /// CapsuleButton 에서 사용하는 상수
+    enum Metric {
+        
+        /// 외곽선 굵기: 1
+        static let borderWidth: CGFloat = 1
     }
 }
