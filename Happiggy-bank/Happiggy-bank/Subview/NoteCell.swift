@@ -22,7 +22,20 @@ final class NoteCell: UITableViewCell {
     @IBOutlet weak var backDateLabel: UILabel!
     
     /// 뒷면에 나타날 쪽지 내용
-    @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel! {
+        didSet {
+            self.contentLabel.configureParagraphStyle(
+                lineSpacing: Metric.lineSpacing,
+                characterSpacing: Metric.characterSpacing
+            )
+        }
+    }
+    
+    /// 애니메이션 딜레이 시간: 디폴트 0
+    var animationDelay: TimeInterval = .zero
+    
+    /// 애니메이션 후 실행할 작업
+    var completion: ((Bool) -> Void)?
     
     
     // MARK: - Function
@@ -68,7 +81,10 @@ final class NoteCell: UITableViewCell {
         /// 이동 효과 주기 위해 프레임을 가운데로 변경
         self.backDateLabel.frame = self.frontDateLabel.frame
 
-        UIView.animateKeyframes(withDuration: Metric.animationDuration, delay: .zero) {
+        UIView.animateKeyframes(
+            withDuration: Metric.animationDuration,
+            delay: self.animationDelay
+        ) {
             /// 날짜 라벨 이동 애니메이션
             UIView.addKeyframe(withRelativeStartTime: .zero, relativeDuration: Metric.half) {
                 self.layoutIfNeeded()
@@ -77,6 +93,12 @@ final class NoteCell: UITableViewCell {
             UIView.addKeyframe(withRelativeStartTime: Metric.half, relativeDuration: Metric.half) {
                 self.contentLabel.alpha = .one
             }
+        } completion: { result in
+            guard let completion = self.completion else {
+                return
+            }
+            
+            completion(result)
         }
     }
 }

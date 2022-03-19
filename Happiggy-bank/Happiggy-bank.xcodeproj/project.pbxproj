@@ -14,6 +14,9 @@
 		A459003C27E9C5C9003010A0 /* CGSize+Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459003B27E9C5C9003010A0 /* CGSize+Area.swift */; };
 		A467B5C827DA258700AC702D /* NewNoteDatePickerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467B5C727DA258700AC702D /* NewNoteDatePickerRowView.swift */; };
 		A467B5CA27DA289600AC702D /* NewNoteDatePickerRowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A467B5C927DA289500AC702D /* NewNoteDatePickerRowView.xib */; };
+		A48E183A27E71D9300B44477 /* UILabel+ParagraphStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E183927E71D9300B44477 /* UILabel+ParagraphStyle.swift */; };
+		A48E183C27E7379100B44477 /* CapsuleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E183B27E7379100B44477 /* CapsuleButton.swift */; };
+		A48E183E27E737B600B44477 /* CapsuleButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = A48E183D27E737B600B44477 /* CapsuleButton.xib */; };
 		A490AC4E27DD945E00B04CE1 /* NoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A490AC4D27DD945E00B04CE1 /* NoteListViewController.swift */; };
 		A490AC5027DD9D2E00B04CE1 /* NoteListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A490AC4F27DD9D2E00B04CE1 /* NoteListViewModel.swift */; };
 		A490AC5527DDA0CA00B04CE1 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A490AC5327DDA0CA00B04CE1 /* NoteCell.swift */; };
@@ -83,6 +86,9 @@
 		A459003B27E9C5C9003010A0 /* CGSize+Area.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Area.swift"; sourceTree = "<group>"; };
 		A467B5C727DA258700AC702D /* NewNoteDatePickerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteDatePickerRowView.swift; sourceTree = "<group>"; };
 		A467B5C927DA289500AC702D /* NewNoteDatePickerRowView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewNoteDatePickerRowView.xib; sourceTree = "<group>"; };
+		A48E183927E71D9300B44477 /* UILabel+ParagraphStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+ParagraphStyle.swift"; sourceTree = "<group>"; };
+		A48E183B27E7379100B44477 /* CapsuleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleButton.swift; sourceTree = "<group>"; };
+		A48E183D27E737B600B44477 /* CapsuleButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CapsuleButton.xib; sourceTree = "<group>"; };
 		A490AC4D27DD945E00B04CE1 /* NoteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewController.swift; sourceTree = "<group>"; };
 		A490AC4F27DD9D2E00B04CE1 /* NoteListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewModel.swift; sourceTree = "<group>"; };
 		A490AC5327DDA0CA00B04CE1 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
@@ -224,6 +230,7 @@
 			children = (
 				A817430027C112D00016C921 /* DefaultButton.swift */,
 				A4CF2C7F27C733FE001B01B1 /* ColorButton.swift */,
+				A48E183B27E7379100B44477 /* CapsuleButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -264,6 +271,7 @@
 				A467B5C927DA289500AC702D /* NewNoteDatePickerRowView.xib */,
 				A8FC07D227B3ECF30077A758 /* LaunchScreen.storyboard */,
 				A8ECD4A427E30FF300886BC0 /* BottleCell.xib */,
+				A48E183D27E737B600B44477 /* CapsuleButton.xib */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -299,6 +307,7 @@
 				A4C1AFCD27E4F8150096CD3E /* UIView+FadeInOut.swift */,
 				A4C1AFD327E5E6120096CD3E /* UITextView+ParagraphStyle.swift */,
 				A459003B27E9C5C9003010A0 /* CGSize+Area.swift */,
+				A48E183927E71D9300B44477 /* UILabel+ParagraphStyle.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -423,6 +432,7 @@
 				A8FC07DD27B3EF030077A758 /* .swiftlint.yml in Resources */,
 				A467B5CA27DA289600AC702D /* NewNoteDatePickerRowView.xib in Resources */,
 				A8FC07D427B3ECF30077A758 /* LaunchScreen.storyboard in Resources */,
+				A48E183E27E737B600B44477 /* CapsuleButton.xib in Resources */,
 				A8FC07D127B3ECF30077A758 /* Assets.xcassets in Resources */,
 				A8FC07CF27B3ECF00077A758 /* Main.storyboard in Resources */,
 				A4F5715227DB715100E7DF9B /* ColorButton.xib in Resources */,
@@ -477,8 +487,10 @@
 				A819CF9F27DDD97C00DE8E72 /* HapticManager.swift in Sources */,
 				A8ECD4A727E33BFA00886BC0 /* BottleListViewModel.swift in Sources */,
 				A843332427DA397800A12A54 /* DataProvider.swift in Sources */,
+				A48E183A27E71D9300B44477 /* UILabel+ParagraphStyle.swift in Sources */,
 				A4B2860B27D9B434008769EB /* UIViewController+FadeOut.swift in Sources */,
 				A4B2860927D9A56A008769EB /* NewNoteTextViewController.swift in Sources */,
+				A48E183C27E7379100B44477 /* CapsuleButton.swift in Sources */,
 				A843332127DA026D00A12A54 /* NewBottleDatePickerViewController.swift in Sources */,
 				A8FC07CA27B3ECF00077A758 /* SceneDelegate.swift in Sources */,
 				A4F5715427DB8B6500E7DF9B /* NewNote.swift in Sources */,
@@ -576,6 +588,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -637,6 +650,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

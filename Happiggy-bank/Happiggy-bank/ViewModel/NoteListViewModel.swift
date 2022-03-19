@@ -15,6 +15,16 @@ final class NoteListViewModel {
     /// 리스트에서 나타낼 쪽지들의 배열
     var notes: [Note]!
     
+    /// 모든 쪽지가 다 개봉되었는지 여부
+    var allNotesAreOpen: Bool {
+        self.notes.first { !$0.isOpen } == nil ? true : false
+    }
+    
+    /// 개봉하지 않은 쪽지들
+    var enumeratedUnopenNotes: [(offset: Int, element: Note)] {
+        self.notes.enumerated().filter { !$1.isOpen }
+    }
+    
     /// 유리병 제목
     private(set) lazy var bottleTitle: String = {
         self.notes.first?.bottle.title ?? StringLiteral.emptyString
@@ -23,6 +33,11 @@ final class NoteListViewModel {
     /// 쪽지 전체 개수
     private(set) lazy var numberOfTotalNotes: Int = {
         self.notes.count
+    }()
+    
+    /// 쪽지 개수 라벨 문자열
+    private(set) lazy var noteCountLabelString: String = {
+        StringLiteral.noteCountLabelString(count: self.numberOfTotalNotes)
     }()
     
     

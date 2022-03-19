@@ -12,15 +12,21 @@ final class NoteListViewController: UIViewController {
     
     // MARK: - IBOutlet
     
+    /// 쪽지 개수를 나타내는 라벨
+    @IBOutlet weak var noteCountLabel: UILabel!
+    
+    /// 전체 쪽지 개봉 버튼
+    @IBOutlet weak var openAllNotesButton: CapsuleButton!
+    
     /// 리스트를 나타낼 테이블 뷰
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     
     // MARK: - Properties
     
     /// 리스트에 나타낼 쪽지 데이터를 담고 있는 뷰모델
     var viewModel: NoteListViewModel!
-
+    
     
     // MARK: - Life Cycle
     
@@ -28,12 +34,23 @@ final class NoteListViewController: UIViewController {
         super.viewDidLoad()
         
         self.registerNoteCell()
-        self.navigationItem.title = self.viewModel.bottleTitle
+        self.configureNavigationBar()
+        self.configureNoteCountLabel()
+        self.configureOpenAllNotesButton()
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    
+    // MARK: - @IBActions
+    
+    /// 전체 개봉 버튼을 눌렀을 때 호출되는 메서드
+    @IBAction func openAllNotesButtonDidTap(_ sender: CapsuleButton) {
+        self.showOpenAllNotesConfirmAlert()
     }
     
     
@@ -45,23 +62,101 @@ final class NoteListViewController: UIViewController {
         self.tableView.register(nib, forCellReuseIdentifier: NoteCell.name)
     }
     
-    // TODO: 전체 개봉 버튼 구현
+    /// 내비게이션 투명화, 제목 설정
+    private func configureNavigationBar() {
+        self.navigationItem.title = self.viewModel.bottleTitle
+        
+        guard let navigationBar = self.navigationController?.navigationBar
+        else { return }
+        
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar.shadowImage = UIImage()
+    }
+    
+    /// 전체 쪽지 개수 라벨 모습 설정
+    private func configureNoteCountLabel() {
+        self.noteCountLabel.text = self.viewModel.noteCountLabelString
+    }
+    
+    /// 모든 쪽지가 개봉되었으면 숨김 처리
+    private func configureOpenAllNotesButton() {
+        guard self.viewModel.allNotesAreOpen
+        else { return }
+        
+        // TODO: FadeOut 으로 대체할 것
+        UIView.animate(withDuration: 0.2) {
+            self.openAllNotesButton.alpha = .zero
+        } completion: { _ in
+            self.openAllNotesButton.isHidden = true
+        }
+    }
+    
+    /// 쪽지 전체 개봉 의사를 재확인하는 알림을 띄움
+    private func showOpenAllNotesConfirmAlert() {
+        let alert = self.makeConfirmAlert()
+        self.present(alert, animated: true)
+    }
+    
+    /// 쪽지 전체 개봉 의사를 재확인하는 알림 생성
+    private func makeConfirmAlert() -> UIAlertController {
+        let alert = UIAlertController(
+            title: StringLiteral.alertTitle,
+            message: nil,
+            preferredStyle: .alert
+        )
+        
+        let confirmAction = UIAlertAction(
+            title: StringLiteral.confirmButtonTitle,
+            style: .default,
+            handler: { _ in self.openAllNotes() }
+        )
+        
+        let cancelAction = UIAlertAction(
+            title: StringLiteral.cancelButtonTitle,
+            style: .cancel,
+            handler: nil
+        )
+        
+        alert.addAction(confirmAction)
+        alert.addAction(cancelAction)
+        
+        return alert
+    }
+    
     /// 모든 쪽지를 개봉하는 메서드
     private func openAllNotes() {
-        var newlyOpenedNoteIndexPaths = [IndexPath]()
         
-        for (index, note) in self.viewModel.notes.enumerated() {
-            guard !note.isOpen
-            else { return }
-            
-            note.isOpen.toggle()
-            newlyOpenedNoteIndexPaths.append(IndexPath(row: index, section: .zero))
+        let enumeratedUnopenNotes = self.viewModel.enumeratedUnopenNotes
+        let unopenIndexPaths = enumeratedUnopenNotes.map {
+            IndexPath(row: $0.offset, section: .zero)
         }
+        enumeratedUnopenNotes.forEach { $0.element.isOpen.toggle() }
         
-        // TODO: check if this calls tableview(didSelect:) (it needs to!)
-        self.tableView.indexPathsForVisibleRows?
-            .filter { newlyOpenedNoteIndexPaths.contains($0) }
-            .forEach { self.tableView.selectRow(at: $0, animated: false, scrollPosition: .none)
+        let visibleUnopenRows =  unopenIndexPaths.filter {
+            self.tableView.indexPathsForVisibleRows?.contains($0) == true
+        }
+        self.openNoteWithAnimation(rowsAtIndexPaths: visibleUnopenRows)
+        self.configureOpenAllNotesButton()
+    }
+    
+    /// 현재 화면에 나타나 있는 쪽지를 애니메이션 효과와 함께 개봉하고, completion 으로 데이터 리로드
+    private func openNoteWithAnimation(rowsAtIndexPaths indexPaths: [IndexPath]) {
+
+        let noteCells = indexPaths.compactMap { self.tableView.cellForRow(at: $0) as? NoteCell }
+        
+        /// 차례대로 개봉되는 것처럼 보이도록 딜레이 설정
+        var animationDelay: TimeInterval = .zero
+    
+        for (indexPath, noteCell)  in zip(indexPaths, noteCells) {
+            
+            if noteCell == noteCells.last {
+                noteCell.completion = { _ in self.tableView.reloadData() }
+            }
+            
+            noteCell.animationDelay = animationDelay
+            animationDelay += Metric.animationDelay
+            self.tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+            self.tableView.deselectRow(at: indexPath, animated: false)
         }
     }
 }
@@ -102,6 +197,7 @@ extension NoteListViewController: UITableViewDataSource {
         cell.backDateLabel.attributedText = nil
         cell.contentLabel.text = nil
         cell.noteImageView.image = UIImage()
+        cell.animationDelay = .zero
     }
     
     /// 쪽지의 색깔에 맞게 배경/이미지 업데이트
@@ -148,11 +244,11 @@ extension NoteListViewController: UITableViewDelegate {
         else { return }
 
         let note = self.viewModel.notes[indexPath.row]
-        
         note.isOpen.toggle()
         // TODO: activate core data saving
 //        PersistenceStore.shared.save()
         /// 최초 개봉 애니메이션이 스크롤할 떄 마다 다시 나타나는 것 방지
         tableView.deselectRow(at: indexPath, animated: false)
+        self.configureOpenAllNotesButton()
     }
 }
