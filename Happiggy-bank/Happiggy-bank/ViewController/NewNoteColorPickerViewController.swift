@@ -86,7 +86,8 @@ class NewNoteColorPickerViewController: UIViewController {
             guard let textViewController = segue.destination as? NewNoteTextViewController
             else { return }
             
-            textViewController.newNote = self.newNote
+            let viewModel = NewNoteTextViewModel(newNote: self.newNote)
+            textViewController.viewModel = viewModel
         }
     }
 }

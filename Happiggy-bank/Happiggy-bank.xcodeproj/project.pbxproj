@@ -34,6 +34,8 @@
 		A4C1AFC427E47DC50096CD3E /* String+NSMutableAttributedStringify.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1AFC327E47DC50096CD3E /* String+NSMutableAttributedStringify.swift */; };
 		A4C1AFC627E482E10096CD3E /* CGFloat+Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1AFC527E482E10096CD3E /* CGFloat+Values.swift */; };
 		A4C1AFCE27E4F8150096CD3E /* UIView+FadeInOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1AFCD27E4F8150096CD3E /* UIView+FadeInOut.swift */; };
+		A4C1AFD227E5C60E0096CD3E /* NewNoteTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1AFD127E5C60E0096CD3E /* NewNoteTextViewModel.swift */; };
+		A4C1AFD427E5E6120096CD3E /* UITextView+ParagraphStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1AFD327E5E6120096CD3E /* UITextView+ParagraphStyle.swift */; };
 		A4CF2C7C27C71FF5001B01B1 /* CATransition+PopupAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C7B27C71FF5001B01B1 /* CATransition+PopupAnimation.swift */; };
 		A4CF2C8027C733FE001B01B1 /* ColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C7F27C733FE001B01B1 /* ColorButton.swift */; };
 		A4CF2C8227C73B42001B01B1 /* UIColor+AssetColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C8127C73B42001B01B1 /* UIColor+AssetColors.swift */; };
@@ -97,6 +99,8 @@
 		A4C1AFC327E47DC50096CD3E /* String+NSMutableAttributedStringify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+NSMutableAttributedStringify.swift"; sourceTree = "<group>"; };
 		A4C1AFC527E482E10096CD3E /* CGFloat+Values.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Values.swift"; sourceTree = "<group>"; };
 		A4C1AFCD27E4F8150096CD3E /* UIView+FadeInOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+FadeInOut.swift"; sourceTree = "<group>"; };
+		A4C1AFD127E5C60E0096CD3E /* NewNoteTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteTextViewModel.swift; sourceTree = "<group>"; };
+		A4C1AFD327E5E6120096CD3E /* UITextView+ParagraphStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+ParagraphStyle.swift"; sourceTree = "<group>"; };
 		A4CF2C7B27C71FF5001B01B1 /* CATransition+PopupAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CATransition+PopupAnimation.swift"; sourceTree = "<group>"; };
 		A4CF2C7F27C733FE001B01B1 /* ColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorButton.swift; path = "Happiggy-bank/Button/ColorButton.swift"; sourceTree = SOURCE_ROOT; };
 		A4CF2C8127C73B42001B01B1 /* UIColor+AssetColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AssetColors.swift"; sourceTree = "<group>"; };
@@ -165,6 +169,7 @@
 				A4B2860E27D9F539008769EB /* NewNoteDatePickerViewModel.swift */,
 				A490AC4F27DD9D2E00B04CE1 /* NoteListViewModel.swift */,
 				A8ECD4A627E33BFA00886BC0 /* BottleListViewModel.swift */,
+				A4C1AFD127E5C60E0096CD3E /* NewNoteTextViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -281,6 +286,7 @@
 				A4C1AFC327E47DC50096CD3E /* String+NSMutableAttributedStringify.swift */,
 				A4C1AFC527E482E10096CD3E /* CGFloat+Values.swift */,
 				A4C1AFCD27E4F8150096CD3E /* UIView+FadeInOut.swift */,
+				A4C1AFD327E5E6120096CD3E /* UITextView+ParagraphStyle.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -440,6 +446,7 @@
 			files = (
 				A4B2860F27D9F539008769EB /* NewNoteDatePickerViewModel.swift in Sources */,
 				A467B5C827DA258700AC702D /* NewNoteDatePickerRowView.swift in Sources */,
+				A4C1AFD227E5C60E0096CD3E /* NewNoteTextViewModel.swift in Sources */,
 				A819CFA127DE034F00DE8E72 /* NewBottle.swift in Sources */,
 				A456657C27CC66FD007CF70A /* DefaultButton.swift in Sources */,
 				A499318327BF5158009FF5A8 /* BottleImageView.swift in Sources */,
@@ -483,6 +490,7 @@
 				A499318127BF3A38009FF5A8 /* BottleViewModel.swift in Sources */,
 				A89CBEDB27CBDD99005549F6 /* BottleCell.swift in Sources */,
 				A44E901727D5EB130053AC57 /* Happiggy-bank.xcdatamodeld in Sources */,
+				A4C1AFD427E5E6120096CD3E /* UITextView+ParagraphStyle.swift in Sources */,
 				A49931A527BFD20E009FF5A8 /* UIImage+AssetImages.swift in Sources */,
 				A4C1AFC227E47AD80096CD3E /* String+EmptyString.swift in Sources */,
 				A4C1AFC627E482E10096CD3E /* CGFloat+Values.swift in Sources */,

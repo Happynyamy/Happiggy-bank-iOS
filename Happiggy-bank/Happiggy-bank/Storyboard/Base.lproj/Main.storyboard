@@ -322,17 +322,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-light" translatesAutoresizingMaskIntoConstraints="NO" id="zdk-OZ-ARX">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                            </imageView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zyJ-fc-VeQ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="AQV-hZ-GYn">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                                <blurEffect style="prominent"/>
-                            </visualEffectView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rms-YT-wWN">
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <items>
@@ -342,7 +331,8 @@
                                                 <action selector="cancelButtonDidTap:" destination="FuI-qc-1fd" id="KZ1-Lf-r9d"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Save" image="checkmark" catalog="system" id="HRF-q1-cdw">
+                                        <barButtonItem key="rightBarButtonItem" title="Save" image="checkmark" catalog="system" id="HRF-q1-cdw">
+                                            <color key="tintColor" name="customGray"/>
                                             <connections>
                                                 <action selector="saveButtonDidTap:" destination="FuI-qc-1fd" id="syQ-nR-mdU"/>
                                             </connections>
@@ -350,14 +340,14 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GeA-rS-UHc">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GeA-rS-UHc">
                                 <rect key="frame" x="0.0" y="88" width="375" height="400"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="400" id="8gy-me-kK7"/>
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fvK-sf-BF4">
-                                <rect key="frame" x="24" y="172.66666666666663" width="327" height="235.33333333333337"/>
+                                <rect key="frame" x="19" y="172.66666666666663" width="332" height="227.33333333333337"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -387,47 +377,48 @@
                                 </connections>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQ3-jl-6Wm" userLabel="ColorButton" customClass="ColorButton" customModule="Happiggy_bank" customModuleProvider="target">
-                                <rect key="frame" x="24" y="432" width="32" height="32"/>
+                                <rect key="frame" x="24" y="424" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="32" id="6fW-ne-2bf"/>
-                                    <constraint firstAttribute="height" constant="32" id="eig-xC-7Gx"/>
+                                    <constraint firstAttribute="width" constant="40" id="6fW-ne-2bf"/>
+                                    <constraint firstAttribute="height" constant="40" id="eig-xC-7Gx"/>
                                 </constraints>
                                 <connections>
                                     <action selector="colorButtonDidTap:" destination="FuI-qc-1fd" eventType="valueChanged" id="7fe-td-WZi"/>
                                 </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HX4-ny-KZ7" userLabel="LetterCountLabel">
-                                <rect key="frame" x="307.66666666666669" y="438" width="43.333333333333314" height="20.333333333333314"/>
+                                <rect key="frame" x="307.66666666666669" y="434" width="43.333333333333314" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용을 입력해주세요!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1q-g4-Qnf">
+                                <rect key="frame" x="24" y="172.66666666666666" width="327" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" name="warningLabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bn6-rM-p0H"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="zyJ-fc-VeQ" firstAttribute="leading" secondItem="1PQ-Bn-66w" secondAttribute="leading" id="4d0-P3-e47"/>
-                            <constraint firstItem="zyJ-fc-VeQ" firstAttribute="top" secondItem="1PQ-Bn-66w" secondAttribute="top" id="AL2-ob-Bi3"/>
-                            <constraint firstItem="fvK-sf-BF4" firstAttribute="leading" secondItem="Qg8-yI-fTV" secondAttribute="leading" id="FRT-hw-tFd"/>
+                            <constraint firstItem="fvK-sf-BF4" firstAttribute="leading" secondItem="Qg8-yI-fTV" secondAttribute="leading" constant="-5" id="FRT-hw-tFd"/>
                             <constraint firstItem="Rms-YT-wWN" firstAttribute="top" secondItem="bn6-rM-p0H" secondAttribute="top" id="Gyw-ql-9vl"/>
                             <constraint firstItem="Rms-YT-wWN" firstAttribute="leading" secondItem="bn6-rM-p0H" secondAttribute="leading" id="LBS-sy-BL8"/>
-                            <constraint firstItem="zdk-OZ-ARX" firstAttribute="top" secondItem="1PQ-Bn-66w" secondAttribute="top" id="LCO-5U-VpZ"/>
-                            <constraint firstAttribute="trailing" secondItem="zdk-OZ-ARX" secondAttribute="trailing" id="SOY-Fb-5qo"/>
                             <constraint firstItem="HX4-ny-KZ7" firstAttribute="centerY" secondItem="aQ3-jl-6Wm" secondAttribute="centerY" id="Sfu-bF-AIC"/>
                             <constraint firstItem="GeA-rS-UHc" firstAttribute="trailing" secondItem="bn6-rM-p0H" secondAttribute="trailing" id="blO-Yz-toF"/>
                             <constraint firstItem="fvK-sf-BF4" firstAttribute="top" secondItem="Qg8-yI-fTV" secondAttribute="bottom" constant="16" id="buI-x5-kRu"/>
                             <constraint firstItem="HX4-ny-KZ7" firstAttribute="leading" relation="lessThanOrEqual" secondItem="aQ3-jl-6Wm" secondAttribute="trailing" priority="250" constant="251.5" id="fSf-Z0-wdc"/>
                             <constraint firstItem="aQ3-jl-6Wm" firstAttribute="top" secondItem="fvK-sf-BF4" secondAttribute="bottom" constant="24" id="g0o-ZS-UsS"/>
                             <constraint firstItem="aQ3-jl-6Wm" firstAttribute="leading" secondItem="Qg8-yI-fTV" secondAttribute="leading" id="hFf-vR-uap"/>
+                            <constraint firstItem="a1q-g4-Qnf" firstAttribute="trailing" secondItem="fvK-sf-BF4" secondAttribute="trailing" id="hoz-L3-CBb"/>
                             <constraint firstItem="GeA-rS-UHc" firstAttribute="top" secondItem="Rms-YT-wWN" secondAttribute="bottom" id="icx-zT-zme"/>
                             <constraint firstItem="Qg8-yI-fTV" firstAttribute="leading" secondItem="GeA-rS-UHc" secondAttribute="leading" constant="24" id="jBj-0H-fJK"/>
                             <constraint firstItem="aQ3-jl-6Wm" firstAttribute="bottom" secondItem="GeA-rS-UHc" secondAttribute="bottom" constant="-24" id="kro-9y-s7q"/>
-                            <constraint firstAttribute="trailing" secondItem="zyJ-fc-VeQ" secondAttribute="trailing" id="mWo-a2-i0l"/>
-                            <constraint firstAttribute="bottom" secondItem="zdk-OZ-ARX" secondAttribute="bottom" id="ptb-WJ-9K8"/>
-                            <constraint firstAttribute="bottom" secondItem="zyJ-fc-VeQ" secondAttribute="bottom" id="sLz-yu-ixk"/>
+                            <constraint firstItem="a1q-g4-Qnf" firstAttribute="leading" secondItem="Qg8-yI-fTV" secondAttribute="leading" id="px2-KS-V7b"/>
                             <constraint firstItem="HX4-ny-KZ7" firstAttribute="trailing" secondItem="fvK-sf-BF4" secondAttribute="trailing" id="sfh-vj-k42"/>
+                            <constraint firstItem="a1q-g4-Qnf" firstAttribute="top" secondItem="fvK-sf-BF4" secondAttribute="top" id="srw-zn-cEr"/>
                             <constraint firstItem="Qg8-yI-fTV" firstAttribute="top" secondItem="Rms-YT-wWN" secondAttribute="bottom" constant="24" id="u1Q-xA-r8X"/>
-                            <constraint firstItem="zdk-OZ-ARX" firstAttribute="leading" secondItem="1PQ-Bn-66w" secondAttribute="leading" id="yQ9-4g-N5g"/>
                             <constraint firstItem="fvK-sf-BF4" firstAttribute="trailing" secondItem="GeA-rS-UHc" secondAttribute="trailing" constant="-24" id="yfR-Cy-RSM"/>
                             <constraint firstItem="GeA-rS-UHc" firstAttribute="leading" secondItem="bn6-rM-p0H" secondAttribute="leading" id="zHW-UQ-8kk"/>
                             <constraint firstItem="Rms-YT-wWN" firstAttribute="trailing" secondItem="bn6-rM-p0H" secondAttribute="trailing" id="zQB-22-wf2"/>
@@ -444,6 +435,7 @@
                         <outlet property="navigationBar" destination="Rms-YT-wWN" id="i1C-it-zIw"/>
                         <outlet property="saveButton" destination="HRF-q1-cdw" id="hMf-gh-cGy"/>
                         <outlet property="textView" destination="fvK-sf-BF4" id="dpT-J6-CUB"/>
+                        <outlet property="warningLabel" destination="a1q-g4-Qnf" id="iu3-hz-Z6j"/>
                         <outlet property="yearLabel" destination="FkO-oW-q1n" id="aGW-vS-I1J"/>
                         <segue destination="rAE-WY-Wyc" kind="unwind" identifier="unwindToBotteView" animates="NO" unwindAction="unwindCallDidArriveWithSegue:" id="S89-mV-zbI"/>
                         <segue destination="moi-e1-3hQ" kind="presentation" identifier="presentDatePickerFromNoteTextView" id="7wk-af-F5w"/>
@@ -746,7 +738,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="MBC-MA-0pk"/>
         <segue reference="7wk-af-F5w"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -755,6 +746,9 @@
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="customGray">
+            <color red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="warningLabelColor">
             <color red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

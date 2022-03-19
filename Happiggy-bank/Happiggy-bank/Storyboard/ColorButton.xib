@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKj-27-uRD" userLabel="Button">
-                    <rect key="frame" x="2" y="2" width="517" height="517"/>
+                    <rect key="frame" x="1" y="1" width="519" height="519"/>
                     <color key="backgroundColor" red="0.35294118520000001" green="0.68235301969999995" blue="0.76862752440000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="oKj-27-uRD" secondAttribute="height" multiplier="1:1" id="EFZ-zv-X4d"/>
@@ -36,10 +36,10 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="oKj-27-uRD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="2" id="5DN-RX-RGz"/>
-                <constraint firstAttribute="trailing" secondItem="oKj-27-uRD" secondAttribute="trailing" constant="2" id="S7P-R0-CJE"/>
-                <constraint firstItem="oKj-27-uRD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="2" id="Tzc-V5-vTW"/>
-                <constraint firstAttribute="bottom" secondItem="oKj-27-uRD" secondAttribute="bottom" constant="2" id="mPc-kc-4U5"/>
+                <constraint firstItem="oKj-27-uRD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="1" id="5DN-RX-RGz"/>
+                <constraint firstAttribute="trailing" secondItem="oKj-27-uRD" secondAttribute="trailing" constant="1" id="S7P-R0-CJE"/>
+                <constraint firstItem="oKj-27-uRD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="1" id="Tzc-V5-vTW"/>
+                <constraint firstAttribute="bottom" secondItem="oKj-27-uRD" secondAttribute="bottom" constant="1" id="mPc-kc-4U5"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-573.1884057971015" y="-40.513392857142854"/>

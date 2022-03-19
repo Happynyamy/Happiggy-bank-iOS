@@ -71,11 +71,11 @@ extension ColorButton {
     /// 컬러 버튼의 상수값들
     enum Metric {
         
-        /// 버튼 테두리 선 두께
+        /// 버튼 테두리 선 두께: 1
         static let borderWidth: CGFloat = 1
         
-        /// 컬러 버튼 상하좌우 패딩 
-        static let colorButtonInset: CGFloat = 2
+        /// 컬러 버튼 상하좌우 패딩: 2
+        static let colorButtonInset: CGFloat = 1
         
         /// 애니메이션 지속 시간: 0.2
         static let animationDuration = CATransition.transitionDuration
@@ -479,34 +479,19 @@ extension NewNoteTextViewController {
             
             return screenHeight - safeAreaTopInset - navigationBarHeight - keyboardHeight
         }
-    }
-    
-    /// NewNoteTextViewController 의 폰트 크기 상수들
-    enum Font {
         
-        /// body text 의 폰트 크기: 19
-        static let body = UIFont.systemFont(ofSize: 19)
+        /// 텍스트뷰 줄 간격: 8
+        static let lineSpacing: CGFloat = 8
         
-        /// 날짜 라벨들 폰트 크기: 17
-        static let dateLabelFontSize: CGFloat = 17
-        
-        /// 연도 라벨 폰트 크기: bold 17
-        static let yearLabelFont = UIFont.boldSystemFont(ofSize: dateLabelFontSize)
+        /// 텍스트뷰 자간: 0.5
+        static let characterSpacing: CGFloat = 0.5
     }
     
     /// NewNoteTextViewController 에서 설정하는 제목들
     enum StringLiteral {
         
-        /// note text view 의 place holder
-        static let noteTextViewPlaceHolder = "하루 한 번,\n100 글자로 행복을 기록하세요:)"
-        
         /// 키보드 언어 설정이 한글인 경우
         static let korean = "ko-KR"
-        
-        /// 글자수 라벨 텍스트를 반환
-        static func letterCountText(count: Int) -> String {
-            "\(count)/\(Metric.noteTextMaxLength)"
-        }
     }
 }
 
@@ -539,5 +524,29 @@ extension NoteListViewModel {
         
         /// 쪽지 이미지 에셋 호출을 위해 앞에 붙일 접두사
         static var listNote: String = "listNote"
+    }
+}
+
+extension NewNoteTextViewModel {
+    
+    /// NewNoteTextViewModel 에서 사용하는 문자열
+    enum StringLiteral {
+        
+        /// 쪽지 이미지 에셋 호출을 위해 앞에 붙일 접두사
+        static let textViewNote = "textViewNote"
+        
+        /// 글자수 라벨 텍스트를 반환
+        static func letterCountText(count: Int) -> String {
+            "\(count) / \(NewNoteTextViewController.Metric.noteTextMaxLength)"
+        }
+    }
+    
+    /// NewNoteTextViewModel 에서 사용하는 폰트 크기
+    enum Font {
+        /// 날짜 라벨들 폰트 크기: 17
+        static let dateLabel: CGFloat = 17
+        
+        /// 글자수 라벨 폰트 크기: 17
+        static let letterCountLabel = dateLabel
     }
 }
