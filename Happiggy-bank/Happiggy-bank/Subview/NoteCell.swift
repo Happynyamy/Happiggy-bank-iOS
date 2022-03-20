@@ -30,6 +30,19 @@ final class NoteCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.contentView.frame = self.contentView.frame.inset(
+            by: UIEdgeInsets(
+                top: .zero,
+                left: Metric.horizontalPadding,
+                bottom: .zero,
+                right: Metric.horizontalPadding
+            )
+        )
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

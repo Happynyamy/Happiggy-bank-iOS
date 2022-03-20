@@ -412,14 +412,8 @@ extension NoteListViewController {
     /// NoteListViewController 에서 사용하는 상수값
     enum Metric {
         
-        /// note cell 세로:가로 비율 : 242/327
-        private static let noteImageSizeRatio: CGFloat = 242/327
-        
         /// 좌우 패딩: 24
-        private static let horizontalPadding: CGFloat = 24
-        
-        /// 쪽지 이미지 사이 간격: 16
-        private static let noteImageSpacing: CGFloat = 16
+        static let horizontalPadding: CGFloat = 24
         
         /// 쪽지 이미지 너비
         static let noteImageWidth = UIScreen.main.bounds.width - 2 * horizontalPadding
@@ -427,8 +421,14 @@ extension NoteListViewController {
         /// 쪽지 이미지 높이
         static let noteImageHeight = noteImageWidth * noteImageSizeRatio
         
-        /// note cell 높이 : 쪽지 이미지 높이 + 2 * spacing
+        /// note cell 높이 : 쪽지 이미지 높이 + spacing
         static let cellHeight = noteImageHeight + noteImageSpacing
+
+        /// note cell 세로:가로 비율 : 242/327
+        private static let noteImageSizeRatio: CGFloat = 242/327
+        
+        /// 쪽지 이미지 사이 간격: 16
+        private static let noteImageSpacing: CGFloat = 16
     }
 }
 
@@ -440,8 +440,11 @@ extension NoteCell {
         /// 애니메이션 지속 시간: 0.6
         static let animationDuration: TimeInterval = 0.6
         
-        /// 0.5
+        /// 50%
         static let half: Double = 0.5
+        
+        /// 좌우 패딩: 25
+        static let horizontalPadding = NoteListViewController.Metric.horizontalPadding
     }
 }
 
