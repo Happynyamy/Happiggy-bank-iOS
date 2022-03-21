@@ -94,21 +94,21 @@ final class BottleViewController: UIViewController {
         guard let bottle = self.viewModel.bottle
         else {
             print("show add new bottle image")
-            self.imageView.backgroundColor = .systemIndigo
+//            self.imageView.backgroundColor = .systemIndigo
             return
         }
         
         /// 현재 채우는 저금통 있음
         if bottle.isInProgress {
             print("show bottle in progress")
-            self.imageView.backgroundColor = .systemYellow
+//            self.imageView.backgroundColor = .systemYellow
             return
         }
         
         /// 기한 종료로 개봉 대기중
         if !bottle.isInProgress {
             print("show bottle ready to open")
-            self.imageView.backgroundColor = .orange
+//            self.imageView.backgroundColor = .orange
         }
     }
     
