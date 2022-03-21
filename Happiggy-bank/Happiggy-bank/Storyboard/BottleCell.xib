@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,59 +19,54 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottleCellBackgroundLight" translatesAutoresizingMaskIntoConstraints="NO" id="6tB-vT-ges">
                         <rect key="frame" x="0.0" y="0.0" width="327" height="262"/>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="N6x-EN-YeJ">
-                        <rect key="frame" x="112" y="27" width="103" height="153"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="103" id="9K9-Ke-sSp"/>
-                            <constraint firstAttribute="width" secondItem="N6x-EN-YeJ" secondAttribute="height" multiplier="103:153" id="Lgr-Ds-FUt"/>
-                        </constraints>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottleListBottleBack" translatesAutoresizingMaskIntoConstraints="NO" id="h6q-bQ-oRA">
+                        <rect key="frame" x="0.0" y="0.0" width="327" height="262"/>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q2L-Gx-WGO">
-                        <rect key="frame" x="198" y="146" width="45" height="39"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="45" id="WDR-Iy-vwK"/>
-                            <constraint firstAttribute="width" secondItem="Q2L-Gx-WGO" secondAttribute="height" multiplier="15:13" id="YZh-yn-NVC"/>
-                        </constraints>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottleListBottleFront" translatesAutoresizingMaskIntoConstraints="NO" id="WBF-j1-MPQ">
+                        <rect key="frame" x="0.0" y="0.0" width="327" height="262"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qK7-kf-DyZ">
-                        <rect key="frame" x="142.5" y="198" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bf2-ek-5mu">
+                        <rect key="frame" x="126" y="221" width="75" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wc3-5f-GGa">
-                        <rect key="frame" x="142.5" y="227" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKx-P5-VKL">
+                        <rect key="frame" x="129" y="192" width="69" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="N6x-EN-YeJ" firstAttribute="top" secondItem="DOZ-Da-Rub" secondAttribute="top" constant="27" id="1uy-HB-dSZ"/>
-                    <constraint firstItem="wc3-5f-GGa" firstAttribute="top" secondItem="qK7-kf-DyZ" secondAttribute="bottom" constant="8" id="1xB-aL-zkk"/>
-                    <constraint firstItem="Q2L-Gx-WGO" firstAttribute="top" secondItem="6tB-vT-ges" secondAttribute="top" constant="146" id="6z7-ny-kbV"/>
-                    <constraint firstItem="N6x-EN-YeJ" firstAttribute="centerX" secondItem="DOZ-Da-Rub" secondAttribute="centerX" id="HFo-UY-PKQ"/>
-                    <constraint firstItem="wc3-5f-GGa" firstAttribute="centerX" secondItem="DOZ-Da-Rub" secondAttribute="centerX" id="Lwa-oB-Xwu"/>
+                    <constraint firstItem="vKx-P5-VKL" firstAttribute="centerX" secondItem="DOZ-Da-Rub" secondAttribute="centerX" id="9Ht-gb-3qd"/>
+                    <constraint firstAttribute="trailing" secondItem="h6q-bQ-oRA" secondAttribute="trailing" id="AiC-C7-BAR"/>
+                    <constraint firstAttribute="trailing" secondItem="WBF-j1-MPQ" secondAttribute="trailing" id="Ewx-de-AJP"/>
                     <constraint firstItem="6tB-vT-ges" firstAttribute="leading" secondItem="DOZ-Da-Rub" secondAttribute="leading" id="PZd-at-V3w"/>
-                    <constraint firstItem="Q2L-Gx-WGO" firstAttribute="trailing" secondItem="6tB-vT-ges" secondAttribute="trailing" constant="-84" id="Uxl-6a-JmJ"/>
+                    <constraint firstItem="h6q-bQ-oRA" firstAttribute="leading" secondItem="DOZ-Da-Rub" secondAttribute="leading" id="SO6-cP-qFe"/>
+                    <constraint firstAttribute="bottom" secondItem="bf2-ek-5mu" secondAttribute="bottom" constant="20" id="UeF-MR-bFk"/>
                     <constraint firstAttribute="bottom" secondItem="6tB-vT-ges" secondAttribute="bottom" id="W4N-XT-RPQ"/>
                     <constraint firstItem="6tB-vT-ges" firstAttribute="top" secondItem="DOZ-Da-Rub" secondAttribute="top" id="Yf2-Xh-T0I"/>
-                    <constraint firstItem="qK7-kf-DyZ" firstAttribute="centerX" secondItem="DOZ-Da-Rub" secondAttribute="centerX" id="eOE-0Z-Jn1"/>
-                    <constraint firstItem="qK7-kf-DyZ" firstAttribute="top" secondItem="N6x-EN-YeJ" secondAttribute="bottom" constant="18" id="ne4-cx-ArS"/>
+                    <constraint firstItem="WBF-j1-MPQ" firstAttribute="leading" secondItem="DOZ-Da-Rub" secondAttribute="leading" id="ZJ6-aZ-R3e"/>
+                    <constraint firstAttribute="bottom" secondItem="h6q-bQ-oRA" secondAttribute="bottom" id="dyp-zb-hW8"/>
+                    <constraint firstAttribute="bottom" secondItem="WBF-j1-MPQ" secondAttribute="bottom" id="iqS-gM-rSc"/>
+                    <constraint firstItem="bf2-ek-5mu" firstAttribute="centerX" secondItem="DOZ-Da-Rub" secondAttribute="centerX" id="lgx-q6-NdH"/>
+                    <constraint firstItem="h6q-bQ-oRA" firstAttribute="top" secondItem="DOZ-Da-Rub" secondAttribute="top" id="n0L-MF-d1k"/>
+                    <constraint firstItem="bf2-ek-5mu" firstAttribute="top" secondItem="vKx-P5-VKL" secondAttribute="bottom" constant="8" id="vCU-kg-mZD"/>
                     <constraint firstAttribute="trailing" secondItem="6tB-vT-ges" secondAttribute="trailing" id="vpE-jt-Iua"/>
+                    <constraint firstItem="WBF-j1-MPQ" firstAttribute="top" secondItem="DOZ-Da-Rub" secondAttribute="top" id="ynm-tD-B3O"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="bottleCapImage" destination="Q2L-Gx-WGO" id="qI1-63-bMS"/>
-                <outlet property="bottleCellBackground" destination="6tB-vT-ges" id="4oO-LZ-1fn"/>
-                <outlet property="bottleDateLabel" destination="wc3-5f-GGa" id="EgX-Fj-qbz"/>
-                <outlet property="bottleFrameImage" destination="N6x-EN-YeJ" id="gRq-7Q-Ext"/>
-                <outlet property="bottleTitleLabel" destination="qK7-kf-DyZ" id="ijE-q3-QEZ"/>
+                <outlet property="bottleDateLabel" destination="bf2-ek-5mu" id="XWs-rY-i5N"/>
+                <outlet property="bottleTitleLabel" destination="vKx-P5-VKL" id="d1y-H6-iak"/>
             </connections>
             <point key="canvasLocation" x="-250.00000000000003" y="199.55357142857142"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="bottleCellBackgroundLight" width="327" height="262"/>
+        <image name="bottleListBottleBack" width="327" height="262"/>
+        <image name="bottleListBottleFront" width="327" height="262"/>
     </resources>
 </document>
