@@ -15,43 +15,28 @@ final class NewBottleNameFieldViewController: UIViewController {
     // MARK: Properties
     
     /// 내비게이션 바
-    @IBOutlet var navigationBar: UINavigationBar!
+    @IBOutlet weak var navigationBar: UINavigationBar!
     
     /// 다음 화면으로 넘어가는 바 버튼
-    @IBOutlet var nextButton: UIBarButtonItem!
+    @IBOutlet weak var nextButton: UIBarButtonItem!
     
     /// 상단 라벨
-    lazy var topLabel: UILabel = UILabel().then {
-        $0.text = StringLiteral.topLabel
-        $0.font = .systemFont(ofSize: FontSize.topLabelText)
-        $0.translatesAutoresizingMaskIntoConstraints = false
-    }
+    @IBOutlet weak var topLabel: UILabel!
     
     /// 텍스트필드
-    lazy var textField: UITextField = UITextField().then {
-        $0.placeholder = StringLiteral.placeholder
-        $0.translatesAutoresizingMaskIntoConstraints = false
-    }
+    @IBOutlet weak var textField: UITextField!
     
     /// 하단 라벨
-    lazy var bottomLabel: UILabel = UILabel().then {
-        $0.text = StringLiteral.bottomLabel
-        $0.font = .systemFont(ofSize: FontSize.bottomLabelText)
-        $0.textColor = UIColor(hex: Color.bottomLabelText)
-        $0.translatesAutoresizingMaskIntoConstraints = false
-    }
+    @IBOutlet weak var bottomLabel: UILabel!
     
     /// 이름이 없을 때 표시되는 경고 라벨
-    lazy var warningLabel: UILabel = UILabel().then {
-        $0.text = StringLiteral.warningLabel
-        $0.font = .systemFont(ofSize: FontSize.warningLabelText)
-        $0.textColor = UIColor(hex: Color.warningLabelText)
-        $0.isHidden = true
-        $0.translatesAutoresizingMaskIntoConstraints = false
-    }
+    @IBOutlet weak var warningLabel: UILabel!
     
     /// 유리병 데이터
     var bottleData: NewBottle?
+    
+    /// 경고 라벨 보여줄지 안보여줄지 설정하는 불리언 값
+    private var showWarningLabel: Bool = false
     
     
     // MARK: Life Cycle
@@ -59,9 +44,8 @@ final class NewBottleNameFieldViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeTextField()
+        initializeLabels()
         initializeButton()
-        configureViewHierarcy()
-        configureConstraints()
         makeNavigationBarClear()
     }
     
@@ -96,7 +80,8 @@ final class NewBottleNameFieldViewController: UIViewController {
         
         if text.isEmpty {
             HapticManager.instance.notification(type: .error)
-            self.warningLabel.isHidden = false
+            self.showWarningLabel = true
+            self.warningLabel.fadeIn()
             return
         }
         
@@ -113,12 +98,15 @@ final class NewBottleNameFieldViewController: UIViewController {
         else { return }
 
         if text.isEmpty {
-            self.nextButton.tintColor = .systemGray2
+            self.nextButton.isEnabled = false
+            self.showWarningLabel = true
+            self.warningLabel.fadeIn()
             return
         }
         
-        self.nextButton.tintColor = .systemBlue
-        self.warningLabel.isHidden = true
+        self.nextButton.isEnabled = true
+        self.showWarningLabel = false
+        self.warningLabel.fadeOut()
     }
     
     
@@ -143,6 +131,14 @@ final class NewBottleNameFieldViewController: UIViewController {
     
     /// 텍스트필드 초기 세팅
     private func initializeTextField() {
+        self.textField.attributedPlaceholder = NSMutableAttributedString(
+            string: StringLiteral.placeholder
+        ).color(
+            targetString: StringLiteral.placeholder,
+            color: .customPlaceholderText
+        )
+        self.textField.textColor = .customLabel
+        self.textField.layer.cornerRadius = Metric.textFieldCornerRadius
         self.textField.delegate = self
         self.textField.becomeFirstResponder()
         self.textField.addTarget(
@@ -153,64 +149,25 @@ final class NewBottleNameFieldViewController: UIViewController {
     }
     
     /// 다음으로 넘어가는 버튼 초기 세팅
-    /// isEnabled로 하면 tapGesture 자체가 안 먹혀서 warning 줄 수 없으므로 색상 변경
     private func initializeButton() {
-        self.nextButton.tintColor = .systemGray2
+        self.nextButton.isEnabled = false
     }
     
-    
-    // MARK: Constraints
-    
-    /// 하위 뷰 오토레이아웃 지정하는 함수 모두 호출하는 함수
-    private func configureConstraints() {
-        topLabelConstraints()
-        textFieldConstraints()
-        bottomLabelConstraints()
-        warningLabelConstraints()
-    }
-    
-    /// 상단 라벨 오토레이아웃 설정
-    private func topLabelConstraints() {
-        NSLayoutConstraint.activate([
-            self.topLabel.topAnchor.constraint(
-                equalTo: self.view.topAnchor,
-                constant: Metric.topLabelTopAnchor
-            ),
-            self.topLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
-        ])
-    }
-    
-    /// 텍스트필드 오토레이아웃 설정
-    private func textFieldConstraints() {
-        NSLayoutConstraint.activate([
-            self.textField.topAnchor.constraint(
-                equalTo: self.topLabel.bottomAnchor,
-                constant: Metric.textFieldTopAnchor
-            ),
-            self.textField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
-        ])
-    }
-    
-    /// 하단 라벨 오토레이아웃 설정
-    private func bottomLabelConstraints() {
-        NSLayoutConstraint.activate([
-            self.bottomLabel.topAnchor.constraint(
-                equalTo: self.textField.bottomAnchor,
-                constant: Metric.bottomLabelTopAnchor
-            ),
-            self.bottomLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
-        ])
-    }
-    
-    /// 경고 라벨 오토레이아웃 설정
-    private func warningLabelConstraints() {
-        NSLayoutConstraint.activate([
-            self.warningLabel.topAnchor.constraint(
-                equalTo: self.bottomLabel.bottomAnchor,
-                constant: Metric.warningLabelTopAnchor
-            ),
-            self.warningLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
-        ])
+    /// 라벨 초기 세팅
+    private func initializeLabels() {
+        // top label
+        self.topLabel.text = StringLiteral.topLabel
+        self.topLabel.font = .systemFont(ofSize: FontSize.topLabelText)
+        
+        // bottom label
+        self.bottomLabel.text = StringLiteral.bottomLabel
+        self.bottomLabel.font = .systemFont(ofSize: FontSize.bottomLabelText)
+        self.bottomLabel.textColor = .customSecondaryLabel
+        
+        // warning label
+        self.warningLabel.text = StringLiteral.warningLabel
+        self.warningLabel.font = .systemFont(ofSize: FontSize.warningLabelText)
+        self.warningLabel.textColor = .customWarningLabel
     }
 }
 
@@ -233,9 +190,9 @@ extension NewBottleNameFieldViewController: UITextFieldDelegate {
                 sender: nil
             )
         } else {
-            // MARK: 유저가 시스템 설정에서 시스템 햅틱을 꺼 놓으면 작동하지 않음
             HapticManager.instance.notification(type: .warning)
-            self.warningLabel.isHidden = false
+            self.showWarningLabel = true
+            self.warningLabel.fadeIn()
         }
         return self.textField.resignFirstResponder()
     }

@@ -56,7 +56,7 @@ final class HomeViewController: UIViewController {
             
             let viewModel = BottleViewModel()
             // TODO: 홈뷰에서 데이터 넘겨받기
-            viewModel.bottle = Bottle.foo
+//            viewModel.bottle = Bottle.foo
             bottleViewController.viewModel = viewModel
         }
     }
