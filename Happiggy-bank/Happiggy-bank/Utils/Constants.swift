@@ -397,14 +397,85 @@ extension NewBottleDatePickerViewController {
     }
 }
 
-/// 애셋에 추가한 색깔들의 이름을 쉽게 불러오기 위한 enum
+/// 애셋에 추가한 색깔/이미지들의 이름을 쉽게 불러오기 위한 enum
 enum Asset: String {
+    
+    // MARK: shared
     
     /// 쪽지 하이라이트 색상 (새 쪽지 컬러피커에서 사용)
     case noteHighlight
     
     /// 쪽지 색상
     case note
+    
+    
+    // MARK: Buttons
+    
+    /// 뒤로가기 아이콘
+    case back
+    
+    /// 확인(체크 표시) 아이콘
+    case checkmark
+    
+    /// 다음 아이콘
+    case next
+    
+    /// 취소 아이콘
+    case xmark
+    
+    
+    // MARK: Tab bar Buttons
+    
+    /// 탭바 홈 아이콘 보통 상태
+    case tabBarHomeNormal
+    
+    /// 탭바 리스트 아이콘 보통 상태
+    case tabBarListNormal
+    
+    /// 탭바 환경설정 아이콘 보통 상태
+    case tabBarSettingsNormal
+
+    /// 탭바 홈 아이콘 선택 상태
+    case tabBarHomeSelected
+    
+    /// 탭바 리스트 아이콘 선택 상태
+    case tabBarListSelected
+    
+    /// 탭바 환경설정 아이콘 선택 상태
+    case tabBarSettingsSelected
+
+    
+    // MARK: Home View Images
+    
+    /// 홈 라이트 모드 배경화면
+    case homeBackgroundLight
+    
+    /// 홈 저금통 뚜껑
+    case homeBottleCap
+    
+    /// 홈 저금통 뒷면
+    case homeBottleBack
+    
+    /// 홈 저금통 앞면
+    case homeBottleFront
+    
+    /// 홈 저금통 그림자
+    case homeBottleShadow
+    
+    /// 블러된 홈 라이트 모드 배경화면
+    case homeBackgroundBlurredLight
+    
+    
+    // MARK: Bottle List Images
+    
+    /// 저금통 리스트 셀 라이트 모드 배경화면
+    case bottleCellBackgroundLight
+
+    /// 저금통 리스트 저금통 뒷면
+    case bottleListBottleBack
+
+    /// 저금통 리스트 저금통 앞면
+    case bottleListBottleFront
 }
 
 extension NoteListViewController {
