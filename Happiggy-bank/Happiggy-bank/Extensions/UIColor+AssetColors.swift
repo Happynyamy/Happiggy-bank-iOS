@@ -32,6 +32,9 @@ extension UIColor {
     /// 피커 selector 색상
     static let pickerSelectionColor = UIColor(named: "pickerSelectionColor")
     
+    /// 연한 회색
+    static let customLightGray = UIColor(named: "customLightGray")
+    
     // MARK: - Functions
     
     private static func uicolor(named name: String) -> UIColor {

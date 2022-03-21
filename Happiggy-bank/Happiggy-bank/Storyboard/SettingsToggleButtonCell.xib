@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsToggleButtonCell" rowHeight="126" id="KGk-i7-Jjw" customClass="SettingsToggleButtonCell" customModule="Happiggy_bank" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="378" height="126"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="378" height="126"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림 설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMc-Fr-qC0">
+                        <rect key="frame" x="0.0" y="52.5" width="67" height="21.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xv5-qA-qQg">
+                        <rect key="frame" x="327" y="47.5" width="51" height="31"/>
+                        <connections>
+                            <action selector="switchDidToggle:" destination="KGk-i7-Jjw" eventType="valueChanged" id="MTb-QX-R4D"/>
+                        </connections>
+                    </switch>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="aMc-Fr-qC0" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="7ad-gB-mY9"/>
+                    <constraint firstAttribute="trailing" secondItem="xv5-qA-qQg" secondAttribute="trailing" constant="2" id="wPb-yr-66l"/>
+                    <constraint firstItem="xv5-qA-qQg" firstAttribute="centerY" secondItem="aMc-Fr-qC0" secondAttribute="centerY" id="wg4-ap-hzh"/>
+                    <constraint firstItem="aMc-Fr-qC0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="zRY-My-o62"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="switch" destination="xv5-qA-qQg" id="gnG-yV-ZZ7"/>
+                <outlet property="titleLabel" destination="aMc-Fr-qC0" id="gfN-3x-1yv"/>
+            </connections>
+            <point key="canvasLocation" x="173.91304347826087" y="97.098214285714278"/>
+        </tableViewCell>
+    </objects>
+</document>
