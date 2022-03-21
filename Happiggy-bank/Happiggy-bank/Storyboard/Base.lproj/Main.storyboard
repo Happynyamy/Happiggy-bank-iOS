@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dSD-O6-Yej">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dSD-O6-Yej">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -687,9 +687,8 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeBackgroundBlurredLight" translatesAutoresizingMaskIntoConstraints="NO" id="Y0g-Of-Hc9">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TMP-Xq-oob">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TMP-Xq-oob">
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem id="Lgm-t3-sGF">
@@ -706,26 +705,70 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7T-oG-tlP">
+                                <rect key="frame" x="166.66666666666666" y="228" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yf9-lX-0tg">
+                                <rect key="frame" x="32" y="281" width="311" height="56"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="zP6-Dd-hcD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6K-WO-23z">
+                                <rect key="frame" x="166.66666666666666" y="353" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="646-gh-D0A">
+                                <rect key="frame" x="166.66666666666666" y="382" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RSm-cn-bbP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="646-gh-D0A" firstAttribute="top" secondItem="O6K-WO-23z" secondAttribute="bottom" constant="8" id="15l-zF-XSh"/>
+                            <constraint firstItem="TMP-Xq-oob" firstAttribute="top" secondItem="RSm-cn-bbP" secondAttribute="top" id="BmB-u3-eiE"/>
+                            <constraint firstItem="646-gh-D0A" firstAttribute="centerX" secondItem="WlO-Nw-5og" secondAttribute="centerX" id="CCH-3P-Vp0"/>
+                            <constraint firstItem="yf9-lX-0tg" firstAttribute="top" secondItem="e7T-oG-tlP" secondAttribute="bottom" constant="32" id="DFc-Vs-i1c"/>
+                            <constraint firstItem="O6K-WO-23z" firstAttribute="centerX" secondItem="WlO-Nw-5og" secondAttribute="centerX" id="FSy-41-JqB"/>
+                            <constraint firstItem="RSm-cn-bbP" firstAttribute="trailing" secondItem="yf9-lX-0tg" secondAttribute="trailing" constant="32" id="GED-Tm-ge2"/>
+                            <constraint firstItem="TMP-Xq-oob" firstAttribute="leading" secondItem="RSm-cn-bbP" secondAttribute="leading" id="NlW-cb-qUw"/>
+                            <constraint firstItem="yf9-lX-0tg" firstAttribute="leading" secondItem="RSm-cn-bbP" secondAttribute="leading" constant="32" id="UWN-yY-a36"/>
                             <constraint firstItem="Y0g-Of-Hc9" firstAttribute="trailing" secondItem="RSm-cn-bbP" secondAttribute="trailing" id="axK-Kx-glI"/>
+                            <constraint firstItem="yf9-lX-0tg" firstAttribute="centerX" secondItem="WlO-Nw-5og" secondAttribute="centerX" id="cOi-dI-Qj3"/>
+                            <constraint firstItem="O6K-WO-23z" firstAttribute="top" secondItem="yf9-lX-0tg" secondAttribute="bottom" constant="16" id="guZ-zs-a6x"/>
+                            <constraint firstItem="TMP-Xq-oob" firstAttribute="trailing" secondItem="RSm-cn-bbP" secondAttribute="trailing" id="kQx-vk-hNd"/>
                             <constraint firstItem="Y0g-Of-Hc9" firstAttribute="leading" secondItem="RSm-cn-bbP" secondAttribute="leading" id="p40-si-Zzv"/>
                             <constraint firstAttribute="bottom" secondItem="Y0g-Of-Hc9" secondAttribute="bottom" id="phW-Vn-2RJ"/>
+                            <constraint firstItem="e7T-oG-tlP" firstAttribute="centerX" secondItem="WlO-Nw-5og" secondAttribute="centerX" id="rI4-0o-6nv"/>
                             <constraint firstItem="Y0g-Of-Hc9" firstAttribute="top" secondItem="WlO-Nw-5og" secondAttribute="top" id="vAJ-tS-XXb"/>
+                            <constraint firstItem="e7T-oG-tlP" firstAttribute="top" secondItem="TMP-Xq-oob" secondAttribute="bottom" constant="140" id="zU1-7W-dha"/>
                         </constraints>
                     </view>
                     <size key="freeformSize" width="375" height="812"/>
                     <connections>
-                        <outlet property="navigationBar" destination="TMP-Xq-oob" id="VIp-dn-27J"/>
-                        <outlet property="nextButton" destination="N6W-GB-0vx" id="ksh-Tj-Uhv"/>
+                        <outlet property="bottomLabel" destination="O6K-WO-23z" id="55w-W2-qEd"/>
+                        <outlet property="navigationBar" destination="TMP-Xq-oob" id="k8s-vO-Ok7"/>
+                        <outlet property="nextButton" destination="N6W-GB-0vx" id="Qtm-9V-POg"/>
+                        <outlet property="textField" destination="yf9-lX-0tg" id="KeC-tS-Y5C"/>
+                        <outlet property="topLabel" destination="e7T-oG-tlP" id="Zi8-H0-IcD"/>
+                        <outlet property="warningLabel" destination="646-gh-D0A" id="Kg3-C6-u1l"/>
                         <segue destination="Twr-BC-vZ7" kind="presentation" identifier="presentNewBottleDatePicker" id="scL-PP-Gda"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8DE-rs-fK7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-330" y="3037"/>
+            <point key="canvasLocation" x="-330.39999999999998" y="3036.9458128078818"/>
         </scene>
         <!--New Bottle Date Picker View Controller-->
         <scene sceneID="JKs-7X-Gkc">
@@ -779,7 +822,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="71M-g6-wMS"/>
+        <segue reference="7wk-af-F5w"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="checkmark" catalog="system" width="128" height="114"/>

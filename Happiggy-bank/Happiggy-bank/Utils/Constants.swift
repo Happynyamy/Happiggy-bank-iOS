@@ -377,26 +377,16 @@ extension NewBottleNameFieldViewController {
         static let korean = "ko-KR"
         
         /// 상단 라벨의 문자열
-        static let topLabel = "저금통 이름을 입력해주세요"
+        static let topLabel = "저금통 이름을 입력해주세요."
         
         /// 텍스트필드 플레이스홀더 문자열
-        static let placeholder = "최대 15글자까지 입력 가능합니다"
+        static let placeholder = "최대 15글자까지 입력 가능합니다."
         
         /// 하단 라벨의 문자열
-        static let bottomLabel = "저금통 이름은 나중에 1회 변경할 수 있습니다"
+        static let bottomLabel = "저금통 이름은 나중에 1회 변경할 수 있습니다."
         
         /// 경고 라벨의 문자열
         static let warningLabel = "저금통 이름이 없어요!"
-    }
-    
-    /// NewBottleNameFieldViewController에서 사용하는 색상
-    enum Color {
-        
-        /// 하단 라벨 텍스트 색상
-        static let bottomLabelText: Int = 0x666666
-        
-        /// 경고 라벨 텍스트 색상
-        static let warningLabelText: Int = 0xFF0000
     }
     
     /// NewBottleNameFieldViewController에서 사용하는 폰트 크기
@@ -421,18 +411,8 @@ extension NewBottleNameFieldViewController {
         /// 한글 글자수 제한
         static let textFieldKoreanMaxLength = textFieldMaxLength + 1
         
-        /// 상단 라벨 topAnchor
-        static let topLabelTopAnchor: CGFloat = 226
-        
-        /// 텍스트필드 topAnchor
-        static let textFieldTopAnchor: CGFloat = 50
-        
-        /// 하단 라벨 topAnchor
-        static let bottomLabelTopAnchor: CGFloat = 32
-        
-        // MARK: 임시값
-        /// 경고 라벨 topAnchor
-        static let warningLabelTopAnchor: CGFloat = 10
+        /// 텍스트필드 corner radius
+        static let textFieldCornerRadius: CGFloat = 10
     }
 }
 
