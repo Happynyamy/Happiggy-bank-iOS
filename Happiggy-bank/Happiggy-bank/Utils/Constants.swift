@@ -101,17 +101,29 @@ let krLocalIdentifier = "ko_KR"
 
 extension ColorButton {
     
+    enum Color {
+        
+        /// 흰색 버튼 외곽선 색상
+        static let whiteButtonBorder = UIColor(named: "noteColorPickerBorderColorWhite") ?? .customGray
+    }
+    
     /// 컬러 버튼의 상수값들
     enum Metric {
         
         /// 버튼 테두리 선 두께: 1
         static let borderWidth: CGFloat = 1
         
-        /// 컬러 버튼 상하좌우 패딩: 2
+        /// 컬러 버튼 상하좌우 패딩: 1
         static let colorButtonInset: CGFloat = 1
         
         /// 애니메이션 지속 시간: 0.2
         static let animationDuration = CATransition.transitionDuration
+        
+        /// 버튼 테두리 둥근 정도: 7
+        static let buttonCornerRadius: CGFloat = 7
+        
+        /// 버튼 하이라이트 테두리 둥근 정도: 8
+        static let highlightViewCornerRadius = buttonCornerRadius + 1
     }
 }
 

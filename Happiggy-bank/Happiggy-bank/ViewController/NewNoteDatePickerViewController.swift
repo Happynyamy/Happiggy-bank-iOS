@@ -122,8 +122,6 @@ final class NewNoteDatePickerViewController: UIViewController {
         self.navigationBar.shadowImage = UIImage()
     }
     
-    // TODO: 메서드 정리하고 설명달기
-    
     /// 날짜 피커의 셀렉션 인디케이터를 흰색으로 변경
     private func configureSelectionIndicator() {
         /// 기존 인디케이터 투명 처리
