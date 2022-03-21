@@ -704,3 +704,25 @@ extension TagCell {
         static let firstWordLabel: CGFloat = 17
     }
 }
+
+extension SettingsViewController {
+    
+    /// 각 셀 별 내용
+    enum Content: Int, CaseIterable {
+        /// 저금통 개봉 알림 설정
+        case bottleAlertSettings
+        
+        /// 앱 버전 정보
+        case appVersionInformation
+    }
+}
+
+extension SettingsViewCell {
+    
+    /// 상수값
+    enum Metric {
+        
+        /// 좌우 패딩: 24
+        static let HorizontalPadding: CGFloat = 24
+    }
+}
