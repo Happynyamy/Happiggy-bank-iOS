@@ -61,7 +61,7 @@ final class BottleCell: UITableViewCell {
     // TODO: 에셋 이미지 이름 수정
     /// 셀 배경 이미지 설정
     private func configureCellBackground() {
-        self.bottleCellBackground.image = UIImage(named: StringLiteral.backgroundImage)
+//        self.bottleCellBackground.image = UIImage(named: StringLiteral.backgroundImage)
         self.bottleCellBackground.contentMode = .scaleAspectFill
         self.bottleCellBackground.layer.cornerRadius = Metric.cornerRadius
     }
