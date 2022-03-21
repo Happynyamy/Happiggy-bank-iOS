@@ -61,7 +61,7 @@ final class ColorButton: UIControl {
         /// 선택된 경우 하이라이트 효과 나타냄
         if isSelected {
             UIView.animate(withDuration: Metric.animationDuration) {
-                self.highlightView.backgroundColor = UIColor.highlight(color: self.color)
+                self.highlightView.backgroundColor = .highlight(color: self.color)
                 self.button.layer.borderColor = UIColor.highlight(color: self.color).cgColor
             }
             return
@@ -73,7 +73,7 @@ final class ColorButton: UIControl {
                 self.button.layer.borderColor = UIColor.clear.cgColor
             }
             if self.color == NoteColor.white {
-                self.button.layer.borderColor = UIColor.highlight(color: self.color).cgColor
+                self.button.layer.borderColor = Color.whiteButtonBorder.cgColor
             }
         }
     }
@@ -83,10 +83,9 @@ final class ColorButton: UIControl {
         Bundle.main.loadNibNamed(ColorButton.name, owner: self, options: nil)
         self.addSubview(self.highlightView)
         self.highlightView.frame = self.bounds
-        /// 원 모양 생성
-        self.highlightView.layer.cornerRadius = self.bounds.height / 2
+        self.highlightView.layer.cornerRadius = Metric.highlightViewCornerRadius
         self.highlightView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.button.layer.cornerRadius = (self.bounds.height - 2 * Metric.colorButtonInset) / 2
+        self.button.layer.cornerRadius = Metric.buttonCornerRadius
         self.button.layer.borderWidth = Metric.borderWidth
     }
 }

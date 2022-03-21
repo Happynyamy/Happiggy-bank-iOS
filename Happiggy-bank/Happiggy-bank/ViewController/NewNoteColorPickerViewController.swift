@@ -8,12 +8,15 @@
 import UIKit
 
 /// 새로운 쪽지를 추가하기 위한 컬러 피커 뷰를 관리하는 뷰 컨트롤러
-class NewNoteColorPickerViewController: UIViewController {
+final class NewNoteColorPickerViewController: UIViewController {
     
     // MARK: - @IBOulet
     
     /// 취소 버튼과 다음 버튼을 담고 있는 내비게이션 바
     @IBOutlet var navigationBar: UINavigationBar!
+    
+    /// 컬러 버튼들 뒤에 오는 배경 이미지
+    @IBOutlet weak var colorButtonContainerImageView: UIImageView!
     
     /// 색깔 버튼들의 배열
     @IBOutlet var colorButtons: [ColorButton]!
