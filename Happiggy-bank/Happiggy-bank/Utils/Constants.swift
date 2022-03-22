@@ -13,12 +13,6 @@ extension HomeViewController {
     /// HomeViewController 에서  설정하는 layout 에 적용할 상수값들을 모아놓은 enum
     enum Metric {
         
-        /// 뷰 간 간격
-        static let spacing: CGFloat = 8
-        
-        /// BottleView 의 높이/너비 값 :
-        static let pageViewHeightWidthRatio: CGFloat = 480 / 375
-        
         /// 좌우 패딩 값 : 24
         static let verticalPadding: CGFloat = 24
         
@@ -27,15 +21,15 @@ extension HomeViewController {
         
         /// 버튼 길이(높이와 동일)
         static let buttonWidth: CGFloat = buttonHeight
+
+        /// Bottle Label의 Border Width
+        static let bottleLabelBorderWidth: CGFloat = 1
         
-        // 라벨 높이(버튼 높이와 동일)
-        static let labelHeight: CGFloat = buttonHeight
+        /// Bottle Label의 Corner Radius
+        static let bottleLabelCornerRadius: CGFloat = 10
         
-        /// noteProgress 라벨 너비
-        static let noteProgressLabelWidth: CGFloat = 126
-        
-        /// list Button의 앞쪽 패딩
-        static let listButtonLeadingPadding: CGFloat = 88
+        /// Bottle Label의 배경 투명도
+        static let bottleLabelBackgroundOpacity: CGFloat = 0.6
     }
 }
 
@@ -47,6 +41,21 @@ extension BottleViewController {
         /// TODO: 모든 뷰에서 같으면 전역으로 만들기
         /// 좌우 패딩 값
         static let verticalPadding: CGFloat = HomeViewController.Metric.verticalPadding
+        
+        /// 저금통 안에 들어갈 쪽지 노드 너비
+        static let noteWidth: CGFloat = 12
+        
+        /// 저금통 안에 들어갈 쪽지 노드 높이
+        static let noteHeight: CGFloat = noteWidth
+        
+        /// Gravity에 추가될 x축 패딩
+        static let boundaryPosX: CGFloat = 5
+        
+        /// Gravity에 추가될 y축 패딩
+        static let boundaryPosY: CGFloat = 5
+        
+        /// Gravity에 추가될 수평 패딩
+        static let boundaryPadding: CGFloat = 10
     }
 }
 
