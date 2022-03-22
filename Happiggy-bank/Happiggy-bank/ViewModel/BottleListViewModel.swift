@@ -28,7 +28,7 @@ final class BottleListViewModel {
     private func executeFetchRequest() {
         guard let list = try? Bottle.fetchRequest(isOpen: true).execute()
         else {
-            self.bottleList = [Bottle.foo]
+            self.bottleList = Array(repeating: Bottle.foo, count: 300)
 //            self.bottleList = []
             return
         }

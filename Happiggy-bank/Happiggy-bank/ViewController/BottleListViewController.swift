@@ -47,9 +47,7 @@ final class BottleListViewController: UIViewController {
             else { return }
             
             let viewModel = NoteListViewModel()
-            let notes = Bottle.foo.notes
-            viewModel.notes = notes.map { $0 }
-            viewModel.notes.sort { $0.date < $1.date }
+            viewModel.notes = Bottle.foo.notes
             
             noteListViewController.viewModel = viewModel
         }
@@ -112,6 +110,8 @@ extension BottleListViewController: UITableViewDataSource {
         resetReusableCellAttribute(cell)
         cell.bottleTitleLabel.text = bottle.title
         cell.bottleDateLabel.text = bottle.dateLabel
+        cell.bottleDateLabel.textColor = .bottleListDateLabel
+        cell.fillGrid(withNotes: bottle.notes)
         
         return cell
     }
@@ -126,8 +126,9 @@ extension BottleListViewController: UITableViewDataSource {
     
     /// 리유저블 셀의 속성 초기화하는 함수
     private func resetReusableCellAttribute(_ cell: BottleCell) {
-        cell.bottleTitleLabel.text = ""
-        cell.bottleDateLabel.text = ""
+        cell.bottleTitleLabel.text = .empty
+        cell.bottleDateLabel.text = .empty
+        cell.resetAttributes()
     }
 }
 

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,29 +23,36 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottleListBottleBack" translatesAutoresizingMaskIntoConstraints="NO" id="h6q-bQ-oRA">
                         <rect key="frame" x="0.0" y="0.0" width="327" height="262"/>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ubt-Nc-Vrq">
+                        <rect key="frame" x="122" y="83" width="85" height="85"/>
+                    </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottleListBottleFront" translatesAutoresizingMaskIntoConstraints="NO" id="WBF-j1-MPQ">
                         <rect key="frame" x="0.0" y="0.0" width="327" height="262"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bf2-ek-5mu">
-                        <rect key="frame" x="126" y="221" width="75" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <rect key="frame" x="128" y="222.5" width="71" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" name="bottleListDateLabelColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKx-P5-VKL">
-                        <rect key="frame" x="129" y="192" width="69" height="21"/>
+                        <rect key="frame" x="129" y="193.5" width="69" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" name="primaryLabelColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="Ubt-Nc-Vrq" firstAttribute="height" secondItem="h6q-bQ-oRA" secondAttribute="height" multiplier="0.324427" id="0rz-Ij-EDr"/>
                     <constraint firstItem="vKx-P5-VKL" firstAttribute="centerX" secondItem="DOZ-Da-Rub" secondAttribute="centerX" id="9Ht-gb-3qd"/>
                     <constraint firstAttribute="trailing" secondItem="h6q-bQ-oRA" secondAttribute="trailing" id="AiC-C7-BAR"/>
                     <constraint firstAttribute="trailing" secondItem="WBF-j1-MPQ" secondAttribute="trailing" id="Ewx-de-AJP"/>
+                    <constraint firstItem="Ubt-Nc-Vrq" firstAttribute="top" secondItem="DOZ-Da-Rub" secondAttribute="top" constant="83" id="Iy3-nE-a2t"/>
                     <constraint firstItem="6tB-vT-ges" firstAttribute="leading" secondItem="DOZ-Da-Rub" secondAttribute="leading" id="PZd-at-V3w"/>
+                    <constraint firstItem="Ubt-Nc-Vrq" firstAttribute="width" secondItem="h6q-bQ-oRA" secondAttribute="width" multiplier="0.259939" id="Q7M-D1-HnN"/>
                     <constraint firstItem="h6q-bQ-oRA" firstAttribute="leading" secondItem="DOZ-Da-Rub" secondAttribute="leading" id="SO6-cP-qFe"/>
                     <constraint firstAttribute="bottom" secondItem="bf2-ek-5mu" secondAttribute="bottom" constant="20" id="UeF-MR-bFk"/>
+                    <constraint firstItem="Ubt-Nc-Vrq" firstAttribute="centerX" secondItem="h6q-bQ-oRA" secondAttribute="centerX" constant="1" id="VGk-iD-ODb"/>
                     <constraint firstAttribute="bottom" secondItem="6tB-vT-ges" secondAttribute="bottom" id="W4N-XT-RPQ"/>
                     <constraint firstItem="6tB-vT-ges" firstAttribute="top" secondItem="DOZ-Da-Rub" secondAttribute="top" id="Yf2-Xh-T0I"/>
                     <constraint firstItem="WBF-j1-MPQ" firstAttribute="leading" secondItem="DOZ-Da-Rub" secondAttribute="leading" id="ZJ6-aZ-R3e"/>
@@ -60,6 +68,8 @@
             <connections>
                 <outlet property="bottleDateLabel" destination="bf2-ek-5mu" id="XWs-rY-i5N"/>
                 <outlet property="bottleTitleLabel" destination="vKx-P5-VKL" id="d1y-H6-iak"/>
+                <outlet property="gridContainerTopConstraint" destination="Iy3-nE-a2t" id="JIb-O3-Itp"/>
+                <outlet property="gridContainerView" destination="Ubt-Nc-Vrq" id="aqr-r8-2mA"/>
             </connections>
             <point key="canvasLocation" x="-250.00000000000003" y="199.55357142857142"/>
         </tableViewCell>
@@ -68,5 +78,11 @@
         <image name="bottleCellBackgroundLight" width="327" height="262"/>
         <image name="bottleListBottleBack" width="327" height="262"/>
         <image name="bottleListBottleFront" width="327" height="262"/>
+        <namedColor name="bottleListDateLabelColor">
+            <color red="0.45882352941176469" green="0.70196078431372544" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryLabelColor">
+            <color red="0.0" green="0.36078431372549019" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
