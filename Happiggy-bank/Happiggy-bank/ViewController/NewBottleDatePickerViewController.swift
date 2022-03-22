@@ -15,21 +15,13 @@ final class NewBottleDatePickerViewController: UIViewController {
     // MARK: Properties
     
     /// 내비게이션 바
-    @IBOutlet var navigationBar: UINavigationBar!
+    @IBOutlet weak var navigationBar: UINavigationBar!
     
     /// 상단 라벨
-    lazy var topLabel: UILabel = UILabel().then {
-        $0.text = StringLiteral.topLabel
-        $0.font = .systemFont(ofSize: FontSize.topLabelText)
-        $0.translatesAutoresizingMaskIntoConstraints = false
-    }
+    @IBOutlet weak var topLabel: UILabel!
     
     /// 개봉 시점 선택하는 피커 뷰
-    lazy var pickerView: UIPickerView = UIPickerView().then {
-        $0.delegate = self
-        $0.dataSource = self
-        $0.translatesAutoresizingMaskIntoConstraints = false
-    }
+    @IBOutlet weak var pickerView: UIPickerView!
     
     /// 저장할 유리병 데이터
     var bottleData: NewBottle?
@@ -42,10 +34,10 @@ final class NewBottleDatePickerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureViewHierarcy()
-        configureConstraints()
-        setPickerView()
+        initializeLabel()
+        initializePickerView()
         makeNavigationBarClear()
+        setPickerHighlightWhite()
     }
     
     
@@ -129,15 +121,6 @@ final class NewBottleDatePickerViewController: UIViewController {
     }
     
     
-    // MARK: View Hierarcy
-    
-    /// 뷰 계층 설정하는 함수
-    private func configureViewHierarcy() {
-        self.view.addSubview(topLabel)
-        self.view.addSubview(pickerView)
-    }
-    
-    
     // MARK: View Configuration
     
     /// 내비게이션 바 투명하게 만드는 함수
@@ -146,12 +129,20 @@ final class NewBottleDatePickerViewController: UIViewController {
         self.navigationBar.shadowImage = UIImage()
     }
     
+    private func initializeLabel() {
+        self.topLabel.text = StringLiteral.topLabel
+        self.topLabel.font = .systemFont(ofSize: FontSize.topLabelText)
+    }
+    
     /// 피커 뷰 초기 상태 세팅하는 함수
     /// 처음엔 가운데로, 이후엔 선택된 행의 인덱스에 따라 설정됨
-    private func setPickerView() {
+    // TODO: 갑자기 안됨..
+    private func initializePickerView() {
         let row = bottleData?.periodIndex ??
         NewBottleDatePickerViewController.pickerValues.count / 2
         
+        self.pickerView.delegate = self
+        self.pickerView.dataSource = self
         self.pickerView.selectRow(
             row,
             inComponent: 0,
@@ -159,31 +150,32 @@ final class NewBottleDatePickerViewController: UIViewController {
         )
     }
     
-    
-    // MARK: Constraints
-    
-    /// 하위 뷰 오토레이아웃 지정하는 함수 모두 호출하는 함수
-    private func configureConstraints() {
-        topLabelConstraints()
-        pickerViewConstraints()
-    }
-    
-    /// 상단 라벨 오토레이아웃
-    private func topLabelConstraints() {
+    /// 피커 선택 하이라이트 뷰 흰색으로 설정하는 함수
+    private func setPickerHighlightWhite() {
+        let defaultHightlightView = self.pickerView.subviews[1]
+        defaultHightlightView.backgroundColor = .clear
+        
+        let highlightView = UIView().then {
+            $0.backgroundColor = .pickerSelectionColor
+            $0.layer.cornerRadius = defaultHightlightView.layer.cornerRadius
+            $0.frame = defaultHightlightView.frame
+        }
+        
+        self.view.insertSubview(highlightView, belowSubview: self.pickerView)
+        highlightView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.topLabel.topAnchor.constraint(
-                equalTo: self.view.topAnchor,
-                constant: Metric.topLabelTopAnchor
+            highlightView.centerXAnchor.constraint(
+                equalTo: defaultHightlightView.centerXAnchor
             ),
-            self.topLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
-        ])
-    }
-    
-    /// 피커 뷰 오토레이아웃
-    private func pickerViewConstraints() {
-        NSLayoutConstraint.activate([
-            self.pickerView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.pickerView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+            highlightView.centerYAnchor.constraint(
+                equalTo: defaultHightlightView.centerYAnchor
+            ),
+            highlightView.widthAnchor.constraint(
+                equalTo: defaultHightlightView.widthAnchor
+            ),
+            highlightView.heightAnchor.constraint(
+                equalTo: defaultHightlightView.heightAnchor
+            )
         ])
     }
 }
