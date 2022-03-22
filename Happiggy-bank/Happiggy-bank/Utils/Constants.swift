@@ -110,7 +110,7 @@ extension BottleListViewController {
     enum Metric {
         
         /// 테이블뷰 행 높이
-        static let cellHeight: CGFloat = BottleCell.Metric.cellHeight + BottleCell.Metric.horizontalPadding
+        static let cellHeight: CGFloat = BottleCell.Metric.cellHeight + BottleCell.Metric.cellSpacing
     }
     
     /// BottleListViewController에서 설정하는 Color 상수값
@@ -190,6 +190,36 @@ extension BottleCell {
         
         /// corner radius
         static let cornerRadius: CGFloat = 15
+        
+        /// 그리드 top constraint 를 비율에 따라 조정한 값
+        static let gridTopConstraintConstant = cellHeight * gridTopConstraintCellHeightRatio
+        
+        /// 쪽지 이미지들의 z index
+        static var randomZpostion: CGFloat {
+            [3, 4, 5, 6, 7, 8].randomElement() ?? 3
+        }
+        
+        /// 쪽지 이미지 scale
+        static var randomScale: CGFloat {
+            [1, 1.1, 1.2, 1.3, 1.4, 1.5].randomElement() ?? .one
+        }
+        
+        /// 쪽지 이미지 회전 각도
+        static var randomDegree: CGFloat {
+            2 * .pi / (degreeDividers.randomElement() ?? .one)
+        }
+        
+        /// 쪽지 이미지들의 회전 각도를 구하기 위한 값들
+        private static let degreeDividers: [CGFloat] = {
+            var degree = [CGFloat]()
+            for number in 1...36 {
+                degree.append(CGFloat(number))
+            }
+            return degree
+        }()
+        
+        /// 그리드 top constraint 와 셀 높이 간 비율
+        private static let gridTopConstraintCellHeightRatio: CGFloat = 83 / 262
     }
     
     /// Bottle Cell에서 설정하는 글자 크기
