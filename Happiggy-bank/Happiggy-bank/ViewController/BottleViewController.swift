@@ -13,14 +13,20 @@ final class BottleViewController: UIViewController {
     
     // MARK: - @IBOutlet
 
-    /// 유리병 이미지를 보여주는 뷰
-    @IBOutlet var imageView: BottleImageView!
+    /// 저금통 쪽지를 보여주는 애니메이션 뷰    
+    @IBOutlet weak var bottleNoteView: BottleNoteView!
     
     
     // MARK: - Properties
     
     /// BottleViewController 에 필요한 형태로 데이터를 가공해주는 View Model
     var viewModel: BottleViewModel!
+    
+    /// 애니메이션을 위한 중력 객체
+    var gravity: Gravity?
+    
+    /// 쪽지 노드
+    var noteNodes: [UIDynamicItem] = []
     
     
     // MARK: - View Lifecycle
@@ -29,6 +35,7 @@ final class BottleViewController: UIViewController {
         super.viewDidLoad()
         self.addObservers()
         configureBottleImage()
+        initializeBottleView()
     }
     
     
@@ -110,6 +117,51 @@ final class BottleViewController: UIViewController {
             print("show bottle ready to open")
 //            self.imageView.backgroundColor = .orange
         }
+    }
+    
+    /// 저금통 유리병 애니메이션 초기 세팅
+    private func initializeBottleView() {
+        guard let noteSet = viewModel.bottle?.notes
+        else { return }
+        let notes = noteSet.map { $0 }
+        
+        // TODO: position 바꾸기
+        // create random BubbleView in random position
+        for idx in 0..<notes.count {
+            let randX = CGFloat.random(in: 50..<CGFloat(self.bottleNoteView.frame.size.width - 50))
+            let randY = CGFloat.random(in: 50..<CGFloat(self.bottleNoteView.frame.size.height - 50))
+            let color = notes[idx].color
+
+            let bubble = NoteView(
+                frame: CGRect(
+                    x: randX,
+                    y: randY,
+                    width: Metric.noteWidth,
+                    height: Metric.noteHeight
+                )
+            )
+            bubble.imageView.image = UIImage.note(color: color)
+            self.bottleNoteView.addSubview(bubble)
+        }
+
+        // prepare the bubbles to pass to SDK
+        self.noteNodes = self.bottleNoteView.subviews.filter { $0 is NoteView }
+
+        gravity = Gravity(
+            gravityItems: self.noteNodes,
+            collisionItems: nil,
+            referenceView: self.bottleNoteView,
+            boundary: UIBezierPath(rect: CGRect(
+                x: Metric.boundaryPosX,
+                y: Metric.boundaryPosY,
+                width: self.bottleNoteView.bounds.width - Metric.boundaryPadding,
+                height: self.bottleNoteView.bounds.height - Metric.boundaryPadding
+            )),
+            queue: nil
+        )
+
+        // start gravity
+        gravity?.enable()
     }
     
     

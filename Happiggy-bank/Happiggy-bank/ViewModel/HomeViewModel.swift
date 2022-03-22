@@ -7,33 +7,34 @@
 
 import UIKit
 
-/// 서버에서 받은 데이터를 Home 뷰에 필요한 형식으로 변환해주는 뷰 모델
+/// 데이터를 Home 뷰에 필요한 형식으로 변환해주는 뷰 모델
 final class HomeViewModel {
+
+    // MARK: - Properties
+    /// 현재 저금통
+    var bottle: Bottle!
     
-    // TODO: Bottle Model 생성 및 관련 내용 추가
+    /// 현재 진행중인 저금통이 있는지 없는지에 대한 불리언 값
+    var hasBottle: Bool = true
     
-    /// 최초인지 아닌지 확인
-    var hasBottle: Bool {
-        return true
+    
+    // MARK: - init
+    init() {
+        executeFetchRequest()
     }
     
-    /// 현재 페이지 인덱스
-    var currentIndex: Int = 0
     
-    /// 현재 페이지 인덱스 업데이트 해 주는 연산 프로퍼티 -> 추후 데이터에 따라 변경 예정
-    var updatedIndex: Int {
-        get {
-            return self.currentIndex
-        }
-        set(newIndex) {
-            if newIndex >= 0 && newIndex < self.pageImages.count {
-                self.currentIndex = newIndex
-            }
-        }
-    }
+    // MARK: - Functions
     
-    /// 각 페이지에 들어갈 이미지 이름 배열 -> 추후 데이터에 따라 변경 예정
-    var pageImages: [String] {
-        return ["bottle1", "bottle2", "bottle3", "bottle4"]
+    // TODO: 확인용으로 주석처리된 foo 데이터 사용. 추후 삭제
+    /// 지난 저금통 리스트 가져오기
+    private func executeFetchRequest() {
+        guard let bottle = try? Bottle.fetchRequest(isOpen: false).execute()
+        else {
+            self.hasBottle = false
+            return
+        }
+        
+        self.bottle = bottle.first!
     }
 }

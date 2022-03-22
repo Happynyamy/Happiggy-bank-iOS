@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dSD-O6-Yej">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dSD-O6-Yej">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -22,36 +22,67 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeBackgroundLight" translatesAutoresizingMaskIntoConstraints="NO" id="ZlX-eS-Yvg">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmA-fx-uIw">
-                                <rect key="frame" x="24" y="249" width="327" height="440"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeBottleBack" translatesAutoresizingMaskIntoConstraints="NO" id="oqE-FC-3Q8">
+                                <rect key="frame" x="0.0" y="249.66666666666666" width="375" height="439.33333333333337"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="dmA-fx-uIw" secondAttribute="height" multiplier="327:440" id="W8J-jy-WPj"/>
+                                    <constraint firstAttribute="width" secondItem="oqE-FC-3Q8" secondAttribute="height" multiplier="414:485" id="fo3-oe-RDc"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeBottleFront" translatesAutoresizingMaskIntoConstraints="NO" id="0dD-IT-dfb">
+                                <rect key="frame" x="0.0" y="249.66666666666666" width="375" height="439.33333333333337"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="0dD-IT-dfb" secondAttribute="height" multiplier="414:485" id="gcC-qP-AxE"/>
+                                </constraints>
+                            </imageView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmA-fx-uIw">
+                                <rect key="frame" x="0.0" y="249.66666666666666" width="375" height="439.33333333333337"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="dmA-fx-uIw" secondAttribute="height" multiplier="414:485" id="W8J-jy-WPj"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="FVx-vN-7Xe" kind="embed" identifier="showBottleView" id="rLd-zf-USa"/>
                                 </connections>
                             </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmu-YM-ARP">
+                                <rect key="frame" x="24" y="100.99999999999999" width="327" height="54.333333333333329"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Bmu-YM-ARP" secondAttribute="height" multiplier="361:60" id="DAh-Xr-abF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="ZlX-eS-Yvg" secondAttribute="bottom" id="0m3-gk-sI3"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dmA-fx-uIw" secondAttribute="trailing" constant="24" id="26A-HR-Krh"/>
-                            <constraint firstItem="dmA-fx-uIw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="8sb-a4-2KC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dmA-fx-uIw" secondAttribute="trailing" id="26A-HR-Krh"/>
+                            <constraint firstItem="0dD-IT-dfb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5H0-eY-A2Q"/>
+                            <constraint firstItem="dmA-fx-uIw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8sb-a4-2KC"/>
+                            <constraint firstItem="oqE-FC-3Q8" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="DEf-ts-R9h"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oqE-FC-3Q8" secondAttribute="bottom" constant="40" id="Hnr-X5-UBq"/>
                             <constraint firstItem="ZlX-eS-Yvg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="OFr-if-N9z"/>
                             <constraint firstAttribute="trailing" secondItem="ZlX-eS-Yvg" secondAttribute="trailing" id="OkY-Ki-cEN"/>
+                            <constraint firstItem="0dD-IT-dfb" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="TmB-xQ-POM"/>
+                            <constraint firstItem="Bmu-YM-ARP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="dzV-x8-0gt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dmA-fx-uIw" secondAttribute="bottom" constant="40" id="eMu-1s-Pwo"/>
                             <constraint firstItem="ZlX-eS-Yvg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="pLj-41-9fI"/>
+                            <constraint firstItem="oqE-FC-3Q8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="r4l-Un-Gm8"/>
+                            <constraint firstItem="Bmu-YM-ARP" firstAttribute="top" secondItem="ZlX-eS-Yvg" secondAttribute="top" constant="101" id="ucC-5M-Fv0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0dD-IT-dfb" secondAttribute="bottom" constant="40" id="wuS-UY-k8Y"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Bmu-YM-ARP" secondAttribute="trailing" constant="24" id="x7L-XF-hax"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="P6e-3z-28Z"/>
                     <connections>
+                        <outlet property="bottleInfoLabel" destination="Bmu-YM-ARP" id="hXu-Ok-U5l"/>
                         <outlet property="homeView" destination="8bC-Xf-vdC" id="edO-Zc-7da"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1154" y="1643"/>
+            <point key="canvasLocation" x="-1154.4000000000001" y="1642.6108374384237"/>
         </scene>
         <!--Bottle List View Controller-->
         <scene sceneID="U6G-8e-yzH">
@@ -555,28 +586,28 @@
             <objects>
                 <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="FVx-vN-7Xe" customClass="BottleViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jBg-oD-Piv">
-                        <rect key="frame" x="0.0" y="0.0" width="327" height="440"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="439.33333333333331"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aPw-QS-DfD">
-                                <rect key="frame" x="0.0" y="0.0" width="327" height="440"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OAt-vo-L69">
+                                <rect key="frame" x="80" y="165" width="215" height="230.33333333333337"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="gEH-ha-I0H" appends="YES" id="QLb-IG-GgB"/>
+                                    <outletCollection property="gestureRecognizers" destination="gEH-ha-I0H" appends="YES" id="I7T-Ve-Zwh"/>
                                 </connections>
-                            </imageView>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hOc-mc-UUR"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="hOc-mc-UUR" firstAttribute="bottom" secondItem="aPw-QS-DfD" secondAttribute="bottom" id="JRd-fe-BtE"/>
-                            <constraint firstItem="hOc-mc-UUR" firstAttribute="trailing" secondItem="aPw-QS-DfD" secondAttribute="trailing" id="qRi-o4-8OR"/>
-                            <constraint firstItem="aPw-QS-DfD" firstAttribute="leading" secondItem="hOc-mc-UUR" secondAttribute="leading" id="scu-QN-pBy"/>
-                            <constraint firstItem="aPw-QS-DfD" firstAttribute="top" secondItem="jBg-oD-Piv" secondAttribute="top" id="sj0-1P-5dd"/>
+                            <constraint firstItem="OAt-vo-L69" firstAttribute="leading" secondItem="hOc-mc-UUR" secondAttribute="leading" constant="80" id="1rR-fu-khc"/>
+                            <constraint firstItem="OAt-vo-L69" firstAttribute="top" secondItem="jBg-oD-Piv" secondAttribute="top" constant="165" id="9UY-ag-ktw"/>
+                            <constraint firstItem="OAt-vo-L69" firstAttribute="trailing" secondItem="hOc-mc-UUR" secondAttribute="trailing" constant="-80" id="MIL-hm-f47"/>
+                            <constraint firstItem="hOc-mc-UUR" firstAttribute="bottom" secondItem="OAt-vo-L69" secondAttribute="bottom" constant="44" id="rUo-wu-z3X"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="aPw-QS-DfD" id="8ju-QE-j4a"/>
+                        <outlet property="bottleNoteView" destination="OAt-vo-L69" id="Xcn-Ec-cu5"/>
                         <segue destination="moi-e1-3hQ" kind="presentation" identifier="presentNewNoteDatePicker" id="71M-g6-wMS"/>
                         <segue destination="abG-42-vcb" kind="presentation" identifier="presentNewBottleNameField" id="Qcc-qq-Xqy"/>
                     </connections>
@@ -585,11 +616,11 @@
                 <exit id="rAE-WY-Wyc" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="gEH-ha-I0H">
                     <connections>
-                        <action selector="bottleDidTap:" destination="FVx-vN-7Xe" id="mVI-j8-MCV"/>
+                        <action selector="bottleDidTap:" destination="FVx-vN-7Xe" id="tvN-aY-Pt9"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1154" y="2308"/>
+            <point key="canvasLocation" x="-1154.4000000000001" y="2307.6354679802957"/>
         </scene>
         <!--New Bottle Name Field View Controller-->
         <scene sceneID="BI8-5q-YxJ">
@@ -694,8 +725,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="MBC-MA-0pk"/>
-        <segue reference="7wk-af-F5w"/>
+        <segue reference="71M-g6-wMS"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="checkmark" catalog="system" width="128" height="114"/>
@@ -703,6 +733,8 @@
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="homeBackgroundBlurredLight" width="375" height="812"/>
         <image name="homeBackgroundLight" width="375" height="812"/>
+        <image name="homeBottleBack" width="375" height="440"/>
+        <image name="homeBottleFront" width="375" height="440"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="customGray">
             <color red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

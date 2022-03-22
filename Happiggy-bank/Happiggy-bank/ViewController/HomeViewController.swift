@@ -16,8 +16,14 @@ final class HomeViewController: UIViewController {
     /// HomeViewController의 뷰
     @IBOutlet var homeView: UIView!
     
+    /// 저금통 정보 표시하는 상단 라벨
+    @IBOutlet var bottleInfoLabel: UILabel!
+    
     /// 유리병 뷰를 관리하는 컨트롤러
     var bottleViewController: BottleViewController!
+    
+    /// 데이터를 홈뷰에 맞게 변환해주는 ViewModel
+    private var viewModel: HomeViewModel!
     
     
     // MARK: - LifeCycle
@@ -25,6 +31,7 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backButtonTitle = ""
+        initializeLabel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,5 +59,19 @@ final class HomeViewController: UIViewController {
             viewModel.bottle = Bottle.foo
             bottleViewController.viewModel = viewModel
         }
+    }
+    
+    
+    // MARK: - Initialize View
+    
+    private func initializeLabel() {
+        self.bottleInfoLabel.backgroundColor = UIColor(
+            white: 1,
+            alpha: Metric.bottleLabelBackgroundOpacity
+        )
+        self.bottleInfoLabel.layer.borderColor = UIColor.white.cgColor
+        self.bottleInfoLabel.layer.borderWidth = Metric.bottleLabelBorderWidth
+        self.bottleInfoLabel.layer.cornerRadius = Metric.bottleLabelCornerRadius
+        self.bottleInfoLabel.layer.masksToBounds = true
     }
 }
