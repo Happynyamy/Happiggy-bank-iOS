@@ -16,6 +16,10 @@ final class BottleViewController: UIViewController {
     /// 저금통 쪽지를 보여주는 애니메이션 뷰    
     @IBOutlet weak var bottleNoteView: BottleNoteView!
     
+    // TODO: 나중에 불필요하면 삭제
+    /// bottle Note View 의 bottom constraint
+    @IBOutlet weak var bottleNoteViewBottomConstraint: NSLayoutConstraint!
+    
     
     // MARK: - Properties
     
@@ -24,6 +28,14 @@ final class BottleViewController: UIViewController {
     
     /// 애니메이션을 위한 중력 객체
     var gravity: Gravity?
+    
+    /// 쪽지를 넣기 위해 bottle note view 의 영역을 나눠줄 그리드
+    lazy var grid: Grid = {
+        Grid(
+            frame: self.bottleNoteView.bounds,
+            cellCount: self.viewModel.bottle?.duration ?? .zero
+        )
+    }()
     
     /// 쪽지 노드
     var noteNodes: [UIDynamicItem] = []
@@ -80,12 +92,25 @@ final class BottleViewController: UIViewController {
     
     /// 쪽지 진행 정도가 바뀌었다는 알림을 받았을 때 호출되는 메서드
     @objc private func noteProgressDidChange(_ notification: Notification) {
-        self.view.backgroundColor = .systemBrown
         print("show note adding animation")
     }
     
     
     // MARK: - Functions
+    
+    /// 유저가 새로운 쪽지를 한 개 추가했을 때 호출되는 메서드
+    /// 새로운 쪽지 추가 -> 홈뷰에서 노티 받음 -> 보틀뷰로 전달
+    func contextDidChange(newBottle bottle: Bottle) {
+        self.viewModel.bottle = bottle
+        
+        guard let note = self.viewModel.newlyAddedNote,
+              let index = self.viewModel.newlyAddedNoteIndex
+        else { return }
+        
+        self.addNoteView(note, at: index)
+        
+        // TODO: 중력, 충돌 item 으로 추가 필요
+    }
     
     /// NotificationCenter.default 에 observer 들을 추가
     private func addObservers() {
@@ -101,50 +126,52 @@ final class BottleViewController: UIViewController {
         guard let bottle = self.viewModel.bottle
         else {
             print("show add new bottle image")
-//            self.imageView.backgroundColor = .systemIndigo
             return
         }
         
         /// 현재 채우는 저금통 있음
         if bottle.isInProgress {
             print("show bottle in progress")
-//            self.imageView.backgroundColor = .systemYellow
             return
         }
         
         /// 기한 종료로 개봉 대기중
         if !bottle.isInProgress {
             print("show bottle ready to open")
-//            self.imageView.backgroundColor = .orange
         }
     }
     
     /// 저금통 유리병 애니메이션 초기 세팅
     private func initializeBottleView() {
-        guard let noteSet = viewModel.bottle?.notes
+        guard let bottle = self.viewModel.bottle
         else { return }
-        let notes = noteSet.map { $0 }
         
-        // TODO: position 바꾸기
-        // create random BubbleView in random position
-        for idx in 0..<notes.count {
-            let randX = CGFloat.random(in: 50..<CGFloat(self.bottleNoteView.frame.size.width - 50))
-            let randY = CGFloat.random(in: 50..<CGFloat(self.bottleNoteView.frame.size.height - 50))
-            let color = notes[idx].color
-
-            let bubble = NoteView(
-                frame: CGRect(
-                    x: randX,
-                    y: randY,
-                    width: Metric.noteWidth,
-                    height: Metric.noteHeight
-                )
-            )
-            bubble.imageView.image = UIImage.note(color: color)
-            self.bottleNoteView.addSubview(bubble)
+        self.fillBottleNoteView(forBottle: bottle)
+        self.activateGravity()
+    }
+    
+    /// BottleNoteView 에 쪽지 이미지들을 추가
+    private func fillBottleNoteView(forBottle bottle: Bottle) {
+        
+        for (index, note) in bottle.notes.enumerated() {
+            self.addNoteView(note, at: index)
         }
-
-        // prepare the bubbles to pass to SDK
+    }
+    
+    /// 그리드를 사용해서 bottleNoteView 의 해당 좌표에 NoteView 추가
+    private func addNoteView(_ note: Note, at index: Int) {
+        let noteView = NoteView(frame: self.grid[index] ?? .zero).then {
+            /// 겹쳐보이는 효과
+            $0.layer.zPosition = Metric.randomZpostion
+            $0.imageView = UIImageView(image: .note(color: note.color))
+            $0.imageView.transform = $0.transform.rotated(by: Metric.randomDegree)
+        }
+        self.bottleNoteView.addSubview(noteView)
+    }
+    
+    /// 쪽지 이미지들에 중력 효과 추가
+    /// 유저가 폰을 기울이는 방향으로 쪽지들이 떨어짐
+    private func activateGravity() {
         self.noteNodes = self.bottleNoteView.subviews.filter { $0 is NoteView }
 
         gravity = Gravity(
@@ -159,7 +186,7 @@ final class BottleViewController: UIViewController {
             )),
             queue: nil
         )
-
+        
         // start gravity
         gravity?.enable()
     }

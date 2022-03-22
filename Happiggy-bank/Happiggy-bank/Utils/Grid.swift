@@ -78,7 +78,7 @@ struct Grid {
     
     /// 계산한 셀 크기에 맞게 프레임 배열 업데이트
     private mutating func updateCellFrames(to cellSize: CGSize) {
-
+    
         self.cellFrames.removeAll()
         
         /// 그리드의 실제 크기
@@ -108,9 +108,7 @@ struct Grid {
             origin.x += cellSize.width
             
             /// 이번 행에 더 이상 셀을 넣을 수 없는 경우 한 행 위로 위치를 옮김
-//            if round(origin.x) > round(frame.maxX - cellSize.width) {
-                if origin.x > frame.maxX - cellSize.width {
-//            if origin.x >= boundingSize.width {
+            if round(origin.x) > round(frame.maxX - cellSize.width) {
                 origin.x = self.frame.origin.x + offset.dx
                 origin.y -= cellSize.height
             }

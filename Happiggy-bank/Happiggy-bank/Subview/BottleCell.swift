@@ -59,10 +59,10 @@ final class BottleCell: UITableViewCell {
     // MARK: - cell settings
     
     /// 유리병 내부 영역을 직사각형의 그리드로 나누고 쪽지 이미지로 채움
-    func fillGrid(withNotes notes: [Note]) {
+    func fillGrid(withNotes notes: [Note], duration: Int) {
         self.layoutIfNeeded()
-
-        self.grid = Grid(frame: self.gridContainerView.bounds, cellCount: notes.count)
+        
+        self.grid = Grid(frame: self.gridContainerView.bounds, cellCount: duration)
         
         for index in 0..<notes.count {
             let note = notes[index]

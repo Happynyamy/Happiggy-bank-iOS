@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dSD-O6-Yej">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dSD-O6-Yej">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -23,26 +23,26 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeBottleBack" translatesAutoresizingMaskIntoConstraints="NO" id="oqE-FC-3Q8">
-                                <rect key="frame" x="0.0" y="249.66666666666666" width="375" height="439.33333333333337"/>
+                                <rect key="frame" x="0.0" y="249" width="375" height="440"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="oqE-FC-3Q8" secondAttribute="height" multiplier="414:485" id="fo3-oe-RDc"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeBottleFront" translatesAutoresizingMaskIntoConstraints="NO" id="0dD-IT-dfb">
-                                <rect key="frame" x="0.0" y="249.66666666666666" width="375" height="439.33333333333337"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="0dD-IT-dfb" secondAttribute="height" multiplier="414:485" id="gcC-qP-AxE"/>
+                                    <constraint firstAttribute="width" secondItem="oqE-FC-3Q8" secondAttribute="height" multiplier="375:440" id="fo3-oe-RDc"/>
                                 </constraints>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmA-fx-uIw">
-                                <rect key="frame" x="0.0" y="249.66666666666666" width="375" height="439.33333333333337"/>
+                                <rect key="frame" x="0.0" y="249" width="375" height="440"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="dmA-fx-uIw" secondAttribute="height" multiplier="414:485" id="W8J-jy-WPj"/>
+                                    <constraint firstAttribute="width" secondItem="dmA-fx-uIw" secondAttribute="height" multiplier="375:440" id="W8J-jy-WPj"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="FVx-vN-7Xe" kind="embed" identifier="showBottleView" id="rLd-zf-USa"/>
                                 </connections>
                             </containerView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeBottleFront" translatesAutoresizingMaskIntoConstraints="NO" id="0dD-IT-dfb">
+                                <rect key="frame" x="0.0" y="249" width="375" height="440"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="0dD-IT-dfb" secondAttribute="height" multiplier="375:440" id="gcC-qP-AxE"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmu-YM-ARP">
                                 <rect key="frame" x="24" y="100.99999999999999" width="327" height="54.333333333333329"/>
                                 <constraints>
@@ -586,11 +586,11 @@
             <objects>
                 <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="FVx-vN-7Xe" customClass="BottleViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jBg-oD-Piv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="439.33333333333331"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="440"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OAt-vo-L69">
-                                <rect key="frame" x="80" y="165" width="215" height="230.33333333333337"/>
+                                <rect key="frame" x="80" y="165" width="215" height="231"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="gEH-ha-I0H" appends="YES" id="I7T-Ve-Zwh"/>
@@ -600,14 +600,15 @@
                         <viewLayoutGuide key="safeArea" id="hOc-mc-UUR"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="OAt-vo-L69" firstAttribute="leading" secondItem="hOc-mc-UUR" secondAttribute="leading" constant="80" id="1rR-fu-khc"/>
-                            <constraint firstItem="OAt-vo-L69" firstAttribute="top" secondItem="jBg-oD-Piv" secondAttribute="top" constant="165" id="9UY-ag-ktw"/>
-                            <constraint firstItem="OAt-vo-L69" firstAttribute="trailing" secondItem="hOc-mc-UUR" secondAttribute="trailing" constant="-80" id="MIL-hm-f47"/>
+                            <constraint firstItem="OAt-vo-L69" firstAttribute="centerX" secondItem="hOc-mc-UUR" secondAttribute="centerX" id="lHD-MC-mZ6"/>
+                            <constraint firstItem="OAt-vo-L69" firstAttribute="height" secondItem="jBg-oD-Piv" secondAttribute="height" multiplier="0.525" id="rHf-uW-8wO"/>
                             <constraint firstItem="hOc-mc-UUR" firstAttribute="bottom" secondItem="OAt-vo-L69" secondAttribute="bottom" constant="44" id="rUo-wu-z3X"/>
+                            <constraint firstItem="OAt-vo-L69" firstAttribute="width" secondItem="jBg-oD-Piv" secondAttribute="width" multiplier="0.573333" id="saU-qG-RkR"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="bottleNoteView" destination="OAt-vo-L69" id="Xcn-Ec-cu5"/>
+                        <outlet property="bottleNoteViewBottomConstraint" destination="rUo-wu-z3X" id="oDP-fr-ikO"/>
                         <segue destination="moi-e1-3hQ" kind="presentation" identifier="presentNewNoteDatePicker" id="71M-g6-wMS"/>
                         <segue destination="abG-42-vcb" kind="presentation" identifier="presentNewBottleNameField" id="Qcc-qq-Xqy"/>
                     </connections>
