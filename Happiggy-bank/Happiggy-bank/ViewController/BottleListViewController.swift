@@ -111,7 +111,7 @@ extension BottleListViewController: UITableViewDataSource {
         cell.bottleTitleLabel.text = bottle.title
         cell.bottleDateLabel.text = bottle.dateLabel
         cell.bottleDateLabel.textColor = .bottleListDateLabel
-        cell.fillGrid(withNotes: bottle.notes)
+        cell.fillGrid(withNotes: bottle.notes, duration: bottle.duration)
         
         return cell
     }

@@ -14,4 +14,14 @@ final class BottleViewModel {
     // MARK: - Properties
     /// 홈 뷰에서 나타낼 저금통
     var bottle: Bottle?
+    
+    /// 새로 추가한 쪽지
+    var newlyAddedNote: Note? {
+        bottle?.notes.last
+    }
+    
+    /// 새로 추가한 쪽지의 인덱스
+    var newlyAddedNoteIndex: Int? {
+        bottle == nil ? nil : bottle!.notes.count - 1
+    }
 }

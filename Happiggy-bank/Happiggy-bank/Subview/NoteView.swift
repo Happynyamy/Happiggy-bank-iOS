@@ -42,7 +42,6 @@ final class NoteView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.addSubview(self.imageView)
-        configureConstraints()
 
         layer.addSublayer(shapeLayer)
         let center = CGPoint(x: bounds.midX, y: bounds.midY)
@@ -67,15 +66,5 @@ final class NoteView: UIView {
             endAngle: .pi * 2,
             clockwise: true
         )
-    }
-    
-    /// Constratins 설정
-    private func configureConstraints() {
-        NSLayoutConstraint.activate([
-            self.imageView.topAnchor.constraint(equalTo: self.topAnchor),
-            self.imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            self.imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            self.imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
-        ])
     }
 }

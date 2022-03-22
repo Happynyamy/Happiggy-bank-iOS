@@ -56,6 +56,30 @@ extension BottleViewController {
         
         /// Gravity에 추가될 수평 패딩
         static let boundaryPadding: CGFloat = 10
+        
+        /// 쪽지 이미지들의 z index
+        static var randomZpostion: CGFloat {
+            [3, 4, 5, 6, 7, 8].randomElement() ?? 3
+        }
+        
+        /// 쪽지 이미지 scale
+        static var randomScale: CGFloat {
+            [1, 1.1, 1.2, 1.3, 1.4, 1.5].randomElement() ?? .one
+        }
+        
+        /// 쪽지 이미지 회전 각도
+        static var randomDegree: CGFloat {
+            2 * .pi / (degreeDividers.randomElement() ?? .one)
+        }
+        
+        /// 쪽지 이미지들의 회전 각도를 구하기 위한 값들
+        private static let degreeDividers: [CGFloat] = {
+            var degree = [CGFloat]()
+            for number in 1...36 {
+                degree.append(CGFloat(number))
+            }
+            return degree
+        }()
     }
 }
 
