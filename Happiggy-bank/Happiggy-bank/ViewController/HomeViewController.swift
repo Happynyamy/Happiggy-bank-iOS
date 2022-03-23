@@ -23,7 +23,7 @@ final class HomeViewController: UIViewController {
     var bottleViewController: BottleViewController!
     
     /// 데이터를 홈뷰에 맞게 변환해주는 ViewModel
-    private var viewModel: HomeViewModel!
+    private var viewModel = HomeViewModel()
     
     
     // MARK: - LifeCycle
@@ -32,6 +32,11 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.backButtonTitle = ""
         initializeLabel()
+        
+        self.observe(
+            selector: #selector(refetch),
+            name: .NSManagedObjectContextDidSave
+        )
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,10 +59,14 @@ final class HomeViewController: UIViewController {
             guard let bottleViewController = segue.destination as? BottleViewController
             else { return }
             
+//            PersistenceStore.shared.deleteAll(Bottle.self)
             let viewModel = BottleViewModel()
             // TODO: 홈뷰에서 데이터 넘겨받기
 //            viewModel.bottle = Bottle.foo
+            viewModel.bottle = self.viewModel.bottle
             bottleViewController.viewModel = viewModel
+            
+            self.bottleViewController = bottleViewController
         }
     }
     
@@ -73,5 +82,14 @@ final class HomeViewController: UIViewController {
         self.bottleInfoLabel.layer.borderWidth = Metric.bottleLabelBorderWidth
         self.bottleInfoLabel.layer.cornerRadius = Metric.bottleLabelCornerRadius
         self.bottleInfoLabel.layer.masksToBounds = true
+    }
+    
+    // TODO: 삭제 (새로운 저금통 추가했을 때 보기 위한 임시 메서드)
+    @objc private func refetch() {
+        guard self.bottleViewController.viewModel.bottle == nil
+        else { return }
+        
+        self.viewModel.executeFetchRequest()
+        self.bottleViewController.viewModel.bottle = self.viewModel.bottle
     }
 }

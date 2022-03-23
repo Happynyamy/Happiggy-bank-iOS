@@ -29,7 +29,7 @@ class PersistenceStore {
     
     
     // MARK: - Init(s)
-    init(name: String) {
+    private init(name: String) {
         /*
          The persistent container for the application. This implementation
          creates and returns a container, having loaded the store for the

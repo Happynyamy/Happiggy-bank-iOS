@@ -45,6 +45,11 @@ final class NoteListViewController: UIViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+//        PersistenceStore.shared.save()
+    }
     
     // MARK: - @IBActions
     
@@ -245,8 +250,6 @@ extension NoteListViewController: UITableViewDelegate {
 
         let note = self.viewModel.notes[indexPath.row]
         note.isOpen.toggle()
-        // TODO: activate core data saving
-//        PersistenceStore.shared.save()
         /// 최초 개봉 애니메이션이 스크롤할 떄 마다 다시 나타나는 것 방지
         tableView.deselectRow(at: indexPath, animated: false)
         self.configureOpenAllNotesButton()

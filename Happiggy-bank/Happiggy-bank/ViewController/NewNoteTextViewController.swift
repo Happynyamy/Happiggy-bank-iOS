@@ -210,7 +210,7 @@ final class NewNoteTextViewController: UIViewController {
             content: self.textView.text,
             bottle: self.viewModel.newNote.bottle
         )
-        PersistenceStore.shared.save()
+//        PersistenceStore.shared.save()
     }
     
     
