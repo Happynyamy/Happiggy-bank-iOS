@@ -43,11 +43,12 @@ final class BottleListViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.showNoteList {
-            guard let noteListViewController = segue.destination as? NoteListViewController
+            guard let noteListViewController = segue.destination as? NoteListViewController,
+                let bottle = sender as? Bottle
             else { return }
             
             let viewModel = NoteListViewModel()
-            viewModel.notes = Bottle.foo.notes
+            viewModel.notes = bottle.notes
             
             noteListViewController.viewModel = viewModel
         }

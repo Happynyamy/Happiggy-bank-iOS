@@ -55,14 +55,13 @@ final class NewBottleDatePickerViewController: UIViewController {
     
     /// 새 유리병 데이터를 코어데이터에 저장하고 Bottle 뷰 컨트롤러로 되돌아가는 save button 액션
     @IBAction func saveButtonDidTap(_ sender: UIBarButtonItem) {
+        // TODO: Save Data
+        saveNewBottle()
         self.performSegue(
             withIdentifier: SegueIdentifier.unwindFromNewBottlePopupToBottleView,
             sender: sender
         )
         self.fadeOut()
-        
-        // TODO: Save Data
-//        saveNewBottle()
     }
     
     
@@ -73,13 +72,12 @@ final class NewBottleDatePickerViewController: UIViewController {
         guard let title = self.bottleData?.name,
               let periodIndex = self.bottleData?.periodIndex
         else { return }
-        
         Bottle(
             title: title,
             startDate: Date(),
             endDate: endDate(from: Date(), after: periodIndex)
         )
-        PersistenceStore.shared.save()
+//        PersistenceStore.shared.save()
     }
     
     /// 선택된 period의 index에 따라 종료 날짜 생성

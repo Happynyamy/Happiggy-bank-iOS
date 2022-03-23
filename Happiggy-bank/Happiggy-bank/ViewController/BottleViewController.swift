@@ -92,7 +92,10 @@ final class BottleViewController: UIViewController {
     
     /// 쪽지 진행 정도가 바뀌었다는 알림을 받았을 때 호출되는 메서드
     @objc private func noteProgressDidChange(_ notification: Notification) {
-        print("show note adding animation")
+        
+        UIView.animate(withDuration: 0.5, delay: CATransition.transitionDuration) {
+            // show note adding animation
+        }
     }
     
     
