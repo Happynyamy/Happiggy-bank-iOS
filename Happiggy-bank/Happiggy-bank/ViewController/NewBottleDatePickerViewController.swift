@@ -129,6 +129,7 @@ final class NewBottleDatePickerViewController: UIViewController {
         self.navigationBar.shadowImage = UIImage()
     }
     
+    /// 상단 라벨 초기 세팅하는 함수
     private func initializeLabel() {
         self.topLabel.text = StringLiteral.topLabel
         self.topLabel.font = .systemFont(ofSize: FontSize.topLabelText)
@@ -136,7 +137,6 @@ final class NewBottleDatePickerViewController: UIViewController {
     
     /// 피커 뷰 초기 상태 세팅하는 함수
     /// 처음엔 가운데로, 이후엔 선택된 행의 인덱스에 따라 설정됨
-    // TODO: 갑자기 안됨..
     private func initializePickerView() {
         let row = bottleData?.periodIndex ??
         NewBottleDatePickerViewController.pickerValues.count / 2
@@ -147,6 +147,11 @@ final class NewBottleDatePickerViewController: UIViewController {
             row,
             inComponent: 0,
             animated: false
+        )
+        self.updateSelectedRow(
+            self.pickerView,
+            row: row,
+            component: 0
         )
     }
     
@@ -195,13 +200,19 @@ extension NewBottleDatePickerViewController: UIPickerViewDataSource {
 
 extension NewBottleDatePickerViewController: UIPickerViewDelegate {
     
-    /// 피커 뷰의 선택지 텍스트
+    /// 피커 각 행 구성
     func pickerView(
         _ pickerView: UIPickerView,
-        titleForRow row: Int,
-        forComponent component: Int
-    ) -> String? {
-        return NewBottleDatePickerViewController.pickerValues[row]
+        viewForRow row: Int,
+        forComponent component: Int,
+        reusing view: UIView?
+    ) -> UIView {
+        
+        return UILabel().then {
+            $0.text = NewBottleDatePickerViewController.pickerValues[row]
+            $0.font = .systemFont(ofSize: FontSize.rowText)
+            $0.textAlignment = .center
+        }
     }
     
     /// 피커 뷰의 선택된 항목
@@ -211,5 +222,22 @@ extension NewBottleDatePickerViewController: UIPickerViewDelegate {
         inComponent component: Int
     ) {
         self.bottleData?.periodIndex = row
+        self.updateSelectedRow(
+            pickerView,
+            row: row,
+            component: component
+        )
+    }
+
+    private func updateSelectedRow(
+        _ pickerView: UIPickerView,
+        row: Int,
+        component: Int
+    ) {
+        guard let rowView = pickerView.view(forRow: row, forComponent: component)
+                as? UILabel
+        else { return }
+
+        rowView.textColor = .customLabel
     }
 }

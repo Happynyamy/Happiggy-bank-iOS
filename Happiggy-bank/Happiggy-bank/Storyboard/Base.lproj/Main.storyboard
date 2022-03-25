@@ -758,7 +758,7 @@
                     <size key="freeformSize" width="375" height="812"/>
                     <connections>
                         <outlet property="bottomLabel" destination="O6K-WO-23z" id="55w-W2-qEd"/>
-                        <outlet property="navigationBar" destination="TMP-Xq-oob" id="k8s-vO-Ok7"/>
+                        <outlet property="navigationBar" destination="TMP-Xq-oob" id="3P2-cJ-qH3"/>
                         <outlet property="nextButton" destination="N6W-GB-0vx" id="Qtm-9V-POg"/>
                         <outlet property="textField" destination="yf9-lX-0tg" id="KeC-tS-Y5C"/>
                         <outlet property="topLabel" destination="e7T-oG-tlP" id="Zi8-H0-IcD"/>
@@ -827,7 +827,7 @@
                     <navigationItem key="navigationItem" id="oav-0T-kPd"/>
                     <size key="freeformSize" width="375" height="812"/>
                     <connections>
-                        <outlet property="navigationBar" destination="VaU-DG-hJr" id="r2i-EM-nBF"/>
+                        <outlet property="navigationBar" destination="VaU-DG-hJr" id="tLl-nY-dh1"/>
                         <outlet property="pickerView" destination="JZC-yk-iLa" id="ESS-v4-zWK"/>
                         <outlet property="topLabel" destination="8q5-pU-bsj" id="QQD-EH-FCm"/>
                         <segue destination="rAE-WY-Wyc" kind="unwind" identifier="unwindFromNewBottlePopupToBottleView" unwindAction="unwindCallDidArriveWithSegue:" id="voH-uq-YvW"/>
@@ -839,7 +839,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="7wk-af-F5w"/>
+        <segue reference="71M-g6-wMS"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="checkmark" catalog="system" width="128" height="114"/>
