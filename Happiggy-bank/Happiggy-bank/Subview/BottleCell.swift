@@ -68,7 +68,6 @@ final class BottleCell: UITableViewCell {
             let note = notes[index]
             let noteContainerView = UIView(frame: self.grid[index] ?? .zero).then {
                 $0.layer.zPosition = Metric.randomZpostion
-                $0.backgroundColor = .note(color: note.color)
             }
             
             let imageView = UIImageView(image: .note(color: note.color)).then {

@@ -7,6 +7,7 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -127,65 +128,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="QYn-0Q-jnc">
-                                <rect key="frame" x="0.0" y="144" width="375" height="585"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SCP-Hp-DbX">
+                                <rect key="frame" x="24" y="88" width="327" height="641"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteCell" id="1iU-C4-Ykx" customClass="NoteCell" customModule="Happiggy_bank" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1iU-C4-Ykx" id="S15-cC-Gxi">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="22E-Nu-lTg">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="CtU-HV-3BA">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mMj-FT-KQ4">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="KE3-2Z-kiH" id="9Bk-6o-K3E"/>
-                                    <outlet property="delegate" destination="KE3-2Z-kiH" id="9ol-Mz-6fU"/>
+                                    <outlet property="dataSource" destination="KE3-2Z-kiH" id="kDT-Br-WaX"/>
+                                    <outlet property="delegate" destination="KE3-2Z-kiH" id="Hvc-RB-HVQ"/>
                                 </connections>
-                            </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="365개의 행복" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKi-g0-POm">
-                                <rect key="frame" x="24" y="106" width="94" height="20.333333333333329"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" name="customGray"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PBH-Sc-J25" customClass="CapsuleButton" customModule="Happiggy_bank" customModuleProvider="target">
-                                <rect key="frame" x="321" y="100" width="30" height="32"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="tintColor" name="secondaryLabelColor"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal">
-                                    <color key="titleColor" name="secondaryLabelColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="openAllNotesButtonDidTap:" destination="KE3-2Z-kiH" eventType="touchUpInside" id="VxI-Mw-Rpy"/>
-                                </connections>
-                            </button>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dO5-e2-qa6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="QYn-0Q-jnc" firstAttribute="top" secondItem="dO5-e2-qa6" secondAttribute="top" constant="56" id="DZZ-fW-GOZ"/>
-                            <constraint firstItem="dO5-e2-qa6" firstAttribute="trailing" secondItem="QYn-0Q-jnc" secondAttribute="trailing" id="KxE-qy-Adj"/>
-                            <constraint firstItem="PBH-Sc-J25" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LKi-g0-POm" secondAttribute="trailing" priority="250" constant="8" symbolic="YES" id="R8p-Dn-tcz"/>
-                            <constraint firstItem="dO5-e2-qa6" firstAttribute="trailing" secondItem="PBH-Sc-J25" secondAttribute="trailing" constant="24" id="VUS-VU-gQ5"/>
-                            <constraint firstItem="QYn-0Q-jnc" firstAttribute="leading" secondItem="dO5-e2-qa6" secondAttribute="leading" id="Vnt-XQ-Bt4"/>
-                            <constraint firstItem="PBH-Sc-J25" firstAttribute="top" secondItem="dO5-e2-qa6" secondAttribute="top" constant="12" id="WYg-vh-hXn"/>
-                            <constraint firstItem="QYn-0Q-jnc" firstAttribute="top" secondItem="PBH-Sc-J25" secondAttribute="bottom" constant="12" id="Xpb-pp-nT7"/>
-                            <constraint firstItem="LKi-g0-POm" firstAttribute="leading" secondItem="dO5-e2-qa6" secondAttribute="leading" constant="24" id="jwh-PH-Zgf"/>
-                            <constraint firstItem="dO5-e2-qa6" firstAttribute="bottom" secondItem="QYn-0Q-jnc" secondAttribute="bottom" id="nDq-ev-SEG"/>
-                            <constraint firstItem="LKi-g0-POm" firstAttribute="centerY" secondItem="PBH-Sc-J25" secondAttribute="centerY" id="qgW-Jw-Qrc"/>
+                            <constraint firstItem="SCP-Hp-DbX" firstAttribute="leading" secondItem="dO5-e2-qa6" secondAttribute="leading" constant="24" id="7R1-gI-ZZa"/>
+                            <constraint firstItem="dO5-e2-qa6" firstAttribute="trailing" secondItem="SCP-Hp-DbX" secondAttribute="trailing" constant="24" id="HTF-Pb-f7K"/>
+                            <constraint firstItem="SCP-Hp-DbX" firstAttribute="top" secondItem="dO5-e2-qa6" secondAttribute="top" id="Zcu-Yl-d0y"/>
+                            <constraint firstItem="dO5-e2-qa6" firstAttribute="bottom" secondItem="SCP-Hp-DbX" secondAttribute="bottom" id="fYX-ez-D8n"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="6cw-er-3yd"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="noteCountLabel" destination="LKi-g0-POm" id="kqy-xQ-oFd"/>
-                        <outlet property="openAllNotesButton" destination="PBH-Sc-J25" id="0GZ-5Z-Sfe"/>
-                        <outlet property="tableView" destination="QYn-0Q-jnc" id="hjF-0v-h7m"/>
+                        <outlet property="collectionView" destination="SCP-Hp-DbX" id="oPG-a7-5GS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2zj-Wn-JrU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -853,9 +834,6 @@
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="customGray">
             <color red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="secondaryLabelColor">
-            <color red="0.33333333333333331" green="0.60392156862745094" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="warningLabelColor">
             <color red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

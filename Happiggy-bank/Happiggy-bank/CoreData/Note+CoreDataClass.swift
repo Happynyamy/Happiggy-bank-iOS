@@ -24,6 +24,35 @@ public class Note: NSManagedObject {
         return note
     }
     
+    /// sortDescriptor 를 설정하지 않으면 (생성 날짜) 최신순으로 정렬
+    static func fetchRequest(
+        predicate: NSPredicate,
+        sortDescriptor: [NSSortDescriptor] = [NSSortDescriptor(
+            key: "date_",
+            ascending: false
+        )]
+    ) -> NSFetchRequest<Note> {
+        NSFetchRequest<Note>(entityName: Note.name).then {
+            $0.predicate = predicate
+            $0.sortDescriptors = sortDescriptor
+        }
+    }
+    
+    /// 저금통의 모든 쪽지를 호출하는 리퀘스트로 순서를 지정하지 않으면 날짜가 빠른 순으로 정렬
+    static func fetchRequest(
+        bottle: Bottle,
+        sortDescriptor: [NSSortDescriptor] = [NSSortDescriptor(
+            key: "date_",
+            ascending: false
+        )]
+    ) -> NSFetchRequest<Note> {
+        NSFetchRequest<Note>(entityName: Note.name).then {
+            $0.sortDescriptors = sortDescriptor
+            $0.predicate = NSPredicate(format: "bottle_ == %@", argumentArray: [bottle])
+            $0.sortDescriptors = sortDescriptor
+        }
+    }
+    
     
     // MARK: - Init(s)
     
@@ -57,4 +86,19 @@ public class Note: NSManagedObject {
     
     /// 담겨있는 저금통
     var bottle: Bottle { self.bottle_ ?? Bottle() }
+    
+    /// 내용의 첫 번째 유효한 단어
+    var firstWord: String {
+        
+        var firstWord = self.content
+            .components(separatedBy: NSCharacterSet.whitespacesAndNewlines)
+            .first { !$0.isEmpty } ?? .empty
+
+        /// 첫 단어가 10글자를 넘으면 10글자까지만 자름
+        if firstWord.count > Metric.firstWordMaxLength {
+            firstWord = String(firstWord.prefix(Metric.firstWordMaxLength))
+        }
+        
+        return firstWord
+    }
 }
