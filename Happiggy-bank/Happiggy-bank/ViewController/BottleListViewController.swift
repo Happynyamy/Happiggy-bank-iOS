@@ -6,8 +6,8 @@
 //
 
 import UIKit
-
 import CoreData
+
 import Then
 
 /// 유리병 리스트 뷰 컨트롤러
@@ -47,9 +47,9 @@ final class BottleListViewController: UIViewController {
                 let bottle = sender as? Bottle
             else { return }
             
-            let viewModel = NoteListViewModel()
-            viewModel.notes = bottle.notes
-            
+            let viewModel = NoteListViewModel(
+                bottle: bottle, fetchedResultContollerDelegate: noteListViewController
+            )
             noteListViewController.viewModel = viewModel
         }
     }

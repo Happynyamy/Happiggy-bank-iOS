@@ -291,13 +291,19 @@ extension Bottle {
 
 extension Note {
     
+    /// Note 엔티티에서 사용하는 상수
+    enum Metric {
+        
+        /// 첫 단어 최대 길이로, 이 길이를 초과하면 해당 글자까지 자름
+        static let firstWordMaxLength: Int = 10
+    }
+    
     /// Note 엔티티에서 설정하는 문자열
     enum StringLiteral {
 
         /// 내용 디폴트 값: "?"
         static let content = "?"
     }
-    
 }
 
 extension PersistenceStore {
@@ -541,39 +547,11 @@ extension NoteListViewController {
     /// NoteListViewController 에서 사용하는 상수값
     enum Metric {
         
-        /// 좌우 패딩: 24
-        static let horizontalPadding: CGFloat = 24
+        /// 첫 단어 라벨 위아래 패딩: 16
+        static let firstWordLabelVerticalPadding: CGFloat = 16
         
-        /// 쪽지 이미지 너비
-        static let noteImageWidth = UIScreen.main.bounds.width - 2 * horizontalPadding
-        
-        /// 쪽지 이미지 높이
-        static let noteImageHeight = noteImageWidth * noteImageSizeRatio
-        
-        /// note cell 높이 : 쪽지 이미지 높이 + spacing
-        static let cellHeight = noteImageHeight + noteImageSpacing
-        
-        /// 애니메이션 딜레이 시간: 0.5
-        static let animationDelay: TimeInterval = 0.5
-
-        /// note cell 세로:가로 비율 : 242/327
-        private static let noteImageSizeRatio: CGFloat = 242/327
-        
-        /// 쪽지 이미지 사이 간격: 16
-        private static let noteImageSpacing: CGFloat = 16
-    }
-    
-    /// NoteNoteDatePickerViewModel 에서 사용하는 문자열
-    enum StringLiteral {
-        
-        /// 알림 제목
-        static let alertTitle = "전체 쪽지를 개봉하시겠습니까?"
-        
-        /// 취소 버튼 제목
-        static let cancelButtonTitle = "아니오"
-        
-        /// 확인 버튼 제목
-        static let confirmButtonTitle = "네"
+        /// 첫 단어 라벨 좌우 패딩: 16
+        static let firstWordLabelHorizontalPadding: CGFloat = 16
     }
 }
 
@@ -589,7 +567,7 @@ extension NoteCell {
         static let half: Double = 0.5
         
         /// 좌우 패딩: 25
-        static let horizontalPadding = NoteListViewController.Metric.horizontalPadding
+        static let horizontalPadding: CGFloat = 24
         
         /// 내용 라벨 줄 간격: 8
         static let lineSpacing: CGFloat = 8
@@ -714,5 +692,15 @@ extension CapsuleButton {
         
         /// 외곽선 굵기: 1
         static let borderWidth: CGFloat = 1
+    }
+}
+
+extension TagCell {
+    
+    /// TagCell 폰트
+    enum Font {
+        
+        /// 첫 단어 라벨 폰트 크기: 17
+        static let firstWordLabel: CGFloat = 17
     }
 }
