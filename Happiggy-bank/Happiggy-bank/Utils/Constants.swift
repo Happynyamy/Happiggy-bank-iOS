@@ -442,6 +442,9 @@ extension NewBottleDatePickerViewController {
         
         /// 상단 라벨 텍스트 크기
         static let topLabelText: CGFloat = 17
+        
+        /// 피커 행 텍스트 크기
+        static let rowText: CGFloat = 18
     }
     
     /// NewBottleDatePickerViewController에서 설정하는 layout 상수값
