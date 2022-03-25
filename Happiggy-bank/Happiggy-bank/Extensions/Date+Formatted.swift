@@ -24,6 +24,8 @@ extension Date {
                 $0.timeStyle = .none
             case .spaceAndDot:
                 $0.dateFormat = "yyyy MM.dd"
+            case .spaceAndDotWithDayOfWeek:
+                $0.dateFormat = "yyyy MM.dd  EEEEE"
             }
             $0.locale = Locale(identifier: krLocalIdentifier)
         }
@@ -33,6 +35,7 @@ extension Date {
     private static func format(dateFormat: String, date: Date) -> String {
         DateFormatter().then {
             $0.dateFormat = dateFormat
+            $0.locale = Locale(identifier: krLocalIdentifier)
         }.string(from: date)
     }
     
@@ -49,8 +52,13 @@ extension Date {
         Date.format(dateFormat: "yyyy", date: self)
     }
     
-    /// 월, 일을 "02.05" 형태의 문자열로 반환
+    /// 월, 일을 "02.05  월" 형태의 문자열로 반환
     var monthDotDayString: String {
         Date.format(dateFormat: "MM.dd", date: self)
+    }
+    
+    /// 월, 일은 "02.05  토" 형태의 문자열로 반환
+    var monthDotDayWithDayOfWeekString: String {
+        Date.format(dateFormat: "MM.dd  EEEEE", date: self)
     }
 }

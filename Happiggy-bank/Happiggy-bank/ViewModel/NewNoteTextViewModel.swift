@@ -43,7 +43,7 @@ final class NewNoteTextViewModel {
     /// 색깔 적용한 월, 일 텍스트
     var attributedMonthDayString: NSMutableAttributedString {
         self.newNote.date
-            .monthDotDayString
+            .monthDotDayWithDayOfWeekString
             .nsMutableAttributedStringify()
             .color(color: labelColor)
     }
