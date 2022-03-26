@@ -61,20 +61,15 @@ final class ColorButton: UIControl {
         /// 선택된 경우 하이라이트 효과 나타냄
         if isSelected {
             UIView.animate(withDuration: Metric.animationDuration) {
-                self.highlightView.backgroundColor = .highlight(color: self.color)
-                self.button.layer.borderColor = UIColor.highlight(color: self.color).cgColor
+                self.highlightView.backgroundColor = .noteHighlight(for: self.color)
+                self.button.layer.borderColor = UIColor.noteHighlight(for: self.color).cgColor
             }
             return
         }
         /// 선택되지 않은 경우 하이라이트 효과를 끔
         if !isSelected {
             self.highlightView.backgroundColor = .clear
-            if self.color != NoteColor.white {
-                self.button.layer.borderColor = UIColor.clear.cgColor
-            }
-            if self.color == NoteColor.white {
-                self.button.layer.borderColor = Color.whiteButtonBorder.cgColor
-            }
+            self.button.layer.borderColor = UIColor.noteBorder(for: self.color).cgColor
         }
     }
     

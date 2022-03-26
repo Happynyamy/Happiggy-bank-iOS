@@ -393,7 +393,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4WR-mG-PvL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="b2J-do-ybm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-2116" y="3036.9458128078818"/>
         </scene>
@@ -423,14 +422,75 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GeA-rS-UHc">
-                                <rect key="frame" x="0.0" y="88" width="375" height="390"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="m3m-FL-apG">
+                                <rect key="frame" x="0.0" y="88" width="375" height="400"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMY-tI-Ngd" userLabel="color palette container">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="36"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tCf-YS-Nl7" userLabel="color button stack view">
+                                                <rect key="frame" x="21.666666666666657" y="4" width="332" height="32"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1EY-T5-T6X" customClass="ColorButton" customModule="Happiggy_bank" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="32"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="60" id="3oP-tF-bLL"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <action selector="colorButtonDidTap:" destination="FuI-qc-1fd" eventType="valueChanged" id="u5A-fr-5lj"/>
+                                                        </connections>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ClH-TQ-F0P" customClass="ColorButton" customModule="Happiggy_bank" customModuleProvider="target">
+                                                        <rect key="frame" x="68" y="0.0" width="60" height="32"/>
+                                                        <connections>
+                                                            <action selector="colorButtonDidTap:" destination="FuI-qc-1fd" eventType="valueChanged" id="Qin-cX-aFQ"/>
+                                                        </connections>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCv-4A-yJI" customClass="ColorButton" customModule="Happiggy_bank" customModuleProvider="target">
+                                                        <rect key="frame" x="136" y="0.0" width="60" height="32"/>
+                                                        <connections>
+                                                            <action selector="colorButtonDidTap:" destination="FuI-qc-1fd" eventType="valueChanged" id="5KI-hc-Cr1"/>
+                                                        </connections>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04d-6x-4Me" customClass="ColorButton" customModule="Happiggy_bank" customModuleProvider="target">
+                                                        <rect key="frame" x="204" y="0.0" width="60" height="32"/>
+                                                        <connections>
+                                                            <action selector="colorButtonDidTap:" destination="FuI-qc-1fd" eventType="valueChanged" id="k1x-bL-jnh"/>
+                                                        </connections>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3V-4f-gjV" customClass="ColorButton" customModule="Happiggy_bank" customModuleProvider="target">
+                                                        <rect key="frame" x="272" y="0.0" width="60" height="32"/>
+                                                        <connections>
+                                                            <action selector="colorButtonDidTap:" destination="FuI-qc-1fd" eventType="valueChanged" id="AWx-v7-bkw"/>
+                                                        </connections>
+                                                    </view>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="S3V-4f-gjV" firstAttribute="width" secondItem="1EY-T5-T6X" secondAttribute="width" id="NW7-ar-nd9"/>
+                                                    <constraint firstItem="YCv-4A-yJI" firstAttribute="width" secondItem="1EY-T5-T6X" secondAttribute="width" id="UG5-CR-ogl"/>
+                                                    <constraint firstItem="ClH-TQ-F0P" firstAttribute="width" secondItem="1EY-T5-T6X" secondAttribute="width" id="kao-sJ-dBL"/>
+                                                    <constraint firstItem="04d-6x-4Me" firstAttribute="width" secondItem="1EY-T5-T6X" secondAttribute="width" id="wcF-Gt-DYl"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="tCf-YS-Nl7" firstAttribute="centerX" secondItem="hMY-tI-Ngd" secondAttribute="centerX" id="ERe-WH-niK"/>
+                                            <constraint firstAttribute="height" constant="36" id="Ybv-xt-7Ic"/>
+                                            <constraint firstItem="tCf-YS-Nl7" firstAttribute="top" secondItem="hMY-tI-Ngd" secondAttribute="top" constant="4" id="e5b-ml-vhi"/>
+                                            <constraint firstAttribute="bottom" secondItem="tCf-YS-Nl7" secondAttribute="bottom" id="gTE-M7-aXf"/>
+                                        </constraints>
+                                    </view>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="GeA-rS-UHc">
+                                        <rect key="frame" x="0.0" y="40" width="375" height="360"/>
+                                    </imageView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="390" id="8gy-me-kK7"/>
+                                    <constraint firstItem="hMY-tI-Ngd" firstAttribute="top" secondItem="m3m-FL-apG" secondAttribute="top" id="N9q-Pm-beB"/>
+                                    <constraint firstAttribute="height" constant="400" id="sdQ-1v-hyc"/>
                                 </constraints>
-                            </imageView>
+                            </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fvK-sf-BF4">
-                                <rect key="frame" x="19" y="172.66666666666663" width="332" height="217.33333333333337"/>
+                                <rect key="frame" x="19" y="212.66666666666663" width="332" height="215"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -439,7 +499,7 @@
                                 </connections>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Qg8-yI-fTV" userLabel="DateStack">
-                                <rect key="frame" x="24.000000000000004" y="112.00000000000001" width="41.333333333333343" height="44.666666666666671"/>
+                                <rect key="frame" x="24.000000000000004" y="152" width="41.333333333333343" height="44.666666666666657"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FkO-oW-q1n" userLabel="YearLabel">
                                         <rect key="frame" x="0.0" y="0.0" width="41.333333333333336" height="20.333333333333332"/>
@@ -459,24 +519,14 @@
                                     <outletCollection property="gestureRecognizers" destination="ehJ-R0-kWf" appends="YES" id="rgU-kY-kzn"/>
                                 </connections>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQ3-jl-6Wm" userLabel="ColorButton" customClass="ColorButton" customModule="Happiggy_bank" customModuleProvider="target">
-                                <rect key="frame" x="24" y="414" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="6fW-ne-2bf"/>
-                                    <constraint firstAttribute="height" constant="40" id="eig-xC-7Gx"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="colorButtonDidTap:" destination="FuI-qc-1fd" eventType="valueChanged" id="7fe-td-WZi"/>
-                                </connections>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HX4-ny-KZ7" userLabel="LetterCountLabel">
-                                <rect key="frame" x="307.66666666666669" y="424" width="43.333333333333314" height="20.333333333333314"/>
+                                <rect key="frame" x="307.66666666666669" y="443.66666666666669" width="43.333333333333314" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용을 입력해주세요!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1q-g4-Qnf">
-                                <rect key="frame" x="24" y="172.66666666666666" width="327" height="23"/>
+                                <rect key="frame" x="24" y="212.66666666666666" width="327" height="23"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" name="warningLabelColor"/>
                                 <nil key="highlightedColor"/>
@@ -485,34 +535,31 @@
                         <viewLayoutGuide key="safeArea" id="bn6-rM-p0H"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="m3m-FL-apG" firstAttribute="leading" secondItem="1PQ-Bn-66w" secondAttribute="leading" id="5hb-16-Bbh"/>
+                            <constraint firstItem="HX4-ny-KZ7" firstAttribute="bottom" secondItem="GeA-rS-UHc" secondAttribute="bottom" constant="-24" id="Cw3-em-GXv"/>
                             <constraint firstItem="fvK-sf-BF4" firstAttribute="leading" secondItem="Qg8-yI-fTV" secondAttribute="leading" constant="-5" id="FRT-hw-tFd"/>
                             <constraint firstItem="Rms-YT-wWN" firstAttribute="top" secondItem="1PQ-Bn-66w" secondAttribute="top" constant="44" id="Gyw-ql-9vl"/>
+                            <constraint firstAttribute="trailing" secondItem="m3m-FL-apG" secondAttribute="trailing" id="Kxl-BE-f54"/>
                             <constraint firstItem="Rms-YT-wWN" firstAttribute="leading" secondItem="1PQ-Bn-66w" secondAttribute="leading" id="LBS-sy-BL8"/>
-                            <constraint firstItem="HX4-ny-KZ7" firstAttribute="centerY" secondItem="aQ3-jl-6Wm" secondAttribute="centerY" id="Sfu-bF-AIC"/>
-                            <constraint firstItem="GeA-rS-UHc" firstAttribute="trailing" secondItem="bn6-rM-p0H" secondAttribute="trailing" id="blO-Yz-toF"/>
+                            <constraint firstItem="m3m-FL-apG" firstAttribute="top" secondItem="Rms-YT-wWN" secondAttribute="bottom" id="RNr-9i-JxW"/>
+                            <constraint firstItem="HX4-ny-KZ7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bn6-rM-p0H" secondAttribute="leading" symbolic="YES" id="TPl-hs-XDG"/>
                             <constraint firstItem="fvK-sf-BF4" firstAttribute="top" secondItem="Qg8-yI-fTV" secondAttribute="bottom" constant="16" id="buI-x5-kRu"/>
-                            <constraint firstItem="HX4-ny-KZ7" firstAttribute="leading" relation="lessThanOrEqual" secondItem="aQ3-jl-6Wm" secondAttribute="trailing" priority="250" constant="251.5" id="fSf-Z0-wdc"/>
-                            <constraint firstItem="aQ3-jl-6Wm" firstAttribute="top" secondItem="fvK-sf-BF4" secondAttribute="bottom" constant="24" id="g0o-ZS-UsS"/>
-                            <constraint firstItem="aQ3-jl-6Wm" firstAttribute="leading" secondItem="Qg8-yI-fTV" secondAttribute="leading" id="hFf-vR-uap"/>
+                            <constraint firstItem="Qg8-yI-fTV" firstAttribute="top" secondItem="GeA-rS-UHc" secondAttribute="top" constant="24" id="f4A-mR-9H5"/>
+                            <constraint firstItem="HX4-ny-KZ7" firstAttribute="top" secondItem="fvK-sf-BF4" secondAttribute="bottom" constant="16" id="frU-Rs-PjR"/>
                             <constraint firstItem="a1q-g4-Qnf" firstAttribute="trailing" secondItem="fvK-sf-BF4" secondAttribute="trailing" id="hoz-L3-CBb"/>
-                            <constraint firstItem="GeA-rS-UHc" firstAttribute="top" secondItem="Rms-YT-wWN" secondAttribute="bottom" id="icx-zT-zme"/>
-                            <constraint firstItem="Qg8-yI-fTV" firstAttribute="leading" secondItem="GeA-rS-UHc" secondAttribute="leading" constant="24" id="jBj-0H-fJK"/>
-                            <constraint firstItem="aQ3-jl-6Wm" firstAttribute="bottom" secondItem="GeA-rS-UHc" secondAttribute="bottom" constant="-24" id="kro-9y-s7q"/>
                             <constraint firstItem="a1q-g4-Qnf" firstAttribute="leading" secondItem="Qg8-yI-fTV" secondAttribute="leading" id="px2-KS-V7b"/>
                             <constraint firstItem="HX4-ny-KZ7" firstAttribute="trailing" secondItem="fvK-sf-BF4" secondAttribute="trailing" id="sfh-vj-k42"/>
                             <constraint firstItem="a1q-g4-Qnf" firstAttribute="top" secondItem="fvK-sf-BF4" secondAttribute="top" id="srw-zn-cEr"/>
-                            <constraint firstItem="Qg8-yI-fTV" firstAttribute="top" secondItem="Rms-YT-wWN" secondAttribute="bottom" constant="24" id="u1Q-xA-r8X"/>
-                            <constraint firstItem="fvK-sf-BF4" firstAttribute="trailing" secondItem="GeA-rS-UHc" secondAttribute="trailing" constant="-24" id="yfR-Cy-RSM"/>
-                            <constraint firstItem="GeA-rS-UHc" firstAttribute="leading" secondItem="bn6-rM-p0H" secondAttribute="leading" id="zHW-UQ-8kk"/>
+                            <constraint firstItem="Qg8-yI-fTV" firstAttribute="leading" secondItem="GeA-rS-UHc" secondAttribute="leading" constant="24" id="xuG-m0-P72"/>
                             <constraint firstItem="Rms-YT-wWN" firstAttribute="trailing" secondItem="1PQ-Bn-66w" secondAttribute="trailing" id="zQB-22-wf2"/>
+                            <constraint firstItem="fvK-sf-BF4" firstAttribute="trailing" secondItem="GeA-rS-UHc" secondAttribute="trailing" constant="-24" id="zz4-rm-Y3Y"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OdQ-rH-b8B"/>
                     <size key="freeformSize" width="375" height="812"/>
                     <connections>
-                        <outlet property="colorButton" destination="aQ3-jl-6Wm" id="raw-nb-RiP"/>
+                        <outlet property="contentStackHeightConstraint" destination="sdQ-1v-hyc" id="sSy-Ct-qwy"/>
                         <outlet property="imageView" destination="GeA-rS-UHc" id="alk-uD-7oL"/>
-                        <outlet property="imageViewHeightConstraint" destination="8gy-me-kK7" id="XfX-ew-NHd"/>
                         <outlet property="letterCountLabel" destination="HX4-ny-KZ7" id="QER-9Z-2kQ"/>
                         <outlet property="monthAndDayLabel" destination="Pgg-tQ-Rgj" id="mq0-dy-vpm"/>
                         <outlet property="navigationBar" destination="Rms-YT-wWN" id="i1C-it-zIw"/>
@@ -520,6 +567,11 @@
                         <outlet property="textView" destination="fvK-sf-BF4" id="dpT-J6-CUB"/>
                         <outlet property="warningLabel" destination="a1q-g4-Qnf" id="iu3-hz-Z6j"/>
                         <outlet property="yearLabel" destination="FkO-oW-q1n" id="aGW-vS-I1J"/>
+                        <outletCollection property="colorButtons" destination="1EY-T5-T6X" collectionClass="NSMutableArray" id="Isr-5p-YrM"/>
+                        <outletCollection property="colorButtons" destination="ClH-TQ-F0P" collectionClass="NSMutableArray" id="aHc-Fy-dJt"/>
+                        <outletCollection property="colorButtons" destination="YCv-4A-yJI" collectionClass="NSMutableArray" id="Pgw-d9-Cyv"/>
+                        <outletCollection property="colorButtons" destination="04d-6x-4Me" collectionClass="NSMutableArray" id="my6-CJ-LfZ"/>
+                        <outletCollection property="colorButtons" destination="S3V-4f-gjV" collectionClass="NSMutableArray" id="ht5-ZJ-p7O"/>
                         <segue destination="rAE-WY-Wyc" kind="unwind" identifier="unwindToBotteView" animates="NO" unwindAction="unwindCallDidArriveWithSegue:" id="S89-mV-zbI"/>
                         <segue destination="moi-e1-3hQ" kind="presentation" identifier="presentDatePickerFromNoteTextView" id="7wk-af-F5w"/>
                     </connections>
@@ -532,138 +584,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-3241" y="3037"/>
-        </scene>
-        <!--New Note Color Picker View Controller-->
-        <scene sceneID="bf8-Au-5CK">
-            <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="g5l-hv-0de" customClass="NewNoteColorPickerViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="t95-o1-XLO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeBackgroundBlurredLight" translatesAutoresizingMaskIntoConstraints="NO" id="8FB-Yv-nda">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noteColorPickerColorButtonBackgroundLight" translatesAutoresizingMaskIntoConstraints="NO" id="Jv5-Zj-MZ1">
-                                <rect key="frame" x="0.0" y="358" width="375" height="96"/>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleAspectFit" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BKz-1X-hoY">
-                                <rect key="frame" x="51.666666666666657" y="382" width="272" height="48"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XNy-hM-5pb" customClass="ColorButton" customModule="Happiggy_bank" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="48" id="Brc-xH-H2r"/>
-                                            <constraint firstAttribute="width" constant="48" id="RXP-N8-AYj"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="colorButtonDidTap:" destination="g5l-hv-0de" eventType="valueChanged" id="7Le-IR-qCr"/>
-                                        </connections>
-                                    </view>
-                                    <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O0C-ft-6eI" customClass="ColorButton" customModule="Happiggy_bank" customModuleProvider="target">
-                                        <rect key="frame" x="56" y="0.0" width="48" height="48"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="48" id="k4l-An-4QX"/>
-                                            <constraint firstAttribute="height" constant="48" id="wDv-du-J2N"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="colorButtonDidTap:" destination="g5l-hv-0de" eventType="valueChanged" id="vCa-yz-mjI"/>
-                                        </connections>
-                                    </view>
-                                    <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3bT-Qz-LIr" customClass="ColorButton" customModule="Happiggy_bank" customModuleProvider="target">
-                                        <rect key="frame" x="112" y="0.0" width="48" height="48"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="48" id="aEN-5H-5Rn"/>
-                                            <constraint firstAttribute="height" constant="48" id="aTy-28-jTQ"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="colorButtonDidTap:" destination="g5l-hv-0de" eventType="valueChanged" id="6zJ-bd-bEx"/>
-                                        </connections>
-                                    </view>
-                                    <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PXQ-aW-7XM" customClass="ColorButton" customModule="Happiggy_bank" customModuleProvider="target">
-                                        <rect key="frame" x="168" y="0.0" width="48" height="48"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="48" id="4Uf-vd-fb3"/>
-                                            <constraint firstAttribute="height" constant="48" id="wGv-qt-0cp"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="colorButtonDidTap:" destination="g5l-hv-0de" eventType="valueChanged" id="zVh-RT-ZnC"/>
-                                        </connections>
-                                    </view>
-                                    <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LzH-V8-aJh" customClass="ColorButton" customModule="Happiggy_bank" customModuleProvider="target">
-                                        <rect key="frame" x="224.00000000000003" y="0.0" width="47.999999999999972" height="48"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="48" id="Jcx-ns-4Fi"/>
-                                            <constraint firstAttribute="height" constant="48" id="kok-Sj-6nz"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="colorButtonDidTap:" destination="g5l-hv-0de" eventType="valueChanged" id="waj-LV-zTv"/>
-                                        </connections>
-                                    </view>
-                                </subviews>
-                            </stackView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MqT-Ah-3Uq">
-                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                                <items>
-                                    <navigationItem id="DM1-Z5-JBN">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" image="xmark" catalog="system" id="CIr-tB-YaV">
-                                            <connections>
-                                                <action selector="backButtonDidTap:" destination="g5l-hv-0de" id="pas-6F-NnN"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Next" image="chevron.right" catalog="system" id="WwR-ae-CZJ">
-                                            <connections>
-                                                <action selector="nextButtonDidTap:" destination="g5l-hv-0de" id="Gki-AE-0g2"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="쪽지 색상을 선택해 주세요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPg-gC-9YU">
-                                <rect key="frame" x="100" y="228" width="175" height="20.333333333333343"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="0NK-Mm-KBY"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="8FB-Yv-nda" secondAttribute="bottom" id="1fz-6y-srW"/>
-                            <constraint firstItem="MqT-Ah-3Uq" firstAttribute="leading" secondItem="t95-o1-XLO" secondAttribute="leading" id="1wD-UR-C5a"/>
-                            <constraint firstItem="vPg-gC-9YU" firstAttribute="centerX" secondItem="t95-o1-XLO" secondAttribute="centerX" id="3iP-MF-8Qh"/>
-                            <constraint firstItem="Jv5-Zj-MZ1" firstAttribute="centerX" secondItem="t95-o1-XLO" secondAttribute="centerX" id="4pZ-Uh-Ve6"/>
-                            <constraint firstItem="MqT-Ah-3Uq" firstAttribute="top" secondItem="t95-o1-XLO" secondAttribute="top" constant="44" id="7Rx-Tn-DMY"/>
-                            <constraint firstAttribute="trailing" secondItem="8FB-Yv-nda" secondAttribute="trailing" id="Q47-I3-k4l"/>
-                            <constraint firstItem="8FB-Yv-nda" firstAttribute="leading" secondItem="t95-o1-XLO" secondAttribute="leading" id="Xjv-R1-yEA"/>
-                            <constraint firstItem="BKz-1X-hoY" firstAttribute="centerY" secondItem="Jv5-Zj-MZ1" secondAttribute="centerY" id="YjP-IM-Nhr"/>
-                            <constraint firstItem="Jv5-Zj-MZ1" firstAttribute="trailing" secondItem="8FB-Yv-nda" secondAttribute="trailing" id="hGj-fK-gIY"/>
-                            <constraint firstItem="Jv5-Zj-MZ1" firstAttribute="centerY" secondItem="t95-o1-XLO" secondAttribute="centerY" id="ht0-KI-UjE"/>
-                            <constraint firstItem="BKz-1X-hoY" firstAttribute="centerX" secondItem="Jv5-Zj-MZ1" secondAttribute="centerX" id="n1V-U5-RUX"/>
-                            <constraint firstItem="Jv5-Zj-MZ1" firstAttribute="top" secondItem="BKz-1X-hoY" secondAttribute="top" constant="-24" id="nmR-CN-69a"/>
-                            <constraint firstItem="8FB-Yv-nda" firstAttribute="top" secondItem="t95-o1-XLO" secondAttribute="top" id="o4I-A9-Npz"/>
-                            <constraint firstItem="vPg-gC-9YU" firstAttribute="top" secondItem="MqT-Ah-3Uq" secondAttribute="bottom" constant="140" id="qfC-sJ-9tU"/>
-                            <constraint firstItem="Jv5-Zj-MZ1" firstAttribute="bottom" secondItem="BKz-1X-hoY" secondAttribute="bottom" constant="24" id="uEv-fI-5NS"/>
-                            <constraint firstItem="MqT-Ah-3Uq" firstAttribute="trailing" secondItem="t95-o1-XLO" secondAttribute="trailing" id="yWV-eM-fPO"/>
-                            <constraint firstItem="Jv5-Zj-MZ1" firstAttribute="leading" secondItem="8FB-Yv-nda" secondAttribute="leading" id="ynd-gT-vQA"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="7jK-EQ-u4a"/>
-                    <size key="freeformSize" width="375" height="812"/>
-                    <connections>
-                        <outlet property="colorButtonContainerImageView" destination="Jv5-Zj-MZ1" id="z5Z-mA-fB9"/>
-                        <outlet property="navigationBar" destination="MqT-Ah-3Uq" id="yBg-1F-rGN"/>
-                        <outletCollection property="colorButtons" destination="XNy-hM-5pb" collectionClass="NSMutableArray" id="XzE-wt-7dn"/>
-                        <outletCollection property="colorButtons" destination="O0C-ft-6eI" collectionClass="NSMutableArray" id="HoT-11-dra"/>
-                        <outletCollection property="colorButtons" destination="3bT-Qz-LIr" collectionClass="NSMutableArray" id="dpp-pm-YWq"/>
-                        <outletCollection property="colorButtons" destination="PXQ-aW-7XM" collectionClass="NSMutableArray" id="1NZ-Su-1Qq"/>
-                        <outletCollection property="colorButtons" destination="LzH-V8-aJh" collectionClass="NSMutableArray" id="G57-mR-WPL"/>
-                        <segue destination="b2J-do-ybm" kind="unwind" identifier="unwindToNewNoteDatePicker" unwindAction="unwindToNewNoteDatePickerCallDidArriveWithSegue:" id="kNO-Ue-1nh"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MZX-4l-0Ef" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-4146" y="3542"/>
+            <point key="canvasLocation" x="-3242.4000000000001" y="3036.9458128078818"/>
         </scene>
         <!--Bottle View Controller-->
         <scene sceneID="p7l-16-uR7">
@@ -882,7 +803,6 @@
         <image name="homeBackgroundLight" width="375" height="812"/>
         <image name="homeBottleBack" width="375" height="440"/>
         <image name="homeBottleFront" width="375" height="440"/>
-        <image name="noteColorPickerColorButtonBackgroundLight" width="375" height="140"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="customGray">
             <color red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
