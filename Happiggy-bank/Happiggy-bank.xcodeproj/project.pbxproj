@@ -14,6 +14,7 @@
 		A439F53E27EEFCF6002851F4 /* SettingsToggleButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A439F53C27EEFCF6002851F4 /* SettingsToggleButtonCell.xib */; };
 		A439F54527EF0698002851F4 /* SettingsLabelButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A439F54327EF0698002851F4 /* SettingsLabelButtonCell.swift */; };
 		A439F54627EF0698002851F4 /* SettingsLabelButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A439F54427EF0698002851F4 /* SettingsLabelButtonCell.xib */; };
+		A439F54827F02B64002851F4 /* UIView+HideShowWithAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A439F54727F02B64002851F4 /* UIView+HideShowWithAnimation.swift */; };
 		A44E901727D5EB130053AC57 /* Happiggy-bank.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A44E901527D5EB130053AC57 /* Happiggy-bank.xcdatamodeld */; };
 		A456657C27CC66FD007CF70A /* DefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A817430027C112D00016C921 /* DefaultButton.swift */; };
 		A456657E27CC77A9007CF70A /* Date+Formatted.swift in Sources */ = {isa = PBXBuildFile; fileRef = A456657D27CC77A9007CF70A /* Date+Formatted.swift */; };
@@ -94,6 +95,7 @@
 		A439F53C27EEFCF6002851F4 /* SettingsToggleButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsToggleButtonCell.xib; sourceTree = "<group>"; };
 		A439F54327EF0698002851F4 /* SettingsLabelButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLabelButtonCell.swift; sourceTree = "<group>"; };
 		A439F54427EF0698002851F4 /* SettingsLabelButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsLabelButtonCell.xib; sourceTree = "<group>"; };
+		A439F54727F02B64002851F4 /* UIView+HideShowWithAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+HideShowWithAnimation.swift"; sourceTree = "<group>"; };
 		A44E901627D5EB130053AC57 /* Happigy-bank.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Happigy-bank.xcdatamodel"; sourceTree = "<group>"; };
 		A456657D27CC77A9007CF70A /* Date+Formatted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatted.swift"; sourceTree = "<group>"; };
 		A459003727E8D107003010A0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 				A4C1AFD327E5E6120096CD3E /* UITextView+ParagraphStyle.swift */,
 				A459003B27E9C5C9003010A0 /* CGSize+Area.swift */,
 				A48E183927E71D9300B44477 /* UILabel+ParagraphStyle.swift */,
+				A439F54727F02B64002851F4 /* UIView+HideShowWithAnimation.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				A4CF2C9027CBA66F001B01B1 /* NSNotificaion.Name+CustomNotifications.swift in Sources */,
 				A4B285FD27D8A060008769EB /* Calendar+Duration.swift in Sources */,
 				A4B2860527D9A546008769EB /* NewNoteDatePickerViewController.swift in Sources */,
+				A439F54827F02B64002851F4 /* UIView+HideShowWithAnimation.swift in Sources */,
 				A491018527D6EDE90012DFDD /* PersistenceStore.swift in Sources */,
 				A491018D27D7358B0012DFDD /* Bottle+CoreDataClass.swift in Sources */,
 				A439F54527EF0698002851F4 /* SettingsLabelButtonCell.swift in Sources */,
