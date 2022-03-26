@@ -15,6 +15,9 @@ final class NewNoteTextViewController: UIViewController {
     /// 쪽지 색깔 선택 버튼들
     @IBOutlet var colorButtons: [ColorButton]!
     
+    /// 컬러 버튼들을 담고 있는 컨테이너 뷰
+    @IBOutlet weak var colorButtonContainerView: UIView!
+    
     /// 취소 버튼과 저장 버튼을 담고 있는 내비게이션 바
     @IBOutlet weak var navigationBar: UINavigationBar!
     
@@ -91,12 +94,9 @@ final class NewNoteTextViewController: UIViewController {
 
         print("save new note to core data")
         print("notify note addition/or make core data do it...?")
-        
-        self.endEditingAndFadeOut()
-        self.performSegue(withIdentifier: SegueIdentifier.unwindToBotteView, sender: sender)
-        // TODO: activate
-//        self.saveNewNote()
-        self.post(name: .noteProgressDidUpdate)
+        self.hideColorButtonContainerViewWithAnimation()
+        self.textView.endEditing(true)
+        self.showNoteSavingConfirmationAlert()
     }
     
     /// 날짜 라벨을 눌렀을 때 호출되는 액션 메서드 : 날짜 피커 뷰로 넘어감
@@ -218,6 +218,61 @@ final class NewNoteTextViewController: UIViewController {
 //        PersistenceStore.shared.save()
     }
     
+    /// 쪽지 저장 의사를 재확인 하는 알림을 띄움
+    private func showNoteSavingConfirmationAlert() {
+        let alert = self.makeConfirmationAlert()
+        self.present(alert, animated: true)
+    }
+    
+    /// 쪽지 저장 의사를 재확인하는 알림 생성
+    private func makeConfirmationAlert() -> UIAlertController {
+        let alert = UIAlertController(
+            title: StringLiteral.alertTitle,
+            message: StringLiteral.message,
+            preferredStyle: .alert
+        )
+        
+        let confirmAction = UIAlertAction(
+            title: StringLiteral.confirmButtonTitle,
+            style: .default) { _ in
+                self.fadeOut()
+                self.performSegue(withIdentifier: SegueIdentifier.unwindToBotteView, sender: self)
+                // TODO: activate
+        //        self.saveNewNote()
+                self.post(name: .noteProgressDidUpdate)
+            }
+        
+        let cancelAction = UIAlertAction(
+            title: StringLiteral.cancelButtonTitle,
+            style: .cancel) { _ in
+                self.textView.becomeFirstResponder()
+                self.showColorButtonContainerViewWithAnimation()
+            }
+        
+        alert.addAction(confirmAction)
+        alert.addAction(cancelAction)
+        
+        return alert
+    }
+    
+    /// 컬러버튼 컨테이너뷰를 애니메이션과 함께 숨기는 메서드
+    private func hideColorButtonContainerViewWithAnimation() {
+        self.colorButtonContainerView.fadeOut(
+            withDuration: Metric.colorButtonContainerViewFadeOutDuration
+        ) { _ in
+            self.colorButtonContainerView.hideWithAnimation()
+        }
+    }
+    
+    /// 컬러버튼 컨테이너뷰를 애니메이션과 함께 나타내는 메서드
+    private func showColorButtonContainerViewWithAnimation() {
+        self.colorButtonContainerView.showWithAnimation(completion: { _ in
+            self.colorButtonContainerView.fadeIn(
+                withDuration: Metric.colorButtonContainerViewFadeInDuration
+            )
+        })
+    }
+
     
     // MARK: - Navigation
 

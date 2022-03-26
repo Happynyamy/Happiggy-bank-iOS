@@ -558,6 +558,7 @@
                     <navigationItem key="navigationItem" id="OdQ-rH-b8B"/>
                     <size key="freeformSize" width="375" height="812"/>
                     <connections>
+                        <outlet property="colorButtonContainerView" destination="hMY-tI-Ngd" id="Xtb-XC-AFw"/>
                         <outlet property="contentStackHeightConstraint" destination="sdQ-1v-hyc" id="sSy-Ct-qwy"/>
                         <outlet property="imageView" destination="GeA-rS-UHc" id="alk-uD-7oL"/>
                         <outlet property="letterCountLabel" destination="HX4-ny-KZ7" id="QER-9Z-2kQ"/>

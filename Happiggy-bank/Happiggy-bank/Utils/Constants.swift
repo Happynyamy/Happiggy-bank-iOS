@@ -611,6 +611,12 @@ extension NewNoteTextViewController {
         
         /// 텍스트뷰 자간: 0.5
         static let characterSpacing: CGFloat = 0.5
+        
+        /// 컬러 버튼 컨테이너 뷰 페이드 인 지속 시간: 0.1
+        static let colorButtonContainerViewFadeInDuration: TimeInterval = 0.1
+        
+        /// 컬러 버튼 컨테이너 뷰 페이드 아웃 지속 시간: 0.1
+        static let colorButtonContainerViewFadeOutDuration: TimeInterval = 0.1
     }
     
     /// NewNoteTextViewController 에서 설정하는 제목들
@@ -618,6 +624,21 @@ extension NewNoteTextViewController {
         
         /// 키보드 언어 설정이 한글인 경우
         static let korean = "ko-KR"
+        
+        /// 저장 확인 알림 제목
+        static let alertTitle = "쪽지를 저장하시겠어요?"
+        
+        /// 알림 내용
+        static let message = """
+쪽지는 하루에 한 번 작성할 수 있고,
+저장 후에는 수정/삭제가 불가능합니다
+"""
+        
+        /// 취소 버튼 제목
+        static let cancelButtonTitle = "취소"
+        
+        /// 확인 버튼 제목
+        static let confirmButtonTitle = "확인"
     }
 }
 
