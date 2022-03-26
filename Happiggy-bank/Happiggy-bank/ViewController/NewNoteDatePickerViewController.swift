@@ -31,17 +31,11 @@ final class NewNoteDatePickerViewController: UIViewController {
     /// 날짜 피커에서 필요한 형태로 데이터를 변환해주는 뷰모델
     var viewModel: NewNoteDatePickerViewModel!
     
-    /// 새로 추가할 쪽지의 날짜, 색깔, 저금통 정보
-    var newNote: NewNote!
-    
     /// source 가 어디인지에 따라 기본 셋팅과 메서드 작동 방식 다르게 하기 위함
     var isFromNoteTextView = false
     
     /// 경고 라벨 애니메이션을 위해 필요
     var showWarningLabel = false
-    
-    /// 텍스트뷰에서 날짜 피커로 넘어온 다음 날짜 피커를 이동했다가 그냥 취소를 눌렀을 때 선택 초기화 용도
-    private var initialNote: NewNote!
     
     
     // MARK: - Life Cycle
@@ -52,28 +46,24 @@ final class NewNoteDatePickerViewController: UIViewController {
         self.configureNavigationBar()
         self.scrollToInitialPosition()
         self.configureRightButton()
-        self.initialNote = self.newNote
         self.configureSelectionIndicator()
     }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
 
+        guard !self.isFromNoteTextView
+        else { return }
+        
+        self.fadeInWarningLabel()
+    }
     
     // MARK: - @IBAction
     
     /// 취소 버튼(x)을 눌렀을 때 호출되는 액션 메서드 : 보틀뷰(홈뷰)/쪽지 텍스트뷰로 돌아감
     @IBAction func cancelButtonDidTap(_ sender: UIBarButtonItem) {
-        if !self.isFromNoteTextView {
-            self.fadeOut()
-            self.dismiss(animated: false, completion: nil)
-            return
-        }
-        if self.isFromNoteTextView {
-            /// 취소했으므로 선택 초기화
-            self.newNote = self.initialNote
-            self.performSegue(
-                withIdentifier: SegueIdentifier.unwindFromNoteDatePickerToTextView,
-                sender: sender
-            )
-        }
+        self.fadeOut()
+        self.dismiss(animated: false, completion: nil)
     }
     
     /// 오른쪽 버튼을 눌렀을 때 호출되는 액션 메서드 : 컬러 피커를 띄우거나 쪽지 텍스트뷰로 돌아감
@@ -81,7 +71,7 @@ final class NewNoteDatePickerViewController: UIViewController {
         
         let row = self.datePickerView.selectedRow(inComponent: .zero)
         
-        guard row >= 0,
+        guard row >= .zero,
               self.viewModel.selectedDateIsAvailable(for: row)
         else {
             /// 이미 작성한 날짜를 선택한 상태에서 오른쪽 버튼을 누르는 경우 햅틱 알림
@@ -91,7 +81,7 @@ final class NewNoteDatePickerViewController: UIViewController {
         
         if !self.isFromNoteTextView {
             self.performSegue(
-                withIdentifier: SegueIdentifier.presentNewNoteColorPicker,
+                withIdentifier: SegueIdentifier.presentNewNoteTextViewFromDatePicker,
                 sender: sender
             )
             return
@@ -106,10 +96,11 @@ final class NewNoteDatePickerViewController: UIViewController {
     /// 현재 뷰 컨트롤러로 unwind 하라는 호출을 받았을 때 실행되는 액션메서드
     @IBAction func unwindToNewNoteDatePickerCallDidArrive(segue: UIStoryboardSegue) {
         if segue.identifier == SegueIdentifier.unwindToNewNoteDatePicker {
-            guard let colorPickerViewController = segue.source as? NewNoteColorPickerViewController
-            else { return }
-            
-            self.newNote = colorPickerViewController.newNote
+            // TODO: 삭제
+//            guard let colorPickerViewController = segue.source as? NewNoteColorPickerViewController
+//            else { return }
+//
+//            self.newNote = colorPickerViewController.newNote
         }
     }
     
@@ -154,12 +145,12 @@ final class NewNoteDatePickerViewController: UIViewController {
         ])
     }
     
-    /// 선택 가능한 가장 최근 날짜 혹은 이전에 선택한 날짜로 스크롤
+    /// 오늘 날짜 혹은 이전에 선택한 날짜로 스크롤
     private func scrollToInitialPosition() {
-        let row = self.viewModel.initialRow(for: self.newNote)
+        let row = self.viewModel.initialRow
         self.datePickerView.selectRow(
             row,
-            inComponent: Metric.defaultComponentIndex,
+            inComponent: .zero,
             animated: false
         )
         
@@ -176,6 +167,13 @@ final class NewNoteDatePickerViewController: UIViewController {
         if self.isFromNoteTextView {
             rightButton.image = UIImage(systemName: "checkmark")
         }
+    }
+    
+    /// 경고 라벨 나타내는 메서드
+    private func fadeInWarningLabel() {
+        self.warningLabel.fadeIn()
+        self.showWarningLabel = true
+        self.rightButton.tintColor = .customGray
     }
     
     /// 선택된 행의 글자 색깔 업데이트: 작성 가능한 경우 파랑, 불가능한 경우 회색
@@ -199,12 +197,13 @@ final class NewNoteDatePickerViewController: UIViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueIdentifier.presentNewNoteColorPicker {
+        if segue.identifier == SegueIdentifier.presentNewNoteTextViewFromDatePicker {
             
-            guard let colorViewController = segue.destination as? NewNoteColorPickerViewController
+            guard let textViewController = segue.destination as? NewNoteTextViewController
             else { return }
             
-            colorViewController.newNote = self.newNote
+            let viewModel = NewNoteTextViewModel(date: self.viewModel.selectedDate, bottle: self.viewModel.bottle)
+            textViewController.viewModel = viewModel
         }
     }
 }
@@ -267,14 +266,12 @@ extension NewNoteDatePickerViewController: UIPickerViewDelegate {
         guard self.viewModel.selectedDateIsAvailable(for: row)
         else {
             /// 이미 작성한 날짜면 경고 라벨 띄우고 버튼 회색 처리
-            self.warningLabel.fadeIn()
-            self.showWarningLabel = true
-            self.rightButton.tintColor = .customGray
+            self.fadeInWarningLabel()
             return
         }
         
         self.rightButton.tintColor = .systemBlue
-        self.newNote.date = noteData.date
+        self.viewModel.selectedDate = noteData.date
     }
     
     /// 0보다 작은 인덱스가 들어오면 0, 최대 개수보다 큰 값이 들어오면 마지막 인덱스로 바꿔주는 메서드

@@ -126,10 +126,10 @@ final class NewNoteTextViewController: UIViewController {
     
             /// 날짜 선택이 바뀐 경우에만 업데이트
             guard let datePickerViewController = segue.source as? NewNoteDatePickerViewController,
-                  self.viewModel.newNote != datePickerViewController.newNote
+                  self.viewModel.newNote.date != datePickerViewController.viewModel.selectedDate
             else { return }
             
-            self.viewModel.newNote = datePickerViewController.newNote
+            self.viewModel.newNote.date = datePickerViewController.viewModel.selectedDate
             self.updateDateLabels()
         }
     }
@@ -221,10 +221,10 @@ final class NewNoteTextViewController: UIViewController {
             guard let dateViewController = segue.destination as? NewNoteDatePickerViewController
             else { return }
             
-            dateViewController.newNote = self.viewModel.newNote
-            
-            let viewModel = NewNoteDatePickerViewModel()
-            viewModel.bottle = self.viewModel.newNote.bottle
+            let viewModel = NewNoteDatePickerViewModel(
+                initialDate: self.viewModel.newNote.date,
+                bottle: self.viewModel.newNote.bottle
+            )
             
             dateViewController.viewModel = viewModel
             dateViewController.isFromNoteTextView = true

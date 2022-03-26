@@ -325,10 +325,7 @@ enum SegueIdentifier {
     /// 보틀뷰 컨트롤러에서 새 쪽지 날짜 피커뷰 컨트롤러를 띄울 때 사용
     static let presentNewNoteDatePicker = "presentNewNoteDatePicker"
     
-    /// 새 쪽지 날짜 피커에서 색깔 피커를 띄울 때 사용
-    static let presentNewNoteColorPicker = "presentNewNoteColorPicker"
-    
-    /// 색깔 피커에서 새 쪽지 작성뷰 컨트롤러를 띄울 때 사용
+    /// 저금통을 눌렀을 때 새 쪽지 작성뷰 컨트롤러를 띄우는 데 사용
     static let presentNewNoteTextView = "presentNewNoteTextView"
     
     /// 쪽지 작성뷰 컨트롤러에서 보틀뷰 컨트롤러로 돌아갈 때 사용
@@ -353,6 +350,9 @@ enum SegueIdentifier {
     
     /// 새 쪽지 날짜 피커에서 텍스트뷰로 돌아갈 때 사용
     static let unwindFromNoteDatePickerToTextView = "unwindFromNoteDatePickerToTextView"
+    
+    /// 새 쪽지 날짜 피커에서 텍스트뷰로 넘어갈 때 사용
+    static let presentNewNoteTextViewFromDatePicker = "presentNewNoteTextViewFromDatePicker"
 }
 
 extension CATransition {
@@ -368,9 +368,6 @@ extension NewNoteDatePickerViewController {
         
         /// 영역 수: 1개
         static let numberOfComponents = 1
-        
-        /// 영역 수가 1개이므로 항상 0으로 고정
-        static let defaultComponentIndex = 0
     }
 }
 

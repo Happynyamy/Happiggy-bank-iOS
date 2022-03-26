@@ -12,7 +12,7 @@ final class NewNoteTextViewModel {
     
     // MARK: - Properties
     
-    /// 새로 추가할 쪽지의 날짜, 색깔 정보를 담고 있음
+    /// 임시 쪽지 객체
     var newNote: NewNote!
     
     /// 쪽지 이미지
@@ -51,8 +51,8 @@ final class NewNoteTextViewModel {
     
     // MARK: - Inits
     
-    init(newNote: NewNote) {
-        self.newNote = newNote
+    init(date: Date, bottle: Bottle) {
+        self.newNote = NewNote(date: date, bottle: bottle)
     }
     
     
