@@ -86,11 +86,6 @@ final class NewNoteColorPickerViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.presentNewNoteTextView {
             
-            guard let textViewController = segue.destination as? NewNoteTextViewController
-            else { return }
-            
-            let viewModel = NewNoteTextViewModel(newNote: self.newNote)
-            textViewController.viewModel = viewModel
         }
     }
 }

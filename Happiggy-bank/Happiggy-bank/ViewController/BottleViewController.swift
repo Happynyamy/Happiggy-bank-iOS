@@ -75,10 +75,16 @@ final class BottleViewController: UIViewController {
             print("show some alert that no notes are writable")
             return
         }
-        if bottle.hasEmptyDate {
+        if !bottle.isEmtpyToday {
             /// 날짜 피커 띄우기
             self.performSegue(
                 withIdentifier: SegueIdentifier.presentNewNoteDatePicker,
+                sender: sender
+            )
+        }
+        if bottle.isEmtpyToday {
+            self.performSegue(
+                withIdentifier: SegueIdentifier.presentNewNoteTextView,
                 sender: sender
             )
         }
@@ -198,17 +204,23 @@ final class BottleViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == SegueIdentifier.presentNewNoteDatePicker {
             guard let dateViewController = segue.destination as? NewNoteDatePickerViewController,
                   let bottle = self.viewModel.bottle
             else { return }
             
-            let viewModel = NewNoteDatePickerViewModel()
-            viewModel.bottle = bottle
+            let viewModel = NewNoteDatePickerViewModel(initialDate: Date(), bottle: bottle)
             dateViewController.viewModel = viewModel
-
-            let newNote =  NewNote(date: viewModel.mostRecentEmptyDate, bottle: viewModel.bottle)
-            dateViewController.newNote = newNote
+        }
+        
+        if segue.identifier == SegueIdentifier.presentNewNoteTextView {
+            guard let textViewController = segue.destination as? NewNoteTextViewController,
+                  let bottle = self.viewModel.bottle
+            else { return }
+            
+            let viewModel = NewNoteTextViewModel(date: Date(), bottle: bottle)
+            textViewController.viewModel = viewModel
         }
     }
 }

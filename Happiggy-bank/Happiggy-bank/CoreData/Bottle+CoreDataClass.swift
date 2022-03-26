@@ -113,6 +113,14 @@ public class Bottle: NSManagedObject {
         self.numberOfDaysSinceStartDate > self.notes.count
     }
     
+    /// 오늘 쪽지를 썼는지 여부
+    var isEmtpyToday: Bool {
+        guard let mostRecentNote = self.notes.last?.date
+        else { return true }
+
+        return !Calendar.current.isDateInToday(mostRecentNote)
+    }
+    
     /// 시작 날짜부터 끝 날짜까지의 텍스트 라벨
     /// 2022.02.05 ~ 2022.02.05 형식
     var dateLabel: String {
@@ -187,7 +195,7 @@ extension Bottle {
 //        Note.create(date: nthDayFromToday(-3), color: NoteColor.white, content: "100자 좀 적은가? 근데 괜찮은 것 같기도 하고...늘리기는 또 귀찮은데...", bottle: bottle)
 //        Note.create(date: nthDayFromToday(-8), color: NoteColor.purple, content: "왜냐면 한줄만 쓰는 날도 백퍼 있을 것이기 때문", bottle: bottle)
 //        Note.create(date: nthDayFromToday(-1), color: NoteColor.yellow, content: "졸리다 졸려 졸려", bottle: bottle)
-//        Note.create(date: nthDayFromToday(0), color: NoteColor.yellow, content: "누가 뚝딱 만들어주면 좋겠다 한 3줄 정도까지 채우고 싶은데 아무거나 써보기 이모지도 써보기 시험 시험 테스트 ☀️", bottle: bottle)
+        Note.create(date: Date(), color: NoteColor.yellow, content: "누가 뚝딱 만들어주면 좋겠다 한 3줄 정도까지 채우고 싶은데 아무거나 써보기 이모지도 써보기 시험 시험 테스트 ☀️", bottle: bottle)
         
         // swiftlint:enable line_length
         return bottle

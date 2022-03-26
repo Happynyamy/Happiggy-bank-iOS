@@ -12,8 +12,11 @@ final class NewNoteDatePickerViewModel {
     
     // MARK: - Properties
     
+    /// 선택한 날짜
+    var selectedDate: Date!
+    
     /// 쪽지를 넣을 저금통: 보틀 뷰 컨트롤러에서 주입받음
-    var bottle: Bottle!
+    private(set) var bottle: Bottle!
     
     /// 날짜 피커에 나타낼 데이터 소스 : 시작일부터의 오늘까지의 모든 날짜와, 해당 날짜에 쪽지를 이미 썼으면 컬러가 없으면 nil이 담겨있음
     private(set) lazy var noteData: [NoteDatePickerData] = {
@@ -39,20 +42,23 @@ final class NewNoteDatePickerViewModel {
         self.bottle.numberOfDaysSinceStartDate
     }()
     
-    /// 쪽지를 쓰지 않은 가장 최근 날짜의 인덱스
-    private(set) lazy var mostRecentEmptyDateIndex: Int = {
-        self.noteData.lastIndex { $0.color == nil } ?? self.numberOfRows - 1
+    /// 오늘 날짜 혹은 이전에 선택한 날짜에 해당하는 행 위치를 리턴
+    private(set) lazy var initialRow: Int = {
+        Calendar.daysBetween(start: self.bottle.startDate, end: self.selectedDate) - 1
     }()
     
-    /// 쪽지를 쓰지 않은 가장 최근 날짜
-    private(set) lazy var mostRecentEmptyDate: Date = {
-        self.noteData[self.mostRecentEmptyDateIndex].date
-    }()
+    
+    // MARK: - Init
+    
+    init(initialDate date: Date, bottle: Bottle) {
+        self.selectedDate = date
+        self.bottle = bottle
+    }
     
     
     // MARK: - Function
     
-    /// 날짜를 "2022 02.05" 형태의 문자열로 월, 일만 볼드 처리해서 변환
+    /// 날짜를 "2022 02.05  금" 형태의 문자열로 월, 일만 볼드 처리해서 변환
     func attributedDateString(
         for source: NoteDatePickerData,
         isSelected: Bool = false
@@ -78,12 +84,7 @@ final class NewNoteDatePickerViewModel {
         guard let color = noteData.color
         else { return nil}
         
-        return UIImage.note(color: color)
-    }
-    
-    /// 선택 가능한 가능 최근 날짜 혹은 이전에 선택한 날짜에 해당하는 행 위치를 리턴
-    func initialRow(for newNote: NewNote) -> Int {
-        Calendar.daysBetween(start: self.bottle.startDate, end: newNote.date) - 1
+        return .note(color: color)
     }
     
     /// 선택한 행의 날짜에 쪽지를 쓸 수 있는 지 리턴

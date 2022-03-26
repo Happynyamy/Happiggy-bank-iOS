@@ -388,8 +388,8 @@
                         <outlet property="navigationBar" destination="x5u-uo-squ" id="TZk-W8-eWp"/>
                         <outlet property="rightButton" destination="gJA-eJ-60b" id="7KR-sK-CZp"/>
                         <outlet property="warningLabel" destination="x1u-nY-DW6" id="pn9-Am-SuF"/>
-                        <segue destination="g5l-hv-0de" kind="presentation" identifier="presentNewNoteColorPicker" id="MBC-MA-0pk"/>
                         <segue destination="9EN-Ff-rq1" kind="unwind" identifier="unwindFromNoteDatePickerToTextView" unwindAction="unwindCallToNoteTexViewDidArriveWithSegue:" id="Ovp-ZJ-8aW"/>
+                        <segue destination="FuI-qc-1fd" kind="presentation" identifier="presentNewNoteTextViewFromDatePicker" id="O5Z-N1-x6E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4WR-mG-PvL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -532,7 +532,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-2116" y="4595"/>
+            <point key="canvasLocation" x="-3241" y="3037"/>
         </scene>
         <!--New Note Color Picker View Controller-->
         <scene sceneID="bf8-Au-5CK">
@@ -658,13 +658,12 @@
                         <outletCollection property="colorButtons" destination="3bT-Qz-LIr" collectionClass="NSMutableArray" id="dpp-pm-YWq"/>
                         <outletCollection property="colorButtons" destination="PXQ-aW-7XM" collectionClass="NSMutableArray" id="1NZ-Su-1Qq"/>
                         <outletCollection property="colorButtons" destination="LzH-V8-aJh" collectionClass="NSMutableArray" id="G57-mR-WPL"/>
-                        <segue destination="FuI-qc-1fd" kind="presentation" identifier="presentNewNoteTextView" id="JPj-QX-xRf"/>
                         <segue destination="b2J-do-ybm" kind="unwind" identifier="unwindToNewNoteDatePicker" unwindAction="unwindToNewNoteDatePickerCallDidArriveWithSegue:" id="kNO-Ue-1nh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MZX-4l-0Ef" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2116" y="3819"/>
+            <point key="canvasLocation" x="-4146" y="3542"/>
         </scene>
         <!--Bottle View Controller-->
         <scene sceneID="p7l-16-uR7">
@@ -696,6 +695,7 @@
                         <outlet property="bottleNoteViewBottomConstraint" destination="rUo-wu-z3X" id="oDP-fr-ikO"/>
                         <segue destination="moi-e1-3hQ" kind="presentation" identifier="presentNewNoteDatePicker" id="71M-g6-wMS"/>
                         <segue destination="abG-42-vcb" kind="presentation" identifier="presentNewBottleNameField" id="Qcc-qq-Xqy"/>
+                        <segue destination="FuI-qc-1fd" kind="presentation" identifier="presentNewNoteTextView" id="xNs-XQ-OjW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hG-r2-cSC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -871,7 +871,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="71M-g6-wMS"/>
+        <segue reference="O5Z-N1-x6E"/>
+        <segue reference="7wk-af-F5w"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="checkmark" catalog="system" width="128" height="114"/>
