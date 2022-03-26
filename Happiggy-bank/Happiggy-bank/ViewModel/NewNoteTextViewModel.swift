@@ -23,7 +23,7 @@ final class NewNoteTextViewModel {
     
     /// 쪽지 색깔
     var labelColor: UIColor {
-        UIColor.highlight(color: newNote.color)
+        UIColor.noteHighlight(for: newNote.color)
     }
     
     /// 배경 색깔

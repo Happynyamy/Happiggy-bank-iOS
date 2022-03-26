@@ -12,6 +12,9 @@ final class NewNoteTextViewController: UIViewController {
     
     // MARK: - @IBOutlet
     
+    /// 쪽지 색깔 선택 버튼들
+    @IBOutlet var colorButtons: [ColorButton]!
+    
     /// 취소 버튼과 저장 버튼을 담고 있는 내비게이션 바
     @IBOutlet weak var navigationBar: UINavigationBar!
     
@@ -21,8 +24,8 @@ final class NewNoteTextViewController: UIViewController {
     /// 쪽지 에셋 이미지를 나타낼 뷰
     @IBOutlet weak var imageView: UIImageView!
     
-    /// 쪽지 이미지 뷰 높이 제약 조건
-    @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
+    /// 내용 스택 높이 제약 조건
+    @IBOutlet weak var contentStackHeightConstraint: NSLayoutConstraint!
     
     /// 연도 라벨
     @IBOutlet weak var yearLabel: UILabel!
@@ -32,9 +35,6 @@ final class NewNoteTextViewController: UIViewController {
     
     /// 쪽지 내용을 작성할 텍스트 뷰
     @IBOutlet weak var textView: UITextView!
-    
-    /// 쪽지 색깔을 바꾸는 버튼
-    @IBOutlet weak var colorButton: ColorButton!
 
     /// 쪽지 내용 글자수를 세는 라벨
     @IBOutlet weak var letterCountLabel: UILabel!
@@ -65,9 +65,10 @@ final class NewNoteTextViewController: UIViewController {
         self.updateImageView()
         self.updateDateLabels()
         self.configureTextView()
-        self.updateColorButton()
+        self.updateColorButtons()
         self.updateLetterCountLabel(count: .zero)
     }
+    
     
     // MARK: - @IBAction
     
@@ -108,14 +109,15 @@ final class NewNoteTextViewController: UIViewController {
     
     /// 색깔 버튼을 눌렀을 때 호출 되는 액션 메서드 : 선택한 쪽지 색깔을 바꿈
     @IBAction func colorButtonDidTap(_ sender: ColorButton) {
-        var index = NoteColor.allCases.firstIndex(of: sender.color) ?? .zero
-        index = (index + 1) % NoteColor.allCases.count
+        guard sender.color != self.viewModel.newNote.color
+        else { return }
         
-        self.viewModel.newNote.color = NoteColor.allCases[index]
+        self.colorButtons.forEach { $0.updateState(isSelected: $0.color == sender.color)}
+        self.viewModel.newNote.color = sender.color
         
         UIView.transition(with: self.view, duration: Metric.animationDuration, options: .transitionCrossDissolve) {
             self.updateImageView()
-            self.updateColorButton()
+            self.updateColorButtons()
             self.updateLabelColors()
         }
     }
@@ -143,18 +145,26 @@ final class NewNoteTextViewController: UIViewController {
         self.navigationBar.shadowImage = UIImage()
     }
     
-    /// 쪽지 이미지 뷰 높이를 키보드를 제외한 영역을 차지하도록 업데이트
+    /// 내용 스택 높이가 키보드를 제외한 영역을 차지하도록 업데이트
     @objc private func configureImageViewHeightConstraint(notification: NSNotification) {
         
         guard let info = notification.userInfo,
               let keyboardFrame = info[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect
         else { return }
         
-        let imageViewHeight = Metric.imageViewHeight(
+        let contentStackHeight = Metric.contentStackHeight(
             keyboardFrame: keyboardFrame,
             navigationBarFrame: self.navigationBar.frame
         )
-        self.imageViewHeightConstraint.constant = imageViewHeight
+        self.contentStackHeightConstraint.constant = contentStackHeight
+    }
+    
+    /// 색깔 버튼들 상태 설정
+    private func updateColorButtons() {
+        for (button, color) in zip(self.colorButtons, NoteColor.allCases) {
+            button.color = color
+            button.initialSetup(isSelected: button.color == self.viewModel.newNote.color)
+        }
     }
     
     /// 선택한 색깔에 따라 쪽지 이미지 설정
@@ -175,12 +185,6 @@ final class NewNoteTextViewController: UIViewController {
         self.textView.becomeFirstResponder()
         /// 인셋 설정
         self.textView.textContainerInset = .zero
-    }
-    
-    /// 색깔 버튼 모습 업데이트
-    private func updateColorButton() {
-        self.colorButton.color = self.viewModel.newNote.color
-        self.colorButton.initialSetup(isSelected: true)
     }
     
     /// 글자수 라벨 업데이트
@@ -210,6 +214,7 @@ final class NewNoteTextViewController: UIViewController {
             content: self.textView.text,
             bottle: self.viewModel.newNote.bottle
         )
+        // TODO: activate core data
 //        PersistenceStore.shared.save()
     }
     

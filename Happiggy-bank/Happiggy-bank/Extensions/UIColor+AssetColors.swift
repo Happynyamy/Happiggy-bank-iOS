@@ -35,6 +35,7 @@ extension UIColor {
     /// 연한 회색
     static let customLightGray = UIColor(named: "customLightGray")
     
+    
     // MARK: - Functions
     
     private static func uicolor(named name: String) -> UIColor {
@@ -42,12 +43,17 @@ extension UIColor {
     }
     
     /// 애셋에 추가한 쪽지 하이라이트 색상을 반환하는 메서드
-    static func highlight(color: NoteColor) -> UIColor {
+    static func noteHighlight(for color: NoteColor) -> UIColor {
         UIColor(named: Asset.noteHighlight.rawValue + color.capitalizedString) ?? .systemGray3
     }
     
     /// 애셋에 추가한 쪽지 색상을 반환하는 메서드
     static func note(color: NoteColor) -> UIColor {
         UIColor(named: Asset.note.rawValue + color.capitalizedString) ?? .white
+    }
+    
+    /// 에셋에 추가한 쪽지 외곽선 색상을 반환하는 메서드
+    static func noteBorder(for color: NoteColor) -> UIColor {
+        UIColor(named: Asset.noteBorder.rawValue + color.capitalizedString) ?? .customGray
     }
 }

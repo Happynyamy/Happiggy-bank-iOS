@@ -101,12 +101,6 @@ let krLocalIdentifier = "ko_KR"
 
 extension ColorButton {
     
-    enum Color {
-        
-        /// 흰색 버튼 외곽선 색상
-        static let whiteButtonBorder = UIColor(named: "noteColorPickerBorderColorWhite") ?? .customGray
-    }
-    
     /// 컬러 버튼의 상수값들
     enum Metric {
         
@@ -469,6 +463,9 @@ enum Asset: String {
     /// 쪽지 색상
     case note
     
+    /// 쪽지 외곽선 색상
+    case noteBorder
+    
     
     // MARK: Buttons
     
@@ -596,8 +593,8 @@ extension NewNoteTextViewController {
         /// 애니메이션 지속 시간: 0.2
         static let animationDuration = CATransition.transitionDuration
         
-        /// 이미지 뷰가 내비게이션바, safe area top inset, 키보드 크기를 제외한 나머지 영역을 다 차지할 수 있도록 높이를 계산해서 리턴
-        static func imageViewHeight(
+        /// 내용 스택이 내비게이션바, safe area top inset, 키보드 크기를 제외한 나머지 영역을 다 차지할 수 있도록 높이를 계산해서 리턴
+        static func contentStackHeight(
             keyboardFrame: CGRect,
             navigationBarFrame: CGRect
         ) -> CGFloat {
