@@ -284,7 +284,7 @@ enum SegueIdentifier {
     static let presentNewNoteTextView = "presentNewNoteTextView"
     
     /// 쪽지 작성뷰 컨트롤러에서 보틀뷰 컨트롤러로 돌아갈 때 사용
-    static let unwindToBotteView = "unwindToBotteView"
+    static let unwindToBottleViewFromNoteTextView = "unwindToBottleViewFromNoteTextView"
     
     /// 새 유리병 이름 텍스트필드 팝업 띄울 때 사용
     static let presentNewBottleNameField = "presentNewBottleNameField"
@@ -293,9 +293,6 @@ enum SegueIdentifier {
     static let presentNewBottleDatePicker = "presentNewBottleDatePicker"
     
     static let unwindFromNewBottlePopupToBottleView = "unwindFromNewBottlePopupToBottleView"
-    
-    /// 새 쪽지 색깔 피커에서 날짜 피커로 돌아갈 때 사용
-    static let unwindToNewNoteDatePicker = "unwindToNewNoteDatePicker"
     
     /// 저금통 리스트에서 쪽지 리스트로 넘어갈 때 사용
     static let showNoteList = "showNoteList"
@@ -308,6 +305,9 @@ enum SegueIdentifier {
     
     /// 새 쪽지 날짜 피커에서 텍스트뷰로 넘어갈 때 사용
     static let presentNewNoteTextViewFromDatePicker = "presentNewNoteTextViewFromDatePicker"
+    
+    /// 새 쪽지 날짜 피커에서 저금통 뷰로 돌아갈 때 사용
+    static let unwindFromNoteDatePickerToBottleView = "unwindFromNoteDatePickerToBottleView"
 }
 
 extension CATransition {

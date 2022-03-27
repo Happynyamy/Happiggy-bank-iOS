@@ -370,6 +370,7 @@
                         <outlet property="warningLabel" destination="x1u-nY-DW6" id="pn9-Am-SuF"/>
                         <segue destination="9EN-Ff-rq1" kind="unwind" identifier="unwindFromNoteDatePickerToTextView" unwindAction="unwindCallToNoteTexViewDidArriveWithSegue:" id="Ovp-ZJ-8aW"/>
                         <segue destination="FuI-qc-1fd" kind="presentation" identifier="presentNewNoteTextViewFromDatePicker" id="O5Z-N1-x6E"/>
+                        <segue destination="rAE-WY-Wyc" kind="unwind" identifier="unwindFromNoteDatePickerToBottleView" unwindAction="unwindCallDidArriveWithSegue:" id="Zgm-mw-dYe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4WR-mG-PvL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -553,7 +554,7 @@
                         <outletCollection property="colorButtons" destination="YCv-4A-yJI" collectionClass="NSMutableArray" id="Pgw-d9-Cyv"/>
                         <outletCollection property="colorButtons" destination="04d-6x-4Me" collectionClass="NSMutableArray" id="my6-CJ-LfZ"/>
                         <outletCollection property="colorButtons" destination="S3V-4f-gjV" collectionClass="NSMutableArray" id="ht5-ZJ-p7O"/>
-                        <segue destination="rAE-WY-Wyc" kind="unwind" identifier="unwindToBotteView" animates="NO" unwindAction="unwindCallDidArriveWithSegue:" id="S89-mV-zbI"/>
+                        <segue destination="rAE-WY-Wyc" kind="unwind" identifier="unwindToBottleViewFromNoteTextView" animates="NO" unwindAction="unwindCallDidArriveWithSegue:" id="S89-mV-zbI"/>
                         <segue destination="moi-e1-3hQ" kind="presentation" identifier="presentDatePickerFromNoteTextView" id="7wk-af-F5w"/>
                     </connections>
                 </viewController>
@@ -583,6 +584,7 @@
                                 </connections>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="hW4-ng-Hac"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="OAt-vo-L69" secondAttribute="trailing" constant="7" id="2LI-SU-Shf"/>
@@ -771,7 +773,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xNs-XQ-OjW"/>
+        <segue reference="O5Z-N1-x6E"/>
         <segue reference="71M-g6-wMS"/>
     </inferredMetricsTieBreakers>
     <resources>
