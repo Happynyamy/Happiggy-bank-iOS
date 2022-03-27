@@ -54,7 +54,7 @@ final class HomeViewModel {
 //
 //        self.bottle = bottles.first
         
-//        self.bottle = Bottle.foo
-        self.bottle = Bottle.fullBottle
+        self.bottle = Bottle.foo
+//        self.bottle = Bottle.fullBottle
     }
 }

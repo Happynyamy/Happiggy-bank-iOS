@@ -178,14 +178,14 @@ extension Bottle {
     
     /// 테스트용 목 데이터
     static let foo: Bottle = {
-        let count = 300
+        let count = 345
         let startDate = nthDayFromToday(-count)
-        let endDate = nthDayFromToday(10)
+        let endDate = nthDayFromToday(9)
         
         let bottle = Bottle(title: "행복냠냠이", startDate: startDate, endDate: endDate)
-        for index in (10-count)..<(-10) {
+        for index in 10..<count {
             let note = Note.create(
-                date: nthDayFromToday(index),
+                date: nthDayFromToday(-index-1),
                 color: NoteColor.allCases.randomElement()!,
                 content: "일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십",
                 bottle: bottle)

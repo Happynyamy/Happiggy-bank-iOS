@@ -63,7 +63,16 @@ final class NewNoteDatePickerViewController: UIViewController {
     /// 취소 버튼(x)을 눌렀을 때 호출되는 액션 메서드 : 보틀뷰(홈뷰)/쪽지 텍스트뷰로 돌아감
     @IBAction func cancelButtonDidTap(_ sender: UIBarButtonItem) {
         self.fadeOut()
-        self.dismiss(animated: false, completion: nil)
+        if self.isFromNoteTextView {
+            self.dismiss(animated: false, completion: nil)
+            return
+        }
+        if !self.isFromNoteTextView {
+            self.performSegue(
+                withIdentifier: SegueIdentifier.unwindFromNoteDatePickerToBottleView,
+                sender: self
+            )
+        }
     }
     
     /// 오른쪽 버튼을 눌렀을 때 호출되는 액션 메서드 : 컬러 피커를 띄우거나 쪽지 텍스트뷰로 돌아감
@@ -90,17 +99,6 @@ final class NewNoteDatePickerViewController: UIViewController {
             self.performSegue(
                 withIdentifier: SegueIdentifier.unwindFromNoteDatePickerToTextView,
                 sender: sender)
-        }
-    }
-    
-    /// 현재 뷰 컨트롤러로 unwind 하라는 호출을 받았을 때 실행되는 액션메서드
-    @IBAction func unwindToNewNoteDatePickerCallDidArrive(segue: UIStoryboardSegue) {
-        if segue.identifier == SegueIdentifier.unwindToNewNoteDatePicker {
-            // TODO: 삭제
-//            guard let colorPickerViewController = segue.source as? NewNoteColorPickerViewController
-//            else { return }
-//
-//            self.newNote = colorPickerViewController.newNote
         }
     }
     

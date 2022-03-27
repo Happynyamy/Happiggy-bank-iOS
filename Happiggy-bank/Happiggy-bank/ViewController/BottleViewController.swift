@@ -102,8 +102,10 @@ final class BottleViewController: UIViewController {
         }
     }
     
-    /// 현재 뷰 컨트롤러로 unwind 하라는 호출을 받았을 때 실행되는 액션메서드
-    @IBAction func unwindCallDidArrive(segue: UIStoryboardSegue) { }
+    /// 현재 뷰 컨트롤러로 unwind 하라는 호출을 받았을 때 실행되는 액션메서드로, 중력 효과 재개
+    @IBAction func unwindCallDidArrive(segue: UIStoryboardSegue) {
+        self.gravity?.enable()
+    }
     
     
     // MARK: - @objc
@@ -203,6 +205,9 @@ final class BottleViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        /// 다른 뷰를 띄우면 중력 효과 중단
+        self.gravity?.disable()
         
         if segue.identifier == SegueIdentifier.presentNewNoteDatePicker {
             guard let dateViewController = segue.destination as? NewNoteDatePickerViewController,

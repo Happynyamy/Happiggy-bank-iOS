@@ -78,7 +78,9 @@ final class NewNoteTextViewController: UIViewController {
     /// 취소버튼(x)을 눌렀을 때 호출되는 액션 메서드 : 보틀뷰(홈뷰)로 돌아감
     @IBAction func cancelButtonDidTap(_ sender: UIBarButtonItem) {
         self.endEditingAndFadeOut()
-        self.performSegue(withIdentifier: SegueIdentifier.unwindToBotteView, sender: sender)
+        self.performSegue(
+            withIdentifier: SegueIdentifier.unwindToBottleViewFromNoteTextView, sender: sender
+        )
     }
     
     /// 저장버튼(v)을 눌렀을 때 호출되는 액션 메서드
@@ -233,7 +235,10 @@ final class NewNoteTextViewController: UIViewController {
             title: StringLiteral.confirmButtonTitle,
             style: .default) { _ in
                 self.fadeOut()
-                self.performSegue(withIdentifier: SegueIdentifier.unwindToBotteView, sender: self)
+                self.performSegue(
+                    withIdentifier: SegueIdentifier.unwindToBottleViewFromNoteTextView,
+                    sender: self
+                )
                 // TODO: activate
         //        self.saveNewNote()
                 print("save new note to core data")
