@@ -38,48 +38,9 @@ extension BottleViewController {
     /// BottleViewController 에서 설정하는 layout 에 적용할 상수값들을 모아놓은 enum
     enum Metric {
         
-        /// TODO: 모든 뷰에서 같으면 전역으로 만들기
-        /// 좌우 패딩 값
-        static let verticalPadding: CGFloat = HomeViewController.Metric.verticalPadding
+        /// 현재 뷰를 기준으로 충돌 영역 설정을 위해 넣을 상하좌우 마진
+        static let collisionBoundaryInsets = UIEdgeInsets(top: .zero, left: 3, bottom: 3, right: 3)
         
-        /// 저금통 안에 들어갈 쪽지 노드 너비
-        static let noteWidth: CGFloat = 12
-        
-        /// 저금통 안에 들어갈 쪽지 노드 높이
-        static let noteHeight: CGFloat = noteWidth
-        
-        /// Gravity에 추가될 x축 패딩
-        static let boundaryPosX: CGFloat = 5
-        
-        /// Gravity에 추가될 y축 패딩
-        static let boundaryPosY: CGFloat = 5
-        
-        /// Gravity에 추가될 수평 패딩
-        static let boundaryPadding: CGFloat = 10
-        
-        /// 쪽지 이미지들의 z index
-        static var randomZpostion: CGFloat {
-            [3, 4, 5, 6, 7, 8].randomElement() ?? 3
-        }
-        
-        /// 쪽지 이미지 scale
-        static var randomScale: CGFloat {
-            [1, 1.1, 1.2, 1.3, 1.4, 1.5].randomElement() ?? .one
-        }
-        
-        /// 쪽지 이미지 회전 각도
-        static var randomDegree: CGFloat {
-            2 * .pi / (degreeDividers.randomElement() ?? .one)
-        }
-        
-        /// 쪽지 이미지들의 회전 각도를 구하기 위한 값들
-        private static let degreeDividers: [CGFloat] = {
-            var degree = [CGFloat]()
-            for number in 1...36 {
-                degree.append(CGFloat(number))
-            }
-            return degree
-        }()
     }
 }
 
@@ -739,5 +700,38 @@ extension SettingsViewCell {
         
         /// 좌우 패딩: 24
         static let HorizontalPadding: CGFloat = 24
+    }
+}
+
+
+extension NoteView {
+    
+    /// NoteView 에서 사용하는 상수값
+    enum Metric {
+        
+        /// 쪽지 이미지들의 z index
+        static var randomZpostion: CGFloat {
+            [3, 4, 5, 6, 7, 8].randomElement() ?? 3
+        }
+        
+        // TODO: 삭제
+        /// 쪽지 이미지 scale
+        static var randomScale: CGFloat {
+            [1, 1.1, 1.2, 1.3, 1.4, 1.5].randomElement() ?? .one
+        }
+        
+        /// 쪽지 이미지 회전 각도
+        static var randomDegree: CGFloat {
+            2 * .pi / (degreeDividers.randomElement() ?? .one)
+        }
+        
+        /// 쪽지 이미지들의 회전 각도를 구하기 위한 값들
+        private static let degreeDividers: [CGFloat] = {
+            var degree = [CGFloat]()
+            for number in 1...36 {
+                degree.append(CGFloat(number))
+            }
+            return degree
+        }()
     }
 }

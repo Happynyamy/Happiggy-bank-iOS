@@ -15,14 +15,18 @@ public class Gravity: NSObject {
 
     private var dynamicItems: [UIDynamicItem]
     private var collisionItems: [UIDynamicItem]
-    private var boundaryPath: UIBezierPath
-
+    
+    /// reference view 를 기준으로 설정할 충돌 영역의 상하좌우 마진
+    private var collisionBoundaryInsets: UIEdgeInsets
+    
     /// Initialize the components
-    public init( gravityItems: [UIDynamicItem],
-                 collisionItems: [UIDynamicItem]?,
-                 referenceView: UIView,
-                 boundary: UIBezierPath,
-                 queue: OperationQueue? ) {
+    public init(
+        gravityItems: [UIDynamicItem],
+        collisionItems: [UIDynamicItem]?,
+        referenceView: UIView,
+        collisionBoundaryInsets: UIEdgeInsets,
+        queue: OperationQueue?
+    ) {
         self.dynamicItems = gravityItems
 
         if let collisionItems = collisionItems {
@@ -30,17 +34,16 @@ public class Gravity: NSObject {
         } else {
             self.collisionItems = self.dynamicItems
         }
-
-        self.boundaryPath = boundary
         
         if let queue = queue {
             self.queue = queue
         } else {
             self.queue = OperationQueue.current ?? OperationQueue.main
         }
-
+        
         animator = UIDynamicAnimator(referenceView: referenceView)
         gravity = UIGravityBehavior(items: self.dynamicItems)
+        self.collisionBoundaryInsets = collisionBoundaryInsets
     }
     
     /// Enable motion and behaviors
@@ -67,10 +70,7 @@ public class Gravity: NSObject {
 
     private func collisionBehavior() -> UICollisionBehavior {
         let collision = UICollisionBehavior(items: self.collisionItems)
-        collision.addBoundary(
-            withIdentifier: "borders" as NSCopying,
-            for: self.boundaryPath
-        )
+        collision.setTranslatesReferenceBoundsIntoBoundary(with: self.collisionBoundaryInsets)
         return collision
     }
 

@@ -583,7 +583,6 @@
                                 </connections>
                             </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="5Hu-eg-CWw"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="OAt-vo-L69" secondAttribute="trailing" constant="7" id="2LI-SU-Shf"/>
