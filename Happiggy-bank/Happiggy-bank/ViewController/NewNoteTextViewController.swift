@@ -205,16 +205,18 @@ final class NewNoteTextViewController: UIViewController {
         self.letterCountLabel.textColor = self.viewModel.labelColor
     }
     
-    /// 새로운 노트 엔티티를 생성하고 저장함
+    /// 새로운 노트 엔티티를 생성하고 저장하며, 저장 시에 쪽지가 추가되었다는 노티피케이션을 날림
     private func saveNewNote() {
-        Note.create(
+        let note = Note.create(
             date: self.viewModel.newNote.date,
             color: self.viewModel.newNote.color,
             content: self.textView.text,
             bottle: self.viewModel.newNote.bottle
         )
+        let noteAndDelay = (note: note, delay: CATransition.transitionDuration)
+        self.post(name: .noteProgressDidUpdate, object: noteAndDelay)
         // TODO: activate core data
-//        PersistenceStore.shared.save()
+        PersistenceStore.shared.save()
     }
     
     /// 쪽지 저장 의사를 재확인 하는 알림을 띄움
@@ -239,11 +241,7 @@ final class NewNoteTextViewController: UIViewController {
                     withIdentifier: SegueIdentifier.unwindToBottleViewFromNoteTextView,
                     sender: self
                 )
-                // TODO: activate
-        //        self.saveNewNote()
-                print("save new note to core data")
-                print("notify note addition/or make core data do it...?")
-                self.post(name: .noteProgressDidUpdate)
+                self.saveNewNote()
             }
         
         let cancelAction = UIAlertAction(

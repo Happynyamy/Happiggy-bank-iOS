@@ -113,27 +113,19 @@ final class BottleViewController: UIViewController {
     /// 쪽지 진행 정도가 바뀌었다는 알림을 받았을 때 호출되는 메서드
     @objc private func noteProgressDidChange(_ notification: Notification) {
         
-        UIView.animate(withDuration: 0.5, delay: CATransition.transitionDuration) {
-            // show note adding animation
+        guard let noteAndDelay = notification.object as? (note: Note, delay: TimeInterval),
+              let index = self.viewModel.newlyAddedNoteIndex
+        else { return }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + noteAndDelay.delay) {
+            let noteView = self.createNoteView(noteAndDelay.note, at: index)
+            self.bottleNoteView.addSubview(noteView)
+            self.gravity?.addDynamicItem(noteView)
         }
     }
     
     
     // MARK: - Functions
-    
-    /// 유저가 새로운 쪽지를 한 개 추가했을 때 호출되는 메서드
-    /// 새로운 쪽지 추가 -> 홈뷰에서 노티 받음 -> 보틀뷰로 전달
-    func contextDidChange(newBottle bottle: Bottle) {
-        self.viewModel.bottle = bottle
-        
-        guard let note = self.viewModel.newlyAddedNote,
-              let index = self.viewModel.newlyAddedNoteIndex
-        else { return }
-        
-        self.addNoteView(note, at: index)
-        
-        // TODO: 중력, 충돌 item 으로 추가 필요
-    }
     
     /// NotificationCenter.default 에 observer 들을 추가
     private func addObservers() {
@@ -177,14 +169,14 @@ final class BottleViewController: UIViewController {
     private func fillBottleNoteView(forBottle bottle: Bottle) {
         
         for (index, note) in bottle.notes.enumerated() {
-            self.addNoteView(note, at: index)
+            let noteView = self.createNoteView(note, at: index)
+            self.bottleNoteView.addSubview(noteView)
         }
     }
     
-    /// 그리드를 사용해서 bottleNoteView 의 해당 좌표에 NoteView 추가
-    private func addNoteView(_ note: Note, at index: Int) {
-        let noteView = NoteView(frame: self.grid[index] ?? .zero, color: note.color)
-        self.bottleNoteView.addSubview(noteView)
+    /// 그리드를 사용해서 bottleNoteView 의 해당 좌표에 들어갈 NoteView 생성
+    private func createNoteView(_ note: Note, at index: Int) -> NoteView {
+        NoteView(frame: self.grid[index] ?? .zero, color: note.color)
     }
     
     /// 쪽지 이미지들에 중력 효과 추가

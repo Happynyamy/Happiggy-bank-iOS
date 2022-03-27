@@ -39,22 +39,22 @@ final class HomeViewModel {
 //
 //        self.bottle = bottle.first!
         
-//        let request = Bottle.fetchRequest(isOpen: false)
-//        var bottles = PersistenceStore.shared.fetch(request: request)
+        let request = Bottle.fetchRequest(isOpen: false)
+        var bottles = PersistenceStore.shared.fetch(request: request)
+
+        // MARK: 작성중인 유리병을 확인하려면 여기를 주석 해제
+        // 1. 여기 먼저 주석 해제해서 delete 으로 데이터 한번 날리고
+//                PersistenceStore.shared.deleteAll(Bottle.self)
+        // 2. 그 다음에 delete 은 다시 주석처리하고 여리를 주석 해제
+        if bottles.isEmpty {
+            // 작성중인 유리병
+            bottles = [Bottle.foo]
+            PersistenceStore.shared.save()
+        }
 //
-//        // MARK: 작성중인 유리병을 확인하려면 여기를 주석 해제
-//        // 1. 여기 먼저 주석 해제해서 delete 으로 데이터 한번 날리고
-////                PersistenceStore.shared.deleteAll(Bottle.self)
-//        // 2. 그 다음에 delete 은 다시 주석처리하고 여리를 주석 해제
-//        if bottles.isEmpty {
-//            // 작성중인 유리병
-//            bottles = [Bottle.foo]
-////            PersistenceStore.shared.save()
-//        }
-//
-//        self.bottle = bottles.first
+        self.bottle = bottles.first
         
-        self.bottle = Bottle.foo
+//        self.bottle = Bottle.foo
 //        self.bottle = Bottle.fullBottle
     }
 }
