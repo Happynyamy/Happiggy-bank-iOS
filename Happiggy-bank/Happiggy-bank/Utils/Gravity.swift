@@ -10,6 +10,7 @@ public class Gravity: NSObject {
 
     private var animator: UIDynamicAnimator!
     private var gravity: UIGravityBehavior!
+    private var collision: UICollisionBehavior!
     private var motion: CMMotionManager = CMMotionManager()
     private var queue: OperationQueue!
 
@@ -27,6 +28,7 @@ public class Gravity: NSObject {
         collisionBoundaryInsets: UIEdgeInsets,
         queue: OperationQueue?
     ) {
+        
         self.dynamicItems = gravityItems
 
         if let collisionItems = collisionItems {
@@ -43,12 +45,14 @@ public class Gravity: NSObject {
         
         animator = UIDynamicAnimator(referenceView: referenceView)
         gravity = UIGravityBehavior(items: self.dynamicItems)
+        self.collision =  UICollisionBehavior(items: self.collisionItems)
+        self.collision.setTranslatesReferenceBoundsIntoBoundary(with: collisionBoundaryInsets)
         self.collisionBoundaryInsets = collisionBoundaryInsets
     }
     
     /// Enable motion and behaviors
     public func enable() {
-        animator.addBehavior(collisionBehavior())
+        animator.addBehavior(self.collision)
         animator.addBehavior(gravity)
         motion.startDeviceMotionUpdates(
             to: queue,
@@ -67,11 +71,11 @@ public class Gravity: NSObject {
         disable()
         enable()
     }
-
-    private func collisionBehavior() -> UICollisionBehavior {
-        let collision = UICollisionBehavior(items: self.collisionItems)
-        collision.setTranslatesReferenceBoundsIntoBoundary(with: self.collisionBoundaryInsets)
-        return collision
+    
+    /// 새로운 다이나믹 아이템 추가
+    func addDynamicItem(_ item: UIDynamicItem) {
+        self.gravity.addItem(item)
+        self.collision.addItem(item)
     }
 
     private func motionHandler( motion: CMDeviceMotion?, error: Error? ) {
