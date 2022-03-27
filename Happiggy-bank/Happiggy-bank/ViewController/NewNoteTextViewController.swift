@@ -92,9 +92,6 @@ final class NewNoteTextViewController: UIViewController {
             return
         }
 
-        print("save new note to core data")
-        print("notify note addition/or make core data do it...?")
-        self.hideColorButtonContainerViewWithAnimation()
         self.textView.endEditing(true)
         self.showNoteSavingConfirmationAlert()
     }
@@ -239,6 +236,8 @@ final class NewNoteTextViewController: UIViewController {
                 self.performSegue(withIdentifier: SegueIdentifier.unwindToBotteView, sender: self)
                 // TODO: activate
         //        self.saveNewNote()
+                print("save new note to core data")
+                print("notify note addition/or make core data do it...?")
                 self.post(name: .noteProgressDidUpdate)
             }
         
@@ -246,31 +245,12 @@ final class NewNoteTextViewController: UIViewController {
             title: StringLiteral.cancelButtonTitle,
             style: .cancel) { _ in
                 self.textView.becomeFirstResponder()
-                self.showColorButtonContainerViewWithAnimation()
             }
         
         alert.addAction(confirmAction)
         alert.addAction(cancelAction)
         
         return alert
-    }
-    
-    /// 컬러버튼 컨테이너뷰를 애니메이션과 함께 숨기는 메서드
-    private func hideColorButtonContainerViewWithAnimation() {
-        self.colorButtonContainerView.fadeOut(
-            withDuration: Metric.colorButtonContainerViewFadeOutDuration
-        ) { _ in
-            self.colorButtonContainerView.hideWithAnimation()
-        }
-    }
-    
-    /// 컬러버튼 컨테이너뷰를 애니메이션과 함께 나타내는 메서드
-    private func showColorButtonContainerViewWithAnimation() {
-        self.colorButtonContainerView.showWithAnimation(completion: { _ in
-            self.colorButtonContainerView.fadeIn(
-                withDuration: Metric.colorButtonContainerViewFadeInDuration
-            )
-        })
     }
 
     
