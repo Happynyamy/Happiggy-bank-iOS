@@ -22,27 +22,12 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeBackgroundLight" translatesAutoresizingMaskIntoConstraints="NO" id="ZlX-eS-Yvg">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeBottleBack" translatesAutoresizingMaskIntoConstraints="NO" id="oqE-FC-3Q8">
-                                <rect key="frame" x="0.0" y="249" width="375" height="440"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="oqE-FC-3Q8" secondAttribute="height" multiplier="375:440" id="fo3-oe-RDc"/>
-                                </constraints>
-                            </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmA-fx-uIw">
-                                <rect key="frame" x="0.0" y="249" width="375" height="440"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="dmA-fx-uIw" secondAttribute="height" multiplier="375:440" id="W8J-jy-WPj"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="44" width="375" height="685"/>
                                 <connections>
                                     <segue destination="FVx-vN-7Xe" kind="embed" identifier="showBottleView" id="rLd-zf-USa"/>
                                 </connections>
                             </containerView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeBottleFront" translatesAutoresizingMaskIntoConstraints="NO" id="0dD-IT-dfb">
-                                <rect key="frame" x="0.0" y="249" width="375" height="440"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="0dD-IT-dfb" secondAttribute="height" multiplier="375:440" id="gcC-qP-AxE"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmu-YM-ARP">
                                 <rect key="frame" x="24" y="100.99999999999999" width="327" height="54.333333333333329"/>
                                 <constraints>
@@ -58,19 +43,14 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="ZlX-eS-Yvg" secondAttribute="bottom" id="0m3-gk-sI3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dmA-fx-uIw" secondAttribute="trailing" id="26A-HR-Krh"/>
-                            <constraint firstItem="0dD-IT-dfb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5H0-eY-A2Q"/>
                             <constraint firstItem="dmA-fx-uIw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8sb-a4-2KC"/>
-                            <constraint firstItem="oqE-FC-3Q8" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="DEf-ts-R9h"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oqE-FC-3Q8" secondAttribute="bottom" constant="40" id="Hnr-X5-UBq"/>
+                            <constraint firstItem="dmA-fx-uIw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="44" id="CbZ-gb-u8F"/>
                             <constraint firstItem="ZlX-eS-Yvg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="OFr-if-N9z"/>
                             <constraint firstAttribute="trailing" secondItem="ZlX-eS-Yvg" secondAttribute="trailing" id="OkY-Ki-cEN"/>
-                            <constraint firstItem="0dD-IT-dfb" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="TmB-xQ-POM"/>
                             <constraint firstItem="Bmu-YM-ARP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="dzV-x8-0gt"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dmA-fx-uIw" secondAttribute="bottom" constant="40" id="eMu-1s-Pwo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dmA-fx-uIw" secondAttribute="bottom" id="eMu-1s-Pwo"/>
                             <constraint firstItem="ZlX-eS-Yvg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="pLj-41-9fI"/>
-                            <constraint firstItem="oqE-FC-3Q8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="r4l-Un-Gm8"/>
                             <constraint firstItem="Bmu-YM-ARP" firstAttribute="top" secondItem="ZlX-eS-Yvg" secondAttribute="top" constant="101" id="ucC-5M-Fv0"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0dD-IT-dfb" secondAttribute="bottom" constant="40" id="wuS-UY-k8Y"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Bmu-YM-ARP" secondAttribute="trailing" constant="24" id="x7L-XF-hax"/>
                         </constraints>
                     </view>
@@ -591,30 +571,29 @@
         <scene sceneID="p7l-16-uR7">
             <objects>
                 <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="FVx-vN-7Xe" customClass="BottleViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="jBg-oD-Piv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="440"/>
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jBg-oD-Piv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="685"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OAt-vo-L69">
-                                <rect key="frame" x="80" y="165" width="215" height="231"/>
+                                <rect key="frame" x="23" y="0.0" width="329" height="685"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="gEH-ha-I0H" appends="YES" id="I7T-Ve-Zwh"/>
                                 </connections>
                             </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="hOc-mc-UUR"/>
+                        <viewLayoutGuide key="safeArea" id="5Hu-eg-CWw"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="OAt-vo-L69" firstAttribute="centerX" secondItem="hOc-mc-UUR" secondAttribute="centerX" id="lHD-MC-mZ6"/>
-                            <constraint firstItem="OAt-vo-L69" firstAttribute="height" secondItem="jBg-oD-Piv" secondAttribute="height" multiplier="0.525" id="rHf-uW-8wO"/>
-                            <constraint firstItem="hOc-mc-UUR" firstAttribute="bottom" secondItem="OAt-vo-L69" secondAttribute="bottom" constant="44" id="rUo-wu-z3X"/>
-                            <constraint firstItem="OAt-vo-L69" firstAttribute="width" secondItem="jBg-oD-Piv" secondAttribute="width" multiplier="0.573333" id="saU-qG-RkR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OAt-vo-L69" secondAttribute="trailing" constant="7" id="2LI-SU-Shf"/>
+                            <constraint firstItem="OAt-vo-L69" firstAttribute="leading" secondItem="jBg-oD-Piv" secondAttribute="leadingMargin" constant="7" id="KFq-lV-62y"/>
+                            <constraint firstItem="OAt-vo-L69" firstAttribute="top" secondItem="jBg-oD-Piv" secondAttribute="topMargin" id="dBa-F9-eez"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="OAt-vo-L69" secondAttribute="bottom" id="wb2-wb-Iwg"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="bottleNoteView" destination="OAt-vo-L69" id="Xcn-Ec-cu5"/>
-                        <outlet property="bottleNoteViewBottomConstraint" destination="rUo-wu-z3X" id="oDP-fr-ikO"/>
                         <segue destination="moi-e1-3hQ" kind="presentation" identifier="presentNewNoteDatePicker" id="71M-g6-wMS"/>
                         <segue destination="abG-42-vcb" kind="presentation" identifier="presentNewBottleNameField" id="Qcc-qq-Xqy"/>
                         <segue destination="FuI-qc-1fd" kind="presentation" identifier="presentNewNoteTextView" id="xNs-XQ-OjW"/>
@@ -628,7 +607,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1154.4000000000001" y="2307.6354679802957"/>
+            <point key="canvasLocation" x="-1154.4000000000001" y="2307.2660098522169"/>
         </scene>
         <!--New Bottle Name Field View Controller-->
         <scene sceneID="BI8-5q-YxJ">
@@ -793,8 +772,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="O5Z-N1-x6E"/>
-        <segue reference="7wk-af-F5w"/>
+        <segue reference="xNs-XQ-OjW"/>
+        <segue reference="71M-g6-wMS"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="checkmark" catalog="system" width="128" height="114"/>
@@ -802,8 +781,6 @@
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="homeBackgroundBlurredLight" width="375" height="812"/>
         <image name="homeBackgroundLight" width="375" height="812"/>
-        <image name="homeBottleBack" width="375" height="440"/>
-        <image name="homeBottleFront" width="375" height="440"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="customGray">
             <color red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
