@@ -50,6 +50,18 @@ final class BottleViewController: UIViewController {
         initializeBottleView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.gravity?.enable()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.gravity?.disable()
+    }
+    
     
     // MARK: - @IBActions
     
@@ -156,7 +168,7 @@ final class BottleViewController: UIViewController {
         else { return }
         
         self.fillBottleNoteView(forBottle: bottle)
-        self.activateGravity()
+        self.addGravity()
     }
     
     /// BottleNoteView 에 쪽지 이미지들을 추가
@@ -169,35 +181,22 @@ final class BottleViewController: UIViewController {
     
     /// 그리드를 사용해서 bottleNoteView 의 해당 좌표에 NoteView 추가
     private func addNoteView(_ note: Note, at index: Int) {
-        let noteView = NoteView(frame: self.grid[index] ?? .zero).then {
-            /// 겹쳐보이는 효과
-            $0.layer.zPosition = Metric.randomZpostion
-            $0.imageView = UIImageView(image: .note(color: note.color))
-            $0.imageView.transform = $0.transform.rotated(by: Metric.randomDegree)
-        }
+        let noteView = NoteView(frame: self.grid[index] ?? .zero, color: note.color)
         self.bottleNoteView.addSubview(noteView)
     }
     
     /// 쪽지 이미지들에 중력 효과 추가
     /// 유저가 폰을 기울이는 방향으로 쪽지들이 떨어짐
-    private func activateGravity() {
+    private func addGravity() {
         self.noteNodes = self.bottleNoteView.subviews.filter { $0 is NoteView }
-
+                
         gravity = Gravity(
             gravityItems: self.noteNodes,
             collisionItems: nil,
-            referenceView: self.bottleNoteView,
-            boundary: UIBezierPath(rect: CGRect(
-                x: Metric.boundaryPosX,
-                y: Metric.boundaryPosY,
-                width: self.bottleNoteView.bounds.width - Metric.boundaryPadding,
-                height: self.bottleNoteView.bounds.height - Metric.boundaryPadding
-            )),
+            referenceView: self.view,
+            collisionBoundaryInsets: Metric.collisionBoundaryInsets,
             queue: nil
         )
-        
-        // start gravity
-        gravity?.enable()
     }
     
     

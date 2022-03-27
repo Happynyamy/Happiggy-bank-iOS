@@ -12,59 +12,43 @@ import Then
 /// 저금통에 담길 노트 노드
 final class NoteView: UIView {
     
-    // MARK: Properties
+    // MARK: - Properties
+        
+    override var collisionBoundsType: UIDynamicItemCollisionBoundsType {
+        .ellipse
+    }
     
     /// 노트 노드 이미지
-    var imageView: UIImageView = UIImageView().then {
-        $0.image = UIImage.note(color: .default)
-        $0.translatesAutoresizingMaskIntoConstraints = false
+    private var imageView: UIImageView!
+    
+    
+    // MARK: - Inits
+    
+    private override init(frame: CGRect) {
+        super.init(frame: frame)
     }
     
-    /// 노트 노드 레이어
-    var shapeLayer: CAShapeLayer = {
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.allowsEdgeAntialiasing = true
-        return shapeLayer
-    }()
-    
-    override var collisionBoundsType: UIDynamicItemCollisionBoundsType {
-        return .path
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
-
-    override var collisionBoundingPath: UIBezierPath {
-        return circularPath()
-    }
-
     
-    // MARK: Override Functions
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.addSubview(self.imageView)
-
-        layer.addSublayer(shapeLayer)
-        let center = CGPoint(x: bounds.midX, y: bounds.midY)
-        shapeLayer.path = circularPath(lineWidth: 0, center: center).cgPath
-    }
-
-    
-    // MARK: Functions
-    
-    // TODO: 이미지에 맞게 path 설정
-    /// 원형 path 설정
-    private func circularPath(
-        lineWidth: CGFloat = 0,
-        center: CGPoint = .zero
-    ) -> UIBezierPath {
-        let radius = (min(bounds.width, bounds.height) - lineWidth) / 2
+    convenience init(frame: CGRect, color: NoteColor) {
+        self.init(frame: frame)
         
-        return UIBezierPath(
-            arcCenter: center,
-            radius: radius,
-            startAngle: 0,
-            endAngle: .pi * 2,
-            clockwise: true
-        )
+        self.layer.zPosition = Metric.randomZpostion
+        self.configureImageView(withColor: color)
+    }
+    
+    
+    // MARK: - Functions
+    
+    /// 쪽지 색깔에 맞게 이미지 뷰를 생성하고 서브 뷰로 추가
+    private func configureImageView(withColor color: NoteColor) {
+        self.imageView = UIImageView(image: .note(color: color)).then {
+            $0.frame = self.bounds
+            $0.contentMode = .scaleAspectFit
+            $0.transform = self.transform.rotated(by: Metric.randomDegree)
+        }
+        self.addSubview(self.imageView)
     }
 }

@@ -198,7 +198,30 @@ extension Bottle {
         // MARK: - 오늘 이미 작성한 상태 테스트하려면 아래 주석 해제
 //        Note.create(date: Date(), color: NoteColor.yellow, content: "누가 뚝딱 만들어주면 좋겠다 한 3줄 정도까지 채우고 싶은데 아무거나 써보기 이모지도 써보기 시험 시험 테스트 ☀️", bottle: bottle)
         
-        // swiftlint:enable line_length
+        return bottle
+    }()
+    
+    static let fullBottle: Bottle = {
+        var count = 365
+//        count = 180
+//        count = 90
+//        count = 30
+//        count = 7
+        
+        let noteCount = count
+        
+        let startDate = nthDayFromToday(-count)
+        let endDate = nthDayFromToday(-1)
+        
+        let bottle = Bottle(title: "행복냠냠이", startDate: startDate, endDate: endDate)
+        for index in 0..<noteCount {
+            let note = Note.create(
+                date: nthDayFromToday(-index-1),
+                color: NoteColor.allCases.randomElement()!,
+                content: "일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십",
+                bottle: bottle)
+        }
         return bottle
     }()
 }
+// swiftlint:enable line_length
