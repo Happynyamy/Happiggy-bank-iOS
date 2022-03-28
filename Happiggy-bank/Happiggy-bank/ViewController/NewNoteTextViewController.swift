@@ -214,7 +214,7 @@ final class NewNoteTextViewController: UIViewController {
             bottle: self.viewModel.newNote.bottle
         )
         let noteAndDelay = (note: note, delay: CATransition.transitionDuration)
-        self.post(name: .noteProgressDidUpdate, object: noteAndDelay)
+        self.post(name: .noteDidAdd, object: noteAndDelay)
         // TODO: activate core data
         PersistenceStore.shared.save()
     }
