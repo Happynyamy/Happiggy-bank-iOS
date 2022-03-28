@@ -178,7 +178,7 @@ extension Bottle {
     
     /// 테스트용 목 데이터
     static let foo: Bottle = {
-        let count = 345
+        let count = 364
         let startDate = nthDayFromToday(-count)
         let endDate = nthDayFromToday(9)
         

@@ -15,27 +15,19 @@ public class Gravity: NSObject {
     private var queue: OperationQueue!
 
     private var dynamicItems: [UIDynamicItem]
-    private var collisionItems: [UIDynamicItem]
     
     /// reference view 를 기준으로 설정할 충돌 영역의 상하좌우 마진
     private var collisionBoundaryInsets: UIEdgeInsets
     
     /// Initialize the components
     public init(
-        gravityItems: [UIDynamicItem],
-        collisionItems: [UIDynamicItem]?,
+        dynamicItems: [UIDynamicItem],
         referenceView: UIView,
         collisionBoundaryInsets: UIEdgeInsets,
         queue: OperationQueue?
     ) {
         
-        self.dynamicItems = gravityItems
-
-        if let collisionItems = collisionItems {
-            self.collisionItems = collisionItems
-        } else {
-            self.collisionItems = self.dynamicItems
-        }
+        self.dynamicItems = dynamicItems
         
         if let queue = queue {
             self.queue = queue
@@ -45,7 +37,7 @@ public class Gravity: NSObject {
         
         animator = UIDynamicAnimator(referenceView: referenceView)
         gravity = UIGravityBehavior(items: self.dynamicItems)
-        self.collision =  UICollisionBehavior(items: self.collisionItems)
+        self.collision =  UICollisionBehavior(items: self.dynamicItems)
         self.collision.setTranslatesReferenceBoundsIntoBoundary(with: collisionBoundaryInsets)
         self.collisionBoundaryInsets = collisionBoundaryInsets
     }
@@ -58,6 +50,20 @@ public class Gravity: NSObject {
             to: queue,
             withHandler: motionHandler
         )
+    }
+    
+    /// 중력 방향을 디폴트값(디바이스 아래)으로 리셋 후 고정
+    func resetAndBindGravityDirection() {
+        self.gravity.gravityDirection = CGVector(dx: .zero, dy: .one)
+        motion.stopDeviceMotionUpdates()
+    }
+    
+    /// 중력, 충돌이 적용된 모든 아이템 제거
+    func removeAllItems() {
+        self.dynamicItems.forEach {
+            self.gravity.removeItem($0)
+            self.collision.removeItem($0)
+        }
     }
 
     /// Disable motion and behaviors
@@ -76,6 +82,7 @@ public class Gravity: NSObject {
     func addDynamicItem(_ item: UIDynamicItem) {
         self.gravity.addItem(item)
         self.collision.addItem(item)
+        self.dynamicItems.append(item)
     }
 
     private func motionHandler( motion: CMDeviceMotion?, error: Error? ) {

@@ -556,6 +556,7 @@
                         <outletCollection property="colorButtons" destination="S3V-4f-gjV" collectionClass="NSMutableArray" id="ht5-ZJ-p7O"/>
                         <segue destination="rAE-WY-Wyc" kind="unwind" identifier="unwindToBottleViewFromNoteTextView" animates="NO" unwindAction="unwindCallDidArriveWithSegue:" id="S89-mV-zbI"/>
                         <segue destination="moi-e1-3hQ" kind="presentation" identifier="presentDatePickerFromNoteTextView" id="7wk-af-F5w"/>
+                        <segue destination="rAE-WY-Wyc" kind="unwind" identifier="unwindToBottleViewFromNoteTextViewFromSaveButton" unwindAction="unwindCallDidArriveWithSegue:" id="2Dc-9r-8MN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbT-jH-6dB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -773,7 +774,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="O5Z-N1-x6E"/>
+        <segue reference="xNs-XQ-OjW"/>
         <segue reference="71M-g6-wMS"/>
     </inferredMetricsTieBreakers>
     <resources>
