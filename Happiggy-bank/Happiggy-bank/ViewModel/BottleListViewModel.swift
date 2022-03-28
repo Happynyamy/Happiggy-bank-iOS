@@ -40,7 +40,6 @@ final class BottleListViewModel {
             /// stock mock data
             list = Bottle.fooOpenBottles
             PersistenceStore.shared.save()
-            print("don't show me")
         }
 //        PersistenceStore.shared.deleteAll(Bottle.self)
         

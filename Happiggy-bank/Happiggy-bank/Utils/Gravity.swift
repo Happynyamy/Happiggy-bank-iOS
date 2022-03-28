@@ -14,6 +14,7 @@ public class Gravity: NSObject {
     private var gravity: UIGravityBehavior!
     private(set) var collision: UICollisionBehavior!
     private var motion: CMMotionManager = CMMotionManager().then {
+        /// 유저가 새로운 쪽지 추가 창으로 넘어갈 때 디바이스 모션 업데이트가 너무 빠르면 중력 변경 요청을 무시해 조정
         $0.deviceMotionUpdateInterval = Metric.deviceMotionUpdateInterval
     }
     private var queue: OperationQueue!
