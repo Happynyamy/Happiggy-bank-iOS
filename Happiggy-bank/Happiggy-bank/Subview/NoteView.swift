@@ -21,9 +21,6 @@ final class NoteView: UIView {
     /// 노트 노드 이미지
     private var imageView: UIImageView!
     
-    /// 노트뷰를 만드는 데 사용한 쪽지
-    var note: Note!
-    
     
     // MARK: - Inits
     
@@ -35,20 +32,19 @@ final class NoteView: UIView {
         super.init(coder: coder)
     }
     
-    convenience init(frame: CGRect, note: Note) {
+    convenience init(frame: CGRect, image: UIImage) {
         self.init(frame: frame)
         
-        self.note = note
         self.layer.zPosition = Metric.randomZpostion
-        self.configureImageView(withColor: note.color)
+        self.configureImageView(withImage: image)
     }
     
     
     // MARK: - Functions
     
     /// 쪽지 색깔에 맞게 이미지 뷰를 생성하고 서브 뷰로 추가
-    private func configureImageView(withColor color: NoteColor) {
-        self.imageView = UIImageView(image: .note(color: color)).then {
+    private func configureImageView(withImage image: UIImage) {
+        self.imageView = UIImageView(image: image).then {
             $0.frame = self.bounds
             $0.contentMode = .scaleAspectFit
             $0.transform = self.transform.rotated(by: Metric.randomDegree)

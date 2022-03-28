@@ -6,14 +6,18 @@
 import CoreMotion
 import UIKit
 
+import Then
+
 public class Gravity: NSObject {
 
     private var animator: UIDynamicAnimator!
     private var gravity: UIGravityBehavior!
-    private var collision: UICollisionBehavior!
-    private var motion: CMMotionManager = CMMotionManager()
+    private(set) var collision: UICollisionBehavior!
+    private var motion: CMMotionManager = CMMotionManager().then {
+        $0.deviceMotionUpdateInterval = Metric.deviceMotionUpdateInterval
+    }
     private var queue: OperationQueue!
-
+    
     private var dynamicItems: [UIDynamicItem]
     
     /// reference view 를 기준으로 설정할 충돌 영역의 상하좌우 마진
@@ -46,24 +50,21 @@ public class Gravity: NSObject {
     public func enable() {
         animator.addBehavior(self.collision)
         animator.addBehavior(gravity)
-        motion.startDeviceMotionUpdates(
-            to: queue,
-            withHandler: motionHandler
-        )
+        self.startDeviceMotionUpdates()
     }
     
     /// 중력 방향을 디폴트값(디바이스 아래)으로 리셋 후 고정
     func resetAndBindGravityDirection() {
+        self.motion.stopDeviceMotionUpdates()
         self.gravity.gravityDirection = CGVector(dx: .zero, dy: .one)
-        motion.stopDeviceMotionUpdates()
     }
     
-    /// 중력, 충돌이 적용된 모든 아이템 제거
-    func removeAllItems() {
-        self.dynamicItems.forEach {
-            self.gravity.removeItem($0)
-            self.collision.removeItem($0)
-        }
+    /// 디바이스 모션에 따른 중력 방향 변경 재개
+    func startDeviceMotionUpdates() {
+        self.motion.startDeviceMotionUpdates(
+            to: queue,
+            withHandler: motionHandler
+        )
     }
 
     /// Disable motion and behaviors
@@ -108,7 +109,6 @@ public class Gravity: NSObject {
                 position.y *= -1
             }
         }
-
         let vector = CGVector(dx: position.x, dy: 0 - position.y)
         self.gravity.gravityDirection = vector
     }
