@@ -283,7 +283,7 @@ enum SegueIdentifier {
     /// 저금통을 눌렀을 때 새 쪽지 작성뷰 컨트롤러를 띄우는 데 사용
     static let presentNewNoteTextView = "presentNewNoteTextView"
     
-    /// 쪽지 작성뷰 컨트롤러에서 보틀뷰 컨트롤러로 돌아갈 때 사용
+    /// 쪽지 작성뷰 컨트롤러에서 취소 버튼을 눌러서 보틀뷰 컨트롤러로 돌아갈 때 사용
     static let unwindToBottleViewFromNoteTextView = "unwindToBottleViewFromNoteTextView"
     
     /// 새 유리병 이름 텍스트필드 팝업 띄울 때 사용
@@ -308,6 +308,9 @@ enum SegueIdentifier {
     
     /// 새 쪽지 날짜 피커에서 저금통 뷰로 돌아갈 때 사용
     static let unwindFromNoteDatePickerToBottleView = "unwindFromNoteDatePickerToBottleView"
+    
+    /// 쪽지 작성뷰 컨트롤러에서 저장 버튼을 눌러서 보틀뷰 컨트롤러로 돌아갈 때 사용
+    static let unwindToBottleViewFromNoteTextViewBySave = "unwindToBottleViewFromNoteTextViewFromSaveButton"
 }
 
 extension CATransition {

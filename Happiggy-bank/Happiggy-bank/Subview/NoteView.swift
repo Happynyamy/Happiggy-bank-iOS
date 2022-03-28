@@ -21,6 +21,9 @@ final class NoteView: UIView {
     /// 노트 노드 이미지
     private var imageView: UIImageView!
     
+    /// 노트뷰를 만드는 데 사용한 쪽지
+    var note: Note!
+    
     
     // MARK: - Inits
     
@@ -32,11 +35,12 @@ final class NoteView: UIView {
         super.init(coder: coder)
     }
     
-    convenience init(frame: CGRect, color: NoteColor) {
+    convenience init(frame: CGRect, note: Note) {
         self.init(frame: frame)
         
+        self.note = note
         self.layer.zPosition = Metric.randomZpostion
-        self.configureImageView(withColor: color)
+        self.configureImageView(withColor: note.color)
     }
     
     

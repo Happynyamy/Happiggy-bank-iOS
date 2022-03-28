@@ -238,7 +238,7 @@ final class NewNoteTextViewController: UIViewController {
             style: .default) { _ in
                 self.fadeOut()
                 self.performSegue(
-                    withIdentifier: SegueIdentifier.unwindToBottleViewFromNoteTextView,
+                    withIdentifier: SegueIdentifier.unwindToBottleViewFromNoteTextViewBySave,
                     sender: self
                 )
                 self.saveNewNote()
