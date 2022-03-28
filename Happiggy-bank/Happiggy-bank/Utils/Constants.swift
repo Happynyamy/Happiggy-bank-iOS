@@ -41,6 +41,12 @@ extension BottleViewController {
         /// 현재 뷰를 기준으로 충돌 영역 설정을 위해 넣을 상하좌우 마진
         static let collisionBoundaryInsets = UIEdgeInsets(top: .zero, left: 3, bottom: 3, right: 3)
         
+        /// 일주일, 한 달짜리는 영역 축소 필요
+        static let durationCap = 60
+        
+        /// 일주일, 한 달인 경우 높이를 축소하기 위해 감산해줄 값
+        static let shorterMonthHeightRemovalConstant: CGFloat = 90
+        
     }
 }
 

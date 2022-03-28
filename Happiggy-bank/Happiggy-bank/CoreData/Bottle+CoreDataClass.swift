@@ -178,12 +178,12 @@ extension Bottle {
     
     /// 테스트용 목 데이터
     static let foo: Bottle = {
-        let count = 365 - 2
+        let count = 355 - 2
         let startDate = nthDayFromToday(-count)
         let endDate = nthDayFromToday(9)
         
         let bottle = Bottle(title: "행복냠냠이", startDate: startDate, endDate: endDate)
-        for index in 10..<count {
+        for index in 5..<count {
             let note = Note.create(
                 date: nthDayFromToday(-index-1),
                 color: NoteColor.allCases.randomElement()!,
