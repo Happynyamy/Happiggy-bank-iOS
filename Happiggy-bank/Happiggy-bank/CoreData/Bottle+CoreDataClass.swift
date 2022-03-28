@@ -169,7 +169,7 @@ extension Bottle {
     static let fooOpenBottles: [Bottle] = {
         var bottles = [Bottle]()
         
-        for duration in [365, 90, 60, 30, 7] {
+        for duration in [365, 180, 90, 30, 7] {
             bottles.append(makeMockData(duration: duration))
         }
         
@@ -178,7 +178,7 @@ extension Bottle {
     
     /// 테스트용 목 데이터
     static let foo: Bottle = {
-        let count = 364
+        let count = 365 - 2
         let startDate = nthDayFromToday(-count)
         let endDate = nthDayFromToday(9)
         

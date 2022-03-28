@@ -738,3 +738,13 @@ extension NoteView {
         }()
     }
 }
+
+extension Gravity {
+    
+    /// 상수값
+    enum Metric {
+        
+        /// 디바이스 모션 업데이트 주기: 0.5
+        static let deviceMotionUpdateInterval: CGFloat = 0.5
+    }
+}

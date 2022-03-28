@@ -34,18 +34,17 @@ final class BottleViewController: UIViewController {
     }()
     
     /// 쪽지 노드
-    private var noteNodes: [NoteView] = []
+    private var noteNodes: [NoteView] {
+        self.bottleNoteView.subviews.compactMap { $0 as? NoteView }
+    }
     
     /// 쪽지가 최초로 다른 쪽지 혹은 바운더리와 부딪힐 때 모션 효과를 주기 위한 프로퍼티
     private var activateMotion = false
     
     /// 새로운 쪽지가 추가될 때 상단 중앙에서 떨어지는 효과를 위해 지정할 프레임
     private var topCenterFrame: CGRect {
-        guard let index = self.viewModel.newlyAddedNoteIndex
-        else { return .zero }
-        print(index)
         let origin = CGPoint(
-            x: self.grid[index]?.minX ?? .zero,
+            x: self.bottleNoteView.bounds.midX - self.grid.cellSize.width / 2,
             y: .zero
         )
         
@@ -65,12 +64,13 @@ final class BottleViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        print(#function)
         self.gravity?.enable()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        print(#function)
         self.gravity?.disable()
     }
     
@@ -118,9 +118,10 @@ final class BottleViewController: UIViewController {
     @IBAction func unwindCallDidArrive(segue: UIStoryboardSegue) {
 
         if segue.identifier == SegueIdentifier.unwindToBottleViewFromNoteTextViewBySave {
+            print("save")
             return
         }
-        self.gravity?.enable()
+        self.gravity?.startDeviceMotionUpdates()
     }
     
     
@@ -131,18 +132,7 @@ final class BottleViewController: UIViewController {
         
         guard let noteAndDelay = notification.object as? (note: Note, delay: TimeInterval)
         else { return }
-        
-        /// clean up
-        self.noteNodes.forEach { $0.removeFromSuperview() }
-        self.gravity?.removeAllItems()
-        let formerNotes = noteNodes.compactMap { $0.note }
-        self.noteNodes = []
-        
-        /// add again
-        self.fillBottleNoteView(fromNotes: formerNotes)
-        self.noteNodes.forEach { self.gravity?.addDynamicItem($0)}
-        
-        /// animation
+    
         self.dropNewNoteFromTopCenter(noteAndDelay.note, delay: noteAndDelay.delay)
     }
     
@@ -194,13 +184,12 @@ final class BottleViewController: UIViewController {
             let frame = self.grid[index] ?? .zero
             let noteView = self.createNoteView(note, frame: frame)
             self.bottleNoteView.addSubview(noteView)
-            self.noteNodes.append(noteView)
         }
     }
     
     /// 그리드를 사용해서 bottleNoteView 의 해당 좌표에 들어갈 NoteView 생성
     private func createNoteView(_ note: Note, frame: CGRect) -> NoteView {
-        NoteView(frame: frame, note: note)
+        NoteView(frame: frame, image: .note(color: note.color))
     }
     
     /// 쪽지 이미지들에 중력 효과 추가
@@ -212,17 +201,17 @@ final class BottleViewController: UIViewController {
             collisionBoundaryInsets: Metric.collisionBoundaryInsets,
             queue: nil
         )
+        
+        self.gravity?.collision.collisionDelegate = self
     }
     
     /// 새로운 쪽지를 추가하고 화면 상단 중앙에서 떨어트림
     private func dropNewNoteFromTopCenter(_ note: Note, delay: TimeInterval) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + delay + 0.7) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
             let noteView = self.createNoteView(note, frame: self.topCenterFrame)
             self.bottleNoteView.addSubview(noteView)
             self.gravity?.addDynamicItem(noteView)
-            self.noteNodes.append(noteView)
-            HapticManager.instance.notification(type: .success)
-            self.gravity?.enable()
+            self.activateMotion.toggle()
         }
     }
     
@@ -231,8 +220,8 @@ final class BottleViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        /// 다른 뷰를 띄우면 중력 효과 중단
-        self.gravity?.disable()
+        /// 새 쪽지가 떨어질 영역을 확보하기 위해 해당 탭 내에서 다른 뷰를 띄우면 중력 방향을 하단으로 변경해 기존 쪽지를 전부 하단으로 이동
+        self.gravity?.resetAndBindGravityDirection()
         
         if segue.identifier == SegueIdentifier.presentNewNoteDatePicker {
             guard let dateViewController = segue.destination as? NewNoteDatePickerViewController,
@@ -251,5 +240,40 @@ final class BottleViewController: UIViewController {
             let viewModel = NewNoteTextViewModel(date: Date(), bottle: bottle)
             textViewController.viewModel = viewModel
         }
+    }
+}
+
+
+// MARK: - UICollisionBehaviorDelegate
+extension BottleViewController: UICollisionBehaviorDelegate {
+    
+    // MARK: - Functions
+    
+    func collisionBehavior(
+        _ behavior: UICollisionBehavior,
+        endedContactFor item1: UIDynamicItem,
+        with item2: UIDynamicItem
+    ) {
+        self.activateMotionOnlyOnce()
+    }
+    
+    func collisionBehavior(
+        _ behavior: UICollisionBehavior,
+        beganContactFor item: UIDynamicItem,
+        withBoundaryIdentifier identifier: NSCopying?,
+        at point: CGPoint
+    ) {
+        self.activateMotionOnlyOnce()
+    }
+    
+    /// 새로운 쪽지가 추가되었을떄 최초로 다른 아이템 혹은 바운더리와 부딪히는 경우에만 햅틱 반응
+    private func activateMotionOnlyOnce() {
+        guard self.activateMotion
+        else { return }
+        
+        self.activateMotion.toggle()
+        HapticManager.instance.notification(type: .success)
+        /// 쪽지가 하단 바운더리 혹은 다른 쪽지와 부딪히면 디바이스 모션 업데이트 재개
+        self.gravity?.startDeviceMotionUpdates()
     }
 }
