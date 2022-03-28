@@ -77,6 +77,7 @@ final class NewBottleDatePickerViewController: UIViewController {
             startDate: Date(),
             endDate: endDate(from: Date(), after: periodIndex)
         )
+        // TODO: activate core data
 //        PersistenceStore.shared.save()
     }
     

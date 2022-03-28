@@ -86,11 +86,12 @@ final class HomeViewController: UIViewController {
     
     // TODO: 삭제 (새로운 저금통 추가했을 때 보기 위한 임시 메서드)
     @objc private func refetch() {
-//        guard self.bottleViewController.viewModel.bottle == nil
-//        else { return }
-        print(#function)
+        guard self.bottleViewController.viewModel.bottle == nil
+        else { return }
         
-//        self.viewModel.executeFetchRequest()
+        // TODO: 1안 -> Notification + Object, 2안 -> refetch
+        self.viewModel.executeFetchRequest()
         self.bottleViewController.viewModel.bottle = self.viewModel.bottle
+        self.bottleViewController.initializeBottleView()
     }
 }

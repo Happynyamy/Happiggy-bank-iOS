@@ -16,10 +16,6 @@ final class BottleViewController: UIViewController {
     /// 저금통 쪽지를 보여주는 애니메이션 뷰    
     @IBOutlet weak var bottleNoteView: BottleNoteView!
     
-    // TODO: 나중에 불필요하면 삭제
-    /// bottle Note View 의 bottom constraint
-    @IBOutlet weak var bottleNoteViewBottomConstraint: NSLayoutConstraint!
-    
     
     // MARK: - Properties
     
@@ -110,8 +106,8 @@ final class BottleViewController: UIViewController {
     
     // MARK: - @objc
     
-    /// 쪽지 진행 정도가 바뀌었다는 알림을 받았을 때 호출되는 메서드
-    @objc private func noteProgressDidChange(_ notification: Notification) {
+    /// 쪽지 새로 추가되었다는 알림을 받았을 때 호출되는 메서드
+    @objc private func noteDidAdd(_ notification: Notification) {
         
         guard let noteAndDelay = notification.object as? (note: Note, delay: TimeInterval),
               let index = self.viewModel.newlyAddedNoteIndex
@@ -127,11 +123,20 @@ final class BottleViewController: UIViewController {
     
     // MARK: - Functions
     
+    /// 저금통 유리병 애니메이션 초기 세팅: 쪽지 작성이 가능한 상태로 변경
+    func initializeBottleView() {
+        guard let bottle = self.viewModel.bottle
+        else { return }
+        
+        self.fillBottleNoteView(forBottle: bottle)
+        self.addGravity()
+    }
+    
     /// NotificationCenter.default 에 observer 들을 추가
     private func addObservers() {
         self.observe(
-            selector: #selector(noteProgressDidChange(_:)),
-            name: .noteProgressDidUpdate
+            selector: #selector(noteDidAdd(_:)),
+            name: .noteDidAdd
         )
     }
     
@@ -154,15 +159,6 @@ final class BottleViewController: UIViewController {
         if !bottle.isInProgress {
             print("show bottle ready to open")
         }
-    }
-    
-    /// 저금통 유리병 애니메이션 초기 세팅
-    private func initializeBottleView() {
-        guard let bottle = self.viewModel.bottle
-        else { return }
-        
-        self.fillBottleNoteView(forBottle: bottle)
-        self.addGravity()
     }
     
     /// BottleNoteView 에 쪽지 이미지들을 추가
