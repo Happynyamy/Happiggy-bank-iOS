@@ -54,12 +54,13 @@ public class Bottle: NSManagedObject {
     /// 주어진 제목, 시작날짜, 종료날짜를 갖는 저금통 인스턴스를 코어데이터에 새로 생성함
     /// 아이디는 자체 생성, isOpen 과 hasFixedTitle 은 기본 false 로 설정
     /// 저장은 별도로 해야함
-    convenience init(title: String, startDate: Date, endDate: Date) {
+    convenience init(title: String, startDate: Date, endDate: Date, message: String) {
         self.init(context: PersistenceStore.shared.context)
         self.id_ = UUID()
         self.title_ = title
         self.startDate_ = startDate
         self.endDate_ = endDate
+        self.message_ = message
     }
     
     
@@ -82,6 +83,10 @@ public class Bottle: NSManagedObject {
     /// 개봉 예정 날짜
     var endDate: Date {
         endDate_ ?? Date()
+    }
+    
+    var message: String {
+        message_ ?? .empty
     }
     
     /// 해당 저금통에 들어있는 쪽지들의 배열
@@ -145,7 +150,8 @@ extension Bottle {
         let bottle = Bottle(
             title: "행복냠냠이",
             startDate: startDate,
-            endDate: endDate
+            endDate: endDate,
+            message: "안녕"
         )
         bottle.isOpen = isOpen
         
@@ -182,7 +188,7 @@ extension Bottle {
         let startDate = nthDayFromToday(-count)
         let endDate = nthDayFromToday(9)
         
-        let bottle = Bottle(title: "행복냠냠이", startDate: startDate, endDate: endDate)
+        let bottle = Bottle(title: "행복냠냠이", startDate: startDate, endDate: endDate, message: "안녕")
         for index in 5..<count {
             let note = Note.create(
                 date: nthDayFromToday(-index-1),
@@ -213,7 +219,8 @@ extension Bottle {
         let startDate = nthDayFromToday(-count)
         let endDate = nthDayFromToday(-1)
         
-        let bottle = Bottle(title: "행복냠냠이", startDate: startDate, endDate: endDate)
+        let bottle = Bottle(title: "행복냠냠이", startDate: startDate, endDate: endDate,
+                            message: "안녕")
         for index in 0..<noteCount {
             let note = Note.create(
                 date: nthDayFromToday(-index-1),

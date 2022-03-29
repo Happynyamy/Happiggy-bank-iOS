@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Bottle" representedClassName="Bottle" syncable="YES" codeGenerationType="category">
-        <attribute name="endDate_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="endDate_" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="hasFixedTitle" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <attribute name="id_" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="id_" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isOpen" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <attribute name="startDate_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="title_" optional="YES" attributeType="String"/>
+        <attribute name="message_" attributeType="String" minValueString="1" maxValueString="15"/>
+        <attribute name="startDate_" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title_" attributeType="String"/>
         <relationship name="notes_" optional="YES" toMany="YES" maxCount="365" deletionRule="Cascade" destinationEntity="Note" inverseName="bottle_" inverseEntity="Note"/>
     </entity>
     <entity name="Note" representedClassName="Note" syncable="YES" codeGenerationType="category">
-        <attribute name="color_" optional="YES" attributeType="String"/>
-        <attribute name="content_" optional="YES" attributeType="String" minValueString="1" maxValueString="100"/>
-        <attribute name="date_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="id_" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="isOpen" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <relationship name="bottle_" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bottle" inverseName="notes_" inverseEntity="Bottle"/>
+        <attribute name="color_" attributeType="String"/>
+        <attribute name="content_" attributeType="String" minValueString="1" maxValueString="100"/>
+        <attribute name="date_" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id_" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="bottle_" maxCount="1" deletionRule="Nullify" destinationEntity="Bottle" inverseName="notes_" inverseEntity="Bottle"/>
     </entity>
     <elements>
-        <element name="Bottle" positionX="170.34765625" positionY="-325.72265625" width="128" height="148"/>
-        <element name="Note" positionX="179.48046875" positionY="-52.40625" width="128" height="133"/>
+        <element name="Bottle" positionX="170.34765625" positionY="-325.72265625" width="128" height="149"/>
+        <element name="Note" positionX="179.48046875" positionY="-52.40625" width="128" height="104"/>
     </elements>
 </model>
