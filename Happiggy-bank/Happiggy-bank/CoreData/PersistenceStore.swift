@@ -37,8 +37,25 @@ class PersistenceStore {
          error conditions that could cause the creation of the store to fail.
          */
         self.persistentContainer = NSPersistentContainer(name: name).then {
+            
+            // MARK: 시뮬레이터/디바이스마다 해당 코드 돌려주시고 지워주세요...! 54줄까지 지워주시면 됩니다...!
+            let datamodelName = StringLiteral.sharedPersistenceStoreName
+            let storeType = "sqlite"
+            let url: URL = {
+                let url = FileManager.default.urls(
+                    for: .applicationSupportDirectory,
+                       in: .userDomainMask
+                )[0].appendingPathComponent("\(datamodelName).\(storeType)")
+                
+                assert(FileManager.default.fileExists(atPath: url.path))
+
+                return url
+            }()
+            try? $0.persistentStoreCoordinator.destroyPersistentStore(at: url, ofType: storeType, options: nil)
+            
             $0.loadPersistentStores(completionHandler: { _, error in
                 if let error = error as NSError? {
+                    
                     // Replace this implementation with code to handle the error appropriately.
                     // fatalError() causes the application to generate a crash log and terminate.
                     // You should not use this function in a shipping application,
