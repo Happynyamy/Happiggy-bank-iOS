@@ -317,6 +317,9 @@ enum SegueIdentifier {
     
     /// 쪽지 작성뷰 컨트롤러에서 저장 버튼을 눌러서 보틀뷰 컨트롤러로 돌아갈 때 사용
     static let unwindToBottleViewFromNoteTextViewBySave = "unwindToBottleViewFromNoteTextViewFromSaveButton"
+    
+    /// 쪽지 리스트 컨트롤러에서 쪽지 디테일 뷰 컨트롤러를 띄울 때 사용
+    static let showNoteDetailView = "showNoteDetailView"
 }
 
 extension CATransition {
@@ -524,15 +527,6 @@ extension NoteCell {
     /// NoteCell 에서 사용하는 상수들
     enum Metric {
         
-        /// 애니메이션 지속 시간: 0.6
-        static let animationDuration: TimeInterval = 0.6
-        
-        /// 50%
-        static let half: Double = 0.5
-        
-        /// 좌우 패딩: 25
-        static let horizontalPadding: CGFloat = 24
-        
         /// 내용 라벨 줄 간격: 8
         static let lineSpacing: CGFloat = 8
         
@@ -624,22 +618,8 @@ extension NewNoteDatePickerViewModel {
 
 extension NoteListViewModel {
     
-    /// NoteListViewModel 에서 지정하는 폰트 크기
-    enum Font {
-        
-        /// 날짜라벨 폰트 크기: 17
-        static let dateLabelFontSize: CGFloat = 17
-        
-    }
-    
     /// NoteListViewModel 에서 사용하는 문자열
     enum StringLiteral {
-        
-        /// 빈 문자열: 저금통 제목을 불러올 수 없을 때 사용
-        static let emptyString = ""
-        
-        /// 쪽지 이미지 에셋 호출을 위해 앞에 붙일 접두사
-        static let listNote: String = "listNote"
         
         /// 쪽지 개수 라벨에서 개수 뒤에 붙일 문자열: 리턴 "행복 n개"
         static func noteCountLabelString(count: Int) -> String { "행복 \(count)개" }
@@ -752,5 +732,32 @@ extension Gravity {
         
         /// 디바이스 모션 업데이트 주기: 0.5
         static let deviceMotionUpdateInterval: CGFloat = 0.5
+    }
+}
+
+extension NoteDetailViewModel {
+    
+    /// 폰트 관련 설정
+    enum Font {
+        
+        /// 날짜라벨 폰트 크기: 15
+        static let dateLabelFontSize: CGFloat = 15
+    }
+    
+    /// 문자열
+    enum StringLiteral {
+        
+        /// 쪽지 이미지 에셋 호출을 위해 앞에 붙일 접두사
+        static let listNote: String = "listNote"
+    }
+}
+
+extension NoteDetailViewController {
+    
+    /// 상수값
+    enum Metric {
+        
+        /// 양 옆에 보일 아이템의 너비: 30
+        static let sideItemVisibleWidth: CGFloat = 30
     }
 }
