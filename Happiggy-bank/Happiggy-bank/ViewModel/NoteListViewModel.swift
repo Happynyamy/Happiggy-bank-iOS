@@ -44,6 +44,11 @@ final class NoteListViewModel {
         )
     }()
     
+    /// 저금통 이름
+    private(set) lazy var bottleTitle: String = {
+        self.bottle.title
+    }()
+    
     /// 리스트에서 나타낼 저금통
     private var bottle: Bottle!
     

@@ -29,15 +29,20 @@ final class NoteListViewController: UIViewController {
         
         self.configureCollectionViewLayout()
         self.collectionView.register(TagCell.self, forCellWithReuseIdentifier: TagCell.name)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+        self.configureNavigationBar()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // TODO: DetailView와 연결
+        
+        if segue.identifier == SegueIdentifier.showNoteDetailView {
+            guard let noteDetailViewController = segue.destination as? NoteDetailViewController,
+                  let notes = self.viewModel.fetchedResultController.fetchedObjects,
+                  let selectedIndex = sender as? Int
+            else { return }
+            
+            let viewModel = NoteDetailViewModel(notes: notes, selectedIndex: selectedIndex)
+            noteDetailViewController.viewModel = viewModel
+        }
     }
     
     
@@ -47,6 +52,12 @@ final class NoteListViewController: UIViewController {
     private func configureCollectionViewLayout() {
         let layout = TagViewFlowLayout()
         self.collectionView.collectionViewLayout = layout
+    }
+    
+    /// 네비게이션 바 초기 설정
+    private func configureNavigationBar() {
+        self.navigationItem.title = self.viewModel.bottleTitle
+        self.navigationItem.backButtonTitle = .empty
     }
 }
 
@@ -85,9 +96,10 @@ extension NoteListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         collectionView.deselectItem(at: indexPath, animated: false)
-        print("link to detail view")
-        // TODO: Detail View 연결
-//        self.performSegue(withIdentifier: "", sender: indexPath)
+        self.performSegue(
+            withIdentifier: SegueIdentifier.showNoteDetailView,
+            sender: indexPath.row
+        )
     }
 }
 
@@ -117,7 +129,7 @@ extension NoteListViewController: UICollectionViewDataSource {
     // swiftlint:enable force_cast
     
     /// 쪽지 색깔, 첫 번쨰 단어를 사용해서 셀 모습 생성
-    func configureCell(_ cell: TagCell,at indexPath: IndexPath) {
+    func configureCell(_ cell: TagCell, at indexPath: IndexPath) {
         let note = self.viewModel.fetchedResultController.object(at: indexPath)
         
         // TODO: 첫 단어 추출 메서드 추가
