@@ -519,6 +519,21 @@ extension NoteListViewController {
         
         /// 첫 단어 라벨 좌우 패딩: 16
         static let firstWordLabelHorizontalPadding: CGFloat = 16
+        
+        /// 축소 스케일: 0.9
+        static let transformDownScale: CGFloat = 0.9
+        
+        /// 확대 스케일: 1.1
+        static let transformUpScale: CGFloat = 1.1
+        
+        /// 셀 줌 효과 시간: 0.3
+        static let cellZoomAnimationDuration: CGFloat = 0.3
+        
+        /// 확대 효과(0.9 -> 1.1) 상대적 시간: 2/3
+        static let upScaleRelativeDuration: CGFloat = 2/3
+
+        /// 축소 효과(1.1 -> 1.0) 상대적 시간: 1/3
+        static let downScaleRelativeDuration: CGFloat = 1/3
     }
 }
 

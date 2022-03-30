@@ -36,7 +36,7 @@ final class TagCell: UICollectionViewCell {
     }
     
     
-    // MARK: - Functions
+    // MARK: - Override Functions
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -46,6 +46,8 @@ final class TagCell: UICollectionViewCell {
         self.transform = .identity
     }
     
+    
+    // MARK: - Functions 
     /// 뷰 체계 설정
     private func configureHierarchy() {
         self.noteImageView.translatesAutoresizingMaskIntoConstraints = false
