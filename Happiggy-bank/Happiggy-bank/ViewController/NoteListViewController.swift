@@ -27,7 +27,6 @@ final class NoteListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.configureCollectionViewLayout()
         self.collectionView.register(TagCell.self, forCellWithReuseIdentifier: TagCell.name)
         self.configureNavigationBar()
     }
@@ -47,12 +46,6 @@ final class NoteListViewController: UIViewController {
     
     
     // MARK: - Functions
-    
-    /// 컬렉션 뷰의 레이아웃 설정
-    private func configureCollectionViewLayout() {
-        let layout = TagViewFlowLayout()
-        self.collectionView.collectionViewLayout = layout
-    }
     
     /// 네비게이션 바 초기 설정
     private func configureNavigationBar() {
