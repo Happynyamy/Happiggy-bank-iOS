@@ -12,6 +12,7 @@
 		A41DE62827F368BF002A7669 /* NoteDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41DE62727F368BF002A7669 /* NoteDetailViewModel.swift */; };
 		A41DE62B27F36E95002A7669 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41DE62927F36E95002A7669 /* NoteCell.swift */; };
 		A41DE62C27F36E95002A7669 /* NoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A41DE62A27F36E95002A7669 /* NoteCell.xib */; };
+		A41DE62E27F5F2C1002A7669 /* UIView+ZoomAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41DE62D27F5F2C1002A7669 /* UIView+ZoomAnimation.swift */; };
 		A425F8B627EDF4FB00A005AB /* TagViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A425F8B527EDF4FB00A005AB /* TagViewFlowLayout.swift */; };
 		A425F8B827EDF59A00A005AB /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A425F8B727EDF59A00A005AB /* TagCell.swift */; };
 		A439F53A27EEFC28002851F4 /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A439F53927EEFC27002851F4 /* SettingsViewCell.swift */; };
@@ -95,6 +96,7 @@
 		A41DE62727F368BF002A7669 /* NoteDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewModel.swift; sourceTree = "<group>"; };
 		A41DE62927F36E95002A7669 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		A41DE62A27F36E95002A7669 /* NoteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteCell.xib; sourceTree = "<group>"; };
+		A41DE62D27F5F2C1002A7669 /* UIView+ZoomAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ZoomAnimation.swift"; sourceTree = "<group>"; };
 		A425F8B527EDF4FB00A005AB /* TagViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewFlowLayout.swift; sourceTree = "<group>"; };
 		A425F8B727EDF59A00A005AB /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
 		A439F53927EEFC27002851F4 /* SettingsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 				A4C1AFD327E5E6120096CD3E /* UITextView+ParagraphStyle.swift */,
 				A459003B27E9C5C9003010A0 /* CGSize+Area.swift */,
 				A48E183927E71D9300B44477 /* UILabel+ParagraphStyle.swift */,
+				A41DE62D27F5F2C1002A7669 /* UIView+ZoomAnimation.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -537,6 +540,7 @@
 				A4B2860527D9A546008769EB /* NewNoteDatePickerViewController.swift in Sources */,
 				A491018527D6EDE90012DFDD /* PersistenceStore.swift in Sources */,
 				A491018D27D7358B0012DFDD /* Bottle+CoreDataClass.swift in Sources */,
+				A41DE62E27F5F2C1002A7669 /* UIView+ZoomAnimation.swift in Sources */,
 				A439F54527EF0698002851F4 /* SettingsLabelButtonCell.swift in Sources */,
 				A490AC5027DD9D2E00B04CE1 /* NoteListViewModel.swift in Sources */,
 				A4F5714927DA589100E7DF9B /* NoteDatePickerData.swift in Sources */,

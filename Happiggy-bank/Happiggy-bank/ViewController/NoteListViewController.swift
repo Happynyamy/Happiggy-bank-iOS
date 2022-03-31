@@ -21,6 +21,9 @@ final class NoteListViewController: UIViewController {
     /// fetched result controller 를 담고 있는 뷰모델
     var viewModel: NoteListViewModel!
     
+    /// 최초로 나타날 때만 컬렉션뷰에 애니메이션을 나타내기 위한 프로퍼티
+    private var isInitialLayout = true
+    
     
     // MARK: - Life Cycle
     
@@ -29,6 +32,17 @@ final class NoteListViewController: UIViewController {
         
         self.collectionView.register(TagCell.self, forCellWithReuseIdentifier: TagCell.name)
         self.configureNavigationBar()
+    }
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        guard self.isInitialLayout,
+              !self.collectionView.visibleCells.isEmpty
+        else { return }
+        
+        self.isInitialLayout.toggle()
+        self.displayVisibleCellsWithZoomAnimtaion()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -51,6 +65,27 @@ final class NoteListViewController: UIViewController {
     private func configureNavigationBar() {
         self.navigationItem.title = self.viewModel.bottleTitle
         self.navigationItem.backButtonTitle = .empty
+    }
+    
+    /// 처음 화면이 나타날 때만 셀들을 순차적 줌 효과와 함께 나타냄
+    private func displayVisibleCellsWithZoomAnimtaion() {
+        self.collectionView.visibleCells.forEach {
+            $0.zoomAnimation(
+                duration: ZoomAnimation.initialDisplayDuration,
+                delay: self.delay(forCell: $0),
+                options: .allowUserInteraction
+            )
+        }
+    }
+    
+    /// 순차적인 효과를 위해 각 셀에 적용할 딜레이
+    private func delay(forCell cell: UICollectionViewCell) -> Double {
+        let column = Double(cell.frame.minX / cell.frame.width)
+        let row = Double(cell.frame.minY / cell.frame.height)
+        
+        let distance = sqrt(pow(column, Metric.two) + pow(row, Metric.two))
+        
+        return sqrt(distance) * ZoomAnimation.initialDisplayDelayBase
     }
 }
 
@@ -87,14 +122,6 @@ extension NoteListViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - UICollectionViewDelegate
 extension NoteListViewController: UICollectionViewDelegate {
     
-    func collectionView(
-        _ collectionView: UICollectionView,
-        willDisplay cell: UICollectionViewCell,
-        forItemAt indexPath: IndexPath
-    ) {
-        self.displayWithBouncyAnimation(cell: cell)
-    }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         guard let cell = collectionView.cellForItem(at: indexPath)
@@ -102,68 +129,11 @@ extension NoteListViewController: UICollectionViewDelegate {
         
         collectionView.deselectItem(at: indexPath, animated: false)
         
-        self.bounceOnSelect(cell: cell, atIndexPath: indexPath) { _ in
+        cell.zoomAnimation(duration: ZoomAnimation.selectionDuration) { _ in
             self.performSegue(
                 withIdentifier: SegueIdentifier.showNoteDetailView,
                 sender: indexPath.row
             )
-        }
-    }
-    
-    /// 탭하는 경우 선택된 셀이 바운스(수축-확대-원 크기로 돌아감)하는 효과
-    private func bounceOnSelect(
-        cell: UICollectionViewCell,
-        atIndexPath indexPath: IndexPath,
-        completion: ((Bool) -> Void)? = nil
-    ) {
-       
-        cell.transform = CGAffineTransform(
-            scaleX: Metric.transformDownScale,
-            y: Metric.transformDownScale
-        )
-        
-        UIView.animateKeyframes(withDuration: Metric.cellZoomAnimationDuration, delay: .zero) {
-            UIView.addKeyframe(
-                withRelativeStartTime: .zero,
-                relativeDuration: Metric.upScaleRelativeDuration
-            ) {
-                cell.transform = CGAffineTransform(
-                    scaleX: Metric.transformUpScale,
-                    y: Metric.transformUpScale
-                )
-            }
-            UIView.addKeyframe(
-                withRelativeStartTime: Metric.upScaleRelativeDuration,
-                relativeDuration: Metric.downScaleRelativeDuration
-            ) {
-                cell.transform = .identity
-            }
-        } completion: { result in
-            guard let completion = completion
-            else { return }
-            
-            completion(result)
-        }
-    }
-    
-    /// 위치에 따라 순차적으로 셀들이 바운스하면서 디스플레이되는 효과
-    private func displayWithBouncyAnimation(cell: UICollectionViewCell) {
-        let delayBase = 0.1
-
-        let column = Double(cell.frame.minX / cell.frame.width)
-        let row = Double(cell.frame.minY / cell.frame.height)
-        
-        let distance = sqrt(pow(column, 2) + pow(row, 2))
-        let delay = sqrt(distance) * delayBase
-        cell.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-        
-        UIView.animateKeyframes(withDuration: 0.5, delay: delay) {
-            UIView.addKeyframe(withRelativeStartTime: .zero, relativeDuration: 2/3) {
-                cell.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-            }
-            UIView.addKeyframe(withRelativeStartTime: 2/3, relativeDuration: 1/3) {
-                cell.transform = .identity
-            }
         }
     }
 }
