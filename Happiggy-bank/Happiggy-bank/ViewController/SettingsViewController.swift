@@ -59,7 +59,10 @@ extension SettingsViewController: UITableViewDataSource {
         Content.allCases.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
         
         if indexPath.row == Content.bottleAlertSettings.rawValue {
             
@@ -68,7 +71,7 @@ extension SettingsViewController: UITableViewDataSource {
                 for: indexPath
             ) as? SettingsToggleButtonCell
             else { return SettingsToggleButtonCell() }
-            
+            addNotificationSettingViewController(to: cell)
             return cell
         }
         
@@ -83,6 +86,29 @@ extension SettingsViewController: UITableViewDataSource {
         }
         
         return SettingsViewCell()
+    }
+    
+    /// 노티피케이션 셀에 뷰 컨트롤러 추가
+    private func addNotificationSettingViewController(to cell: SettingsToggleButtonCell) {
+        let viewController = NotificationSettingViewController()
+        self.addChild(viewController)
+        cell.contentView.addSubview(viewController.view)
+        
+        viewController.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            viewController.view.leadingAnchor.constraint(
+                equalTo: cell.contentView.leadingAnchor
+            ),
+            viewController.view.trailingAnchor.constraint(
+                equalTo: cell.contentView.trailingAnchor
+            ),
+            viewController.view.topAnchor.constraint(
+                equalTo: cell.contentView.topAnchor
+            ),
+            viewController.view.bottomAnchor.constraint(
+                equalTo: cell.contentView.bottomAnchor
+            )
+        ])
     }
 }
 
