@@ -79,7 +79,7 @@ final class NewNoteTextViewController: UIViewController {
     @IBAction func cancelButtonDidTap(_ sender: UIBarButtonItem) {
         self.endEditingAndFadeOut()
         self.performSegue(
-            withIdentifier: SegueIdentifier.unwindToBottleViewFromNoteTextView, sender: sender
+            withIdentifier: SegueIdentifier.unwindFromNoteTextViewToHomeView, sender: sender
         )
     }
     
@@ -205,14 +205,18 @@ final class NewNoteTextViewController: UIViewController {
         self.letterCountLabel.textColor = self.viewModel.labelColor
     }
     
-    /// 새로운 노트 엔티티를 생성하고 저장하며, 저장 시에 쪽지가 추가되었다는 노티피케이션을 날림
-    private func saveNewNote() {
-        let note = Note.create(
+    /// 새로운 노트 엔티티를 생성
+    private func makeNewNote() -> Note {
+        Note.create(
             date: self.viewModel.newNote.date,
             color: self.viewModel.newNote.color,
             content: self.textView.text,
             bottle: self.viewModel.newNote.bottle
         )
+    }
+    
+    /// 새로 생성한 노트 엔티티를 저장하고 알림을 포스트
+    private func saveAndPostNewNote(_ note: Note) {
         let noteAndDelay = (note: note, delay: CATransition.transitionDuration)
         self.post(name: .noteDidAdd, object: noteAndDelay)
         // TODO: activate core data
@@ -236,12 +240,15 @@ final class NewNoteTextViewController: UIViewController {
         let confirmAction = UIAlertAction(
             title: StringLiteral.confirmButtonTitle,
             style: .default) { _ in
+                
+                let note = self.makeNewNote()
+                
+                self.saveAndPostNewNote(note)
                 self.fadeOut()
                 self.performSegue(
-                    withIdentifier: SegueIdentifier.unwindToBottleViewFromNoteTextViewBySave,
-                    sender: self
+                    withIdentifier: SegueIdentifier.unwindFromNoteTextViewToHomeView,
+                    sender: note
                 )
-                self.saveNewNote()
             }
         
         let cancelAction = UIAlertAction(

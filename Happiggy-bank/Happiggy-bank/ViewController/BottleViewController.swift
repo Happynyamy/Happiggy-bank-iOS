@@ -13,7 +13,7 @@ final class BottleViewController: UIViewController {
     
     // MARK: - @IBOutlet
 
-    /// 저금통 쪽지를 보여주는 애니메이션 뷰    
+    /// 저금통 쪽지를 보여주는 애니메이션 뷰
     @IBOutlet weak var bottleNoteView: BottleNoteView!
     
     
@@ -65,7 +65,7 @@ final class BottleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addObservers()
-        configureBottleImage()
+        
         initializeBottleView()
     }
     
@@ -82,56 +82,6 @@ final class BottleViewController: UIViewController {
     }
     
     
-    // MARK: - @IBActions
-    
-    /// 저금통 이미지를 탭할 시 실행되는 메서드
-    /// 1. 저금통이 없는 경우 저금통 추가 팝업을 띄우고,
-    /// 2. 저금통이 있으나 기한이 종료되어 개봉을 기다리는 경우 저금통을 개봉하고
-    /// 3 - 1. 저금통이 있고 아직 진행중인 경우에는 쪽지를 쓸 수 있는 날이 있는 경우 쪽지 추가 팝업을,
-    /// 3 - 2. 그 외에는 쪽지 작성 불가 알림을 띄운다.
-    @IBAction func bottleDidTap(_ sender: UITapGestureRecognizer) {
-        guard let bottle = self.viewModel.bottle
-        else {
-            self.performSegue(
-                withIdentifier: SegueIdentifier.presentNewBottleNameField,
-                sender: sender
-            )
-            return
-        }
-        if !bottle.isInProgress {
-            print("show some opening animation")
-            return
-        }
-        if !bottle.hasEmptyDate {
-            print("show some alert that no notes are writable")
-            return
-        }
-        if !bottle.isEmtpyToday {
-            /// 날짜 피커 띄우기
-            self.performSegue(
-                withIdentifier: SegueIdentifier.presentNewNoteDatePicker,
-                sender: sender
-            )
-        }
-        if bottle.isEmtpyToday {
-            self.performSegue(
-                withIdentifier: SegueIdentifier.presentNewNoteTextView,
-                sender: sender
-            )
-        }
-    }
-    
-    /// 현재 뷰 컨트롤러로 unwind 하라는 호출을 받았을 때 실행되는 액션메서드로, 중력 효과 재개
-    @IBAction func unwindCallDidArrive(segue: UIStoryboardSegue) {
-
-        if segue.identifier == SegueIdentifier.unwindToBottleViewFromNoteTextViewBySave {
-            print("save")
-            return
-        }
-        self.gravity?.startDeviceMotionUpdates()
-    }
-    
-    
     // MARK: - @objc
     
     /// 쪽지 새로 추가되었다는 알림을 받았을 때 호출되는 메서드
@@ -139,7 +89,7 @@ final class BottleViewController: UIViewController {
         
         guard let noteAndDelay = notification.object as? (note: Note, delay: TimeInterval)
         else { return }
-    
+
         self.dropNewNoteFromTopCenter(noteAndDelay.note, delay: noteAndDelay.delay)
     }
     
@@ -155,33 +105,24 @@ final class BottleViewController: UIViewController {
         self.addGravity()
     }
     
+    /// 현재 뷰 컨트롤러로 unwind 하라는 호출을 받았을 때 실행되는 액션메서드로, 중력 효과 재개
+    func unwindCallDidArrive(withNote note: Note?) {
+        note == nil ? self.gravity?.startDeviceMotionUpdates() : nil
+    }
+    
+    /// 홈뷰에서 다른 뷰를 띄울 때 보틀뷰에 이를 알리기 위해 호출하는 메서드
+    func prepareForSegue() {
+        /// 새 쪽지가 떨어질 영역을 확보하기 위해 해당 탭 내에서 다른 뷰를 띄우면 중력 방향을 하단으로 변경해 기존 쪽지를 전부 하단으로 이동
+        self.gravity?.resetAndBindGravityDirection()
+        
+    }
+    
     /// NotificationCenter.default 에 observer 들을 추가
     private func addObservers() {
         self.observe(
             selector: #selector(noteDidAdd(_:)),
             name: .noteDidAdd
         )
-    }
-    
-    /// 저금통 상태에 따른 저금통 이미지/애니메이션 등을 나타냄
-    /// 저금통을 새로 추가하는 경우, 현재 진행중인 저금통이 있는 경우, 개봉을 기다리는 경우의 세 가지 상태가 있음
-    private func configureBottleImage() {
-        guard let bottle = self.viewModel.bottle
-        else {
-            print("show add new bottle image")
-            return
-        }
-        
-        /// 현재 채우는 저금통 있음
-        if bottle.isInProgress {
-            print("show bottle in progress")
-            return
-        }
-        
-        /// 기한 종료로 개봉 대기중
-        if !bottle.isInProgress {
-            print("show bottle ready to open")
-        }
     }
     
     /// BottleNoteView 에 쪽지 이미지들을 추가
@@ -219,33 +160,6 @@ final class BottleViewController: UIViewController {
             self.bottleNoteView.addSubview(noteView)
             self.gravity?.addDynamicItem(noteView)
             self.activateMotion.toggle()
-        }
-    }
-    
-    
-    // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        /// 새 쪽지가 떨어질 영역을 확보하기 위해 해당 탭 내에서 다른 뷰를 띄우면 중력 방향을 하단으로 변경해 기존 쪽지를 전부 하단으로 이동
-        self.gravity?.resetAndBindGravityDirection()
-        
-        if segue.identifier == SegueIdentifier.presentNewNoteDatePicker {
-            guard let dateViewController = segue.destination as? NewNoteDatePickerViewController,
-                  let bottle = self.viewModel.bottle
-            else { return }
-            
-            let viewModel = NewNoteDatePickerViewModel(initialDate: Date(), bottle: bottle)
-            dateViewController.viewModel = viewModel
-        }
-        
-        if segue.identifier == SegueIdentifier.presentNewNoteTextView {
-            guard let textViewController = segue.destination as? NewNoteTextViewController,
-                  let bottle = self.viewModel.bottle
-            else { return }
-            
-            let viewModel = NewNoteTextViewModel(date: Date(), bottle: bottle)
-            textViewController.viewModel = viewModel
         }
     }
 }

@@ -69,7 +69,7 @@ final class NewNoteDatePickerViewController: UIViewController {
         }
         if !self.isFromNoteTextView {
             self.performSegue(
-                withIdentifier: SegueIdentifier.unwindFromNoteDatePickerToBottleView,
+                withIdentifier: SegueIdentifier.unwindFromNoteDatePickerToHomeView,
                 sender: self
             )
         }

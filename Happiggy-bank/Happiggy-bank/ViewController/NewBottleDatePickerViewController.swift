@@ -58,7 +58,7 @@ final class NewBottleDatePickerViewController: UIViewController {
         // TODO: Save Data
         saveNewBottle()
         self.performSegue(
-            withIdentifier: SegueIdentifier.unwindFromNewBottlePopupToBottleView,
+            withIdentifier: SegueIdentifier.unwindFromNewBottlePopupToHomeView,
             sender: sender
         )
         self.fadeOut()
