@@ -40,6 +40,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="ZlX-eS-Yvg" secondAttribute="bottom" id="0m3-gk-sI3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dmA-fx-uIw" secondAttribute="trailing" id="26A-HR-Krh"/>
@@ -53,14 +54,26 @@
                             <constraint firstItem="Bmu-YM-ARP" firstAttribute="top" secondItem="ZlX-eS-Yvg" secondAttribute="top" constant="101" id="ucC-5M-Fv0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Bmu-YM-ARP" secondAttribute="trailing" constant="24" id="x7L-XF-hax"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Rh0-a6-UQZ" appends="YES" id="Td2-ul-FSI"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="P6e-3z-28Z"/>
                     <connections>
                         <outlet property="bottleInfoLabel" destination="Bmu-YM-ARP" id="hXu-Ok-U5l"/>
                         <outlet property="homeView" destination="8bC-Xf-vdC" id="edO-Zc-7da"/>
+                        <segue destination="abG-42-vcb" kind="presentation" identifier="presentNewBottleNameField" id="aZQ-BA-T0f"/>
+                        <segue destination="moi-e1-3hQ" kind="presentation" identifier="presentNewNoteDatePicker" id="5ln-YY-tck"/>
+                        <segue destination="FuI-qc-1fd" kind="presentation" identifier="presentNewNoteTextView" id="utJ-Hb-n6A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="OTp-ev-dcF" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="Rh0-a6-UQZ">
+                    <connections>
+                        <action selector="viewDidTap:" destination="BYZ-38-t0r" id="B5V-2u-FJa"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1154.4000000000001" y="1642.6108374384237"/>
         </scene>
@@ -371,12 +384,12 @@
                         <outlet property="warningLabel" destination="x1u-nY-DW6" id="pn9-Am-SuF"/>
                         <segue destination="9EN-Ff-rq1" kind="unwind" identifier="unwindFromNoteDatePickerToTextView" unwindAction="unwindCallToNoteTexViewDidArriveWithSegue:" id="Ovp-ZJ-8aW"/>
                         <segue destination="FuI-qc-1fd" kind="presentation" identifier="presentNewNoteTextViewFromDatePicker" id="O5Z-N1-x6E"/>
-                        <segue destination="rAE-WY-Wyc" kind="unwind" identifier="unwindFromNoteDatePickerToBottleView" unwindAction="unwindCallDidArriveWithSegue:" id="Zgm-mw-dYe"/>
+                        <segue destination="OTp-ev-dcF" kind="unwind" identifier="unwindFromNoteDatePickerToHomeView" unwindAction="unwindCallToHomeViewDidArriveWithSegue:sender:" id="8zY-5e-GLC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4WR-mG-PvL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2116" y="3036.9458128078818"/>
+            <point key="canvasLocation" x="-1155" y="2433"/>
         </scene>
         <!--New Note Text View Controller-->
         <scene sceneID="f85-ew-CtQ">
@@ -555,9 +568,8 @@
                         <outletCollection property="colorButtons" destination="YCv-4A-yJI" collectionClass="NSMutableArray" id="Pgw-d9-Cyv"/>
                         <outletCollection property="colorButtons" destination="04d-6x-4Me" collectionClass="NSMutableArray" id="my6-CJ-LfZ"/>
                         <outletCollection property="colorButtons" destination="S3V-4f-gjV" collectionClass="NSMutableArray" id="ht5-ZJ-p7O"/>
-                        <segue destination="rAE-WY-Wyc" kind="unwind" identifier="unwindToBottleViewFromNoteTextView" animates="NO" unwindAction="unwindCallDidArriveWithSegue:" id="S89-mV-zbI"/>
                         <segue destination="moi-e1-3hQ" kind="presentation" identifier="presentDatePickerFromNoteTextView" id="7wk-af-F5w"/>
-                        <segue destination="rAE-WY-Wyc" kind="unwind" identifier="unwindToBottleViewFromNoteTextViewFromSaveButton" unwindAction="unwindCallDidArriveWithSegue:" id="2Dc-9r-8MN"/>
+                        <segue destination="OTp-ev-dcF" kind="unwind" identifier="unwindFromNoteTextViewToHomeView" unwindAction="unwindCallToHomeViewDidArriveWithSegue:sender:" id="Izh-x1-SAi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbT-jH-6dB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -568,7 +580,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-3242.4000000000001" y="3036.9458128078818"/>
+            <point key="canvasLocation" x="-156" y="2433"/>
         </scene>
         <!--Bottle View Controller-->
         <scene sceneID="p7l-16-uR7">
@@ -581,9 +593,6 @@
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OAt-vo-L69">
                                 <rect key="frame" x="23" y="0.0" width="344" height="717"/>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="gEH-ha-I0H" appends="YES" id="I7T-Ve-Zwh"/>
-                                </connections>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Car-X3-Th6"/>
@@ -597,20 +606,11 @@
                     </view>
                     <connections>
                         <outlet property="bottleNoteView" destination="OAt-vo-L69" id="Xcn-Ec-cu5"/>
-                        <segue destination="moi-e1-3hQ" kind="presentation" identifier="presentNewNoteDatePicker" id="71M-g6-wMS"/>
-                        <segue destination="abG-42-vcb" kind="presentation" identifier="presentNewBottleNameField" id="Qcc-qq-Xqy"/>
-                        <segue destination="FuI-qc-1fd" kind="presentation" identifier="presentNewNoteTextView" id="xNs-XQ-OjW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hG-r2-cSC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="rAE-WY-Wyc" userLabel="Exit" sceneMemberID="exit"/>
-                <tapGestureRecognizer id="gEH-ha-I0H">
-                    <connections>
-                        <action selector="bottleDidTap:" destination="FVx-vN-7Xe" id="tvN-aY-Pt9"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1154.4000000000001" y="2307.2660098522169"/>
+            <point key="canvasLocation" x="-2280" y="1643"/>
         </scene>
         <!--New Bottle Name Field View Controller-->
         <scene sceneID="BI8-5q-YxJ">
@@ -704,7 +704,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8DE-rs-fK7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-330.39999999999998" y="3036.9458128078818"/>
+            <point key="canvasLocation" x="-2142" y="2433"/>
         </scene>
         <!--Note Detail View Controller-->
         <scene sceneID="bNV-s0-R6J">
@@ -808,17 +808,16 @@
                         <outlet property="navigationBar" destination="VaU-DG-hJr" id="tLl-nY-dh1"/>
                         <outlet property="pickerView" destination="JZC-yk-iLa" id="ESS-v4-zWK"/>
                         <outlet property="topLabel" destination="8q5-pU-bsj" id="QQD-EH-FCm"/>
-                        <segue destination="rAE-WY-Wyc" kind="unwind" identifier="unwindFromNewBottlePopupToBottleView" unwindAction="unwindCallDidArriveWithSegue:" id="voH-uq-YvW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jnb-AF-gmu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-330" y="3819"/>
+            <point key="canvasLocation" x="-2142" y="3171"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xNs-XQ-OjW"/>
-        <segue reference="71M-g6-wMS"/>
+        <segue reference="utJ-Hb-n6A"/>
+        <segue reference="5ln-YY-tck"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="checkmark" catalog="system" width="128" height="114"/>

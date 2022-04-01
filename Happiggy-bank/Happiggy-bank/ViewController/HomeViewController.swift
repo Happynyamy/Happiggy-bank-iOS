@@ -37,6 +37,7 @@ final class HomeViewController: UIViewController {
             selector: #selector(refetch),
             name: .NSManagedObjectContextDidSave
         )
+        self.configureBackgroundImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,21 +53,98 @@ final class HomeViewController: UIViewController {
     }
     
     
+    // MARK: - @IBAction
+    
+    /// 홈 뷰를 탭했을 떄 호출되는 액션 메서드
+    @IBAction func viewDidTap(_ sender: UITapGestureRecognizer) {
+        
+        guard let bottle = self.viewModel.bottle
+        else {
+            self.performSegue(
+                withIdentifier: SegueIdentifier.presentNewBottleNameField,
+                sender: sender
+            )
+            return
+        }
+        if !bottle.isInProgress {
+            print("show some opening animation")
+            return
+        }
+        if !bottle.hasEmptyDate {
+            print("show some alert that no notes are writable")
+            return
+        }
+        if !bottle.isEmtpyToday {
+            /// 날짜 피커 띄우기
+            self.performSegue(
+                withIdentifier: SegueIdentifier.presentNewNoteDatePicker,
+                sender: sender
+            )
+        }
+        if bottle.isEmtpyToday {
+            self.performSegue(
+                withIdentifier: SegueIdentifier.presentNewNoteTextView,
+                sender: sender
+            )
+        }
+    }
+    
+    /// 홈 뷰로 언와인드할 떄 호출되는 액션 메서드
+    @IBAction func unwindCallToHomeViewDidArrive(segue: UIStoryboardSegue, sender: Any? = nil) {
+        
+        let note = sender as? Note
+        self.bottleViewController.unwindCallDidArrive(withNote: note)
+        
+    }
+    
+    
+    // MARK: - @objc
+    
+    // TODO: 삭제 (새로운 저금통 추가했을 때 보기 위한 임시 메서드)
+    @objc private func refetch() {
+        guard self.bottleViewController.viewModel.bottle == nil
+        else { return }
+        
+        // TODO: 1안 -> Notification + Object, 2안 -> refetch
+        self.viewModel.executeFetchRequest()
+        self.bottleViewController.viewModel.bottle = self.viewModel.bottle
+        self.bottleViewController.initializeBottleView()
+    }
+    
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        self.bottleViewController?.prepareForSegue()
+        
         if segue.identifier == SegueIdentifier.showBottleView {
             guard let bottleViewController = segue.destination as? BottleViewController
             else { return }
             
-//            PersistenceStore.shared.deleteAll(Bottle.self)
             let viewModel = BottleViewModel()
-            // TODO: 홈뷰에서 데이터 넘겨받기
-//            viewModel.bottle = Bottle.foo
             viewModel.bottle = self.viewModel.bottle
             bottleViewController.viewModel = viewModel
             
             self.bottleViewController = bottleViewController
+        }
+        
+        if segue.identifier == SegueIdentifier.presentNewNoteDatePicker {
+            guard let dateViewController = segue.destination as? NewNoteDatePickerViewController,
+                  let bottle = self.viewModel.bottle
+            else { return }
+            
+            let viewModel = NewNoteDatePickerViewModel(initialDate: Date(), bottle: bottle)
+            dateViewController.viewModel = viewModel
+        }
+        
+        if segue.identifier == SegueIdentifier.presentNewNoteTextView {
+            guard let textViewController = segue.destination as? NewNoteTextViewController,
+                  let bottle = self.viewModel.bottle
+            else { return }
+            
+            let viewModel = NewNoteTextViewModel(date: Date(), bottle: bottle)
+            textViewController.viewModel = viewModel
         }
     }
     
@@ -84,14 +162,25 @@ final class HomeViewController: UIViewController {
         self.bottleInfoLabel.layer.masksToBounds = true
     }
     
-    // TODO: 삭제 (새로운 저금통 추가했을 때 보기 위한 임시 메서드)
-    @objc private func refetch() {
-        guard self.bottleViewController.viewModel.bottle == nil
-        else { return }
+    /// 저금통 상태에 따른 저금통 이미지/애니메이션 등을 나타냄
+    /// 저금통을 새로 추가하는 경우, 현재 진행중인 저금통이 있는 경우, 개봉을 기다리는 경우의 세 가지 상태가 있음
+    private func configureBackgroundImage() {
+        guard let bottle = self.viewModel.bottle
+        else {
+            print("show add new bottle image")
+            return
+        }
         
-        // TODO: 1안 -> Notification + Object, 2안 -> refetch
-        self.viewModel.executeFetchRequest()
-        self.bottleViewController.viewModel.bottle = self.viewModel.bottle
-        self.bottleViewController.initializeBottleView()
+        /// 현재 채우는 저금통 있음
+        if bottle.isInProgress {
+            print("show bottle in progress")
+            return
+        }
+        
+        /// 기한 종료로 개봉 대기중
+        if !bottle.isInProgress {
+            print("show bottle ready to open")
+        }
     }
+
 }
