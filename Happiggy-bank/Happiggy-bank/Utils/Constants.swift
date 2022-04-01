@@ -845,7 +845,7 @@ extension NotificationSettingViewController {
     
     /// 문자열
     enum StringLiteral {
-
+        
         /// 노티피케이션 제목
         static let notificationTitle: String = "행복한 소식!"
         
