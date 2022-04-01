@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,30 +18,36 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림 설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMc-Fr-qC0">
-                        <rect key="frame" x="0.0" y="52.5" width="67" height="21.5"/>
+                        <rect key="frame" x="36" y="52.5" width="67" height="21.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xv5-qA-qQg">
-                        <rect key="frame" x="327" y="47.5" width="51" height="31"/>
-                        <connections>
-                            <action selector="switchDidToggle:" destination="KGk-i7-Jjw" eventType="valueChanged" id="MTb-QX-R4D"/>
-                        </connections>
-                    </switch>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="65E-Ec-BPO">
+                        <rect key="frame" x="0.0" y="53" width="20" height="19.5"/>
+                        <color key="tintColor" name="customGray"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="65E-Ec-BPO" secondAttribute="height" multiplier="1:1" id="UpG-8x-2aC"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="aMc-Fr-qC0" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="7ad-gB-mY9"/>
-                    <constraint firstAttribute="trailing" secondItem="xv5-qA-qQg" secondAttribute="trailing" constant="2" id="wPb-yr-66l"/>
-                    <constraint firstItem="xv5-qA-qQg" firstAttribute="centerY" secondItem="aMc-Fr-qC0" secondAttribute="centerY" id="wg4-ap-hzh"/>
-                    <constraint firstItem="aMc-Fr-qC0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="zRY-My-o62"/>
+                    <constraint firstItem="65E-Ec-BPO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="RJ2-55-pes"/>
+                    <constraint firstItem="aMc-Fr-qC0" firstAttribute="leading" secondItem="65E-Ec-BPO" secondAttribute="trailing" constant="16" id="YmW-2Y-jWT"/>
+                    <constraint firstItem="65E-Ec-BPO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="gEB-GF-hHS"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="switch" destination="xv5-qA-qQg" id="gnG-yV-ZZ7"/>
                 <outlet property="titleLabel" destination="aMc-Fr-qC0" id="gfN-3x-1yv"/>
             </connections>
             <point key="canvasLocation" x="173.91304347826087" y="97.098214285714278"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="bell" catalog="system" width="128" height="124"/>
+        <namedColor name="customGray">
+            <color red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

@@ -830,3 +830,44 @@ extension BottleMessageViewController {
 
     }
 }
+
+extension NotificationSettingViewController {
+    
+    /// 상수값
+    enum Metric {
+        
+        /// 노티피케이션 반복할 날짜
+        static let repeatingDays: Int = 14
+        
+        /// 스위치 오른쪽 패딩
+        static let trailingPadding: CGFloat = -10
+    }
+    
+    /// 문자열
+    enum StringLiteral {
+
+        /// 노티피케이션 제목
+        static let notificationTitle: String = "행복한 소식!"
+        
+        /// 노티피케이션 내용
+        static let notificationBody: String = "저금통을 열어볼 준비가 되었어요 :)"
+        
+        /// 노티피케이션 식별자
+        static let notificationIdentifier: String = "repeatingNotification"
+        
+        /// UserDefaults의 key로 사용할 문자열
+        static let hasNotificationOn: String = "hasNotificationOn"
+        
+        /// 알림 타이틀
+        static let disabledAlertTitle: String = "알림을 허용해주세요."
+        
+        /// 알림 메시지
+        static let disabledAlertMessage: String = "저금통 개봉 알림을 받으려면 시스템 설정에서 행복 저금통 알림을 허용해주세요."
+        
+        /// 알림 이동 액션 라벨
+        static let move: String = "설정으로 이동"
+        
+        /// 알림 취소 액션 라벨
+        static let cancel: String = "취소"
+    }
+}
