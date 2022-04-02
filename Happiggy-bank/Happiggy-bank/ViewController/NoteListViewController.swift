@@ -42,7 +42,7 @@ final class NoteListViewController: UIViewController {
         else { return }
         
         self.isInitialLayout.toggle()
-        self.displayVisibleCellsWithZoomAnimtaion()
+        self.displayVisibleCellsWithZoomAnimation()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -68,14 +68,17 @@ final class NoteListViewController: UIViewController {
     }
     
     /// 처음 화면이 나타날 때만 셀들을 순차적 줌 효과와 함께 나타냄
-    private func displayVisibleCellsWithZoomAnimtaion() {
+    private func displayVisibleCellsWithZoomAnimation() {
+        
         self.collectionView.visibleCells.forEach {
             $0.zoomAnimation(
                 duration: ZoomAnimation.initialDisplayDuration,
                 delay: self.delay(forCell: $0),
+                fadeIn: self.viewModel.fadeIn,
                 options: .allowUserInteraction
             )
         }
+        self.viewModel.fadeIn = false
     }
     
     /// 순차적인 효과를 위해 각 셀에 적용할 딜레이
@@ -128,13 +131,12 @@ extension NoteListViewController: UICollectionViewDelegate {
         else { return }
         
         collectionView.deselectItem(at: indexPath, animated: false)
-        
-        cell.zoomAnimation(duration: ZoomAnimation.selectionDuration) { _ in
+        cell.zoomAnimation(duration: ZoomAnimation.selectionDuration, completion: { _ in
             self.performSegue(
                 withIdentifier: SegueIdentifier.showNoteDetailView,
                 sender: indexPath.row
             )
-        }
+        })
     }
 }
 

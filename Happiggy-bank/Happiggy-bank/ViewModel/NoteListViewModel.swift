@@ -13,6 +13,9 @@ final class NoteListViewModel {
     
     // MARK: - Properties
     
+    /// 페이드인 여부
+    var fadeIn: Bool = false
+    
     /// 코어데이터로 불러온 쪽지 엔티티들을 관리하는 fetchedResultController
     lazy var fetchedResultController: NSFetchedResultsController<Note> = {
         let fetchRequest = Note.fetchRequest(bottle: self.bottle)
@@ -58,8 +61,13 @@ final class NoteListViewModel {
     
     // MARK: - Init
     
-    init(bottle: Bottle, fetchedResultContollerDelegate: NSFetchedResultsControllerDelegate?) {
+    init(
+        bottle: Bottle,
+        fadeIn: Bool = false,
+        fetchedResultContollerDelegate: NSFetchedResultsControllerDelegate?
+    ) {
         self.bottle = bottle
+        self.fadeIn = fadeIn
         self.fetchedResultsControllerDelegate = fetchedResultContollerDelegate
     }
     

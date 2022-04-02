@@ -42,6 +42,7 @@ final class BottleListViewController: UIViewController {
     
     // MARK: - @IBActions
     
+    /// 해당 뷰 컨트롤러로 언와인드 되었을 때 호출
     @IBAction func unwindCallToBottleListDidArrive(segue: UIStoryboardSegue) {
         guard let bottle = self.viewModel.openingBottle
         else { return }
@@ -59,9 +60,12 @@ final class BottleListViewController: UIViewController {
             else { return }
             
             let viewModel = NoteListViewModel(
-                bottle: bottle, fetchedResultContollerDelegate: noteListViewController
+                bottle: bottle,
+                fadeIn: self.viewModel.openingBottle != nil,
+                fetchedResultContollerDelegate: noteListViewController
             )
             noteListViewController.viewModel = viewModel
+            self.viewModel.openingBottle = nil
         }
     }
     
@@ -109,7 +113,7 @@ final class BottleListViewController: UIViewController {
         else { return }
         
         self.tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
-        self.viewModel.openingBottle = nil
+        self.viewModel.openingBottleIndexPath = nil
     }
 }
 

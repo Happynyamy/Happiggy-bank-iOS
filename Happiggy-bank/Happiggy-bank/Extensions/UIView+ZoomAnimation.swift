@@ -46,11 +46,16 @@ extension UIView {
     func zoomAnimation(
         duration: Double,
         delay: Double = .zero,
-        options: UIView.KeyframeAnimationOptions = [],
-        completion: ((Bool) -> Void)? = nil,
         downScale: Double = ZoomAnimation.transformDownScale,
-        upScale: Double = ZoomAnimation.transformUpScale
+        upScale: Double = ZoomAnimation.transformUpScale,
+        fadeIn: Bool = false,
+        options: UIView.KeyframeAnimationOptions = [],
+        completion: ((Bool) -> Void)? = nil
     ) {
+        if fadeIn {
+            self.alpha = .zero
+        }
+        
         UIView.animateKeyframes(
             withDuration: duration,
             delay: delay,
@@ -73,6 +78,11 @@ extension UIView {
                 self.transform = .identity
             }
             
+            guard fadeIn
+            else { return }
+            
+            self.alpha = .one
+
         } completion: { result in
             guard let completion = completion
             else { return }
