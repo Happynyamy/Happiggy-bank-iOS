@@ -117,6 +117,22 @@ final class BottleViewController: UIViewController {
         
     }
     
+    /// 저금통 개봉 시 호출되는 메서드
+    /// 중력 해제, 저금통 nil 처리, 쪽지 노드 제거
+    func bottleIsOpened(withDuration duration: TimeInterval) {
+
+        self.gravity?.disable()
+        self.gravity = nil
+        self.viewModel.bottle = nil
+        UIView.transition(
+            with: self.view,
+            duration: duration,
+            options: [.curveEaseIn, .transitionCrossDissolve]
+        ) {
+            self.noteNodes.forEach { $0.removeFromSuperview() }
+        }
+    }
+    
     /// NotificationCenter.default 에 observer 들을 추가
     private func addObservers() {
         self.observe(

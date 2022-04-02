@@ -33,6 +33,9 @@ final class BottleMessageViewController: UIViewController {
     /// 개봉중인 저금통
     var bottle: Bottle!
     
+    /// 뷰컨트롤러 등장/퇴장 시간
+    var fadeInOutduration: TimeInterval!
+    
     
     // MARK: - Life Cycle
 
@@ -68,7 +71,7 @@ final class BottleMessageViewController: UIViewController {
     
     /// 하위 뷰들을 페이드인
     private func fadeInContents() {
-        self.view.fadeIn(withDuration: Duration.contentsFadeInOut, options: .curveEaseIn) { _ in
+        self.view.fadeIn(withDuration: self.fadeInOutduration, options: .curveEaseIn) { _ in
             self.animateTapToContinueLabel()
             /// 탭 안내 라벨이 나타날 때 탭 인식 허용
             self.tapGestureRecognizer.isEnabled = true
@@ -89,7 +92,7 @@ final class BottleMessageViewController: UIViewController {
     /// 저금통 리스트를 띄우기 전에 자연스러운 전환을 위해 애니메이션 효과를 줌
     private func unwindToBottleListWithAnimation() {
         UIView.animate(
-            withDuration: Duration.contentsFadeInOut,
+            withDuration: self.fadeInOutduration,
             delay: .zero,
             options: [.curveEaseIn, .beginFromCurrentState]
         ) {
