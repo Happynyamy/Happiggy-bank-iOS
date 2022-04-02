@@ -67,13 +67,7 @@ final class HomeViewController: UIViewController {
             return
         }
         if !bottle.isInProgress {
-            // TODO: create alert
-            bottle.isOpen.toggle()
-            self.bottleViewController.bottleIsOpened(withDuration: Duration.bottleOpeningAnimation)
-            self.performSegue(
-                withIdentifier: SegueIdentifier.presentBottleMessageView,
-                sender: sender
-            )
+            self.presentBottleOpenConfirmationAlert()
             return
         }
         if !bottle.hasEmptyDate {
@@ -199,5 +193,53 @@ final class HomeViewController: UIViewController {
             print("show bottle ready to open")
         }
     }
-
+    
+    
+    // MARK: - Functions
+    
+    /// 저금통 개봉 의사를 물어보는 알림을 띄움
+    private func presentBottleOpenConfirmationAlert() {
+        let alert = makeBottleOpenConfirmationAlert()
+        self.present(alert, animated: true)
+    }
+    
+    /// 저금통 개봉 의사를 물어보는 알림을 생성
+    private func makeBottleOpenConfirmationAlert() -> UIAlertController {
+        let alert = UIAlertController(
+            title: StringLiteral.bottleOpenAlertTitle,
+            message: nil,
+            preferredStyle: .alert
+        )
+        
+        let openAction = UIAlertAction(
+            title: StringLiteral.bottleOpenAlertOpenButtonTitle,
+            style: .default
+        ) { _ in
+            self.openBottle()
+        }
+        
+        let cancelAction = UIAlertAction(
+            title: StringLiteral.bottleOpenAlertCancelButtonTitle,
+            style: .cancel
+        )
+        
+        alert.addAction(openAction)
+        alert.addAction(cancelAction)
+        
+        return alert
+    }
+    
+    /// 저금통 개봉
+    private func openBottle() {
+        guard let bottle = self.viewModel.bottle
+        else { return }
+        
+        bottle.isOpen.toggle()
+        HapticManager.instance.notification(type: .success)
+        self.bottleViewController.bottleIsOpened(withDuration: Duration.bottleOpeningAnimation)
+        self.performSegue(
+            withIdentifier: SegueIdentifier.presentBottleMessageView,
+            sender: self
+        )
+    }
 }
