@@ -26,7 +26,7 @@ final class BottleListViewController: UIViewController {
     }
     
     /// Bottle List View Model
-    private var viewModel: BottleListViewModel = BottleListViewModel()
+    private(set) var viewModel: BottleListViewModel = BottleListViewModel()
     
     
     // MARK: - Lifecycle
@@ -36,6 +36,17 @@ final class BottleListViewController: UIViewController {
         configureNavigationBar()
         configureEmptyLabel()
         registerBottleCell()
+        scrollToOpenBottleIfNeeded()
+    }
+    
+    
+    // MARK: - @IBActions
+    
+    @IBAction func unwindCallToBottleListDidArrive(segue: UIStoryboardSegue) {
+        guard let bottle = self.viewModel.openingBottle
+        else { return }
+        
+        self.performSegue(withIdentifier: SegueIdentifier.showNoteList, sender: bottle)
     }
     
     
@@ -86,6 +97,19 @@ final class BottleListViewController: UIViewController {
             self.emptyListLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.emptyListLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
         ])
+    }
+    
+    
+    // MARK: - Functions
+    
+    /// 현재 개봉중인 저금통이 있으면 해당 저금통의 위치로 스크롤
+    private func scrollToOpenBottleIfNeeded() {
+
+        guard let indexPath = self.viewModel.openingBottleIndexPath
+        else { return }
+        
+        self.tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
+        self.viewModel.openingBottle = nil
     }
 }
 

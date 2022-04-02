@@ -14,6 +14,17 @@ final class BottleListViewModel {
     /// 지난 저금통 리스트
     var bottleList: [Bottle]!
     
+    /// 현재 열고 있는 저금통을 나타내는 프로퍼티로 있다면 해당 저금통 엔티티, 없으면 nil
+    var openingBottle: Bottle?
+    
+    /// 현재 열고 있는 저금통의 indexPath
+    var openingBottleIndexPath: IndexPath? {
+        guard let openingBottle = openingBottle,
+              let row = self.bottleList.firstIndex(of: openingBottle)
+        else { return nil }
+
+        return IndexPath(row: row, section: .zero)
+    }
     
     // MARK: - init
     init() {
