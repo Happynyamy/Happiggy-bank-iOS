@@ -58,6 +58,7 @@ final class BottleMessageViewController: UIViewController {
     @IBAction func viewDidTap(_ sender: UITapGestureRecognizer) {
         
         self.unwindToBottleListWithAnimation()
+        HapticManager.instance.selection()
     }
     
     
@@ -73,8 +74,6 @@ final class BottleMessageViewController: UIViewController {
     private func fadeInContents() {
         self.view.fadeIn(withDuration: self.fadeInOutduration, options: .curveEaseIn) { _ in
             self.animateTapToContinueLabel()
-            /// 탭 안내 라벨이 나타날 때 탭 인식 허용
-            self.tapGestureRecognizer.isEnabled = true
         }
     }
     
@@ -86,6 +85,8 @@ final class BottleMessageViewController: UIViewController {
             options: [.autoreverse, .repeat, .allowUserInteraction, .curveEaseIn]
         ) {
             self.tapToContinueLabel.alpha = .one
+            /// 탭 안내 라벨이 나타날 때 탭 인식 허용
+            self.tapGestureRecognizer.isEnabled.toggle()
         }
     }
     
