@@ -31,6 +31,13 @@ extension HomeViewController {
         /// Bottle Label의 배경 투명도
         static let bottleLabelBackgroundOpacity: CGFloat = 0.6
     }
+    
+    /// 애니메이션 시간
+    enum Duration {
+        
+        /// 저금통 개봉 애니메이션 시간
+        static let bottleOpeningAnimation: TimeInterval = 1.0
+    }
 }
 
 extension BottleViewController {
@@ -788,13 +795,10 @@ extension BottleMessageViewController {
     /// 애니메이션 시간
     enum Duration {
         
-        /// 내용 페이드인/아웃 시간: 1
-        static let contentsFadeInOut: TimeInterval = 1
-        
-        /// 탭 안내 라벨 딜레이: 0.2
-        static let tapToContinueLabelDelay: TimeInterval = 0.2
+        /// 탭 안내 라벨 딜레이: 0.5
+        static let tapToContinueLabelDelay: TimeInterval = 0.5
 
-        /// 탭 안내 라벨 시간: 1.4
+        /// 탭 안내 라벨 시간: 1.5
         static let tapToContinueLabel: TimeInterval = 1.5
 
     }

@@ -69,6 +69,7 @@ final class HomeViewController: UIViewController {
         if !bottle.isInProgress {
             // TODO: create alert
             bottle.isOpen.toggle()
+            self.bottleViewController.bottleIsOpened(withDuration: Duration.bottleOpeningAnimation)
             self.performSegue(
                 withIdentifier: SegueIdentifier.presentBottleMessageView,
                 sender: sender
@@ -160,6 +161,7 @@ final class HomeViewController: UIViewController {
             else { return }
             
             bottleMessageController.bottle = bottle
+            bottleMessageController.fadeInOutduration = Duration.bottleOpeningAnimation
         }
     }
     
