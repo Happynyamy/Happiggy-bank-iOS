@@ -67,7 +67,12 @@ final class HomeViewController: UIViewController {
             return
         }
         if !bottle.isInProgress {
-            print("show some opening animation")
+            // TODO: create alert
+            bottle.isOpen.toggle()
+            self.performSegue(
+                withIdentifier: SegueIdentifier.presentBottleMessageView,
+                sender: sender
+            )
             return
         }
         if !bottle.hasEmptyDate {
@@ -80,6 +85,7 @@ final class HomeViewController: UIViewController {
                 withIdentifier: SegueIdentifier.presentNewNoteDatePicker,
                 sender: sender
             )
+            return
         }
         if bottle.isEmtpyToday {
             self.performSegue(
@@ -89,6 +95,7 @@ final class HomeViewController: UIViewController {
         }
     }
     
+    // FIXME: - sender 인식 안되므로 제거 필요, bottleViewController 의 unwindCallDidArrive 도 수정 필요 
     /// 홈 뷰로 언와인드할 떄 호출되는 액션 메서드
     @IBAction func unwindCallToHomeViewDidArrive(segue: UIStoryboardSegue, sender: Any? = nil) {
         
@@ -145,6 +152,14 @@ final class HomeViewController: UIViewController {
             
             let viewModel = NewNoteTextViewModel(date: Date(), bottle: bottle)
             textViewController.viewModel = viewModel
+        }
+        
+        if segue.identifier == SegueIdentifier.presentBottleMessageView {
+            guard let bottleMessageController = segue.destination as? BottleMessageViewController,
+                  let bottle = self.viewModel.bottle
+            else { return }
+            
+            bottleMessageController.bottle = bottle
         }
     }
     

@@ -318,6 +318,12 @@ enum SegueIdentifier {
     
     /// 쪽지 리스트 컨트롤러에서 쪽지 디테일 뷰 컨트롤러를 띄울 때 사용
     static let showNoteDetailView = "showNoteDetailView"
+    
+    /// 홈뷰컨트롤러에서 저금통 개봉 시 저금통 메시지 뷰 컨트롤러를 띄울 때 사용
+    static let presentBottleMessageView = "presentBottleMessageView"
+    
+    /// 저금통 개봉 시 저금통 메시지 뷰에서 저금통 리스트로 전환할 때 사용
+    static let unwindFromBottleMessageViewToBottleList = "unwindFromBottleMessageViewToBottleList"
 }
 
 extension CATransition {
@@ -774,5 +780,22 @@ extension NoteDetailViewController {
         
         /// 양 옆에 보일 아이템의 너비: 30
         static let sideItemVisibleWidth: CGFloat = 30
+    }
+}
+
+extension BottleMessageViewController {
+    
+    /// 애니메이션 시간
+    enum Duration {
+        
+        /// 내용 페이드인/아웃 시간: 1
+        static let contentsFadeInOut: TimeInterval = 1
+        
+        /// 탭 안내 라벨 딜레이: 0.2
+        static let tapToContinueLabelDelay: TimeInterval = 0.2
+
+        /// 탭 안내 라벨 시간: 1.4
+        static let tapToContinueLabel: TimeInterval = 1.5
+
     }
 }
