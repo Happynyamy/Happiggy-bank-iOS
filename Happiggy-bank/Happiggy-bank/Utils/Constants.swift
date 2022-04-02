@@ -38,6 +38,19 @@ extension HomeViewController {
         /// 저금통 개봉 애니메이션 시간
         static let bottleOpeningAnimation: TimeInterval = 1.0
     }
+    
+    /// 문자열
+    enum StringLiteral {
+        
+        /// 저금통 개봉 확인 알림 제목
+        static let bottleOpenAlertTitle = "저금통 개봉날이에요! 개봉하시겠어요?"
+        
+        /// 저금통 개봉 확인 알림 개봉 버튼 제목
+        static let bottleOpenAlertOpenButtonTitle = "개봉"
+        
+        /// 저금통 개봉 확인 알림 취소 버튼 제목
+        static let bottleOpenAlertCancelButtonTitle = "취소"
+    }
 }
 
 extension BottleViewController {
