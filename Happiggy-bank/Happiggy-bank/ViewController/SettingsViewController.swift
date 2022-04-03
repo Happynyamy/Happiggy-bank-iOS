@@ -5,6 +5,7 @@
 //  Created by sun on 2022/03/22.
 //
 
+import MessageUI
 import UIKit
 
 /// 환경 설정 뷰 컨트롤러
@@ -27,6 +28,17 @@ final class SettingsViewController: UIViewController {
         self.registerCells()
     }
     
+    
+    // MARK: - @IBActions
+    
+    /// 팀 라벨이 탭 되었을 때 호출되는 메서드
+    @IBAction func teamLabelDidTap(_ sender: UITapGestureRecognizer) {
+        self.presentMailApp()
+    }
+    
+    
+    // MARK: - Functions
+    
     /// 테이블 뷰 셀 등록
     private func registerCells() {
         self.tableView.register(
@@ -38,7 +50,6 @@ final class SettingsViewController: UIViewController {
             forCellReuseIdentifier: SettingsToggleButtonCell.name
         )
     }
-    
 }
 
 
@@ -72,5 +83,33 @@ extension SettingsViewController: UITableViewDataSource {
         }
         
         return SettingsViewCell()
+    }
+}
+
+
+// MARK: - MFMailComposeViewControllerDelegate
+/// 메일 관련 메서드, 프로퍼티
+extension SettingsViewController: MFMailComposeViewControllerDelegate {
+    
+    func mailComposeController(
+        _ controller: MFMailComposeViewController,
+        didFinishWith result: MFMailComposeResult,
+        error: Error?
+    ) {
+        controller.dismiss(animated: true)
+    }
+    
+    /// 메일 앱을 모달 뷰로 띄우는 메서드
+    private func presentMailApp() {
+        guard MFMailComposeViewController.canSendMail()
+        else { return }
+        
+        let mailViewController = MFMailComposeViewController().then {
+            $0.mailComposeDelegate = self
+            $0.setToRecipients(Mail.recipients)
+            $0.setSubject(Mail.subject)
+        }
+        // TODO: add haptic selection feedback
+        present(mailViewController, animated: true)
     }
 }
