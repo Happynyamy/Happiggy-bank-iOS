@@ -541,8 +541,8 @@ extension NoteListViewController {
         /// 첫 단어 라벨 위아래 패딩: 16
         static let firstWordLabelVerticalPadding: CGFloat = 16
         
-        /// 첫 단어 라벨 좌우 패딩: 16
-        static let firstWordLabelHorizontalPadding: CGFloat = 16
+        /// 첫 단어 라벨 좌우 패딩: 24
+        static let firstWordLabelHorizontalPadding: CGFloat = 24
         
         /// 2
         static let two = 2.0
@@ -706,8 +706,8 @@ extension TagCell {
     /// TagCell 폰트
     enum Font {
         
-        /// 첫 단어 라벨 폰트 크기: 17
-        static let firstWordLabel: CGFloat = 17
+        /// 첫 단어 라벨 폰트 크기: 18
+        static let firstWordLabel: CGFloat = 18
     }
 }
 

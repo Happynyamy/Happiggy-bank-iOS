@@ -172,8 +172,10 @@ extension NoteListViewController: UICollectionViewDataSource {
     private func configureCell(_ cell: TagCell, at indexPath: IndexPath) {
         let note = self.viewModel.fetchedResultController.object(at: indexPath)
         
-        cell.firstWordLabel.text = note.firstWord
-        cell.noteImageView.backgroundColor = .note(color: note.color)
+        cell.firstWordLabel.attributedText = self.viewModel.attributedFirstWordString(
+            forNote: note
+        )
+        cell.contentView.backgroundColor = self.viewModel.tagColor(forNote: note)
     }
 }
 
