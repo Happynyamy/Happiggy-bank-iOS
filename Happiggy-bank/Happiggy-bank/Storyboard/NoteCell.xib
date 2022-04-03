@@ -20,37 +20,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="188" height="338"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5H8-XD-cFS">
-                        <rect key="frame" x="16" y="90" width="159" height="21.5"/>
+                        <rect key="frame" x="24" y="76" width="140" height="21.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOY-rW-RKA">
-                        <rect key="frame" x="16" y="32" width="37.5" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SOJ-J2-rKE" userLabel="Date Stack">
+                        <rect key="frame" x="24" y="24" width="40" height="36"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wo1-U4-YpJ">
+                                <rect key="frame" x="0.0" y="0.0" width="40" height="18"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TzU-aG-Tzc">
+                                <rect key="frame" x="0.0" y="18" width="40" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="SOJ-J2-rKE" firstAttribute="leading" secondItem="RcI-Nk-MJp" secondAttribute="leading" constant="24" id="2Y2-mt-7XE"/>
                 <constraint firstItem="RcI-Nk-MJp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="5Ko-Mi-MUa"/>
                 <constraint firstAttribute="bottom" secondItem="RcI-Nk-MJp" secondAttribute="bottom" id="7Go-5F-cND"/>
                 <constraint firstAttribute="trailing" secondItem="RcI-Nk-MJp" secondAttribute="trailing" id="Fsl-YJ-3ZD"/>
-                <constraint firstItem="5H8-XD-cFS" firstAttribute="trailing" secondItem="RcI-Nk-MJp" secondAttribute="trailing" constant="-13" id="MPD-ao-7Ei"/>
-                <constraint firstItem="5H8-XD-cFS" firstAttribute="leading" secondItem="cOY-rW-RKA" secondAttribute="leading" id="NtP-Kd-3Cn"/>
-                <constraint firstItem="cOY-rW-RKA" firstAttribute="leading" secondItem="RcI-Nk-MJp" secondAttribute="leading" constant="16" id="Yif-mp-OJ5"/>
-                <constraint firstItem="5H8-XD-cFS" firstAttribute="top" secondItem="cOY-rW-RKA" secondAttribute="bottom" constant="40" id="doh-id-8wM"/>
-                <constraint firstItem="cOY-rW-RKA" firstAttribute="top" secondItem="RcI-Nk-MJp" secondAttribute="top" constant="32" id="mMS-Zr-5S3"/>
+                <constraint firstItem="5H8-XD-cFS" firstAttribute="trailing" secondItem="RcI-Nk-MJp" secondAttribute="trailing" constant="-24" id="MPD-ao-7Ei"/>
+                <constraint firstItem="SOJ-J2-rKE" firstAttribute="top" secondItem="RcI-Nk-MJp" secondAttribute="top" constant="24" id="gwx-Hb-Dxn"/>
+                <constraint firstItem="5H8-XD-cFS" firstAttribute="top" secondItem="SOJ-J2-rKE" secondAttribute="bottom" constant="16" id="kUb-69-gIZ"/>
+                <constraint firstItem="5H8-XD-cFS" firstAttribute="leading" secondItem="SOJ-J2-rKE" secondAttribute="leading" id="t7d-ek-qbw"/>
                 <constraint firstItem="RcI-Nk-MJp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="yAv-Ad-3qy"/>
             </constraints>
             <size key="customSize" width="188" height="338"/>
             <connections>
                 <outlet property="contentLabel" destination="5H8-XD-cFS" id="Tng-0U-UqO"/>
-                <outlet property="dateLabel" destination="cOY-rW-RKA" id="Yll-VN-Fd7"/>
+                <outlet property="monthAndDayLabel" destination="TzU-aG-Tzc" id="7oB-xm-VOq"/>
                 <outlet property="noteImageView" destination="RcI-Nk-MJp" id="X3T-xP-cZl"/>
+                <outlet property="yearLabel" destination="Wo1-U4-YpJ" id="soq-Gc-6Iq"/>
             </connections>
-            <point key="canvasLocation" x="140.57971014492756" y="97.767857142857139"/>
+            <point key="canvasLocation" x="168" y="102"/>
         </collectionViewCell>
     </objects>
 </document>

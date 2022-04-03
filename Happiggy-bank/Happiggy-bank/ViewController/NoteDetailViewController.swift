@@ -59,6 +59,7 @@ final class NoteDetailViewController: UIViewController {
         
         // TODO: 디자인 픽스 후 중앙 셀 크기, 좌우 셀 크기, 투명도 수정
         layout.spacingMode = .overlap(visibleOffset: Metric.sideItemVisibleWidth)
+        layout.itemSize = Metric.itemSize
     }
     
     /// 유저가 선택해서 넘어온 쪽지 페이지로 이동
@@ -109,7 +110,10 @@ extension NoteDetailViewController: UICollectionViewDataSource {
     /// 쪽지 셀 구성
     private func configureNoteCell(_ cell: NoteCell, note: Note) {
         cell.noteImageView.image = self.viewModel.image(for: note)
-        cell.dateLabel.attributedText = self.viewModel.attributedDateString(for: note)
+        cell.yearLabel.attributedText = self.viewModel.attributedYearString(forNote: note)
+        cell.monthAndDayLabel.attributedText = self.viewModel.attributedMonthAndDayString(
+            forNote: note
+        )
         cell.contentLabel.text = note.content
     }
 }
