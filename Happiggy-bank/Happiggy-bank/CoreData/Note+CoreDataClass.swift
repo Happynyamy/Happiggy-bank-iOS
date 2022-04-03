@@ -88,17 +88,17 @@ public class Note: NSManagedObject {
     var bottle: Bottle { self.bottle_ ?? Bottle() }
     
     /// 내용의 첫 번째 유효한 단어
-    var firstWord: String {
+    lazy var firstWord: String = {
         
         var firstWord = self.content
             .components(separatedBy: NSCharacterSet.whitespacesAndNewlines)
             .first { !$0.isEmpty } ?? .empty
 
-        /// 첫 단어가 10글자를 넘으면 10글자까지만 자름
+        /// 첫 단어가 10글자를 넘으면 1...10 의 범위에서 랜덤으로 길이 설정
         if firstWord.count > Metric.firstWordMaxLength {
-            firstWord = String(firstWord.prefix(Metric.firstWordMaxLength))
+            firstWord = String(firstWord.prefix(Metric.firstWordRandomLength))
         }
         
         return firstWord
-    }
+    }()
 }
