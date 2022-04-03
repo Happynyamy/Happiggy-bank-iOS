@@ -71,4 +71,18 @@ final class NoteListViewModel {
         self.fetchedResultsControllerDelegate = fetchedResultContollerDelegate
     }
     
+    
+    // MARK: - Functions
+    
+    /// 태그 셀의 배경 색깔 리턴
+    func tagColor(forNote note: Note) -> UIColor? {
+        (note.color != .white) ? .note(color: note.color) : .tagCellWhite 
+    }
+    
+    /// 첫 단어를 색깔 변환한 문자열
+    func attributedFirstWordString(forNote note: Note) -> NSMutableAttributedString {
+        note.firstWord
+            .nsMutableAttributedStringify()
+            .color(color: .noteHighlight(for: note.color))
+    }
 }

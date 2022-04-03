@@ -14,12 +14,9 @@ final class TagCell: UICollectionViewCell {
     
     /// 첫 단어 라벨
     let firstWordLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: Font.firstWordLabel)
+        $0.font = .boldSystemFont(ofSize: Font.firstWordLabel)
         $0.textAlignment = .center
     }
-    
-    /// 쪽지 배경 이미지
-    let noteImageView = UIImageView()
     
     
     // MARK: - Inits
@@ -28,7 +25,7 @@ final class TagCell: UICollectionViewCell {
         super.init(frame: frame)
         
         self.configureHierarchy()
-        self.configureConstraints()
+        self.configureFirstWordLabelConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -41,36 +38,18 @@ final class TagCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        self.noteImageView.image = UIImage()
-        self.firstWordLabel.text = nil
+        self.firstWordLabel.attributedText = nil
         self.transform = .identity
     }
     
     
-    // MARK: - Functions 
+    // MARK: - Functions
+    
     /// 뷰 체계 설정
     private func configureHierarchy() {
-        self.noteImageView.translatesAutoresizingMaskIntoConstraints = false
         self.firstWordLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        self.contentView.addSubview(self.noteImageView)
         self.contentView.addSubview(self.firstWordLabel)
-    }
-    
-    /// 오토레이아웃 설정
-    private func configureConstraints() {
-        self.configureNoteImageViewConstraints()
-        self.configureFirstWordLabelConstraints()
-    }
-    
-    /// 쪽지 이미지뷰 오토레이아웃
-    private func configureNoteImageViewConstraints() {
-        NSLayoutConstraint.activate([
-            self.noteImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            self.noteImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.noteImageView.topAnchor.constraint(equalTo: self.topAnchor),
-            self.noteImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-        ])
     }
     
     /// 단어 라벨 오토레이아웃

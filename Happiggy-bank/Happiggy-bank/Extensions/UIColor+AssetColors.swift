@@ -35,6 +35,9 @@ extension UIColor {
     /// 연한 회색
     static let customLightGray = UIColor(named: "customLightGray")
     
+    /// 쪽지 리스트 태그 셀 흰색 쪽지 색상
+    static let tagCellWhite = UIColor(named: "noteListTagWhite")
+    
     
     // MARK: - Functions
     
