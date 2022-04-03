@@ -16,14 +16,18 @@ final class NoteDetailViewModel {
     var notes: [Note]!
     
     /// 유저가 처음 선택한 쪽지의 인덱스
-    var selectedIndex: Int!
+    private(set) var selectedIndex: Int!
+    
+    /// 저금통 제목
+    private(set) var bottleTitle: String!
     
     
     // MARK: - Init
     
-    init(notes: [Note], selectedIndex: Int) {
+    init(notes: [Note], selectedIndex: Int, bottleTitle: String) {
         self.notes = notes
         self.selectedIndex = selectedIndex
+        self.bottleTitle = bottleTitle
     }
     
     
@@ -48,5 +52,28 @@ final class NoteDetailViewModel {
     /// 색상에 따른 쪽지 이미지 리턴
     func image(for note: Note) -> UIImage {
         UIImage(named: StringLiteral.listNote + note.color.capitalizedString) ?? UIImage()
+    }
+    
+    /// 인덱스 라벨 문자열 리턴
+    func attributedIndexString(_ index: Int) -> NSMutableAttributedString {
+        let indexString = "\(index + 1)"
+            .nsMutableAttributedStringify()
+        // TODO: 디자인 컬러 적용
+            .color(color: .systemYellow)
+            .bold(fontSize: Font.indexLabel)
+        
+        let totalCountString = "/\(self.notes.count)"
+            .nsMutableAttributedStringify()
+        
+        indexString.append(totalCountString)
+        
+        return indexString
+    }
+    
+    /// 인덱스에 해당하는 쪽지의 색깔에 맞는 캐릭터 이미지 리턴
+    func characterImage(forIndex index: Int) -> UIImage {
+        let color = self.notes[index].color
+        
+        return .character(color: color)
     }
 }

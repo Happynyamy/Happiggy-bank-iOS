@@ -53,7 +53,11 @@ final class NoteListViewController: UIViewController {
                   let selectedIndex = sender as? Int
             else { return }
             
-            let viewModel = NoteDetailViewModel(notes: notes, selectedIndex: selectedIndex)
+            let viewModel = NoteDetailViewModel(
+                notes: notes,
+                selectedIndex: selectedIndex,
+                bottleTitle: self.viewModel.bottleTitle
+            )
             noteDetailViewController.viewModel = viewModel
         }
     }
