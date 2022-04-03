@@ -275,8 +275,13 @@ extension Note {
     /// Note 엔티티에서 사용하는 상수
     enum Metric {
         
-        /// 첫 단어 최대 길이로, 이 길이를 초과하면 해당 글자까지 자름
+        /// 첫 단어 최대 길이(10자)로, 이 길이를 초과하면 해당 글자까지 자름
         static let firstWordMaxLength: Int = 10
+        
+        /// 첫 단어가 최대 길이(10자)를 초과하는 경우 랜덤으로 1~최대 길이의 범위 내의 숫자를 길이로 설정
+        static var firstWordRandomLength: Int {
+            (1...firstWordMaxLength).randomElement() ?? 3
+        }
     }
     
     /// Note 엔티티에서 설정하는 문자열
