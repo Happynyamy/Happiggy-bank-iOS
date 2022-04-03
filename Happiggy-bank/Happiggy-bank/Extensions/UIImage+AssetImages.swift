@@ -90,4 +90,9 @@ extension UIImage {
     static func note(color: NoteColor) -> UIImage {
         UIImage(named: Asset.note.rawValue + color.capitalizedString) ?? UIImage()
     }
+    
+    /// 캐릭터 에셋 이미지를 반환하는 메서드
+    static func character(color: NoteColor) -> UIImage {
+        UIImage(named: Asset.character.rawValue + color.capitalizedString) ?? UIImage()
+    }
 }

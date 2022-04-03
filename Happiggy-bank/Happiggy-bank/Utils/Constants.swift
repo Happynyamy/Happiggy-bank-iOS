@@ -468,6 +468,9 @@ enum Asset: String {
     /// 쪽지 외곽선 색상
     case noteBorder
     
+    /// 캐릭터
+    case character
+    
     
     // MARK: Buttons
     
