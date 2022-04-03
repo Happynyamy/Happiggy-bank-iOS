@@ -44,8 +44,11 @@ final class NoteDetailViewController: UIViewController {
     }
     
     /// 현재 페이지의 인덱스
-    private var currentPageIndex: Int = .zero {
+    private var currentPageIndex: Int = .max {
         didSet {
+            guard currentPageIndex != oldValue
+            else { return }
+            
             self.updateIndexLabel()
             self.changeTopCharacterAndZoom()
             self.zoomBottomCharactersGradually(inReverseOrder: oldValue > self.currentPageIndex)
@@ -58,11 +61,10 @@ final class NoteDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.configureCollectionViewLayout()
-        self.registerCell()
         self.currentPageIndex = self.viewModel.selectedIndex
         self.navigationItem.title = self.viewModel.bottleTitle
-        
+        self.registerCell()
+        self.configureCollectionViewLayout()
     }
     
     override func viewWillLayoutSubviews() {
@@ -181,12 +183,12 @@ extension NoteDetailViewController: UICollectionViewDataSource {
 // MARK: - UIScrollViewDelegate
 extension NoteDetailViewController: UIScrollViewDelegate {
     
-    // TODO: 디자인 확인 후 필요 없으면 삭제
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let pageWidth = self.pageSize.width
         let offset = scrollView.contentOffset.x
 
         self.currentPageIndex = Int(floor((offset - pageWidth / 2) / pageWidth) + 1)
+        HapticManager.instance.selection()
     }
 }
 
