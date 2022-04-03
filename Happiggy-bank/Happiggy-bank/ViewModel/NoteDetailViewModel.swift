@@ -29,13 +29,20 @@ final class NoteDetailViewModel {
     
     // MARK: - Functions
     
-    /// 날짜를 "2022 02.05  토" 형태의 문자열로 연도만 볼드 처리해서 변환
-    func attributedDateString(for note: Note) -> NSMutableAttributedString {
+    /// 연도를 색상을 바꿔서 문자열로 리턴
+    func attributedYearString(forNote note: Note) -> NSMutableAttributedString {
         note.date
-            .customFormatted(type: .spaceAndDotWithDayOfWeek)
+            .yearString
             .nsMutableAttributedStringify()
             .color(color: .noteHighlight(for: note.color))
-            .bold(targetString: note.date.yearString, fontSize: Font.dateLabelFontSize)
+    }
+    
+    /// 월, 일, 요일을 색상을 바꿔서 문자열로 리턴
+    func attributedMonthAndDayString(forNote note: Note) -> NSMutableAttributedString {
+        note.date
+            .monthDotDayWithDayOfWeekString
+            .nsMutableAttributedStringify()
+            .color(color: .noteHighlight(for: note.color))
     }
     
     /// 색상에 따른 쪽지 이미지 리턴

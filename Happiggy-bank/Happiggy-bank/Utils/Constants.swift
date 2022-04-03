@@ -819,6 +819,21 @@ extension NoteDetailViewController {
         
         /// 양 옆에 보일 아이템의 너비: 30
         static let sideItemVisibleWidth: CGFloat = 30
+        
+        /// 중앙 아이템 사이즈
+        static let itemSize = CGSize(
+            width: itemWidth,
+            height: heightWidthRatio * itemWidth
+        )
+        
+        /// 아이템 좌우 패딩: 48
+        private static let itemHorizontalPadding: CGFloat = 48
+        
+        /// 아이템 너비
+        private static let itemWidth = UIScreen.main.bounds.width - 2 * itemHorizontalPadding
+        
+        /// 아이템 높이:너비 비율 : 350/280
+        private static let heightWidthRatio: CGFloat = 350/280
     }
 }
 
