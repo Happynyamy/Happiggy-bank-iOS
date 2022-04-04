@@ -730,6 +730,10 @@ extension SettingsViewController {
         
         /// 제목: [행복저금통]
         static let subject = "[행복저금통]"
+        
+        /// 내용
+        static let body =
+        "<p style=\"color:gray\">버그 발생 시 디바이스 이름, iOS 버전을 함께 알려주시면 감사하겠습니다:)</p>"
     }
 }
 
