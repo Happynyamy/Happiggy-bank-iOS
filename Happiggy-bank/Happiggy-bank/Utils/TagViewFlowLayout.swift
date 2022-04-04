@@ -25,29 +25,40 @@ final class TagViewFlowLayout: UICollectionViewFlowLayout {
 
         else { return nil }
         
-        let leftMargin = attributes.first?.frame.origin.x ?? self.sectionInset.left
+        /// 순서대로 확인하면서 왼쪽으로 당기고, 다음 셀이 올 자리 업데이트
+        var leftMargin = self.sectionInset.left
+        var maxY: CGFloat = -.one
         
-        /// 각 셀을 순서대로 확인하면서 맨 좌측에 있는 셀은 그대로 두고 그 다음 셀의 시작 위치를 이전 셀의 너비 + spacing 한 값으로 설정
-        for (index, value) in attributes.enumerated() {
-            guard value.frame.origin.x != leftMargin,
-                  index - 1 >= .zero
-            else { continue }
-            
-            let previousCellmaxX = attributes[index - 1].frame.maxX
-            
-            value.frame.origin.x = previousCellmaxX + self.minimumLineSpacing
+        attributes.forEach {
+            /// 다음 행으로 이동 시 x좌표 위치를 왼쪽으로 리셋
+            if $0.frame.origin.y >= maxY {
+                leftMargin = sectionInset.left
+            }
+            $0.frame.origin.x = leftMargin
+            leftMargin += $0.frame.width + self.minimumInteritemSpacing
+            maxY = max($0.frame.maxY, maxY)
         }
         
-        let contentMaxX: CGFloat = collectionViewContentSize.width - leftMargin
+        let contentMaxX: CGFloat = collectionViewContentSize.width - sectionInset.right
         let grouped = Dictionary(grouping: attributes, by: { $0.frame.minY })
-        
-        /// 가운데 정렬 작업
+
+        /// 각 행 가운데 정렬 작업
         grouped.values.forEach { attributes in
             let maxXs = attributes.map { $0.frame.maxX }
             let diff = (contentMaxX - maxXs.max()!)
-            
+
             attributes.forEach { $0.frame.origin.x += diff / 2}
         }
+        
+        /// 섹션 가운데 정렬 작업
+        let bottomInset = self.sectionInset.bottom
+        let contentHeight = self.collectionViewContentSize.height
+        guard let collectionViewHeight = self.collectionView?.visibleSize.height,
+              contentHeight <= collectionViewHeight - bottomInset
+        else { return attributes }
+        
+        let yOffset = (collectionViewHeight - bottomInset - contentHeight) / 2
+        attributes.forEach { $0.frame.origin.y += yOffset }
         
         return attributes
     }
