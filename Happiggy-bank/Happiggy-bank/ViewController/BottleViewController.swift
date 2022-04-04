@@ -65,8 +65,6 @@ final class BottleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addObservers()
-        
-        initializeBottleView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,6 +77,15 @@ final class BottleViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         self.gravity?.disable()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        guard self.gravity == nil,
+              self.bottleNoteView != nil
+        else { return }
+        self.initializeBottleView()
     }
     
     
@@ -101,8 +108,14 @@ final class BottleViewController: UIViewController {
         guard let bottle = self.viewModel.bottle
         else { return }
         
+        /// 디바이스 크기에 따라 쪽지를 담을 영역 크기 조정
+        self.bottleNoteView.frame = self.view.bounds.insetBy(
+            dx: Metric.bottleNoteViewDxInset,
+            dy: .zero
+        )
         self.fillBottleNoteView(fromNotes: bottle.notes)
         self.addGravity()
+        self.gravity?.enable()
     }
     
     /// 현재 뷰 컨트롤러로 unwind 하라는 호출을 받았을 때 실행되는 액션메서드로, 중력 효과 재개
