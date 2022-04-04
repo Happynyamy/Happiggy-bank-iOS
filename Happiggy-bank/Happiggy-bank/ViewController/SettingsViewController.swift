@@ -108,6 +108,7 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate {
             $0.mailComposeDelegate = self
             $0.setToRecipients(Mail.recipients)
             $0.setSubject(Mail.subject)
+            $0.setMessageBody(Mail.body, isHTML: true)
         }
         // TODO: add haptic selection feedback
         present(mailViewController, animated: true)
