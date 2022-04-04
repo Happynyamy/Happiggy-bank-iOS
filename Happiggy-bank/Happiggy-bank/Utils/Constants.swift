@@ -65,8 +65,10 @@ extension BottleViewController {
         static let durationCap = 60
         
         /// 일주일, 한 달인 경우 높이를 축소하기 위해 감산해줄 값
-        static let shorterMonthHeightRemovalConstant: CGFloat = 90
+        static let shorterMonthHeightRemovalConstant: CGFloat = 130
         
+        /// 저금통 쪽지 뷰 좌우 여백: 14
+        static let bottleNoteViewDxInset: CGFloat = 14
     }
 }
 

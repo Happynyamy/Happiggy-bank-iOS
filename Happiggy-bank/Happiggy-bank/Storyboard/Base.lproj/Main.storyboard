@@ -330,7 +330,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="108" estimatedRowHeight="108" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XH5-F4-UT7">
-                                <rect key="frame" x="0.0" y="88" width="375" height="541"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="544.33333333333337"/>
                                 <inset key="separatorInset" minX="24" minY="0.0" maxX="24" maxY="0.0"/>
                                 <connections>
                                     <outlet property="dataSource" destination="IlI-sf-Vas" id="nPy-Qt-GrC"/>
@@ -338,7 +338,7 @@
                                 </connections>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="b4d-oF-HEA">
-                                <rect key="frame" x="118" y="645" width="139" height="60"/>
+                                <rect key="frame" x="107.66666666666667" y="648.33333333333337" width="159.66666666666663" height="56.666666666666629"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Happiggy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3QJ-R7-7AU">
                                         <rect key="frame" x="0.0" y="0.0" width="159.66666666666666" height="17"/>
