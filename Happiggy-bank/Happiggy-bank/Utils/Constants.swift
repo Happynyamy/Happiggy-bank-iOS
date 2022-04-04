@@ -695,16 +695,6 @@ extension SettingsViewController {
         /// 앱 버전 정보
         case appVersionInformation
     }
-    
-    /// 메일 앱 관련 문자열
-    enum Mail {
-        
-        /// 수신인: 팀 이메일
-        static let recipients = ["happiggybank@gmail.com"]
-        
-        /// 제목: [행복저금통]
-        static let subject = "[행복저금통]"
-    }
 }
 
 extension SettingsViewCell {
