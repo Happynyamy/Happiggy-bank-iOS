@@ -39,12 +39,27 @@ final class BottleListViewController: UIViewController {
         scrollToOpenBottleIfNeeded()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        guard let bottle =  self.viewModel.openingBottle
+        else {
+            self.showAllSubviews()
+            self.configureEmptyLabel()
+            return
+        }
+        self.hideAllSubviewsIfIsOpeningBottle(bottle)
+        self.scrollToOpenBottleIfNeeded()
+        self.performSegue(withIdentifier: SegueIdentifier.showNoteList, sender: bottle)
+    }
+    
     
     // MARK: - @IBActions
     
     /// 해당 뷰 컨트롤러로 언와인드 되었을 때 호출
     @IBAction func unwindCallToBottleListDidArrive(segue: UIStoryboardSegue) {
-        guard let bottle = self.viewModel.openingBottle
+        guard let bottle = self.viewModel.openingBottle,
+              self.viewIfLoaded == nil
         else { return }
         
         self.performSegue(withIdentifier: SegueIdentifier.showNoteList, sender: bottle)
@@ -114,6 +129,28 @@ final class BottleListViewController: UIViewController {
         
         self.tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
         self.viewModel.openingBottleIndexPath = nil
+    }
+    
+    /// 네비게이션 바, 탭바와 모든 하위 뷰를 다시 나타냄
+    private func showAllSubviews() {
+        self.title = viewModel.bottleList.isEmpty ?
+        StringLiteral.emptyListNavigationBarTitle :
+        StringLiteral.fullListNavigationBarTitle
+        
+        self.view.subviews.forEach {
+            $0.isHidden = false
+        }
+        
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    /// 네비게이션 바, 탭바와 모든 하위 뷰를 숨김
+    private func hideAllSubviewsIfIsOpeningBottle(_ bottle: Bottle) {
+        self.view.subviews.forEach {
+            $0.isHidden = true
+        }
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationItem.title = .empty
     }
 }
 
