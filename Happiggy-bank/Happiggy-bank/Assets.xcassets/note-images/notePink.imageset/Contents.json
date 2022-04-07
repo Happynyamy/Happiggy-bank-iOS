@@ -1,7 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "분홍.svg",
+      "filename" : "img_note-ico_light_pink.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "img_note-ico_light_pink-1.svg",
       "idiom" : "universal"
     }
   ],
