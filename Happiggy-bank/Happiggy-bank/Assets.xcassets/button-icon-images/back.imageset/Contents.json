@@ -1,12 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "btn_back.svg",
+      "filename" : "btn_next-1.svg",
       "idiom" : "universal"
     }
   ],
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
   }
 }
