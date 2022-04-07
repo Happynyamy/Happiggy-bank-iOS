@@ -86,7 +86,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottleMessageBackground" translatesAutoresizingMaskIntoConstraints="NO" id="pKG-O8-ysV">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="characterBottleMessage" translatesAutoresizingMaskIntoConstraints="NO" id="pKG-O8-ysV">
                                 <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <gestureRecognizers/>
                             </imageView>
@@ -1068,6 +1068,7 @@
         <image name="back" width="42" height="42"/>
         <image name="bottleMessageBackground" width="375" height="812"/>
         <image name="checkmark" width="42" height="42"/>
+        <image name="characterBottleMessage" width="375" height="812"/>
         <image name="characterGreen" width="40" height="40"/>
         <image name="characterPink" width="40" height="40"/>
         <image name="characterPurple" width="40" height="40"/>
