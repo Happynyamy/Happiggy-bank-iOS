@@ -3,6 +3,16 @@
     {
       "filename" : "img_line01_white.svg",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "img_line01_white_d.svg",
+      "idiom" : "universal"
     }
   ],
   "info" : {
