@@ -19,6 +19,30 @@ final class HomeViewModel {
         self.bottle != nil
     }
     
+    /// 오늘이 개봉날인지 아닌지에 대한 불리언 값
+    var isTodayEndDate: Bool {
+        let today = Calendar.current.startOfDay(for: Date()).customFormatted(type: .dot)
+        let endDate = self.bottle?.endDate.customFormatted(type: .dot)
+        
+        return today == endDate
+    }
+    
+    /// 개봉날이 지났는지 아닌지에 대한 불리언 값
+    var isEndDatePassed: Bool {
+        let today = Calendar.current.startOfDay(for: Date())
+        guard let endDate = self.bottle?.endDate
+        else { return false }
+        
+        return today > endDate
+    }
+    
+    /// 제목 수정했는지 아닌지에 대한 불리언 값
+    var hasFixedTitle: Bool {
+        guard let hasFixed = self.bottle?.hasFixedTitle
+        else { return false }
+        return hasFixed
+    }
+    
     
     // MARK: - init
     init() {
@@ -56,5 +80,21 @@ final class HomeViewModel {
         
 //        self.bottle = Bottle.foo
 //        self.bottle = Bottle.fullBottle
+    }
+
+    func dDay() -> String {
+        guard let endDate = bottle?.endDate
+        else { return "" }
+        let prefix = "D-"
+        let startDate = Date()
+        let daysCount = Calendar.current.dateComponents(
+            [.day],
+            from: endDate,
+            to: startDate
+        )
+        guard let days = daysCount.day
+        else { return "" }
+        
+        return prefix + "\(-1 * days)"
     }
 }

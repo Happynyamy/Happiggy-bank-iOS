@@ -50,6 +50,24 @@ extension HomeViewController {
         
         /// 저금통 개봉 확인 알림 취소 버튼 제목
         static let bottleOpenAlertCancelButtonTitle = "취소"
+        
+        /// 저금통이 없는 경우 나타나는 상단 라벨 문자열
+        static let emptyTopLabelText: String = "저금통이 없습니다."
+        
+        /// 저금통이 없는 경우 나타나는 아래 라벨 문자열
+        static let emptyBottomLabelText: String = "탭해서 행복저금통을 추가해주세요."
+        
+        /// 기한이 지났는데 저금통을 열지 않은 경우 나타내는 문자열
+        static let openDatePassedMessage: String = "저금통을 개봉해주세요!"
+        
+        /// 저금통 제목 이미 바꿨을 때 나오는 알림 제목
+        static let bottleNameFixedAlertTitle = "이미 저금통 이름을 변경했습니다."
+        
+        /// 저금통 제목 이미 바꿨을 때 나오는 알림 확인 버튼 제목
+        static let bottleNameFixedAlertConfirm = "확인"
+        
+        /// BottleNameEditViewController identifier
+        static let bottleNameEditViewController = "BottleNameEditViewController"
     }
 }
 
@@ -932,6 +950,57 @@ extension NewBottleMessageFieldViewController {
         
         /// 글자수 제한
         static let textFieldMaxLength = 15
+        
+        /// 한글 글자수 제한
+        static let textFieldKoreanMaxLength = textFieldMaxLength + 1
+        
+        /// 텍스트필드 corner radius
+        static let textFieldCornerRadius: CGFloat = 10
+    }
+}
+
+extension BottleNameEditViewController {
+    
+    /// NewBottleNameFieldViewController에서 사용하는 문자열
+    enum StringLiteral {
+        
+        /// 키보드 언어 설정이 한글인 경우
+        static let korean = "ko-KR"
+        
+        /// 상단 라벨의 문자열
+        static let topLabel = "변경할 저금통 이름을 입력해주세요."
+        
+        /// 텍스트필드 플레이스홀더 문자열
+        static let placeholder = "최대 10글자까지 입력 가능합니다."
+        
+        /// 하단 라벨의 문자열
+        static let bottomLabel = "저금통 이름 변경 시, 추가 변경은 불가합니다."
+        
+        /// 이름이 없을 때 경고 라벨의 문자열
+        static let warningLabel = "저금통 이름이 없어요!"
+        
+        /// 이름이 같을 때 경고 라벨의 문자열
+        static let sameNameWarningLabel = "저금통 이름이 같아요!"
+    }
+    
+    /// NewBottleNameFieldViewController에서 사용하는 폰트 크기
+    enum FontSize {
+        
+        /// 상단 라벨 텍스트 크기
+        static let topLabelText: CGFloat = 17
+        
+        /// 하단 라벨 텍스트 크기
+        static let bottomLabelText: CGFloat = 14
+    
+        /// 경고 라벨 텍스트 색상
+        static let warningLabelText: CGFloat = 14
+    }
+    
+    /// NewBottleNameFieldViewController에서 설정하는 layout 상수값
+    enum Metric {
+        
+        /// 글자수 제한
+        static let textFieldMaxLength = 10
         
         /// 한글 글자수 제한
         static let textFieldKoreanMaxLength = textFieldMaxLength + 1
