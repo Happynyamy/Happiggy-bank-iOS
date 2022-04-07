@@ -66,7 +66,7 @@ final class NewNoteDatePickerViewModel {
 
         var color = UIColor.label
         if isSelected {
-            color = (source.color == nil) ? .customLabel : .customGray
+            color = (source.color == nil) ? .customTint : .customGray
         }
         
         return source.date

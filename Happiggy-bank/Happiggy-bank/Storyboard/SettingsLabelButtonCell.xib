@@ -17,23 +17,23 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="버전 정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJr-bb-JcG">
-                        <rect key="frame" x="0.0" y="35" width="67" height="21.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <rect key="frame" x="0.0" y="36" width="60" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cS6-1G-0kd">
-                        <rect key="frame" x="250.5" y="35" width="65.5" height="21.5"/>
+                        <rect key="frame" x="260.5" y="35.5" width="55.5" height="20"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bzh-pJ-Fgb">
-                                <rect key="frame" x="0.0" y="0.0" width="44" height="21.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="35.5" height="20"/>
                                 <gestureRecognizers/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="PwL-Vq-YrU">
-                                <rect key="frame" x="44" y="2" width="21.5" height="18"/>
+                                <rect key="frame" x="35.5" y="2" width="20" height="16.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="PwL-Vq-YrU" secondAttribute="height" multiplier="1:1" id="Pcu-26-98v"/>
                                 </constraints>

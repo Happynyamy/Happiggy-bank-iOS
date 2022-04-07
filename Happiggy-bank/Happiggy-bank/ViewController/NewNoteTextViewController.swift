@@ -189,7 +189,7 @@ final class NewNoteTextViewController: UIViewController {
     /// 글자수 라벨 업데이트
     private func updateLetterCountLabel(count: Int) {
         self.letterCountLabel.attributedText = self.viewModel
-                                                    .attributedLetterCountString(count: count)
+            .attributedLetterCountString(count: count)
     }
     
     /// 100자를 초과하면 초과분을 자르고, 화면 닫을 때 매끄러운 효과를 위해 키보드를 내리고, 페이드아웃 효과를 줌

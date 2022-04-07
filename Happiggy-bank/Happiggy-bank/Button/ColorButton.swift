@@ -69,7 +69,7 @@ final class ColorButton: UIControl {
         /// 선택되지 않은 경우 하이라이트 효과를 끔
         if !isSelected {
             self.highlightView.backgroundColor = .clear
-            self.button.layer.borderColor = UIColor.noteBorder(for: self.color).cgColor
+            self.button.layer.borderColor = UIColor.note(color: .white).cgColor
         }
     }
     
