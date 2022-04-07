@@ -89,6 +89,8 @@
 		A8FC07DD27B3EF030077A758 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A8FC07DC27B3EF030077A758 /* .swiftlint.yml */; };
 		D22ADF6327F5CE8F00ECB77B /* NotificationSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22ADF6227F5CE8F00ECB77B /* NotificationSettingViewController.swift */; };
 		D22ADF7F27F72F7300ECB77B /* NotificationSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22ADF7E27F72F7300ECB77B /* NotificationSettingViewModel.swift */; };
+		D236DB8627FDC43200D7B8F0 /* NewBottleDatePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D236DB8527FDC43200D7B8F0 /* NewBottleDatePickerViewModel.swift */; };
+		D236DB8827FDD66900D7B8F0 /* NewBottleMessageFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D236DB8727FDD66900D7B8F0 /* NewBottleMessageFieldViewController.swift */; };
 		D2C48BFF27E9D60A006FC59E /* Gravity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C48BFE27E9D60A006FC59E /* Gravity.swift */; };
 		D2C48C0127E9DFA1006FC59E /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C48C0027E9DFA1006FC59E /* NoteView.swift */; };
 /* End PBXBuildFile section */
@@ -177,6 +179,8 @@
 		A8FC07DC27B3EF030077A758 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		D22ADF6227F5CE8F00ECB77B /* NotificationSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingViewController.swift; sourceTree = "<group>"; };
 		D22ADF7E27F72F7300ECB77B /* NotificationSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingViewModel.swift; sourceTree = "<group>"; };
+		D236DB8527FDC43200D7B8F0 /* NewBottleDatePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBottleDatePickerViewModel.swift; sourceTree = "<group>"; };
+		D236DB8727FDD66900D7B8F0 /* NewBottleMessageFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBottleMessageFieldViewController.swift; sourceTree = "<group>"; };
 		D2C48BFE27E9D60A006FC59E /* Gravity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gravity.swift; sourceTree = "<group>"; };
 		D2C48C0027E9DFA1006FC59E /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -214,6 +218,7 @@
 				A4C1AFD127E5C60E0096CD3E /* NewNoteTextViewModel.swift */,
 				A41DE62727F368BF002A7669 /* NoteDetailViewModel.swift */,
 				D22ADF7E27F72F7300ECB77B /* NotificationSettingViewModel.swift */,
+				D236DB8527FDC43200D7B8F0 /* NewBottleDatePickerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -284,6 +289,7 @@
 				A41DE62527F36595002A7669 /* NoteDetailViewController.swift */,
 				A41DE63127F80115002A7669 /* BottleMessageViewController.swift */,
 				D22ADF6227F5CE8F00ECB77B /* NotificationSettingViewController.swift */,
+				D236DB8727FDD66900D7B8F0 /* NewBottleMessageFieldViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -517,10 +523,12 @@
 				A4C1AFD227E5C60E0096CD3E /* NewNoteTextViewModel.swift in Sources */,
 				A819CFA127DE034F00DE8E72 /* NewBottle.swift in Sources */,
 				A456657C27CC66FD007CF70A /* DefaultButton.swift in Sources */,
+				D236DB8627FDC43200D7B8F0 /* NewBottleDatePickerViewModel.swift in Sources */,
 				A499318327BF5158009FF5A8 /* BottleNoteView.swift in Sources */,
 				A4CF2C8E27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift in Sources */,
 				A8BD834D27BE39D600E0DE41 /* NoteProgressLabel.swift in Sources */,
 				A8509E6E27C89A1200855153 /* UIColor+Extension.swift in Sources */,
+				D236DB8827FDD66900D7B8F0 /* NewBottleMessageFieldViewController.swift in Sources */,
 				A490AC4E27DD945E00B04CE1 /* NoteListViewController.swift in Sources */,
 				A8BD834727BE337900E0DE41 /* HomeView.swift in Sources */,
 				A4CF2C7C27C71FF5001B01B1 /* CATransition+PopupAnimation.swift in Sources */,

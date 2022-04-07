@@ -349,6 +349,11 @@ enum SegueIdentifier {
     
     /// 저금통 개봉 시 저금통 메시지 뷰에서 저금통 리스트로 전환할 때 사용
     static let unwindFromBottleMessageViewToBottleList = "unwindFromBottleMessageViewToBottleList"
+    
+    /// 저금통 개봉 시점 피커 뷰에서 저금통 개봉시 멘트 필드 뷰로 전환할 때 사용
+    static let presentNewBottleMessageField = "presentNewBottleMessageFieldFromDatePicker"
+    
+    static let unwindFromNewBottleViewToHomeView = "unwindFromNewBottleViewToHomeView"
 }
 
 extension CATransition {
@@ -379,7 +384,7 @@ extension NewBottleNameFieldViewController {
         static let topLabel = "저금통 이름을 입력해주세요."
         
         /// 텍스트필드 플레이스홀더 문자열
-        static let placeholder = "최대 15글자까지 입력 가능합니다."
+        static let placeholder = "최대 10글자까지 입력 가능합니다."
         
         /// 하단 라벨의 문자열
         static let bottomLabel = "저금통 이름은 나중에 1회 변경할 수 있습니다."
@@ -405,7 +410,7 @@ extension NewBottleNameFieldViewController {
     enum Metric {
         
         /// 글자수 제한
-        static let textFieldMaxLength = 15
+        static let textFieldMaxLength = 10
         
         /// 한글 글자수 제한
         static let textFieldKoreanMaxLength = textFieldMaxLength + 1
@@ -444,6 +449,9 @@ extension NewBottleDatePickerViewController {
         
         /// 피커 행 텍스트 크기
         static let rowText: CGFloat = 18
+        
+        /// 개봉 예정일 라벨 텍스트 크기
+        static let openDateLabelText: CGFloat = 14
     }
     
     /// NewBottleDatePickerViewController에서 설정하는 layout 상수값
@@ -874,5 +882,61 @@ extension NotificationSettingViewController {
         
         /// 알림 취소 액션 라벨
         static let cancel: String = "취소"
+    }
+}
+
+extension NewBottleDatePickerViewModel {
+    
+    /// 문자열
+    enum StringLiteral {
+        
+        /// 개봉 예정일 표시하는 라벨 앞에 붙는 문자열
+        static let openDateLabelPrefix: String = "개봉일: "
+    }
+}
+
+extension NewBottleMessageFieldViewController {
+    
+    /// NewBottleMessageFieldViewController에서 사용하는 문자열
+    enum StringLiteral {
+        
+        /// 키보드 언어 설정이 한글인 경우
+        static let korean = "ko-KR"
+        
+        /// 상단 라벨의 문자열
+        static let topLabel = "저금통 개봉할 때의\n나에게 해줄 한마디를 적어주세요!"
+        
+        /// 텍스트필드 플레이스홀더 문자열
+        static let placeholder = "최대 15글자까지 입력 가능합니다."
+        
+        /// 하단 라벨의 문자열
+        static let bottomLabel = "최대 15글자까지 입력 가능합니다."
+        
+        // TODO: 좋은 아이디어좀 주세요..
+        /// 개봉 메시지를 적지 않았을 때 기본으로 제공되는 메시지
+        static let defaultMessage = "반가워 내 행복들아!"
+    }
+    
+    /// NewBottleMessageFieldViewController에서 사용하는 폰트 크기
+    enum FontSize {
+        
+        /// 상단 라벨 텍스트 크기
+        static let topLabelText: CGFloat = 17
+        
+        /// 하단 라벨 텍스트 크기
+        static let bottomLabelText: CGFloat = 14
+    }
+    
+    /// NewBottleMessageFieldViewController에서 설정하는 layout 상수값
+    enum Metric {
+        
+        /// 글자수 제한
+        static let textFieldMaxLength = 15
+        
+        /// 한글 글자수 제한
+        static let textFieldKoreanMaxLength = textFieldMaxLength + 1
+        
+        /// 텍스트필드 corner radius
+        static let textFieldCornerRadius: CGFloat = 10
     }
 }

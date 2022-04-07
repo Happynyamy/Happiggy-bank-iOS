@@ -57,9 +57,10 @@ final class NewBottleNameFieldViewController: UIViewController {
             else { return }
             
             newBottleDatePickerViewController.delegate = self
-            newBottleDatePickerViewController.bottleData = NewBottle(
+            newBottleDatePickerViewController.viewModel.bottleData = NewBottle(
                 name: self.textField.text,
-                periodIndex: self.bottleData?.periodIndex
+                periodIndex: self.bottleData?.periodIndex,
+                openMessage: self.bottleData?.openMessage
             )
         }
     }
@@ -110,17 +111,6 @@ final class NewBottleNameFieldViewController: UIViewController {
     }
     
     
-    // MARK: View Hierarcy
-    
-    /// 뷰 계층 설정하는 함수
-    private func configureViewHierarcy() {
-        self.view.addSubview(topLabel)
-        self.view.addSubview(textField)
-        self.view.addSubview(bottomLabel)
-        self.view.addSubview(warningLabel)
-    }
-    
-    
     // MARK: View Configuration
     
     /// 내비게이션 바 투명하게 만드는 함수
@@ -137,7 +127,6 @@ final class NewBottleNameFieldViewController: UIViewController {
             targetString: StringLiteral.placeholder,
             color: .customPlaceholderText
         )
-        self.textField.textColor = .customLabel
         self.textField.layer.cornerRadius = Metric.textFieldCornerRadius
         self.textField.delegate = self
         self.textField.becomeFirstResponder()
@@ -158,11 +147,12 @@ final class NewBottleNameFieldViewController: UIViewController {
         // top label
         self.topLabel.text = StringLiteral.topLabel
         self.topLabel.font = .systemFont(ofSize: FontSize.topLabelText)
+        self.topLabel.textColor = .customMainLabel
         
         // bottom label
         self.bottomLabel.text = StringLiteral.bottomLabel
         self.bottomLabel.font = .systemFont(ofSize: FontSize.bottomLabelText)
-        self.bottomLabel.textColor = .customSecondaryLabel
+        self.bottomLabel.textColor = .customSubLabel
         
         // warning label
         self.warningLabel.text = StringLiteral.warningLabel
@@ -197,7 +187,7 @@ extension NewBottleNameFieldViewController: UITextFieldDelegate {
         return self.textField.resignFirstResponder()
     }
     
-    /// 최대 글자수 15자 제한
+    /// 최대 글자수 10자 제한
     func textField(
         _ textField: UITextField,
         shouldChangeCharactersIn range: NSRange,

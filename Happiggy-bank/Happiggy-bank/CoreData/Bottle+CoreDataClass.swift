@@ -85,6 +85,7 @@ public class Bottle: NSManagedObject {
         endDate_ ?? Date()
     }
     
+    /// 개봉 멘트
     var message: String {
         message_ ?? .empty
     }
