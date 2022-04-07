@@ -128,8 +128,14 @@ extension BottleListViewController {
     /// BottleListViewController에서 설정하는 layout 상수값
     enum Metric {
         
-        /// 테이블뷰 행 높이
-        static let cellHeight: CGFloat = BottleCell.Metric.cellHeight + BottleCell.Metric.cellSpacing
+        /// 컬렉션뷰 셀 너비
+        static let cellWidth: CGFloat = BottleCell.Metric.cellWidth
+        
+        /// 컬렉션뷰 셀 높이
+        static let cellHeight: CGFloat = BottleCell.Metric.cellHeight
+        
+        /// 셀 각 라인 별 최소 간격
+        static let minimumLineSpacing: CGFloat = 40
     }
     
     /// BottleListViewController에서 설정하는 Color 상수값
@@ -175,87 +181,45 @@ extension BottleCell {
         return "\(self)"
     }
     
-    // TODO: 에셋 교체시 이름 통일
-    /// Bottle Cell에서 사용하는 문자열
-    enum StringLiteral {
-        
-        /// 셀 배경 이미지 이름
-        static let backgroundImage: String = "bottleCellBackground"
-        
-        /// 셀 저금통 프레임 이미지 이름
-        static let bottleFrameImage: String = "bottleInList"
-        
-        /// 셀 저금통 뚜껑 이미지 이름
-        static let bottleCapImage: String = "cap"
-    }
-    
     /// Bottle Cell에서 설정하는 layout 상수값
     enum Metric {
 
-        /// bottle cell 세로:가로 비율
-        private static let cellSizeRatio: CGFloat = 262/327
+        /// bottle  image 가로:세로 비율
+        private static let imageSizeRatio: CGFloat = 306 / 165
         
-        /// 좌우 패딩: 24
-        static let horizontalPadding: CGFloat = 24
+        /// bottle cell 가로:세로 비율
+        private static let cellSizeRatio: CGFloat = 356 / 165
         
         /// 화면 가로 길이
         static let screenWidth: CGFloat = UIScreen.main.bounds.width
         
-        /// bottle cell 사이 간격: 16
-        static let cellSpacing: CGFloat = 16
+        /// bottle cell 사이 수평 간격
+        static let cellHorizontalSpacing: CGFloat = 24
         
-        /// bottle cell 높이 : 스크린 가로 길이에서 좌우 패딩값을 뺀 다음 지정한 비율을 곱해서 계산
-        static let cellHeight = (screenWidth - 2 * horizontalPadding) * cellSizeRatio
+        /// bottle cell 사이 수직 간격
+        static let cellVerticalSpacing: CGFloat = 20
+        
+        /// bottle cell 너비
+        static let cellWidth: CGFloat = ((screenWidth - 3 * 24) / 2)
+        
+        /// bottle cell 높이
+        static let cellHeight = cellWidth * cellSizeRatio
+        
+        /// bottle image 높이 : 스크린 가로 길이에서 좌우 패딩값을 뺀 다음 지정한 비율을 곱해서 계산
+        static let imageHeight = cellWidth * imageSizeRatio
         
         /// corner radius
-        static let cornerRadius: CGFloat = 15
-        
-        /// 그리드 top constraint 를 비율에 따라 조정한 값
-        static let gridTopConstraintConstant = cellHeight * gridTopConstraintCellHeightRatio
-        
-        /// 쪽지 이미지들의 z index
-        static var randomZpostion: CGFloat {
-            [3, 4, 5, 6, 7, 8].randomElement() ?? 3
-        }
-        
-        /// 쪽지 이미지 scale
-        static var randomScale: CGFloat {
-            [1, 1.1, 1.2, 1.3, 1.4, 1.5].randomElement() ?? .one
-        }
-        
-        /// 쪽지 이미지 회전 각도
-        static var randomDegree: CGFloat {
-            2 * .pi / (degreeDividers.randomElement() ?? .one)
-        }
-        
-        /// 쪽지 이미지들의 회전 각도를 구하기 위한 값들
-        private static let degreeDividers: [CGFloat] = {
-            var degree = [CGFloat]()
-            for number in 1...36 {
-                degree.append(CGFloat(number))
-            }
-            return degree
-        }()
-        
-        /// 그리드 top constraint 와 셀 높이 간 비율
-        private static let gridTopConstraintCellHeightRatio: CGFloat = 83 / 262
+        static let cornerRadius: CGFloat = 7
     }
     
     /// Bottle Cell에서 설정하는 글자 크기
     enum FontSize {
         
         /// 유리병 제목 라벨 글자 크기
-        static let titleLabel: CGFloat = 17
+        static let titleLabel: CGFloat = 16
         
         /// 유리병 기간 라벨 글자 크기
-        static let dateLabel: CGFloat = 16
-    }
-    
-    /// Bottle Cell에서 설정하는 색상 상수값
-    enum Color {
-        
-        /// 유리병 기간 라벨 색상
-        static let dateLabelText: Int = 0x6D6E78
+        static let dateLabel: CGFloat = 12
     }
 }
 

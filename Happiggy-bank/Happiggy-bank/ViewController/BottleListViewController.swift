@@ -15,8 +15,8 @@ final class BottleListViewController: UIViewController {
     
     // MARK: - Properties
     
-    /// 테이블뷰
-    @IBOutlet var tableView: UITableView!
+    /// 컬렉션뷰
+    @IBOutlet var collectionView: UICollectionView!
     
     /// 리스트 비었을 때 표시되는 라벨
     lazy var emptyListLabel: UILabel = UILabel().then {
@@ -36,6 +36,7 @@ final class BottleListViewController: UIViewController {
         configureNavigationBar()
         configureEmptyLabel()
         registerBottleCell()
+        layoutCells()
         scrollToOpenBottleIfNeeded()
     }
     
@@ -126,8 +127,8 @@ final class BottleListViewController: UIViewController {
 
         guard let indexPath = self.viewModel.openingBottleIndexPath
         else { return }
-        
-        self.tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
+
+        self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
         self.viewModel.openingBottleIndexPath = nil
     }
     
@@ -152,63 +153,78 @@ final class BottleListViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         self.navigationItem.title = .empty
     }
+    
+    /// 셀에 대한 레이아웃 설정하는 함수
+    private func layoutCells() {
+        let layout = UICollectionViewFlowLayout()
+        
+        layout.sectionInset = UIEdgeInsets(
+            top: BottleCell.Metric.cellVerticalSpacing,
+            left: BottleCell.Metric.cellHorizontalSpacing,
+            bottom: .zero,
+            right: BottleCell.Metric.cellHorizontalSpacing
+        )
+        
+        layout.minimumInteritemSpacing = .zero
+        layout.minimumLineSpacing = Metric.minimumLineSpacing
+        layout.itemSize = CGSize(
+            width: Metric.cellWidth,
+            height: Metric.cellHeight
+        )
+        
+        collectionView.collectionViewLayout = layout
+    }
 }
 
-extension BottleListViewController: UITableViewDataSource {
-    
-    /// 테이블 뷰의 셀 개수 리턴하는 함수
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension BottleListViewController: UICollectionViewDataSource {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         return self.viewModel.bottleList.count
     }
     
-    /// 셀을 구성하는 함수
-    func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath
-    ) -> UITableViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         let bottle = viewModel.bottleList[indexPath.row]
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: BottleCell.reuseIdentifier,
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: BottleCell.reuseIdentifier,
             for: indexPath
         ) as? BottleCell
-        else { return UITableViewCell() }
-        
+        else { return UICollectionViewCell() }
+
         resetReusableCellAttribute(cell)
         cell.bottleTitleLabel.text = bottle.title
         cell.bottleDateLabel.text = bottle.dateLabel
-        cell.bottleDateLabel.textColor = .bottleListDateLabel
-        cell.fillGrid(withNotes: bottle.notes, duration: bottle.duration)
-        
+        cell.bottleDateLabel.textColor = .customLabel
+
         return cell
+        
     }
     
     /// 인터페이스 빌더로 만든 저금통 셀 사용 등록
     private func registerBottleCell() {
-        self.tableView.register(
+        self.collectionView.register(
             UINib(nibName: BottleCell.nibName, bundle: nil),
-            forCellReuseIdentifier: BottleCell.reuseIdentifier
+            forCellWithReuseIdentifier: BottleCell.reuseIdentifier
         )
     }
-    
+
     /// 리유저블 셀의 속성 초기화하는 함수
     private func resetReusableCellAttribute(_ cell: BottleCell) {
         cell.bottleTitleLabel.text = .empty
         cell.bottleDateLabel.text = .empty
-        cell.resetAttributes()
     }
 }
 
-extension BottleListViewController: UITableViewDelegate {
+extension BottleListViewController: UICollectionViewDelegate {
     
-    /// 특정 행을 선택했을 때 호출되는 함수
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.performSegue(
             withIdentifier: SegueIdentifier.showNoteList,
             sender: viewModel.bottleList[indexPath.row]
         )
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Metric.cellHeight
     }
 }

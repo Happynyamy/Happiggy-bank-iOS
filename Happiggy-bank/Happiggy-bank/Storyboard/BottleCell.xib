@@ -1,88 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="BottleCell" rowHeight="332" id="5Hn-27-qNR" customClass="BottleCell" customModule="Happiggy_bank" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="327" height="262"/>
-            <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Hn-27-qNR" id="DOZ-Da-Rub">
-                <rect key="frame" x="0.0" y="0.0" width="327" height="262"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ims-LU-p55" customClass="BottleCell" customModule="Happiggy_bank" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="165" height="356"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="RDl-tD-Dl3">
+                <rect key="frame" x="0.0" y="0.0" width="165" height="356"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottleCellBackgroundLight" translatesAutoresizingMaskIntoConstraints="NO" id="6tB-vT-ges">
-                        <rect key="frame" x="0.0" y="0.0" width="327" height="262"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeBackgroundBlurredLight" translatesAutoresizingMaskIntoConstraints="NO" id="sNN-DG-3fg">
+                        <rect key="frame" x="0.0" y="0.0" width="165" height="306"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="sNN-DG-3fg" secondAttribute="height" multiplier="55:102" id="MUm-Fs-ZjR"/>
+                        </constraints>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottleListBottleBack" translatesAutoresizingMaskIntoConstraints="NO" id="h6q-bQ-oRA">
-                        <rect key="frame" x="0.0" y="0.0" width="327" height="262"/>
-                    </imageView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ubt-Nc-Vrq">
-                        <rect key="frame" x="122" y="83" width="85" height="85"/>
-                    </view>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottleListBottleFront" translatesAutoresizingMaskIntoConstraints="NO" id="WBF-j1-MPQ">
-                        <rect key="frame" x="0.0" y="0.0" width="327" height="262"/>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bf2-ek-5mu">
-                        <rect key="frame" x="128" y="222.5" width="71" height="19.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <color key="textColor" name="bottleListDateLabelColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4Q-Up-evV">
+                        <rect key="frame" x="63.5" y="314" width="38" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKx-P5-VKL">
-                        <rect key="frame" x="129" y="193.5" width="69" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" name="primaryLabelColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ejb-DU-RBO">
+                        <rect key="frame" x="67" y="336" width="31" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Ubt-Nc-Vrq" firstAttribute="height" secondItem="h6q-bQ-oRA" secondAttribute="height" multiplier="0.324427" id="0rz-Ij-EDr"/>
-                    <constraint firstItem="vKx-P5-VKL" firstAttribute="centerX" secondItem="DOZ-Da-Rub" secondAttribute="centerX" id="9Ht-gb-3qd"/>
-                    <constraint firstAttribute="trailing" secondItem="h6q-bQ-oRA" secondAttribute="trailing" id="AiC-C7-BAR"/>
-                    <constraint firstAttribute="trailing" secondItem="WBF-j1-MPQ" secondAttribute="trailing" id="Ewx-de-AJP"/>
-                    <constraint firstItem="Ubt-Nc-Vrq" firstAttribute="top" secondItem="DOZ-Da-Rub" secondAttribute="top" constant="83" id="Iy3-nE-a2t"/>
-                    <constraint firstItem="6tB-vT-ges" firstAttribute="leading" secondItem="DOZ-Da-Rub" secondAttribute="leading" id="PZd-at-V3w"/>
-                    <constraint firstItem="Ubt-Nc-Vrq" firstAttribute="width" secondItem="h6q-bQ-oRA" secondAttribute="width" multiplier="0.259939" id="Q7M-D1-HnN"/>
-                    <constraint firstItem="h6q-bQ-oRA" firstAttribute="leading" secondItem="DOZ-Da-Rub" secondAttribute="leading" id="SO6-cP-qFe"/>
-                    <constraint firstAttribute="bottom" secondItem="bf2-ek-5mu" secondAttribute="bottom" constant="20" id="UeF-MR-bFk"/>
-                    <constraint firstItem="Ubt-Nc-Vrq" firstAttribute="centerX" secondItem="h6q-bQ-oRA" secondAttribute="centerX" constant="1" id="VGk-iD-ODb"/>
-                    <constraint firstAttribute="bottom" secondItem="6tB-vT-ges" secondAttribute="bottom" id="W4N-XT-RPQ"/>
-                    <constraint firstItem="6tB-vT-ges" firstAttribute="top" secondItem="DOZ-Da-Rub" secondAttribute="top" id="Yf2-Xh-T0I"/>
-                    <constraint firstItem="WBF-j1-MPQ" firstAttribute="leading" secondItem="DOZ-Da-Rub" secondAttribute="leading" id="ZJ6-aZ-R3e"/>
-                    <constraint firstAttribute="bottom" secondItem="h6q-bQ-oRA" secondAttribute="bottom" id="dyp-zb-hW8"/>
-                    <constraint firstAttribute="bottom" secondItem="WBF-j1-MPQ" secondAttribute="bottom" id="iqS-gM-rSc"/>
-                    <constraint firstItem="bf2-ek-5mu" firstAttribute="centerX" secondItem="DOZ-Da-Rub" secondAttribute="centerX" id="lgx-q6-NdH"/>
-                    <constraint firstItem="h6q-bQ-oRA" firstAttribute="top" secondItem="DOZ-Da-Rub" secondAttribute="top" id="n0L-MF-d1k"/>
-                    <constraint firstItem="bf2-ek-5mu" firstAttribute="top" secondItem="vKx-P5-VKL" secondAttribute="bottom" constant="8" id="vCU-kg-mZD"/>
-                    <constraint firstAttribute="trailing" secondItem="6tB-vT-ges" secondAttribute="trailing" id="vpE-jt-Iua"/>
-                    <constraint firstItem="WBF-j1-MPQ" firstAttribute="top" secondItem="DOZ-Da-Rub" secondAttribute="top" id="ynm-tD-B3O"/>
+                    <constraint firstAttribute="trailing" secondItem="sNN-DG-3fg" secondAttribute="trailing" id="4Os-RL-ZqE"/>
+                    <constraint firstItem="sNN-DG-3fg" firstAttribute="top" secondItem="RDl-tD-Dl3" secondAttribute="top" id="IUS-QQ-w49"/>
+                    <constraint firstItem="T4Q-Up-evV" firstAttribute="top" secondItem="sNN-DG-3fg" secondAttribute="bottom" constant="8" id="Qv9-ps-GfI"/>
+                    <constraint firstItem="T4Q-Up-evV" firstAttribute="centerX" secondItem="RDl-tD-Dl3" secondAttribute="centerX" id="SDs-bc-gYL"/>
+                    <constraint firstItem="sNN-DG-3fg" firstAttribute="leading" secondItem="RDl-tD-Dl3" secondAttribute="leading" id="VTB-oH-GFJ"/>
+                    <constraint firstItem="Ejb-DU-RBO" firstAttribute="centerX" secondItem="RDl-tD-Dl3" secondAttribute="centerX" id="ZPm-AV-mPr"/>
+                    <constraint firstItem="Ejb-DU-RBO" firstAttribute="top" secondItem="T4Q-Up-evV" secondAttribute="bottom" constant="4" id="yhy-FP-odY"/>
                 </constraints>
-            </tableViewCellContentView>
+            </collectionViewCellContentView>
             <connections>
-                <outlet property="bottleDateLabel" destination="bf2-ek-5mu" id="XWs-rY-i5N"/>
-                <outlet property="bottleTitleLabel" destination="vKx-P5-VKL" id="d1y-H6-iak"/>
-                <outlet property="gridContainerTopConstraint" destination="Iy3-nE-a2t" id="JIb-O3-Itp"/>
-                <outlet property="gridContainerView" destination="Ubt-Nc-Vrq" id="aqr-r8-2mA"/>
+                <outlet property="bottleDateLabel" destination="Ejb-DU-RBO" id="3Vw-5M-6cD"/>
+                <outlet property="bottleImage" destination="sNN-DG-3fg" id="Gfn-nZ-awf"/>
+                <outlet property="bottleTitleLabel" destination="T4Q-Up-evV" id="dR1-Mb-nBZ"/>
             </connections>
-            <point key="canvasLocation" x="-250.00000000000003" y="199.55357142857142"/>
-        </tableViewCell>
+            <point key="canvasLocation" x="-270.28985507246381" y="85.714285714285708"/>
+        </collectionViewCell>
     </objects>
     <resources>
-        <image name="bottleCellBackgroundLight" width="327" height="262"/>
-        <image name="bottleListBottleBack" width="327" height="262"/>
-        <image name="bottleListBottleFront" width="327" height="262"/>
-        <namedColor name="bottleListDateLabelColor">
-            <color red="0.45882352941176469" green="0.70196078431372544" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="primaryLabelColor">
-            <color red="0.0" green="0.36078431372549019" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <image name="homeBackgroundBlurredLight" width="375" height="812"/>
     </resources>
 </document>
