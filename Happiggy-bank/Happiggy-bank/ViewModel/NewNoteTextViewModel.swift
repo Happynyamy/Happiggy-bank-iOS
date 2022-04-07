@@ -37,7 +37,6 @@ final class NewNoteTextViewModel {
             .yearString
             .nsMutableAttributedStringify()
             .color(color: labelColor)
-            .bold(fontSize: Font.dateLabel)
     }
     
     /// 색깔 적용한 월, 일 텍스트
@@ -60,8 +59,13 @@ final class NewNoteTextViewModel {
     
     /// 색깔 적용한 글자수 라벨 텍스트
     func attributedLetterCountString(count: Int) -> NSMutableAttributedString {
-        StringLiteral.letterCountText(count: count)
+        let countString = "\(count)"
             .nsMutableAttributedStringify()
-            .color(color: labelColor)
+            .bold(fontSize: Font.letterCountLabel)
+            .color(color: .noteHighlight(for: self.newNote.color))
+        
+        countString.append(StringLiteral.letterCountText.nsMutableAttributedStringify())
+
+        return countString
     }
 }

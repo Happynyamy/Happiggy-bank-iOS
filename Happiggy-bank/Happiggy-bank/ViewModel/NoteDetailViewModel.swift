@@ -58,8 +58,7 @@ final class NoteDetailViewModel {
     func attributedIndexString(_ index: Int) -> NSMutableAttributedString {
         let indexString = "\(index + 1)"
             .nsMutableAttributedStringify()
-        // TODO: 디자인 컬러 적용
-            .color(color: .systemYellow)
+            .color(color: .customLabel)
             .bold(fontSize: Font.indexLabel)
         
         let totalCountString = "/\(self.notes.count)"

@@ -662,8 +662,8 @@ extension NewNoteDatePickerViewModel {
     /// NoteNoteDatePickerViewModel 에서 지정하는 폰트 크기
     enum Font {
         
-        /// 날짜라벨 폰트 크기: 17
-        static let dateLabelFontSize: CGFloat = 17
+        /// 날짜라벨 폰트 크기: 18
+        static let dateLabelFontSize: CGFloat = 18
     }
 }
 
@@ -686,18 +686,14 @@ extension NewNoteTextViewModel {
         static let textViewNote = "textViewNote"
         
         /// 글자수 라벨 텍스트를 반환
-        static func letterCountText(count: Int) -> String {
-            "\(count) / \(NewNoteTextViewController.Metric.noteTextMaxLength)"
-        }
+        static let letterCountText = " \\ \(NewNoteTextViewController.Metric.noteTextMaxLength)"
     }
     
     /// NewNoteTextViewModel 에서 사용하는 폰트 크기
     enum Font {
-        /// 날짜 라벨들 폰트 크기: 17
-        static let dateLabel: CGFloat = 17
         
-        /// 글자수 라벨 폰트 크기: 17
-        static let letterCountLabel = dateLabel
+        /// 글자수 라벨 폰트 크기: 15
+        static let letterCountLabel: CGFloat = 15
     }
 }
 
