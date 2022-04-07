@@ -27,16 +27,19 @@ extension UIColor {
     static let customSecondaryLabel = uicolor(named: "secondaryLabelColor")
     
     /// 경고 라벨 색상: 저금통 텍스트 필드, 쪽지 날짜 피커, 쪽지 텍스트 뷰에서 내용이 없을 때 경고하는 데 사용
-    static let customWarningLabel = UIColor(named: "warningLabelColor")
+    static let customWarningLabel = UIColor(named: "warningLabelColor") ?? .systemRed
     
     /// 피커 selector 색상
-    static let pickerSelectionColor = UIColor(named: "pickerSelectionColor")
+    static let pickerSelectionColor = UIColor(named: "pickerSelectionColor") ?? .white
     
     /// 연한 회색
-    static let customLightGray = UIColor(named: "customLightGray")
+    static let customLightGray = UIColor(named: "customLightGray") ?? .lightGray
     
     /// 쪽지 리스트 태그 셀 흰색 쪽지 색상
-    static let tagCellWhite = UIColor(named: "noteListTagWhite")
+    static let tagCellWhite = UIColor(named: "noteListTagWhite") ?? .lightGray
+    
+    /// 틴트 색상(초록)
+    static let customTint = UIColor(named: "customTint") ?? .systemGreen
     
     /// 메인 라벨 색상: 저금통 생성 화면 상단 라벨, 쪽지 생성 화면 상단 라벨, 지난 저금통 리스트 날짜 라벨에 사용
     static let customMainLabel = uicolor(named: "mainLabelColor")
