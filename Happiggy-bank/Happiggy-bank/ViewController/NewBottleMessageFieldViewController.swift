@@ -120,12 +120,12 @@ final class NewBottleMessageFieldViewController: UIViewController {
         // top label
         self.topLabel.text = StringLiteral.topLabel
         self.topLabel.font = .systemFont(ofSize: FontSize.topLabelText)
-        self.topLabel.textColor = .customMainLabel
+        self.topLabel.textColor = .customLabel
         
         // bottom label
         self.bottomLabel.text = StringLiteral.bottomLabel
         self.bottomLabel.font = .systemFont(ofSize: FontSize.bottomLabelText)
-        self.bottomLabel.textColor = .customSubLabel
+        self.bottomLabel.textColor = .customTint
     }
 }
 
