@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "c-white2.svg",
+      "filename" : "img_main_bg_NoBox.svg",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "Group 165.svg",
+      "filename" : "img_main_bg_NoBox-1.svg",
       "idiom" : "universal"
     }
   ],
