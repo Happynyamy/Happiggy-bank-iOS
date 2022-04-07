@@ -15,4 +15,10 @@ struct NewBottle {
     
     /// 저금통 개봉 시점의 인덱스
     var periodIndex: Int?
+    
+    /// 저금통 개봉 날짜
+    var endDate: Date?
+    
+    /// 저금통 개봉 멘트
+    var openMessage: String?
 }

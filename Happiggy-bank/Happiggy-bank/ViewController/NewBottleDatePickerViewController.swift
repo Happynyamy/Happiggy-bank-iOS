@@ -23,23 +23,37 @@ final class NewBottleDatePickerViewController: UIViewController {
     /// 개봉 시점 선택하는 피커 뷰
     @IBOutlet weak var pickerView: UIPickerView!
     
-    /// 저장할 유리병 데이터
-    var bottleData: NewBottle?
+    /// 개봉 날짜 표시하는 라벨
+    @IBOutlet weak var openDateLabel: UILabel!
     
     /// 유리병 데이터 전달하는 델리게이트
     var delegate: DataProvider?
+    
+    /// 데이터 가공해 전달하는 뷰모델
+    var viewModel: NewBottleDatePickerViewModel = NewBottleDatePickerViewModel()
     
     
     // MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initializeLabel()
         initializePickerView()
+        initializeLabel()
         makeNavigationBarClear()
         setPickerHighlightWhite()
     }
     
+    /// 새 유리병 개봉 멘트 필드 뷰 컨트롤러로 이동하기 전 유리병 데이터 넘겨주기
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueIdentifier.presentNewBottleMessageField {
+            guard let newBottleMessageFieldViewController: NewBottleMessageFieldViewController =
+                    segue.destination as? NewBottleMessageFieldViewController
+            else { return }
+            
+            newBottleMessageFieldViewController.delegate = self
+            newBottleMessageFieldViewController.bottleData = self.viewModel.bottleData
+        }
+    }
     
     // MARK: IBAction
     
@@ -47,77 +61,18 @@ final class NewBottleDatePickerViewController: UIViewController {
     /// 이전으로 돌아가도 현재 입력된 피커의 값이 저장되어야 하므로 델리게이트 함수 사용
     @IBAction func backButtonDidTap(_ sender: UIBarButtonItem) {
         // 이전 화면으로 돌아가기
-        self.delegate?.sendNewBottleData(self.bottleData ?? NewBottle())
+        self.delegate?.sendNewBottleData(self.viewModel.bottleData ?? NewBottle())
         
         self.fadeOut()
         self.dismiss(animated: false)
     }
     
-    /// 새 유리병 데이터를 코어데이터에 저장하고 Bottle 뷰 컨트롤러로 되돌아가는 save button 액션
-    @IBAction func saveButtonDidTap(_ sender: UIBarButtonItem) {
-        // TODO: Save Data
-        saveNewBottle()
+    /// 새 유리병 개봉 멘트 입력 뷰 컨트롤러로 이동하는 next button 액션
+    @IBAction func nextButtonDidTap(_ sender: Any) {
         self.performSegue(
-            withIdentifier: SegueIdentifier.unwindFromNewBottlePopupToHomeView,
+            withIdentifier: SegueIdentifier.presentNewBottleMessageField,
             sender: sender
         )
-        self.fadeOut()
-    }
-    
-    
-    // MARK: Functions
-    
-    /// 새 저금통 저장하는 메서드
-    private func saveNewBottle() {
-        guard let title = self.bottleData?.name,
-              let periodIndex = self.bottleData?.periodIndex
-        else { return }
-        Bottle(
-            title: title,
-            startDate: Date(),
-            endDate: endDate(from: Date(), after: periodIndex),
-            message: "안녕"
-        )
-        // TODO: activate core data
-//        PersistenceStore.shared.save()
-    }
-    
-    /// 선택된 period의 index에 따라 종료 날짜 생성
-    private func endDate(from startDate: Date, after periodIndex: Int) -> Date {
-        let period = NewBottleDatePickerViewController.pickerValues[periodIndex]
-        let constant = NewBottleDatePickerViewController.pickerConstants[period]
-        
-        // week
-        if periodIndex == 0 {
-            guard let endDate = Calendar.current.date(
-                byAdding: DateComponents(day: constant),
-                to: startDate
-            )
-            else { return Date() }
-            return endDate
-        }
-        
-        // month
-        if (1...3) ~= periodIndex {
-            guard let endDate = Calendar.current.date(
-                byAdding: DateComponents(month: constant),
-                to: startDate
-            )
-            else { return Date() }
-            return endDate
-        }
-        
-        // year
-        if periodIndex == 4 {
-            guard let endDate = Calendar.current.date(
-                byAdding: DateComponents(year: constant),
-                to: startDate
-            )
-            else { return Date() }
-            return endDate
-        }
-        
-        return Date()
     }
     
     
@@ -129,16 +84,36 @@ final class NewBottleDatePickerViewController: UIViewController {
         self.navigationBar.shadowImage = UIImage()
     }
     
-    /// 상단 라벨 초기 세팅하는 함수
+    /// 라벨 초기 세팅하는 함수
     private func initializeLabel() {
+        setTopLabel()
+        setOpenDateLabel()
+    }
+    
+    /// 상단 라벨 세팅
+    private func setTopLabel() {
         self.topLabel.text = StringLiteral.topLabel
         self.topLabel.font = .systemFont(ofSize: FontSize.topLabelText)
+        self.topLabel.textColor = .customMainLabel
+    }
+    
+    /// 개봉 예정일 라벨 세팅
+    private func setOpenDateLabel() {
+        guard let periodIndex = self.viewModel.bottleData?.periodIndex
+        else { return }
+        let endDate = viewModel.endDate(
+            from: Date(),
+            after: periodIndex
+        )
+        self.openDateLabel.text = viewModel.openDateString(of: endDate)
+        self.openDateLabel.font = .systemFont(ofSize: FontSize.openDateLabelText)
+        self.openDateLabel.textColor = .customGreen
     }
     
     /// 피커 뷰 초기 상태 세팅하는 함수
     /// 처음엔 가운데로, 이후엔 선택된 행의 인덱스에 따라 설정됨
     private func initializePickerView() {
-        let row = bottleData?.periodIndex ??
+        let row = self.viewModel.bottleData?.periodIndex ??
         NewBottleDatePickerViewController.pickerValues.count / 2
         
         self.pickerView.delegate = self
@@ -153,6 +128,8 @@ final class NewBottleDatePickerViewController: UIViewController {
             row: row,
             component: 0
         )
+        self.viewModel.bottleData?.periodIndex = row
+        self.viewModel.bottleData?.endDate = viewModel.endDate(from: Date(), after: row)
     }
     
     /// 피커 선택 하이라이트 뷰 흰색으로 설정하는 함수
@@ -182,6 +159,14 @@ final class NewBottleDatePickerViewController: UIViewController {
                 equalTo: defaultHightlightView.heightAnchor
             )
         ])
+    }
+}
+
+extension NewBottleDatePickerViewController: DataProvider {
+    
+    /// 유리병 데이터에 delegate를 통해 받아온 데이터를 대입해주는 함수
+    func sendNewBottleData(_ data: NewBottle) {
+        self.viewModel.bottleData = data
     }
 }
 
@@ -221,7 +206,8 @@ extension NewBottleDatePickerViewController: UIPickerViewDelegate {
         didSelectRow row: Int,
         inComponent component: Int
     ) {
-        self.bottleData?.periodIndex = row
+        self.viewModel.bottleData?.periodIndex = row
+        self.viewModel.bottleData?.endDate = viewModel.endDate(from: Date(), after: row)
         self.updateSelectedRow(
             pickerView,
             row: row,
@@ -229,6 +215,7 @@ extension NewBottleDatePickerViewController: UIPickerViewDelegate {
         )
     }
 
+    /// 피커 선택된 상태로 업데이트
     private func updateSelectedRow(
         _ pickerView: UIPickerView,
         row: Int,
@@ -238,6 +225,7 @@ extension NewBottleDatePickerViewController: UIPickerViewDelegate {
                 as? UILabel
         else { return }
 
-        rowView.textColor = .customLabel
+        rowView.textColor = .customGreen
+        setOpenDateLabel()
     }
 }
