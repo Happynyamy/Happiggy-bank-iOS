@@ -15,9 +15,21 @@ final class HomeViewController: UIViewController {
     
     /// HomeViewController의 뷰
     @IBOutlet var homeView: UIView!
+
+    /// 저금통이 비었을 때 나타나는 배경 캐릭터
+    @IBOutlet weak var homeCharacter: UIImageView!
     
-    /// 저금통 정보 표시하는 상단 라벨
-    @IBOutlet var bottleInfoLabel: UILabel!
+    /// 저금통이 비었을 때 나타나는 상단 라벨
+    @IBOutlet weak var emptyTopLabel: UILabel!
+    
+    /// 저금통이 비었을 때 나타나는 아래 라벨
+    @IBOutlet weak var emptyBottomLabel: UILabel!
+    
+    /// 디데이 표시하는 라벨
+    @IBOutlet weak var bottleDdayLabel: UILabel!
+    
+    /// 디데이 이름 표시하는 라벨
+    @IBOutlet weak var bottleTitleLabel: UILabel!
     
     /// 유리병 뷰를 관리하는 컨트롤러
     var bottleViewController: BottleViewController!
@@ -31,6 +43,7 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backButtonTitle = ""
+        hideLabelIfNeeded()
         initializeLabel()
         
         self.observe(
@@ -118,6 +131,23 @@ final class HomeViewController: UIViewController {
         self.bottleViewController.initializeBottleView()
     }
     
+    // swiftlint:disable force_cast
+    /// 저금통 제목 라벨 탭했을 때 실행되는 함수
+    @objc private func bottleTitleLabelDidTap(_ sender: UITapGestureRecognizer) {
+        // go to title label edit view
+        if self.viewModel.hasFixedTitle {
+            presentBottleTitleAlreadyFixedAlert()
+        } else {
+            let bottleNameEditViewController = self.storyboard?.instantiateViewController(
+                withIdentifier: StringLiteral.bottleNameEditViewController
+            ) as! BottleNameEditViewController
+            
+            bottleNameEditViewController.bottle = self.viewModel.bottle
+            self.present(bottleNameEditViewController, animated: true)
+        }
+    }
+    // swiftlint:enable force_cast
+    
     
     // MARK: - Navigation
     
@@ -167,15 +197,43 @@ final class HomeViewController: UIViewController {
     
     // MARK: - Initialize View
     
+    /// 조건에 따라 라벨 감추기
+    private func hideLabelIfNeeded() {
+        if self.viewModel.hasBottle {
+            self.emptyTopLabel.isHidden = true
+            self.emptyBottomLabel.isHidden = true
+            self.homeCharacter.isHidden = true
+        } else {
+            self.bottleDdayLabel.isHidden = true
+            self.bottleTitleLabel.isHidden = true
+        }
+    }
+    
+    /// 라벨 초기화
     private func initializeLabel() {
-        self.bottleInfoLabel.backgroundColor = UIColor(
-            white: 1,
-            alpha: Metric.bottleLabelBackgroundOpacity
-        )
-        self.bottleInfoLabel.layer.borderColor = UIColor.white.cgColor
-        self.bottleInfoLabel.layer.borderWidth = Metric.bottleLabelBorderWidth
-        self.bottleInfoLabel.layer.cornerRadius = Metric.bottleLabelCornerRadius
-        self.bottleInfoLabel.layer.masksToBounds = true
+        if self.viewModel.hasBottle {
+            addTapGestureToTitleLabel()
+            self.bottleTitleLabel.text = self.viewModel.bottle?.title
+            self.bottleDdayLabel.text = self.viewModel.dDay()
+            if self.viewModel.isTodayEndDate {
+                self.bottleDdayLabel.textColor = .customWarningLabel
+                return
+            }
+            if self.viewModel.isEndDatePassed {
+                self.bottleDdayLabel.text = StringLiteral.openDatePassedMessage
+                return
+            }
+        } else {
+            self.emptyTopLabel.text = StringLiteral.emptyTopLabelText
+            self.emptyBottomLabel.text = StringLiteral.emptyBottomLabelText
+        }
+    }
+    
+    /// 저금통 제목 라벨 탭 제스처 추가
+    private func addTapGestureToTitleLabel() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(bottleTitleLabelDidTap))
+        self.bottleTitleLabel.isUserInteractionEnabled = true
+        self.bottleTitleLabel.addGestureRecognizer(tap)
     }
     
     /// 저금통 상태에 따른 저금통 이미지/애니메이션 등을 나타냄
@@ -231,6 +289,29 @@ final class HomeViewController: UIViewController {
         alert.addAction(openAction)
         alert.addAction(cancelAction)
         
+        return alert
+    }
+    
+    /// 저금통 이름을 이미 변경했을 때 표시하는 알림
+    private func presentBottleTitleAlreadyFixedAlert() {
+        let alert = makeBottleTitleAlreadyFixedAlert()
+        self.present(alert, animated: true)
+    }
+    
+    /// 저금통 이름을 이미 변경했을 때 표시하는 알림 생성
+    private func makeBottleTitleAlreadyFixedAlert() -> UIAlertController {
+        let alert = UIAlertController(
+            title: StringLiteral.bottleNameFixedAlertTitle,
+            message: nil,
+            preferredStyle: .alert
+        )
+        
+        let confirmAction = UIAlertAction(
+            title: StringLiteral.bottleNameFixedAlertConfirm,
+            style: .default
+        )
+        
+        alert.addAction(confirmAction)
         return alert
     }
     
