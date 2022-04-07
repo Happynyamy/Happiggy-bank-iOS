@@ -352,14 +352,5 @@ extension NewNoteTextViewController: UITextViewDelegate {
             lineSpacing: Metric.lineSpacing,
             characterSpacing: Metric.characterSpacing
         )
-        
-        /// 버튼 색깔 변경
-        if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            self.saveButton.tintColor = .customGray
-            return
-        }
-        if !textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            self.saveButton.tintColor = .systemBlue
-        }
     }
 }

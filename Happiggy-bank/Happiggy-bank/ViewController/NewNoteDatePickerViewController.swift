@@ -163,7 +163,7 @@ final class NewNoteDatePickerViewController: UIViewController {
     /// 소스가 보틀뷰면 그대로 사용하고 쪽지 텍스트뷰면 확인 버튼으로 변경
     private func configureRightButton() {
         if self.isFromNoteTextView {
-            rightButton.image = UIImage(systemName: "checkmark")
+            rightButton.image = .customCheckmark
         }
     }
     
@@ -171,7 +171,6 @@ final class NewNoteDatePickerViewController: UIViewController {
     private func fadeInWarningLabel() {
         self.warningLabel.fadeIn()
         self.showWarningLabel = true
-        self.rightButton.tintColor = .customGray
     }
     
     /// 선택된 행의 글자 색깔 업데이트: 작성 가능한 경우 파랑, 불가능한 경우 회색
@@ -268,7 +267,6 @@ extension NewNoteDatePickerViewController: UIPickerViewDelegate {
             return
         }
         
-        self.rightButton.tintColor = .systemBlue
         self.viewModel.selectedDate = noteData.date
     }
     
