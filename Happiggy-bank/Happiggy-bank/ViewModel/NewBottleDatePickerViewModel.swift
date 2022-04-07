@@ -22,7 +22,7 @@ final class NewBottleDatePickerViewModel {
         // week
         if periodIndex == 0 {
             guard let endDate = Calendar.current.date(
-                byAdding: DateComponents(day: constant + 1),
+                byAdding: DateComponents(day: constant),
                 to: startDate
             )
             else { return Date() }
@@ -32,7 +32,7 @@ final class NewBottleDatePickerViewModel {
         // month
         if (1...3) ~= periodIndex {
             guard let endDate = Calendar.current.date(
-                byAdding: DateComponents(month: constant, day: 1),
+                byAdding: DateComponents(month: constant),
                 to: startDate
             )
             else { return Date() }
@@ -42,7 +42,7 @@ final class NewBottleDatePickerViewModel {
         // year
         if periodIndex == 4 {
             guard let endDate = Calendar.current.date(
-                byAdding: DateComponents(year: constant, day: 1),
+                byAdding: DateComponents(year: constant),
                 to: startDate
             )
             else { return Date() }
