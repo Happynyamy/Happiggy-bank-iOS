@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A41A506F27FF2B2E005381EF /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41A506E27FF2B2E005381EF /* CustomTabBar.swift */; };
 		A41DE62427F34ABB002A7669 /* UPCarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41DE62327F34ABB002A7669 /* UPCarouselFlowLayout.swift */; };
 		A41DE62627F36595002A7669 /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41DE62527F36595002A7669 /* NoteDetailViewController.swift */; };
 		A41DE62827F368BF002A7669 /* NoteDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41DE62727F368BF002A7669 /* NoteDetailViewModel.swift */; };
@@ -97,6 +98,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A41A506E27FF2B2E005381EF /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		A41DE62327F34ABB002A7669 /* UPCarouselFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UPCarouselFlowLayout.swift; sourceTree = "<group>"; };
 		A41DE62527F36595002A7669 /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
 		A41DE62727F368BF002A7669 /* NoteDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewModel.swift; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 				A467B5C727DA258700AC702D /* NewNoteDatePickerRowView.swift */,
 				A8BD834627BE337900E0DE41 /* HomeView.swift */,
 				A499318227BF5158009FF5A8 /* BottleNoteView.swift */,
+				A41A506E27FF2B2E005381EF /* CustomTabBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -566,6 +569,7 @@
 				A491018D27D7358B0012DFDD /* Bottle+CoreDataClass.swift in Sources */,
 				A41DE62E27F5F2C1002A7669 /* UIView+ZoomAnimation.swift in Sources */,
 				A439F54527EF0698002851F4 /* SettingsLabelButtonCell.swift in Sources */,
+				A41A506F27FF2B2E005381EF /* CustomTabBar.swift in Sources */,
 				A490AC5027DD9D2E00B04CE1 /* NoteListViewModel.swift in Sources */,
 				A4F5714927DA589100E7DF9B /* NoteDatePickerData.swift in Sources */,
 				D2C48BFF27E9D60A006FC59E /* Gravity.swift in Sources */,

@@ -184,10 +184,10 @@ extension BottleListViewController {
     enum StringLiteral {
         
         /// 리스트가 빈 경우 표시되는 내비게이션 타이틀
-        static let emptyListNavigationBarTitle: String = "지난 유리병"
+        static let emptyListNavigationBarTitle: String = "저금통 목록"
         
         /// 리스트가 차있는 경우 표시되는 내비게이션 타이틀
-        static let fullListNavigationBarTitle: String = "지난 유리병 목록"
+        static let fullListNavigationBarTitle: String = "저금통 목록"
         
         /// 리스트가 빈 경우 테이블뷰에 표시되는 라벨
         static let emptyListLabelTitle: String = "이전에 사용한 유리병이 없습니다."
@@ -1013,5 +1013,26 @@ extension BottleNameEditViewController {
         
         /// 텍스트필드 corner radius
         static let textFieldCornerRadius: CGFloat = 10
+    }
+}
+
+extension CustomTabBar {
+    
+    /// 상수값
+    enum Metric {
+        
+        /// 높이 : 89
+        static let height: CGFloat = 89
+        
+        /// 아이템 제목 오프셋: 4
+        static let titleOffset: CGFloat = 4
+        
+        /// 아이템 인셋: (4, 0, -4, 0)
+        static let imageInset = UIEdgeInsets(
+            top: titleOffset,
+            left: .zero,
+            bottom: -titleOffset,
+            right: .zero
+        )
     }
 }
