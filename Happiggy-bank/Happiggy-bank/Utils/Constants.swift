@@ -476,6 +476,9 @@ enum Asset: String {
     /// 쪽지 외곽선 색상
     case noteBorder
     
+    /// 캐릭터
+    case character
+    
     
     // MARK: Buttons
     
@@ -808,8 +811,8 @@ extension NoteDetailViewModel {
     /// 폰트 관련 설정
     enum Font {
         
-        /// 날짜라벨 폰트 크기: 15
-        static let dateLabelFontSize: CGFloat = 15
+        /// 인덱스라벨 폰트 크기: 16
+        static let indexLabel: CGFloat = 16
     }
     
     /// 문자열
@@ -827,6 +830,37 @@ extension NoteDetailViewController {
         
         /// 양 옆에 보일 아이템의 너비: 30
         static let sideItemVisibleWidth: CGFloat = 30
+        
+        /// 중앙 아이템 사이즈
+        static let itemSize = CGSize(
+            width: itemWidth,
+            height: heightWidthRatio * itemWidth
+        )
+        
+        /// 아이템 좌우 패딩: 48
+        private static let itemHorizontalPadding: CGFloat = 48
+        
+        /// 아이템 너비
+        private static let itemWidth = UIScreen.main.bounds.width - 2 * itemHorizontalPadding
+        
+        /// 아이템 높이:너비 비율 : 350/280
+        private static let heightWidthRatio: CGFloat = 350/280
+    }
+    
+    /// 애니메이션 관련 상수
+    enum Animation {
+        
+        /// 상단 캐릭터 애니메이션 시간: 0.3
+        static let topCharacterDuration: Double = 0.3
+        
+        /// 하단 캐릭터 애니메이션 시간: 0.2
+        static let bottomCharacterDuration: Double = 0.2
+        
+        /// 하단 캐릭터 애니메이션 딜레이 시간: 0.1
+        static let bottomCharacterDelay: Double = 0.1
+        
+        /// 인덱스 라벨 업데이트 애니메이션 시간: 0.2
+        static let IndexLabelDuration: Double = 0.2
     }
 }
 

@@ -12,8 +12,11 @@ final class NoteCell: UICollectionViewCell {
     
     // MARK: - @IBOutlet
     
-    /// 쪽지 작성 날짜 라벨
-    @IBOutlet weak var dateLabel: UILabel!
+    /// 쪽지 작성 연도 라벨
+    @IBOutlet weak var yearLabel: UILabel!
+    
+    /// 쪽지 작성 월, 일, 요일 라벨
+    @IBOutlet weak var monthAndDayLabel: UILabel!
     
     /// 쪽지 내용 라벨
     @IBOutlet weak var contentLabel: UILabel!
@@ -32,7 +35,8 @@ final class NoteCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         self.noteImageView.image = UIImage()
-        self.dateLabel.text = nil
+        self.yearLabel.attributedText = nil
+        self.monthAndDayLabel.attributedText = nil
         self.contentLabel.text = nil
         
     }
