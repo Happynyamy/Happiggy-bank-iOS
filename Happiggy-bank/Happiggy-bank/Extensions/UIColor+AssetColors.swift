@@ -41,18 +41,6 @@ extension UIColor {
     /// 틴트 색상(초록)
     static let customTint = UIColor(named: "customTint") ?? .systemGreen
     
-    /// 메인 라벨 색상: 저금통 생성 화면 상단 라벨, 쪽지 생성 화면 상단 라벨, 지난 저금통 리스트 날짜 라벨에 사용
-    static let customMainLabel = uicolor(named: "mainLabelColor")
-    
-    /// 홈 라벨 색상: 홈 화면의 디데이 라벨에 사용
-    static let customHomeLabel = uicolor(named: "homeLabelColor")
-    
-    /// 서브 라벨 색상: 홈 화면의 설명 라벨, 저금통 개봉시 설명 라벨, 저금통 생성 화면의 텍스트필드 아래 설병 라벨에 사용
-    static let customSubLabel = uicolor(named: "subLabelColor")
-    
-    /// 녹색
-    static let customGreen = uicolor(named: "primaryGreen")
-    
     
     // MARK: - Functions
     

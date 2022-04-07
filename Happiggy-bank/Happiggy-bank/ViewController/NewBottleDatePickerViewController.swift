@@ -94,7 +94,7 @@ final class NewBottleDatePickerViewController: UIViewController {
     private func setTopLabel() {
         self.topLabel.text = StringLiteral.topLabel
         self.topLabel.font = .systemFont(ofSize: FontSize.topLabelText)
-        self.topLabel.textColor = .customMainLabel
+        self.topLabel.textColor = .customLabel
     }
     
     /// 개봉 예정일 라벨 세팅
@@ -107,7 +107,7 @@ final class NewBottleDatePickerViewController: UIViewController {
         )
         self.openDateLabel.text = viewModel.openDateString(of: endDate)
         self.openDateLabel.font = .systemFont(ofSize: FontSize.openDateLabelText)
-        self.openDateLabel.textColor = .customGreen
+        self.openDateLabel.textColor = .customTint
     }
     
     /// 피커 뷰 초기 상태 세팅하는 함수
@@ -225,7 +225,7 @@ extension NewBottleDatePickerViewController: UIPickerViewDelegate {
                 as? UILabel
         else { return }
 
-        rowView.textColor = .customGreen
+        rowView.textColor = .customTint
         setOpenDateLabel()
     }
 }
