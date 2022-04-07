@@ -41,6 +41,9 @@ extension UIColor {
     /// 틴트 색상(초록)
     static let customTint = UIColor(named: "customTint") ?? .systemGreen
     
+    /// 탭바 구분선 색상
+    static let tabBarDivider = UIColor(named: "tabBarDivider") ?? .secondaryLabel
+    
     
     // MARK: - Functions
     

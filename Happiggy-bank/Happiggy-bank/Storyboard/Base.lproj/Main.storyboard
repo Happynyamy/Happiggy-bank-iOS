@@ -16,11 +16,11 @@
             <objects>
                 <viewController modalTransitionStyle="crossDissolve" id="BYZ-38-t0r" customClass="HomeViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZlX-eS-Yvg">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmA-fx-uIw">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
@@ -215,7 +215,7 @@
             <objects>
                 <viewController id="E5t-46-ohL" customClass="BottleListViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nEt-Kx-IF1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="l7q-sD-9EX">
@@ -268,7 +268,7 @@
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="KE3-2Z-kiH" customClass="NoteListViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="96q-VD-T5D">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SCP-Hp-DbX">
@@ -317,11 +317,11 @@
             </objects>
             <point key="canvasLocation" x="892" y="2445.8128078817736"/>
         </scene>
-        <!--Home-->
+        <!--홈-->
         <scene sceneID="YE7-1s-WX3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LDk-3h-IzZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="Eeg-1d-ksO"/>
+                    <tabBarItem key="tabBarItem" title="홈" image="tabBarHomeNormal" selectedImage="tabBarHomeSelected" id="Eeg-1d-ksO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wRZ-jI-V9m">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -341,10 +341,11 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="dSD-O6-Yej" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tog-A2-SCB">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Tog-A2-SCB" customClass="CustomTabBar" customModule="Happiggy_bank" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <color key="backgroundColor" name="tabBarBackground"/>
+                        <color key="tintColor" name="customTint"/>
                     </tabBar>
                     <connections>
                         <segue destination="LDk-3h-IzZ" kind="relationship" relationship="viewControllers" id="MHL-oV-ZTp"/>
@@ -356,11 +357,11 @@
             </objects>
             <point key="canvasLocation" x="892.75362318840587" y="38.839285714285715"/>
         </scene>
-        <!--Bottle List-->
+        <!--저금통 목록-->
         <scene sceneID="ffE-9v-wjj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZUl-P8-w21" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Bottle List" id="RUG-PV-yjD"/>
+                    <tabBarItem key="tabBarItem" title="저금통 목록" image="tabBarListNormal" selectedImage="tabBarListSelected" id="RUG-PV-yjD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="back" backIndicatorTransitionMaskImage="back" id="PEg-Az-WTy">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -451,11 +452,11 @@
             </objects>
             <point key="canvasLocation" x="2965.5999999999999" y="1642.6108374384237"/>
         </scene>
-        <!--Settings-->
+        <!--환경설정-->
         <scene sceneID="vw8-MY-aV0">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rvN-Mi-KI9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" id="LtB-vV-jcX"/>
+                    <tabBarItem key="tabBarItem" title="환경설정" image="tabBarSettingsNormal" selectedImage="tabBarSettingsSelected" id="LtB-vV-jcX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="back" backIndicatorTransitionMaskImage="back" id="1ha-RM-7e9">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -869,11 +870,11 @@
             <objects>
                 <viewController id="8AM-Vb-C6f" customClass="NoteDetailViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XRY-6G-qf4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YA1-XK-Qra">
-                                <rect key="frame" x="0.0" y="198" width="414" height="500"/>
+                                <rect key="frame" x="0.0" y="114.66666666666669" width="375" height="500.00000000000006"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="500" id="J04-tK-UsO"/>
@@ -910,14 +911,14 @@
                                 <rect key="frame" x="334" y="724" width="40" height="40"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="characterPink" translatesAutoresizingMaskIntoConstraints="NO" id="OBm-7g-O6d">
-                                <rect key="frame" x="187" y="128" width="40" height="40"/>
+                                <rect key="frame" x="167.66666666666666" y="44.666666666666657" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="OBm-7g-O6d" secondAttribute="height" multiplier="1:1" id="fIe-eg-1p2"/>
                                     <constraint firstAttribute="width" constant="40" id="oo5-Lf-6Jb"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqC-5b-cQf">
-                                <rect key="frame" x="187" y="734" width="40" height="20"/>
+                                <rect key="frame" x="167.66666666666666" y="650.66666666666663" width="40" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" name="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
@@ -1223,6 +1224,12 @@
         <image name="checkmark" width="42" height="42"/>
         <image name="homeCharacter" width="375" height="812"/>
         <image name="next" width="42" height="42"/>
+        <image name="tabBarHomeNormal" width="36" height="26"/>
+        <image name="tabBarHomeSelected" width="36" height="26"/>
+        <image name="tabBarListNormal" width="36" height="26"/>
+        <image name="tabBarListSelected" width="36" height="26"/>
+        <image name="tabBarSettingsNormal" width="36" height="26"/>
+        <image name="tabBarSettingsSelected" width="36" height="26"/>
         <image name="xmark" width="42" height="42"/>
         <namedColor name="customGray">
             <color red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1242,6 +1249,9 @@
         <namedColor name="secondaryLabelColor">
             <color red="0.77254901960784317" green="0.71764705882352942" blue="0.61568627450980395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="tabBarBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="warningLabelColor">
             <color red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -1250,9 +1260,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
