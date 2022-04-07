@@ -362,7 +362,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZUl-P8-w21" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Bottle List" id="RUG-PV-yjD"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PEg-Az-WTy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="back" backIndicatorTransitionMaskImage="back" id="PEg-Az-WTy">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -457,7 +457,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rvN-Mi-KI9" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" id="LtB-vV-jcX"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1ha-RM-7e9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="back" backIndicatorTransitionMaskImage="back" id="1ha-RM-7e9">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -482,12 +482,13 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <items>
                                     <navigationItem id="Dya-aA-mUT">
-                                        <barButtonItem key="leftBarButtonItem" title="Cancel" image="xmark" catalog="system" id="Phw-2k-dd2">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" image="xmark" id="Phw-2k-dd2">
+                                            <color key="tintColor" systemColor="labelColor"/>
                                             <connections>
                                                 <action selector="cancelButtonDidTap:" destination="moi-e1-3hQ" id="u3a-bF-N2P"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Next" image="chevron.right" catalog="system" id="gJA-eJ-60b">
+                                        <barButtonItem key="rightBarButtonItem" title="Next" image="next" id="gJA-eJ-60b">
                                             <connections>
                                                 <action selector="rightButtonDidTap:" destination="moi-e1-3hQ" id="iBf-dW-9PK"/>
                                             </connections>
@@ -565,12 +566,13 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <items>
                                     <navigationItem id="rjR-Ha-zae">
-                                        <barButtonItem key="leftBarButtonItem" title="Cancel" image="xmark" catalog="system" id="zKb-tM-XLc">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" image="xmark" id="zKb-tM-XLc">
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <connections>
                                                 <action selector="cancelButtonDidTap:" destination="FuI-qc-1fd" id="KZ1-Lf-r9d"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Save" image="checkmark" catalog="system" id="HRF-q1-cdw">
+                                        <barButtonItem key="rightBarButtonItem" title="Save" image="checkmark" id="HRF-q1-cdw">
                                             <color key="tintColor" name="customGray"/>
                                             <connections>
                                                 <action selector="saveButtonDidTap:" destination="FuI-qc-1fd" id="syQ-nR-mdU"/>
@@ -788,6 +790,7 @@
                                 <items>
                                     <navigationItem id="Lgm-t3-sGF">
                                         <barButtonItem key="leftBarButtonItem" title="Dismiss" image="xmark" id="upW-c9-QKq">
+                                            <color key="tintColor" systemColor="labelColor"/>
                                             <connections>
                                                 <action selector="cancelButtonDidTap:" destination="abG-42-vcb" id="9KU-pi-JFY"/>
                                             </connections>
@@ -1130,6 +1133,7 @@
                                 <items>
                                     <navigationItem id="bkX-Lf-cfM">
                                         <barButtonItem key="leftBarButtonItem" title="Dismiss" image="xmark" id="7Hz-au-GCe">
+                                            <color key="tintColor" systemColor="labelColor"/>
                                             <connections>
                                                 <action selector="cancelButtonDidTap:" destination="6qv-0D-QgR" id="JQe-kV-ilU"/>
                                             </connections>
@@ -1216,13 +1220,10 @@
         <image name="characterPurple" width="40" height="40"/>
         <image name="characterWhite" width="40" height="40"/>
         <image name="characterYellow" width="40" height="40"/>
-        <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="checkmark" width="42" height="42"/>
-        <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="homeCharacter" width="375" height="812"/>
         <image name="next" width="42" height="42"/>
         <image name="xmark" width="42" height="42"/>
-        <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="customGray">
             <color red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -1244,6 +1245,9 @@
         <namedColor name="warningLabelColor">
             <color red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
