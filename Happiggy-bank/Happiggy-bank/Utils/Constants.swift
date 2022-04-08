@@ -97,15 +97,29 @@ extension BottleViewController {
         
         /// 현재 뷰를 기준으로 충돌 영역 설정을 위해 넣을 상하좌우 마진
         static let collisionBoundaryInsets = UIEdgeInsets(top: .zero, left: 3, bottom: 3, right: 3)
+    }
+}
+
+extension BottleViewModel {
+    /// 상수값
+    enum Metric {
         
-        /// 일주일, 한 달짜리는 영역 축소 필요
-        static let durationCap = 60
+        /// 그리드 인셋
+        static let gridEdgeInsets = UIEdgeInsets(
+            top: 30,
+            left: gridVerticalInset,
+            bottom: .zero,
+            right: gridVerticalInset
+        )
         
-        /// 일주일, 한 달인 경우 높이를 축소하기 위해 감산해줄 값
-        static let shorterMonthHeightRemovalConstant: CGFloat = 130
+        /// 1년 짜리 제외 다 영역 축소
+        static let durationCap = 300
         
-        /// 저금통 쪽지 뷰 좌우 여백: 14
-        static let bottleNoteViewDxInset: CGFloat = 14
+        /// 일주일, 한 달인 경우 높이를 축소하기 위해 감산해줄 값: 40
+        static let shorterDurationHeightRemovalConstant: CGFloat = 40
+        
+        /// 그리드 좌우 인셋: 7
+        private static let gridVerticalInset: CGFloat = 7
     }
 }
 

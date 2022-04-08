@@ -14,4 +14,22 @@ final class BottleViewModel {
     // MARK: - Properties
     /// 홈 뷰에서 나타낼 저금통
     var bottle: Bottle?
+    
+    
+    // MARK: - Functions
+    
+    /// 저금통 기간에 따른 그리드 프레임 리턴
+    func gridFrame(forView view: UIView) -> CGRect {
+        guard let bottle = bottle
+        else { return .zero }
+
+        var frame = view.bounds.inset(by: Metric.gridEdgeInsets)
+        
+        if bottle.duration < Metric.durationCap {
+            frame.size.height -= Metric.shorterDurationHeightRemovalConstant
+            frame.origin.y += Metric.shorterDurationHeightRemovalConstant
+        }
+        
+        return frame
+    }
 }
