@@ -1036,3 +1036,23 @@ extension CustomTabBar {
         )
     }
 }
+
+extension HomeViewModel {
+    
+    /// 상수값
+    enum Metric {
+        
+        /// 저금통 스냅샷 사이즈
+        static func snapshotSize(forView containerView: UIView) -> CGSize {
+            let bottleListWidth = UIScreen.main.bounds.width
+            let snapshotWidth = (bottleListWidth - 3 * interSnapshotSpacingInBottleList) / 2
+            let scale = snapshotWidth / containerView.frame.width
+            let snapShotheight = containerView.frame.height * scale
+            
+            return CGSize(width: snapshotWidth, height: snapShotheight)
+        }
+        
+        /// 저금통 리스트에서 스냅샷 간 간격
+        private static let interSnapshotSpacingInBottleList: CGFloat = 24
+    }
+}

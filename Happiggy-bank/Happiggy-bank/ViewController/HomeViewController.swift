@@ -15,7 +15,7 @@ final class HomeViewController: UIViewController {
     
     /// HomeViewController의 뷰
     @IBOutlet var homeView: UIView!
-
+    
     /// 저금통이 비었을 때 나타나는 배경 캐릭터
     @IBOutlet weak var homeCharacter: UIImageView!
     
@@ -81,6 +81,7 @@ final class HomeViewController: UIViewController {
         }
         if !bottle.isInProgress {
             self.presentBottleOpenConfirmationAlert()
+            self.bottleViewController.bottleOpenConfirmationAlertDidAppear()
             return
         }
         if !bottle.hasEmptyDate {
@@ -103,7 +104,7 @@ final class HomeViewController: UIViewController {
         }
     }
     
-    // FIXME: - sender 인식 안되므로 제거 필요, bottleViewController 의 unwindCallDidArrive 도 수정 필요 
+    // FIXME: - sender 인식 안되므로 제거 필요, bottleViewController 의 unwindCallDidArrive 도 수정 필요
     /// 홈 뷰로 언와인드할 떄 호출되는 액션 메서드
     @IBAction func unwindCallToHomeViewDidArrive(segue: UIStoryboardSegue, sender: Any? = nil) {
         
@@ -293,13 +294,15 @@ final class HomeViewController: UIViewController {
             title: StringLiteral.bottleOpenAlertOpenButtonTitle,
             style: .default
         ) { _ in
-            self.openBottle()
+            self.bottleDidOpen()
         }
         
         let cancelAction = UIAlertAction(
             title: StringLiteral.bottleOpenAlertCancelButtonTitle,
             style: .cancel
-        )
+        ) { _ in
+            self.bottleViewController.bottleDidNotOpen()
+        }
         
         alert.addAction(openAction)
         alert.addAction(cancelAction)
@@ -331,13 +334,13 @@ final class HomeViewController: UIViewController {
     }
     
     /// 저금통 개봉
-    private func openBottle() {
+    private func bottleDidOpen() {
         guard let bottle = self.viewModel.bottle
         else { return }
         
-        bottle.isOpen.toggle()
+        self.viewModel.saveOpenedBottle(inContainerView: self.bottleViewController.view, bottle)
         HapticManager.instance.notification(type: .success)
-        self.bottleViewController.bottleIsOpened(withDuration: Duration.bottleOpeningAnimation)
+        self.bottleViewController.bottleDidOpen(withDuration: Duration.bottleOpeningAnimation)
         self.performSegue(
             withIdentifier: SegueIdentifier.presentBottleMessageView,
             sender: self
