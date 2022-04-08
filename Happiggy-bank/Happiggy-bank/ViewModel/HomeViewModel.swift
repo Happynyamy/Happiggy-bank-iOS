@@ -71,8 +71,8 @@ final class HomeViewModel {
         let request = Bottle.fetchRequest(isOpen: false)
         var bottles = PersistenceStore.shared.fetch(request: request)
         self.bottle = bottles.first
-//        self.bottle = Bottle.foo
-//        PersistenceStore.shared.save()
+        self.bottle = Bottle.foo
+        PersistenceStore.shared.save()
     }
 
     func dDay() -> String {

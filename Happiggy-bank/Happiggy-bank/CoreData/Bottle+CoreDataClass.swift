@@ -93,7 +93,7 @@ public class Bottle: NSManagedObject {
     /// 이미지
     var image: UIImage {
         get { UIImage(data: image_ ?? Data()) ?? UIImage() }
-        set { image_ = newValue.jpegData(compressionQuality: .one) }
+        set { image_ = newValue.pngData() }
     }
     
     /// 해당 저금통에 들어있는 쪽지들의 배열

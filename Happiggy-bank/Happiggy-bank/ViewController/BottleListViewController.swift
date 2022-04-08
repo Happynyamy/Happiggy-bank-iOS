@@ -153,7 +153,8 @@ extension BottleListViewController: UICollectionViewDataSource {
         cell.bottleTitleLabel.text = bottle.title
         cell.bottleDateLabel.text = bottle.dateLabel
         cell.bottleDateLabel.textColor = .customLabel
-
+        cell.bottleImage.image = bottle.image
+        
         return cell
         
     }

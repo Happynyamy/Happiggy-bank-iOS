@@ -37,6 +37,7 @@ final class BottleCell: UICollectionViewCell {
     /// 셀 이미지 설정
     private func configureImage() {
         self.bottleImage.layer.cornerRadius = Metric.cornerRadius
+        self.bottleImage.clipsToBounds = true
     }
     
     /// 셀 라벨 폰트사이즈, 색상 설정
