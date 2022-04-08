@@ -7,7 +7,7 @@
 //
 
 import CoreData
-import Foundation
+import UIKit
 
 import Then
 
@@ -64,7 +64,7 @@ public class Bottle: NSManagedObject {
     }
     
     
-    // MARK: - (nil-coalesced) Properties
+    // MARK: - Nil-coalesced Attributes
     
     /// 고유 아이디
     public var id: UUID { id_ ?? UUID() }
@@ -90,6 +90,12 @@ public class Bottle: NSManagedObject {
         message_ ?? .empty
     }
     
+    /// 이미지
+    var image: UIImage {
+        get { UIImage(data: image_ ?? Data()) ?? UIImage() }
+        set { image_ = newValue.jpegData(compressionQuality: .one) }
+    }
+    
     /// 해당 저금통에 들어있는 쪽지들의 배열
     var notes: [Note] {
         guard let notes = self.notes_ as? Set<Note>
@@ -97,6 +103,9 @@ public class Bottle: NSManagedObject {
         
         return notes.map { $0 }.sorted { $0.date < $1.date }
     }
+
+    
+    // MARK: - Properties
     
     // TODO: 유저가 앱을 켜놓은 상태에서 기한이 지나면?
     /// 저금통이 진행 중인지 혹은 종료 후 미개봉 상태인지 나타냄
