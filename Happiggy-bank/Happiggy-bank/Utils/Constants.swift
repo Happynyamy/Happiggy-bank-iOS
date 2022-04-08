@@ -48,6 +48,9 @@ extension HomeViewController {
         /// 저금통 개봉 확인 알림 제목
         static let bottleOpenAlertTitle = "저금통 개봉날이에요! 개봉하시겠어요?"
         
+        ///
+        static let bottleOpenAlertMessage = "현재 저금통 모습이 그대로 저장됩니다"
+        
         /// 저금통 개봉 확인 알림 개봉 버튼 제목
         static let bottleOpenAlertOpenButtonTitle = "개봉"
         
