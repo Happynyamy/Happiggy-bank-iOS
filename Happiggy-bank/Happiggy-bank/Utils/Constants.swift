@@ -30,6 +30,9 @@ extension HomeViewController {
         
         /// Bottle Label의 배경 투명도
         static let bottleLabelBackgroundOpacity: CGFloat = 0.6
+        
+        /// 기한이 지났는데 저금통을 열지 않은 경우 나타내는 라벨 앞쪽 패딩
+        static let openDatePassedLabelLeadingPadding: CGFloat = 16
     }
     
     /// 애니메이션 시간
@@ -68,6 +71,13 @@ extension HomeViewController {
         
         /// BottleNameEditViewController identifier
         static let bottleNameEditViewController = "BottleNameEditViewController"
+    }
+    
+    /// 폰트 크기
+    enum FontSize {
+        
+        /// 기한이 지났는데 저금통을 열지 않은 경우 나타내는 라벨 폰트 크기
+        static let openDatePassedLabelFont: CGFloat = 15
     }
 }
 
