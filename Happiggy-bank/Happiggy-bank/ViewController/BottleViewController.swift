@@ -130,11 +130,19 @@ final class BottleViewController: UIViewController {
         
     }
     
+    /// 개봉 확인 알림이 떴을 때 호출되는 메서드
+    func bottleOpenConfirmationAlertDidAppear() {
+        self.gravity?.disable()
+    }
+    
+    /// 개봉 취소를 눌렀을 때 호출되는 메서드
+    func bottleDidNotOpen() {
+        self.gravity?.enable()
+    }
+
     /// 저금통 개봉 시 호출되는 메서드
     /// 중력 해제, 저금통 nil 처리, 쪽지 노드 제거
-    func bottleIsOpened(withDuration duration: TimeInterval) {
-
-        self.gravity?.disable()
+    func bottleDidOpen(withDuration duration: TimeInterval) {
         self.gravity = nil
         self.viewModel.bottle = nil
         UIView.transition(

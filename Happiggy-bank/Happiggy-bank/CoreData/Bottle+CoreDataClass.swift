@@ -193,7 +193,7 @@ extension Bottle {
     
     /// 테스트용 목 데이터
     static let foo: Bottle = {
-        let offset = 3
+        let offset = 0
         let count = 365 - offset
         let startDate = nthDayFromToday(-count)
         let endDate = nthDayFromToday(-1 + offset)
@@ -206,13 +206,6 @@ extension Bottle {
                 content: "일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십",
                 bottle: bottle)
         }
-//        Note.create(date: startDate, color: NoteColor.green, content: "시작!", bottle: bottle)
-//        Note.create(date: nthDayFromToday(-9), color: NoteColor.pink, content: "일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십", bottle: bottle)
-//        Note.create(date: nthDayFromToday(-3), color: NoteColor.white, content: "100자 좀 적은가? 근데 괜찮은 것 같기도 하고...늘리기는 또 귀찮은데...", bottle: bottle)
-//        Note.create(date: nthDayFromToday(-8), color: NoteColor.purple, content: "왜냐면 한줄만 쓰는 날도 백퍼 있을 것이기 때문", bottle: bottle)
-//        Note.create(date: nthDayFromToday(-1), color: NoteColor.yellow, content: "졸리다 졸려 졸려", bottle: bottle)
-        // MARK: - 오늘 이미 작성한 상태 테스트하려면 아래 주석 해제
-//        Note.create(date: Date(), color: NoteColor.yellow, content: "누가 뚝딱 만들어주면 좋겠다 한 3줄 정도까지 채우고 싶은데 아무거나 써보기 이모지도 써보기 시험 시험 테스트 ☀️", bottle: bottle)
         
         return bottle
     }()
