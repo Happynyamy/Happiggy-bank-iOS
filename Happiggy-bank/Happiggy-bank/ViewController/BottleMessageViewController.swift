@@ -36,6 +36,9 @@ final class BottleMessageViewController: UIViewController {
     /// 뷰컨트롤러 등장/퇴장 시간
     var fadeInOutduration: TimeInterval!
     
+    /// 앱의 탭바 컨트롤러
+    weak var mainTabBarController: UITabBarController?
+    
     
     // MARK: - Life Cycle
 
@@ -57,7 +60,8 @@ final class BottleMessageViewController: UIViewController {
     /// 유저가 화면을 탭하면 호출되는 액션 메서드
     @IBAction func viewDidTap(_ sender: UITapGestureRecognizer) {
         
-        self.unwindToBottleListWithAnimation()
+        self.tapGestureRecognizer.isEnabled.toggle()
+        self.moveToNoteListWithAnimation()
         HapticManager.instance.selection()
     }
     
@@ -90,8 +94,8 @@ final class BottleMessageViewController: UIViewController {
         }
     }
     
-    /// 저금통 리스트를 띄우기 전에 자연스러운 전환을 위해 애니메이션 효과를 줌
-    private func unwindToBottleListWithAnimation() {
+    /// 쪽지 리스트를 띄우기 전에 자연스러운 전환을 위해 애니메이션 효과를 줌
+    private func moveToNoteListWithAnimation() {
         UIView.animate(
             withDuration: self.fadeInOutduration,
             delay: .zero,
@@ -100,11 +104,43 @@ final class BottleMessageViewController: UIViewController {
             self.view.backgroundColor = .white
             self.clearContents()
         } completion: { _ in
-            self.performSegue(
-                withIdentifier: SegueIdentifier.unwindFromBottleMessageViewToBottleList,
-                sender: self.bottle
-            )
+            self.moveToNoteList()
         }
+    }
+    
+    /// 쪽지리스트로 이동
+    private func moveToNoteList() {
+        
+        /// 메인 탭바의 선택 인덱스를 저금통 리스트 인덱스로 변경
+        self.mainTabBarController?.selectedIndex = TabItem.bottleList.rawValue
+
+        let storyboard = UIStoryboard(name: mainStoryboardName, bundle: Bundle.main)
+
+        /// 저금통 리스트를 건너뛰고 쪽지리스트가 바로 보이는 것처럼 보이도록 스토리보드를 사용해서 뷰 컨트롤러를 생성하여 뷰 체계 설정
+        guard let navigationController = self.mainTabBarController?.selectedViewController as?
+                UINavigationController,
+              let noteListViewController = storyboard.instantiateViewController(
+                withIdentifier: NoteListViewController.name
+              ) as? NoteListViewController
+        else { return }
+        
+        let bottleListViewController = storyboard.instantiateViewController(
+            withIdentifier: BottleListViewController.name
+        )
+        let noteListViewModel = NoteListViewModel(
+            bottle: self.bottle,
+            fadeIn: true,
+            fetchedResultContollerDelegate: noteListViewController
+        )
+        noteListViewController.viewModel = noteListViewModel
+        
+        navigationController.setViewControllers(
+            [bottleListViewController, noteListViewController],
+            animated: false
+        )
+        navigationController.navigationBar.backItem?.backButtonTitle = .empty
+        
+        self.dismiss(animated: false, completion: nil)
     }
     
     /// 배경 이미지와 라벨들을 모두 투명도 0으로 변경
@@ -113,18 +149,5 @@ final class BottleMessageViewController: UIViewController {
         self.bottleTitleLabel.alpha = .zero
         self.bottleMessageLabel.alpha = .zero
         self.tapToContinueLabel.alpha = .zero
-    }
-    
-    
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == SegueIdentifier.unwindFromBottleMessageViewToBottleList {
-            guard let bottleListViewController = segue.destination as? BottleListViewController
-            else { return }
-            
-            bottleListViewController.viewModel.openingBottle = self.bottle
-        }
     }
 }

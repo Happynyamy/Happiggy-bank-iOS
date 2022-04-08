@@ -16,11 +16,11 @@
             <objects>
                 <viewController modalTransitionStyle="crossDissolve" id="BYZ-38-t0r" customClass="HomeViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZlX-eS-Yvg">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmA-fx-uIw">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
@@ -29,7 +29,7 @@
                                 </connections>
                             </containerView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeCharacter" translatesAutoresizingMaskIntoConstraints="NO" id="dfo-Bk-tQ1">
-                                <rect key="frame" x="0.0" y="241" width="414" height="414"/>
+                                <rect key="frame" x="0.0" y="199.5" width="414" height="414"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dfo-Bk-tQ1" secondAttribute="height" multiplier="1:1" id="ukt-oa-FWq"/>
                                 </constraints>
@@ -198,7 +198,6 @@
                         <outlet property="bottleTitleLabel" destination="the-XF-3HV" id="YPn-AN-tQQ"/>
                         <outlet property="tapGestureRecognizer" destination="V02-Pn-vzk" id="qFC-7m-mMh"/>
                         <outlet property="tapToContinueLabel" destination="3XN-7E-k3f" id="h8L-m8-UT6"/>
-                        <segue destination="VgM-hx-cQh" kind="unwind" identifier="unwindFromBottleMessageViewToBottleList" animates="NO" unwindAction="unwindCallToBottleListDidArriveWithSegue:" id="PtS-F8-xFo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vrr-k0-xCf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -213,9 +212,9 @@
         <!--Bottle List View Controller-->
         <scene sceneID="U6G-8e-yzH">
             <objects>
-                <viewController id="E5t-46-ohL" customClass="BottleListViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BottleListViewController" id="E5t-46-ohL" customClass="BottleListViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nEt-Kx-IF1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="l7q-sD-9EX">
@@ -259,16 +258,15 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8wb-hW-wCd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="VgM-hx-cQh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="892" y="1642.6108374384237"/>
         </scene>
         <!--Note List View Controller-->
         <scene sceneID="jaT-d5-7R3">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="KE3-2Z-kiH" customClass="NoteListViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NoteListViewController" hidesBottomBarWhenPushed="YES" id="KE3-2Z-kiH" customClass="NoteListViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="96q-VD-T5D">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SCP-Hp-DbX">
@@ -870,11 +868,11 @@
             <objects>
                 <viewController id="8AM-Vb-C6f" customClass="NoteDetailViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XRY-6G-qf4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YA1-XK-Qra">
-                                <rect key="frame" x="0.0" y="114.66666666666669" width="375" height="500.00000000000006"/>
+                                <rect key="frame" x="0.0" y="156.5" width="414" height="500"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="500" id="J04-tK-UsO"/>
@@ -911,14 +909,14 @@
                                 <rect key="frame" x="334" y="724" width="40" height="40"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="characterPink" translatesAutoresizingMaskIntoConstraints="NO" id="OBm-7g-O6d">
-                                <rect key="frame" x="167.66666666666666" y="44.666666666666657" width="40" height="40"/>
+                                <rect key="frame" x="187" y="86.5" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="OBm-7g-O6d" secondAttribute="height" multiplier="1:1" id="fIe-eg-1p2"/>
                                     <constraint firstAttribute="width" constant="40" id="oo5-Lf-6Jb"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqC-5b-cQf">
-                                <rect key="frame" x="167.66666666666666" y="650.66666666666663" width="40" height="20"/>
+                                <rect key="frame" x="187" y="692.5" width="40" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" name="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
@@ -1214,23 +1212,23 @@
         <segue reference="7wk-af-F5w"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="back" width="42" height="42"/>
+        <image name="back" width="10" height="18"/>
         <image name="bottleMessageCharacter" width="375" height="812"/>
         <image name="characterGreen" width="40" height="40"/>
         <image name="characterPink" width="40" height="40"/>
         <image name="characterPurple" width="40" height="40"/>
         <image name="characterWhite" width="40" height="40"/>
         <image name="characterYellow" width="40" height="40"/>
-        <image name="checkmark" width="42" height="42"/>
+        <image name="checkmark" width="19" height="16"/>
         <image name="homeCharacter" width="375" height="812"/>
-        <image name="next" width="42" height="42"/>
+        <image name="next" width="10" height="18"/>
         <image name="tabBarHomeNormal" width="36" height="26"/>
         <image name="tabBarHomeSelected" width="36" height="26"/>
         <image name="tabBarListNormal" width="36" height="26"/>
         <image name="tabBarListSelected" width="36" height="26"/>
         <image name="tabBarSettingsNormal" width="36" height="26"/>
         <image name="tabBarSettingsSelected" width="36" height="26"/>
-        <image name="xmark" width="42" height="42"/>
+        <image name="xmark" width="17" height="17"/>
         <namedColor name="customGray">
             <color red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

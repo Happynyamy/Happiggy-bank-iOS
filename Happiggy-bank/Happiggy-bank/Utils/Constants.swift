@@ -344,9 +344,6 @@ enum SegueIdentifier {
     /// 홈뷰컨트롤러에서 저금통 개봉 시 저금통 메시지 뷰 컨트롤러를 띄울 때 사용
     static let presentBottleMessageView = "presentBottleMessageView"
     
-    /// 저금통 개봉 시 저금통 메시지 뷰에서 저금통 리스트로 전환할 때 사용
-    static let unwindFromBottleMessageViewToBottleList = "unwindFromBottleMessageViewToBottleList"
-    
     /// 저금통 개봉 시점 피커 뷰에서 저금통 개봉시 멘트 필드 뷰로 전환할 때 사용
     static let presentNewBottleMessageField = "presentNewBottleMessageFieldFromDatePicker"
     
@@ -1059,3 +1056,6 @@ extension HomeViewModel {
         private static let interSnapshotSpacingInBottleList: CGFloat = 24
     }
 }
+
+/// 메인 스토리보드 이름 "main"
+let mainStoryboardName = "Main"
