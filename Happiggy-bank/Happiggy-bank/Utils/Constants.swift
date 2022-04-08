@@ -74,6 +74,12 @@ extension HomeViewController {
         
         /// BottleNameEditViewController identifier
         static let bottleNameEditViewController = "BottleNameEditViewController"
+        
+        /// 저금통 생성 후 쪽지가 없을 때 나타내는 라벨 문자열
+        static let tapToAddNoteLabelText: String = "화면을 탭해서 첫 행복을 작성하세요."
+        
+        /// 저금통 생성 후 쪽지가 없을 때 나타내는 캐릭터 이미지 이름
+        static let homeCharacterInitialName: String = "homeCharacterInitial"
     }
     
     /// 폰트 크기

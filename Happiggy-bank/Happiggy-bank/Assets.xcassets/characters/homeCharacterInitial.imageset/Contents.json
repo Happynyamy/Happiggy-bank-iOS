@@ -1,0 +1,22 @@
+{
+  "images" : [
+    {
+      "filename" : "homeCharacterInitialLightmode.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "homeCharacterInitialDarkmode.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

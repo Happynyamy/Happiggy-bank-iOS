@@ -5,6 +5,7 @@
 //  Created by 권은빈 on 2022/02/16.
 //
 
+import CoreData
 import UIKit
 
 // TODO: Bottle Label 디자인 확정시 추가
@@ -24,6 +25,9 @@ final class HomeViewController: UIViewController {
     
     /// 저금통이 비었을 때 나타나는 아래 라벨
     @IBOutlet weak var emptyBottomLabel: UILabel!
+    
+    /// 탭 해서 쪽지 추가 라벨
+    @IBOutlet weak var tapToAddNoteLabel: UILabel!
     
     /// 디데이 표시하는 라벨
     @IBOutlet weak var bottleDdayLabel: UILabel!
@@ -56,6 +60,11 @@ final class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.observe(
+            selector: #selector(refetch),
+            name: .NSManagedObjectContextDidSave
+        )
+
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
@@ -123,6 +132,17 @@ final class HomeViewController: UIViewController {
     
     // TODO: 삭제 (새로운 저금통 추가했을 때 보기 위한 임시 메서드)
     @objc private func refetch() {
+        
+        // 저금통 이름 바꿨을 때
+        self.bottleTitleLabel.text = self.viewModel.bottle?.title
+        
+        // 쪽지 최초 추가
+        if self.viewModel.bottle?.notes.count == 1 {
+            self.homeCharacter.isHidden = true
+            self.tapToAddNoteLabel.isHidden = true
+        }
+        
+        // 저금통 없을 때
         guard self.bottleViewController.viewModel.bottle == nil
         else { return }
         
@@ -130,6 +150,11 @@ final class HomeViewController: UIViewController {
         self.viewModel.executeFetchRequest()
         self.bottleViewController.viewModel.bottle = self.viewModel.bottle
         self.bottleViewController.initializeBottleView()
+        
+        // 최초에 만들었을 때
+        // 캐릭터 교체, 라벨 추가
+        self.homeCharacter.image = UIImage(named: StringLiteral.homeCharacterInitialName)
+        self.tapToAddNoteLabel.isHidden = false
     }
     
     // swiftlint:disable force_cast
@@ -205,22 +230,47 @@ final class HomeViewController: UIViewController {
             self.emptyTopLabel.isHidden = true
             self.emptyBottomLabel.isHidden = true
             self.homeCharacter.isHidden = true
-        } else {
+            self.tapToAddNoteLabel.isHidden = true
+            return
+        }
+        
+        if !self.viewModel.hasBottle {
             self.bottleDdayLabel.isHidden = true
             self.bottleTitleLabel.isHidden = true
+            self.tapToAddNoteLabel.isHidden = true
+            return
+        }
+        
+        if self.viewModel.hasNotes {
+            self.homeCharacter.isHidden = true
+            self.tapToAddNoteLabel.isHidden = true
+            return
         }
     }
     
     /// 라벨 초기화
     private func initializeLabel() {
+        
+        // 저금통 있을 때
         if self.viewModel.hasBottle {
             addTapGestureToTitleLabel()
             self.bottleTitleLabel.text = self.viewModel.bottle?.title
             self.bottleDdayLabel.text = self.viewModel.dDay()
+            
+            // 추가된 쪽지가 없을 때
+            if !self.viewModel.hasNotes {
+                self.tapToAddNoteLabel.text = StringLiteral.tapToAddNoteLabelText
+                self.homeCharacter.image = UIImage(named: StringLiteral.tapToAddNoteLabelText)
+                return
+            }
+            
+            // 오늘이 개봉 날일 때
             if self.viewModel.isTodayEndDate {
                 self.bottleDdayLabel.textColor = .customWarningLabel
                 return
             }
+            
+            // 이미 개봉날이 지났을 때
             if self.viewModel.isEndDatePassed {
                 let openDatePassedLabel = UILabel().then {
                     $0.text = StringLiteral.openDatePassedMessage
@@ -241,6 +291,7 @@ final class HomeViewController: UIViewController {
                 return
             }
         } else {
+            // 비었을 때
             self.emptyTopLabel.text = StringLiteral.emptyTopLabelText
             self.emptyBottomLabel.text = StringLiteral.emptyBottomLabelText
         }

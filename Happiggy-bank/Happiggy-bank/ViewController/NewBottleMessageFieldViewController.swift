@@ -89,7 +89,7 @@ final class NewBottleMessageFieldViewController: UIViewController {
             )
         }
         
-//        PersistenceStore.shared.save()
+        PersistenceStore.shared.save()
     }
     
     
@@ -135,8 +135,9 @@ extension NewBottleMessageFieldViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let text = self.textField.text,
            !text.isEmpty {
+            saveNewBottle()
             self.performSegue(
-                withIdentifier: SegueIdentifier.presentNewBottleDatePicker,
+                withIdentifier: SegueIdentifier.unwindFromNewBottlePopupToHomeView,
                 sender: nil
             )
         }

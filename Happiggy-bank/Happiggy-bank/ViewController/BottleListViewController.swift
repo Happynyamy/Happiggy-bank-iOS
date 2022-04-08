@@ -33,12 +33,19 @@ final class BottleListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.observe(
+            selector: #selector(refetch),
+            name: .NSManagedObjectContextDidSave
+        )
+        
         configureNavigationBar()
         configureEmptyLabel()
         registerBottleCell()
         layoutCells()
+//        scrollToOpenBottleIfNeeded()
     }
-    
+
     
     // MARK: - Navigation
     
@@ -54,6 +61,18 @@ final class BottleListViewController: UIViewController {
             )
             noteListViewController.viewModel = viewModel
         }
+    }
+    
+    @objc private func refetch() {
+        // 저금통 없을 때
+        
+        print("refetch")
+        // TODO: 1안 -> Notification + Object, 2안 -> refetch
+        self.viewModel.executeFetchRequest()
+        hideEmptyListLabelIfNeeded()
+        
+        // 최초에 만들었을 때
+        // 캐릭터 교체, 라벨 추가
     }
     
     

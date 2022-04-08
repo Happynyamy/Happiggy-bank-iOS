@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dSD-O6-Yej">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dSD-O6-Yej">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -58,6 +58,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JwR-oy-otr">
+                                <rect key="frame" x="187.5" y="513.5" width="39.5" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" name="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="homeBackground"/>
@@ -72,10 +78,12 @@
                             <constraint firstItem="K3e-f7-x3z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="Esz-F4-FPa"/>
                             <constraint firstItem="dfo-Bk-tQ1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="K6n-hm-DHE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mxw-FV-eBm" secondAttribute="trailing" symbolic="YES" id="LuX-hH-50l"/>
+                            <constraint firstItem="JwR-oy-otr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LzX-yn-Ctk"/>
                             <constraint firstItem="ZlX-eS-Yvg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="OFr-if-N9z"/>
                             <constraint firstAttribute="trailing" secondItem="ZlX-eS-Yvg" secondAttribute="trailing" id="OkY-Ki-cEN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ox7-a2-qYT" secondAttribute="trailing" symbolic="YES" id="PEa-7N-X4Y"/>
                             <constraint firstItem="T4r-Fh-6oO" firstAttribute="top" secondItem="mxw-FV-eBm" secondAttribute="bottom" constant="18" id="SPr-4s-61q"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="JwR-oy-otr" secondAttribute="bottom" constant="280" id="Y31-zO-p3W"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="T4r-Fh-6oO" secondAttribute="trailing" symbolic="YES" id="Zz4-tv-PeK"/>
                             <constraint firstItem="mxw-FV-eBm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="86" id="adg-qC-y3E"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="K3e-f7-x3z" secondAttribute="trailing" symbolic="YES" id="c71-t5-n34"/>
@@ -100,6 +108,7 @@
                         <outlet property="emptyTopLabel" destination="mxw-FV-eBm" id="p3m-Ek-xyl"/>
                         <outlet property="homeCharacter" destination="dfo-Bk-tQ1" id="pAM-Ay-Jl4"/>
                         <outlet property="homeView" destination="8bC-Xf-vdC" id="edO-Zc-7da"/>
+                        <outlet property="tapToAddNoteLabel" destination="JwR-oy-otr" id="Slp-Bm-aZ3"/>
                         <segue destination="abG-42-vcb" kind="presentation" identifier="presentNewBottleNameField" id="aZQ-BA-T0f"/>
                         <segue destination="moi-e1-3hQ" kind="presentation" identifier="presentNewNoteDatePicker" id="5ln-YY-tck"/>
                         <segue destination="FuI-qc-1fd" kind="presentation" identifier="presentNewNoteTextView" id="utJ-Hb-n6A"/>
@@ -114,7 +123,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1154.4000000000001" y="1642.6108374384237"/>
+            <point key="canvasLocation" x="-1155.072463768116" y="1641.9642857142856"/>
         </scene>
         <!--Bottle Message View Controller-->
         <scene sceneID="FhL-5e-cvf">
@@ -1208,8 +1217,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="O5Z-N1-x6E"/>
-        <segue reference="7wk-af-F5w"/>
+        <segue reference="utJ-Hb-n6A"/>
+        <segue reference="5ln-YY-tck"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="back" width="10" height="18"/>

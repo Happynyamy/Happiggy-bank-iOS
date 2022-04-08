@@ -78,8 +78,7 @@ final class BottleNameEditViewController: UIViewController {
             return
         }
         
-        self.bottle.title = text
-//        PersistenceStore.shared.save()
+        saveBottleData(with: text)
         self.dismiss(animated: true)
     }
     
@@ -107,6 +106,15 @@ final class BottleNameEditViewController: UIViewController {
         
         self.showWarningLabel = false
         self.warningLabel.fadeOut()
+    }
+    
+    
+    // MARK: Functions
+    
+    private func saveBottleData(with text: String) {
+        self.bottle.title = text
+        self.bottle.hasFixedTitle = true
+        PersistenceStore.shared.save()
     }
     
     
@@ -180,10 +188,8 @@ extension BottleNameEditViewController: UITextFieldDelegate {
             return self.textField.resignFirstResponder()
         }
         
-        self.performSegue(
-            withIdentifier: SegueIdentifier.presentNewBottleDatePicker,
-            sender: nil
-        )
+        saveBottleData(with: text)
+        self.dismiss(animated: true)
         
         return self.textField.resignFirstResponder()
     }
