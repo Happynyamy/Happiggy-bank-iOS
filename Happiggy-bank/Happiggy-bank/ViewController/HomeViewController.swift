@@ -220,7 +220,22 @@ final class HomeViewController: UIViewController {
                 return
             }
             if self.viewModel.isEndDatePassed {
-                self.bottleDdayLabel.text = StringLiteral.openDatePassedMessage
+                let openDatePassedLabel = UILabel().then {
+                    $0.text = StringLiteral.openDatePassedMessage
+                    $0.font = .systemFont(ofSize: FontSize.openDatePassedLabelFont)
+                    $0.textColor = .customWarningLabel
+                    $0.translatesAutoresizingMaskIntoConstraints = false
+                }
+                self.view.addSubview(openDatePassedLabel)
+                NSLayoutConstraint.activate([
+                    openDatePassedLabel.centerYAnchor.constraint(
+                        equalTo: self.bottleDdayLabel.centerYAnchor
+                    ),
+                    openDatePassedLabel.leadingAnchor.constraint(
+                        equalTo: self.bottleDdayLabel.trailingAnchor,
+                        constant: Metric.openDatePassedLabelLeadingPadding
+                    )
+                ])
                 return
             }
         } else {
