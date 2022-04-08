@@ -67,7 +67,7 @@ final class HomeViewModel {
     /// 지난 저금통 리스트 가져오기
     func executeFetchRequest() {
         
-//        PersistenceStore.shared.deleteAll(Bottle.self)
+        PersistenceStore.shared.deleteAll(Bottle.self)
         let request = Bottle.fetchRequest(isOpen: false)
         var bottles = PersistenceStore.shared.fetch(request: request)
         self.bottle = bottles.first

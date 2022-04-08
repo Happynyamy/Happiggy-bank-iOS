@@ -43,7 +43,6 @@ final class BottleListViewController: UIViewController {
         configureEmptyLabel()
         registerBottleCell()
         layoutCells()
-//        scrollToOpenBottleIfNeeded()
     }
 
     
@@ -70,9 +69,6 @@ final class BottleListViewController: UIViewController {
         // TODO: 1안 -> Notification + Object, 2안 -> refetch
         self.viewModel.executeFetchRequest()
         hideEmptyListLabelIfNeeded()
-        
-        // 최초에 만들었을 때
-        // 캐릭터 교체, 라벨 추가
     }
     
     

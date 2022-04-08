@@ -49,7 +49,8 @@ final class HomeViewController: UIViewController {
         navigationItem.backButtonTitle = ""
         hideLabelIfNeeded()
         initializeLabel()
-        
+        print("did appear")
+
         self.observe(
             selector: #selector(refetch),
             name: .NSManagedObjectContextDidSave
@@ -60,11 +61,13 @@ final class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        print("will appear")
         self.observe(
             selector: #selector(refetch),
             name: .NSManagedObjectContextDidSave
         )
-
+        
+        
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
@@ -153,6 +156,8 @@ final class HomeViewController: UIViewController {
         
         // 최초에 만들었을 때
         // 캐릭터 교체, 라벨 추가
+        hideLabelIfNeeded()
+        initializeLabel()
         self.homeCharacter.image = UIImage(named: StringLiteral.homeCharacterInitialName)
         self.tapToAddNoteLabel.isHidden = false
     }
@@ -224,16 +229,16 @@ final class HomeViewController: UIViewController {
     
     // MARK: - Initialize View
     
+    // 저금통 없음: 저금통 추가해주셈 + 하단라벨 + 플러스 냠냠
+    // 저금통 있음, 쪽지 없음: D-day + 제목 + 그냥냠냠 + 탭해서 추가해주셈
+    // 저금통 있음, 쪽지 있음: D-day + 제목 + 쪽지
+    
     /// 조건에 따라 라벨 감추기
     private func hideLabelIfNeeded() {
-        if self.viewModel.hasBottle {
-            self.emptyTopLabel.isHidden = true
-            self.emptyBottomLabel.isHidden = true
-            self.homeCharacter.isHidden = true
-            self.tapToAddNoteLabel.isHidden = true
-            return
-        }
         
+        showLabels()
+        
+        // 저금통 없는 상태
         if !self.viewModel.hasBottle {
             self.bottleDdayLabel.isHidden = true
             self.bottleTitleLabel.isHidden = true
@@ -241,11 +246,28 @@ final class HomeViewController: UIViewController {
             return
         }
         
-        if self.viewModel.hasNotes {
+        // 저금통 있는 상태, 쪽지는 없음
+        if self.viewModel.hasBottle && !self.viewModel.hasNotes {
+            self.emptyTopLabel.isHidden = true
+            self.emptyBottomLabel.isHidden = true
+            return
+        }
+        
+        // 저금통 있고, 쪽지도 있음
+        if self.viewModel.hasBottle && self.viewModel.hasNotes {
             self.homeCharacter.isHidden = true
             self.tapToAddNoteLabel.isHidden = true
             return
         }
+    }
+    
+    private func showLabels() {
+        self.emptyTopLabel.isHidden = false
+        self.emptyBottomLabel.isHidden = false
+        self.homeCharacter.isHidden = false
+        self.bottleDdayLabel.isHidden = false
+        self.bottleTitleLabel.isHidden = false
+        self.tapToAddNoteLabel.isHidden = false
     }
     
     /// 라벨 초기화
@@ -259,8 +281,9 @@ final class HomeViewController: UIViewController {
             
             // 추가된 쪽지가 없을 때
             if !self.viewModel.hasNotes {
+                print("no notes")
                 self.tapToAddNoteLabel.text = StringLiteral.tapToAddNoteLabelText
-                self.homeCharacter.image = UIImage(named: StringLiteral.tapToAddNoteLabelText)
+                self.homeCharacter.image = UIImage(named: StringLiteral.homeCharacterInitialName)
                 return
             }
             
@@ -390,6 +413,7 @@ final class HomeViewController: UIViewController {
         guard let bottle = self.viewModel.bottle
         else { return }
         
+        self.viewModel.bottle = nil
         self.viewModel.saveOpenedBottle(inContainerView: self.bottleViewController.view, bottle)
         HapticManager.instance.notification(type: .success)
         self.bottleViewController.bottleDidOpen(withDuration: Duration.bottleOpeningAnimation)
