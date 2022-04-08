@@ -192,6 +192,7 @@ final class HomeViewController: UIViewController {
             
             bottleMessageController.bottle = bottle
             bottleMessageController.fadeInOutduration = Duration.bottleOpeningAnimation
+            bottleMessageController.mainTabBarController = self.tabBarController
         }
     }
     

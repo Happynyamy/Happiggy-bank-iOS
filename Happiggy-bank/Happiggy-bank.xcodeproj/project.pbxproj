@@ -30,6 +30,7 @@
 		A459003C27E9C5C9003010A0 /* CGSize+Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459003B27E9C5C9003010A0 /* CGSize+Area.swift */; };
 		A467B5C827DA258700AC702D /* NewNoteDatePickerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467B5C727DA258700AC702D /* NewNoteDatePickerRowView.swift */; };
 		A467B5CA27DA289600AC702D /* NewNoteDatePickerRowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A467B5C927DA289500AC702D /* NewNoteDatePickerRowView.xib */; };
+		A46BC1EF2800626A00C2E5B4 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46BC1EE2800626A00C2E5B4 /* TabItem.swift */; };
 		A48E183A27E71D9300B44477 /* UILabel+ParagraphStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E183927E71D9300B44477 /* UILabel+ParagraphStyle.swift */; };
 		A48E183C27E7379100B44477 /* CapsuleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E183B27E7379100B44477 /* CapsuleButton.swift */; };
 		A48E183E27E737B600B44477 /* CapsuleButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = A48E183D27E737B600B44477 /* CapsuleButton.xib */; };
@@ -120,6 +121,7 @@
 		A459003B27E9C5C9003010A0 /* CGSize+Area.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Area.swift"; sourceTree = "<group>"; };
 		A467B5C727DA258700AC702D /* NewNoteDatePickerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteDatePickerRowView.swift; sourceTree = "<group>"; };
 		A467B5C927DA289500AC702D /* NewNoteDatePickerRowView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewNoteDatePickerRowView.xib; sourceTree = "<group>"; };
+		A46BC1EE2800626A00C2E5B4 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		A48E183927E71D9300B44477 /* UILabel+ParagraphStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+ParagraphStyle.swift"; sourceTree = "<group>"; };
 		A48E183B27E7379100B44477 /* CapsuleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleButton.swift; sourceTree = "<group>"; };
 		A48E183D27E737B600B44477 /* CapsuleButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CapsuleButton.xib; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			children = (
 				A4F5714627DA467900E7DF9B /* DateFormat.swift */,
 				A4F5715727DC459B00E7DF9B /* NoteColor.swift */,
+				A46BC1EE2800626A00C2E5B4 /* TabItem.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				D236DB8627FDC43200D7B8F0 /* NewBottleDatePickerViewModel.swift in Sources */,
 				A499318327BF5158009FF5A8 /* BottleNoteView.swift in Sources */,
 				A4CF2C8E27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift in Sources */,
+				A46BC1EF2800626A00C2E5B4 /* TabItem.swift in Sources */,
 				D284A5DE27FF3EFB00D20699 /* BottleNameEditViewController.swift in Sources */,
 				A8BD834D27BE39D600E0DE41 /* NoteProgressLabel.swift in Sources */,
 				A8509E6E27C89A1200855153 /* UIColor+Extension.swift in Sources */,

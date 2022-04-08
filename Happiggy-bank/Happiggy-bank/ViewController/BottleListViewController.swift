@@ -37,33 +37,6 @@ final class BottleListViewController: UIViewController {
         configureEmptyLabel()
         registerBottleCell()
         layoutCells()
-        scrollToOpenBottleIfNeeded()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        guard let bottle =  self.viewModel.openingBottle
-        else {
-            self.showAllSubviews()
-            self.configureEmptyLabel()
-            return
-        }
-        self.hideAllSubviewsIfIsOpeningBottle(bottle)
-        self.scrollToOpenBottleIfNeeded()
-        self.performSegue(withIdentifier: SegueIdentifier.showNoteList, sender: bottle)
-    }
-    
-    
-    // MARK: - @IBActions
-    
-    /// 해당 뷰 컨트롤러로 언와인드 되었을 때 호출
-    @IBAction func unwindCallToBottleListDidArrive(segue: UIStoryboardSegue) {
-        guard let bottle = self.viewModel.openingBottle,
-              self.viewIfLoaded == nil
-        else { return }
-        
-        self.performSegue(withIdentifier: SegueIdentifier.showNoteList, sender: bottle)
     }
     
     
@@ -77,11 +50,9 @@ final class BottleListViewController: UIViewController {
             
             let viewModel = NoteListViewModel(
                 bottle: bottle,
-                fadeIn: self.viewModel.openingBottle != nil,
                 fetchedResultContollerDelegate: noteListViewController
             )
             noteListViewController.viewModel = viewModel
-            self.viewModel.openingBottle = nil
         }
     }
     
@@ -121,38 +92,6 @@ final class BottleListViewController: UIViewController {
     
     
     // MARK: - Functions
-    
-    /// 현재 개봉중인 저금통이 있으면 해당 저금통의 위치로 스크롤
-    private func scrollToOpenBottleIfNeeded() {
-
-        guard let indexPath = self.viewModel.openingBottleIndexPath
-        else { return }
-
-        self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
-        self.viewModel.openingBottleIndexPath = nil
-    }
-    
-    /// 네비게이션 바, 탭바와 모든 하위 뷰를 다시 나타냄
-    private func showAllSubviews() {
-        self.title = viewModel.bottleList.isEmpty ?
-        StringLiteral.emptyListNavigationBarTitle :
-        StringLiteral.fullListNavigationBarTitle
-        
-        self.view.subviews.forEach {
-            $0.isHidden = false
-        }
-        
-        self.tabBarController?.tabBar.isHidden = false
-    }
-    
-    /// 네비게이션 바, 탭바와 모든 하위 뷰를 숨김
-    private func hideAllSubviewsIfIsOpeningBottle(_ bottle: Bottle) {
-        self.view.subviews.forEach {
-            $0.isHidden = true
-        }
-        self.tabBarController?.tabBar.isHidden = true
-        self.navigationItem.title = .empty
-    }
     
     /// 셀에 대한 레이아웃 설정하는 함수
     private func layoutCells() {

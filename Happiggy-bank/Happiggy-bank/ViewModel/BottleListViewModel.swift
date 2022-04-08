@@ -14,20 +14,6 @@ final class BottleListViewModel {
     /// 지난 저금통 리스트
     var bottleList: [Bottle]!
     
-
-    /// 현재 열고 있는 저금통을 나타내는 프로퍼티로 있다면 해당 저금통 엔티티, 없으면 nil
-    var openingBottle: Bottle? {
-        didSet {
-            guard let openingBottle = openingBottle
-            else { return }
-
-            self.updateOpeningBottleIndexPath(forBottle: openingBottle)
-        }
-    }
-    
-    /// 현재 열고 있는 저금통의 indexPath
-    var openingBottleIndexPath: IndexPath?
-    
     
     // MARK: - init
     init() {
@@ -58,13 +44,5 @@ final class BottleListViewModel {
 //        PersistenceStore.shared.deleteAll(Bottle.self)
         
         self.bottleList = list
-    }
-    
-    /// 개봉중인 저금통의 인덱스 패스 업데이트
-    private func updateOpeningBottleIndexPath(forBottle bottle: Bottle) {
-        guard let row = self.bottleList.firstIndex(of: bottle)
-        else { return }
-        
-        self.openingBottleIndexPath = IndexPath(row: row, section: .zero)
     }
 }
