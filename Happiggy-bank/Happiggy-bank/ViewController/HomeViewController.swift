@@ -278,7 +278,7 @@ final class HomeViewController: UIViewController {
     
     /// 저금통 개봉 의사를 물어보는 알림을 띄움
     private func presentBottleOpenConfirmationAlert() {
-        let alert = makeBottleOpenConfirmationAlert()
+        let alert = self.makeBottleOpenConfirmationAlert()
         self.present(alert, animated: true)
     }
     
@@ -286,7 +286,7 @@ final class HomeViewController: UIViewController {
     private func makeBottleOpenConfirmationAlert() -> UIAlertController {
         let alert = UIAlertController(
             title: StringLiteral.bottleOpenAlertTitle,
-            message: nil,
+            message:StringLiteral.bottleOpenAlertMessage,
             preferredStyle: .alert
         )
         
