@@ -761,15 +761,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OAt-vo-L69">
-                                <rect key="frame" x="27" y="0.0" width="360" height="769"/>
+                                <rect key="frame" x="20" y="0.0" width="374" height="769"/>
                                 <gestureRecognizers/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Car-X3-Th6"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="OAt-vo-L69" secondAttribute="trailing" constant="7" id="2LI-SU-Shf"/>
-                            <constraint firstItem="OAt-vo-L69" firstAttribute="leading" secondItem="jBg-oD-Piv" secondAttribute="leadingMargin" constant="7" id="KFq-lV-62y"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OAt-vo-L69" secondAttribute="trailing" id="2LI-SU-Shf"/>
+                            <constraint firstItem="OAt-vo-L69" firstAttribute="leading" secondItem="jBg-oD-Piv" secondAttribute="leadingMargin" id="KFq-lV-62y"/>
                             <constraint firstItem="OAt-vo-L69" firstAttribute="top" secondItem="jBg-oD-Piv" secondAttribute="topMargin" id="dBa-F9-eez"/>
                             <constraint firstAttribute="bottomMargin" secondItem="OAt-vo-L69" secondAttribute="bottom" id="wb2-wb-Iwg"/>
                         </constraints>

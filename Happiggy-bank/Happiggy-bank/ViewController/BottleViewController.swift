@@ -27,16 +27,12 @@ final class BottleViewController: UIViewController {
     
     /// 쪽지를 넣기 위해 bottle note view 의 영역을 나눠줄 그리드
     private lazy var grid: Grid = {
-        var bounds = self.bottleNoteView.bounds
         guard let bottle = self.viewModel.bottle
         else { return Grid(frame: .zero, cellCount: .zero) }
         
-        if bottle.duration < Metric.durationCap {
-            bounds.size.height -= Metric.shorterMonthHeightRemovalConstant
-        }
-        
+        self.bottleNoteView.frame = self.viewModel.gridFrame(forView: self.view)
         return Grid(
-            frame: bounds,
+            frame: self.bottleNoteView.bounds,
             cellCount: self.viewModel.bottle?.duration ?? .zero
         )
     }()
@@ -108,11 +104,6 @@ final class BottleViewController: UIViewController {
         guard let bottle = self.viewModel.bottle
         else { return }
         
-        /// 디바이스 크기에 따라 쪽지를 담을 영역 크기 조정
-        self.bottleNoteView.frame = self.view.bounds.insetBy(
-            dx: Metric.bottleNoteViewDxInset,
-            dy: .zero
-        )
         self.fillBottleNoteView(fromNotes: bottle.notes)
         self.addGravity()
         self.gravity?.enable()
