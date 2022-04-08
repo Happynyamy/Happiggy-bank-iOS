@@ -44,6 +44,9 @@ extension UIColor {
     /// 탭바 구분선 색상
     static let tabBarDivider = UIColor(named: "tabBarDivider") ?? .secondaryLabel
     
+    /// 라이트모드 흰색, 다크모드 검정색
+    static let reversedLabel = UIColor(named: "tabBarBackground") ?? .customTint
+    
     
     // MARK: - Functions
     
