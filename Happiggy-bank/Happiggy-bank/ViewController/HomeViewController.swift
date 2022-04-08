@@ -217,7 +217,7 @@ final class HomeViewController: UIViewController {
         
         if segue.identifier == SegueIdentifier.presentBottleMessageView {
             guard let bottleMessageController = segue.destination as? BottleMessageViewController,
-                  let bottle = self.viewModel.bottle
+                  let bottle = sender as? Bottle
             else { return }
             
             bottleMessageController.bottle = bottle
@@ -419,7 +419,7 @@ final class HomeViewController: UIViewController {
         self.bottleViewController.bottleDidOpen(withDuration: Duration.bottleOpeningAnimation)
         self.performSegue(
             withIdentifier: SegueIdentifier.presentBottleMessageView,
-            sender: self
+            sender: bottle
         )
     }
 }
