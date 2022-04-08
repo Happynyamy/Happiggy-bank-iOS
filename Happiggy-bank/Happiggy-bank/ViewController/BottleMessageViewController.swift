@@ -101,7 +101,7 @@ final class BottleMessageViewController: UIViewController {
             delay: .zero,
             options: [.curveEaseIn, .beginFromCurrentState]
         ) {
-            self.view.backgroundColor = .white
+            self.view.backgroundColor = .reversedLabel
             self.clearContents()
         } completion: { _ in
             self.moveToNoteList()
