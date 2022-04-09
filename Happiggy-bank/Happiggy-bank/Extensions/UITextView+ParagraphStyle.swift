@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 extension UITextView {
     
@@ -19,20 +20,16 @@ extension UITextView {
         let characterSpacing = (characterSpacing == nil) ? .zero : characterSpacing!
         let font: UIFont = (font == nil) ? (self.font ?? UIFont()) : font!
         
-        let attributedString = self.text.nsMutableAttributedStringify()
         let paragraphStyle = NSMutableParagraphStyle().then {
             $0.lineSpacing = lineSpacing
         }
         
-        attributedString.addAttributes(
-            [
-                .paragraphStyle: paragraphStyle,
-                .font: font,
-                .kern: characterSpacing
-            ],
-            range: NSRange(location: .zero, length: attributedString.length)
-        )
-
-        self.attributedText = attributedString
+        let attributes: [NSAttributedString.Key : Any] = [
+            .paragraphStyle: paragraphStyle,
+            .font: font,
+            .kern: characterSpacing
+        ]
+        
+        self.typingAttributes = attributes
     }
 }
