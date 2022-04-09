@@ -4,37 +4,47 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsLabelButtonCell" rowHeight="91" id="KGk-i7-Jjw" customClass="SettingsLabelButtonCell" customModule="Happiggy_bank" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" indentationWidth="10" reuseIdentifier="SettingsLabelButtonCell" rowHeight="91" id="KGk-i7-Jjw" customClass="SettingsLabelButtonCell" customModule="Happiggy_bank" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="316" height="91"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="316" height="91"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="버전 정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJr-bb-JcG">
-                        <rect key="frame" x="0.0" y="36" width="60" height="19.5"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vdb-Jd-HyA">
+                        <rect key="frame" x="0.0" y="35.5" width="20" height="20"/>
+                        <color key="tintColor" name="settingsIcon"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="1xr-IH-ThO"/>
+                            <constraint firstAttribute="width" secondItem="vdb-Jd-HyA" secondAttribute="height" multiplier="1:1" id="KLI-jN-ws3"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="항목 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJr-bb-JcG">
+                        <rect key="frame" x="36" y="36" width="60" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cS6-1G-0kd">
-                        <rect key="frame" x="216" y="20.5" width="100" height="50"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cS6-1G-0kd">
+                        <rect key="frame" x="198" y="39" width="118" height="13"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bzh-pJ-Fgb">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="97" height="13"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="PwL-Vq-YrU">
-                                <rect key="frame" x="50" y="2" width="50" height="46.5"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="next" translatesAutoresizingMaskIntoConstraints="NO" id="PwL-Vq-YrU">
+                                <rect key="frame" x="105" y="0.0" width="13" height="13"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="13" id="OIh-xI-Obw"/>
                                     <constraint firstAttribute="width" secondItem="PwL-Vq-YrU" secondAttribute="height" multiplier="1:1" id="Pcu-26-98v"/>
                                 </constraints>
                             </imageView>
@@ -43,16 +53,19 @@
                 </subviews>
                 <gestureRecognizers/>
                 <constraints>
-                    <constraint firstItem="iJr-bb-JcG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="F5r-zv-Wd8"/>
-                    <constraint firstItem="cS6-1G-0kd" firstAttribute="centerY" secondItem="iJr-bb-JcG" secondAttribute="centerY" id="cll-FR-8ex"/>
+                    <constraint firstItem="cS6-1G-0kd" firstAttribute="centerY" secondItem="vdb-Jd-HyA" secondAttribute="centerY" id="9q4-jD-SQu"/>
+                    <constraint firstItem="vdb-Jd-HyA" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="C2R-Ma-QEg"/>
+                    <constraint firstItem="vdb-Jd-HyA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="FDJ-a8-OqQ"/>
+                    <constraint firstItem="iJr-bb-JcG" firstAttribute="leading" secondItem="vdb-Jd-HyA" secondAttribute="trailing" constant="16" id="Oe1-wU-1Oz"/>
+                    <constraint firstItem="iJr-bb-JcG" firstAttribute="centerY" secondItem="vdb-Jd-HyA" secondAttribute="centerY" id="VuW-YM-LYs"/>
                     <constraint firstAttribute="trailing" secondItem="cS6-1G-0kd" secondAttribute="trailing" id="k5O-dA-GiN"/>
-                    <constraint firstItem="iJr-bb-JcG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="qaO-sh-1AC"/>
                 </constraints>
             </tableViewCellContentView>
             <gestureRecognizers/>
             <connections>
                 <outlet property="buttonImageView" destination="PwL-Vq-YrU" id="BnR-Kw-J6V"/>
                 <outlet property="buttonStack" destination="cS6-1G-0kd" id="YJD-zc-g4P"/>
+                <outlet property="iconImageView" destination="vdb-Jd-HyA" id="oSB-D9-8wk"/>
                 <outlet property="informationLabel" destination="Bzh-pJ-Fgb" id="zwH-Ck-IRr"/>
                 <outlet property="titleLabel" destination="iJr-bb-JcG" id="Jkq-px-yVV"/>
             </connections>
@@ -60,6 +73,9 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="chevron.right" catalog="system" width="96" height="128"/>
+        <image name="next" width="10" height="18"/>
+        <namedColor name="settingsIcon">
+            <color red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
