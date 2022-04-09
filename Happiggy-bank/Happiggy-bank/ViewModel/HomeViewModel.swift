@@ -61,16 +61,11 @@ final class HomeViewModel {
     
     // MARK: - Functions
     
-    // TODO: 확인용으로 주석처리된 foo 데이터 사용. 추후 삭제
     /// 지난 저금통 리스트 가져오기
     func executeFetchRequest() {
-        
-        PersistenceStore.shared.deleteAll(Bottle.self)
         let request = Bottle.fetchRequest(isOpen: false)
         let bottles = PersistenceStore.shared.fetch(request: request)
         self.bottle = bottles.first
-        self.bottle = Bottle.foo
-        PersistenceStore.shared.save()
     }
 
     func dDay() -> String {

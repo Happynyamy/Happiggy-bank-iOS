@@ -223,7 +223,6 @@ final class NewNoteTextViewController: UIViewController {
     private func saveAndPostNewNote(_ note: Note) {
         let noteAndDelay = (note: note, delay: CATransition.transitionDuration)
         self.post(name: .noteDidAdd, object: noteAndDelay)
-        // TODO: activate core data
         PersistenceStore.shared.save()
     }
     

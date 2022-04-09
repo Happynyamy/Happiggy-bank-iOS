@@ -54,7 +54,6 @@ final class HomeViewController: UIViewController {
             selector: #selector(refetch),
             name: .NSManagedObjectContextDidSave
         )
-        self.configureBackgroundImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -322,27 +321,6 @@ final class HomeViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(bottleTitleLabelDidTap))
         self.bottleTitleLabel.isUserInteractionEnabled = true
         self.bottleTitleLabel.addGestureRecognizer(tap)
-    }
-    
-    /// 저금통 상태에 따른 저금통 이미지/애니메이션 등을 나타냄
-    /// 저금통을 새로 추가하는 경우, 현재 진행중인 저금통이 있는 경우, 개봉을 기다리는 경우의 세 가지 상태가 있음
-    private func configureBackgroundImage() {
-        guard let bottle = self.viewModel.bottle
-        else {
-            print("show add new bottle image")
-            return
-        }
-        
-        /// 현재 채우는 저금통 있음
-        if bottle.isInProgress {
-            print("show bottle in progress")
-            return
-        }
-        
-        /// 기한 종료로 개봉 대기중
-        if !bottle.isInProgress {
-            print("show bottle ready to open")
-        }
     }
     
     
