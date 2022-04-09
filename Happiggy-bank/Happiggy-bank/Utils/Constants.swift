@@ -1045,6 +1045,9 @@ extension CustomTabBar {
             bottom: -titleOffset,
             right: .zero
         )
+        
+        /// 커스텀 탭바 크기를 적용할 디바이스 최소 높이
+        static let heightCap: CGFloat = 800
     }
 }
 

@@ -31,14 +31,14 @@ final class CustomTabBar: UITabBar {
         super.init(frame: frame)
         
         self.configureDivider()
-        self.configureItemPositions()
+        self.configureItemPositionsIfNeeded()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
         self.configureDivider()
-        self.configureItemPositions()
+        self.configureItemPositionsIfNeeded()
     }
     
     
@@ -46,7 +46,10 @@ final class CustomTabBar: UITabBar {
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         var size = super.sizeThatFits(size)
-        size.height = Metric.height
+        
+        if UIScreen.main.bounds.height >= Metric.heightCap {
+            size.height = Metric.height
+        }
 
         return size
     }
@@ -69,7 +72,10 @@ final class CustomTabBar: UITabBar {
     }
     
     /// 탭 아이템 위치 조정
-    private func configureItemPositions() {
+    private func configureItemPositionsIfNeeded() {
+        guard UIScreen.main.bounds.height >= Metric.heightCap
+        else { return }
+        
         self.items?.forEach {
             $0.imageInsets = Metric.imageInset
             $0.titlePositionAdjustment.vertical = Metric.titleOffset
