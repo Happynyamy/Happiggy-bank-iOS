@@ -316,6 +316,18 @@ extension PersistenceStore {
         
         /// 공유 persistence store 의 이름 : "Happiggy-bank"
         static let sharedPersistenceStoreName = "Happiggy-bank"
+        
+        /// 저장 오류 알림 제목
+        static let saveErrorTitle = "변경사항 저장에 실패했습니다"
+        
+        /// 저장 오류 알림 내용
+        static let saveErrorMessage = """
+        디바이스의 저장 공간이 충분한지 확인해주세요.
+        같은 문제가 계속 발생하는 경우 happiggybank@gmail.com 으로 문의 부탁드립니다.
+        """
+        
+        /// 확인 버튼 제목: 확인
+        static let okButtonTitle = "확인"
     }
 }
 
@@ -1073,3 +1085,21 @@ extension HomeViewModel {
 
 /// 메인 스토리보드 이름 "main"
 let mainStoryboardName = "Main"
+
+extension ErrorViewController {
+    
+    /// 문자열
+    enum StringLiteral {
+        
+        /// 에러 내용
+        static let errorDescription = "코어데이터 오류"
+        
+        /// 에러 안내 라벨 내용
+        static let informationLabelText = """
+데이터 오류가 발생해 앱을 작동할 수 없습니다
+happiggybank@gmail.com으로 문의 부탁드립니다
+
+화면을 탭하면 앱이 종료됩니다
+"""
+    }
+}
