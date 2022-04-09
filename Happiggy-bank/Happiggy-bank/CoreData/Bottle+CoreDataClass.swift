@@ -97,6 +97,8 @@ public class Bottle: NSManagedObject {
     }
     
     /// 해당 저금통에 들어있는 쪽지들의 배열
+    /// 현재 작성 날짜순으로 정렬(가장 최신 쪽지가 맨 뒤)
+    /// 정렬 방식 변경 시 isEmptyToday 변수도 바꿔줘야 함
     var notes: [Note] {
         guard let notes = self.notes_ as? Set<Note>
         else { return [] }
@@ -107,7 +109,6 @@ public class Bottle: NSManagedObject {
     
     // MARK: - Properties
     
-    // TODO: 유저가 앱을 켜놓은 상태에서 기한이 지나면?
     /// 저금통이 진행 중인지 혹은 종료 후 미개봉 상태인지 나타냄
     var isInProgress: Bool {
         return self.endDate > Date()
@@ -115,7 +116,7 @@ public class Bottle: NSManagedObject {
     
     /// 저금 기간 (1주, 1개월, 3개월, 6개월, 1년)
     var duration: Int {
-        Calendar.daysBetween(start: self.startDate, end: self.endDate)
+        Calendar.daysBetween(start: self.startDate, end: self.endDate) - 1
     }
     
     /// 오늘이 저금통 시작일을 포함해서 며칠째인지
@@ -141,6 +142,7 @@ public class Bottle: NSManagedObject {
     var dateLabel: String {
         self.startDate.customFormatted(type: .spaceAndDot)
         + StringLiteral.center
-        + self.endDate.customFormatted(type: .spaceAndDot)
+        + (Calendar.current.date(byAdding: .day, value: -1, to: self.endDate) ?? endDate)
+            .customFormatted(type: .spaceAndDot)
     }
 }
