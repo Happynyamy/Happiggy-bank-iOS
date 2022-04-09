@@ -64,10 +64,7 @@ final class NewNoteDatePickerViewModel {
         isSelected: Bool = false
     ) -> NSMutableAttributedString {
 
-        var color = UIColor.label
-        if isSelected {
-            color = (source.color == nil) ? .customTint : .customGray
-        }
+        let color = isSelected && (source.color == nil) ?  UIColor.customTint : .label
         
         return source.date
             .customFormatted(type: .spaceAndDotWithDayOfWeek)
