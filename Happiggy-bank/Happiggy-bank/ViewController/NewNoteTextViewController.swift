@@ -184,6 +184,10 @@ final class NewNoteTextViewController: UIViewController {
         self.textView.becomeFirstResponder()
         /// 인셋 설정
         self.textView.textContainerInset = .zero
+        self.textView.configureParagraphStyle(
+            lineSpacing: Metric.lineSpacing,
+            characterSpacing: Metric.characterSpacing
+        )
     }
     
     /// 글자수 라벨 업데이트
@@ -291,7 +295,7 @@ extension NewNoteTextViewController: UITextViewDelegate {
         
         /// 100자 초과 시 초과분 삭제
         if textView.text.count > Metric.noteTextMaxLength {
-            textView.deleteBackward()
+            textView.text = String(textView.text.prefix(Metric.noteTextMaxLength))
             self.updateLetterCountLabel(count: textView.text.count)
         }
         
@@ -299,11 +303,15 @@ extension NewNoteTextViewController: UITextViewDelegate {
         textView.resignFirstResponder()
     }
     
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    func textView(
+        _ textView: UITextView,
+        shouldChangeTextIn range: NSRange,
+        replacementText text: String
+    ) -> Bool {
         
         /// 텍스트가 유효한지, 편집한 범위를 찾을 수 있는 지 확인
         guard let currentText = textView.text,
-              let updateRange = Range(range, in: currentText)
+              Range(range, in: currentText) != nil
         else { return false }
         
         /// 경고 라벨이 나와 있으면 숨김처리
@@ -311,46 +319,40 @@ extension NewNoteTextViewController: UITextViewDelegate {
             self.showWarningLabel = false
             self.warningLabel.fadeOut()
         }
-        
-        /// 편집한 내용을 반영해서 텍스트 뷰에 들어갈 텍스트 재구성
-        var newText = currentText.replacingCharacters(in: updateRange, with: text)
-        
+
         var overflowCap = Metric.noteTextMaxLength
         if textView.textInputMode?.primaryLanguage == StringLiteral.korean {
             /// 한글의 경우 초성, 중성, 종성으로 이루어져 있어서 100자를 제대로 받기 위해 제한을 1글자 키움
             overflowCap = Metric.krOverflowCap
         }
         
-        if newText.count > overflowCap {
-            /// 100자를 초과하는 경우
-            guard let overflowRange = Range(
-                NSRange(
-                    location: Metric.noteTextMaxLength,
-                    length: newText.count - Metric.noteTextMaxLength
-                ),
-                in: newText
-            )
-            else { return false }
-            
-            /// 유저가 텍스트를 복사해와서 붙였는데 100자를 초과하는 경우 100자까지만 붙이기 위한 작업
-            newText.removeSubrange(overflowRange)
-            self.textView.text = newText
-            self.updateLetterCountLabel(count: self.textView.text.count)
-            
-            return false
-        }
+        let updatedTextLength = textView.text.count - range.length + text.count
+        let trimLength = updatedTextLength - overflowCap
+
+        guard updatedTextLength > overflowCap,
+              text.count >= trimLength
+        else { return true }
         
-        /// 100자를 초과하지 않는 경우 편집 사항 반영
-        return true
+        /// 새로 입력된 문자열의 초과분을 삭제
+        let index = text.index(text.endIndex, offsetBy: -trimLength)
+        let trimmedReplacementText = text[..<index]
+        
+        guard let startPosition = textView.position(
+            from: textView.beginningOfDocument, offset: range.location
+        ),
+              let endPosition = textView.position(
+                from: textView.beginningOfDocument, offset: NSMaxRange(range)
+              ),
+              let textRange = textView.textRange(from: startPosition, to: endPosition)
+        else { return false }
+              
+        textView.replace(textRange, withText: String(trimmedReplacementText))
+        self.updateLetterCountLabel(count: textView.text.count)
+        
+        return false
     }
     
     func textViewDidChange(_ textView: UITextView) {
         self.updateLetterCountLabel(count: textView.text.count)
-        
-        /// 자간, 행간 설정
-        textView.configureParagraphStyle(
-            lineSpacing: Metric.lineSpacing,
-            characterSpacing: Metric.characterSpacing
-        )
     }
 }
