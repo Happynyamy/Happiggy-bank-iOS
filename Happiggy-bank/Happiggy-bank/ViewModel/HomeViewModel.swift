@@ -49,8 +49,6 @@ final class HomeViewModel {
         guard let note = self.bottle?.notes
         else { return false }
         
-        print(note)
-        
         return !note.isEmpty
     }
     

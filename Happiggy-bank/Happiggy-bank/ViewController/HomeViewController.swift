@@ -49,7 +49,6 @@ final class HomeViewController: UIViewController {
         navigationItem.backButtonTitle = ""
         hideLabelIfNeeded()
         initializeLabel()
-        print("did appear")
 
         self.observe(
             selector: #selector(refetch),
@@ -61,7 +60,6 @@ final class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        print("will appear")
         self.observe(
             selector: #selector(refetch),
             name: .NSManagedObjectContextDidSave
@@ -281,7 +279,6 @@ final class HomeViewController: UIViewController {
             
             // 추가된 쪽지가 없을 때
             if !self.viewModel.hasNotes {
-                print("no notes")
                 self.tapToAddNoteLabel.text = StringLiteral.tapToAddNoteLabelText
                 self.homeCharacter.image = UIImage(named: StringLiteral.homeCharacterInitialName)
                 return

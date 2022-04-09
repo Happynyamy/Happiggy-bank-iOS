@@ -64,9 +64,6 @@ final class BottleListViewController: UIViewController {
     
     @objc private func refetch() {
         // 저금통 없을 때
-        
-        print("refetch")
-        // TODO: 1안 -> Notification + Object, 2안 -> refetch
         self.viewModel.executeFetchRequest()
         hideEmptyListLabelIfNeeded()
     }
