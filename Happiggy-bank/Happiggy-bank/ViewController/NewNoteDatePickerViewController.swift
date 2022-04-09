@@ -47,6 +47,11 @@ final class NewNoteDatePickerViewController: UIViewController {
         self.scrollToInitialPosition()
         self.configureRightButton()
         self.configureSelectionIndicator()
+        self.observe(
+            selector: #selector(viewWillEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
     }
     
     override func viewWillLayoutSubviews() {
@@ -57,6 +62,7 @@ final class NewNoteDatePickerViewController: UIViewController {
         
         self.fadeInWarningLabel()
     }
+    
     
     // MARK: - @IBAction
     
@@ -98,8 +104,17 @@ final class NewNoteDatePickerViewController: UIViewController {
         if self.isFromNoteTextView {
             self.performSegue(
                 withIdentifier: SegueIdentifier.unwindFromNoteDatePickerToTextView,
-                sender: sender)
+                sender: sender
+            )
         }
+    }
+    
+    
+    // MARK: - @objc
+    
+    /// 다시 앱으로 돌아왔을 때 호출
+    @objc private func viewWillEnterForeground() {
+        self.restoreTintColorAndWarningLabelStatus()
     }
     
     
@@ -188,6 +203,31 @@ final class NewNoteDatePickerViewController: UIViewController {
             for: noteData,
             isSelected: true
         )
+    }
+    
+    /// 이전 상태와 같게 틴트 컬러 및 경고 라벨 상태 복구
+    private func restoreTintColorAndWarningLabelStatus() {
+        let selectedRow = self.validatedRow(self.datePickerView.selectedRow(inComponent: .zero))
+        let noteDatePickerData = self.viewModel.noteData[selectedRow]
+        
+        guard let rowView = self.datePickerView.view(
+            forRow: selectedRow,
+            forComponent: .zero
+        ) as? NewNoteDatePickerRowView
+        else { return }
+        
+        /// 선택 가능하면 틴트컬러 적용
+        rowView.dateLabel.attributedText = self.viewModel.attributedDateString(
+            for: noteDatePickerData,
+            isSelected: true
+        )
+        
+        guard noteDatePickerData.color != nil
+        else { return }
+        
+        /// 선택 불가능하면 경고 라벨
+        self.showWarningLabel = true
+        self.fadeInWarningLabel()
     }
     
     
