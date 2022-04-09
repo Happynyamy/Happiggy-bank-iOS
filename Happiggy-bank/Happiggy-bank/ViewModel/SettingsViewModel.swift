@@ -15,38 +15,27 @@ final class SettingsViewModel {
     /// 해당 칸의 아이콘 이미지 리턴
     func icon(forContentAt indexPath: IndexPath) -> UIImage? {
         typealias Content = SettingsViewController.Content
-        let row = indexPath.row
         
-        if row == Content.appVersionInformation.rawValue {
-            return AppVersion.icon
-        }
-
-        return nil
+        return Content.icon[indexPath.row] ?? nil
     }
     
     /// 해당 칸의 제목 리턴
     func title(forContentAt indexPath: IndexPath) -> NSMutableAttributedString? {
         typealias Content = SettingsViewController.Content
-        let row = indexPath.row
-
-        if row == Content.appVersionInformation.rawValue {
-            return AppVersion.title.nsMutableAttributedStringify()
-        }
-
-        return nil
+        
+         return Content.title[indexPath.row]?.nsMutableAttributedStringify()
     }
     
     /// 해당 칸의 설명 리턴
     func informationText(forContentAt indexPath: IndexPath) -> NSMutableAttributedString? {
         typealias Content = SettingsViewController.Content
-        let row = indexPath.row
         
-        if row == Content.appVersionInformation.rawValue {
-            return AppVersion.informationText
-                .nsMutableAttributedStringify()
-                .color(color: .customTint)
+        let text = Content.informationText[indexPath.row]?.nsMutableAttributedStringify()
+        
+        if indexPath.row == Content.appVersion.rawValue {
+            return text?.color(color: .customTint)
         }
-
-        return nil
+        
+        return text
     }
 }

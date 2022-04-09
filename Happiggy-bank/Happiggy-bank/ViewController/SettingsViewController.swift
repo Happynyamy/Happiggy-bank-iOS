@@ -80,11 +80,13 @@ extension SettingsViewController: UITableViewDataSource {
             return cell
         }
         
-        if indexPath.row == Content.appVersionInformation.rawValue {
+        if indexPath.row == Content.appVersion.rawValue ||
+            indexPath.row == Content.license.rawValue {
+            
             return self.labelButtonCell(
                 inTableView: tableView,
                 indexPath: indexPath,
-                navigationButtonIsHidden: true
+                navigationButtonIsHidden: indexPath.row == Content.appVersion.rawValue
             )
         }
         
@@ -164,5 +166,20 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate {
         }
         // TODO: add haptic selection feedback
         present(mailViewController, animated: true)
+    }
+}
+
+
+// MARK: - UITableViewDelegate
+extension SettingsViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: false)
+        
+        if indexPath.row == Content.license.rawValue {
+            // TODO: 라이선스 뷰컨트롤러로 이동
+            HapticManager.instance.selection()
+        }
     }
 }

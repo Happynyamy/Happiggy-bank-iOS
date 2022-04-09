@@ -757,7 +757,30 @@ extension SettingsViewController {
         case bottleAlertSettings
         
         /// 앱 버전 정보
-        case appVersionInformation
+        case appVersion
+        
+        /// 라이선스
+        case license
+        
+        
+        // MARK: - Properties
+        
+        /// 아이콘 딕셔너리
+        static let icon: [Int: UIImage?] = [
+            appVersion.rawValue: UIImage(systemName: "info.circle"),
+            license.rawValue: UIImage(systemName: "")
+        ]
+        
+        /// 제목 딕셔너리
+        static let title: [Int: String] = [
+            appVersion.rawValue: "버전 정보",
+            license.rawValue: "라이선스"
+        ]
+        
+        /// 추가 정보 딕셔너리
+        static let informationText: [Int: String] = [
+            appVersion.rawValue: "최신 버전을 사용 중 입니다"
+        ]
     }
     
     /// 메일 앱 관련 문자열
@@ -1101,15 +1124,5 @@ happiggybank@gmail.com으로 문의 부탁드립니다
 
 화면을 탭하면 앱이 종료됩니다
 """
-    }
-}
-
-extension SettingsViewModel {
-    
-    /// 앱스토어 버전 체크 셀에서 사용하는 상수, 문자열
-    enum AppVersion {
-        static let icon = UIImage(systemName: "info.circle")
-        static let title = "버전 정보"
-        static let informationText = "최신 버전을 사용 중 입니다"
     }
 }
