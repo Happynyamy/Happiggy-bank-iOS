@@ -200,31 +200,37 @@ extension BottleNameEditViewController: UITextFieldDelegate {
         shouldChangeCharactersIn range: NSRange,
         replacementString string: String
     ) -> Bool {
-        guard let text = self.textField.text,
-              let textRange = Range(range, in: text)
+        /// 텍스트가 유효한지, 편집한 범위를 찾을 수 있는 지 확인
+        guard let currentText = textField.text,
+              Range(range, in: currentText) != nil
         else { return false }
         
         let maxLength = self.textField.textInputMode?.primaryLanguage == StringLiteral.korean ?
         Metric.textFieldKoreanMaxLength :
         Metric.textFieldMaxLength
         
-        var updatedText = text.replacingCharacters(in: textRange, with: string)
+        let updatedTextLength = currentText.count - range.length + string.count
+        let trimLength = updatedTextLength - maxLength
+
+        guard updatedTextLength > maxLength,
+              string.count >= trimLength
+        else { return true }
         
-        if updatedText.count > maxLength {
-            guard let overflow = Range(
-                NSRange(
-                    location: Metric.textFieldMaxLength,
-                    length: updatedText.count - Metric.textFieldMaxLength
-                ),
-                in: updatedText
-            )
-            else { return false }
-            
-            updatedText.removeSubrange(overflow)
-            self.textField.text = updatedText
-            return false
-        }
+        /// 새로 입력된 문자열의 초과분을 삭제
+        let index = string.index(string.endIndex, offsetBy: -trimLength)
+        let trimmedReplacementText = string[..<index]
         
-        return true
+        guard let startPosition = textField.position(
+            from: textField.beginningOfDocument, offset: range.location
+        ),
+              let endPosition = textField.position(
+                from: textField.beginningOfDocument, offset: NSMaxRange(range)
+              ),
+              let textRange = textField.textRange(from: startPosition, to: endPosition)
+        else { return false }
+              
+        textField.replace(textRange, withText: String(trimmedReplacementText))
+        
+        return false
     }
 }

@@ -69,9 +69,9 @@ final class HomeViewModel {
         
         PersistenceStore.shared.deleteAll(Bottle.self)
         let request = Bottle.fetchRequest(isOpen: false)
-        var bottles = PersistenceStore.shared.fetch(request: request)
+        let bottles = PersistenceStore.shared.fetch(request: request)
         self.bottle = bottles.first
-//        self.bottle = Bottle.foo
+        self.bottle = Bottle.foo
 //        PersistenceStore.shared.save()
     }
 
