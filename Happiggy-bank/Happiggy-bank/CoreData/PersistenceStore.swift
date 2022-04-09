@@ -19,6 +19,8 @@ class PersistenceStore {
     static var shared: PersistenceStore = {
         PersistenceStore(name: StringLiteral.sharedPersistenceStoreName)
     }()
+
+    static private(set) var fatalErrorNeeded = false
     
     /// persistence container 의 viewContext 에 접근하기 위한 syntactic sugar
     private(set) lazy var context: NSManagedObjectContext = {
@@ -26,6 +28,8 @@ class PersistenceStore {
     }()
     
     private let persistentContainer: NSPersistentContainer
+    
+    weak var windowScene: UIWindowScene?
     
     
     // MARK: - Init(s)
@@ -37,25 +41,13 @@ class PersistenceStore {
          error conditions that could cause the creation of the store to fail.
          */
         self.persistentContainer = NSPersistentContainer(name: name).then {
-            $0.loadPersistentStores(completionHandler: { _, error in
+            $0.loadPersistentStores { _, error in
                 if let error = error as NSError? {
-                    // Replace this implementation with code to handle the error appropriately.
-                    // fatalError() causes the application to generate a crash log and terminate.
-                    // You should not use this function in a shipping application,
-                    // although it may be useful during development.
-                    
-                    /*
-                     Typical reasons for an error here include:
-                     * The parent directory does not exist, cannot be created, or disallows writing.
-                     * The persistent store is not accessible,
-                     * due to permissions or data protection when the device is locked.
-                     * The device is out of space.
-                     * The store could not be migrated to the current model version.
-                     Check the error message to determine what the actual problem was.
-                     */
-                    fatalError("Unresolved error \(error), \(error.userInfo)")
+                    PersistenceStore.fatalErrorNeeded = true
+                    print(error.localizedDescription)
+                    print(error.userInfo)
                 }
-            })
+            }
         }
     }
     
@@ -81,17 +73,23 @@ class PersistenceStore {
         if self.context.hasChanges {
             do {
                 try self.context.save()
+                self.presentErrorAlert(
+                    title: StringLiteral.saveErrorTitle,
+                    message: StringLiteral.saveErrorMessage
+                )
+                
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate.
-                // You should not use this function in a shipping application,
-                // although it may be useful during development.
                 let nserror = error as NSError
                 if let errorMessage = errorMessage {
                     print("\(errorMessage)+\(nserror.localizedDescription)+\(nserror.userInfo)")
                 } else {
                     print("\(nserror.localizedDescription), \(nserror.userInfo)")
                 }
+                
+                self.presentErrorAlert(
+                    title: StringLiteral.saveErrorTitle,
+                    message: StringLiteral.saveErrorMessage
+                )
             }
         }
     }
@@ -116,5 +114,48 @@ class PersistenceStore {
         } catch {
             print(error.localizedDescription)
         }
+    }
+    
+    
+    // MARK: - Alert
+    
+    /// 작업 실패 시 알림
+    private func presentErrorAlert(
+        title: String?,
+        message: String?,
+        handler: ((UIAlertAction) -> Void)? = nil
+    ) {
+        let alert = self.makeErrorAlert(
+            title: title,
+            message: message,
+            handler: handler
+        )
+        self.windowScene?.topMostViewController?.present(alert, animated: true)
+    }
+    
+    /// 알림 생성
+    private func makeErrorAlert(
+        title: String?,
+        message: String?,
+        handler: ((UIAlertAction) -> Void)? = nil
+    ) -> UIAlertController {
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        
+        let confirmationAction = UIAlertAction(
+            title: StringLiteral.okButtonTitle,
+            style: .default
+        ) { action in
+            guard let handler = handler
+            else { return }
+            
+            handler(action)
+        }
+
+        alert.addAction(confirmationAction)
+        return alert
     }
 }
