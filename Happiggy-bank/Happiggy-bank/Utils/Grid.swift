@@ -1,8 +1,8 @@
 //
 //  Grid.swift
-//  Happiggy-bank
 //
-//  Created by sun on 2022/03/22.
+//  Created by CS193p Instructor.
+//  Copyright © 2017 Stanford University. All rights reserved.
 //
 
 import UIKit

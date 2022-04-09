@@ -73,11 +73,6 @@ class PersistenceStore {
         if self.context.hasChanges {
             do {
                 try self.context.save()
-                self.presentErrorAlert(
-                    title: StringLiteral.saveErrorTitle,
-                    message: StringLiteral.saveErrorMessage
-                )
-                
             } catch {
                 let nserror = error as NSError
                 if let errorMessage = errorMessage {

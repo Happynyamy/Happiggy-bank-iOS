@@ -28,9 +28,6 @@ final class BottleListViewModel {
     func executeFetchRequest() {
         let request = Bottle.fetchRequest(isOpen: true)
         let list = PersistenceStore.shared.fetch(request: request)
-
-//        PersistenceStore.shared.deleteAll(Bottle.self)
-        
         self.bottleList = list
     }
 }
