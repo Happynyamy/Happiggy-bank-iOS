@@ -12,6 +12,9 @@ final class SettingsLabelButtonCell: SettingsViewCell {
     
     // MARK: - @IBOutlets
     
+    /// 아이콘 이미지 뷰
+    @IBOutlet weak var iconImageView: UIImageView!
+    
     /// 제목 라벨
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -29,28 +32,17 @@ final class SettingsLabelButtonCell: SettingsViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.addTapGestureRecognizer()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
-    /// 버튼 스택에 tap gesture recognizer 추가
-    private func addTapGestureRecognizer() {
-        let tapGestureRecognizer = UITapGestureRecognizer(
-            target: self,
-            action: #selector(buttonStackDidTap(sender:))
-        )
-        self.buttonStack.addGestureRecognizer(tapGestureRecognizer)
-    }
-    
-    /// 버튼 스택을 탭하면 호출되는 메서드
-    @objc private func buttonStackDidTap(sender: UITapGestureRecognizer) {
-        if sender.state == .ended {
-            print("show appstore")
-        }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.iconImageView.image = UIImage()
+        self.titleLabel.attributedText = nil
+        self.titleLabel.text = nil
+        self.informationLabel.attributedText = nil
+        self.informationLabel.text = nil
+        self.informationLabel.textColor = .label
+        self.buttonImageView.isHidden = false
     }
 }

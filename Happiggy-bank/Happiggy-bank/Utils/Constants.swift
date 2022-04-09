@@ -1103,3 +1103,13 @@ happiggybank@gmail.com으로 문의 부탁드립니다
 """
     }
 }
+
+extension SettingsViewModel {
+    
+    /// 앱스토어 버전 체크 셀에서 사용하는 상수, 문자열
+    enum AppVersion {
+        static let icon = UIImage(systemName: "info.circle")
+        static let title = "버전 정보"
+        static let informationText = "최신 버전을 사용 중 입니다"
+    }
+}

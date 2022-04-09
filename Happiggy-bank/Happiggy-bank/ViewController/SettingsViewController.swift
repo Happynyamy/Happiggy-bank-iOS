@@ -20,6 +20,11 @@ final class SettingsViewController: UIViewController {
     @IBOutlet weak var teamLabel: UIStackView!
     
     
+    // MARK: - Properties
+    
+    private var viewModel = SettingsViewModel()
+    
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -76,13 +81,11 @@ extension SettingsViewController: UITableViewDataSource {
         }
         
         if indexPath.row == Content.appVersionInformation.rawValue {
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: SettingsLabelButtonCell.name,
-                for: indexPath
-            ) as? SettingsLabelButtonCell
-            else { return SettingsLabelButtonCell() }
-            
-            return cell
+            return self.labelButtonCell(
+                inTableView: tableView,
+                indexPath: indexPath,
+                navigationButtonIsHidden: true
+            )
         }
         
         return SettingsViewCell()
@@ -109,6 +112,29 @@ extension SettingsViewController: UITableViewDataSource {
                 equalTo: cell.contentView.bottomAnchor
             )
         ])
+    }
+    
+    /// 라벨 버튼 셀 모습 설정
+    private func labelButtonCell(
+        inTableView tableView: UITableView,
+        indexPath: IndexPath,
+        navigationButtonIsHidden: Bool = false
+    ) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: SettingsLabelButtonCell.name,
+            for: indexPath
+        ) as? SettingsLabelButtonCell
+        else { return SettingsLabelButtonCell() }
+        
+        cell.iconImageView.image = self.viewModel.icon(forContentAt: indexPath)
+        cell.titleLabel.attributedText = self.viewModel.title(forContentAt: indexPath)
+        cell.informationLabel.attributedText = self.viewModel.informationText(
+            forContentAt: indexPath
+        )
+        cell.buttonImageView.isHidden = navigationButtonIsHidden
+        
+        return cell
     }
 }
 
