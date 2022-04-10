@@ -80,6 +80,9 @@ extension HomeViewController {
 
         /// 작성 가능한 날짜가 없음을 알리는 알람의 메시지
         static let noEmptyDateAlertMessage = "미래의 날짜는 작성 불가능합니다."
+        
+        /// 저금통이 없을 때 나타나는 캐릭터 이미지 이름
+        static let homeCharacterEmpty = "homeCharacter"
     }
     
     /// 폰트 크기
