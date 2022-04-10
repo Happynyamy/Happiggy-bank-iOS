@@ -16,11 +16,11 @@
             <objects>
                 <viewController modalTransitionStyle="crossDissolve" id="BYZ-38-t0r" customClass="HomeViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZlX-eS-Yvg">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmA-fx-uIw">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
@@ -53,13 +53,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JwR-oy-otr">
-                                <rect key="frame" x="187.5" y="543.5" width="39.5" height="19.5"/>
+                                <rect key="frame" x="187.5" y="549.5" width="39.5" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" name="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeCharacter" translatesAutoresizingMaskIntoConstraints="NO" id="dfo-Bk-tQ1">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -72,16 +72,16 @@
                             <constraint firstItem="Ox7-a2-qYT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="70" id="60B-bR-9bf"/>
                             <constraint firstItem="dmA-fx-uIw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8sb-a4-2KC"/>
                             <constraint firstItem="dmA-fx-uIw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="44" id="CbZ-gb-u8F"/>
-                            <constraint firstItem="dfo-Bk-tQ1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="44" id="D8I-Er-tZ3"/>
+                            <constraint firstItem="dfo-Bk-tQ1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="D8I-Er-tZ3"/>
                             <constraint firstItem="K3e-f7-x3z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="Esz-F4-FPa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mxw-FV-eBm" secondAttribute="trailing" symbolic="YES" id="LuX-hH-50l"/>
                             <constraint firstItem="JwR-oy-otr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LzX-yn-Ctk"/>
                             <constraint firstItem="ZlX-eS-Yvg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="OFr-if-N9z"/>
-                            <constraint firstItem="dfo-Bk-tQ1" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ORJ-OH-2uc"/>
+                            <constraint firstItem="dfo-Bk-tQ1" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="ORJ-OH-2uc"/>
                             <constraint firstAttribute="trailing" secondItem="ZlX-eS-Yvg" secondAttribute="trailing" id="OkY-Ki-cEN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ox7-a2-qYT" secondAttribute="trailing" symbolic="YES" id="PEa-7N-X4Y"/>
                             <constraint firstItem="T4r-Fh-6oO" firstAttribute="top" secondItem="mxw-FV-eBm" secondAttribute="bottom" constant="18" id="SPr-4s-61q"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="JwR-oy-otr" secondAttribute="bottom" constant="250" id="Y31-zO-p3W"/>
+                            <constraint firstItem="JwR-oy-otr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="bottom" multiplier="498:812" id="Y31-zO-p3W"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="T4r-Fh-6oO" secondAttribute="trailing" symbolic="YES" id="Zz4-tv-PeK"/>
                             <constraint firstItem="mxw-FV-eBm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="86" id="adg-qC-y3E"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="K3e-f7-x3z" secondAttribute="trailing" symbolic="YES" id="c71-t5-n34"/>
@@ -234,7 +234,7 @@
             <objects>
                 <viewController storyboardIdentifier="BottleListViewController" id="E5t-46-ohL" customClass="BottleListViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nEt-Kx-IF1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="l7q-sD-9EX">
@@ -286,7 +286,7 @@
             <objects>
                 <viewController storyboardIdentifier="NoteListViewController" hidesBottomBarWhenPushed="YES" id="KE3-2Z-kiH" customClass="NoteListViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="96q-VD-T5D">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SCP-Hp-DbX">
@@ -359,7 +359,7 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="dSD-O6-Yej" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Tog-A2-SCB" customClass="CustomTabBar" customModule="Happiggy_bank" customModuleProvider="target">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tog-A2-SCB" customClass="CustomTabBar" customModule="Happiggy_bank" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" name="tabBarBackground"/>
@@ -888,11 +888,11 @@
             <objects>
                 <viewController id="8AM-Vb-C6f" customClass="NoteDetailViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XRY-6G-qf4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YA1-XK-Qra">
-                                <rect key="frame" x="0.0" y="156.5" width="414" height="500"/>
+                                <rect key="frame" x="0.0" y="198" width="414" height="500"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="500" id="J04-tK-UsO"/>
@@ -929,14 +929,14 @@
                                 <rect key="frame" x="334" y="724" width="40" height="40"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="characterPink" translatesAutoresizingMaskIntoConstraints="NO" id="OBm-7g-O6d">
-                                <rect key="frame" x="187" y="86.5" width="40" height="40"/>
+                                <rect key="frame" x="187" y="128" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="OBm-7g-O6d" secondAttribute="height" multiplier="1:1" id="fIe-eg-1p2"/>
                                     <constraint firstAttribute="width" constant="40" id="oo5-Lf-6Jb"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqC-5b-cQf">
-                                <rect key="frame" x="187" y="692.5" width="40" height="20"/>
+                                <rect key="frame" x="187" y="734" width="40" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" name="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
