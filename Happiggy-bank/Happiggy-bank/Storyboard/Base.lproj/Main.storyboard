@@ -148,9 +148,20 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view alpha="0.0" contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="hvx-Jx-SEb">
+                                    <view contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="hvx-Jx-SEb">
                                         <rect key="frame" x="87" y="201" width="240" height="313"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <subviews>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="저금통이 비어있어요, 빈 저금통은 저장되지 않습니다." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32V-cq-SOU">
+                                                <rect key="frame" x="-26.5" y="24" width="293.5" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" name="warningLabelColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="32V-cq-SOU" firstAttribute="top" secondItem="hvx-Jx-SEb" secondAttribute="top" constant="24" id="eb9-a1-11f"/>
+                                            <constraint firstItem="32V-cq-SOU" firstAttribute="centerX" secondItem="hvx-Jx-SEb" secondAttribute="centerX" id="x7J-8n-x6h"/>
+                                        </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="화면을 탭 하면 리스트로 넘어갑니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3XN-7E-k3f">
                                         <rect key="frame" x="106.5" y="514" width="201" height="17"/>
@@ -203,6 +214,7 @@
                         <outlet property="backgroundImageView" destination="pKG-O8-ysV" id="wOM-yR-BSh"/>
                         <outlet property="bottleMessageLabel" destination="PmD-gO-jD3" id="PTo-jj-XOq"/>
                         <outlet property="bottleTitleLabel" destination="the-XF-3HV" id="YPn-AN-tQQ"/>
+                        <outlet property="emptyBottleLabel" destination="32V-cq-SOU" id="ecO-QL-1Ws"/>
                         <outlet property="tapGestureRecognizer" destination="V02-Pn-vzk" id="qFC-7m-mMh"/>
                         <outlet property="tapToContinueLabel" destination="3XN-7E-k3f" id="h8L-m8-UT6"/>
                     </connections>
