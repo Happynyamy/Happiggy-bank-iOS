@@ -116,15 +116,21 @@ final class BottleMessageViewController: UIViewController {
     
     /// 탭 안내 라벨 페이드인/아웃 반복
     private func animateTapToContinueLabel() {
-        UIView.animate(
+        UIView.animateKeyframes(
             withDuration: Duration.tapToContinueLabel,
             delay: Duration.tapToContinueLabelDelay,
-            options: [.autoreverse, .repeat, .allowUserInteraction, .curveEaseIn]
+            options: [.autoreverse, .repeat, .allowUserInteraction]
         ) {
-            self.tapToContinueLabel.alpha = .one
-            /// 탭 안내 라벨이 나타날 때 탭 인식 허용
-            self.tapGestureRecognizer.isEnabled.toggle()
-        }
+                /// 탭 안내 라벨이 나타날 때 탭 인식 허용
+                self.tapGestureRecognizer.isEnabled.toggle()
+                
+                UIView.addKeyframe(
+                    withRelativeStartTime: .zero,
+                    relativeDuration: Duration.tapToContinueLabelRelativeFadeIn
+                ) {
+                    self.tapToContinueLabel.alpha = .one
+                }
+            }
     }
     
     /// 쪽지 리스트를 띄우기 전에 자연스러운 전환을 위해 애니메이션 효과를 줌
