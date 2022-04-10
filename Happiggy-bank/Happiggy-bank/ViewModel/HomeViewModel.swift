@@ -76,7 +76,7 @@ final class HomeViewModel {
         let daysCount = Calendar.current.dateComponents(
             [.day],
             from: endDate,
-            to: startDate
+            to: Calendar.current.startOfDay(for: startDate)
         )
         guard let days = daysCount.day
         else { return "" }
