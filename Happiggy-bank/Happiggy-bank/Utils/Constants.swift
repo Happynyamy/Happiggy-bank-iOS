@@ -913,6 +913,9 @@ extension BottleMessageViewController {
 
         /// 탭 안내 라벨 시간: 1.5
         static let tapToContinueLabel: TimeInterval = 1.5
+        
+        /// 페이드인 상대시간: 3/4
+        static let tapToContinueLabelRelativeFadeIn: TimeInterval = 3/4
 
     }
     
