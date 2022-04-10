@@ -121,13 +121,13 @@ final class BottleViewController: UIViewController {
         
     }
     
-    /// 개봉 확인 알림이 떴을 때 호출되는 메서드
-    func bottleOpenConfirmationAlertDidAppear() {
+    /// 알림/모달이 떴을 때 호출되는 메서드
+    func alertOrModalDidAppear() {
         self.gravity?.disable()
     }
     
-    /// 개봉 취소를 눌렀을 때 호출되는 메서드
-    func bottleDidNotOpen() {
+    /// 알림/모달이 내려가고, 이전 상태 그대로 나타내면 될 때 호출되는 메서드
+    func restoreStateBeforeAlertOrModalDidAppear() {
         self.gravity?.enable()
     }
 

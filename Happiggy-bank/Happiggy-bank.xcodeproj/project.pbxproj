@@ -32,6 +32,8 @@
 		A466A31028018CD800D655F4 /* UIWindowScene+TopMostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A466A30F28018CD800D655F4 /* UIWindowScene+TopMostViewController.swift */; };
 		A466A3162801DF1400D655F4 /* SettingsLabelButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A466A3152801DF1400D655F4 /* SettingsLabelButtonCell.xib */; };
 		A466A3182801E99500D655F4 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A466A3172801E99500D655F4 /* SettingsViewModel.swift */; };
+		A466A31A2802987700D655F4 /* UIAlertAction+ConfirmAndCancel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A466A3192802987700D655F4 /* UIAlertAction+ConfirmAndCancel.swift */; };
+		A466A31C28029D7400D655F4 /* UIAlertController+BasicFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = A466A31B28029D7400D655F4 /* UIAlertController+BasicFormat.swift */; };
 		A467B5C827DA258700AC702D /* NewNoteDatePickerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467B5C727DA258700AC702D /* NewNoteDatePickerRowView.swift */; };
 		A467B5CA27DA289600AC702D /* NewNoteDatePickerRowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A467B5C927DA289500AC702D /* NewNoteDatePickerRowView.xib */; };
 		A46BC1EF2800626A00C2E5B4 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46BC1EE2800626A00C2E5B4 /* TabItem.swift */; };
@@ -128,6 +130,8 @@
 		A466A30F28018CD800D655F4 /* UIWindowScene+TopMostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindowScene+TopMostViewController.swift"; sourceTree = "<group>"; };
 		A466A3152801DF1400D655F4 /* SettingsLabelButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsLabelButtonCell.xib; sourceTree = "<group>"; };
 		A466A3172801E99500D655F4 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		A466A3192802987700D655F4 /* UIAlertAction+ConfirmAndCancel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+ConfirmAndCancel.swift"; sourceTree = "<group>"; };
+		A466A31B28029D7400D655F4 /* UIAlertController+BasicFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+BasicFormat.swift"; sourceTree = "<group>"; };
 		A467B5C727DA258700AC702D /* NewNoteDatePickerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteDatePickerRowView.swift; sourceTree = "<group>"; };
 		A467B5C927DA289500AC702D /* NewNoteDatePickerRowView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewNoteDatePickerRowView.xib; sourceTree = "<group>"; };
 		A46BC1EE2800626A00C2E5B4 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
@@ -380,6 +384,8 @@
 				A41DE62D27F5F2C1002A7669 /* UIView+ZoomAnimation.swift */,
 				A466A30D28018BBD00D655F4 /* UIVIewController+TopMostViewController.swift */,
 				A466A30F28018CD800D655F4 /* UIWindowScene+TopMostViewController.swift */,
+				A466A3192802987700D655F4 /* UIAlertAction+ConfirmAndCancel.swift */,
+				A466A31B28029D7400D655F4 /* UIAlertController+BasicFormat.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -552,6 +558,7 @@
 				A4CF2C8E27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift in Sources */,
 				A46BC1EF2800626A00C2E5B4 /* TabItem.swift in Sources */,
 				D284A5DE27FF3EFB00D20699 /* BottleNameEditViewController.swift in Sources */,
+				A466A31C28029D7400D655F4 /* UIAlertController+BasicFormat.swift in Sources */,
 				A8BD834D27BE39D600E0DE41 /* NoteProgressLabel.swift in Sources */,
 				A8509E6E27C89A1200855153 /* UIColor+Extension.swift in Sources */,
 				D236DB8827FDD66900D7B8F0 /* NewBottleMessageFieldViewController.swift in Sources */,
@@ -610,6 +617,7 @@
 				A89CBEDB27CBDD99005549F6 /* BottleCell.swift in Sources */,
 				A44E901727D5EB130053AC57 /* Happiggy-bank.xcdatamodeld in Sources */,
 				A4C1AFD427E5E6120096CD3E /* UITextView+ParagraphStyle.swift in Sources */,
+				A466A31A2802987700D655F4 /* UIAlertAction+ConfirmAndCancel.swift in Sources */,
 				A49931A527BFD20E009FF5A8 /* UIImage+AssetImages.swift in Sources */,
 				A459003A27E95D6B003010A0 /* Grid.swift in Sources */,
 				A4C1AFC227E47AD80096CD3E /* String+EmptyString.swift in Sources */,

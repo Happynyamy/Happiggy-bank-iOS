@@ -54,9 +54,6 @@ extension HomeViewController {
         /// 저금통 개봉 확인 알림 개봉 버튼 제목
         static let bottleOpenAlertOpenButtonTitle = "개봉"
         
-        /// 저금통 개봉 확인 알림 취소 버튼 제목
-        static let bottleOpenAlertCancelButtonTitle = "취소"
-        
         /// 저금통이 없는 경우 나타나는 상단 라벨 문자열
         static let emptyTopLabelText: String = "저금통이 없습니다."
         
@@ -69,9 +66,6 @@ extension HomeViewController {
         /// 저금통 제목 이미 바꿨을 때 나오는 알림 제목
         static let bottleNameFixedAlertTitle = "이미 저금통 이름을 변경했습니다."
         
-        /// 저금통 제목 이미 바꿨을 때 나오는 알림 확인 버튼 제목
-        static let bottleNameFixedAlertConfirm = "확인"
-        
         /// BottleNameEditViewController identifier
         static let bottleNameEditViewController = "BottleNameEditViewController"
         
@@ -80,6 +74,12 @@ extension HomeViewController {
         
         /// 저금통 생성 후 쪽지가 없을 때 나타내는 캐릭터 이미지 이름
         static let homeCharacterInitialName: String = "homeCharacterInitial"
+        
+        /// 작성 가능한 날짜가 없음을 알리는 알람의 제목
+        static let noEmptyDateAlertTitle = "이미 모든 날짜에 행복을 기록했어요"
+
+        /// 작성 가능한 날짜가 없음을 알리는 알람의 메시지
+        static let noEmptyDateAlertMessage = "미래의 날짜는 작성 불가능합니다."
     }
     
     /// 폰트 크기

@@ -59,12 +59,7 @@ final class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.observe(
-            selector: #selector(refetch),
-            name: .NSManagedObjectContextDidSave
-        )
-        
-        
+        self.observe(selector: #selector(refetch), name: .NSManagedObjectContextDidSave)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
@@ -89,16 +84,15 @@ final class HomeViewController: UIViewController {
             return
         }
         if !bottle.isInProgress {
-            self.presentBottleOpenConfirmationAlert()
-            self.bottleViewController.bottleOpenConfirmationAlertDidAppear()
+            self.present(self.bottleOpenConfirmationAlert(), animated: true)
+            self.bottleViewController.alertOrModalDidAppear()
             return
         }
         if !bottle.hasEmptyDate {
-            print("show some alert that no notes are writable")
+            self.present(self.noEmptyDateAlert(), animated: true)
             return
         }
         if !bottle.isEmtpyToday {
-            /// 날짜 피커 띄우기
             self.performSegue(
                 withIdentifier: SegueIdentifier.presentNewNoteDatePicker,
                 sender: sender
@@ -327,37 +321,23 @@ final class HomeViewController: UIViewController {
     // MARK: - Functions
     
     /// 저금통 개봉 의사를 물어보는 알림을 띄움
-    private func presentBottleOpenConfirmationAlert() {
-        let alert = self.makeBottleOpenConfirmationAlert()
-        self.present(alert, animated: true)
-    }
-    
-    /// 저금통 개봉 의사를 물어보는 알림을 생성
-    private func makeBottleOpenConfirmationAlert() -> UIAlertController {
-        let alert = UIAlertController(
-            title: StringLiteral.bottleOpenAlertTitle,
-            message:StringLiteral.bottleOpenAlertMessage,
-            preferredStyle: .alert
-        )
-        
-        let openAction = UIAlertAction(
-            title: StringLiteral.bottleOpenAlertOpenButtonTitle,
-            style: .default
+    private func bottleOpenConfirmationAlert() -> UIAlertController {
+        let confirmAction = UIAlertAction.confirmAction(
+            title: StringLiteral.bottleOpenAlertOpenButtonTitle
         ) { _ in
             self.bottleDidOpen()
         }
-        
-        let cancelAction = UIAlertAction(
-            title: StringLiteral.bottleOpenAlertCancelButtonTitle,
-            style: .cancel
-        ) { _ in
-            self.bottleViewController.bottleDidNotOpen()
+            
+        let cancelAction = UIAlertAction.cancelAction { _ in
+            self.bottleViewController.restoreStateBeforeAlertOrModalDidAppear()
         }
         
-        alert.addAction(openAction)
-        alert.addAction(cancelAction)
-        
-        return alert
+        return UIAlertController.basic(
+            alertTitle: StringLiteral.bottleOpenAlertTitle,
+            alertMessage: StringLiteral.bottleOpenAlertMessage,
+            confirmAction: confirmAction,
+            cancelAction: cancelAction
+        )
     }
     
     /// 저금통 이름을 이미 변경했을 때 표시하는 알림
@@ -368,19 +348,10 @@ final class HomeViewController: UIViewController {
     
     /// 저금통 이름을 이미 변경했을 때 표시하는 알림 생성
     private func makeBottleTitleAlreadyFixedAlert() -> UIAlertController {
-        let alert = UIAlertController(
-            title: StringLiteral.bottleNameFixedAlertTitle,
-            message: nil,
-            preferredStyle: .alert
+        UIAlertController.basic(
+            alertTitle: StringLiteral.bottleNameFixedAlertTitle,
+            confirmAction: UIAlertAction.confirmAction()
         )
-        
-        let confirmAction = UIAlertAction(
-            title: StringLiteral.bottleNameFixedAlertConfirm,
-            style: .default
-        )
-        
-        alert.addAction(confirmAction)
-        return alert
     }
     
     /// 저금통 개봉
@@ -395,6 +366,15 @@ final class HomeViewController: UIViewController {
         self.performSegue(
             withIdentifier: SegueIdentifier.presentBottleMessageView,
             sender: bottle
+        )
+    }
+    
+    /// 모든 날짜에 쪽지를 작성했다는 알림을 띄움
+    private func noEmptyDateAlert() -> UIAlertController {
+        UIAlertController.basic(
+            alertTitle: StringLiteral.noEmptyDateAlertTitle,
+            alertMessage: StringLiteral.noEmptyDateAlertMessage,
+            confirmAction: UIAlertAction.confirmAction()
         )
     }
 }
