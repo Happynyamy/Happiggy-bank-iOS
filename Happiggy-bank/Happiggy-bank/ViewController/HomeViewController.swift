@@ -137,7 +137,7 @@ final class HomeViewController: UIViewController {
         }
         
         // 저금통 없을 때
-        guard self.bottleViewController.viewModel.bottle == nil
+        guard self.viewModel.bottle == nil
         else { return }
         
         // TODO: 1안 -> Notification + Object, 2안 -> refetch
@@ -149,8 +149,6 @@ final class HomeViewController: UIViewController {
         // 캐릭터 교체, 라벨 추가
         hideLabelIfNeeded()
         initializeLabel()
-        self.homeCharacter.image = UIImage(named: StringLiteral.homeCharacterInitialName)
-        self.tapToAddNoteLabel.isHidden = false
     }
     
     // swiftlint:disable force_cast
@@ -307,6 +305,7 @@ final class HomeViewController: UIViewController {
             // 비었을 때
             self.emptyTopLabel.text = StringLiteral.emptyTopLabelText
             self.emptyBottomLabel.text = StringLiteral.emptyBottomLabelText
+            self.homeCharacter.image = UIImage(named: StringLiteral.homeCharacterEmpty)
         }
     }
     
