@@ -206,10 +206,11 @@ final class HomeViewController: UIViewController {
         
         if segue.identifier == SegueIdentifier.presentBottleMessageView {
             guard let bottleMessageController = segue.destination as? BottleMessageViewController,
-                  let bottle = sender as? Bottle
+                  let (fakeBackground, bottle) = sender as? (UIView, Bottle)
             else { return }
             
             bottleMessageController.bottle = bottle
+            bottleMessageController.fakeBackground = fakeBackground
             bottleMessageController.fadeInOutduration = Duration.bottleOpeningAnimation
             bottleMessageController.mainTabBarController = self.tabBarController
         }
@@ -358,13 +359,14 @@ final class HomeViewController: UIViewController {
         guard let bottle = self.viewModel.bottle
         else { return }
         
+        let fakeBackground = self.tabBarController?.view.snapshotView(afterScreenUpdates: false)
         self.viewModel.bottle = nil
         self.viewModel.saveOpenedBottle(inContainerView: self.bottleViewController.view, bottle)
         HapticManager.instance.notification(type: .success)
         self.bottleViewController.bottleDidOpen(withDuration: Duration.bottleOpeningAnimation)
         self.performSegue(
             withIdentifier: SegueIdentifier.presentBottleMessageView,
-            sender: bottle
+            sender: (fakeBackground, bottle)
         )
     }
     
