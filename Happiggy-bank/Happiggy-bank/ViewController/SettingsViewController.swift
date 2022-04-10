@@ -69,7 +69,7 @@ extension SettingsViewController: UITableViewDataSource {
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
         
-        if indexPath.row == Content.bottleAlertSettings.rawValue {
+        if indexPath.row == Content.bottleAlert.rawValue {
             
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: SettingsToggleButtonCell.name,
