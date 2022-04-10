@@ -42,13 +42,21 @@ final class BottleMessageViewController: UIViewController {
     /// 앱의 탭바 컨트롤러
     weak var mainTabBarController: UITabBarController?
     
+    /// 자연스러운 페이드인 효과를 위한 이전 뷰 스냅샷
+    var fakeBackground: UIView?
+    
     
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.configureLabels()
+        
+        guard let fakeBackground = fakeBackground
+        else { return }
+
+        self.view.insertSubview(fakeBackground, at: .zero)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -69,7 +77,7 @@ final class BottleMessageViewController: UIViewController {
         if !self.bottle.notes.isEmpty {
             self.moveToNoteListWithAnimation()
         }
-        
+
         if self.bottle.notes.isEmpty {
             PersistenceStore.shared.delete(self.bottle)
             self.dismiss(animated: false)
@@ -94,8 +102,15 @@ final class BottleMessageViewController: UIViewController {
     
     /// 하위 뷰들을 페이드인
     private func fadeInContents() {
-        self.view.fadeIn(withDuration: self.fadeInOutduration, options: .curveEaseIn) { _ in
+        
+        UIView.animate(withDuration: self.fadeInOutduration, delay: .zero, options: .curveEaseIn) {
+            self.backgroundImageView.alpha = .one
+            self.bottleTitleLabel.alpha = .one
+            self.emptyBottleLabel.alpha = .one
+            self.bottleMessageLabel.alpha = .one
+        } completion: { _ in
             self.animateTapToContinueLabel()
+            self.fakeBackground?.removeFromSuperview()
         }
     }
     
@@ -163,9 +178,6 @@ final class BottleMessageViewController: UIViewController {
     
     /// 배경 이미지와 라벨들을 모두 투명도 0으로 변경
     private func clearContents() {
-        self.backgroundImageView.alpha = .zero
-        self.bottleTitleLabel.alpha = .zero
-        self.bottleMessageLabel.alpha = .zero
-        self.tapToContinueLabel.alpha = .zero
+        self.view.subviews.forEach { $0.alpha = .zero }
     }
 }
