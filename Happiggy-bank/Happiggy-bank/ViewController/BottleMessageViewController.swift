@@ -18,6 +18,9 @@ final class BottleMessageViewController: UIViewController {
     /// 저금통 제목 라벨
     @IBOutlet weak var bottleTitleLabel: UILabel!
     
+    /// 빈 저금통 라벨
+    @IBOutlet weak var emptyBottleLabel: UILabel!
+    
     /// 저금통 메세지 라벨
     @IBOutlet weak var bottleMessageLabel: UILabel!
     
@@ -61,8 +64,17 @@ final class BottleMessageViewController: UIViewController {
     @IBAction func viewDidTap(_ sender: UITapGestureRecognizer) {
         
         self.tapGestureRecognizer.isEnabled.toggle()
-        self.moveToNoteListWithAnimation()
         HapticManager.instance.selection()
+        
+        if !self.bottle.notes.isEmpty {
+            self.moveToNoteListWithAnimation()
+        }
+        
+        if self.bottle.notes.isEmpty {
+            PersistenceStore.shared.delete(self.bottle)
+            self.dismiss(animated: false)
+            self.fadeOut()
+        }
     }
     
     
@@ -72,6 +84,12 @@ final class BottleMessageViewController: UIViewController {
     private func configureLabels() {
         self.bottleTitleLabel.text = self.bottle.title
         self.bottleMessageLabel.text = self.bottle.message
+        
+        guard self.bottle.notes.isEmpty
+        else { return }
+        
+        self.emptyBottleLabel.isHidden.toggle()
+        self.tapToContinueLabel.text = StringLiteral.emptyBottleTapToContinueLabelText
     }
     
     /// 하위 뷰들을 페이드인

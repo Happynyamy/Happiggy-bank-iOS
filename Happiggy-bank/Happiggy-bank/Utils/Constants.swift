@@ -912,6 +912,13 @@ extension BottleMessageViewController {
         static let tapToContinueLabel: TimeInterval = 1.5
 
     }
+    
+    /// 문자열
+    enum StringLiteral {
+        
+        /// 저금통이 비어있는 경우: "화면을 탭하면 홈으로 돌아갑니다."
+        static let emptyBottleTapToContinueLabelText = "화면을 탭하면 홈으로 돌아갑니다."
+    }
 }
 
 extension NotificationSettingViewController {
