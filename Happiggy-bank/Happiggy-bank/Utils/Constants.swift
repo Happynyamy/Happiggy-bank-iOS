@@ -763,21 +763,21 @@ extension SettingsViewController {
         case appVersion
         
         /// 라이선스
-        case license
+//        case license
         
         
         // MARK: - Properties
         
         /// 아이콘 딕셔너리
         static let icon: [Int: UIImage?] = [
-            appVersion.rawValue: UIImage(systemName: "info.circle"),
-            license.rawValue: UIImage(systemName: "")
+            appVersion.rawValue: UIImage(systemName: "info.circle")
+//            license.rawValue: UIImage(systemName: "")
         ]
         
         /// 제목 딕셔너리
         static let title: [Int: String] = [
-            appVersion.rawValue: "버전 정보",
-            license.rawValue: "라이선스"
+            appVersion.rawValue: "버전 정보"
+//            license.rawValue: "라이선스"
         ]
         
         /// 추가 정보 딕셔너리
