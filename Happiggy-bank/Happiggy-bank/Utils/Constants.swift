@@ -576,6 +576,12 @@ enum Asset: String {
 
     /// 저금통 리스트 저금통 앞면
     case bottleListBottleFront
+    
+    
+    // MARK: Settings View Icons
+    
+    /// 환경설정 아이콘 에셋 호출을 위함
+    case settings
 }
 
 extension NoteListViewController {
@@ -757,7 +763,7 @@ extension SettingsViewController {
     /// 각 셀 별 내용
     enum Content: Int, CaseIterable {
         /// 저금통 개봉 알림 설정
-        case bottleAlertSettings
+        case bottleAlert
         
         /// 앱 버전 정보
         case appVersion
@@ -770,8 +776,8 @@ extension SettingsViewController {
         
         /// 아이콘 딕셔너리
         static let icon: [Int: UIImage?] = [
-            appVersion.rawValue: UIImage(systemName: "info.circle")
-//            license.rawValue: UIImage(systemName: "")
+            appVersion.rawValue: UIImage(named: imageName(for: .appVersion))
+//            appVersion.rawValue: UIImage(named: imageName(for: .license))
         ]
         
         /// 제목 딕셔너리
@@ -784,6 +790,14 @@ extension SettingsViewController {
         static let informationText: [Int: String] = [
             appVersion.rawValue: "최신 버전을 사용 중 입니다"
         ]
+        
+        private static func imageName(for contentCase: Content) -> String {
+            var contentCase = "\(contentCase.self)"
+            let firstLetter = contentCase.removeFirst().uppercased()
+            contentCase = firstLetter.appending(contentCase)
+            
+            return "\(Asset.settings.rawValue)\(contentCase)"
+        }
     }
     
     /// 메일 앱 관련 문자열

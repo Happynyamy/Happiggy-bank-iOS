@@ -18,13 +18,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림 설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMc-Fr-qC0">
-                        <rect key="frame" x="36" y="53.5" width="60" height="19.5"/>
+                        <rect key="frame" x="34" y="53.5" width="60" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="65E-Ec-BPO">
-                        <rect key="frame" x="0.0" y="53" width="20" height="19.5"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settingsBottleAlert" translatesAutoresizingMaskIntoConstraints="NO" id="65E-Ec-BPO">
+                        <rect key="frame" x="0.0" y="54" width="18" height="18"/>
                         <color key="tintColor" name="settingsIcon"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="65E-Ec-BPO" secondAttribute="height" multiplier="1:1" id="UpG-8x-2aC"/>
@@ -45,7 +45,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="bell" catalog="system" width="128" height="124"/>
+        <image name="settingsBottleAlert" width="18" height="18"/>
         <namedColor name="settingsIcon">
             <color red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
