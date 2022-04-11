@@ -216,7 +216,7 @@ extension BottleListViewController {
         static let fullListNavigationBarTitle: String = "저금통 목록"
         
         /// 리스트가 빈 경우 테이블뷰에 표시되는 라벨
-        static let emptyListLabelTitle: String = "이전에 사용한 유리병이 없습니다."
+        static let emptyListLabelTitle: String = "이전에 사용한 저금통이 없습니다."
         
         /// 쪽지 리스트로 넘어갔을 때 뒤로가기 버튼의 제목을 비워두기 위해 사용
         static let emptyString = ""
@@ -972,7 +972,7 @@ extension NotificationSettingViewController {
         static let disabledAlertTitle: String = "알림을 허용해주세요."
         
         /// 알림 메시지
-        static let disabledAlertMessage: String = "저금통 개봉 알림을 받으려면 시스템 설정에서 행복 저금통 알림을 허용해주세요."
+        static let disabledAlertMessage: String = "저금통 개봉 알림을 받으려면 시스템 설정에서 행복저금통 알림을 허용해주세요."
         
         /// 알림 이동 액션 라벨
         static let move: String = "설정으로 이동"
