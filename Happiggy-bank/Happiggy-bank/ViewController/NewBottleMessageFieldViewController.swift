@@ -44,6 +44,8 @@ final class NewBottleMessageFieldViewController: UIViewController {
     /// 새 유리병 개봉 시점 피커 뷰 컨트롤러로 돌아가는 back button 액션
     /// 이전으로 돌아가도 현재 입력된 텍스트필드의 값이 저장되어야 하므로 델리게이트 함수 사용
     @IBAction func backButtonDidTap(_ sender: Any) {
+        
+        self.textField.endEditing(true)
         // 이전 화면으로 돌아가기
         guard let message = self.textField.text
         else { return }
@@ -57,6 +59,7 @@ final class NewBottleMessageFieldViewController: UIViewController {
     
     /// 새 유리병 데이터를 코어데이터에 저장하고 홈 뷰 컨트롤러로 되돌아가는 save button 액션
     @IBAction func saveButtonDidTap(_ sender: Any) {
+        self.textField.endEditing(true)
         self.present(self.confirmationAlert(), animated: true)
     }
     
@@ -138,7 +141,9 @@ final class NewBottleMessageFieldViewController: UIViewController {
             )
             self.fadeOut()
         }
-        let cancelAction = UIAlertAction.cancelAction()
+        let cancelAction = UIAlertAction.cancelAction { _ in
+            self.textField.becomeFirstResponder()
+        }
         
         return UIAlertController.basic(
             alertTitle: StringLiteral.confirmationAlertTitle,
@@ -150,14 +155,22 @@ final class NewBottleMessageFieldViewController: UIViewController {
 }
 
 extension NewBottleMessageFieldViewController: UITextFieldDelegate {
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.textField.resignFirstResponder()
+
+        guard let text = textField.text,
+              text.count > Metric.textFieldMaxLength
+        else { return }
+        
+        textField.text = String(text.prefix(Metric.textFieldMaxLength))
+    }
     
     /// 리턴 키를 눌렀을 때 자동으로 다음 뷰로 넘어가며, 텍스트필드의 firstResponder 해제
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let text = self.textField.text,
-           !text.isEmpty {
-            self.present(self.confirmationAlert(), animated: true)
-        }
-        return self.textField.resignFirstResponder()
+        textField.endEditing(true)
+        self.present(self.confirmationAlert(), animated: true)
+        return true
     }
     
     /// 최대 글자수 15자 제한
