@@ -6,14 +6,14 @@
         <attribute name="id_" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="image_" optional="YES" attributeType="Binary"/>
         <attribute name="isOpen" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <attribute name="message_" attributeType="String" minValueString="1" maxValueString="15"/>
+        <attribute name="message_" attributeType="String" minValueString="1"/>
         <attribute name="startDate_" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="title_" attributeType="String" minValueString="1" maxValueString="10"/>
+        <attribute name="title_" attributeType="String" minValueString="1"/>
         <relationship name="notes_" optional="YES" toMany="YES" maxCount="365" deletionRule="Cascade" destinationEntity="Note" inverseName="bottle_" inverseEntity="Note"/>
     </entity>
     <entity name="Note" representedClassName="Note" syncable="YES" codeGenerationType="category">
         <attribute name="color_" attributeType="String"/>
-        <attribute name="content_" attributeType="String" minValueString="1" maxValueString="100"/>
+        <attribute name="content_" attributeType="String" minValueString="1"/>
         <attribute name="date_" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id_" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="bottle_" maxCount="1" deletionRule="Nullify" destinationEntity="Bottle" inverseName="notes_" inverseEntity="Bottle"/>
