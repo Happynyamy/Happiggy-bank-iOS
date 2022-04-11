@@ -96,7 +96,6 @@ class PersistenceStore {
     /// 엔티티 인스턴스 삭제
     func delete(_ object: NSManagedObject) {
         self.context.delete(object)
-        self.save()
     }
     
     /// 엔티티의 모든 인스턴스 삭제
