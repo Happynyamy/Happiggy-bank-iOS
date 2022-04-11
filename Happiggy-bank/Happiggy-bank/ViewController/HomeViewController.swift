@@ -245,6 +245,8 @@ final class HomeViewController: UIViewController {
         
         // 저금통 있고, 쪽지도 있음
         if self.viewModel.hasBottle && self.viewModel.hasNotes {
+            self.emptyTopLabel.isHidden = true
+            self.emptyBottomLabel.isHidden = true
             self.homeCharacter.isHidden = true
             self.tapToAddNoteLabel.isHidden = true
             return
