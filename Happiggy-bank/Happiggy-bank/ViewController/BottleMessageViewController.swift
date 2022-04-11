@@ -73,16 +73,7 @@ final class BottleMessageViewController: UIViewController {
         
         self.tapGestureRecognizer.isEnabled.toggle()
         HapticManager.instance.selection()
-        
-        if !self.bottle.notes.isEmpty {
-            self.moveToNoteListWithAnimation()
-        }
-
-        if self.bottle.notes.isEmpty {
-            PersistenceStore.shared.delete(self.bottle)
-            self.dismiss(animated: false)
-            self.fadeOut()
-        }
+        self.saveBottleUpdatesAndDismiss()
     }
     
     
@@ -185,5 +176,22 @@ final class BottleMessageViewController: UIViewController {
     /// 배경 이미지와 라벨들을 모두 투명도 0으로 변경
     private func clearContents() {
         self.view.subviews.forEach { $0.alpha = .zero }
+    }
+    
+    /// 저금통 상태를 업데이트하고 다른 뷰 컨트롤러로 이동
+    private func saveBottleUpdatesAndDismiss() {
+        self.bottle.isOpen.toggle()
+
+        if !self.bottle.notes.isEmpty {
+            self.moveToNoteListWithAnimation()
+        }
+
+        if self.bottle.notes.isEmpty {
+            PersistenceStore.shared.delete(self.bottle)
+            self.dismiss(animated: false)
+            self.fadeOut()
+        }
+        
+        PersistenceStore.shared.save()
     }
 }

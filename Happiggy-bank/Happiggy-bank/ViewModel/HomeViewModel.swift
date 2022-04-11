@@ -83,17 +83,10 @@ final class HomeViewModel {
         
         return days > 0 ? prefix + "\(days)" : prefix + "\(-1 * days)"
     }
-    
-    /// 개봉된 저금통 상태 업데이트 후 저장
-    func saveOpenedBottle(inContainerView containerView: UIView, _ bottle: Bottle) {
-        // TODO: 개봉 처리 시점 상의
-        bottle.isOpen.toggle()
-        bottle.image = self.takeBottleSnapshot(inContainerView: containerView)
-        PersistenceStore.shared.save()
-    }
+
     
     /// 저금통의 현재 상태 스냅샷 생성
-    private func takeBottleSnapshot(inContainerView containerView: UIView) -> UIImage {
+    func takeBottleSnapshot(inContainerView containerView: UIView) -> UIImage {
         
         let snapshotSize = Metric.snapshotSize(forView: containerView)
         

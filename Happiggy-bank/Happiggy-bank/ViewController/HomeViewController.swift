@@ -360,14 +360,16 @@ final class HomeViewController: UIViewController {
         else { return }
         
         let fakeBackground = self.tabBarController?.view.snapshotView(afterScreenUpdates: false)
-        self.viewModel.bottle = nil
-        self.viewModel.saveOpenedBottle(inContainerView: self.bottleViewController.view, bottle)
+        bottle.image = self.viewModel.takeBottleSnapshot(
+            inContainerView: self.bottleViewController.view
+        )
         HapticManager.instance.notification(type: .success)
         self.bottleViewController.bottleDidOpen(withDuration: Duration.bottleOpeningAnimation)
         self.performSegue(
             withIdentifier: SegueIdentifier.presentBottleMessageView,
             sender: (fakeBackground, bottle)
         )
+        self.viewModel.bottle = nil
     }
     
     /// 모든 날짜에 쪽지를 작성했다는 알림을 띄움
