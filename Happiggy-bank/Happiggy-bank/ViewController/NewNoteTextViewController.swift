@@ -320,10 +320,11 @@ extension NewNoteTextViewController: UITextViewDelegate {
         }
 
         var overflowCap = Metric.noteTextMaxLength
-        if textView.textInputMode?.primaryLanguage == StringLiteral.korean {
-            /// 한글의 경우 초성, 중성, 종성으로 이루어져 있어서 100자를 제대로 받기 위해 제한을 1글자 키움
-            overflowCap = Metric.krOverflowCap
-        }
+//        if textView.textInputMode?.primaryLanguage == StringLiteral.korean {
+//            /// 한글의 경우 초성, 중성, 종성으로 이루어져 있어서 100자를 제대로 받기 위해 제한을 1글자 키움
+//            overflowCap = Metric.krOverflowCap
+//        }
+        overflowCap = Metric.krOverflowCap
         
         let updatedTextLength = textView.text.count - range.length + text.count
         let trimLength = updatedTextLength - overflowCap

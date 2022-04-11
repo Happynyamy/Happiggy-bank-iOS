@@ -184,9 +184,10 @@ extension NewBottleMessageFieldViewController: UITextFieldDelegate {
               Range(range, in: currentText) != nil
         else { return false }
         
-        let maxLength = self.textField.textInputMode?.primaryLanguage == StringLiteral.korean ?
-        Metric.textFieldKoreanMaxLength :
-        Metric.textFieldMaxLength
+//        let maxLength = self.textField.textInputMode?.primaryLanguage == StringLiteral.korean ?
+//        Metric.textFieldKoreanMaxLength :
+//        Metric.textFieldMaxLength
+        let maxLength = Metric.textFieldKoreanMaxLength
         
         let updatedTextLength = currentText.count - range.length + string.count
         let trimLength = updatedTextLength - maxLength
