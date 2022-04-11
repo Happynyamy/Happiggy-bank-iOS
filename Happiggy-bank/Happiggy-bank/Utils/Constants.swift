@@ -682,19 +682,19 @@ extension NewNoteTextViewController {
         static let korean = "ko-KR"
         
         /// 저장 확인 알림 제목
-        static let alertTitle = "쪽지를 저장하시겠어요?"
+        static let alertTitle = "쪽지를 추가하시겠어요?"
         
         /// 알림 내용
         static let message = """
 쪽지는 하루에 한 번 작성할 수 있고,
-저장 후에는 수정/삭제가 불가능합니다
+추가 후에는 수정/삭제가 불가능합니다
 """
         
-        /// 취소 버튼 제목
+        /// 취소 버튼 제목: "취소"
         static let cancelButtonTitle = "취소"
         
-        /// 확인 버튼 제목
-        static let confirmButtonTitle = "확인"
+        /// 확인 버튼 제목: "추가"
+        static let confirmButtonTitle = "추가"
     }
 }
 
@@ -1012,6 +1012,15 @@ extension NewBottleMessageFieldViewController {
         // TODO: 좋은 아이디어좀 주세요..
         /// 개봉 메시지를 적지 않았을 때 기본으로 제공되는 메시지
         static let defaultMessage = "반가워 내 행복들아!"
+        
+        /// 생성 확인 알림 제목
+        static let confirmationAlertTitle = "저금통을 추가하시겠어요?"
+        
+        /// 생성 확인 알림 내용
+        static let confirmationAlertMessage = "추가 후에는 개봉날짜 변경 및 저금통 삭제가 불가합니다."
+        
+        /// 생성 확인 알림 확인 버튼 제목: 추가
+        static let confirmationAlertConfirmButtonTitle = "추가"
     }
     
     /// NewBottleMessageFieldViewController에서 사용하는 폰트 크기

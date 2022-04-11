@@ -57,12 +57,7 @@ final class NewBottleMessageFieldViewController: UIViewController {
     
     /// 새 유리병 데이터를 코어데이터에 저장하고 홈 뷰 컨트롤러로 되돌아가는 save button 액션
     @IBAction func saveButtonDidTap(_ sender: Any) {
-        saveNewBottle()
-        self.performSegue(
-            withIdentifier: SegueIdentifier.unwindFromNewBottlePopupToHomeView,
-            sender: sender
-        )
-        self.fadeOut()
+        self.present(self.confirmationAlert(), animated: true)
     }
     
     // MARK: Functions
@@ -127,6 +122,31 @@ final class NewBottleMessageFieldViewController: UIViewController {
         self.bottomLabel.font = .systemFont(ofSize: FontSize.bottomLabelText)
         self.bottomLabel.textColor = .customTint
     }
+    
+    
+    // MARK: - Functions
+    
+    /// 생성 확인 알림을 나타냄
+    private func confirmationAlert() -> UIAlertController {
+        let confirmAction = UIAlertAction.confirmAction(
+            title: StringLiteral.confirmationAlertConfirmButtonTitle
+        ) { _ in
+            self.saveNewBottle()
+            self.performSegue(
+                withIdentifier: SegueIdentifier.unwindFromNewBottlePopupToHomeView,
+                sender: self
+            )
+            self.fadeOut()
+        }
+        let cancelAction = UIAlertAction.cancelAction()
+        
+        return UIAlertController.basic(
+            alertTitle: StringLiteral.confirmationAlertTitle,
+            alertMessage: StringLiteral.confirmationAlertMessage,
+            confirmAction: confirmAction,
+            cancelAction: cancelAction
+        )
+    }
 }
 
 extension NewBottleMessageFieldViewController: UITextFieldDelegate {
@@ -135,11 +155,7 @@ extension NewBottleMessageFieldViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let text = self.textField.text,
            !text.isEmpty {
-            saveNewBottle()
-            self.performSegue(
-                withIdentifier: SegueIdentifier.unwindFromNewBottlePopupToHomeView,
-                sender: nil
-            )
+            self.present(self.confirmationAlert(), animated: true)
         }
         return self.textField.resignFirstResponder()
     }
