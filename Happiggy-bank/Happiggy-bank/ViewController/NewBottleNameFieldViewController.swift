@@ -86,6 +86,7 @@ final class NewBottleNameFieldViewController: UIViewController {
             return
         }
         
+        self.textField.endEditing(true)
         self.performSegue(
             withIdentifier: SegueIdentifier.presentNewBottleDatePicker,
             sender: sender
@@ -166,25 +167,37 @@ extension NewBottleNameFieldViewController: DataProvider {
     /// 유리병 데이터에 delegate를 통해 받아온 데이터를 대입해주는 함수
     func sendNewBottleData(_ data: NewBottle) {
         self.bottleData = data
+        self.textField.becomeFirstResponder()
     }
 }
 
 extension NewBottleNameFieldViewController: UITextFieldDelegate {
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let text = textField.text,
+              text.count > Metric.textFieldMaxLength
+        else { return }
+        
+        textField.text = String(text.prefix(Metric.textFieldMaxLength))
+        self.textField.resignFirstResponder()
+    }
+    
     /// 리턴 키를 눌렀을 때 자동으로 다음 뷰로 넘어가며, 텍스트필드의 firstResponder 해제
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let text = self.textField.text,
            !text.isEmpty {
+            textField.endEditing(true)
             self.performSegue(
                 withIdentifier: SegueIdentifier.presentNewBottleDatePicker,
                 sender: nil
             )
+            return true
         } else {
             HapticManager.instance.notification(type: .warning)
             self.showWarningLabel = true
             self.warningLabel.fadeIn()
         }
-        return self.textField.resignFirstResponder()
+        return false
     }
     
     /// 최대 글자수 10자 제한

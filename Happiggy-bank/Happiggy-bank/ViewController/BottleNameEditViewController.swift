@@ -53,28 +53,34 @@ final class BottleNameEditViewController: UIViewController {
     
     /// 취소 버튼을 눌렀을 때 실행되는 액션
     @IBAction func cancelButtonDidTap(_ sender: UIBarButtonItem) {
+        self.textField.resignFirstResponder()
         self.fadeOut()
         self.dismiss(animated: false)
     }
     
     /// 변경된 내용 저장
     @IBAction func saveButtonDidTap(_ sender: UIBarButtonItem) {
+        self.textField.endEditing(true)
+        
         guard let text = self.textField.text
         else { return }
-        
+
         if text.isEmpty {
             HapticManager.instance.notification(type: .error)
             self.showWarningLabel = true
             self.warningLabel.text = StringLiteral.warningLabel
             self.warningLabel.fadeIn()
+            self.textField.becomeFirstResponder()
             return
         }
         
         if text == self.bottle.title {
             HapticManager.instance.notification(type: .error)
             self.showWarningLabel = true
+            self.warningLabel.isHidden = false
             self.warningLabel.text = StringLiteral.sameNameWarningLabel
             self.warningLabel.fadeIn()
+            self.textField.becomeFirstResponder()
             return
         }
         
@@ -167,9 +173,20 @@ final class BottleNameEditViewController: UIViewController {
 
 extension BottleNameEditViewController: UITextFieldDelegate {
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let text = textField.text,
+              text.count > Metric.textFieldMaxLength
+        else { return }
+        
+        textField.text = String(text.prefix(Metric.textFieldMaxLength))
+        self.textField.resignFirstResponder()
+    }
+    
     /// 리턴 키를 눌렀을 때 자동으로 다음 뷰로 넘어가며, 텍스트필드의 firstResponder 해제
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let text = self.textField.text
+        textField.endEditing(true)
+
+        guard let text = textField.text
         else { return self.textField.resignFirstResponder() }
 
         if text.isEmpty {
@@ -177,21 +194,24 @@ extension BottleNameEditViewController: UITextFieldDelegate {
             self.showWarningLabel = true
             self.warningLabel.text = StringLiteral.warningLabel
             self.warningLabel.fadeIn()
-            return self.textField.resignFirstResponder()
+            textField.becomeFirstResponder()
+            return false
         }
         
         if text == self.bottle.title {
             HapticManager.instance.notification(type: .warning)
+            self.warningLabel.isHidden = false
             self.showWarningLabel = true
             self.warningLabel.text = StringLiteral.sameNameWarningLabel
             self.warningLabel.fadeIn()
-            return self.textField.resignFirstResponder()
+            textField.becomeFirstResponder()
+            
+            return true
         }
         
         saveBottleData(with: text)
         self.dismiss(animated: true)
-        
-        return self.textField.resignFirstResponder()
+        return true
     }
     
     /// 최대 글자수 10자 제한
