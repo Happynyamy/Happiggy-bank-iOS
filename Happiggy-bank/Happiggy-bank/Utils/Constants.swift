@@ -727,7 +727,7 @@ extension NewNoteTextViewModel {
         static let textViewNote = "textViewNote"
         
         /// 글자수 라벨 텍스트를 반환
-        static let letterCountText = " \\ \(NewNoteTextViewController.Metric.noteTextMaxLength)"
+        static let letterCountText = " / \(NewNoteTextViewController.Metric.noteTextMaxLength)"
     }
     
     /// NewNoteTextViewModel 에서 사용하는 폰트 크기

@@ -59,10 +59,13 @@ final class NewNoteTextViewModel {
     
     /// 색깔 적용한 글자수 라벨 텍스트
     func attributedLetterCountString(count: Int) -> NSMutableAttributedString {
+        let color = (count > NewNoteTextViewController.Metric.noteTextMaxLength) ?
+        UIColor.customWarningLabel : .noteHighlight(for: self.newNote.color)
+        
         let countString = "\(count)"
             .nsMutableAttributedStringify()
             .bold(fontSize: Font.letterCountLabel)
-            .color(color: .noteHighlight(for: self.newNote.color))
+            .color(color: color)
         
         countString.append(StringLiteral.letterCountText.nsMutableAttributedStringify())
 
