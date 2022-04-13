@@ -66,10 +66,10 @@ final class NewBottleMessageFieldViewController: UIViewController {
     // MARK: Functions
     
     /// 새 저금통 저장하는 메서드
-    private func saveNewBottle() {
+    private func saveNewBottle() -> Bool {
         guard let title = self.bottleData?.name,
               let endDate = self.bottleData?.endDate
-        else { return }
+        else { return true }
         
         if let openMessage = self.bottleData.openMessage {
             _ = Bottle(
@@ -87,7 +87,22 @@ final class NewBottleMessageFieldViewController: UIViewController {
             )
         }
         
-        PersistenceStore.shared.save()
+        guard let (errorTitle, errorMessage) = PersistenceStore.shared.save()
+        else { return true }
+        
+        let alert = PersistenceStore.shared.makeErrorAlert(
+            title: errorTitle,
+            message: errorMessage
+        ) { _ in
+            self.fadeOut()
+            self.performSegue(
+                withIdentifier: SegueIdentifier.unwindFromNewBottlePopupToHomeView,
+                sender: self
+            )
+        }
+        
+        self.present(alert, animated: true)
+        return false
     }
     
     
@@ -134,7 +149,9 @@ final class NewBottleMessageFieldViewController: UIViewController {
         let confirmAction = UIAlertAction.confirmAction(
             title: StringLiteral.confirmationAlertConfirmButtonTitle
         ) { _ in
-            self.saveNewBottle()
+            guard self.saveNewBottle() == true
+            else { return }
+            
             self.performSegue(
                 withIdentifier: SegueIdentifier.unwindFromNewBottlePopupToHomeView,
                 sender: self

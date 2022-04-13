@@ -19,7 +19,7 @@ class PersistenceStore {
     static var shared: PersistenceStore = {
         PersistenceStore(name: StringLiteral.sharedPersistenceStoreName)
     }()
-
+    
     static private(set) var fatalErrorNeeded = false
     
     /// persistence container 의 viewContext 에 접근하기 위한 syntactic sugar
@@ -68,25 +68,28 @@ class PersistenceStore {
     
     // MARK: - Core Data Saving support
     
-    /// 현재 context 를 저장, 에러가 발생하면 설정한 에러 메시지(기본은 에러 이름)를 출력함
-    func save(errorMessage: String? = nil) {
+    /// 현재 context 를 저장, 에러가 발생하면 발생한 에러 메시지(기본은 에러 이름)를 출력함
+    @discardableResult
+    func save() -> (String, String)? {
         if self.context.hasChanges {
             do {
                 try self.context.save()
+                return nil
+                
             } catch {
                 let nserror = error as NSError
-                if let errorMessage = errorMessage {
-                    print("\(errorMessage)+\(nserror.localizedDescription)+\(nserror.userInfo)")
-                } else {
-                    print("\(nserror.localizedDescription), \(nserror.userInfo)")
-                }
                 
-                self.presentErrorAlert(
-                    title: StringLiteral.saveErrorTitle,
-                    message: StringLiteral.saveErrorMessage
-                )
+                let title = StringLiteral.saveErrorTitle
+                let message = """
+\(StringLiteral.saveErrorMessage)
+\(nserror.localizedDescription)
+\(nserror.localizedFailureReason ?? .empty)
+\(nserror.userInfo)
+"""
+                return (title, message)
             }
         }
+        return nil
     }
     
     
@@ -113,43 +116,22 @@ class PersistenceStore {
     
     // MARK: - Alert
     
-    /// 작업 실패 시 알림
-    private func presentErrorAlert(
+    /// 알림
+    func makeErrorAlert(
         title: String?,
         message: String?,
-        handler: ((UIAlertAction) -> Void)? = nil
-    ) {
-        let alert = self.makeErrorAlert(
-            title: title,
-            message: message,
-            handler: handler
-        )
-        self.windowScene?.topMostViewController?.present(alert, animated: true)
-    }
-    
-    /// 알림 생성
-    private func makeErrorAlert(
-        title: String?,
-        message: String?,
-        handler: ((UIAlertAction) -> Void)? = nil
+        confirmHandler: ((UIAlertAction) -> Void)? = nil
     ) -> UIAlertController {
-        let alert = UIAlertController(
-            title: title,
-            message: message,
-            preferredStyle: .alert
+        
+        let confirmAction = UIAlertAction.confirmAction(
+            title: StringLiteral.okButtonTitle,
+            handler: confirmHandler
         )
         
-        let confirmationAction = UIAlertAction(
-            title: StringLiteral.okButtonTitle,
-            style: .default
-        ) { action in
-            guard let handler = handler
-            else { return }
-            
-            handler(action)
-        }
-
-        alert.addAction(confirmationAction)
-        return alert
+        return UIAlertController.basic(
+            alertTitle: title,
+            alertMessage: message,
+            confirmAction: confirmAction
+        )
     }
 }

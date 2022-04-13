@@ -84,7 +84,9 @@ final class BottleNameEditViewController: UIViewController {
             return
         }
         
-        saveBottleData(with: text)
+        guard saveBottleData(with: text) == true
+        else { return }
+        
         self.dismiss(animated: true)
     }
     
@@ -117,10 +119,22 @@ final class BottleNameEditViewController: UIViewController {
     
     // MARK: Functions
     
-    private func saveBottleData(with text: String) {
+    private func saveBottleData(with text: String) -> Bool {
         self.bottle.title = text
         self.bottle.hasFixedTitle = true
-        PersistenceStore.shared.save()
+        
+        guard let (errorTitle, errorMessage) = PersistenceStore.shared.save()
+        else { return true }
+        
+        let alert = PersistenceStore.shared.makeErrorAlert(
+            title: errorTitle,
+            message: errorMessage
+        ) { _ in
+            self.dismiss(animated: false)
+        }
+        
+        self.present(alert, animated: true)
+        return false
     }
     
     
@@ -209,7 +223,9 @@ extension BottleNameEditViewController: UITextFieldDelegate {
             return true
         }
         
-        saveBottleData(with: text)
+        guard saveBottleData(with: text) == true
+        else { return false }
+        
         self.dismiss(animated: true)
         return true
     }
