@@ -222,11 +222,20 @@ final class NewNoteTextViewController: UIViewController {
         )
     }
     
-    /// 새로 생성한 노트 엔티티를 저장하고 알림을 포스트
-    private func saveAndPostNewNote(_ note: Note) {
-        let noteAndDelay = (note: note, delay: CATransition.transitionDuration)
-        self.post(name: .noteDidAdd, object: noteAndDelay)
-        PersistenceStore.shared.save()
+    /// 새로 생성한 노트 엔티티를 저장하고 성공 여부에 따라 불 리턴
+    private func saveAndPostNewNote() -> Bool {
+        guard let (errorTitle, errorMessage) = PersistenceStore.shared.save()
+        else { return true }
+        
+        let alert = PersistenceStore.shared.makeErrorAlert(
+            title: errorTitle,
+            message: errorMessage
+        ) { _ in
+            self.dismissWithAnimation()
+        }
+        self.present(alert, animated: true)
+        
+        return false
     }
     
     /// 쪽지 저장 의사를 재확인 하는 알림을 띄움
@@ -237,38 +246,40 @@ final class NewNoteTextViewController: UIViewController {
     
     /// 쪽지 저장 의사를 재확인하는 알림 생성
     private func makeConfirmationAlert() -> UIAlertController {
-        let alert = UIAlertController(
-            title: StringLiteral.alertTitle,
-            message: StringLiteral.message,
-            preferredStyle: .alert
+        let confirmAction = UIAlertAction.confirmAction(
+            title: StringLiteral.confirmButtonTitle
+        ) { _ in
+            
+            let note = self.makeNewNote()
+            
+            guard self.saveAndPostNewNote() == true
+            else { return }
+            
+            let noteAndDelay = (note: note, delay: CATransition.transitionDuration)
+            self.post(name: .noteDidAdd, object: noteAndDelay)
+            self.dismissWithAnimation()
+        }
+        
+        let cancelAction = UIAlertAction.cancelAction { _ in
+            self.textView.becomeFirstResponder()
+        }
+        
+        return UIAlertController.basic(
+            alertTitle: StringLiteral.alertTitle,
+            alertMessage: StringLiteral.message,
+            confirmAction: confirmAction,
+            cancelAction: cancelAction
         )
-        
-        let confirmAction = UIAlertAction(
-            title: StringLiteral.confirmButtonTitle,
-            style: .default) { _ in
-                
-                let note = self.makeNewNote()
-                
-                self.saveAndPostNewNote(note)
-                self.fadeOut()
-                self.performSegue(
-                    withIdentifier: SegueIdentifier.unwindFromNoteTextViewToHomeView,
-                    sender: note
-                )
-            }
-        
-        let cancelAction = UIAlertAction(
-            title: StringLiteral.cancelButtonTitle,
-            style: .cancel) { _ in
-                self.textView.becomeFirstResponder()
-            }
-        
-        alert.addAction(confirmAction)
-        alert.addAction(cancelAction)
-        
-        return alert
     }
-
+    
+    /// 페이드아웃 효과와 함께 종료
+    private func dismissWithAnimation() {
+        self.fadeOut()
+        self.performSegue(
+            withIdentifier: SegueIdentifier.unwindFromNoteTextViewToHomeView,
+            sender: self
+        )
+    }
     
     // MARK: - Navigation
 
