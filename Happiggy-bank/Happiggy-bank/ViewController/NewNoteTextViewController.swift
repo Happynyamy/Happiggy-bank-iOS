@@ -207,6 +207,9 @@ final class NewNoteTextViewController: UIViewController {
         self.yearLabel.textColor = self.viewModel.labelColor
         self.monthAndDayLabel.textColor = self.viewModel.labelColor
         self.letterCountLabel.textColor = self.viewModel.labelColor
+        self.letterCountLabel.attributedText = self.viewModel.attributedLetterCountString(
+            count: self.textView.text.count
+        )
     }
     
     /// 새로운 노트 엔티티를 생성
