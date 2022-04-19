@@ -28,8 +28,11 @@
                                     <segue destination="FVx-vN-7Xe" kind="embed" identifier="showBottleView" id="rLd-zf-USa"/>
                                 </connections>
                             </containerView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeCharacter" translatesAutoresizingMaskIntoConstraints="NO" id="dfo-Bk-tQ1">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxw-FV-eBm">
-                                <rect key="frame" x="23" y="174" width="77" height="36"/>
+                                <rect key="frame" x="23" y="174" width="76.5" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="textColor" name="primaryLabelColor"/>
                                 <nil key="highlightedColor"/>
@@ -46,21 +49,47 @@
                                 <color key="textColor" name="primaryLabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3e-f7-x3z">
-                                <rect key="frame" x="24" y="221" width="51" height="26.5"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JwR-oy-otr">
                                 <rect key="frame" x="187.5" y="549.5" width="39.5" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" name="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeCharacter" translatesAutoresizingMaskIntoConstraints="NO" id="dfo-Bk-tQ1">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gfd-IP-Gfv">
+                                <rect key="frame" x="16" y="217" width="97" height="38"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="homeBottleTitleLabel" translatesAutoresizingMaskIntoConstraints="NO" id="ov3-IM-U0o" userLabel="Label Image View">
+                                        <rect key="frame" x="0.0" y="0.0" width="97" height="38"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u5P-Zi-qGu">
+                                        <rect key="frame" x="8" y="4" width="81" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3e-f7-x3z">
+                                                <rect key="frame" x="0.0" y="0.0" width="51" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeBottleTitleLabelSmile" translatesAutoresizingMaskIntoConstraints="NO" id="5fC-S5-87u">
+                                                <rect key="frame" x="51" y="0.0" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="5fC-S5-87u" secondAttribute="height" multiplier="1:1" id="lvZ-Nl-eKU"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="5fC-S5-87u" firstAttribute="height" secondItem="K3e-f7-x3z" secondAttribute="height" id="L4F-KK-5fQ"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="u5P-Zi-qGu" firstAttribute="leading" secondItem="gfd-IP-Gfv" secondAttribute="leading" constant="8" id="1c5-eY-yoL"/>
+                                    <constraint firstAttribute="bottom" secondItem="u5P-Zi-qGu" secondAttribute="bottom" constant="4" id="1nM-vh-pqO"/>
+                                    <constraint firstAttribute="trailing" secondItem="u5P-Zi-qGu" secondAttribute="trailing" constant="8" id="7dv-yL-Kzb"/>
+                                    <constraint firstItem="u5P-Zi-qGu" firstAttribute="top" secondItem="gfd-IP-Gfv" secondAttribute="top" constant="4" id="vgl-Aj-EBu"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="homeBackground"/>
@@ -73,7 +102,8 @@
                             <constraint firstItem="dmA-fx-uIw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8sb-a4-2KC"/>
                             <constraint firstItem="dmA-fx-uIw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="44" id="CbZ-gb-u8F"/>
                             <constraint firstItem="dfo-Bk-tQ1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="D8I-Er-tZ3"/>
-                            <constraint firstItem="K3e-f7-x3z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="Esz-F4-FPa"/>
+                            <constraint firstItem="gfd-IP-Gfv" firstAttribute="top" secondItem="Ox7-a2-qYT" secondAttribute="bottom" constant="4" id="EvP-Pn-pVN"/>
+                            <constraint firstItem="u5P-Zi-qGu" firstAttribute="leading" secondItem="Ox7-a2-qYT" secondAttribute="leading" id="GH4-Ks-cx0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mxw-FV-eBm" secondAttribute="trailing" symbolic="YES" id="LuX-hH-50l"/>
                             <constraint firstItem="JwR-oy-otr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LzX-yn-Ctk"/>
                             <constraint firstItem="ZlX-eS-Yvg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="OFr-if-N9z"/>
@@ -84,12 +114,10 @@
                             <constraint firstItem="JwR-oy-otr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="bottom" multiplier="498:812" id="Y31-zO-p3W"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="T4r-Fh-6oO" secondAttribute="trailing" symbolic="YES" id="Zz4-tv-PeK"/>
                             <constraint firstItem="mxw-FV-eBm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="86" id="adg-qC-y3E"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="K3e-f7-x3z" secondAttribute="trailing" symbolic="YES" id="c71-t5-n34"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dmA-fx-uIw" secondAttribute="bottom" id="eMu-1s-Pwo"/>
                             <constraint firstItem="mxw-FV-eBm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="23" id="fs5-rn-yGh"/>
                             <constraint firstItem="Ox7-a2-qYT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="gyY-aH-bq8"/>
                             <constraint firstItem="ZlX-eS-Yvg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="pLj-41-9fI"/>
-                            <constraint firstItem="K3e-f7-x3z" firstAttribute="top" secondItem="Ox7-a2-qYT" secondAttribute="bottom" constant="8" id="pvZ-uX-J8f"/>
                             <constraint firstItem="T4r-Fh-6oO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="r4q-tG-G7g"/>
                             <constraint firstItem="dfo-Bk-tQ1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rfb-HK-NMr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dfo-Bk-tQ1" secondAttribute="trailing" id="uAV-bK-Z9c"/>
@@ -102,6 +130,7 @@
                     <connections>
                         <outlet property="bottleDdayLabel" destination="Ox7-a2-qYT" id="H0D-eg-8X3"/>
                         <outlet property="bottleTitleLabel" destination="K3e-f7-x3z" id="n9O-dd-PUs"/>
+                        <outlet property="bottleTitleView" destination="gfd-IP-Gfv" id="n8H-5d-Z2H"/>
                         <outlet property="emptyBottomLabel" destination="T4r-Fh-6oO" id="kGg-6k-DRD"/>
                         <outlet property="emptyTopLabel" destination="mxw-FV-eBm" id="p3m-Ek-xyl"/>
                         <outlet property="homeCharacter" destination="dfo-Bk-tQ1" id="pAM-Ay-Jl4"/>
@@ -1231,6 +1260,8 @@
         <image name="characterWhite" width="40" height="40"/>
         <image name="characterYellow" width="40" height="40"/>
         <image name="checkmark" width="19" height="16"/>
+        <image name="homeBottleTitleLabel" width="248" height="40"/>
+        <image name="homeBottleTitleLabelSmile" width="30" height="30"/>
         <image name="homeCharacter" width="375" height="812"/>
         <image name="next" width="10" height="18"/>
         <image name="tabBarHomeNormal" width="36" height="26"/>
