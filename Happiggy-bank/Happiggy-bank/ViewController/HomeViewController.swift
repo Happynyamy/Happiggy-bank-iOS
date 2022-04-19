@@ -155,16 +155,12 @@ final class HomeViewController: UIViewController {
     /// 저금통 제목 라벨 탭했을 때 실행되는 함수
     @objc private func bottleTitleLabelDidTap(_ sender: UITapGestureRecognizer) {
         // go to title label edit view
-        if self.viewModel.hasFixedTitle {
-            presentBottleTitleAlreadyFixedAlert()
-        } else {
-            let bottleNameEditViewController = self.storyboard?.instantiateViewController(
-                withIdentifier: StringLiteral.bottleNameEditViewController
-            ) as! BottleNameEditViewController
-            
-            bottleNameEditViewController.bottle = self.viewModel.bottle
-            self.present(bottleNameEditViewController, animated: true)
-        }
+        let bottleNameEditViewController = self.storyboard?.instantiateViewController(
+            withIdentifier: StringLiteral.bottleNameEditViewController
+        ) as! BottleNameEditViewController
+        
+        bottleNameEditViewController.bottle = self.viewModel.bottle
+        self.present(bottleNameEditViewController, animated: true)
     }
     // swiftlint:enable force_cast
     
@@ -339,20 +335,6 @@ final class HomeViewController: UIViewController {
             alertMessage: StringLiteral.bottleOpenAlertMessage,
             confirmAction: confirmAction,
             cancelAction: cancelAction
-        )
-    }
-    
-    /// 저금통 이름을 이미 변경했을 때 표시하는 알림
-    private func presentBottleTitleAlreadyFixedAlert() {
-        let alert = makeBottleTitleAlreadyFixedAlert()
-        self.present(alert, animated: true)
-    }
-    
-    /// 저금통 이름을 이미 변경했을 때 표시하는 알림 생성
-    private func makeBottleTitleAlreadyFixedAlert() -> UIAlertController {
-        UIAlertController.basic(
-            alertTitle: StringLiteral.bottleNameFixedAlertTitle,
-            confirmAction: UIAlertAction.confirmAction()
         )
     }
     

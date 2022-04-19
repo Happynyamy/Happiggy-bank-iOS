@@ -121,7 +121,6 @@ final class BottleNameEditViewController: UIViewController {
     
     private func saveBottleData(with text: String) -> Bool {
         self.bottle.title = text
-        self.bottle.hasFixedTitle = true
         
         guard let (errorTitle, errorMessage) = PersistenceStore.shared.save()
         else { return true }

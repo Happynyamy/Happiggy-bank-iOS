@@ -63,9 +63,6 @@ extension HomeViewController {
         /// 기한이 지났는데 저금통을 열지 않은 경우 나타내는 문자열
         static let openDatePassedMessage: String = "저금통을 개봉해주세요!"
         
-        /// 저금통 제목 이미 바꿨을 때 나오는 알림 제목
-        static let bottleNameFixedAlertTitle = "이미 저금통 이름을 변경했습니다."
-        
         /// BottleNameEditViewController identifier
         static let bottleNameEditViewController = "BottleNameEditViewController"
         
@@ -416,7 +413,7 @@ extension NewBottleNameFieldViewController {
         static let placeholder = "최대 10글자까지 입력 가능합니다."
         
         /// 하단 라벨의 문자열
-        static let bottomLabel = "저금통 이름은 나중에 1회 변경할 수 있습니다."
+        static let bottomLabel = "저금통 이름은 나중에 변경할 수 있습니다."
         
         /// 경고 라벨의 문자열
         static let warningLabel = "저금통 이름이 없어요!"
@@ -1062,7 +1059,7 @@ extension BottleNameEditViewController {
         static let placeholder = "최대 10글자까지 입력 가능합니다."
         
         /// 하단 라벨의 문자열
-        static let bottomLabel = "저금통 이름 변경 시, 추가 변경은 불가합니다."
+        static let bottomLabel = String.empty
         
         /// 이름이 없을 때 경고 라벨의 문자열
         static let warningLabel = "저금통 이름이 없어요!"

@@ -37,13 +37,6 @@ final class HomeViewModel {
         return today > endDate
     }
     
-    /// 제목 수정했는지 아닌지에 대한 불리언 값
-    var hasFixedTitle: Bool {
-        guard let hasFixed = self.bottle?.hasFixedTitle
-        else { return false }
-        return hasFixed
-    }
-    
     /// 쪽지가 있는지 없는지에 대한 불리언 값
     var hasNotes: Bool {
         guard let note = self.bottle?.notes
