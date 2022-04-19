@@ -32,7 +32,11 @@ final class HomeViewController: UIViewController {
     /// 디데이 표시하는 라벨
     @IBOutlet weak var bottleDdayLabel: UILabel!
     
-    /// 디데이 이름 표시하는 라벨
+    
+    /// 저금통 이름 뷰로, 라벨과 라벨 이미지들을 담고 있음
+    @IBOutlet weak var bottleTitleView: UIView!
+    
+    /// 저금통 이름 표시하는 라벨
     @IBOutlet weak var bottleTitleLabel: UILabel!
     
     /// 유리병 뷰를 관리하는 컨트롤러
@@ -227,7 +231,7 @@ final class HomeViewController: UIViewController {
         // 저금통 없는 상태
         if !self.viewModel.hasBottle {
             self.bottleDdayLabel.isHidden = true
-            self.bottleTitleLabel.isHidden = true
+            self.bottleTitleView.isHidden = true
             self.tapToAddNoteLabel.isHidden = true
             return
         }
@@ -254,7 +258,7 @@ final class HomeViewController: UIViewController {
         self.emptyBottomLabel.isHidden = false
         self.homeCharacter.isHidden = false
         self.bottleDdayLabel.isHidden = false
-        self.bottleTitleLabel.isHidden = false
+        self.bottleTitleView.isHidden = false
         self.tapToAddNoteLabel.isHidden = false
     }
     
@@ -263,7 +267,7 @@ final class HomeViewController: UIViewController {
         
         // 저금통 있을 때
         if self.viewModel.hasBottle {
-            addTapGestureToTitleLabel()
+            addTapGestureToTitleLabelView()
             self.bottleTitleLabel.text = self.viewModel.bottle?.title
             self.bottleDdayLabel.text = self.viewModel.dDay()
             
@@ -309,10 +313,9 @@ final class HomeViewController: UIViewController {
     }
     
     /// 저금통 제목 라벨 탭 제스처 추가
-    private func addTapGestureToTitleLabel() {
+    private func addTapGestureToTitleLabelView() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(bottleTitleLabelDidTap))
-        self.bottleTitleLabel.isUserInteractionEnabled = true
-        self.bottleTitleLabel.addGestureRecognizer(tap)
+        self.bottleTitleView.addGestureRecognizer(tap)
     }
     
     
