@@ -24,6 +24,8 @@
 		A44E901727D5EB130053AC57 /* Happiggy-bank.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A44E901527D5EB130053AC57 /* Happiggy-bank.xcdatamodeld */; };
 		A456657C27CC66FD007CF70A /* DefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A817430027C112D00016C921 /* DefaultButton.swift */; };
 		A456657E27CC77A9007CF70A /* Date+Formatted.swift in Sources */ = {isa = PBXBuildFile; fileRef = A456657D27CC77A9007CF70A /* Date+Formatted.swift */; };
+		A4569CB8280FB979001E3FD6 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CB7280FB979001E3FD6 /* Presenter.swift */; };
+		A4569CBA280FBA23001E3FD6 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CB9280FBA23001E3FD6 /* Result.swift */; };
 		A459003827E8D107003010A0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459003727E8D107003010A0 /* SettingsViewController.swift */; };
 		A459003A27E95D6B003010A0 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459003927E95D6B003010A0 /* Grid.swift */; };
 		A459003C27E9C5C9003010A0 /* CGSize+Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459003B27E9C5C9003010A0 /* CGSize+Area.swift */; };
@@ -122,6 +124,8 @@
 		A439F54327EF0698002851F4 /* SettingsLabelButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLabelButtonCell.swift; sourceTree = "<group>"; };
 		A44E901627D5EB130053AC57 /* Happigy-bank.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Happigy-bank.xcdatamodel"; sourceTree = "<group>"; };
 		A456657D27CC77A9007CF70A /* Date+Formatted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatted.swift"; sourceTree = "<group>"; };
+		A4569CB7280FB979001E3FD6 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		A4569CB9280FBA23001E3FD6 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		A459003727E8D107003010A0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A459003927E95D6B003010A0 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		A459003B27E9C5C9003010A0 /* CGSize+Area.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Area.swift"; sourceTree = "<group>"; };
@@ -250,6 +254,7 @@
 				A4F5714627DA467900E7DF9B /* DateFormat.swift */,
 				A4F5715727DC459B00E7DF9B /* NoteColor.swift */,
 				A46BC1EE2800626A00C2E5B4 /* TabItem.swift */,
+				A4569CB9280FBA23001E3FD6 /* Result.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -269,6 +274,7 @@
 			children = (
 				A843332327DA397800A12A54 /* DataProvider.swift */,
 				D2AB663D27FFFCF50003AC8C /* UpdateSender.swift */,
+				A4569CB7280FB979001E3FD6 /* Presenter.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -600,6 +606,7 @@
 				A439F54527EF0698002851F4 /* SettingsLabelButtonCell.swift in Sources */,
 				A41A506F27FF2B2E005381EF /* CustomTabBar.swift in Sources */,
 				A490AC5027DD9D2E00B04CE1 /* NoteListViewModel.swift in Sources */,
+				A4569CB8280FB979001E3FD6 /* Presenter.swift in Sources */,
 				A466A3182801E99500D655F4 /* SettingsViewModel.swift in Sources */,
 				A4F5714927DA589100E7DF9B /* NoteDatePickerData.swift in Sources */,
 				D2C48BFF27E9D60A006FC59E /* Gravity.swift in Sources */,
@@ -629,6 +636,7 @@
 				A4F5714727DA467900E7DF9B /* DateFormat.swift in Sources */,
 				A89CBEDD27CBDEA2005549F6 /* BottleListViewController.swift in Sources */,
 				A439F53A27EEFC28002851F4 /* SettingsViewCell.swift in Sources */,
+				A4569CBA280FBA23001E3FD6 /* Result.swift in Sources */,
 				A466A30C2801861100D655F4 /* ErrorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
