@@ -164,7 +164,9 @@ final class HomeViewController: UIViewController {
         ) as! BottleNameEditViewController
         
         bottleNameEditViewController.bottle = self.viewModel.bottle
+        bottleNameEditViewController.delegate = self
         self.present(bottleNameEditViewController, animated: true)
+        self.bottleViewController.alertOrModalDidAppear()
     }
     // swiftlint:enable force_cast
     
@@ -366,5 +368,14 @@ final class HomeViewController: UIViewController {
             alertMessage: StringLiteral.noEmptyDateAlertMessage,
             confirmAction: UIAlertAction.confirmAction()
         )
+    }
+}
+
+
+// MARK: - Presenter
+extension HomeViewController: Presenter {
+    
+    func presentedViewControllerDidDismiss(withResult: Result) {
+        self.bottleViewController.restoreStateBeforeAlertOrModalDidAppear()
     }
 }

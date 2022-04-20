@@ -35,6 +35,9 @@ final class BottleNameEditViewController: UIViewController {
     /// 유리병 데이터
     var bottle: Bottle!
     
+    /// 부모 뷰 컨트롤러
+    weak var delegate: Presenter!
+    
     /// 경고 라벨 보여줄지 안보여줄지 설정하는 불리언 값
     private var showWarningLabel: Bool = false
     
@@ -53,14 +56,12 @@ final class BottleNameEditViewController: UIViewController {
     
     /// 취소 버튼을 눌렀을 때 실행되는 액션
     @IBAction func cancelButtonDidTap(_ sender: UIBarButtonItem) {
-        self.textField.resignFirstResponder()
-        self.fadeOut()
-        self.dismiss(animated: false)
+        self.dismiss(withResult: .cancel)
     }
     
     /// 변경된 내용 저장
     @IBAction func saveButtonDidTap(_ sender: UIBarButtonItem) {
-        self.textField.endEditing(true)
+        self.prefixTextByMaxLengthIfNeeded(inTextField: self.textField)
         
         guard let text = self.textField.text
         else { return }
@@ -70,7 +71,7 @@ final class BottleNameEditViewController: UIViewController {
             self.showWarningLabel = true
             self.warningLabel.text = StringLiteral.warningLabel
             self.warningLabel.fadeIn()
-            self.textField.becomeFirstResponder()
+            
             return
         }
         
@@ -80,14 +81,14 @@ final class BottleNameEditViewController: UIViewController {
             self.warningLabel.isHidden = false
             self.warningLabel.text = StringLiteral.sameNameWarningLabel
             self.warningLabel.fadeIn()
-            self.textField.becomeFirstResponder()
+            
             return
         }
         
         guard saveBottleData(with: text) == true
         else { return }
         
-        self.dismiss(animated: true)
+        self.dismiss(withResult: .success)
     }
     
     /// 텍스트필드 내용이 변경됐을 때 호출되는 함수
@@ -129,7 +130,7 @@ final class BottleNameEditViewController: UIViewController {
             title: errorTitle,
             message: errorMessage
         ) { _ in
-            self.dismiss(animated: false)
+            self.dismiss(withResult: .failure)
         }
         
         self.present(alert, animated: true)
@@ -182,32 +183,41 @@ final class BottleNameEditViewController: UIViewController {
         self.warningLabel.textColor = .customWarningLabel
         self.warningLabel.isHidden = true
     }
-}
-
-extension BottleNameEditViewController: UITextFieldDelegate {
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    /// 종료 시 호출하는 메서드
+    private func dismiss(withResult result: Result) {
+        self.resignFirstResponder()
+        self.dismiss(animated: true)
+        self.delegate.presentedViewControllerDidDismiss(withResult: result)
+    }
+    
+    /// 최대 길이 초과 시 텍스트필드의 입력 값을 자르는 메서드
+    private func prefixTextByMaxLengthIfNeeded(inTextField textField: UITextField) {
         guard let text = textField.text,
               text.count > Metric.textFieldMaxLength
         else { return }
         
         textField.text = String(text.prefix(Metric.textFieldMaxLength))
-        self.textField.resignFirstResponder()
     }
+}
+
+
+// MARK: - UITextFieldDelegate
+extension BottleNameEditViewController: UITextFieldDelegate {
     
     /// 리턴 키를 눌렀을 때 자동으로 다음 뷰로 넘어가며, 텍스트필드의 firstResponder 해제
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.endEditing(true)
-
+        self.prefixTextByMaxLengthIfNeeded(inTextField: textField)
+        
         guard let text = textField.text
-        else { return self.textField.resignFirstResponder() }
+        else { return false }
 
         if text.isEmpty {
             HapticManager.instance.notification(type: .warning)
             self.showWarningLabel = true
             self.warningLabel.text = StringLiteral.warningLabel
             self.warningLabel.fadeIn()
-            textField.becomeFirstResponder()
+            
             return false
         }
         
@@ -217,7 +227,6 @@ extension BottleNameEditViewController: UITextFieldDelegate {
             self.showWarningLabel = true
             self.warningLabel.text = StringLiteral.sameNameWarningLabel
             self.warningLabel.fadeIn()
-            textField.becomeFirstResponder()
             
             return true
         }
@@ -225,7 +234,7 @@ extension BottleNameEditViewController: UITextFieldDelegate {
         guard saveBottleData(with: text) == true
         else { return false }
         
-        self.dismiss(animated: true)
+        self.dismiss(withResult: .success)
         return true
     }
     
