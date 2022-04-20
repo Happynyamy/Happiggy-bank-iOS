@@ -566,7 +566,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4316" y="2462"/>
+            <point key="canvasLocation" x="4316" y="2446"/>
         </scene>
         <!--Information Text View Controller-->
         <scene sceneID="av6-PB-qbi">

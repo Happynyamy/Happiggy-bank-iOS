@@ -1188,6 +1188,32 @@ extension CustomerServiceViewModel {
         
         /// 라이선스
         static let license = "라이선스"
+        
+        /// 메일
+        static let mail = "의견 보내기"
+    }
+    
+    /// 메일 앱 관련 문자열
+    enum Mail {
+        
+        /// 팀 이메일
+        static let teamMail = "happiggybank@gmail.com"
+        
+        /// 제목: [행복저금통]
+        static let subject = "[행복저금통]"
+        
+        /// 내용
+        static let body =
+        "<p style=\"color:gray\">버그 발생 시 디바이스 이름, iOS 버전을 함께 알려주시면 감사하겠습니다:)</p>"
+        
+        /// 메일을 보낼 수 없을 때 띄울 알림의 제목
+        static let alertTitle = "메일 앱을 열 수 없습니다"
+        
+        /// 메일을 보낼 수 없을 때 띄울 알림의 내용
+        static let alertMessage = """
+\(teamMail)
+으로 의견을 보내주세요!
+"""
     }
 }
 

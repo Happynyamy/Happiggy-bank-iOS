@@ -79,7 +79,7 @@ extension CustomerServiceViewController: MFMailComposeViewControllerDelegate {
             $0.setMessageBody(SettingsViewController.Mail.body, isHTML: true)
         }
         // TODO: add haptic selection feedback
-        self.present(mailViewController, animated: true)
+        self.show(mailViewController, sender: self)
     }
 }
 
@@ -125,10 +125,17 @@ extension CustomerServiceViewController: UITableViewDelegate {
         
         tableView.deselectRow(at: indexPath, animated: false)
         
-        guard let destination = self.viewModel.destination(forContentAt: indexPath)
+        guard let destination = self.viewModel.destination(forContentAt: indexPath, delegate: self)
         else { return }
         
-        self.show(destination, sender: self)
         HapticManager.instance.selection()
+
+        guard let alert = destination as? UIAlertController
+        else {
+            self.show(destination, sender: self)
+            return
+        }
+        
+        self.present(alert, animated: true)
     }
 }
