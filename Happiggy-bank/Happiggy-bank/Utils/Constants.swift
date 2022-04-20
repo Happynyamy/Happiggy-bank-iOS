@@ -768,22 +768,22 @@ extension SettingsViewController {
         /// 앱 버전 정보
         case appVersion
         
-        /// 라이선스
-//        case license
+        /// 고객 지원
+        case customerService
         
         
         // MARK: - Properties
         
         /// 아이콘 딕셔너리
         static let icon: [Int: UIImage?] = [
-            appVersion.rawValue: UIImage(named: imageName(for: .appVersion))
-//            appVersion.rawValue: UIImage(named: imageName(for: .license))
+            appVersion.rawValue: UIImage(named: imageName(for: .appVersion)),
+            customerService.rawValue: UIImage(named: imageName(for: .customerService))
         ]
         
         /// 제목 딕셔너리
         static let title: [Int: String] = [
-            appVersion.rawValue: "버전 정보"
-//            license.rawValue: "라이선스"
+            appVersion.rawValue: "버전 정보",
+            customerService.rawValue: "고객 지원"
         ]
         
         /// 추가 정보 딕셔너리
@@ -791,12 +791,30 @@ extension SettingsViewController {
             appVersion.rawValue: "최신 버전을 사용 중 입니다"
         ]
         
-        private static func imageName(for contentCase: Content) -> String {
+        /// 세그웨이 아이디 딕셔너리
+        static let segueIdentifier: [Int: String] = [
+            customerService.rawValue: segueIdentifier(for: customerService)
+        ]
+        
+        
+        // MARK: - Functions
+        
+        /// 케이스 이름을 카멜케이스로 변환
+        private static func nameInCamelCase(_ contentCase: Content) -> String {
             var contentCase = "\(contentCase.self)"
             let firstLetter = contentCase.removeFirst().uppercased()
-            contentCase = firstLetter.appending(contentCase)
             
-            return "\(Asset.settings.rawValue)\(contentCase)"
+            return firstLetter.appending(contentCase)
+        }
+        
+        /// 세그웨이 아이디 리턴
+        private static func segueIdentifier(for contentCase: Content) -> String {
+            "show\(nameInCamelCase(contentCase))View"
+        }
+        
+        /// 이미지 이름 리턴
+        private static func imageName(for contentCase: Content) -> String {
+            "\(Asset.settings.rawValue)\(nameInCamelCase(contentCase))"
         }
     }
     
@@ -1160,5 +1178,15 @@ happiggybank@gmail.com으로 문의 부탁드립니다
 
 화면을 탭하면 앱이 종료됩니다
 """
+    }
+}
+
+extension CustomerServiceViewModel {
+    
+    /// 셀 제목
+    enum ContentTitle {
+        
+        /// 라이선스
+        static let license = "라이선스"
     }
 }

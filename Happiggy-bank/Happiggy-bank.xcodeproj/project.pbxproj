@@ -26,6 +26,15 @@
 		A456657E27CC77A9007CF70A /* Date+Formatted.swift in Sources */ = {isa = PBXBuildFile; fileRef = A456657D27CC77A9007CF70A /* Date+Formatted.swift */; };
 		A4569CB8280FB979001E3FD6 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CB7280FB979001E3FD6 /* Presenter.swift */; };
 		A4569CBA280FBA23001E3FD6 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CB9280FBA23001E3FD6 /* Result.swift */; };
+		A4569CBC2810455B001E3FD6 /* CustomerServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CBB2810455B001E3FD6 /* CustomerServiceViewController.swift */; };
+		A4569CBE28105052001E3FD6 /* CustomerServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CBD28105051001E3FD6 /* CustomerServiceViewModel.swift */; };
+		A4569CC0281118DE001E3FD6 /* InformationTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CBF281118DE001E3FD6 /* InformationTextViewController.swift */; };
+		A4569CC428111E1D001E3FD6 /* LicenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CC328111E1D001E3FD6 /* LicenseViewModel.swift */; };
+		A4569CC628111EFA001E3FD6 /* InformationTextViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CC528111EFA001E3FD6 /* InformationTextViewDataSource.swift */; };
+		A4569CC828112657001E3FD6 /* LicenseText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CC728112657001E3FD6 /* LicenseText.swift */; };
+		A4569CCA28113F0F001E3FD6 /* NSMutableAttributedString+Hyperlink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CC928113F0F001E3FD6 /* NSMutableAttributedString+Hyperlink.swift */; };
+		A4569CCF28128B4B001E3FD6 /* SettingsNonIconButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CCD28128B4B001E3FD6 /* SettingsNonIconButtonCell.swift */; };
+		A4569CD028128B4B001E3FD6 /* SettingsNonIconButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4569CCE28128B4B001E3FD6 /* SettingsNonIconButtonCell.xib */; };
 		A459003827E8D107003010A0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459003727E8D107003010A0 /* SettingsViewController.swift */; };
 		A459003A27E95D6B003010A0 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459003927E95D6B003010A0 /* Grid.swift */; };
 		A459003C27E9C5C9003010A0 /* CGSize+Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459003B27E9C5C9003010A0 /* CGSize+Area.swift */; };
@@ -126,6 +135,15 @@
 		A456657D27CC77A9007CF70A /* Date+Formatted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatted.swift"; sourceTree = "<group>"; };
 		A4569CB7280FB979001E3FD6 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		A4569CB9280FBA23001E3FD6 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		A4569CBB2810455B001E3FD6 /* CustomerServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerServiceViewController.swift; sourceTree = "<group>"; };
+		A4569CBD28105051001E3FD6 /* CustomerServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerServiceViewModel.swift; sourceTree = "<group>"; };
+		A4569CBF281118DE001E3FD6 /* InformationTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationTextViewController.swift; sourceTree = "<group>"; };
+		A4569CC328111E1D001E3FD6 /* LicenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewModel.swift; sourceTree = "<group>"; };
+		A4569CC528111EFA001E3FD6 /* InformationTextViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationTextViewDataSource.swift; sourceTree = "<group>"; };
+		A4569CC728112657001E3FD6 /* LicenseText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseText.swift; sourceTree = "<group>"; };
+		A4569CC928113F0F001E3FD6 /* NSMutableAttributedString+Hyperlink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Hyperlink.swift"; sourceTree = "<group>"; };
+		A4569CCD28128B4B001E3FD6 /* SettingsNonIconButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNonIconButtonCell.swift; sourceTree = "<group>"; };
+		A4569CCE28128B4B001E3FD6 /* SettingsNonIconButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsNonIconButtonCell.xib; sourceTree = "<group>"; };
 		A459003727E8D107003010A0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A459003927E95D6B003010A0 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		A459003B27E9C5C9003010A0 /* CGSize+Area.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Area.swift"; sourceTree = "<group>"; };
@@ -244,6 +262,7 @@
 				D22ADF7E27F72F7300ECB77B /* NotificationSettingViewModel.swift */,
 				D236DB8527FDC43200D7B8F0 /* NewBottleDatePickerViewModel.swift */,
 				A466A3172801E99500D655F4 /* SettingsViewModel.swift */,
+				A4569CBD28105051001E3FD6 /* CustomerServiceViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -288,6 +307,7 @@
 				A439F53927EEFC27002851F4 /* SettingsViewCell.swift */,
 				A439F53B27EEFCF6002851F4 /* SettingsToggleButtonCell.swift */,
 				A439F54327EF0698002851F4 /* SettingsLabelButtonCell.swift */,
+				A4569CCD28128B4B001E3FD6 /* SettingsNonIconButtonCell.swift */,
 				A41DE62927F36E95002A7669 /* NoteCell.swift */,
 			);
 			path = Subview;
@@ -321,6 +341,7 @@
 				D236DB8727FDD66900D7B8F0 /* NewBottleMessageFieldViewController.swift */,
 				D284A5DD27FF3EFB00D20699 /* BottleNameEditViewController.swift */,
 				A466A30B2801861000D655F4 /* ErrorViewController.swift */,
+				A4569CBB2810455B001E3FD6 /* CustomerServiceViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -350,6 +371,7 @@
 				A48E183D27E737B600B44477 /* CapsuleButton.xib */,
 				A439F53C27EEFCF6002851F4 /* SettingsToggleButtonCell.xib */,
 				A466A3152801DF1400D655F4 /* SettingsLabelButtonCell.xib */,
+				A4569CCE28128B4B001E3FD6 /* SettingsNonIconButtonCell.xib */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -518,6 +540,7 @@
 				A48E183E27E737B600B44477 /* CapsuleButton.xib in Resources */,
 				A439F53E27EEFCF6002851F4 /* SettingsToggleButtonCell.xib in Resources */,
 				A466A3162801DF1400D655F4 /* SettingsLabelButtonCell.xib in Resources */,
+				A4569CD028128B4B001E3FD6 /* SettingsNonIconButtonCell.xib in Resources */,
 				A41DE62C27F36E95002A7669 /* NoteCell.xib in Resources */,
 				A8FC07D127B3ECF30077A758 /* Assets.xcassets in Resources */,
 				A8FC07CF27B3ECF00077A758 /* Main.storyboard in Resources */,
@@ -558,11 +581,13 @@
 				A41DE62B27F36E95002A7669 /* NoteCell.swift in Sources */,
 				A4C1AFD227E5C60E0096CD3E /* NewNoteTextViewModel.swift in Sources */,
 				A819CFA127DE034F00DE8E72 /* NewBottle.swift in Sources */,
+				A4569CBC2810455B001E3FD6 /* CustomerServiceViewController.swift in Sources */,
 				A456657C27CC66FD007CF70A /* DefaultButton.swift in Sources */,
 				D236DB8627FDC43200D7B8F0 /* NewBottleDatePickerViewModel.swift in Sources */,
 				A499318327BF5158009FF5A8 /* BottleNoteView.swift in Sources */,
 				A4CF2C8E27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift in Sources */,
 				A46BC1EF2800626A00C2E5B4 /* TabItem.swift in Sources */,
+				A4569CBE28105052001E3FD6 /* CustomerServiceViewModel.swift in Sources */,
 				D284A5DE27FF3EFB00D20699 /* BottleNameEditViewController.swift in Sources */,
 				A466A31C28029D7400D655F4 /* UIAlertController+BasicFormat.swift in Sources */,
 				A8BD834D27BE39D600E0DE41 /* NoteProgressLabel.swift in Sources */,
@@ -579,6 +604,7 @@
 				A4CF2C8027C733FE001B01B1 /* ColorButton.swift in Sources */,
 				A4CF2C8227C73B42001B01B1 /* UIColor+AssetColors.swift in Sources */,
 				A819CF9F27DDD97C00DE8E72 /* HapticManager.swift in Sources */,
+				A4569CCF28128B4B001E3FD6 /* SettingsNonIconButtonCell.swift in Sources */,
 				A8ECD4A727E33BFA00886BC0 /* BottleListViewModel.swift in Sources */,
 				A843332427DA397800A12A54 /* DataProvider.swift in Sources */,
 				A48E183A27E71D9300B44477 /* UILabel+ParagraphStyle.swift in Sources */,
