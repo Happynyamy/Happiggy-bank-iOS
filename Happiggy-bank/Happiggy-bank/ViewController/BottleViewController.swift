@@ -42,8 +42,8 @@ final class BottleViewController: UIViewController {
         self.bottleNoteView.subviews.compactMap { $0 as? NoteView }
     }
     
-    /// 쪽지가 최초로 다른 쪽지 혹은 바운더리와 부딪힐 때 모션 효과를 주기 위한 프로퍼티
-    private var activateMotion = false
+    /// 쪽지가 최초로 다른 쪽지 혹은 바운더리와 부딪힐 때 한번만 모션 효과를 주기 위한 프로퍼티
+    private var activateHapticOnlyOnceForNewlyAddedNote = false
     
     /// 새로운 쪽지가 추가될 때 상단 중앙에서 떨어지는 효과를 위해 지정할 프레임
     private var topCenterFrame: CGRect {
@@ -187,7 +187,7 @@ final class BottleViewController: UIViewController {
             let noteView = self.createNoteView(note, frame: self.topCenterFrame)
             self.bottleNoteView.addSubview(noteView)
             self.gravity?.addDynamicItem(noteView)
-            self.activateMotion.toggle()
+            self.activateHapticOnlyOnceForNewlyAddedNote.toggle()
         }
     }
 }
@@ -203,7 +203,10 @@ extension BottleViewController: UICollisionBehaviorDelegate {
         endedContactFor item1: UIDynamicItem,
         with item2: UIDynamicItem
     ) {
-        self.activateMotionOnlyOnce()
+        guard self.activateHapticOnlyOnceForNewlyAddedNote
+        else { return }
+        
+        self.activateHapticForNewlyAddedNoteAndResumeMotionUpdates()
     }
     
     func collisionBehavior(
@@ -212,15 +215,19 @@ extension BottleViewController: UICollisionBehaviorDelegate {
         withBoundaryIdentifier identifier: NSCopying?,
         at point: CGPoint
     ) {
-        self.activateMotionOnlyOnce()
+        guard self.activateHapticOnlyOnceForNewlyAddedNote
+        else {
+            HapticManager.instance.impact(style: .light, intensity: Metric.impactHapticIntensity)
+            return
+        }
+        
+        self.activateHapticForNewlyAddedNoteAndResumeMotionUpdates()
     }
     
     /// 새로운 쪽지가 추가되었을떄 최초로 다른 아이템 혹은 바운더리와 부딪히는 경우에만 햅틱 반응
-    private func activateMotionOnlyOnce() {
-        guard self.activateMotion
-        else { return }
+    private func activateHapticForNewlyAddedNoteAndResumeMotionUpdates() {
         
-        self.activateMotion.toggle()
+        self.activateHapticOnlyOnceForNewlyAddedNote.toggle()
         HapticManager.instance.notification(type: .success)
         /// 쪽지가 하단 바운더리 혹은 다른 쪽지와 부딪히면 디바이스 모션 업데이트 재개
         self.gravity?.startDeviceMotionUpdates()

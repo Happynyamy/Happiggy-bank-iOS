@@ -97,6 +97,9 @@ extension BottleViewController {
         
         /// 현재 뷰를 기준으로 충돌 영역 설정을 위해 넣을 상하좌우 마진
         static let collisionBoundaryInsets = UIEdgeInsets(top: .zero, left: 3, bottom: 3, right: 3)
+        
+        /// 쪽지들이 바운더리와 부딪칠 때 햅틱 반응의 강도: 0.4
+        static let impactHapticIntensity: CGFloat = 0.4
     }
 }
 
