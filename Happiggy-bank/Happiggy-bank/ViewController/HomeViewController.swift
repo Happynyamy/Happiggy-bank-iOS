@@ -155,16 +155,14 @@ final class HomeViewController: UIViewController {
     /// 저금통 제목 라벨 탭했을 때 실행되는 함수
     @objc private func bottleTitleLabelDidTap(_ sender: UITapGestureRecognizer) {
         // go to title label edit view
-        if self.viewModel.hasFixedTitle {
-            presentBottleTitleAlreadyFixedAlert()
-        } else {
-            let bottleNameEditViewController = self.storyboard?.instantiateViewController(
-                withIdentifier: StringLiteral.bottleNameEditViewController
-            ) as! BottleNameEditViewController
-            
-            bottleNameEditViewController.bottle = self.viewModel.bottle
-            self.present(bottleNameEditViewController, animated: true)
-        }
+        let bottleNameEditViewController = self.storyboard?.instantiateViewController(
+            withIdentifier: StringLiteral.bottleNameEditViewController
+        ) as! BottleNameEditViewController
+        
+        bottleNameEditViewController.bottle = self.viewModel.bottle
+        bottleNameEditViewController.delegate = self
+        self.present(bottleNameEditViewController, animated: true)
+        self.bottleViewController.alertOrModalDidAppear()
     }
     // swiftlint:enable force_cast
     
@@ -381,5 +379,14 @@ final class HomeViewController: UIViewController {
             alertMessage: StringLiteral.noEmptyDateAlertMessage,
             confirmAction: UIAlertAction.confirmAction()
         )
+    }
+}
+
+
+// MARK: - Presenter
+extension HomeViewController: Presenter {
+    
+    func presentedViewControllerDidDismiss(withResult: Result) {
+        self.bottleViewController.restoreStateBeforeAlertOrModalDidAppear()
     }
 }
