@@ -26,4 +26,11 @@ final class HapticManager {
         generator.prepare()
         generator.selectionChanged()
     }
+    
+    /// 유저의 경험을 풍부하게 하기 위한 햅틱 반응
+    func impact(style: UIImpactFeedbackGenerator.FeedbackStyle, intensity: CGFloat = 1) {
+        let generator = UIImpactFeedbackGenerator(style: style)
+        generator.prepare()
+        generator.impactOccurred(intensity: intensity)
+    }
 }
