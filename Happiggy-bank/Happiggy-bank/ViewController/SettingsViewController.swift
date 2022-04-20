@@ -10,13 +10,13 @@ import UIKit
 
 /// 환경 설정 뷰 컨트롤러
 final class SettingsViewController: UIViewController {
-
+    
     // MARK: - @IBOutlets
     
     /// 환경 설정 각 항목을 담고 있는 테이블 뷰
     @IBOutlet weak var tableView: UITableView!
     
-    /// 누르면 깃헙 레포로 넘어가는 팀 소개 라벨
+    /// 누르면 메일 앱을 띄우는 팀 소개 라벨
     @IBOutlet weak var teamLabel: UIStackView!
     
     
@@ -31,6 +31,7 @@ final class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         self.registerCells()
+        self.navigationItem.backButtonTitle = .empty
     }
     
     
@@ -60,10 +61,11 @@ final class SettingsViewController: UIViewController {
 
 // MARK: - UITableViewDataSource
 extension SettingsViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         Content.allCases.count
     }
-
+    
     func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
@@ -80,10 +82,9 @@ extension SettingsViewController: UITableViewDataSource {
             return cell
         }
         
-//        if indexPath.row == Content.appVersion.rawValue ||
-//            indexPath.row == Content.license.rawValue {
-        if indexPath.row == Content.appVersion.rawValue {
-
+        if indexPath.row == Content.appVersion.rawValue ||
+            indexPath.row == Content.customerService.rawValue {
+            
             return self.labelButtonCell(
                 inTableView: tableView,
                 indexPath: indexPath,
@@ -172,15 +173,16 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate {
 
 
 // MARK: - UITableViewDelegate
-// extension SettingsViewController: UITableViewDelegate {
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//        tableView.deselectRow(at: indexPath, animated: false)
-//
-//        if indexPath.row == Content.license.rawValue {
-//            // TODO: 라이선스 뷰컨트롤러로 이동
-//            HapticManager.instance.selection()
-//        }
-//    }
-// }
+extension SettingsViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: false)
+        
+        guard let segueIdentifier = self.viewModel.segueIdentifier(forContentAt: indexPath)
+        else { return }
+        
+        self.performSegue(withIdentifier: segueIdentifier, sender: self)
+        HapticManager.instance.selection()
+    }
+}

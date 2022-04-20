@@ -479,6 +479,7 @@
                     <connections>
                         <outlet property="tableView" destination="XH5-F4-UT7" id="Su4-TC-HON"/>
                         <outlet property="teamLabel" destination="b4d-oF-HEA" id="NyI-hP-fmw"/>
+                        <segue destination="Tl4-Fc-9VF" kind="show" identifier="showCustomerServiceView" id="qcB-dq-xct"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aNi-4h-ywR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -489,6 +490,82 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2965.5999999999999" y="1642.6108374384237"/>
+        </scene>
+        <!--고객 지원-->
+        <scene sceneID="5tL-nS-PV6">
+            <objects>
+                <viewController id="Tl4-Fc-9VF" customClass="CustomerServiceViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y8a-by-6kU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="79" estimatedRowHeight="79" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uQp-S9-PAW">
+                                <rect key="frame" x="0.0" y="88" width="414" height="628"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Tl4-Fc-9VF" id="c5C-I0-D53"/>
+                                    <outlet property="delegate" destination="Tl4-Fc-9VF" id="E3V-Gc-lfh"/>
+                                </connections>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="zPR-tj-0Fk">
+                                <rect key="frame" x="127" y="732" width="160" height="57"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Happiggy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVA-yW-8B5">
+                                        <rect key="frame" x="0.0" y="0.0" width="160" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" name="customGray"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xZO-XM-fFz">
+                                        <rect key="frame" x="0.0" y="24" width="160" height="33"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2unbini mseo sun h1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3d-Ov-mmP">
+                                                <rect key="frame" x="0.0" y="0.0" width="160" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" name="customGray"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="happiggybank@gmail.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZA-in-aRZ">
+                                                <rect key="frame" x="0.0" y="17" width="160" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" name="customGray"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="bk9-d1-qQ2" appends="YES" id="CMV-YJ-mKO"/>
+                                        </connections>
+                                    </stackView>
+                                </subviews>
+                                <gestureRecognizers/>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Mqq-87-g65"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zPR-tj-0Fk" firstAttribute="centerX" secondItem="y8a-by-6kU" secondAttribute="centerX" id="2bd-n4-rI8"/>
+                            <constraint firstItem="uQp-S9-PAW" firstAttribute="top" secondItem="Mqq-87-g65" secondAttribute="top" id="77z-3S-GX4"/>
+                            <constraint firstItem="Mqq-87-g65" firstAttribute="bottom" secondItem="zPR-tj-0Fk" secondAttribute="bottom" constant="24" id="V4f-Ta-9Ye"/>
+                            <constraint firstItem="Mqq-87-g65" firstAttribute="trailing" secondItem="uQp-S9-PAW" secondAttribute="trailing" id="YP0-iC-Wm6"/>
+                            <constraint firstItem="zPR-tj-0Fk" firstAttribute="top" secondItem="uQp-S9-PAW" secondAttribute="bottom" constant="16" id="k0b-eI-8tA"/>
+                            <constraint firstItem="uQp-S9-PAW" firstAttribute="leading" secondItem="Mqq-87-g65" secondAttribute="leading" id="m2K-YV-2Si"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="고객 지원" id="Pv5-p6-rLV"/>
+                    <connections>
+                        <outlet property="tableView" destination="uQp-S9-PAW" id="wxA-zr-YMs"/>
+                        <outlet property="teamLabel" destination="xZO-XM-fFz" id="OWN-SM-M6q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rhR-vq-qOh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="bk9-d1-qQ2">
+                    <connections>
+                        <action selector="teamLabelDidTap:" destination="Tl4-Fc-9VF" id="Ptm-Kx-BiZ"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="4110" y="2446"/>
         </scene>
         <!--환경설정-->
         <scene sceneID="vw8-MY-aV0">
