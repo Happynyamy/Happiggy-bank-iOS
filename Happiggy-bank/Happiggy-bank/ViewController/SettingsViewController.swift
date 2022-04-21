@@ -35,14 +35,6 @@ final class SettingsViewController: UIViewController {
     }
     
     
-    // MARK: - @IBActions
-    
-    /// 팀 라벨이 탭 되었을 때 호출되는 메서드
-    @IBAction func teamLabelDidTap(_ sender: UITapGestureRecognizer) {
-        self.presentMailApp()
-    }
-    
-    
     // MARK: - Functions
     
     /// 테이블 뷰 셀 등록
@@ -153,21 +145,6 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate {
         error: Error?
     ) {
         controller.dismiss(animated: true)
-    }
-    
-    /// 메일 앱을 모달 뷰로 띄우는 메서드
-    private func presentMailApp() {
-        guard MFMailComposeViewController.canSendMail()
-        else { return }
-        
-        let mailViewController = MFMailComposeViewController().then {
-            $0.mailComposeDelegate = self
-            $0.setToRecipients(Mail.recipients)
-            $0.setSubject(Mail.subject)
-            $0.setMessageBody(Mail.body, isHTML: true)
-        }
-        // TODO: add haptic selection feedback
-        present(mailViewController, animated: true)
     }
 }
 
