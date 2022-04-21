@@ -125,10 +125,10 @@ extension CustomerServiceViewController: UITableViewDelegate {
         
         tableView.deselectRow(at: indexPath, animated: false)
         
-        guard let segueIdentifier = self.viewModel.segueIdentifier(forContentAt: indexPath)
+        guard let destination = self.viewModel.destination(forContentAt: indexPath)
         else { return }
         
-        self.performSegue(withIdentifier: segueIdentifier, sender: self)
+        self.show(destination, sender: self)
         HapticManager.instance.selection()
     }
 }

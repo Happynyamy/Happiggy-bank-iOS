@@ -556,6 +556,7 @@
                     <connections>
                         <outlet property="tableView" destination="uQp-S9-PAW" id="wxA-zr-YMs"/>
                         <outlet property="teamLabel" destination="xZO-XM-fFz" id="OWN-SM-M6q"/>
+                        <segue destination="nkh-H8-Hta" kind="show" identifier="showLicenseView" id="53q-OE-6qo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rhR-vq-qOh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -565,7 +566,41 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4110" y="2446"/>
+            <point key="canvasLocation" x="4316" y="2462"/>
+        </scene>
+        <!--Information Text View Controller-->
+        <scene sceneID="av6-PB-qbi">
+            <objects>
+                <viewController storyboardIdentifier="InformationTextViewController" id="nkh-H8-Hta" customClass="InformationTextViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rgl-PJ-7HD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tZn-mi-dNg">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9fX-sQ-sEU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="tZn-mi-dNg" firstAttribute="leading" secondItem="9fX-sQ-sEU" secondAttribute="leading" id="DL2-nt-Vwx"/>
+                            <constraint firstItem="9fX-sQ-sEU" firstAttribute="trailing" secondItem="tZn-mi-dNg" secondAttribute="trailing" id="UjB-vm-cWZ"/>
+                            <constraint firstItem="tZn-mi-dNg" firstAttribute="top" secondItem="9fX-sQ-sEU" secondAttribute="top" id="idE-qx-uMQ"/>
+                            <constraint firstItem="9fX-sQ-sEU" firstAttribute="bottom" secondItem="tZn-mi-dNg" secondAttribute="bottom" id="pnA-bI-ptG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="E0r-r8-K2q"/>
+                    <connections>
+                        <outlet property="textView" destination="tZn-mi-dNg" id="8ea-E1-nPB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CGH-cf-NE3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4316" y="3183"/>
         </scene>
         <!--환경설정-->
         <scene sceneID="vw8-MY-aV0">

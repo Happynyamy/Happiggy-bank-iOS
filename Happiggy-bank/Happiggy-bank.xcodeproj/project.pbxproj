@@ -263,6 +263,7 @@
 				D236DB8527FDC43200D7B8F0 /* NewBottleDatePickerViewModel.swift */,
 				A466A3172801E99500D655F4 /* SettingsViewModel.swift */,
 				A4569CBD28105051001E3FD6 /* CustomerServiceViewModel.swift */,
+				A4569CC328111E1D001E3FD6 /* LicenseViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -294,6 +295,7 @@
 				A843332327DA397800A12A54 /* DataProvider.swift */,
 				D2AB663D27FFFCF50003AC8C /* UpdateSender.swift */,
 				A4569CB7280FB979001E3FD6 /* Presenter.swift */,
+				A4569CC528111EFA001E3FD6 /* InformationTextViewDataSource.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -342,6 +344,7 @@
 				D284A5DD27FF3EFB00D20699 /* BottleNameEditViewController.swift */,
 				A466A30B2801861000D655F4 /* ErrorViewController.swift */,
 				A4569CBB2810455B001E3FD6 /* CustomerServiceViewController.swift */,
+				A4569CBF281118DE001E3FD6 /* InformationTextViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				A459003927E95D6B003010A0 /* Grid.swift */,
 				A425F8B527EDF4FB00A005AB /* TagViewFlowLayout.swift */,
 				A41DE62327F34ABB002A7669 /* UPCarouselFlowLayout.swift */,
+				A4569CC728112657001E3FD6 /* LicenseText.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -582,6 +586,7 @@
 				A4C1AFD227E5C60E0096CD3E /* NewNoteTextViewModel.swift in Sources */,
 				A819CFA127DE034F00DE8E72 /* NewBottle.swift in Sources */,
 				A4569CBC2810455B001E3FD6 /* CustomerServiceViewController.swift in Sources */,
+				A4569CC628111EFA001E3FD6 /* InformationTextViewDataSource.swift in Sources */,
 				A456657C27CC66FD007CF70A /* DefaultButton.swift in Sources */,
 				D236DB8627FDC43200D7B8F0 /* NewBottleDatePickerViewModel.swift in Sources */,
 				A499318327BF5158009FF5A8 /* BottleNoteView.swift in Sources */,
@@ -616,6 +621,7 @@
 				A8FC07CA27B3ECF00077A758 /* SceneDelegate.swift in Sources */,
 				A4F5715427DB8B6500E7DF9B /* NewNote.swift in Sources */,
 				A466A31028018CD800D655F4 /* UIWindowScene+TopMostViewController.swift in Sources */,
+				A4569CC428111E1D001E3FD6 /* LicenseViewModel.swift in Sources */,
 				A466A30E28018BBD00D655F4 /* UIVIewController+TopMostViewController.swift in Sources */,
 				D2C48C0127E9DFA1006FC59E /* NoteView.swift in Sources */,
 				A456657E27CC77A9007CF70A /* Date+Formatted.swift in Sources */,
@@ -651,12 +657,14 @@
 				A44E901727D5EB130053AC57 /* Happiggy-bank.xcdatamodeld in Sources */,
 				A4C1AFD427E5E6120096CD3E /* UITextView+ParagraphStyle.swift in Sources */,
 				A466A31A2802987700D655F4 /* UIAlertAction+ConfirmAndCancel.swift in Sources */,
+				A4569CC828112657001E3FD6 /* LicenseText.swift in Sources */,
 				A49931A527BFD20E009FF5A8 /* UIImage+AssetImages.swift in Sources */,
 				A459003A27E95D6B003010A0 /* Grid.swift in Sources */,
 				A4C1AFC227E47AD80096CD3E /* String+EmptyString.swift in Sources */,
 				A4C1AFC627E482E10096CD3E /* CGFloat+Values.swift in Sources */,
 				A8BD833F27BE30B400E0DE41 /* Constants.swift in Sources */,
 				A41DE62827F368BF002A7669 /* NoteDetailViewModel.swift in Sources */,
+				A4569CC0281118DE001E3FD6 /* InformationTextViewController.swift in Sources */,
 				A41DE62627F36595002A7669 /* NoteDetailViewController.swift in Sources */,
 				A41DE62427F34ABB002A7669 /* UPCarouselFlowLayout.swift in Sources */,
 				A4F5714727DA467900E7DF9B /* DateFormat.swift in Sources */,
