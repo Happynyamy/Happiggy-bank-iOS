@@ -41,8 +41,8 @@ final class InformationTextViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.textView.attributedText = self.viewModel.attributedInformationString
         self.configureNavigationBar()
+        self.configureTextView()
     }
     
     
@@ -60,5 +60,10 @@ final class InformationTextViewController: UIViewController {
         
         navigationBar?.setBackgroundImage(UIImage(), for: .default)
         navigationBar?.shadowImage = UIImage()
+    }
+    
+    /// 텍스트뷰 초기 설정
+    private func configureTextView() {
+        self.textView.attributedText = self.viewModel.attributedInformationString
     }
 }

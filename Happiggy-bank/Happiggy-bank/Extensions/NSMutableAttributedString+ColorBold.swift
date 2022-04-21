@@ -16,6 +16,7 @@ extension NSMutableAttributedString {
     
     /// 문자열에서 targetString 부분만  fontSize 크기로 볼드 처리해서 NSMutableAttributedString 의 형태로 리턴
     /// targetString 을 빈 문자열로 설정하면 전체를 변경
+    @discardableResult
     func bold(targetString: String = .empty, fontSize: CGFloat) -> NSMutableAttributedString {
         let targetString = returnSelfIfTargetIsEmpty(targetString: targetString)
         let boldFont = UIFont.boldSystemFont(ofSize: fontSize)
@@ -27,6 +28,7 @@ extension NSMutableAttributedString {
     
     /// 문자열에서 targetString 부분만 색깔을 변경해서 NSMutableAttributedString 의 형태로 리턴
     /// targetString 을 빈 문자열로 설정하면 전체를 변경
+    @discardableResult
     func color(targetString: String = .empty, color: UIColor) -> NSMutableAttributedString {
         let targetString = returnSelfIfTargetIsEmpty(targetString: targetString)
         let range = self.mutableString.range(of: targetString)

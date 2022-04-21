@@ -49,9 +49,10 @@ final class CustomerServiceViewModel {
             return storyboard.instantiateViewController(
                 identifier: InformationTextViewController.name
             ) { coder in
-                InformationTextViewController(coder: coder, viewModel: LicenseViewModel())
+                let viewModel = LicenseViewModel(navigationTitle: ContentTitle.license)
+                
+                return InformationTextViewController(coder: coder, viewModel: viewModel)
             }
-            
         }
         
         return nil
