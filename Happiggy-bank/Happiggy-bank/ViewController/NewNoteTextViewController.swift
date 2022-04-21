@@ -63,7 +63,7 @@ final class NewNoteTextViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.configureNavigationBar()
+        self.navigationBar.clear()
         self.observe(
             selector: #selector(self.configureImageViewHeightConstraint(notification:)),
             name: UITextView.keyboardWillShowNotification
@@ -142,12 +142,6 @@ final class NewNoteTextViewController: UIViewController {
     
     
     // MARK: - Functions
-    
-    /// 내비게이션 바 UI 투명하게 변경
-    private func configureNavigationBar() {
-        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationBar.shadowImage = UIImage()
-    }
     
     /// 내용 스택 높이가 키보드를 제외한 영역을 차지하도록 업데이트
     @objc private func configureImageViewHeightConstraint(notification: NSNotification) {

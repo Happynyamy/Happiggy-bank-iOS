@@ -39,7 +39,7 @@ final class NewBottleDatePickerViewController: UIViewController {
         super.viewDidLoad()
         initializePickerView()
         initializeLabel()
-        makeNavigationBarClear()
+        self.navigationBar.clear()
         setPickerHighlightWhite()
     }
     
@@ -77,12 +77,6 @@ final class NewBottleDatePickerViewController: UIViewController {
     
     
     // MARK: View Configuration
-    
-    /// 내비게이션 바 투명하게 만드는 함수
-    private func makeNavigationBarClear() {
-        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationBar.shadowImage = UIImage()
-    }
     
     /// 라벨 초기 세팅하는 함수
     private func initializeLabel() {

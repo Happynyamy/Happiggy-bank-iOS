@@ -35,6 +35,7 @@
 		A4569CCA28113F0F001E3FD6 /* NSMutableAttributedString+Hyperlink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CC928113F0F001E3FD6 /* NSMutableAttributedString+Hyperlink.swift */; };
 		A4569CCF28128B4B001E3FD6 /* SettingsNonIconButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CCD28128B4B001E3FD6 /* SettingsNonIconButtonCell.swift */; };
 		A4569CD028128B4B001E3FD6 /* SettingsNonIconButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4569CCE28128B4B001E3FD6 /* SettingsNonIconButtonCell.xib */; };
+		A4569CCC28119B41001E3FD6 /* UINavigationBar+Clear.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CCB28119B41001E3FD6 /* UINavigationBar+Clear.swift */; };
 		A459003827E8D107003010A0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459003727E8D107003010A0 /* SettingsViewController.swift */; };
 		A459003A27E95D6B003010A0 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459003927E95D6B003010A0 /* Grid.swift */; };
 		A459003C27E9C5C9003010A0 /* CGSize+Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459003B27E9C5C9003010A0 /* CGSize+Area.swift */; };
@@ -144,6 +145,7 @@
 		A4569CC928113F0F001E3FD6 /* NSMutableAttributedString+Hyperlink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Hyperlink.swift"; sourceTree = "<group>"; };
 		A4569CCD28128B4B001E3FD6 /* SettingsNonIconButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNonIconButtonCell.swift; sourceTree = "<group>"; };
 		A4569CCE28128B4B001E3FD6 /* SettingsNonIconButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsNonIconButtonCell.xib; sourceTree = "<group>"; };
+		A4569CCB28119B41001E3FD6 /* UINavigationBar+Clear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Clear.swift"; sourceTree = "<group>"; };
 		A459003727E8D107003010A0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A459003927E95D6B003010A0 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		A459003B27E9C5C9003010A0 /* CGSize+Area.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Area.swift"; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 				A466A3192802987700D655F4 /* UIAlertAction+ConfirmAndCancel.swift */,
 				A466A31B28029D7400D655F4 /* UIAlertController+BasicFormat.swift */,
 				A4569CC928113F0F001E3FD6 /* NSMutableAttributedString+Hyperlink.swift */,
+				A4569CCB28119B41001E3FD6 /* UINavigationBar+Clear.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -667,6 +670,7 @@
 				A8BD833F27BE30B400E0DE41 /* Constants.swift in Sources */,
 				A41DE62827F368BF002A7669 /* NoteDetailViewModel.swift in Sources */,
 				A4569CC0281118DE001E3FD6 /* InformationTextViewController.swift in Sources */,
+				A4569CCC28119B41001E3FD6 /* UINavigationBar+Clear.swift in Sources */,
 				A41DE62627F36595002A7669 /* NoteDetailViewController.swift in Sources */,
 				A41DE62427F34ABB002A7669 /* UPCarouselFlowLayout.swift in Sources */,
 				A4F5714727DA467900E7DF9B /* DateFormat.swift in Sources */,

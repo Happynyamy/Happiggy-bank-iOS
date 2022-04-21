@@ -35,7 +35,7 @@ final class NewBottleMessageFieldViewController: UIViewController {
         super.viewDidLoad()
         initializeTextField()
         initializeLabels()
-        makeNavigationBarClear()
+        self.navigationBar.clear()
     }
     
     
@@ -107,12 +107,6 @@ final class NewBottleMessageFieldViewController: UIViewController {
     
     
     // MARK: View Configuration
-    
-    /// 내비게이션 바 투명하게 만드는 함수
-    private func makeNavigationBarClear() {
-        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationBar.shadowImage = UIImage()
-    }
     
     /// 텍스트필드 초기 세팅
     private func initializeTextField() {
