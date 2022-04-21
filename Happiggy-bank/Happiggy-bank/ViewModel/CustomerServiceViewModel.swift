@@ -25,27 +25,6 @@ final class CustomerServiceViewModel {
         static let title: [Int: String] = [
             license.rawValue: ContentTitle.license
         ]
-        
-        /// 세그웨이 아이디 딕셔너리
-        static let segueIdentifier: [Int: String] = [
-            license.rawValue: segueIdentifier(for: license)
-        ]
-        
-        
-        // MARK: - Functions
-        
-        /// 케이스 이름을 카멜케이스로 변환
-        private static func nameInCamelCase(_ contentCase: Content) -> String {
-            var contentCase = "\(contentCase.self)"
-            let firstLetter = contentCase.removeFirst().uppercased()
-            
-            return firstLetter.appending(contentCase)
-        }
-        
-        /// 세그웨이 아이디 리턴
-        private static func segueIdentifier(for contentCase: Content) -> String {
-            "show\(nameInCamelCase(contentCase))View"
-        }
     }
     
     
@@ -62,8 +41,19 @@ final class CustomerServiceViewModel {
         Content.title[indexPath.row]
     }
     
-    /// 세그웨이가 있다면 해당 세그웨이의 아이디 리턴
-    func segueIdentifier(forContentAt indexPath: IndexPath) -> String? {
-        Content.segueIdentifier[indexPath.row]
+    /// 내비게이션이 필요한 경우 내비게이션으로 넘어갈 뷰컨트롤러 리턴
+    func destination(forContentAt indexPath: IndexPath) -> UIViewController? {
+        let storyboard = UIStoryboard(name: mainStoryboardName, bundle: .main)
+
+        if indexPath.row ==  Content.license.rawValue {
+            return storyboard.instantiateViewController(
+                identifier: InformationTextViewController.name
+            ) { coder in
+                InformationTextViewController(coder: coder, viewModel: LicenseViewModel())
+            }
+            
+        }
+        
+        return nil
     }
 }
