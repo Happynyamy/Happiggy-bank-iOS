@@ -51,15 +51,6 @@ final class InformationTextViewController: UIViewController {
     /// 내비게이션 바 초기 설정
     private func configureNavigationBar() {
         self.navigationItem.title = self.viewModel.navigationTitle
-        self.removeNavigationBarSeperator()
-    }
-    
-    /// 내비게이션 바 하단 구분 선 제거
-    private func removeNavigationBarSeperator() {
-        let navigationBar = self.navigationController?.navigationBar
-        
-        navigationBar?.setBackgroundImage(UIImage(), for: .default)
-        navigationBar?.shadowImage = UIImage()
     }
     
     /// 텍스트뷰 초기 설정

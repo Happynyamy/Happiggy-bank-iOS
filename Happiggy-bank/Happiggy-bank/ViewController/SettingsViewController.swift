@@ -31,7 +31,7 @@ final class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         self.registerCells()
-        self.navigationItem.backButtonTitle = .empty
+        self.configureNavigationBar()
     }
     
     
@@ -47,6 +47,12 @@ final class SettingsViewController: UIViewController {
             UINib(nibName: SettingsToggleButtonCell.name, bundle: nil),
             forCellReuseIdentifier: SettingsToggleButtonCell.name
         )
+    }
+    
+    /// 내비게이션 바 초기 설정
+    private func configureNavigationBar() {
+        self.navigationItem.backButtonTitle = .empty
+        self.navigationController?.navigationBar.clear()
     }
 }
 

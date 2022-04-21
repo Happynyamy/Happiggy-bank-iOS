@@ -46,7 +46,7 @@ final class NewBottleNameFieldViewController: UIViewController {
         initializeTextField()
         initializeLabels()
         initializeButton()
-        makeNavigationBarClear()
+        self.navigationBar.clear()
     }
     
     /// 새 유리병 개봉 시점 선택 뷰 컨트롤러로 이동하기 전 유리병 데이터 넘겨주기
@@ -113,12 +113,6 @@ final class NewBottleNameFieldViewController: UIViewController {
     
     
     // MARK: View Configuration
-    
-    /// 내비게이션 바 투명하게 만드는 함수
-    private func makeNavigationBarClear() {
-        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationBar.shadowImage = UIImage()
-    }
     
     /// 텍스트필드 초기 세팅
     private func initializeTextField() {

@@ -43,7 +43,7 @@ final class NewNoteDatePickerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.configureNavigationBar()
+        self.navigationBar.clear()
         self.scrollToInitialPosition()
         self.configureRightButton()
         self.configureSelectionIndicator()
@@ -119,12 +119,6 @@ final class NewNoteDatePickerViewController: UIViewController {
     
     
     // MARK: - Functions
-    
-    /// 내비게이션 바 UI 설정
-    private func configureNavigationBar() {
-        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationBar.shadowImage = UIImage()
-    }
     
     /// 날짜 피커의 셀렉션 인디케이터를 흰색으로 변경
     private func configureSelectionIndicator() {
