@@ -418,6 +418,7 @@
 				A466A30F28018CD800D655F4 /* UIWindowScene+TopMostViewController.swift */,
 				A466A3192802987700D655F4 /* UIAlertAction+ConfirmAndCancel.swift */,
 				A466A31B28029D7400D655F4 /* UIAlertController+BasicFormat.swift */,
+				A4569CC928113F0F001E3FD6 /* NSMutableAttributedString+Hyperlink.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -598,6 +599,7 @@
 				A8BD834D27BE39D600E0DE41 /* NoteProgressLabel.swift in Sources */,
 				A8509E6E27C89A1200855153 /* UIColor+Extension.swift in Sources */,
 				D236DB8827FDD66900D7B8F0 /* NewBottleMessageFieldViewController.swift in Sources */,
+				A4569CCA28113F0F001E3FD6 /* NSMutableAttributedString+Hyperlink.swift in Sources */,
 				A490AC4E27DD945E00B04CE1 /* NoteListViewController.swift in Sources */,
 				A8BD834727BE337900E0DE41 /* HomeView.swift in Sources */,
 				A4CF2C7C27C71FF5001B01B1 /* CATransition+PopupAnimation.swift in Sources */,

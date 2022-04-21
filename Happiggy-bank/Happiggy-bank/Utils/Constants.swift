@@ -1190,3 +1190,13 @@ extension CustomerServiceViewModel {
         static let license = "라이선스"
     }
 }
+
+extension LicenseViewModel {
+    
+    /// 폰트 관련 상수
+    enum Font {
+        
+        /// 볼드체 사이즈: 14
+        static let boldFontSize: CGFloat = 14
+    }
+}

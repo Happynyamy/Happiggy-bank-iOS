@@ -7,11 +7,31 @@
 
 import Foundation
 
+// swiftlint:disable line_length
+// MARK: - 오픈소스 라이선스 문자열을 따로 관리하기 위한 익스텐션
 extension LicenseViewModel {
+    
+    /// 오픈소스 라이브러리들
+    static let openSourceLibraries: [String] = [
+        "Then",
+        "UPCarouselFlowLayout",
+        "Grid.swift"
+    ]
+    
+    /// 하이퍼링크를 걸 문자열과 url 딕셔너리
+    static let hyperlinks: [String: String] = [
+        "xoul.kr": "http://xoul.kr",
+        // TODO: Main 으로 주소 변경
+        "Grid.swift from Happiggy": "https://github.com/Happiggy/Happiggy-bank-iOS/blob/develop/Happiggy-bank/Happiggy-bank/Utils/Grid.swift",
+        "\"Grid.swift\"":  "https://cs193p.stanford.edu/Fall2017/Grid.swift.zip",
+        "CS193p": "https://cs193p.sites.stanford.edu/about-cs193p",
+        "CC BY-NC-SA 4.0": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    ]
     
     /// 오픈소스 라이선스 전문
     static let licenseInformation = """
-# Then
+Then
+
 The MIT License (MIT)
 
 Copyright (c) 2015 Suyeol Jeon (xoul.kr)
@@ -35,7 +55,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-# UPCarouselFlowLayout
+
+UPCarouselFlowLayout
+
 The MIT License (MIT)
 
 Copyright (c) 2016 Paul Ulric
@@ -59,12 +81,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-# Grid
+
+Grid.swift
+
 Copyright © 2017 Stanford University. All rights reserved.
 
-"Grid.swift" from Happiggy is a derivative of "Grid.swift"(http://web.stanford.edu/class/cs193p/Fall2017/Grid.swift.zip)
-by CS193p(https://cs193p.sites.stanford.edu/about-cs193p) Instructor, Stanford University,
-used under CC BY-NC-SA 4.0(https://creativecommons.org/licenses/by-nc-sa/4.0/),
-and is also licensed under CC BY-NC-SA 4.0 by Happiggy.
+Grid.swift from Happiggy is a derivative of "Grid.swift" by CS193p Instructor(Paul Hegarty), Stanford University, used under CC BY-NC-SA 4.0, and is also licensed under CC BY-NC-SA 4.0 by Happiggy.
 """
 }
