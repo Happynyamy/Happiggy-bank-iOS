@@ -33,9 +33,9 @@
 		A4569CC628111EFA001E3FD6 /* InformationTextViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CC528111EFA001E3FD6 /* InformationTextViewDataSource.swift */; };
 		A4569CC828112657001E3FD6 /* LicenseText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CC728112657001E3FD6 /* LicenseText.swift */; };
 		A4569CCA28113F0F001E3FD6 /* NSMutableAttributedString+Hyperlink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CC928113F0F001E3FD6 /* NSMutableAttributedString+Hyperlink.swift */; };
+		A4569CCC28119B41001E3FD6 /* UINavigationBar+Clear.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CCB28119B41001E3FD6 /* UINavigationBar+Clear.swift */; };
 		A4569CCF28128B4B001E3FD6 /* SettingsNonIconButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CCD28128B4B001E3FD6 /* SettingsNonIconButtonCell.swift */; };
 		A4569CD028128B4B001E3FD6 /* SettingsNonIconButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4569CCE28128B4B001E3FD6 /* SettingsNonIconButtonCell.xib */; };
-		A4569CCC28119B41001E3FD6 /* UINavigationBar+Clear.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CCB28119B41001E3FD6 /* UINavigationBar+Clear.swift */; };
 		A459003827E8D107003010A0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459003727E8D107003010A0 /* SettingsViewController.swift */; };
 		A459003A27E95D6B003010A0 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459003927E95D6B003010A0 /* Grid.swift */; };
 		A459003C27E9C5C9003010A0 /* CGSize+Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459003B27E9C5C9003010A0 /* CGSize+Area.swift */; };
@@ -65,6 +65,8 @@
 		A49B25EA2812B17C00399630 /* FontSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B25E82812B17B00399630 /* FontSelectionCell.swift */; };
 		A49B25EB2812B17C00399630 /* FontSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49B25E92812B17B00399630 /* FontSelectionCell.xib */; };
 		A49B25ED2812B5A400399630 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B25EC2812B5A400399630 /* CustomFont.swift */; };
+		A49B25F12812BF6800399630 /* dovemayo_bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A49B25F02812BF4100399630 /* dovemayo_bold.otf */; };
+		A49B25F22812BF6B00399630 /* dovemayo.otf in Resources */ = {isa = PBXBuildFile; fileRef = A49B25EF2812BF4100399630 /* dovemayo.otf */; };
 		A4B285FD27D8A060008769EB /* Calendar+Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B285FC27D8A060008769EB /* Calendar+Duration.swift */; };
 		A4B2860527D9A546008769EB /* NewNoteDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2860427D9A546008769EB /* NewNoteDatePickerViewController.swift */; };
 		A4B2860927D9A56A008769EB /* NewNoteTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2860827D9A56A008769EB /* NewNoteTextViewController.swift */; };
@@ -147,9 +149,9 @@
 		A4569CC528111EFA001E3FD6 /* InformationTextViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationTextViewDataSource.swift; sourceTree = "<group>"; };
 		A4569CC728112657001E3FD6 /* LicenseText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseText.swift; sourceTree = "<group>"; };
 		A4569CC928113F0F001E3FD6 /* NSMutableAttributedString+Hyperlink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Hyperlink.swift"; sourceTree = "<group>"; };
+		A4569CCB28119B41001E3FD6 /* UINavigationBar+Clear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Clear.swift"; sourceTree = "<group>"; };
 		A4569CCD28128B4B001E3FD6 /* SettingsNonIconButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNonIconButtonCell.swift; sourceTree = "<group>"; };
 		A4569CCE28128B4B001E3FD6 /* SettingsNonIconButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsNonIconButtonCell.xib; sourceTree = "<group>"; };
-		A4569CCB28119B41001E3FD6 /* UINavigationBar+Clear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Clear.swift"; sourceTree = "<group>"; };
 		A459003727E8D107003010A0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A459003927E95D6B003010A0 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		A459003B27E9C5C9003010A0 /* CGSize+Area.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Area.swift"; sourceTree = "<group>"; };
@@ -179,6 +181,8 @@
 		A49B25E82812B17B00399630 /* FontSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSelectionCell.swift; sourceTree = "<group>"; };
 		A49B25E92812B17B00399630 /* FontSelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FontSelectionCell.xib; sourceTree = "<group>"; };
 		A49B25EC2812B5A400399630 /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
+		A49B25EF2812BF4100399630 /* dovemayo.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dovemayo.otf; sourceTree = "<group>"; };
+		A49B25F02812BF4100399630 /* dovemayo_bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dovemayo_bold.otf; sourceTree = "<group>"; };
 		A4B285FC27D8A060008769EB /* Calendar+Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Duration.swift"; sourceTree = "<group>"; };
 		A4B2860427D9A546008769EB /* NewNoteDatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteDatePickerViewController.swift; sourceTree = "<group>"; };
 		A4B2860827D9A56A008769EB /* NewNoteTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteTextViewController.swift; sourceTree = "<group>"; };
@@ -276,6 +280,15 @@
 				A4569CC328111E1D001E3FD6 /* LicenseViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A49B25EE2812BEB200399630 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A49B25F02812BF4100399630 /* dovemayo_bold.otf */,
+				A49B25EF2812BF4100399630 /* dovemayo.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		A4F5714527DA466600E7DF9B /* Enum */ = {
@@ -466,6 +479,7 @@
 		A8FC07C627B3ECF00077A758 /* Happiggy-bank */ = {
 			isa = PBXGroup;
 			children = (
+				A49B25EE2812BEB200399630 /* Fonts */,
 				A4F5714A27DA589900E7DF9B /* Model */,
 				A4F5714527DA466600E7DF9B /* Enum */,
 				A843332227DA2CBF00A12A54 /* Protocol */,
@@ -553,6 +567,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A49B25F12812BF6800399630 /* dovemayo_bold.otf in Resources */,
 				A8ECD4A527E30FF300886BC0 /* BottleCell.xib in Resources */,
 				A8FC07DD27B3EF030077A758 /* .swiftlint.yml in Resources */,
 				A467B5CA27DA289600AC702D /* NewNoteDatePickerRowView.xib in Resources */,
@@ -560,6 +575,7 @@
 				A8FC07D427B3ECF30077A758 /* LaunchScreen.storyboard in Resources */,
 				A48E183E27E737B600B44477 /* CapsuleButton.xib in Resources */,
 				A439F53E27EEFCF6002851F4 /* SettingsToggleButtonCell.xib in Resources */,
+				A49B25F22812BF6B00399630 /* dovemayo.otf in Resources */,
 				A466A3162801DF1400D655F4 /* SettingsLabelButtonCell.xib in Resources */,
 				A4569CD028128B4B001E3FD6 /* SettingsNonIconButtonCell.xib in Resources */,
 				A41DE62C27F36E95002A7669 /* NoteCell.xib in Resources */,

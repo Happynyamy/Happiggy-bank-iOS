@@ -1235,3 +1235,13 @@ extension LicenseViewModel {
         static let boldFontSize: CGFloat = 14
     }
 }
+
+extension FontSelectionViewController {
+    
+    /// 상수
+    enum Metric {
+        
+        /// 모서리 둥근 정도: 8
+        static let tableViewCornerRadius: CGFloat = 8
+    }
+}
