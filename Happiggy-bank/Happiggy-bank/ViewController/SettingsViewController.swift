@@ -81,7 +81,8 @@ extension SettingsViewController: UITableViewDataSource {
         }
         
         if indexPath.row == Content.appVersion.rawValue ||
-            indexPath.row == Content.customerService.rawValue {
+            indexPath.row == Content.customerService.rawValue ||
+            indexPath.row == Content.fontSelection.rawValue {
             
             return self.labelButtonCell(
                 inTableView: tableView,
