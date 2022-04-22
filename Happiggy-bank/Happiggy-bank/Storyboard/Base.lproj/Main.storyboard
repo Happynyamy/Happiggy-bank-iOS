@@ -841,11 +841,18 @@
                                 <color key="textColor" name="warningLabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="하루 한 번, 100자로 행복을 기록하세요:)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4S5-fe-Oby">
+                                <rect key="frame" x="24" y="208" width="286.5" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" name="placeholderTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bn6-rM-p0H"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="m3m-FL-apG" firstAttribute="leading" secondItem="1PQ-Bn-66w" secondAttribute="leading" id="5hb-16-Bbh"/>
+                            <constraint firstItem="4S5-fe-Oby" firstAttribute="top" secondItem="fvK-sf-BF4" secondAttribute="top" id="C94-VV-ivR"/>
                             <constraint firstItem="HX4-ny-KZ7" firstAttribute="bottom" secondItem="GeA-rS-UHc" secondAttribute="bottom" constant="-24" id="Cw3-em-GXv"/>
                             <constraint firstItem="fvK-sf-BF4" firstAttribute="leading" secondItem="Qg8-yI-fTV" secondAttribute="leading" constant="-5" id="FRT-hw-tFd"/>
                             <constraint firstItem="Rms-YT-wWN" firstAttribute="top" secondItem="1PQ-Bn-66w" secondAttribute="top" constant="44" id="Gyw-ql-9vl"/>
@@ -855,6 +862,7 @@
                             <constraint firstItem="HX4-ny-KZ7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bn6-rM-p0H" secondAttribute="leading" symbolic="YES" id="TPl-hs-XDG"/>
                             <constraint firstItem="fvK-sf-BF4" firstAttribute="top" secondItem="Qg8-yI-fTV" secondAttribute="bottom" constant="16" id="buI-x5-kRu"/>
                             <constraint firstItem="Qg8-yI-fTV" firstAttribute="top" secondItem="GeA-rS-UHc" secondAttribute="top" constant="24" id="f4A-mR-9H5"/>
+                            <constraint firstItem="4S5-fe-Oby" firstAttribute="leading" secondItem="fvK-sf-BF4" secondAttribute="leading" constant="5" id="fKY-1m-apP"/>
                             <constraint firstItem="HX4-ny-KZ7" firstAttribute="top" secondItem="fvK-sf-BF4" secondAttribute="bottom" constant="16" id="frU-Rs-PjR"/>
                             <constraint firstItem="a1q-g4-Qnf" firstAttribute="trailing" secondItem="fvK-sf-BF4" secondAttribute="trailing" id="hoz-L3-CBb"/>
                             <constraint firstItem="a1q-g4-Qnf" firstAttribute="leading" secondItem="Qg8-yI-fTV" secondAttribute="leading" id="px2-KS-V7b"/>
@@ -874,6 +882,7 @@
                         <outlet property="letterCountLabel" destination="HX4-ny-KZ7" id="QER-9Z-2kQ"/>
                         <outlet property="monthAndDayLabel" destination="Pgg-tQ-Rgj" id="mq0-dy-vpm"/>
                         <outlet property="navigationBar" destination="Rms-YT-wWN" id="i1C-it-zIw"/>
+                        <outlet property="placeholderLabel" destination="4S5-fe-Oby" id="F2P-Ba-82t"/>
                         <outlet property="saveButton" destination="HRF-q1-cdw" id="hMf-gh-cGy"/>
                         <outlet property="textView" destination="fvK-sf-BF4" id="dpT-J6-CUB"/>
                         <outlet property="warningLabel" destination="a1q-g4-Qnf" id="iu3-hz-Z6j"/>
@@ -1361,7 +1370,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="utJ-Hb-n6A"/>
-        <segue reference="5ln-YY-tck"/>
+        <segue reference="7wk-af-F5w"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="back" width="10" height="18"/>
@@ -1394,6 +1403,9 @@
         </namedColor>
         <namedColor name="pickerSelectionColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="placeholderTextColor">
+            <color red="0.73333333333333328" green="0.73333333333333328" blue="0.73333333333333328" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primaryLabelColor">
             <color red="1" green="0.70196078431372544" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -19,6 +19,9 @@ extension UIView {
         options: AnimationOptions = AnimationOptions.curveEaseInOut,
         completion: ((Bool) -> Void)? = nil
     ) {
+        guard self.alpha.isZero
+        else { return }
+        
         UIView.animate(
             withDuration: duration,
             delay: delay,
@@ -34,6 +37,9 @@ extension UIView {
         options: AnimationOptions = AnimationOptions.curveEaseInOut,
         completion: ((Bool) -> Void)? = nil
     ) {
+        guard self.alpha.isNormal
+        else { return }
+        
         UIView.animate(
             withDuration: duration,
             delay: delay,
