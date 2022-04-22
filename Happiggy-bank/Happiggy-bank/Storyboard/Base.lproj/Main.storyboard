@@ -492,7 +492,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1hW-iZ-OZc">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fontSelectionExampleBackground" translatesAutoresizingMaskIntoConstraints="NO" id="1hW-iZ-OZc">
                                 <rect key="frame" x="24" y="112" width="366" height="168"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="168" id="bsF-QL-Ow3"/>
@@ -502,8 +502,8 @@
                                 <rect key="frame" x="141" y="155" width="132" height="82.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ewv-hE-Px9">
-                                        <rect key="frame" x="44" y="0.0" width="44" height="21.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <rect key="frame" x="42.5" y="0.0" width="47" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -537,7 +537,7 @@
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="66" estimatedRowHeight="66" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="yeW-VK-hLr">
                                 <rect key="frame" x="24" y="298" width="366" height="486"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <outlet property="dataSource" destination="lLe-9H-9eT" id="s69-JS-DdQ"/>
                                     <outlet property="delegate" destination="lLe-9H-9eT" id="oJz-Qq-K0T"/>
@@ -1453,6 +1453,7 @@
         <image name="characterWhite" width="40" height="40"/>
         <image name="characterYellow" width="40" height="40"/>
         <image name="checkmark" width="19" height="16"/>
+        <image name="fontSelectionExampleBackground" width="327" height="168"/>
         <image name="homeBottleTitleLabel" width="248" height="40"/>
         <image name="homeBottleTitleLabelSmile" width="30" height="30"/>
         <image name="homeCharacter" width="375" height="812"/>

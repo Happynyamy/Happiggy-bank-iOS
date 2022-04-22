@@ -14,5 +14,5 @@ enum CustomFont: CaseIterable {
     case system
     
     /// 둘기마요
-    case doolgiMayo
+    case dovemayo
 }

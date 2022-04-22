@@ -31,6 +31,19 @@ final class FontSelectionViewController: UIViewController {
         super.viewDidLoad()
 
         self.registerCell()
+        self.configureView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.toggleTabBar()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.toggleTabBar()
     }
     
     
@@ -40,6 +53,16 @@ final class FontSelectionViewController: UIViewController {
     private func registerCell() {
         let nib = UINib(nibName: FontSelectionCell.name, bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: FontSelectionCell.name)
+    }
+    
+    /// 뷰 초기 설정
+    private func configureView() {
+        self.tableView.layer.cornerRadius = Metric.tableViewCornerRadius
+    }
+    
+    /// 탭바 숨김 여부 토글
+    private func toggleTabBar() {
+        self.tabBarController?.tabBar.isHidden.toggle()
     }
 }
 
@@ -51,7 +74,10 @@ extension FontSelectionViewController: UITableViewDataSource {
         CustomFont.allCases.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: FontSelectionCell.name,
@@ -72,7 +98,7 @@ extension FontSelectionViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: false)
-        
-        // TODO: update selection
+        HapticManager.instance.selection()
+        // TODO: change font
     }
 }
