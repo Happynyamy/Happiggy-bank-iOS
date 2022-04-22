@@ -38,7 +38,10 @@ final class NewNoteTextViewController: UIViewController {
     
     /// 쪽지 내용을 작성할 텍스트 뷰
     @IBOutlet weak var textView: UITextView!
-
+    
+    /// 플레이스홀더 라벨
+    @IBOutlet weak var placeholderLabel: UILabel!
+    
     /// 쪽지 내용 글자수를 세는 라벨
     @IBOutlet weak var letterCountLabel: UILabel!
     
@@ -68,6 +71,7 @@ final class NewNoteTextViewController: UIViewController {
         self.updateImageView()
         self.updateDateLabels()
         self.configureTextView()
+        self.configurePlaceholderLabel()
         self.updateColorButtons()
         self.updateLetterCountLabel(count: .zero)
     }
@@ -91,6 +95,7 @@ final class NewNoteTextViewController: UIViewController {
             self.showWarningLabel = true
             self.warningLabel.fadeIn()
             HapticManager.instance.notification(type: .error)
+            self.placeholderLabel.fadeOut()
             return
         }
 
@@ -185,6 +190,14 @@ final class NewNoteTextViewController: UIViewController {
         /// 인셋 설정
         self.textView.textContainerInset = .zero
         self.textView.configureParagraphStyle(
+            lineSpacing: Metric.lineSpacing,
+            characterSpacing: Metric.characterSpacing
+        )
+    }
+    
+    /// 플레이스홀더 라벨 초기 설정
+    private func configurePlaceholderLabel() {
+        self.placeholderLabel.configureParagraphStyle(
             lineSpacing: Metric.lineSpacing,
             characterSpacing: Metric.characterSpacing
         )
@@ -345,7 +358,13 @@ extension NewNoteTextViewController: UITextViewDelegate {
 
         guard updatedTextLength > overflowCap,
               text.count >= trimLength
-        else { return true }
+        else {
+            /// 내용이 빈 상태에서 백스페이스를 누르는 경우 
+            if textView.text.isEmpty, text.isEmpty {
+                self.placeholderLabel.fadeIn()
+            }
+            return true
+        }
         
         /// 새로 입력된 문자열의 초과분을 삭제
         let index = text.index(text.endIndex, offsetBy: -trimLength)
@@ -367,6 +386,7 @@ extension NewNoteTextViewController: UITextViewDelegate {
     }
     
     func textViewDidChange(_ textView: UITextView) {
+        (textView.text.isEmpty) ? self.placeholderLabel.fadeIn() : self.placeholderLabel.fadeOut()
         self.updateLetterCountLabel(count: textView.text.count)
     }
 }
