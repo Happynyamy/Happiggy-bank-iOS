@@ -768,6 +768,9 @@ extension SettingsViewController {
         /// 앱 버전 정보
         case appVersion
         
+        /// 폰트 선택
+        case fontSelection
+        
         /// 고객 지원
         case customerService
         
@@ -777,13 +780,15 @@ extension SettingsViewController {
         /// 아이콘 딕셔너리
         static let icon: [Int: UIImage?] = [
             appVersion.rawValue: UIImage(named: imageName(for: .appVersion)),
-            customerService.rawValue: UIImage(named: imageName(for: .customerService))
+            customerService.rawValue: UIImage(named: imageName(for: .customerService)),
+            fontSelection.rawValue: UIImage(named: imageName(for: .fontSelection))
         ]
         
         /// 제목 딕셔너리
         static let title: [Int: String] = [
             appVersion.rawValue: "버전 정보",
-            customerService.rawValue: "고객 지원"
+            customerService.rawValue: "고객 지원",
+            fontSelection.rawValue: "폰트 바꾸기"
         ]
         
         /// 추가 정보 딕셔너리
@@ -793,7 +798,8 @@ extension SettingsViewController {
         
         /// 세그웨이 아이디 딕셔너리
         static let segueIdentifier: [Int: String] = [
-            customerService.rawValue: segueIdentifier(for: customerService)
+            customerService.rawValue: segueIdentifier(for: customerService),
+            fontSelection.rawValue: segueIdentifier(for: fontSelection)
         ]
         
         
