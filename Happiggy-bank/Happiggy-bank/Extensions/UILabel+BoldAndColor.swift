@@ -1,0 +1,58 @@
+//
+//  UILabel+BoldAndColor.swift
+//  Happiggy-bank
+//
+//  Created by sun on 2022/04/23.
+//
+
+import UIKit
+
+extension UILabel {
+    
+    /// 라벨 볼드 처리
+    func bold(target: String? = nil) {
+        var fontFamilyName = self.font.familyName
+        fontFamilyName.removeAll { $0 == " " }
+        
+        guard let fullText = self.text,
+              !fullText.isEmpty,
+              let bold = UIFont(name: "\(fontFamilyName)-Bold", size: self.font.pointSize)
+        else { return }
+        
+    
+        var attributedString = fullText.nsMutableAttributedStringify()
+        if let attributedText = self.attributedText {
+            attributedString = NSMutableAttributedString(attributedString: attributedText)
+        }
+
+        let target = (target == nil) ? fullText : target!
+        let range = attributedString.mutableString.range(of: target)
+        
+        attributedString.addAttribute(.font, value: bold, range: range)
+        self.attributedText = attributedString
+    }
+    
+    /// 라벨 글자 색상 변경
+    func color(_ color: UIColor = .customTint, target: String? = nil) {
+        guard let fullText = self.text,
+              !fullText.isEmpty
+        else { return }
+        
+        var attributedString = fullText.nsMutableAttributedStringify()
+        if let attributedText = self.attributedText {
+            attributedString = NSMutableAttributedString(attributedString: attributedText)
+        }
+
+        let target = (target == nil) ? fullText : target!
+        let range = attributedString.mutableString.range(of: target)
+        
+        attributedString.addAttribute(.foregroundColor, value: color, range: range)
+        self.attributedText = attributedString
+    }
+    
+    /// 라벨 볼드처리 및 글자 색상 변경
+    func boldAndColor(target: String? = nil, color: UIColor = .customTint) {
+        self.color(color, target: target)
+        self.bold(target: target)
+    }
+}

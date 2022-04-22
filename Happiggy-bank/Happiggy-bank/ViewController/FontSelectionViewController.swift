@@ -82,10 +82,15 @@ extension FontSelectionViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: FontSelectionCell.name,
             for: indexPath
-        ) as? FontSelectionCell
+        ) as? FontSelectionCell,
+              let customFont = CustomFont.init(rawValue: indexPath.row)
         else { return FontSelectionCell() }
         
-        // TODO: configure cell
+        cell.fontNameLabel.attributedText = customFont.displayName.nsMutableAttributedStringify()
+        cell.fontNameLabel.font = UIFont(
+            name: customFont.regular,
+            size: cell.fontNameLabel.font.pointSize
+        )
         
         return cell
     }
@@ -98,6 +103,22 @@ extension FontSelectionViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: false)
+        for row in Int.zero..<tableView.numberOfRows(inSection: .zero) {
+            let currentIndexPath = IndexPath(row: row, section: .zero)
+            
+            guard let cell = tableView.cellForRow(at: currentIndexPath) as? FontSelectionCell
+            else { continue }
+            
+            cell.checkmarkImageView.isHidden = (currentIndexPath != indexPath)
+            guard currentIndexPath == indexPath
+            else {
+                cell.fontNameLabel.attributedText = cell.fontNameLabel.text?
+                    .nsMutableAttributedStringify()
+                continue
+            }
+            cell.fontNameLabel.boldAndColor()
+        }
+        
         HapticManager.instance.selection()
         // TODO: change font
     }
