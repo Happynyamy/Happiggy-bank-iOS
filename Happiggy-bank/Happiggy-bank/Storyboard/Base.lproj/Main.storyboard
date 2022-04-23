@@ -358,7 +358,7 @@
         <!--홈-->
         <scene sceneID="YE7-1s-WX3">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LDk-3h-IzZ" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LDk-3h-IzZ" customClass="CustomNavigationController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="홈" image="tabBarHomeNormal" selectedImage="tabBarHomeSelected" id="Eeg-1d-ksO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wRZ-jI-V9m">
@@ -374,10 +374,10 @@
             </objects>
             <point key="canvasLocation" x="-1154" y="867"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Custom Tab Bar Controller-->
         <scene sceneID="y3u-6K-UTc">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="dSD-O6-Yej" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="dSD-O6-Yej" customClass="CustomTabBarController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tog-A2-SCB" customClass="CustomTabBar" customModule="Happiggy_bank" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -398,7 +398,7 @@
         <!--저금통 목록-->
         <scene sceneID="ffE-9v-wjj">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZUl-P8-w21" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZUl-P8-w21" customClass="CustomNavigationController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="저금통 목록" image="tabBarListNormal" selectedImage="tabBarListSelected" id="RUG-PV-yjD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="back" backIndicatorTransitionMaskImage="back" id="PEg-Az-WTy">
@@ -676,7 +676,7 @@
         <!--환경설정-->
         <scene sceneID="vw8-MY-aV0">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rvN-Mi-KI9" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rvN-Mi-KI9" customClass="CustomNavigationController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="환경설정" image="tabBarSettingsNormal" selectedImage="tabBarSettingsSelected" id="LtB-vV-jcX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="back" backIndicatorTransitionMaskImage="back" id="1ha-RM-7e9">

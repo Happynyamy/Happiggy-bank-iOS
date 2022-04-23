@@ -62,6 +62,7 @@ final class HomeViewController: UIViewController {
             selector: #selector(updateWhenEnterForeground),
             name: UIApplication.willEnterForegroundNotification
         )
+        self.observeCustomFontChange()
     }
     
     override func viewWillAppear(_ animated: Bool) {
