@@ -956,6 +956,9 @@ extension BottleMessageViewController {
         
         /// 저금통이 비어있는 경우: "화면을 탭하면 홈으로 돌아갑니다."
         static let emptyBottleTapToContinueLabelText = "화면을 탭하면 홈으로 돌아갑니다."
+        
+        /// UserDefaults의 key로 사용할 문자열
+        static let hasNotificationOn: String = "hasNotificationOn"
     }
 }
 

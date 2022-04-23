@@ -58,12 +58,23 @@ final class HomeViewController: UIViewController {
             selector: #selector(refetch),
             name: .NSManagedObjectContextDidSave
         )
+        self.observe(
+            selector: #selector(updateWhenEnterForeground),
+            name: UIApplication.willEnterForegroundNotification
+        )
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.observe(selector: #selector(refetch), name: .NSManagedObjectContextDidSave)
+        self.observe(
+            selector: #selector(refetch),
+            name: .NSManagedObjectContextDidSave
+        )
+        self.observe(
+            selector: #selector(updateWhenEnterForeground),
+            name: UIApplication.willEnterForegroundNotification
+        )
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
@@ -130,7 +141,7 @@ final class HomeViewController: UIViewController {
     
     // TODO: 삭제 (새로운 저금통 추가했을 때 보기 위한 임시 메서드)
     @objc private func refetch() {
-        
+
         // 저금통 이름 바꿨을 때
         self.bottleTitleLabel.text = self.viewModel.bottle?.title
         
@@ -151,6 +162,12 @@ final class HomeViewController: UIViewController {
         
         // 최초에 만들었을 때
         // 캐릭터 교체, 라벨 추가
+        hideLabelIfNeeded()
+        initializeLabel()
+    }
+    
+    /// 백그라운드에서 포어그라운드로 돌아왔을 때 실행되는 메서드
+    @objc private func updateWhenEnterForeground() {
         hideLabelIfNeeded()
         initializeLabel()
     }
@@ -283,27 +300,6 @@ final class HomeViewController: UIViewController {
             // 오늘이 개봉 날일 때
             if self.viewModel.isTodayEndDate {
                 self.bottleDdayLabel.textColor = .customWarningLabel
-                return
-            }
-            
-            // 이미 개봉날이 지났을 때
-            if self.viewModel.isEndDatePassed {
-                let openDatePassedLabel = UILabel().then {
-                    $0.text = StringLiteral.openDatePassedMessage
-                    $0.font = .systemFont(ofSize: FontSize.openDatePassedLabelFont)
-                    $0.textColor = .customWarningLabel
-                    $0.translatesAutoresizingMaskIntoConstraints = false
-                }
-                self.view.addSubview(openDatePassedLabel)
-                NSLayoutConstraint.activate([
-                    openDatePassedLabel.centerYAnchor.constraint(
-                        equalTo: self.bottleDdayLabel.centerYAnchor
-                    ),
-                    openDatePassedLabel.leadingAnchor.constraint(
-                        equalTo: self.bottleDdayLabel.trailingAnchor,
-                        constant: Metric.openDatePassedLabelLeadingPadding
-                    )
-                ])
                 return
             }
         } else {
