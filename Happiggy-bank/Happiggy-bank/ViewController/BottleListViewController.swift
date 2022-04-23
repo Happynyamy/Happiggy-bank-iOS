@@ -73,6 +73,7 @@ final class BottleListViewController: UIViewController {
     
     /// 내비게이션 바 속성 설정
     private func configureNavigationBar() {
+        self.navigationController?.navigationBar.clear()
         self.navigationController?.navigationBar.tintColor = UIColor(hex: Color.navigationBar)
         self.title = viewModel.bottleList.isEmpty ?
         StringLiteral.emptyListNavigationBarTitle :
