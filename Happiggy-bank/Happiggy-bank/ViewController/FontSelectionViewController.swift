@@ -25,11 +25,28 @@ final class FontSelectionViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     
+    // MARK: Properties
+    
+    /// UserDefaults.standard 를 호출하는 syntactic sugar
+    private let userdefaults = UserDefaults.standard
+    
+    /// 유저티폴트에서 유저가 설정한 폰트를 불러오는 키값
+    private let fontKey = UserDefaults.Key.font.rawValue
+    
+    /// 현재 커스텀 폰트
+    private var currentFont: CustomFont {
+        guard let rawValue = self.userdefaults.value(forKey: self.fontKey) as? Int
+        else { return .system }
+        
+        return CustomFont.init(rawValue: rawValue) ?? .system
+    }
+    
+    
     // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.registerCell()
         self.configureView()
     }
@@ -58,6 +75,7 @@ final class FontSelectionViewController: UIViewController {
     /// 뷰 초기 설정
     private func configureView() {
         self.tableView.layer.cornerRadius = Metric.tableViewCornerRadius
+        self.fontNameLabel.text = self.currentFont.displayName
     }
     
     /// 탭바 숨김 여부 토글
@@ -83,14 +101,22 @@ extension FontSelectionViewController: UITableViewDataSource {
             withIdentifier: FontSelectionCell.name,
             for: indexPath
         ) as? FontSelectionCell,
-              let customFont = CustomFont.init(rawValue: indexPath.row)
+              let currentCellFont = CustomFont(rawValue: indexPath.row)
         else { return FontSelectionCell() }
         
-        cell.fontNameLabel.attributedText = customFont.displayName.nsMutableAttributedStringify()
+        cell.fontNameLabel.attributedText = currentCellFont
+            .displayName
+            .nsMutableAttributedStringify()
         cell.fontNameLabel.font = UIFont(
-            name: customFont.regular,
+            name: currentCellFont.regular,
             size: cell.fontNameLabel.font.pointSize
         )
+        
+        guard self.userdefaults.value(forKey: self.fontKey) as? Int == indexPath.row
+        else { return cell }
+        
+        cell.fontNameLabel.boldAndColor()
+        cell.checkmarkImageView.isHidden = false
         
         return cell
     }
@@ -103,6 +129,30 @@ extension FontSelectionViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: false)
+        
+        guard let selectedfont = CustomFont(rawValue: indexPath.row),
+              selectedfont != self.currentFont
+        else { return }
+        
+        HapticManager.instance.selection()
+        self.updateFontAccordingToSelection(font: selectedfont, indexPath: indexPath)
+        self.updateExamplesAccordingToSelctedFont(selectedfont)
+        self.updateCellsAccordingToSelection(inTableView: tableView, selectedIndexPath: indexPath)
+    }
+    
+    /// 예시 라벨들 폰트 업데이트
+    private func updateExamplesAccordingToSelctedFont(_ font: CustomFont) {
+        self.fontNameLabel.text = font.displayName
+        self.fontNameLabel.changeFont(to: font.bold)
+        self.exampleLabel.changeFont(to: font.regular)
+        self.englishExampleLabel.changeFont(to: font.regular)
+    }
+    
+    /// 유저의 새로운 선택에 따라 테이블뷰 모습 업데이트
+    private func updateCellsAccordingToSelection(
+        inTableView tableview: UITableView,
+        selectedIndexPath indexPath: IndexPath
+    ) {
         for row in Int.zero..<tableView.numberOfRows(inSection: .zero) {
             let currentIndexPath = IndexPath(row: row, section: .zero)
             
@@ -118,8 +168,12 @@ extension FontSelectionViewController: UITableViewDelegate {
             }
             cell.fontNameLabel.boldAndColor()
         }
-        
-        HapticManager.instance.selection()
-        // TODO: change font
+    }
+    
+    /// 커스텀 폰트 변경
+    private func updateFontAccordingToSelection(font: CustomFont, indexPath: IndexPath) {
+        self.userdefaults.set(indexPath.row, forKey: self.fontKey)
+        UIFont.overrideSystemFont()
+        self.post(name: .customFontDidChange, object: font)
     }
 }

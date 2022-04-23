@@ -32,6 +32,7 @@ final class SettingsViewController: UIViewController {
         
         self.registerCells()
         self.configureNavigationBar()
+        self.observeCustomFontChange()
     }
     
     

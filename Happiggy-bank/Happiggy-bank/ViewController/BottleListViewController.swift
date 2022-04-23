@@ -34,11 +34,7 @@ final class BottleListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.observe(
-            selector: #selector(refetch),
-            name: .NSManagedObjectContextDidSave
-        )
-        
+        self.addObservers()
         configureNavigationBar()
         configureEmptyLabel()
         registerBottleCell()
@@ -105,6 +101,14 @@ final class BottleListViewController: UIViewController {
     
     
     // MARK: - Functions
+    
+    private func addObservers() {
+        self.observe(
+            selector: #selector(refetch),
+            name: .NSManagedObjectContextDidSave
+        )
+        self.observeCustomFontChange()
+    }
     
     /// 셀에 대한 레이아웃 설정하는 함수
     private func layoutCells() {

@@ -1245,3 +1245,13 @@ extension FontSelectionViewController {
         static let tableViewCornerRadius: CGFloat = 8
     }
 }
+
+extension CustomTabBarController {
+    
+    /// 폰트
+    enum Font {
+        
+        /// 탭바 아이템 폰트 사이즈: 10
+        static let tabBarItemSize = UIFont.smallSystemFontSize - 2
+    }
+}
