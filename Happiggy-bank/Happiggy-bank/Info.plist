@@ -4,6 +4,14 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Gaegu-Bold.ttf</string>
+		<string>Gaegu-Regular.ttf</string>
+		<string>GowunBatang-Bold.ttf</string>
+		<string>GowunBatang-Regular.ttf</string>
+		<string>IBMPlexSansKR-Bold.otf</string>
+		<string>IBMPlexSansKR-Regular.otf</string>
+		<string>Cafe24Ssurround.ttf</string>
+		<string>Cafe24SsurroundAir.ttf</string>
 		<string>dovemayo.otf</string>
 		<string>dovemayo_bold.otf</string>
 	</array>
