@@ -11,12 +11,12 @@ extension UILabel {
     
     /// 라벨 볼드 처리
     func bold(target: String? = nil) {
-        var fontFamilyName = self.font.familyName
-        fontFamilyName.removeAll { $0 == " " }
-        
-        guard let fullText = self.text,
+        let key = UserDefaults.Key.font.rawValue
+        guard let rawValue = UserDefaults.standard.value(forKey: key) as? Int,
+              let font = CustomFont(rawValue: rawValue),
+              let fullText = self.text,
               !fullText.isEmpty,
-              let bold = UIFont(name: "\(fontFamilyName)-Bold", size: self.font.pointSize)
+              let bold = UIFont(name: font.bold, size: self.font.pointSize)
         else { return }
         
     

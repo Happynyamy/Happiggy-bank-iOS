@@ -56,6 +56,14 @@
 		A46B10F62814458C004AB185 /* UILabel+ChangeOnlyFontFamily.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B10F52814458C004AB185 /* UILabel+ChangeOnlyFontFamily.swift */; };
 		A46B10FC28144D76004AB185 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B10FB28144D76004AB185 /* CustomTabBarController.swift */; };
 		A46B10FE281450F6004AB185 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B10FD281450F6004AB185 /* CustomNavigationController.swift */; };
+		A46B110528146157004AB185 /* Gaegu-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46B110328146157004AB185 /* Gaegu-Bold.ttf */; };
+		A46B110628146157004AB185 /* Gaegu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46B110428146157004AB185 /* Gaegu-Regular.ttf */; };
+		A46B110928146171004AB185 /* GowunBatang-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46B110728146171004AB185 /* GowunBatang-Bold.ttf */; };
+		A46B110A28146171004AB185 /* GowunBatang-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46B110828146171004AB185 /* GowunBatang-Regular.ttf */; };
+		A46B110D2814617B004AB185 /* IBMPlexSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A46B110B2814617B004AB185 /* IBMPlexSansKR-Regular.otf */; };
+		A46B110E2814617B004AB185 /* IBMPlexSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A46B110C2814617B004AB185 /* IBMPlexSansKR-Bold.otf */; };
+		A46B111128146188004AB185 /* Cafe24SsurroundAir.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46B111028146188004AB185 /* Cafe24SsurroundAir.ttf */; };
+		A46B11122814618C004AB185 /* Cafe24Ssurround.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46B110F28146181004AB185 /* Cafe24Ssurround.ttf */; };
 		A46BC1EF2800626A00C2E5B4 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46BC1EE2800626A00C2E5B4 /* TabItem.swift */; };
 		A48E183A27E71D9300B44477 /* UILabel+ParagraphStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E183927E71D9300B44477 /* UILabel+ParagraphStyle.swift */; };
 		A48E183C27E7379100B44477 /* CapsuleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E183B27E7379100B44477 /* CapsuleButton.swift */; };
@@ -181,6 +189,14 @@
 		A46B10F52814458C004AB185 /* UILabel+ChangeOnlyFontFamily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+ChangeOnlyFontFamily.swift"; sourceTree = "<group>"; };
 		A46B10FB28144D76004AB185 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		A46B10FD281450F6004AB185 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
+		A46B110328146157004AB185 /* Gaegu-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gaegu-Bold.ttf"; sourceTree = "<group>"; };
+		A46B110428146157004AB185 /* Gaegu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gaegu-Regular.ttf"; sourceTree = "<group>"; };
+		A46B110728146171004AB185 /* GowunBatang-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GowunBatang-Bold.ttf"; sourceTree = "<group>"; };
+		A46B110828146171004AB185 /* GowunBatang-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GowunBatang-Regular.ttf"; sourceTree = "<group>"; };
+		A46B110B2814617B004AB185 /* IBMPlexSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSansKR-Regular.otf"; sourceTree = "<group>"; };
+		A46B110C2814617B004AB185 /* IBMPlexSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSansKR-Bold.otf"; sourceTree = "<group>"; };
+		A46B110F28146181004AB185 /* Cafe24Ssurround.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24Ssurround.ttf; sourceTree = "<group>"; };
+		A46B111028146188004AB185 /* Cafe24SsurroundAir.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24SsurroundAir.ttf; sourceTree = "<group>"; };
 		A46BC1EE2800626A00C2E5B4 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		A48E183927E71D9300B44477 /* UILabel+ParagraphStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+ParagraphStyle.swift"; sourceTree = "<group>"; };
 		A48E183B27E7379100B44477 /* CapsuleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleButton.swift; sourceTree = "<group>"; };
@@ -305,6 +321,14 @@
 			children = (
 				A49B25F02812BF4100399630 /* dovemayo_bold.otf */,
 				A49B25EF2812BF4100399630 /* dovemayo.otf */,
+				A46B110328146157004AB185 /* Gaegu-Bold.ttf */,
+				A46B110428146157004AB185 /* Gaegu-Regular.ttf */,
+				A46B110728146171004AB185 /* GowunBatang-Bold.ttf */,
+				A46B110828146171004AB185 /* GowunBatang-Regular.ttf */,
+				A46B110C2814617B004AB185 /* IBMPlexSansKR-Bold.otf */,
+				A46B110B2814617B004AB185 /* IBMPlexSansKR-Regular.otf */,
+				A46B110F28146181004AB185 /* Cafe24Ssurround.ttf */,
+				A46B111028146188004AB185 /* Cafe24SsurroundAir.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -594,21 +618,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A46B110A28146171004AB185 /* GowunBatang-Regular.ttf in Resources */,
 				A49B25F12812BF6800399630 /* dovemayo_bold.otf in Resources */,
 				A8ECD4A527E30FF300886BC0 /* BottleCell.xib in Resources */,
+				A46B110D2814617B004AB185 /* IBMPlexSansKR-Regular.otf in Resources */,
 				A8FC07DD27B3EF030077A758 /* .swiftlint.yml in Resources */,
 				A467B5CA27DA289600AC702D /* NewNoteDatePickerRowView.xib in Resources */,
+				A46B111128146188004AB185 /* Cafe24SsurroundAir.ttf in Resources */,
 				A49B25EB2812B17C00399630 /* FontSelectionCell.xib in Resources */,
 				A8FC07D427B3ECF30077A758 /* LaunchScreen.storyboard in Resources */,
 				A48E183E27E737B600B44477 /* CapsuleButton.xib in Resources */,
 				A439F53E27EEFCF6002851F4 /* SettingsToggleButtonCell.xib in Resources */,
 				A49B25F22812BF6B00399630 /* dovemayo.otf in Resources */,
 				A466A3162801DF1400D655F4 /* SettingsLabelButtonCell.xib in Resources */,
+				A46B110E2814617B004AB185 /* IBMPlexSansKR-Bold.otf in Resources */,
+				A46B110628146157004AB185 /* Gaegu-Regular.ttf in Resources */,
 				A4569CD028128B4B001E3FD6 /* SettingsNonIconButtonCell.xib in Resources */,
+				A46B11122814618C004AB185 /* Cafe24Ssurround.ttf in Resources */,
+				A46B110528146157004AB185 /* Gaegu-Bold.ttf in Resources */,
 				A41DE62C27F36E95002A7669 /* NoteCell.xib in Resources */,
 				A8FC07D127B3ECF30077A758 /* Assets.xcassets in Resources */,
 				A8FC07CF27B3ECF00077A758 /* Main.storyboard in Resources */,
 				A4F5715227DB715100E7DF9B /* ColorButton.xib in Resources */,
+				A46B110928146171004AB185 /* GowunBatang-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
