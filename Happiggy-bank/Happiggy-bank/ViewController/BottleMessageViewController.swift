@@ -184,6 +184,7 @@ final class BottleMessageViewController: UIViewController {
     /// 저금통 상태를 업데이트하고 다른 뷰 컨트롤러로 이동
     private func saveBottleUpdates() -> Bool {
         self.bottle.isOpen.toggle()
+        removeAllNotifications()
         
         if self.bottle.notes.isEmpty {
             PersistenceStore.shared.delete(self.bottle)
@@ -214,5 +215,13 @@ final class BottleMessageViewController: UIViewController {
             self.dismiss(animated: false)
             self.fadeOut()
         }
+    }
+    
+    private func removeAllNotifications() {
+        let center = UNUserNotificationCenter.current()
+        
+        center.removeAllDeliveredNotifications()
+        center.removeAllPendingNotificationRequests()
+        UserDefaults.standard.set(false, forKey: StringLiteral.hasNotificationOn)
     }
 }

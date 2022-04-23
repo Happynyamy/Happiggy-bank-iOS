@@ -62,19 +62,28 @@ final class HomeViewModel {
     }
 
     func dDay() -> String {
+        var dDay: String = ""
         guard let endDate = bottle?.endDate
         else { return "" }
-        let prefix = "D-"
+        let prefix = "D"
         let startDate = Date()
         let daysCount = Calendar.current.dateComponents(
             [.day],
-            from: endDate,
+            from: Calendar.current.startOfDay(for: endDate),
             to: Calendar.current.startOfDay(for: startDate)
         )
         guard let days = daysCount.day
         else { return "" }
         
-        return days > 0 ? prefix + "\(days)" : prefix + "\(-1 * days)"
+        if days == 0 {
+            dDay = prefix + "-" + "\(days)"
+        } else if days > 0 {
+            dDay = prefix + "+" + "\(days)"
+        } else {
+            dDay = prefix + "\(days)"
+        }
+        
+        return dDay
     }
 
     
