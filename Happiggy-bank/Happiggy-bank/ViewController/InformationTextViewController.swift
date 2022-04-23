@@ -65,5 +65,6 @@ final class InformationTextViewController: UIViewController {
     /// 텍스트뷰 초기 설정
     private func configureTextView() {
         self.textView.attributedText = self.viewModel.attributedInformationString
+        self.textView.textColor = .label
     }
 }
