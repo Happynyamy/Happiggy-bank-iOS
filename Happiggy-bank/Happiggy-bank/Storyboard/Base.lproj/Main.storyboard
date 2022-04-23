@@ -842,7 +842,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="하루 한 번, 100자로 행복을 기록하세요:)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4S5-fe-Oby">
-                                <rect key="frame" x="24" y="208" width="286.5" height="21.5"/>
+                                <rect key="frame" x="24" y="208" width="327" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" name="placeholderTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -855,6 +855,7 @@
                             <constraint firstItem="4S5-fe-Oby" firstAttribute="top" secondItem="fvK-sf-BF4" secondAttribute="top" id="C94-VV-ivR"/>
                             <constraint firstItem="HX4-ny-KZ7" firstAttribute="bottom" secondItem="GeA-rS-UHc" secondAttribute="bottom" constant="-24" id="Cw3-em-GXv"/>
                             <constraint firstItem="fvK-sf-BF4" firstAttribute="leading" secondItem="Qg8-yI-fTV" secondAttribute="leading" constant="-5" id="FRT-hw-tFd"/>
+                            <constraint firstItem="4S5-fe-Oby" firstAttribute="trailing" secondItem="fvK-sf-BF4" secondAttribute="trailing" id="Fy6-eB-YdM"/>
                             <constraint firstItem="Rms-YT-wWN" firstAttribute="top" secondItem="1PQ-Bn-66w" secondAttribute="top" constant="44" id="Gyw-ql-9vl"/>
                             <constraint firstAttribute="trailing" secondItem="m3m-FL-apG" secondAttribute="trailing" id="Kxl-BE-f54"/>
                             <constraint firstItem="Rms-YT-wWN" firstAttribute="leading" secondItem="1PQ-Bn-66w" secondAttribute="leading" id="LBS-sy-BL8"/>
