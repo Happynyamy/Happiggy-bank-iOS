@@ -269,11 +269,6 @@ extension NewNoteDatePickerViewController: UIPickerViewDelegate {
         reusing view: UIView?
     ) -> UIView {
         
-        if self.showWarningLabel {
-            self.warningLabel.fadeOut()
-            self.showWarningLabel = false
-        }
-        
         let row = self.validatedRow(row)
         let noteData = self.viewModel.noteData[row]
         let rowView = view as? NewNoteDatePickerRowView ?? NewNoteDatePickerRowView()
@@ -308,6 +303,12 @@ extension NewNoteDatePickerViewController: UIPickerViewDelegate {
         }
         
         self.viewModel.selectedDate = noteData.date
+
+        guard self.showWarningLabel
+        else { return }
+        
+        self.warningLabel.fadeOut()
+        self.showWarningLabel = false
     }
     
     /// 0보다 작은 인덱스가 들어오면 0, 최대 개수보다 큰 값이 들어오면 마지막 인덱스로 바꿔주는 메서드
