@@ -76,6 +76,17 @@ final class FontSelectionViewController: UIViewController {
     private func configureView() {
         self.tableView.layer.cornerRadius = Metric.tableViewCornerRadius
         self.fontNameLabel.text = self.currentFont.displayName
+        self.configureParagraphStyle(forLabel: self.fontNameLabel)
+        self.configureParagraphStyle(forLabel: self.exampleLabel)
+        self.configureParagraphStyle(forLabel: self.englishExampleLabel)
+    }
+    
+    /// 라벨 자간 설정
+    private func configureParagraphStyle(forLabel label: UILabel) {
+        label.configureParagraphStyle(
+            lineSpacing: Metric.lineSpacing,
+            characterSpacing: Metric.characterSpacing
+        )
     }
     
     /// 탭바 숨김 여부 토글
