@@ -25,7 +25,7 @@ final class SettingsLabelButtonCell: SettingsViewCell {
     @IBOutlet weak var informationLabel: UILabel!
     
     /// 버튼 이미지 뷰
-    @IBOutlet weak var buttonImageView: UIImageView!
+    @IBOutlet weak var buttonImageView: UIView!
     
     
     // MARK: - Override Functions

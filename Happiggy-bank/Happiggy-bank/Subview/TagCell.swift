@@ -55,8 +55,10 @@ final class TagCell: UICollectionViewCell {
     /// 단어 라벨 오토레이아웃
     private func configureFirstWordLabelConstraints() {
         NSLayoutConstraint.activate([
-            self.firstWordLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            self.firstWordLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+            self.firstWordLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.firstWordLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            self.firstWordLabel.topAnchor.constraint(equalTo: self.topAnchor),
+            self.firstWordLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
 }

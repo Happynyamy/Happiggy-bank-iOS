@@ -257,7 +257,7 @@ extension BottleCell {
         static let cellWidth: CGFloat = ((screenWidth - 3 * 24) / 2)
         
         /// bottle cell 높이
-        static let cellHeight = cellWidth * cellSizeRatio
+        static let cellHeight = imageHeight + 50
         
         /// bottle image 높이 : 스크린 가로 길이에서 좌우 패딩값을 뺀 다음 지정한 비율을 곱해서 계산
         static let imageHeight = cellWidth * imageSizeRatio

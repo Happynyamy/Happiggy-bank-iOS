@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -32,38 +33,50 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cS6-1G-0kd">
-                        <rect key="frame" x="198" y="39" width="118" height="13"/>
+                        <rect key="frame" x="198" y="19" width="118" height="53"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bzh-pJ-Fgb">
-                                <rect key="frame" x="0.0" y="0.0" width="97" height="13"/>
+                                <rect key="frame" x="0.0" y="0.0" width="97" height="53"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="next" translatesAutoresizingMaskIntoConstraints="NO" id="PwL-Vq-YrU">
-                                <rect key="frame" x="105" y="0.0" width="13" height="13"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P8W-R0-J1F">
+                                <rect key="frame" x="105" y="0.0" width="13" height="53"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="next" translatesAutoresizingMaskIntoConstraints="NO" id="PwL-Vq-YrU">
+                                        <rect key="frame" x="0.0" y="20" width="13" height="13"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="13" id="OIh-xI-Obw"/>
+                                            <constraint firstAttribute="width" secondItem="PwL-Vq-YrU" secondAttribute="height" multiplier="1:1" id="Pcu-26-98v"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="13" id="OIh-xI-Obw"/>
-                                    <constraint firstAttribute="width" secondItem="PwL-Vq-YrU" secondAttribute="height" multiplier="1:1" id="Pcu-26-98v"/>
+                                    <constraint firstItem="PwL-Vq-YrU" firstAttribute="centerY" secondItem="P8W-R0-J1F" secondAttribute="centerY" id="L6Q-8B-duo"/>
+                                    <constraint firstItem="PwL-Vq-YrU" firstAttribute="centerX" secondItem="P8W-R0-J1F" secondAttribute="centerX" id="OCm-kP-g3C"/>
+                                    <constraint firstAttribute="width" constant="13" id="TXi-QF-PWl"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                         </subviews>
                     </stackView>
                 </subviews>
                 <gestureRecognizers/>
                 <constraints>
-                    <constraint firstItem="cS6-1G-0kd" firstAttribute="centerY" secondItem="vdb-Jd-HyA" secondAttribute="centerY" id="9q4-jD-SQu"/>
                     <constraint firstItem="vdb-Jd-HyA" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="C2R-Ma-QEg"/>
                     <constraint firstItem="vdb-Jd-HyA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="FDJ-a8-OqQ"/>
                     <constraint firstItem="iJr-bb-JcG" firstAttribute="leading" secondItem="vdb-Jd-HyA" secondAttribute="trailing" constant="16" id="Oe1-wU-1Oz"/>
                     <constraint firstItem="iJr-bb-JcG" firstAttribute="centerY" secondItem="vdb-Jd-HyA" secondAttribute="centerY" id="VuW-YM-LYs"/>
+                    <constraint firstItem="cS6-1G-0kd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="19" id="e1k-sd-lfq"/>
                     <constraint firstAttribute="trailing" secondItem="cS6-1G-0kd" secondAttribute="trailing" id="k5O-dA-GiN"/>
+                    <constraint firstAttribute="bottom" secondItem="cS6-1G-0kd" secondAttribute="bottom" constant="19" id="qdE-44-nsz"/>
                 </constraints>
             </tableViewCellContentView>
             <gestureRecognizers/>
             <connections>
-                <outlet property="buttonImageView" destination="PwL-Vq-YrU" id="BnR-Kw-J6V"/>
+                <outlet property="buttonImageView" destination="P8W-R0-J1F" id="f9X-M5-tPI"/>
                 <outlet property="buttonStack" destination="cS6-1G-0kd" id="YJD-zc-g4P"/>
                 <outlet property="iconImageView" destination="vdb-Jd-HyA" id="oSB-D9-8wk"/>
                 <outlet property="informationLabel" destination="Bzh-pJ-Fgb" id="zwH-Ck-IRr"/>
@@ -77,5 +90,8 @@
         <namedColor name="settingsIcon">
             <color red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
