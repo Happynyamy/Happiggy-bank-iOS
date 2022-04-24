@@ -184,7 +184,6 @@ extension FontSelectionViewController: UITableViewDelegate {
     /// 커스텀 폰트 변경
     private func updateFontAccordingToSelection(font: CustomFont, indexPath: IndexPath) {
         self.userdefaults.set(indexPath.row, forKey: self.fontKey)
-        UIFont.overrideSystemFont()
         self.post(name: .customFontDidChange, object: font)
     }
 }
