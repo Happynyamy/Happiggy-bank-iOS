@@ -16,11 +16,12 @@ final class CustomTabBarController: UITabBarController {
         super.viewDidLoad()
         
         self.configureTabBar()
-        self.observe(selector: #selector(customFontDidChange(_:)), name: .customFontDidChange)
+        self.observeCustomFontChange(selector: #selector(customFontDidChange(_:)))
     }
     
     // MARK: - @objc
     
+    /// 폰트 변경 시 호출되는 메서드
     @objc private func customFontDidChange(_ notification: NSNotification) {
         guard let font = notification.object as? CustomFont
         else { return }

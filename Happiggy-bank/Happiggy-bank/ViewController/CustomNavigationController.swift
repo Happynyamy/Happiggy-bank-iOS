@@ -15,7 +15,7 @@ final class CustomNavigationController: UINavigationController {
         super.viewDidLoad()
         
         self.configureNavigationBar()
-        self.observe(selector: #selector(customFontDidChange(_:)), name: .customFontDidChange)
+        self.observeCustomFontChange(selector: #selector(customFontDidChange(_:)))
     }
     
     
