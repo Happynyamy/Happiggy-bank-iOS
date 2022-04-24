@@ -3,6 +3,16 @@
     {
       "filename" : "Group 157.svg",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Group 157-2.svg",
+      "idiom" : "universal"
     }
   ],
   "info" : {
