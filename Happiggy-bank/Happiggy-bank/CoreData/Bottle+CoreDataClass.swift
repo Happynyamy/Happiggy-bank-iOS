@@ -138,11 +138,11 @@ public class Bottle: NSManagedObject {
     }
     
     /// 시작 날짜부터 끝 날짜까지의 텍스트 라벨
-    /// 2022.02.05 ~ 2022.02.05 형식
+    /// 22.02.05 ~ 22.02.05 형식
     var dateLabel: String {
-        self.startDate.customFormatted(type: .spaceAndDot)
+        self.startDate.customFormatted(type: .abbreviatedDot)
         + StringLiteral.center
         + (Calendar.current.date(byAdding: .day, value: -1, to: self.endDate) ?? endDate)
-            .customFormatted(type: .spaceAndDot)
+            .customFormatted(type: .abbreviatedDot)
     }
 }

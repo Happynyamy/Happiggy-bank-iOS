@@ -26,6 +26,8 @@ extension Date {
                 $0.dateFormat = "yyyy MM.dd"
             case .spaceAndDotWithDayOfWeek:
                 $0.dateFormat = "yyyy MM.dd  EEEEE"
+            case .abbreviatedDot:
+                $0.dateFormat = "yy.MM.dd"
             }
             $0.locale = Locale(identifier: krLocalIdentifier)
         }
@@ -41,8 +43,10 @@ extension Date {
     
     /// DateFormat 케이스에 맞게 날짜를 문자열로 변환해주는 메서드
     /// .spaceAndDot : 2022 02.05
+    /// .spaceAndDotWithDayOfWeek : 2022 02.05 금
     /// .letters : 2022년 2월 5일
     /// .dot : 2022.02.05
+    /// .abbreviatedDot : 22.02.05
     func customFormatted(type: DateFormat) -> String {
         Date.formatter(type: type).string(from: self)
     }
