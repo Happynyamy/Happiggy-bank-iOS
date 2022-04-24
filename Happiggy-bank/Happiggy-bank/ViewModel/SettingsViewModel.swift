@@ -11,7 +11,19 @@ import UIKit
 final class SettingsViewModel {
     
     typealias Content = SettingsViewController.Content
-
+    
+    // MARK: - Properties
+    
+    /// 현재 폰트
+    private var customFont: CustomFont {
+        let key = UserDefaults.Key.font.rawValue
+        guard let rawValue = UserDefaults.standard.value(forKey: key) as? Int,
+              let font = CustomFont(rawValue: rawValue)
+        else { return .system }
+        
+        return font
+    }
+    
     
     // MARK: - Functions
     
@@ -31,6 +43,10 @@ final class SettingsViewModel {
         
         if indexPath.row == Content.appVersion.rawValue {
             return text?.color(color: .customTint)
+        }
+        
+        if indexPath.row == Content.fontSelection.rawValue {
+            return self.customFont.displayName.nsMutableAttributedStringify()
         }
         
         return text

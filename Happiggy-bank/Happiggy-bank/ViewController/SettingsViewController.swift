@@ -32,7 +32,20 @@ final class SettingsViewController: UIViewController {
         
         self.registerCells()
         self.configureNavigationBar()
-        self.observeCustomFontChange()
+        self.observeCustomFontChange(selector: #selector(customFontDidChange(_:)))
+    }
+    
+    
+    // MARK: - @objc
+    
+    /// 커스텀 폰트 변화 시 변경 사항을 필요한 하위 뷰에 적용
+    @objc private func customFontDidChange(_ notification: Notification) {
+        
+        guard let customFont = notification.object as? CustomFont
+        else { return }
+        
+        self.updateAllFontUsingViews(customFont)
+        self.updateFontSelectionCellFontName(to: customFont)
     }
     
     
@@ -54,6 +67,15 @@ final class SettingsViewController: UIViewController {
     private func configureNavigationBar() {
         self.navigationItem.backButtonTitle = .empty
         self.navigationController?.navigationBar.clear()
+    }
+    
+    /// 폰트 변경 시 현재 폰트 이름으로 폰트 선택 셀의 정보 라벨 텍스트 업데이트
+    private func updateFontSelectionCellFontName(to customFont: CustomFont) {
+        let indexPath = IndexPath(row: Content.fontSelection.rawValue, section: .zero)
+        guard let cell = self.tableView.cellForRow(at: indexPath) as? SettingsLabelButtonCell
+        else { return }
+        
+        cell.informationLabel.text = customFont.displayName
     }
 }
 

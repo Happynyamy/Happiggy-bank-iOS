@@ -10,18 +10,17 @@ import UIKit
 extension UIViewController {
     
     /// 커스텀 폰트 설정이 변화하면 이를 옵저브하고, 변경사항을 적용
-    func observeCustomFontChange() {
+    /// 셀렉터를 별도로 설정하지 않으면 (폰트를 사용하는) 모든 하위 뷰의 폰트를 업데이트
+    func observeCustomFontChange(selector: Selector? = nil) {
+        let selector = (selector == nil) ? #selector(fontDidChange(_:)) : selector!
         self.observe(
-            selector: #selector(customFontDidChange(_:)),
+            selector: selector,
             name: .customFontDidChange
         )
     }
     
-    /// 커스텀 폰트 변화 시 변경 사항을 필요한 하위 뷰에 적용
-    @objc private func customFontDidChange(_ notification: Notification) {
-        
-        guard let customFont = notification.object as? CustomFont
-        else { return }
+    /// 폰트를 사용하는 모든 하위뷰의 폰트를 업데이트
+    func updateAllFontUsingViews(_ customFont: CustomFont) {
         
         self.view.allFontUsingSubviews.forEach {
             
@@ -42,5 +41,14 @@ extension UIViewController {
                 textView.font = UIFont(name: name, size: size)
             }
         }
+    }
+    
+    /// 커스텀 폰트 변화 시 변경 사항을 필요한 하위 뷰에 적용
+    @objc private func fontDidChange(_ notification: Notification) {
+        
+        guard let customFont = notification.object as? CustomFont
+        else { return }
+        
+        self.updateAllFontUsingViews(customFont)
     }
 }
