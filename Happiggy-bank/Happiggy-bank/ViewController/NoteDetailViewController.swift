@@ -175,7 +175,8 @@ extension NoteDetailViewController: UICollectionViewDataSource {
         cell.monthAndDayLabel.attributedText = self.viewModel.attributedMonthAndDayString(
             forNote: note
         )
-        cell.contentLabel.text = note.content
+        cell.contentTextView.text = note.content
+        cell.contentTextView.textColor = .black
     }
 }
 
