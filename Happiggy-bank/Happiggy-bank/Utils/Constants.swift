@@ -8,6 +8,10 @@
 import UIKit
 
 // swiftlint:disable file_length
+
+/// 팀 메일 주소
+let teamMail = "happynyamy@gmail.com"
+
 extension HomeViewController {
     
     /// HomeViewController 에서  설정하는 layout 에 적용할 상수값들을 모아놓은 enum
@@ -326,7 +330,7 @@ extension PersistenceStore {
         /// 저장 오류 알림 내용
         static let saveErrorMessage = """
         디바이스의 저장 공간이 충분한지 확인해주세요.
-        같은 문제가 계속 발생하는 경우 happiggybank@gmail.com 으로 문의 부탁드립니다.
+        같은 문제가 계속 발생하는 경우 \(teamMail) 으로 문의 부탁드립니다.
         """
         
         /// 확인 버튼 제목: 확인
@@ -828,7 +832,7 @@ extension SettingsViewController {
     enum Mail {
         
         /// 수신인: 팀 이메일
-        static let recipients = ["happiggybank@gmail.com"]
+        static let recipients = [teamMail]
         
         /// 제목: [행복저금통]
         static let subject = "[행복저금통]"
@@ -1201,7 +1205,7 @@ extension ErrorViewController {
         /// 에러 안내 라벨 내용
         static let informationLabelText = """
 데이터 오류가 발생해 앱을 작동할 수 없습니다
-happiggybank@gmail.com으로 문의 부탁드립니다
+\(teamMail)으로 문의 부탁드립니다
 
 화면을 탭하면 앱이 종료됩니다
 """
@@ -1222,9 +1226,6 @@ extension CustomerServiceViewModel {
     
     /// 메일 앱 관련 문자열
     enum Mail {
-        
-        /// 팀 이메일
-        static let teamMail = "happiggybank@gmail.com"
         
         /// 제목: [행복저금통]
         static let subject = "[행복저금통]"
