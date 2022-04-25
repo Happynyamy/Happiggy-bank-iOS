@@ -4,6 +4,11 @@
 //  Created by CS193p Instructor.
 //  Copyright © 2017 Stanford University. All rights reserved.
 //
+//  Grid.swift from Happiggy is a derivative of
+//  Grid.swift by CS193p Instructor(Paul Hegarty), Stanford University,
+//  used under CC BY-NC-SA 4.0
+//  and is also licensed under CC BY-NC-SA 4.0 by Happiggy.
+//
 
 import UIKit
 
