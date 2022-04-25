@@ -19,12 +19,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene)
         else { return }
         
-        guard PersistenceStore.fatalErrorNeeded == false
+        guard let errorMessage = PersistenceStore.fatalErrorDescription
         else {
-            scene.windows.first?.rootViewController = ErrorViewController()
+            /// 정상적인 경우
+            PersistenceStore.shared.windowScene = scene
             return
         }
-        PersistenceStore.shared.windowScene = scene
+        /// 코어데이터 에러 발생
+        scene.windows.first?.rootViewController = ErrorViewController(errorMessage: errorMessage)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
