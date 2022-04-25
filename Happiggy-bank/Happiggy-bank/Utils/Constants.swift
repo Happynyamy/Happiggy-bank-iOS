@@ -1174,6 +1174,24 @@ let mainStoryboardName = "Main"
 
 extension ErrorViewController {
     
+    /// 상수
+    enum Metric {
+        
+        /// 상하좌우 패딩 (24, -24, 24, -24)
+        static let paddings = (
+            top: edgeInset,
+            bottom: -edgeInset,
+            leading: edgeInset,
+            trailing: -edgeInset
+        )
+        
+        /// 뷰 간 간격: 16
+        static let spacing: CGFloat = 24
+        
+        /// 패딩: 24
+        private static let edgeInset: CGFloat = 24
+    }
+    
     /// 문자열
     enum StringLiteral {
         

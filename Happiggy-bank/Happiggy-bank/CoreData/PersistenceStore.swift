@@ -20,7 +20,7 @@ class PersistenceStore {
         PersistenceStore(name: StringLiteral.sharedPersistenceStoreName)
     }()
     
-    static private(set) var fatalErrorNeeded = false
+    static private(set) var fatalErrorDescription: String?
     
     /// persistence container 의 viewContext 에 접근하기 위한 syntactic sugar
     private(set) lazy var context: NSManagedObjectContext = {
@@ -43,7 +43,10 @@ class PersistenceStore {
         self.persistentContainer = NSPersistentContainer(name: name).then {
             $0.loadPersistentStores { _, error in
                 if let error = error as NSError? {
-                    PersistenceStore.fatalErrorNeeded = true
+                    PersistenceStore.fatalErrorDescription = """
+                    \(error.localizedDescription)
+                    \(error.userInfo)
+                """
                     print(error.localizedDescription)
                     print(error.userInfo)
                 }
