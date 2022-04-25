@@ -70,7 +70,7 @@ final class CustomerServiceViewModel {
             
             let mailViewController = MFMailComposeViewController().then {
                 $0.mailComposeDelegate = delegate
-                $0.setToRecipients([Mail.teamMail])
+                $0.setToRecipients([teamMail])
                 $0.setSubject(Mail.subject)
                 $0.setMessageBody(Mail.body, isHTML: true)
             }
