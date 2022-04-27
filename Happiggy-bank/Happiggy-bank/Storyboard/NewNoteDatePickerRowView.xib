@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewNoteDatePickerRowView" customModule="Happiggy_bank" customModuleProvider="target">
+            <connections>
+                <outlet property="colorImageView" destination="2Na-qy-bRR" id="xM9-j6-RDT"/>
+                <outlet property="contentView" destination="o9o-o7-Wqy" id="keI-4O-Jib"/>
+                <outlet property="dateLabel" destination="zRP-AS-hlr" id="Zwt-Tr-SwH"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" id="o9o-o7-Wqy">
+            <rect key="frame" x="0.0" y="0.0" width="674" height="114"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="wUo-b4-lIX" userLabel="LeftSpacer">
+                    <rect key="frame" x="0.0" y="0.0" width="246" height="114"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VSR-Q9-hUf" userLabel="ImageViewContainer">
+                    <rect key="frame" x="254" y="0.0" width="114" height="114"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Na-qy-bRR">
+                            <rect key="frame" x="4" y="4" width="106" height="106"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="2Na-qy-bRR" secondAttribute="height" multiplier="1:1" id="rQi-Wb-UKh"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="2Na-qy-bRR" secondAttribute="bottom" constant="4" id="7zJ-0k-huD"/>
+                        <constraint firstItem="2Na-qy-bRR" firstAttribute="centerY" secondItem="VSR-Q9-hUf" secondAttribute="centerY" id="CVp-dM-Ffc"/>
+                        <constraint firstAttribute="trailing" secondItem="2Na-qy-bRR" secondAttribute="trailing" constant="4" id="J0q-BC-vHB"/>
+                        <constraint firstItem="2Na-qy-bRR" firstAttribute="leading" secondItem="VSR-Q9-hUf" secondAttribute="leading" constant="4" id="a4R-hP-Ln1"/>
+                        <constraint firstItem="2Na-qy-bRR" firstAttribute="top" secondItem="VSR-Q9-hUf" secondAttribute="top" constant="4" id="ii8-jk-Kk2"/>
+                        <constraint firstItem="2Na-qy-bRR" firstAttribute="centerX" secondItem="VSR-Q9-hUf" secondAttribute="centerX" id="kHR-0Y-RbJ"/>
+                        <constraint firstAttribute="width" secondItem="VSR-Q9-hUf" secondAttribute="height" multiplier="1:1" id="pU1-TU-kpa"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRP-AS-hlr">
+                    <rect key="frame" x="376" y="0.0" width="44" height="114"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Dar-gF-c7a" userLabel="RightSpacer">
+                    <rect key="frame" x="428" y="0.0" width="246" height="114"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="TyF-5E-c2X"/>
+            <constraints>
+                <constraint firstItem="Dar-gF-c7a" firstAttribute="width" secondItem="wUo-b4-lIX" secondAttribute="width" id="QkU-gf-RDR"/>
+            </constraints>
+            <point key="canvasLocation" x="343" y="-305"/>
+        </stackView>
+    </objects>
+</document>

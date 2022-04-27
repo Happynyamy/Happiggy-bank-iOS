@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ims-LU-p55" customClass="BottleCell" customModule="Happiggy_bank" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="165" height="356"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="RDl-tD-Dl3">
+                <rect key="frame" x="0.0" y="0.0" width="165" height="356"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sNN-DG-3fg">
+                        <rect key="frame" x="0.0" y="0.0" width="165" height="306"/>
+                        <color key="backgroundColor" name="homeBackground"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="sNN-DG-3fg" secondAttribute="height" multiplier="55:102" id="MUm-Fs-ZjR"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4Q-Up-evV">
+                        <rect key="frame" x="63.5" y="314" width="38" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ejb-DU-RBO">
+                        <rect key="frame" x="67" y="336" width="31" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="sNN-DG-3fg" secondAttribute="trailing" id="4Os-RL-ZqE"/>
+                    <constraint firstItem="sNN-DG-3fg" firstAttribute="top" secondItem="RDl-tD-Dl3" secondAttribute="top" id="IUS-QQ-w49"/>
+                    <constraint firstItem="T4Q-Up-evV" firstAttribute="top" secondItem="sNN-DG-3fg" secondAttribute="bottom" constant="8" id="Qv9-ps-GfI"/>
+                    <constraint firstItem="T4Q-Up-evV" firstAttribute="centerX" secondItem="RDl-tD-Dl3" secondAttribute="centerX" id="SDs-bc-gYL"/>
+                    <constraint firstItem="sNN-DG-3fg" firstAttribute="leading" secondItem="RDl-tD-Dl3" secondAttribute="leading" id="VTB-oH-GFJ"/>
+                    <constraint firstItem="Ejb-DU-RBO" firstAttribute="centerX" secondItem="RDl-tD-Dl3" secondAttribute="centerX" id="ZPm-AV-mPr"/>
+                    <constraint firstItem="Ejb-DU-RBO" firstAttribute="top" secondItem="T4Q-Up-evV" secondAttribute="bottom" constant="4" id="yhy-FP-odY"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <connections>
+                <outlet property="bottleDateLabel" destination="Ejb-DU-RBO" id="3Vw-5M-6cD"/>
+                <outlet property="bottleImage" destination="sNN-DG-3fg" id="Gfn-nZ-awf"/>
+                <outlet property="bottleTitleLabel" destination="T4Q-Up-evV" id="dR1-Mb-nBZ"/>
+            </connections>
+            <point key="canvasLocation" x="-270.28985507246381" y="85.714285714285708"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="homeBackground">
+            <color red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

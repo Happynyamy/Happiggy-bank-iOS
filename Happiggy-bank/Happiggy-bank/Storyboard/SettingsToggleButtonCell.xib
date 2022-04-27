@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsToggleButtonCell" rowHeight="126" id="KGk-i7-Jjw" customClass="SettingsToggleButtonCell" customModule="Happiggy_bank" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="378" height="126"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="378" height="126"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림 설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMc-Fr-qC0">
+                        <rect key="frame" x="34" y="53.5" width="60" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settingsBottleAlert" translatesAutoresizingMaskIntoConstraints="NO" id="65E-Ec-BPO">
+                        <rect key="frame" x="0.0" y="54" width="18" height="18"/>
+                        <color key="tintColor" name="settingsIcon"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="65E-Ec-BPO" secondAttribute="height" multiplier="1:1" id="UpG-8x-2aC"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="aMc-Fr-qC0" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="7ad-gB-mY9"/>
+                    <constraint firstItem="65E-Ec-BPO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="RJ2-55-pes"/>
+                    <constraint firstItem="aMc-Fr-qC0" firstAttribute="leading" secondItem="65E-Ec-BPO" secondAttribute="trailing" constant="16" id="YmW-2Y-jWT"/>
+                    <constraint firstItem="65E-Ec-BPO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="gEB-GF-hHS"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="titleLabel" destination="aMc-Fr-qC0" id="gfN-3x-1yv"/>
+            </connections>
+            <point key="canvasLocation" x="173.91304347826087" y="97.098214285714278"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="settingsBottleAlert" width="18" height="18"/>
+        <namedColor name="settingsIcon">
+            <color red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

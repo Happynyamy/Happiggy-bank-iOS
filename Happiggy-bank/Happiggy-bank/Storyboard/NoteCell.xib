@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="NoteCell" id="gTV-IL-0wX" customClass="NoteCell" customModule="Happiggy_bank" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="188" height="338"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="188" height="338"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RcI-Nk-MJp">
+                        <rect key="frame" x="0.0" y="0.0" width="188" height="338"/>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SOJ-J2-rKE" userLabel="Date Stack">
+                        <rect key="frame" x="24" y="24" width="40" height="36"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wo1-U4-YpJ">
+                                <rect key="frame" x="0.0" y="0.0" width="40" height="18"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TzU-aG-Tzc">
+                                <rect key="frame" x="0.0" y="18" width="40" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="hello" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69J-Pt-gIL">
+                        <rect key="frame" x="19" y="76" width="145" height="238"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="SOJ-J2-rKE" firstAttribute="leading" secondItem="RcI-Nk-MJp" secondAttribute="leading" constant="24" id="2Y2-mt-7XE"/>
+                <constraint firstItem="RcI-Nk-MJp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="5Ko-Mi-MUa"/>
+                <constraint firstItem="69J-Pt-gIL" firstAttribute="trailing" secondItem="RcI-Nk-MJp" secondAttribute="trailing" constant="-24" id="5OI-al-aVm"/>
+                <constraint firstAttribute="bottom" secondItem="RcI-Nk-MJp" secondAttribute="bottom" id="7Go-5F-cND"/>
+                <constraint firstAttribute="trailing" secondItem="RcI-Nk-MJp" secondAttribute="trailing" id="Fsl-YJ-3ZD"/>
+                <constraint firstItem="69J-Pt-gIL" firstAttribute="leading" secondItem="SOJ-J2-rKE" secondAttribute="leading" constant="-5" id="PgX-xN-pjU"/>
+                <constraint firstItem="69J-Pt-gIL" firstAttribute="top" secondItem="SOJ-J2-rKE" secondAttribute="bottom" constant="16" id="dVm-dJ-qkP"/>
+                <constraint firstItem="SOJ-J2-rKE" firstAttribute="top" secondItem="RcI-Nk-MJp" secondAttribute="top" constant="24" id="gwx-Hb-Dxn"/>
+                <constraint firstItem="69J-Pt-gIL" firstAttribute="bottom" secondItem="RcI-Nk-MJp" secondAttribute="bottom" constant="-24" id="rN8-Cl-ZbX"/>
+                <constraint firstItem="RcI-Nk-MJp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="yAv-Ad-3qy"/>
+            </constraints>
+            <size key="customSize" width="188" height="338"/>
+            <connections>
+                <outlet property="contentTextView" destination="69J-Pt-gIL" id="Xpb-Tv-gyd"/>
+                <outlet property="monthAndDayLabel" destination="TzU-aG-Tzc" id="7oB-xm-VOq"/>
+                <outlet property="noteImageView" destination="RcI-Nk-MJp" id="X3T-xP-cZl"/>
+                <outlet property="yearLabel" destination="Wo1-U4-YpJ" id="soq-Gc-6Iq"/>
+            </connections>
+            <point key="canvasLocation" x="166.66666666666669" y="101.78571428571428"/>
+        </collectionViewCell>
+    </objects>
+</document>

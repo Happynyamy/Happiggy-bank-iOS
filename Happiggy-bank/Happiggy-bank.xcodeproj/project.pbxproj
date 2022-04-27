@@ -7,29 +7,272 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D0983103E258E710197F000 /* Pods_Happiggy_bank.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F6015B01A2C2F80C2FC1BF /* Pods_Happiggy_bank.framework */; };
+		A41A506F27FF2B2E005381EF /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41A506E27FF2B2E005381EF /* CustomTabBar.swift */; };
+		A41DE62427F34ABB002A7669 /* UPCarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41DE62327F34ABB002A7669 /* UPCarouselFlowLayout.swift */; };
+		A41DE62627F36595002A7669 /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41DE62527F36595002A7669 /* NoteDetailViewController.swift */; };
+		A41DE62827F368BF002A7669 /* NoteDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41DE62727F368BF002A7669 /* NoteDetailViewModel.swift */; };
+		A41DE62B27F36E95002A7669 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41DE62927F36E95002A7669 /* NoteCell.swift */; };
+		A41DE62C27F36E95002A7669 /* NoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A41DE62A27F36E95002A7669 /* NoteCell.xib */; };
+		A41DE62E27F5F2C1002A7669 /* UIView+ZoomAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41DE62D27F5F2C1002A7669 /* UIView+ZoomAnimation.swift */; };
+		A41DE63227F80115002A7669 /* BottleMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41DE63127F80115002A7669 /* BottleMessageViewController.swift */; };
+		A425F8B627EDF4FB00A005AB /* TagViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A425F8B527EDF4FB00A005AB /* TagViewFlowLayout.swift */; };
+		A425F8B827EDF59A00A005AB /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A425F8B727EDF59A00A005AB /* TagCell.swift */; };
+		A439F53A27EEFC28002851F4 /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A439F53927EEFC27002851F4 /* SettingsViewCell.swift */; };
+		A439F53D27EEFCF6002851F4 /* SettingsToggleButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A439F53B27EEFCF6002851F4 /* SettingsToggleButtonCell.swift */; };
+		A439F53E27EEFCF6002851F4 /* SettingsToggleButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A439F53C27EEFCF6002851F4 /* SettingsToggleButtonCell.xib */; };
+		A439F54527EF0698002851F4 /* SettingsLabelButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A439F54327EF0698002851F4 /* SettingsLabelButtonCell.swift */; };
+		A44E901727D5EB130053AC57 /* Happiggy-bank.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A44E901527D5EB130053AC57 /* Happiggy-bank.xcdatamodeld */; };
+		A456657C27CC66FD007CF70A /* DefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A817430027C112D00016C921 /* DefaultButton.swift */; };
+		A456657E27CC77A9007CF70A /* Date+Formatted.swift in Sources */ = {isa = PBXBuildFile; fileRef = A456657D27CC77A9007CF70A /* Date+Formatted.swift */; };
+		A4569CB8280FB979001E3FD6 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CB7280FB979001E3FD6 /* Presenter.swift */; };
+		A4569CBA280FBA23001E3FD6 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CB9280FBA23001E3FD6 /* Result.swift */; };
+		A4569CBC2810455B001E3FD6 /* CustomerServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CBB2810455B001E3FD6 /* CustomerServiceViewController.swift */; };
+		A4569CBE28105052001E3FD6 /* CustomerServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CBD28105051001E3FD6 /* CustomerServiceViewModel.swift */; };
+		A4569CC0281118DE001E3FD6 /* InformationTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CBF281118DE001E3FD6 /* InformationTextViewController.swift */; };
+		A4569CC428111E1D001E3FD6 /* LicenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CC328111E1D001E3FD6 /* LicenseViewModel.swift */; };
+		A4569CC628111EFA001E3FD6 /* InformationTextViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CC528111EFA001E3FD6 /* InformationTextViewDataSource.swift */; };
+		A4569CC828112657001E3FD6 /* LicenseText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CC728112657001E3FD6 /* LicenseText.swift */; };
+		A4569CCA28113F0F001E3FD6 /* NSMutableAttributedString+Hyperlink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CC928113F0F001E3FD6 /* NSMutableAttributedString+Hyperlink.swift */; };
+		A4569CCC28119B41001E3FD6 /* UINavigationBar+Clear.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CCB28119B41001E3FD6 /* UINavigationBar+Clear.swift */; };
+		A4569CCF28128B4B001E3FD6 /* SettingsNonIconButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CCD28128B4B001E3FD6 /* SettingsNonIconButtonCell.swift */; };
+		A4569CD028128B4B001E3FD6 /* SettingsNonIconButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4569CCE28128B4B001E3FD6 /* SettingsNonIconButtonCell.xib */; };
+		A459003827E8D107003010A0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459003727E8D107003010A0 /* SettingsViewController.swift */; };
+		A459003A27E95D6B003010A0 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459003927E95D6B003010A0 /* Grid.swift */; };
+		A459003C27E9C5C9003010A0 /* CGSize+Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459003B27E9C5C9003010A0 /* CGSize+Area.swift */; };
+		A466A30C2801861100D655F4 /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A466A30B2801861000D655F4 /* ErrorViewController.swift */; };
+		A466A30E28018BBD00D655F4 /* UIVIewController+TopMostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A466A30D28018BBD00D655F4 /* UIVIewController+TopMostViewController.swift */; };
+		A466A31028018CD800D655F4 /* UIWindowScene+TopMostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A466A30F28018CD800D655F4 /* UIWindowScene+TopMostViewController.swift */; };
+		A466A3162801DF1400D655F4 /* SettingsLabelButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A466A3152801DF1400D655F4 /* SettingsLabelButtonCell.xib */; };
+		A466A3182801E99500D655F4 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A466A3172801E99500D655F4 /* SettingsViewModel.swift */; };
+		A466A31A2802987700D655F4 /* UIAlertAction+ConfirmAndCancel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A466A3192802987700D655F4 /* UIAlertAction+ConfirmAndCancel.swift */; };
+		A466A31C28029D7400D655F4 /* UIAlertController+BasicFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = A466A31B28029D7400D655F4 /* UIAlertController+BasicFormat.swift */; };
+		A467B5C827DA258700AC702D /* NewNoteDatePickerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467B5C727DA258700AC702D /* NewNoteDatePickerRowView.swift */; };
+		A467B5CA27DA289600AC702D /* NewNoteDatePickerRowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A467B5C927DA289500AC702D /* NewNoteDatePickerRowView.xib */; };
+		A46B10EC2813E73F004AB185 /* UserDefaults+Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B10EB2813E73F004AB185 /* UserDefaults+Keys.swift */; };
+		A46B10EE281429AC004AB185 /* UIFont+OverrideSystemFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B10ED281429AC004AB185 /* UIFont+OverrideSystemFont.swift */; };
+		A46B10F028142DB1004AB185 /* UIFont+Weight.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B10EF28142DB1004AB185 /* UIFont+Weight.swift */; };
+		A46B10F228142F26004AB185 /* UIViewController+ObserveCustomFontChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B10F128142F26004AB185 /* UIViewController+ObserveCustomFontChange.swift */; };
+		A46B10F42814362A004AB185 /* UIView+AllFontUsingSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B10F32814362A004AB185 /* UIView+AllFontUsingSubviews.swift */; };
+		A46B10F62814458C004AB185 /* UILabel+ChangeOnlyFontFamily.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B10F52814458C004AB185 /* UILabel+ChangeOnlyFontFamily.swift */; };
+		A46B10FC28144D76004AB185 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B10FB28144D76004AB185 /* CustomTabBarController.swift */; };
+		A46B10FE281450F6004AB185 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B10FD281450F6004AB185 /* CustomNavigationController.swift */; };
+		A46B110528146157004AB185 /* Gaegu-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46B110328146157004AB185 /* Gaegu-Bold.ttf */; };
+		A46B110628146157004AB185 /* Gaegu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46B110428146157004AB185 /* Gaegu-Regular.ttf */; };
+		A46B110928146171004AB185 /* GowunBatang-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46B110728146171004AB185 /* GowunBatang-Bold.ttf */; };
+		A46B110A28146171004AB185 /* GowunBatang-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46B110828146171004AB185 /* GowunBatang-Regular.ttf */; };
+		A46B110D2814617B004AB185 /* IBMPlexSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A46B110B2814617B004AB185 /* IBMPlexSansKR-Regular.otf */; };
+		A46B110E2814617B004AB185 /* IBMPlexSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A46B110C2814617B004AB185 /* IBMPlexSansKR-Bold.otf */; };
+		A46B111128146188004AB185 /* Cafe24SsurroundAir.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46B111028146188004AB185 /* Cafe24SsurroundAir.ttf */; };
+		A46B11122814618C004AB185 /* Cafe24Ssurround.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46B110F28146181004AB185 /* Cafe24Ssurround.ttf */; };
+		A46BC1EF2800626A00C2E5B4 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46BC1EE2800626A00C2E5B4 /* TabItem.swift */; };
+		A48E183A27E71D9300B44477 /* UILabel+ParagraphStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E183927E71D9300B44477 /* UILabel+ParagraphStyle.swift */; };
+		A48E183C27E7379100B44477 /* CapsuleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E183B27E7379100B44477 /* CapsuleButton.swift */; };
+		A48E183E27E737B600B44477 /* CapsuleButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = A48E183D27E737B600B44477 /* CapsuleButton.xib */; };
+		A490AC4E27DD945E00B04CE1 /* NoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A490AC4D27DD945E00B04CE1 /* NoteListViewController.swift */; };
+		A490AC5027DD9D2E00B04CE1 /* NoteListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A490AC4F27DD9D2E00B04CE1 /* NoteListViewModel.swift */; };
+		A491018527D6EDE90012DFDD /* PersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A491018427D6EDE90012DFDD /* PersistenceStore.swift */; };
+		A491018727D6F37C0012DFDD /* NSObject+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = A491018627D6F37C0012DFDD /* NSObject+Name.swift */; };
+		A491018D27D7358B0012DFDD /* Bottle+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A491018C27D7358B0012DFDD /* Bottle+CoreDataClass.swift */; };
+		A491018F27D735920012DFDD /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A491018E27D735920012DFDD /* Note+CoreDataClass.swift */; };
+		A499318127BF3A38009FF5A8 /* BottleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499318027BF3A38009FF5A8 /* BottleViewModel.swift */; };
+		A499318327BF5158009FF5A8 /* BottleNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499318227BF5158009FF5A8 /* BottleNoteView.swift */; };
+		A49931A527BFD20E009FF5A8 /* UIImage+AssetImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49931A427BFD20E009FF5A8 /* UIImage+AssetImages.swift */; };
+		A49B25E72812AC2800399630 /* FontSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B25E62812AC2800399630 /* FontSelectionViewController.swift */; };
+		A49B25EA2812B17C00399630 /* FontSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B25E82812B17B00399630 /* FontSelectionCell.swift */; };
+		A49B25EB2812B17C00399630 /* FontSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49B25E92812B17B00399630 /* FontSelectionCell.xib */; };
+		A49B25ED2812B5A400399630 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B25EC2812B5A400399630 /* CustomFont.swift */; };
+		A49B25F12812BF6800399630 /* dovemayo_bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A49B25F02812BF4100399630 /* dovemayo_bold.otf */; };
+		A49B25F22812BF6B00399630 /* dovemayo.otf in Resources */ = {isa = PBXBuildFile; fileRef = A49B25EF2812BF4100399630 /* dovemayo.otf */; };
+		A49B25F42812FFB400399630 /* UILabel+BoldAndColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B25F32812FFB400399630 /* UILabel+BoldAndColor.swift */; };
+		A4B285FD27D8A060008769EB /* Calendar+Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B285FC27D8A060008769EB /* Calendar+Duration.swift */; };
+		A4B2860527D9A546008769EB /* NewNoteDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2860427D9A546008769EB /* NewNoteDatePickerViewController.swift */; };
+		A4B2860927D9A56A008769EB /* NewNoteTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2860827D9A56A008769EB /* NewNoteTextViewController.swift */; };
+		A4B2860B27D9B434008769EB /* UIViewController+FadeOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2860A27D9B434008769EB /* UIViewController+FadeOut.swift */; };
+		A4B2860F27D9F539008769EB /* NewNoteDatePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2860E27D9F539008769EB /* NewNoteDatePickerViewModel.swift */; };
+		A4C1AFC027E477180096CD3E /* NSMutableAttributedString+ColorBold.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1AFBF27E477180096CD3E /* NSMutableAttributedString+ColorBold.swift */; };
+		A4C1AFC227E47AD80096CD3E /* String+EmptyString.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1AFC127E47AD80096CD3E /* String+EmptyString.swift */; };
+		A4C1AFC427E47DC50096CD3E /* String+NSMutableAttributedStringify.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1AFC327E47DC50096CD3E /* String+NSMutableAttributedStringify.swift */; };
+		A4C1AFC627E482E10096CD3E /* CGFloat+Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1AFC527E482E10096CD3E /* CGFloat+Values.swift */; };
+		A4C1AFCE27E4F8150096CD3E /* UIView+FadeInOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1AFCD27E4F8150096CD3E /* UIView+FadeInOut.swift */; };
+		A4C1AFD227E5C60E0096CD3E /* NewNoteTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1AFD127E5C60E0096CD3E /* NewNoteTextViewModel.swift */; };
+		A4C1AFD427E5E6120096CD3E /* UITextView+ParagraphStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1AFD327E5E6120096CD3E /* UITextView+ParagraphStyle.swift */; };
+		A4CF2C7C27C71FF5001B01B1 /* CATransition+PopupAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C7B27C71FF5001B01B1 /* CATransition+PopupAnimation.swift */; };
+		A4CF2C8027C733FE001B01B1 /* ColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C7F27C733FE001B01B1 /* ColorButton.swift */; };
+		A4CF2C8227C73B42001B01B1 /* UIColor+AssetColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C8127C73B42001B01B1 /* UIColor+AssetColors.swift */; };
+		A4CF2C8E27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C8D27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift */; };
+		A4CF2C9027CBA66F001B01B1 /* NSNotificaion.Name+CustomNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C8F27CBA66F001B01B1 /* NSNotificaion.Name+CustomNotifications.swift */; };
+		A4F5714727DA467900E7DF9B /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F5714627DA467900E7DF9B /* DateFormat.swift */; };
+		A4F5714927DA589100E7DF9B /* NoteDatePickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F5714827DA589100E7DF9B /* NoteDatePickerData.swift */; };
+		A4F5715227DB715100E7DF9B /* ColorButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F5715127DB715100E7DF9B /* ColorButton.xib */; };
+		A4F5715427DB8B6500E7DF9B /* NewNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F5715327DB8B6400E7DF9B /* NewNote.swift */; };
+		A4F5715827DC459B00E7DF9B /* NoteColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F5715727DC459B00E7DF9B /* NoteColor.swift */; };
+		A81742FF27C108DC0016C921 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81742FE27C108DC0016C921 /* HomeViewModel.swift */; };
+		A819CF9F27DDD97C00DE8E72 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A819CF9E27DDD97C00DE8E72 /* HapticManager.swift */; };
+		A819CFA127DE034F00DE8E72 /* NewBottle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A819CFA027DE034F00DE8E72 /* NewBottle.swift */; };
+		A824A0B027CE72C000B99E9A /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = A824A0AF27CE72C000B99E9A /* Then */; };
+		A843331F27DA013800A12A54 /* NewBottleNameFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A843331E27DA013800A12A54 /* NewBottleNameFieldViewController.swift */; };
+		A843332127DA026D00A12A54 /* NewBottleDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A843332027DA026D00A12A54 /* NewBottleDatePickerViewController.swift */; };
+		A843332427DA397800A12A54 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A843332327DA397800A12A54 /* DataProvider.swift */; };
+		A8509E6E27C89A1200855153 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509E6D27C89A1200855153 /* UIColor+Extension.swift */; };
+		A89CBEDB27CBDD99005549F6 /* BottleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89CBEDA27CBDD99005549F6 /* BottleCell.swift */; };
+		A89CBEDD27CBDEA2005549F6 /* BottleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89CBEDC27CBDEA2005549F6 /* BottleListViewController.swift */; };
+		A8BD833327BE104900E0DE41 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833227BE104900E0DE41 /* HomeViewController.swift */; };
+		A8BD833527BE106C00E0DE41 /* BottleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833427BE106C00E0DE41 /* BottleViewController.swift */; };
+		A8BD833F27BE30B400E0DE41 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833E27BE30B400E0DE41 /* Constants.swift */; };
+		A8BD834727BE337900E0DE41 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD834627BE337900E0DE41 /* HomeView.swift */; };
+		A8BD834D27BE39D600E0DE41 /* NoteProgressLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD834C27BE39D600E0DE41 /* NoteProgressLabel.swift */; };
+		A8EB5E8B27C8B087005704F2 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EB5E8A27C8B087005704F2 /* UIButton+Extension.swift */; };
+		A8ECD4A527E30FF300886BC0 /* BottleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8ECD4A427E30FF300886BC0 /* BottleCell.xib */; };
+		A8ECD4A727E33BFA00886BC0 /* BottleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ECD4A627E33BFA00886BC0 /* BottleListViewModel.swift */; };
 		A8FC07C827B3ECF00077A758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC07C727B3ECF00077A758 /* AppDelegate.swift */; };
 		A8FC07CA27B3ECF00077A758 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC07C927B3ECF00077A758 /* SceneDelegate.swift */; };
-		A8FC07CC27B3ECF00077A758 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC07CB27B3ECF00077A758 /* ViewController.swift */; };
 		A8FC07CF27B3ECF00077A758 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8FC07CD27B3ECF00077A758 /* Main.storyboard */; };
 		A8FC07D127B3ECF30077A758 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8FC07D027B3ECF30077A758 /* Assets.xcassets */; };
 		A8FC07D427B3ECF30077A758 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8FC07D227B3ECF30077A758 /* LaunchScreen.storyboard */; };
 		A8FC07DD27B3EF030077A758 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A8FC07DC27B3EF030077A758 /* .swiftlint.yml */; };
+		D22ADF6327F5CE8F00ECB77B /* NotificationSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22ADF6227F5CE8F00ECB77B /* NotificationSettingViewController.swift */; };
+		D22ADF7F27F72F7300ECB77B /* NotificationSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22ADF7E27F72F7300ECB77B /* NotificationSettingViewModel.swift */; };
+		D236DB8627FDC43200D7B8F0 /* NewBottleDatePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D236DB8527FDC43200D7B8F0 /* NewBottleDatePickerViewModel.swift */; };
+		D236DB8827FDD66900D7B8F0 /* NewBottleMessageFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D236DB8727FDD66900D7B8F0 /* NewBottleMessageFieldViewController.swift */; };
+		D284A5DE27FF3EFB00D20699 /* BottleNameEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D284A5DD27FF3EFB00D20699 /* BottleNameEditViewController.swift */; };
+		D2AB663E27FFFCF50003AC8C /* UpdateSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB663D27FFFCF50003AC8C /* UpdateSender.swift */; };
+		D2C48BFF27E9D60A006FC59E /* Gravity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C48BFE27E9D60A006FC59E /* Gravity.swift */; };
+		D2C48C0127E9DFA1006FC59E /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C48C0027E9DFA1006FC59E /* NoteView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A41A506E27FF2B2E005381EF /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		A41DE62327F34ABB002A7669 /* UPCarouselFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UPCarouselFlowLayout.swift; sourceTree = "<group>"; };
+		A41DE62527F36595002A7669 /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
+		A41DE62727F368BF002A7669 /* NoteDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewModel.swift; sourceTree = "<group>"; };
+		A41DE62927F36E95002A7669 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
+		A41DE62A27F36E95002A7669 /* NoteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteCell.xib; sourceTree = "<group>"; };
+		A41DE62D27F5F2C1002A7669 /* UIView+ZoomAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ZoomAnimation.swift"; sourceTree = "<group>"; };
+		A41DE63127F80115002A7669 /* BottleMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleMessageViewController.swift; sourceTree = "<group>"; };
+		A425F8B527EDF4FB00A005AB /* TagViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewFlowLayout.swift; sourceTree = "<group>"; };
+		A425F8B727EDF59A00A005AB /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
+		A439F53927EEFC27002851F4 /* SettingsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
+		A439F53B27EEFCF6002851F4 /* SettingsToggleButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsToggleButtonCell.swift; sourceTree = "<group>"; };
+		A439F53C27EEFCF6002851F4 /* SettingsToggleButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsToggleButtonCell.xib; sourceTree = "<group>"; };
+		A439F54327EF0698002851F4 /* SettingsLabelButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLabelButtonCell.swift; sourceTree = "<group>"; };
+		A44E901627D5EB130053AC57 /* Happigy-bank.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Happigy-bank.xcdatamodel"; sourceTree = "<group>"; };
+		A456657D27CC77A9007CF70A /* Date+Formatted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatted.swift"; sourceTree = "<group>"; };
+		A4569CB7280FB979001E3FD6 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		A4569CB9280FBA23001E3FD6 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		A4569CBB2810455B001E3FD6 /* CustomerServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerServiceViewController.swift; sourceTree = "<group>"; };
+		A4569CBD28105051001E3FD6 /* CustomerServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerServiceViewModel.swift; sourceTree = "<group>"; };
+		A4569CBF281118DE001E3FD6 /* InformationTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationTextViewController.swift; sourceTree = "<group>"; };
+		A4569CC328111E1D001E3FD6 /* LicenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewModel.swift; sourceTree = "<group>"; };
+		A4569CC528111EFA001E3FD6 /* InformationTextViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationTextViewDataSource.swift; sourceTree = "<group>"; };
+		A4569CC728112657001E3FD6 /* LicenseText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseText.swift; sourceTree = "<group>"; };
+		A4569CC928113F0F001E3FD6 /* NSMutableAttributedString+Hyperlink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Hyperlink.swift"; sourceTree = "<group>"; };
+		A4569CCB28119B41001E3FD6 /* UINavigationBar+Clear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Clear.swift"; sourceTree = "<group>"; };
+		A4569CCD28128B4B001E3FD6 /* SettingsNonIconButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNonIconButtonCell.swift; sourceTree = "<group>"; };
+		A4569CCE28128B4B001E3FD6 /* SettingsNonIconButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsNonIconButtonCell.xib; sourceTree = "<group>"; };
+		A459003727E8D107003010A0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A459003927E95D6B003010A0 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		A459003B27E9C5C9003010A0 /* CGSize+Area.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Area.swift"; sourceTree = "<group>"; };
+		A466A30B2801861000D655F4 /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
+		A466A30D28018BBD00D655F4 /* UIVIewController+TopMostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+TopMostViewController.swift"; sourceTree = "<group>"; };
+		A466A30F28018CD800D655F4 /* UIWindowScene+TopMostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindowScene+TopMostViewController.swift"; sourceTree = "<group>"; };
+		A466A3152801DF1400D655F4 /* SettingsLabelButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsLabelButtonCell.xib; sourceTree = "<group>"; };
+		A466A3172801E99500D655F4 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		A466A3192802987700D655F4 /* UIAlertAction+ConfirmAndCancel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+ConfirmAndCancel.swift"; sourceTree = "<group>"; };
+		A466A31B28029D7400D655F4 /* UIAlertController+BasicFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+BasicFormat.swift"; sourceTree = "<group>"; };
+		A467B5C727DA258700AC702D /* NewNoteDatePickerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteDatePickerRowView.swift; sourceTree = "<group>"; };
+		A467B5C927DA289500AC702D /* NewNoteDatePickerRowView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewNoteDatePickerRowView.xib; sourceTree = "<group>"; };
+		A46B10EB2813E73F004AB185 /* UserDefaults+Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Keys.swift"; sourceTree = "<group>"; };
+		A46B10ED281429AC004AB185 /* UIFont+OverrideSystemFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+OverrideSystemFont.swift"; sourceTree = "<group>"; };
+		A46B10EF28142DB1004AB185 /* UIFont+Weight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Weight.swift"; sourceTree = "<group>"; };
+		A46B10F128142F26004AB185 /* UIViewController+ObserveCustomFontChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ObserveCustomFontChange.swift"; sourceTree = "<group>"; };
+		A46B10F32814362A004AB185 /* UIView+AllFontUsingSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AllFontUsingSubviews.swift"; sourceTree = "<group>"; };
+		A46B10F52814458C004AB185 /* UILabel+ChangeOnlyFontFamily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+ChangeOnlyFontFamily.swift"; sourceTree = "<group>"; };
+		A46B10FB28144D76004AB185 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		A46B10FD281450F6004AB185 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
+		A46B110328146157004AB185 /* Gaegu-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gaegu-Bold.ttf"; sourceTree = "<group>"; };
+		A46B110428146157004AB185 /* Gaegu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gaegu-Regular.ttf"; sourceTree = "<group>"; };
+		A46B110728146171004AB185 /* GowunBatang-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GowunBatang-Bold.ttf"; sourceTree = "<group>"; };
+		A46B110828146171004AB185 /* GowunBatang-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GowunBatang-Regular.ttf"; sourceTree = "<group>"; };
+		A46B110B2814617B004AB185 /* IBMPlexSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSansKR-Regular.otf"; sourceTree = "<group>"; };
+		A46B110C2814617B004AB185 /* IBMPlexSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSansKR-Bold.otf"; sourceTree = "<group>"; };
+		A46B110F28146181004AB185 /* Cafe24Ssurround.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24Ssurround.ttf; sourceTree = "<group>"; };
+		A46B111028146188004AB185 /* Cafe24SsurroundAir.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24SsurroundAir.ttf; sourceTree = "<group>"; };
+		A46BC1EE2800626A00C2E5B4 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
+		A48E183927E71D9300B44477 /* UILabel+ParagraphStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+ParagraphStyle.swift"; sourceTree = "<group>"; };
+		A48E183B27E7379100B44477 /* CapsuleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleButton.swift; sourceTree = "<group>"; };
+		A48E183D27E737B600B44477 /* CapsuleButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CapsuleButton.xib; sourceTree = "<group>"; };
+		A490AC4D27DD945E00B04CE1 /* NoteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewController.swift; sourceTree = "<group>"; };
+		A490AC4F27DD9D2E00B04CE1 /* NoteListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewModel.swift; sourceTree = "<group>"; };
+		A491018427D6EDE90012DFDD /* PersistenceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceStore.swift; sourceTree = "<group>"; };
+		A491018627D6F37C0012DFDD /* NSObject+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Name.swift"; sourceTree = "<group>"; };
+		A491018C27D7358B0012DFDD /* Bottle+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bottle+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A491018E27D735920012DFDD /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A499318027BF3A38009FF5A8 /* BottleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleViewModel.swift; sourceTree = "<group>"; };
+		A499318227BF5158009FF5A8 /* BottleNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleNoteView.swift; sourceTree = "<group>"; };
+		A49931A427BFD20E009FF5A8 /* UIImage+AssetImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AssetImages.swift"; sourceTree = "<group>"; };
+		A49B25E62812AC2800399630 /* FontSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSelectionViewController.swift; sourceTree = "<group>"; };
+		A49B25E82812B17B00399630 /* FontSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSelectionCell.swift; sourceTree = "<group>"; };
+		A49B25E92812B17B00399630 /* FontSelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FontSelectionCell.xib; sourceTree = "<group>"; };
+		A49B25EC2812B5A400399630 /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
+		A49B25EF2812BF4100399630 /* dovemayo.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dovemayo.otf; sourceTree = "<group>"; };
+		A49B25F02812BF4100399630 /* dovemayo_bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dovemayo_bold.otf; sourceTree = "<group>"; };
+		A49B25F32812FFB400399630 /* UILabel+BoldAndColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+BoldAndColor.swift"; sourceTree = "<group>"; };
+		A4B285FC27D8A060008769EB /* Calendar+Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Duration.swift"; sourceTree = "<group>"; };
+		A4B2860427D9A546008769EB /* NewNoteDatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteDatePickerViewController.swift; sourceTree = "<group>"; };
+		A4B2860827D9A56A008769EB /* NewNoteTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteTextViewController.swift; sourceTree = "<group>"; };
+		A4B2860A27D9B434008769EB /* UIViewController+FadeOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+FadeOut.swift"; sourceTree = "<group>"; };
+		A4B2860E27D9F539008769EB /* NewNoteDatePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteDatePickerViewModel.swift; sourceTree = "<group>"; };
+		A4C1AFBF27E477180096CD3E /* NSMutableAttributedString+ColorBold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+ColorBold.swift"; sourceTree = "<group>"; };
+		A4C1AFC127E47AD80096CD3E /* String+EmptyString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+EmptyString.swift"; sourceTree = "<group>"; };
+		A4C1AFC327E47DC50096CD3E /* String+NSMutableAttributedStringify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+NSMutableAttributedStringify.swift"; sourceTree = "<group>"; };
+		A4C1AFC527E482E10096CD3E /* CGFloat+Values.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Values.swift"; sourceTree = "<group>"; };
+		A4C1AFCD27E4F8150096CD3E /* UIView+FadeInOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+FadeInOut.swift"; sourceTree = "<group>"; };
+		A4C1AFD127E5C60E0096CD3E /* NewNoteTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteTextViewModel.swift; sourceTree = "<group>"; };
+		A4C1AFD327E5E6120096CD3E /* UITextView+ParagraphStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+ParagraphStyle.swift"; sourceTree = "<group>"; };
+		A4CF2C7B27C71FF5001B01B1 /* CATransition+PopupAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CATransition+PopupAnimation.swift"; sourceTree = "<group>"; };
+		A4CF2C7F27C733FE001B01B1 /* ColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorButton.swift; path = "Happiggy-bank/Button/ColorButton.swift"; sourceTree = SOURCE_ROOT; };
+		A4CF2C8127C73B42001B01B1 /* UIColor+AssetColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AssetColors.swift"; sourceTree = "<group>"; };
+		A4CF2C8D27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NotificationCenter.swift"; sourceTree = "<group>"; };
+		A4CF2C8F27CBA66F001B01B1 /* NSNotificaion.Name+CustomNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotificaion.Name+CustomNotifications.swift"; sourceTree = "<group>"; };
+		A4F5714627DA467900E7DF9B /* DateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
+		A4F5714827DA589100E7DF9B /* NoteDatePickerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDatePickerData.swift; sourceTree = "<group>"; };
+		A4F5715127DB715100E7DF9B /* ColorButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorButton.xib; sourceTree = "<group>"; };
+		A4F5715327DB8B6400E7DF9B /* NewNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNote.swift; sourceTree = "<group>"; };
+		A4F5715727DC459B00E7DF9B /* NoteColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteColor.swift; sourceTree = "<group>"; };
+		A81742FE27C108DC0016C921 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		A817430027C112D00016C921 /* DefaultButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButton.swift; sourceTree = "<group>"; };
+		A819CF9E27DDD97C00DE8E72 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		A819CFA027DE034F00DE8E72 /* NewBottle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBottle.swift; sourceTree = "<group>"; };
+		A843331E27DA013800A12A54 /* NewBottleNameFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBottleNameFieldViewController.swift; sourceTree = "<group>"; };
+		A843332027DA026D00A12A54 /* NewBottleDatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBottleDatePickerViewController.swift; sourceTree = "<group>"; };
+		A843332327DA397800A12A54 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		A8509E6D27C89A1200855153 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		A89CBEDA27CBDD99005549F6 /* BottleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleCell.swift; sourceTree = "<group>"; };
+		A89CBEDC27CBDEA2005549F6 /* BottleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleListViewController.swift; sourceTree = "<group>"; };
+		A8BD833227BE104900E0DE41 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A8BD833427BE106C00E0DE41 /* BottleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleViewController.swift; sourceTree = "<group>"; };
+		A8BD833E27BE30B400E0DE41 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A8BD834627BE337900E0DE41 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A8BD834C27BE39D600E0DE41 /* NoteProgressLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteProgressLabel.swift; sourceTree = "<group>"; };
+		A8EB5E8A27C8B087005704F2 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		A8ECD4A427E30FF300886BC0 /* BottleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottleCell.xib; sourceTree = "<group>"; };
+		A8ECD4A627E33BFA00886BC0 /* BottleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleListViewModel.swift; sourceTree = "<group>"; };
 		A8FC07C427B3ECF00077A758 /* Happiggy-bank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Happiggy-bank.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8FC07C727B3ECF00077A758 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8FC07C927B3ECF00077A758 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A8FC07CB27B3ECF00077A758 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A8FC07CE27B3ECF00077A758 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A8FC07D027B3ECF30077A758 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A8FC07D327B3ECF30077A758 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A8FC07D527B3ECF30077A758 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8FC07DC27B3EF030077A758 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		C7DBD2C99F03550C49E38BE1 /* Pods-Happiggy-bank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Happiggy-bank.debug.xcconfig"; path = "Target Support Files/Pods-Happiggy-bank/Pods-Happiggy-bank.debug.xcconfig"; sourceTree = "<group>"; };
-		D1A4E4DCD14426EB1FE4D636 /* Pods-Happiggy-bank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Happiggy-bank.release.xcconfig"; path = "Target Support Files/Pods-Happiggy-bank/Pods-Happiggy-bank.release.xcconfig"; sourceTree = "<group>"; };
-		F1F6015B01A2C2F80C2FC1BF /* Pods_Happiggy_bank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Happiggy_bank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D22ADF6227F5CE8F00ECB77B /* NotificationSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingViewController.swift; sourceTree = "<group>"; };
+		D22ADF7E27F72F7300ECB77B /* NotificationSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingViewModel.swift; sourceTree = "<group>"; };
+		D236DB8527FDC43200D7B8F0 /* NewBottleDatePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBottleDatePickerViewModel.swift; sourceTree = "<group>"; };
+		D236DB8727FDD66900D7B8F0 /* NewBottleMessageFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBottleMessageFieldViewController.swift; sourceTree = "<group>"; };
+		D284A5DD27FF3EFB00D20699 /* BottleNameEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleNameEditViewController.swift; sourceTree = "<group>"; };
+		D2AB663D27FFFCF50003AC8C /* UpdateSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSender.swift; sourceTree = "<group>"; };
+		D2C48BFE27E9D60A006FC59E /* Gravity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gravity.swift; sourceTree = "<group>"; };
+		D2C48C0027E9DFA1006FC59E /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,28 +280,234 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D0983103E258E710197F000 /* Pods_Happiggy_bank.framework in Frameworks */,
+				A824A0B027CE72C000B99E9A /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		398EC211296C6C6ECBEFF796 /* Frameworks */ = {
+		A491016F27D605C40012DFDD /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				F1F6015B01A2C2F80C2FC1BF /* Pods_Happiggy_bank.framework */,
+				A491018E27D735920012DFDD /* Note+CoreDataClass.swift */,
+				A491018C27D7358B0012DFDD /* Bottle+CoreDataClass.swift */,
+				A491018427D6EDE90012DFDD /* PersistenceStore.swift */,
 			);
-			name = Frameworks;
+			path = CoreData;
 			sourceTree = "<group>";
 		};
-		41BF7655D0B8B74DC0E22B4B /* Pods */ = {
+		A499317F27BF3A2C009FF5A8 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				C7DBD2C99F03550C49E38BE1 /* Pods-Happiggy-bank.debug.xcconfig */,
-				D1A4E4DCD14426EB1FE4D636 /* Pods-Happiggy-bank.release.xcconfig */,
+				A499318027BF3A38009FF5A8 /* BottleViewModel.swift */,
+				A81742FE27C108DC0016C921 /* HomeViewModel.swift */,
+				A4B2860E27D9F539008769EB /* NewNoteDatePickerViewModel.swift */,
+				A490AC4F27DD9D2E00B04CE1 /* NoteListViewModel.swift */,
+				A8ECD4A627E33BFA00886BC0 /* BottleListViewModel.swift */,
+				A4C1AFD127E5C60E0096CD3E /* NewNoteTextViewModel.swift */,
+				A41DE62727F368BF002A7669 /* NoteDetailViewModel.swift */,
+				D22ADF7E27F72F7300ECB77B /* NotificationSettingViewModel.swift */,
+				D236DB8527FDC43200D7B8F0 /* NewBottleDatePickerViewModel.swift */,
+				A466A3172801E99500D655F4 /* SettingsViewModel.swift */,
+				A4569CBD28105051001E3FD6 /* CustomerServiceViewModel.swift */,
+				A4569CC328111E1D001E3FD6 /* LicenseViewModel.swift */,
 			);
-			path = Pods;
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A49B25EE2812BEB200399630 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A49B25F02812BF4100399630 /* dovemayo_bold.otf */,
+				A49B25EF2812BF4100399630 /* dovemayo.otf */,
+				A46B110328146157004AB185 /* Gaegu-Bold.ttf */,
+				A46B110428146157004AB185 /* Gaegu-Regular.ttf */,
+				A46B110728146171004AB185 /* GowunBatang-Bold.ttf */,
+				A46B110828146171004AB185 /* GowunBatang-Regular.ttf */,
+				A46B110C2814617B004AB185 /* IBMPlexSansKR-Bold.otf */,
+				A46B110B2814617B004AB185 /* IBMPlexSansKR-Regular.otf */,
+				A46B110F28146181004AB185 /* Cafe24Ssurround.ttf */,
+				A46B111028146188004AB185 /* Cafe24SsurroundAir.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		A4F5714527DA466600E7DF9B /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				A4F5714627DA467900E7DF9B /* DateFormat.swift */,
+				A4F5715727DC459B00E7DF9B /* NoteColor.swift */,
+				A46BC1EE2800626A00C2E5B4 /* TabItem.swift */,
+				A4569CB9280FBA23001E3FD6 /* Result.swift */,
+				A49B25EC2812B5A400399630 /* CustomFont.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		A4F5714A27DA589900E7DF9B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A4F5714827DA589100E7DF9B /* NoteDatePickerData.swift */,
+				A4F5715327DB8B6400E7DF9B /* NewNote.swift */,
+				A819CFA027DE034F00DE8E72 /* NewBottle.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A843332227DA2CBF00A12A54 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				A843332327DA397800A12A54 /* DataProvider.swift */,
+				D2AB663D27FFFCF50003AC8C /* UpdateSender.swift */,
+				A4569CB7280FB979001E3FD6 /* Presenter.swift */,
+				A4569CC528111EFA001E3FD6 /* InformationTextViewDataSource.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		A87DCD3727C785D800AB0537 /* Subview */ = {
+			isa = PBXGroup;
+			children = (
+				A89CBEDA27CBDD99005549F6 /* BottleCell.swift */,
+				D2C48C0027E9DFA1006FC59E /* NoteView.swift */,
+				A425F8B727EDF59A00A005AB /* TagCell.swift */,
+				A439F53927EEFC27002851F4 /* SettingsViewCell.swift */,
+				A439F53B27EEFCF6002851F4 /* SettingsToggleButtonCell.swift */,
+				A439F54327EF0698002851F4 /* SettingsLabelButtonCell.swift */,
+				A4569CCD28128B4B001E3FD6 /* SettingsNonIconButtonCell.swift */,
+				A49B25E82812B17B00399630 /* FontSelectionCell.swift */,
+				A41DE62927F36E95002A7669 /* NoteCell.swift */,
+			);
+			path = Subview;
+			sourceTree = "<group>";
+		};
+		A8BD834227BE32EB00E0DE41 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				A817430027C112D00016C921 /* DefaultButton.swift */,
+				A4CF2C7F27C733FE001B01B1 /* ColorButton.swift */,
+				A48E183B27E7379100B44477 /* CapsuleButton.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		A8BD834327BE330000E0DE41 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A8BD833227BE104900E0DE41 /* HomeViewController.swift */,
+				A8BD833427BE106C00E0DE41 /* BottleViewController.swift */,
+				A843331E27DA013800A12A54 /* NewBottleNameFieldViewController.swift */,
+				A843332027DA026D00A12A54 /* NewBottleDatePickerViewController.swift */,
+				A89CBEDC27CBDEA2005549F6 /* BottleListViewController.swift */,
+				A4B2860427D9A546008769EB /* NewNoteDatePickerViewController.swift */,
+				A4B2860827D9A56A008769EB /* NewNoteTextViewController.swift */,
+				A459003727E8D107003010A0 /* SettingsViewController.swift */,
+				A490AC4D27DD945E00B04CE1 /* NoteListViewController.swift */,
+				A41DE62527F36595002A7669 /* NoteDetailViewController.swift */,
+				A41DE63127F80115002A7669 /* BottleMessageViewController.swift */,
+				D22ADF6227F5CE8F00ECB77B /* NotificationSettingViewController.swift */,
+				D236DB8727FDD66900D7B8F0 /* NewBottleMessageFieldViewController.swift */,
+				D284A5DD27FF3EFB00D20699 /* BottleNameEditViewController.swift */,
+				A466A30B2801861000D655F4 /* ErrorViewController.swift */,
+				A4569CBB2810455B001E3FD6 /* CustomerServiceViewController.swift */,
+				A4569CBF281118DE001E3FD6 /* InformationTextViewController.swift */,
+				A49B25E62812AC2800399630 /* FontSelectionViewController.swift */,
+				A46B10FB28144D76004AB185 /* CustomTabBarController.swift */,
+				A46B10FD281450F6004AB185 /* CustomNavigationController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A8BD834427BE331500E0DE41 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A8BD833E27BE30B400E0DE41 /* Constants.swift */,
+				A819CF9E27DDD97C00DE8E72 /* HapticManager.swift */,
+				D2C48BFE27E9D60A006FC59E /* Gravity.swift */,
+				A459003927E95D6B003010A0 /* Grid.swift */,
+				A425F8B527EDF4FB00A005AB /* TagViewFlowLayout.swift */,
+				A41DE62327F34ABB002A7669 /* UPCarouselFlowLayout.swift */,
+				A4569CC728112657001E3FD6 /* LicenseText.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		A8BD834527BE332100E0DE41 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				A4F5715127DB715100E7DF9B /* ColorButton.xib */,
+				A8FC07CD27B3ECF00077A758 /* Main.storyboard */,
+				A467B5C927DA289500AC702D /* NewNoteDatePickerRowView.xib */,
+				A8FC07D227B3ECF30077A758 /* LaunchScreen.storyboard */,
+				A8ECD4A427E30FF300886BC0 /* BottleCell.xib */,
+				A41DE62A27F36E95002A7669 /* NoteCell.xib */,
+				A48E183D27E737B600B44477 /* CapsuleButton.xib */,
+				A439F53C27EEFCF6002851F4 /* SettingsToggleButtonCell.xib */,
+				A466A3152801DF1400D655F4 /* SettingsLabelButtonCell.xib */,
+				A4569CCE28128B4B001E3FD6 /* SettingsNonIconButtonCell.xib */,
+				A49B25E92812B17B00399630 /* FontSelectionCell.xib */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		A8BD834827BE338200E0DE41 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A467B5C727DA258700AC702D /* NewNoteDatePickerRowView.swift */,
+				A8BD834627BE337900E0DE41 /* HomeView.swift */,
+				A499318227BF5158009FF5A8 /* BottleNoteView.swift */,
+				A41A506E27FF2B2E005381EF /* CustomTabBar.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A8BD834B27BE347700E0DE41 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A4CF2C8F27CBA66F001B01B1 /* NSNotificaion.Name+CustomNotifications.swift */,
+				A4CF2C7B27C71FF5001B01B1 /* CATransition+PopupAnimation.swift */,
+				A4B2860A27D9B434008769EB /* UIViewController+FadeOut.swift */,
+				A49931A427BFD20E009FF5A8 /* UIImage+AssetImages.swift */,
+				A456657D27CC77A9007CF70A /* Date+Formatted.swift */,
+				A4CF2C8D27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift */,
+				A4CF2C8127C73B42001B01B1 /* UIColor+AssetColors.swift */,
+				A8509E6D27C89A1200855153 /* UIColor+Extension.swift */,
+				A8EB5E8A27C8B087005704F2 /* UIButton+Extension.swift */,
+				A491018627D6F37C0012DFDD /* NSObject+Name.swift */,
+				A4B285FC27D8A060008769EB /* Calendar+Duration.swift */,
+				A4C1AFBF27E477180096CD3E /* NSMutableAttributedString+ColorBold.swift */,
+				A4C1AFC127E47AD80096CD3E /* String+EmptyString.swift */,
+				A4C1AFC327E47DC50096CD3E /* String+NSMutableAttributedStringify.swift */,
+				A4C1AFC527E482E10096CD3E /* CGFloat+Values.swift */,
+				A4C1AFCD27E4F8150096CD3E /* UIView+FadeInOut.swift */,
+				A4C1AFD327E5E6120096CD3E /* UITextView+ParagraphStyle.swift */,
+				A459003B27E9C5C9003010A0 /* CGSize+Area.swift */,
+				A48E183927E71D9300B44477 /* UILabel+ParagraphStyle.swift */,
+				A49B25F32812FFB400399630 /* UILabel+BoldAndColor.swift */,
+				A41DE62D27F5F2C1002A7669 /* UIView+ZoomAnimation.swift */,
+				A466A30D28018BBD00D655F4 /* UIVIewController+TopMostViewController.swift */,
+				A466A30F28018CD800D655F4 /* UIWindowScene+TopMostViewController.swift */,
+				A466A3192802987700D655F4 /* UIAlertAction+ConfirmAndCancel.swift */,
+				A466A31B28029D7400D655F4 /* UIAlertController+BasicFormat.swift */,
+				A4569CC928113F0F001E3FD6 /* NSMutableAttributedString+Hyperlink.swift */,
+				A4569CCB28119B41001E3FD6 /* UINavigationBar+Clear.swift */,
+				A46B10EB2813E73F004AB185 /* UserDefaults+Keys.swift */,
+				A46B10ED281429AC004AB185 /* UIFont+OverrideSystemFont.swift */,
+				A46B10EF28142DB1004AB185 /* UIFont+Weight.swift */,
+				A46B10F128142F26004AB185 /* UIViewController+ObserveCustomFontChange.swift */,
+				A46B10F32814362A004AB185 /* UIView+AllFontUsingSubviews.swift */,
+				A46B10F52814458C004AB185 /* UILabel+ChangeOnlyFontFamily.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A8BD834E27BE39DE00E0DE41 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				A8BD834C27BE39D600E0DE41 /* NoteProgressLabel.swift */,
+			);
+			path = Label;
 			sourceTree = "<group>";
 		};
 		A8FC07BB27B3ECF00077A758 = {
@@ -67,8 +516,6 @@
 				A8FC07DC27B3EF030077A758 /* .swiftlint.yml */,
 				A8FC07C627B3ECF00077A758 /* Happiggy-bank */,
 				A8FC07C527B3ECF00077A758 /* Products */,
-				41BF7655D0B8B74DC0E22B4B /* Pods */,
-				398EC211296C6C6ECBEFF796 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,13 +530,25 @@
 		A8FC07C627B3ECF00077A758 /* Happiggy-bank */ = {
 			isa = PBXGroup;
 			children = (
+				A49B25EE2812BEB200399630 /* Fonts */,
+				A4F5714A27DA589900E7DF9B /* Model */,
+				A4F5714527DA466600E7DF9B /* Enum */,
+				A843332227DA2CBF00A12A54 /* Protocol */,
+				A491016F27D605C40012DFDD /* CoreData */,
+				A87DCD3727C785D800AB0537 /* Subview */,
+				A499317F27BF3A2C009FF5A8 /* ViewModel */,
 				A8FC07C727B3ECF00077A758 /* AppDelegate.swift */,
 				A8FC07C927B3ECF00077A758 /* SceneDelegate.swift */,
-				A8FC07CB27B3ECF00077A758 /* ViewController.swift */,
-				A8FC07CD27B3ECF00077A758 /* Main.storyboard */,
+				A8BD834827BE338200E0DE41 /* View */,
+				A8BD834327BE330000E0DE41 /* ViewController */,
+				A8BD834227BE32EB00E0DE41 /* Button */,
+				A8BD834E27BE39DE00E0DE41 /* Label */,
+				A8BD834427BE331500E0DE41 /* Utils */,
+				A8BD834527BE332100E0DE41 /* Storyboard */,
+				A8BD834B27BE347700E0DE41 /* Extensions */,
 				A8FC07D027B3ECF30077A758 /* Assets.xcassets */,
-				A8FC07D227B3ECF30077A758 /* LaunchScreen.storyboard */,
 				A8FC07D527B3ECF30077A758 /* Info.plist */,
+				A44E901527D5EB130053AC57 /* Happiggy-bank.xcdatamodeld */,
 			);
 			path = "Happiggy-bank";
 			sourceTree = "<group>";
@@ -101,7 +560,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A8FC07D827B3ECF30077A758 /* Build configuration list for PBXNativeTarget "Happiggy-bank" */;
 			buildPhases = (
-				84CD75CCD5C90335B533BACE /* [CP] Check Pods Manifest.lock */,
 				A8FC07C027B3ECF00077A758 /* Sources */,
 				A8FC07C127B3ECF00077A758 /* Frameworks */,
 				A8FC07C227B3ECF00077A758 /* Resources */,
@@ -112,6 +570,9 @@
 			dependencies = (
 			);
 			name = "Happiggy-bank";
+			packageProductDependencies = (
+				A824A0AF27CE72C000B99E9A /* Then */,
+			);
 			productName = "Happiggy-bank";
 			productReference = A8FC07C427B3ECF00077A758 /* Happiggy-bank.app */;
 			productType = "com.apple.product-type.application";
@@ -140,6 +601,9 @@
 				Base,
 			);
 			mainGroup = A8FC07BB27B3ECF00077A758;
+			packageReferences = (
+				A824A0AE27CE72C000B99E9A /* XCRemoteSwiftPackageReference "Then" */,
+			);
 			productRefGroup = A8FC07C527B3ECF00077A758 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -154,38 +618,35 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A46B110A28146171004AB185 /* GowunBatang-Regular.ttf in Resources */,
+				A49B25F12812BF6800399630 /* dovemayo_bold.otf in Resources */,
+				A8ECD4A527E30FF300886BC0 /* BottleCell.xib in Resources */,
+				A46B110D2814617B004AB185 /* IBMPlexSansKR-Regular.otf in Resources */,
 				A8FC07DD27B3EF030077A758 /* .swiftlint.yml in Resources */,
+				A467B5CA27DA289600AC702D /* NewNoteDatePickerRowView.xib in Resources */,
+				A46B111128146188004AB185 /* Cafe24SsurroundAir.ttf in Resources */,
+				A49B25EB2812B17C00399630 /* FontSelectionCell.xib in Resources */,
 				A8FC07D427B3ECF30077A758 /* LaunchScreen.storyboard in Resources */,
+				A48E183E27E737B600B44477 /* CapsuleButton.xib in Resources */,
+				A439F53E27EEFCF6002851F4 /* SettingsToggleButtonCell.xib in Resources */,
+				A49B25F22812BF6B00399630 /* dovemayo.otf in Resources */,
+				A466A3162801DF1400D655F4 /* SettingsLabelButtonCell.xib in Resources */,
+				A46B110E2814617B004AB185 /* IBMPlexSansKR-Bold.otf in Resources */,
+				A46B110628146157004AB185 /* Gaegu-Regular.ttf in Resources */,
+				A4569CD028128B4B001E3FD6 /* SettingsNonIconButtonCell.xib in Resources */,
+				A46B11122814618C004AB185 /* Cafe24Ssurround.ttf in Resources */,
+				A46B110528146157004AB185 /* Gaegu-Bold.ttf in Resources */,
+				A41DE62C27F36E95002A7669 /* NoteCell.xib in Resources */,
 				A8FC07D127B3ECF30077A758 /* Assets.xcassets in Resources */,
 				A8FC07CF27B3ECF00077A758 /* Main.storyboard in Resources */,
+				A4F5715227DB715100E7DF9B /* ColorButton.xib in Resources */,
+				A46B110928146171004AB185 /* GowunBatang-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		84CD75CCD5C90335B533BACE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Happiggy-bank-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		A8FC07DB27B3EDC10077A758 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -201,7 +662,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
+			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -210,9 +671,113 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8FC07CC27B3ECF00077A758 /* ViewController.swift in Sources */,
+				A425F8B827EDF59A00A005AB /* TagCell.swift in Sources */,
+				A4B2860F27D9F539008769EB /* NewNoteDatePickerViewModel.swift in Sources */,
+				A467B5C827DA258700AC702D /* NewNoteDatePickerRowView.swift in Sources */,
+				A41DE62B27F36E95002A7669 /* NoteCell.swift in Sources */,
+				A4C1AFD227E5C60E0096CD3E /* NewNoteTextViewModel.swift in Sources */,
+				A819CFA127DE034F00DE8E72 /* NewBottle.swift in Sources */,
+				A4569CBC2810455B001E3FD6 /* CustomerServiceViewController.swift in Sources */,
+				A4569CC628111EFA001E3FD6 /* InformationTextViewDataSource.swift in Sources */,
+				A456657C27CC66FD007CF70A /* DefaultButton.swift in Sources */,
+				D236DB8627FDC43200D7B8F0 /* NewBottleDatePickerViewModel.swift in Sources */,
+				A499318327BF5158009FF5A8 /* BottleNoteView.swift in Sources */,
+				A4CF2C8E27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift in Sources */,
+				A46BC1EF2800626A00C2E5B4 /* TabItem.swift in Sources */,
+				A4569CBE28105052001E3FD6 /* CustomerServiceViewModel.swift in Sources */,
+				D284A5DE27FF3EFB00D20699 /* BottleNameEditViewController.swift in Sources */,
+				A466A31C28029D7400D655F4 /* UIAlertController+BasicFormat.swift in Sources */,
+				A8BD834D27BE39D600E0DE41 /* NoteProgressLabel.swift in Sources */,
+				A8509E6E27C89A1200855153 /* UIColor+Extension.swift in Sources */,
+				D236DB8827FDD66900D7B8F0 /* NewBottleMessageFieldViewController.swift in Sources */,
+				A4569CCA28113F0F001E3FD6 /* NSMutableAttributedString+Hyperlink.swift in Sources */,
+				A490AC4E27DD945E00B04CE1 /* NoteListViewController.swift in Sources */,
+				A8BD834727BE337900E0DE41 /* HomeView.swift in Sources */,
+				A46B10FC28144D76004AB185 /* CustomTabBarController.swift in Sources */,
+				A4CF2C7C27C71FF5001B01B1 /* CATransition+PopupAnimation.swift in Sources */,
+				A49B25F42812FFB400399630 /* UILabel+BoldAndColor.swift in Sources */,
 				A8FC07C827B3ECF00077A758 /* AppDelegate.swift in Sources */,
+				A459003827E8D107003010A0 /* SettingsViewController.swift in Sources */,
+				A4C1AFCE27E4F8150096CD3E /* UIView+FadeInOut.swift in Sources */,
+				A491018727D6F37C0012DFDD /* NSObject+Name.swift in Sources */,
+				A8BD833527BE106C00E0DE41 /* BottleViewController.swift in Sources */,
+				A4CF2C8027C733FE001B01B1 /* ColorButton.swift in Sources */,
+				A4CF2C8227C73B42001B01B1 /* UIColor+AssetColors.swift in Sources */,
+				A819CF9F27DDD97C00DE8E72 /* HapticManager.swift in Sources */,
+				A4569CCF28128B4B001E3FD6 /* SettingsNonIconButtonCell.swift in Sources */,
+				A8ECD4A727E33BFA00886BC0 /* BottleListViewModel.swift in Sources */,
+				A843332427DA397800A12A54 /* DataProvider.swift in Sources */,
+				A48E183A27E71D9300B44477 /* UILabel+ParagraphStyle.swift in Sources */,
+				A4B2860B27D9B434008769EB /* UIViewController+FadeOut.swift in Sources */,
+				D22ADF7F27F72F7300ECB77B /* NotificationSettingViewModel.swift in Sources */,
+				A4B2860927D9A56A008769EB /* NewNoteTextViewController.swift in Sources */,
+				A48E183C27E7379100B44477 /* CapsuleButton.swift in Sources */,
+				A843332127DA026D00A12A54 /* NewBottleDatePickerViewController.swift in Sources */,
 				A8FC07CA27B3ECF00077A758 /* SceneDelegate.swift in Sources */,
+				A4F5715427DB8B6500E7DF9B /* NewNote.swift in Sources */,
+				A466A31028018CD800D655F4 /* UIWindowScene+TopMostViewController.swift in Sources */,
+				A4569CC428111E1D001E3FD6 /* LicenseViewModel.swift in Sources */,
+				A466A30E28018BBD00D655F4 /* UIVIewController+TopMostViewController.swift in Sources */,
+				D2C48C0127E9DFA1006FC59E /* NoteView.swift in Sources */,
+				A49B25E72812AC2800399630 /* FontSelectionViewController.swift in Sources */,
+				A456657E27CC77A9007CF70A /* Date+Formatted.swift in Sources */,
+				A81742FF27C108DC0016C921 /* HomeViewModel.swift in Sources */,
+				A49B25EA2812B17C00399630 /* FontSelectionCell.swift in Sources */,
+				A4CF2C9027CBA66F001B01B1 /* NSNotificaion.Name+CustomNotifications.swift in Sources */,
+				D2AB663E27FFFCF50003AC8C /* UpdateSender.swift in Sources */,
+				A4B285FD27D8A060008769EB /* Calendar+Duration.swift in Sources */,
+				A41DE63227F80115002A7669 /* BottleMessageViewController.swift in Sources */,
+				A4B2860527D9A546008769EB /* NewNoteDatePickerViewController.swift in Sources */,
+				D22ADF6327F5CE8F00ECB77B /* NotificationSettingViewController.swift in Sources */,
+				A491018527D6EDE90012DFDD /* PersistenceStore.swift in Sources */,
+				A46B10F028142DB1004AB185 /* UIFont+Weight.swift in Sources */,
+				A491018D27D7358B0012DFDD /* Bottle+CoreDataClass.swift in Sources */,
+				A41DE62E27F5F2C1002A7669 /* UIView+ZoomAnimation.swift in Sources */,
+				A439F54527EF0698002851F4 /* SettingsLabelButtonCell.swift in Sources */,
+				A41A506F27FF2B2E005381EF /* CustomTabBar.swift in Sources */,
+				A490AC5027DD9D2E00B04CE1 /* NoteListViewModel.swift in Sources */,
+				A4569CB8280FB979001E3FD6 /* Presenter.swift in Sources */,
+				A466A3182801E99500D655F4 /* SettingsViewModel.swift in Sources */,
+				A4F5714927DA589100E7DF9B /* NoteDatePickerData.swift in Sources */,
+				D2C48BFF27E9D60A006FC59E /* Gravity.swift in Sources */,
+				A8EB5E8B27C8B087005704F2 /* UIButton+Extension.swift in Sources */,
+				A843331F27DA013800A12A54 /* NewBottleNameFieldViewController.swift in Sources */,
+				A459003C27E9C5C9003010A0 /* CGSize+Area.swift in Sources */,
+				A425F8B627EDF4FB00A005AB /* TagViewFlowLayout.swift in Sources */,
+				A4C1AFC427E47DC50096CD3E /* String+NSMutableAttributedStringify.swift in Sources */,
+				A46B10EC2813E73F004AB185 /* UserDefaults+Keys.swift in Sources */,
+				A4C1AFC027E477180096CD3E /* NSMutableAttributedString+ColorBold.swift in Sources */,
+				A491018F27D735920012DFDD /* Note+CoreDataClass.swift in Sources */,
+				A439F53D27EEFCF6002851F4 /* SettingsToggleButtonCell.swift in Sources */,
+				A46B10EE281429AC004AB185 /* UIFont+OverrideSystemFont.swift in Sources */,
+				A4F5715827DC459B00E7DF9B /* NoteColor.swift in Sources */,
+				A46B10FE281450F6004AB185 /* CustomNavigationController.swift in Sources */,
+				A8BD833327BE104900E0DE41 /* HomeViewController.swift in Sources */,
+				A499318127BF3A38009FF5A8 /* BottleViewModel.swift in Sources */,
+				A89CBEDB27CBDD99005549F6 /* BottleCell.swift in Sources */,
+				A44E901727D5EB130053AC57 /* Happiggy-bank.xcdatamodeld in Sources */,
+				A4C1AFD427E5E6120096CD3E /* UITextView+ParagraphStyle.swift in Sources */,
+				A46B10F228142F26004AB185 /* UIViewController+ObserveCustomFontChange.swift in Sources */,
+				A466A31A2802987700D655F4 /* UIAlertAction+ConfirmAndCancel.swift in Sources */,
+				A49B25ED2812B5A400399630 /* CustomFont.swift in Sources */,
+				A4569CC828112657001E3FD6 /* LicenseText.swift in Sources */,
+				A49931A527BFD20E009FF5A8 /* UIImage+AssetImages.swift in Sources */,
+				A459003A27E95D6B003010A0 /* Grid.swift in Sources */,
+				A46B10F42814362A004AB185 /* UIView+AllFontUsingSubviews.swift in Sources */,
+				A4C1AFC227E47AD80096CD3E /* String+EmptyString.swift in Sources */,
+				A4C1AFC627E482E10096CD3E /* CGFloat+Values.swift in Sources */,
+				A8BD833F27BE30B400E0DE41 /* Constants.swift in Sources */,
+				A41DE62827F368BF002A7669 /* NoteDetailViewModel.swift in Sources */,
+				A4569CC0281118DE001E3FD6 /* InformationTextViewController.swift in Sources */,
+				A4569CCC28119B41001E3FD6 /* UINavigationBar+Clear.swift in Sources */,
+				A41DE62627F36595002A7669 /* NoteDetailViewController.swift in Sources */,
+				A41DE62427F34ABB002A7669 /* UPCarouselFlowLayout.swift in Sources */,
+				A4F5714727DA467900E7DF9B /* DateFormat.swift in Sources */,
+				A89CBEDD27CBDEA2005549F6 /* BottleListViewController.swift in Sources */,
+				A439F53A27EEFC28002851F4 /* SettingsViewCell.swift in Sources */,
+				A46B10F62814458C004AB185 /* UILabel+ChangeOnlyFontFamily.swift in Sources */,
+				A4569CBA280FBA23001E3FD6 /* Result.swift in Sources */,
+				A466A30C2801861100D655F4 /* ErrorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +840,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -336,6 +902,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -356,15 +923,16 @@
 		};
 		A8FC07D927B3ECF30077A758 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C7DBD2C99F03550C49E38BE1 /* Pods-Happiggy-bank.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4L7K3ZV8H2;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 04.25.1.0.0;
+				DEVELOPMENT_TEAM = WA6PY6NL25;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Happiggy-bank/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "행복저금통";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -375,9 +943,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Happiggy.Happiggy-bank";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Happiggy.HappiggyBank;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "debug-happiggy";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -386,15 +955,16 @@
 		};
 		A8FC07DA27B3ECF30077A758 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D1A4E4DCD14426EB1FE4D636 /* Pods-Happiggy-bank.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4L7K3ZV8H2;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 04.25.1.0.0;
+				DEVELOPMENT_TEAM = WA6PY6NL25;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Happiggy-bank/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "행복저금통";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -405,9 +975,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Happiggy.Happiggy-bank";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Happiggy.HappiggyBank;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "TestFlight-appstore-happiggy";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -436,6 +1007,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A824A0AE27CE72C000B99E9A /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A824A0AF27CE72C000B99E9A /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A824A0AE27CE72C000B99E9A /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		A44E901527D5EB130053AC57 /* Happiggy-bank.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A44E901627D5EB130053AC57 /* Happigy-bank.xcdatamodel */,
+			);
+			currentVersion = A44E901627D5EB130053AC57 /* Happigy-bank.xcdatamodel */;
+			path = "Happiggy-bank.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A8FC07BC27B3ECF00077A758 /* Project object */;
 }
