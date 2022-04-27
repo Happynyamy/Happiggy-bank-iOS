@@ -260,7 +260,10 @@ final class NewNoteTextViewController: UIViewController {
             let note = self.makeNewNote()
             
             guard self.saveAndPostNewNote() == true
-            else { return }
+            else {
+                PersistenceStore.shared.delete(note)
+                return
+            }
             
             let noteAndDelay = (note: note, delay: CATransition.transitionDuration)
             self.post(name: .noteDidAdd, object: noteAndDelay)
