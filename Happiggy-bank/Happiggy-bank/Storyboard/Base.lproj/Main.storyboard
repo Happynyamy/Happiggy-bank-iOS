@@ -165,80 +165,54 @@
                                 <color key="backgroundColor" name="homeBackground"/>
                                 <gestureRecognizers/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="iSv-QP-4wT">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <subviews>
-                                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kSJ-c1-YmI">
-                                        <rect key="frame" x="139.5" y="0.0" width="135" height="150.5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="248" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="the-XF-3HV">
-                                        <rect key="frame" x="181" y="150.5" width="52" height="50.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="hvx-Jx-SEb">
-                                        <rect key="frame" x="87" y="201" width="240" height="313"/>
-                                        <subviews>
-                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="저금통이 비어있어요, 빈 저금통은 저장되지 않습니다." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32V-cq-SOU">
-                                                <rect key="frame" x="-26.5" y="24" width="293.5" height="17"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <color key="textColor" name="warningLabelColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="32V-cq-SOU" firstAttribute="top" secondItem="hvx-Jx-SEb" secondAttribute="top" constant="24" id="eb9-a1-11f"/>
-                                            <constraint firstItem="32V-cq-SOU" firstAttribute="centerX" secondItem="hvx-Jx-SEb" secondAttribute="centerX" id="x7J-8n-x6h"/>
-                                        </constraints>
-                                    </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="화면을 탭 하면 리스트로 넘어갑니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3XN-7E-k3f">
-                                        <rect key="frame" x="106.5" y="514" width="201" height="17"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" name="secondaryLabelColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7JO-iW-DFv">
-                                        <rect key="frame" x="87" y="531" width="240" height="24"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="F6G-sF-iyU"/>
-                                        </constraints>
-                                    </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PmD-gO-jD3">
-                                        <rect key="frame" x="181" y="555" width="52" height="26.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yph-1c-32Q">
-                                        <rect key="frame" x="87" y="581.5" width="240" height="236.5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="kSJ-c1-YmI" firstAttribute="height" secondItem="iSv-QP-4wT" secondAttribute="height" multiplier="0.183924" id="D5K-OP-MhJ"/>
-                                    <constraint firstItem="yph-1c-32Q" firstAttribute="height" secondItem="iSv-QP-4wT" secondAttribute="height" multiplier="0.288828" id="hdo-8K-cUa"/>
-                                    <constraint firstItem="hvx-Jx-SEb" firstAttribute="height" secondItem="iSv-QP-4wT" secondAttribute="height" multiplier="0.382834" id="uve-dK-9hA"/>
-                                </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="V02-Pn-vzk" appends="YES" id="YcN-C0-zqA"/>
-                                </connections>
-                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="248" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="the-XF-3HV">
+                                <rect key="frame" x="181" y="221.5" width="52" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="저금통이 비어있어요, 빈 저금통은 저장되지 않습니다." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32V-cq-SOU">
+                                <rect key="frame" x="60.5" y="272" width="293.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" name="warningLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" verticalHuggingPriority="249" id="hvx-Jx-SEb">
+                                <rect key="frame" x="0.0" y="372" width="414" height="152"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="화면을 탭 하면 리스트로 넘어갑니다." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3XN-7E-k3f">
+                                <rect key="frame" x="106.5" y="540" width="201" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" name="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PmD-gO-jD3">
+                                <rect key="frame" x="181" y="581" width="52" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4sZ-5P-EaJ"/>
                         <color key="backgroundColor" name="homeBackground"/>
                         <constraints>
-                            <constraint firstItem="iSv-QP-4wT" firstAttribute="top" secondItem="4sZ-5P-EaJ" secondAttribute="top" id="018-0K-Fk3"/>
-                            <constraint firstItem="iSv-QP-4wT" firstAttribute="leading" secondItem="4sZ-5P-EaJ" secondAttribute="leading" id="38T-T7-b2w"/>
-                            <constraint firstItem="4sZ-5P-EaJ" firstAttribute="bottom" secondItem="iSv-QP-4wT" secondAttribute="bottom" id="KtW-zQ-UzO"/>
+                            <constraint firstItem="hvx-Jx-SEb" firstAttribute="top" secondItem="32V-cq-SOU" secondAttribute="bottom" constant="83" id="0N2-z4-nci"/>
+                            <constraint firstItem="PmD-gO-jD3" firstAttribute="top" secondItem="3XN-7E-k3f" secondAttribute="bottom" constant="24" id="0mL-dY-Mcc"/>
+                            <constraint firstItem="32V-cq-SOU" firstAttribute="centerX" secondItem="yYG-QV-hxq" secondAttribute="centerX" id="6Ng-Bb-vyF"/>
+                            <constraint firstItem="3XN-7E-k3f" firstAttribute="top" secondItem="hvx-Jx-SEb" secondAttribute="bottom" constant="16" id="6qL-hb-SvS"/>
+                            <constraint firstItem="the-XF-3HV" firstAttribute="centerX" secondItem="yYG-QV-hxq" secondAttribute="centerX" id="9uH-34-lBT"/>
                             <constraint firstItem="pKG-O8-ysV" firstAttribute="top" secondItem="yYG-QV-hxq" secondAttribute="top" id="MBE-hw-qLv"/>
                             <constraint firstItem="4sZ-5P-EaJ" firstAttribute="trailing" secondItem="pKG-O8-ysV" secondAttribute="trailing" id="Wpk-bH-B9S"/>
+                            <constraint firstItem="32V-cq-SOU" firstAttribute="top" secondItem="the-XF-3HV" secondAttribute="bottom" constant="24" id="gEP-GB-g4O"/>
+                            <constraint firstItem="3XN-7E-k3f" firstAttribute="centerX" secondItem="yYG-QV-hxq" secondAttribute="centerX" id="iBR-bW-Ll7"/>
+                            <constraint firstItem="PmD-gO-jD3" firstAttribute="centerX" secondItem="yYG-QV-hxq" secondAttribute="centerX" id="j8c-e8-ot2"/>
                             <constraint firstItem="pKG-O8-ysV" firstAttribute="leading" secondItem="4sZ-5P-EaJ" secondAttribute="leading" id="o4g-bz-WOZ"/>
-                            <constraint firstItem="4sZ-5P-EaJ" firstAttribute="trailing" secondItem="iSv-QP-4wT" secondAttribute="trailing" id="snl-2Q-SeI"/>
                             <constraint firstAttribute="bottom" secondItem="pKG-O8-ysV" secondAttribute="bottom" id="yC4-V5-YfY"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="V02-Pn-vzk" appends="YES" id="dET-lO-zrK"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="backgroundImageView" destination="pKG-O8-ysV" id="wOM-yR-BSh"/>
@@ -256,7 +230,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-143" y="1642"/>
+            <point key="canvasLocation" x="-143.47826086956522" y="1641.9642857142856"/>
         </scene>
         <!--Bottle List View Controller-->
         <scene sceneID="U6G-8e-yzH">
@@ -1420,7 +1394,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="utJ-Hb-n6A"/>
-        <segue reference="7wk-af-F5w"/>
+        <segue reference="5ln-YY-tck"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="back" width="10" height="18"/>
