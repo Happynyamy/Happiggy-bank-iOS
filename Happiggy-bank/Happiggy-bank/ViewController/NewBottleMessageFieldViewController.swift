@@ -73,15 +73,17 @@ final class NewBottleMessageFieldViewController: UIViewController {
               let endDate = self.bottleData?.endDate
         else { return false }
         
-        if let openMessage = self.bottleData.openMessage {
-            _ = Bottle(
+        var bottle: Bottle
+        
+        if let openMessage = self.bottleData.openMessage, !openMessage.isEmpty {
+            bottle = Bottle(
                 title: title,
                 startDate: Date(),
                 endDate: endDate,
                 message: openMessage
             )
         } else {
-            _ = Bottle(
+            bottle = Bottle(
                 title: title,
                 startDate: Date(),
                 endDate: endDate,
@@ -103,6 +105,7 @@ final class NewBottleMessageFieldViewController: UIViewController {
             )
         }
         
+        PersistenceStore.shared.delete(bottle)
         self.present(alert, animated: true)
         return false
     }
