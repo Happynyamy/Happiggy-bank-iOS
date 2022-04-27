@@ -67,9 +67,11 @@ final class NewBottleMessageFieldViewController: UIViewController {
     
     /// 새 저금통 저장하는 메서드
     private func saveNewBottle() -> Bool {
+        self.bottleData.openMessage = self.textField.text
+        
         guard let title = self.bottleData?.name,
               let endDate = self.bottleData?.endDate
-        else { return true }
+        else { return false }
         
         if let openMessage = self.bottleData.openMessage {
             _ = Bottle(
