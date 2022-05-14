@@ -179,7 +179,7 @@ final class BottleNameEditViewController: UIViewController {
     }
     
     /// 종료 시 호출하는 메서드
-    private func dismiss(withResult result: Result) {
+    private func dismiss(withResult result: CustomResult) {
         self.resignFirstResponder()
         self.dismiss(animated: true)
         self.delegate.presentedViewControllerDidDismiss(withResult: result)
