@@ -11,5 +11,5 @@ import Foundation
 protocol Presenter: AnyObject {
     
     /// 자식 뷰 컨트롤러가 종료되었음을 알리는 메서드
-    func presentedViewControllerDidDismiss(withResult: Result)
+    func presentedViewControllerDidDismiss(withResult: CustomResult)
 }

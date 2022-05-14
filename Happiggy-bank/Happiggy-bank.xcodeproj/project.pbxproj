@@ -25,7 +25,7 @@
 		A456657C27CC66FD007CF70A /* DefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A817430027C112D00016C921 /* DefaultButton.swift */; };
 		A456657E27CC77A9007CF70A /* Date+Formatted.swift in Sources */ = {isa = PBXBuildFile; fileRef = A456657D27CC77A9007CF70A /* Date+Formatted.swift */; };
 		A4569CB8280FB979001E3FD6 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CB7280FB979001E3FD6 /* Presenter.swift */; };
-		A4569CBA280FBA23001E3FD6 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CB9280FBA23001E3FD6 /* Result.swift */; };
+		A4569CBA280FBA23001E3FD6 /* CustomResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CB9280FBA23001E3FD6 /* CustomResult.swift */; };
 		A4569CBC2810455B001E3FD6 /* CustomerServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CBB2810455B001E3FD6 /* CustomerServiceViewController.swift */; };
 		A4569CBE28105052001E3FD6 /* CustomerServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CBD28105051001E3FD6 /* CustomerServiceViewModel.swift */; };
 		A4569CC0281118DE001E3FD6 /* InformationTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CBF281118DE001E3FD6 /* InformationTextViewController.swift */; };
@@ -158,7 +158,7 @@
 		A44E901627D5EB130053AC57 /* Happigy-bank.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Happigy-bank.xcdatamodel"; sourceTree = "<group>"; };
 		A456657D27CC77A9007CF70A /* Date+Formatted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatted.swift"; sourceTree = "<group>"; };
 		A4569CB7280FB979001E3FD6 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
-		A4569CB9280FBA23001E3FD6 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		A4569CB9280FBA23001E3FD6 /* CustomResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomResult.swift; sourceTree = "<group>"; };
 		A4569CBB2810455B001E3FD6 /* CustomerServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerServiceViewController.swift; sourceTree = "<group>"; };
 		A4569CBD28105051001E3FD6 /* CustomerServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerServiceViewModel.swift; sourceTree = "<group>"; };
 		A4569CBF281118DE001E3FD6 /* InformationTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationTextViewController.swift; sourceTree = "<group>"; };
@@ -339,7 +339,7 @@
 				A4F5714627DA467900E7DF9B /* DateFormat.swift */,
 				A4F5715727DC459B00E7DF9B /* NoteColor.swift */,
 				A46BC1EE2800626A00C2E5B4 /* TabItem.swift */,
-				A4569CB9280FBA23001E3FD6 /* Result.swift */,
+				A4569CB9280FBA23001E3FD6 /* CustomResult.swift */,
 				A49B25EC2812B5A400399630 /* CustomFont.swift */,
 			);
 			path = Enum;
@@ -776,7 +776,7 @@
 				A89CBEDD27CBDEA2005549F6 /* BottleListViewController.swift in Sources */,
 				A439F53A27EEFC28002851F4 /* SettingsViewCell.swift in Sources */,
 				A46B10F62814458C004AB185 /* UILabel+ChangeOnlyFontFamily.swift in Sources */,
-				A4569CBA280FBA23001E3FD6 /* Result.swift in Sources */,
+				A4569CBA280FBA23001E3FD6 /* CustomResult.swift in Sources */,
 				A466A30C2801861100D655F4 /* ErrorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

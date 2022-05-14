@@ -372,7 +372,7 @@ final class HomeViewController: UIViewController {
 // MARK: - Presenter
 extension HomeViewController: Presenter {
     
-    func presentedViewControllerDidDismiss(withResult: Result) {
+    func presentedViewControllerDidDismiss(withResult: CustomResult) {
         self.bottleViewController.restoreStateBeforeAlertOrModalDidAppear()
     }
 }
