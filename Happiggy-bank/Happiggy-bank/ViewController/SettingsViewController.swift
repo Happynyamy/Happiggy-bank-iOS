@@ -32,7 +32,7 @@ final class SettingsViewController: UIViewController {
         
         self.registerCells()
         self.configureNavigationBar()
-        self.observeCustomFontChange(selector: #selector(customFontDidChange(_:)))
+        self.addObservers()
     }
     
     
@@ -46,6 +46,21 @@ final class SettingsViewController: UIViewController {
         
         self.updateAllFontUsingViews(customFont)
         self.updateFontSelectionCellFontName(to: customFont)
+    }
+    
+    /// 백그라운드에서 포어그라운드로 돌아올 때 버전 셀 업데이트
+    @objc private func updateVersionCell() {
+        
+        let indexPath = IndexPath(row: Content.appVersion.rawValue, section: .zero)
+        guard let versionCell = self.tableView.cellForRow(
+                at: indexPath
+              ) as? SettingsLabelButtonCell
+        else { return }
+        
+        versionCell.informationLabel.attributedText = self.viewModel.informationText(
+            forContentAt: indexPath
+        )
+        versionCell.buttonImageView.isHidden = (VersionManager.shared.needsUpdate != .true)
     }
     
     
@@ -77,6 +92,12 @@ final class SettingsViewController: UIViewController {
         
         cell.informationLabel.text = customFont.displayName
     }
+    
+    /// 옵저버들 추가
+    private func addObservers() {
+        self.observeCustomFontChange(selector: #selector(customFontDidChange(_:)))
+        self.observe(selector: #selector(self.updateVersionCell), name: .appStoreInfoDidLoad)
+    }
 }
 
 
@@ -103,14 +124,20 @@ extension SettingsViewController: UITableViewDataSource {
             return cell
         }
         
-        if indexPath.row == Content.appVersion.rawValue ||
-            indexPath.row == Content.customerService.rawValue ||
-            indexPath.row == Content.fontSelection.rawValue {
-            
+        if indexPath.row == Content.appVersion.rawValue {
             return self.labelButtonCell(
                 inTableView: tableView,
                 indexPath: indexPath,
-                navigationButtonIsHidden: indexPath.row == Content.appVersion.rawValue
+                navigationButtonIsHidden: VersionManager.shared.needsUpdate != .true
+            )
+        }
+            
+        if indexPath.row == Content.customerService.rawValue ||
+            indexPath.row == Content.fontSelection.rawValue {
+            return self.labelButtonCell(
+                inTableView: tableView,
+                indexPath: indexPath,
+                navigationButtonIsHidden: false
             )
         }
         
@@ -185,6 +212,11 @@ extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: false)
+        
+        if indexPath.row == Content.appVersion.rawValue,
+           VersionManager.shared.needsUpdate == .true {
+            return self.openAppStore()
+        }
         
         guard let segueIdentifier = self.viewModel.segueIdentifier(forContentAt: indexPath)
         else { return }

@@ -101,6 +101,14 @@
 		A4CF2C8227C73B42001B01B1 /* UIColor+AssetColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C8127C73B42001B01B1 /* UIColor+AssetColors.swift */; };
 		A4CF2C8E27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C8D27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift */; };
 		A4CF2C9027CBA66F001B01B1 /* NSNotificaion.Name+CustomNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C8F27CBA66F001B01B1 /* NSNotificaion.Name+CustomNotifications.swift */; };
+		A4D357DE283A3E01007819E3 /* VersionUpdating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D357DD283A3E01007819E3 /* VersionUpdating.swift */; };
+		A4D357E0283A43C7007819E3 /* UIViewController+VersionUpdating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D357DF283A43C7007819E3 /* UIViewController+VersionUpdating.swift */; };
+		A4D357E2283A4429007819E3 /* URL+Open.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D357E1283A4429007819E3 /* URL+Open.swift */; };
+		A4D6EB75282E2E6700553E43 /* VersionChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6EB74282E2E6700553E43 /* VersionChecking.swift */; };
+		A4D6EB77282E307900553E43 /* VersionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6EB76282E307900553E43 /* VersionManager.swift */; };
+		A4D6EB79282E432400553E43 /* OptionalBool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6EB78282E432400553E43 /* OptionalBool.swift */; };
+		A4D6EB7B2837825500553E43 /* LookUpResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6EB7A2837825500553E43 /* LookUpResult.swift */; };
+		A4D6EB7D2837901F00553E43 /* URL+AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6EB7C2837901F00553E43 /* URL+AppStore.swift */; };
 		A4F5714727DA467900E7DF9B /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F5714627DA467900E7DF9B /* DateFormat.swift */; };
 		A4F5714927DA589100E7DF9B /* NoteDatePickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F5714827DA589100E7DF9B /* NoteDatePickerData.swift */; };
 		A4F5715227DB715100E7DF9B /* ColorButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F5715127DB715100E7DF9B /* ColorButton.xib */; };
@@ -234,6 +242,14 @@
 		A4CF2C8127C73B42001B01B1 /* UIColor+AssetColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AssetColors.swift"; sourceTree = "<group>"; };
 		A4CF2C8D27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NotificationCenter.swift"; sourceTree = "<group>"; };
 		A4CF2C8F27CBA66F001B01B1 /* NSNotificaion.Name+CustomNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotificaion.Name+CustomNotifications.swift"; sourceTree = "<group>"; };
+		A4D357DD283A3E01007819E3 /* VersionUpdating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionUpdating.swift; sourceTree = "<group>"; };
+		A4D357DF283A43C7007819E3 /* UIViewController+VersionUpdating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+VersionUpdating.swift"; sourceTree = "<group>"; };
+		A4D357E1283A4429007819E3 /* URL+Open.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Open.swift"; sourceTree = "<group>"; };
+		A4D6EB74282E2E6700553E43 /* VersionChecking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionChecking.swift; sourceTree = "<group>"; };
+		A4D6EB76282E307900553E43 /* VersionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionManager.swift; sourceTree = "<group>"; };
+		A4D6EB78282E432400553E43 /* OptionalBool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalBool.swift; sourceTree = "<group>"; };
+		A4D6EB7A2837825500553E43 /* LookUpResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookUpResult.swift; sourceTree = "<group>"; };
+		A4D6EB7C2837901F00553E43 /* URL+AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+AppStore.swift"; sourceTree = "<group>"; };
 		A4F5714627DA467900E7DF9B /* DateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
 		A4F5714827DA589100E7DF9B /* NoteDatePickerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDatePickerData.swift; sourceTree = "<group>"; };
 		A4F5715127DB715100E7DF9B /* ColorButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorButton.xib; sourceTree = "<group>"; };
@@ -341,6 +357,7 @@
 				A46BC1EE2800626A00C2E5B4 /* TabItem.swift */,
 				A4569CB9280FBA23001E3FD6 /* CustomResult.swift */,
 				A49B25EC2812B5A400399630 /* CustomFont.swift */,
+				A4D6EB78282E432400553E43 /* OptionalBool.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -351,6 +368,7 @@
 				A4F5714827DA589100E7DF9B /* NoteDatePickerData.swift */,
 				A4F5715327DB8B6400E7DF9B /* NewNote.swift */,
 				A819CFA027DE034F00DE8E72 /* NewBottle.swift */,
+				A4D6EB7A2837825500553E43 /* LookUpResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -362,6 +380,8 @@
 				D2AB663D27FFFCF50003AC8C /* UpdateSender.swift */,
 				A4569CB7280FB979001E3FD6 /* Presenter.swift */,
 				A4569CC528111EFA001E3FD6 /* InformationTextViewDataSource.swift */,
+				A4D6EB74282E2E6700553E43 /* VersionChecking.swift */,
+				A4D357DD283A3E01007819E3 /* VersionUpdating.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -429,6 +449,7 @@
 				A425F8B527EDF4FB00A005AB /* TagViewFlowLayout.swift */,
 				A41DE62327F34ABB002A7669 /* UPCarouselFlowLayout.swift */,
 				A4569CC728112657001E3FD6 /* LicenseText.swift */,
+				A4D6EB76282E307900553E43 /* VersionManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -498,6 +519,9 @@
 				A46B10F128142F26004AB185 /* UIViewController+ObserveCustomFontChange.swift */,
 				A46B10F32814362A004AB185 /* UIView+AllFontUsingSubviews.swift */,
 				A46B10F52814458C004AB185 /* UILabel+ChangeOnlyFontFamily.swift */,
+				A4D6EB7C2837901F00553E43 /* URL+AppStore.swift */,
+				A4D357DF283A43C7007819E3 /* UIViewController+VersionUpdating.swift */,
+				A4D357E1283A4429007819E3 /* URL+Open.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -692,10 +716,12 @@
 				D236DB8827FDD66900D7B8F0 /* NewBottleMessageFieldViewController.swift in Sources */,
 				A4569CCA28113F0F001E3FD6 /* NSMutableAttributedString+Hyperlink.swift in Sources */,
 				A490AC4E27DD945E00B04CE1 /* NoteListViewController.swift in Sources */,
+				A4D357E0283A43C7007819E3 /* UIViewController+VersionUpdating.swift in Sources */,
 				A8BD834727BE337900E0DE41 /* HomeView.swift in Sources */,
 				A46B10FC28144D76004AB185 /* CustomTabBarController.swift in Sources */,
 				A4CF2C7C27C71FF5001B01B1 /* CATransition+PopupAnimation.swift in Sources */,
 				A49B25F42812FFB400399630 /* UILabel+BoldAndColor.swift in Sources */,
+				A4D6EB7D2837901F00553E43 /* URL+AppStore.swift in Sources */,
 				A8FC07C827B3ECF00077A758 /* AppDelegate.swift in Sources */,
 				A459003827E8D107003010A0 /* SettingsViewController.swift in Sources */,
 				A4C1AFCE27E4F8150096CD3E /* UIView+FadeInOut.swift in Sources */,
@@ -713,6 +739,7 @@
 				A4B2860927D9A56A008769EB /* NewNoteTextViewController.swift in Sources */,
 				A48E183C27E7379100B44477 /* CapsuleButton.swift in Sources */,
 				A843332127DA026D00A12A54 /* NewBottleDatePickerViewController.swift in Sources */,
+				A4D6EB75282E2E6700553E43 /* VersionChecking.swift in Sources */,
 				A8FC07CA27B3ECF00077A758 /* SceneDelegate.swift in Sources */,
 				A4F5715427DB8B6500E7DF9B /* NewNote.swift in Sources */,
 				A466A31028018CD800D655F4 /* UIWindowScene+TopMostViewController.swift in Sources */,
@@ -733,6 +760,7 @@
 				A46B10F028142DB1004AB185 /* UIFont+Weight.swift in Sources */,
 				A491018D27D7358B0012DFDD /* Bottle+CoreDataClass.swift in Sources */,
 				A41DE62E27F5F2C1002A7669 /* UIView+ZoomAnimation.swift in Sources */,
+				A4D6EB7B2837825500553E43 /* LookUpResult.swift in Sources */,
 				A439F54527EF0698002851F4 /* SettingsLabelButtonCell.swift in Sources */,
 				A41A506F27FF2B2E005381EF /* CustomTabBar.swift in Sources */,
 				A490AC5027DD9D2E00B04CE1 /* NoteListViewModel.swift in Sources */,
@@ -741,12 +769,14 @@
 				A4F5714927DA589100E7DF9B /* NoteDatePickerData.swift in Sources */,
 				D2C48BFF27E9D60A006FC59E /* Gravity.swift in Sources */,
 				A8EB5E8B27C8B087005704F2 /* UIButton+Extension.swift in Sources */,
+				A4D357DE283A3E01007819E3 /* VersionUpdating.swift in Sources */,
 				A843331F27DA013800A12A54 /* NewBottleNameFieldViewController.swift in Sources */,
 				A459003C27E9C5C9003010A0 /* CGSize+Area.swift in Sources */,
 				A425F8B627EDF4FB00A005AB /* TagViewFlowLayout.swift in Sources */,
 				A4C1AFC427E47DC50096CD3E /* String+NSMutableAttributedStringify.swift in Sources */,
 				A46B10EC2813E73F004AB185 /* UserDefaults+Keys.swift in Sources */,
 				A4C1AFC027E477180096CD3E /* NSMutableAttributedString+ColorBold.swift in Sources */,
+				A4D6EB79282E432400553E43 /* OptionalBool.swift in Sources */,
 				A491018F27D735920012DFDD /* Note+CoreDataClass.swift in Sources */,
 				A439F53D27EEFCF6002851F4 /* SettingsToggleButtonCell.swift in Sources */,
 				A46B10EE281429AC004AB185 /* UIFont+OverrideSystemFont.swift in Sources */,
@@ -754,11 +784,13 @@
 				A46B10FE281450F6004AB185 /* CustomNavigationController.swift in Sources */,
 				A8BD833327BE104900E0DE41 /* HomeViewController.swift in Sources */,
 				A499318127BF3A38009FF5A8 /* BottleViewModel.swift in Sources */,
+				A4D6EB77282E307900553E43 /* VersionManager.swift in Sources */,
 				A89CBEDB27CBDD99005549F6 /* BottleCell.swift in Sources */,
 				A44E901727D5EB130053AC57 /* Happiggy-bank.xcdatamodeld in Sources */,
 				A4C1AFD427E5E6120096CD3E /* UITextView+ParagraphStyle.swift in Sources */,
 				A46B10F228142F26004AB185 /* UIViewController+ObserveCustomFontChange.swift in Sources */,
 				A466A31A2802987700D655F4 /* UIAlertAction+ConfirmAndCancel.swift in Sources */,
+				A4D357E2283A4429007819E3 /* URL+Open.swift in Sources */,
 				A49B25ED2812B5A400399630 /* CustomFont.swift in Sources */,
 				A4569CC828112657001E3FD6 /* LicenseText.swift in Sources */,
 				A49931A527BFD20E009FF5A8 /* UIImage+AssetImages.swift in Sources */,
