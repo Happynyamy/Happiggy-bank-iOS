@@ -12,6 +12,7 @@ final class SettingsViewModel {
     
     typealias Content = SettingsViewController.Content
     
+    
     // MARK: - Properties
     
     /// 현재 폰트
@@ -39,21 +40,31 @@ final class SettingsViewModel {
     
     /// 해당 칸의 설명 리턴
     func informationText(forContentAt indexPath: IndexPath) -> NSMutableAttributedString? {
-        let text = Content.informationText[indexPath.row]?.nsMutableAttributedStringify()
         
         if indexPath.row == Content.appVersion.rawValue {
-            return text?.color(color: .customTint)
+            return self.appVersionInformation()
         }
         
         if indexPath.row == Content.fontSelection.rawValue {
             return self.customFont.displayName.nsMutableAttributedStringify()
         }
         
-        return text
+        return nil
     }
     
     /// 세그웨이가 있다면 해당 세그웨이의 아이디 리턴
     func segueIdentifier(forContentAt indexPath: IndexPath) -> String? {
         Content.segueIdentifier[indexPath.row]
+    }
+    
+    /// 업데이트 필요 여부에 따른 적절한 문자열 리턴
+    private func appVersionInformation() -> NSMutableAttributedString? {
+        var text = VersionManager.shared.installedVersion
+        
+        if VersionManager.shared.needsUpdate != .nil {
+            text = Content.versionString(forStatus: VersionManager.shared.needsUpdate)
+        }
+                
+        return text?.nsMutableAttributedStringify().color(color: .customTint)
     }
 }
