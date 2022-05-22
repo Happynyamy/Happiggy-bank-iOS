@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dSD-O6-Yej">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dSD-O6-Yej">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -1216,20 +1216,12 @@
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JZC-yk-iLa">
                                 <rect key="frame" x="27.5" y="298" width="320" height="216"/>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjm-mA-Pms">
-                                <rect key="frame" x="166.5" y="554" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3Tj-oo-gq3"/>
                         <color key="backgroundColor" name="homeBackground"/>
                         <constraints>
-                            <constraint firstItem="bjm-mA-Pms" firstAttribute="top" secondItem="JZC-yk-iLa" secondAttribute="bottom" constant="40" id="1MG-3u-6w7"/>
                             <constraint firstItem="JZC-yk-iLa" firstAttribute="top" secondItem="8q5-pU-bsj" secondAttribute="bottom" constant="40" id="8ns-L8-Pei"/>
                             <constraint firstItem="JZC-yk-iLa" firstAttribute="centerY" secondItem="c3L-CD-aRg" secondAttribute="centerY" id="E6U-Bl-yJv"/>
-                            <constraint firstItem="bjm-mA-Pms" firstAttribute="centerX" secondItem="c3L-CD-aRg" secondAttribute="centerX" id="HLN-jP-wxc"/>
                             <constraint firstItem="VaU-DG-hJr" firstAttribute="trailing" secondItem="3Tj-oo-gq3" secondAttribute="trailing" id="Nhu-hS-kTS"/>
                             <constraint firstItem="VaU-DG-hJr" firstAttribute="leading" secondItem="3Tj-oo-gq3" secondAttribute="leading" id="TNz-Y9-H7c"/>
                             <constraint firstItem="VaU-DG-hJr" firstAttribute="top" secondItem="3Tj-oo-gq3" secondAttribute="top" id="aLS-Kl-wVO"/>
@@ -1242,7 +1234,6 @@
                     <size key="freeformSize" width="375" height="812"/>
                     <connections>
                         <outlet property="navigationBar" destination="VaU-DG-hJr" id="tLl-nY-dh1"/>
-                        <outlet property="openDateLabel" destination="bjm-mA-Pms" id="Cwe-nn-ZhI"/>
                         <outlet property="pickerView" destination="JZC-yk-iLa" id="ESS-v4-zWK"/>
                         <outlet property="topLabel" destination="8q5-pU-bsj" id="QQD-EH-FCm"/>
                     </connections>

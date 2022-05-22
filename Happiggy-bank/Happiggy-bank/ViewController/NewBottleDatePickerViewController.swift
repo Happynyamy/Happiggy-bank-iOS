@@ -22,9 +22,7 @@ final class NewBottleDatePickerViewController: UIViewController {
     
     /// 개봉 시점 선택하는 피커 뷰
     @IBOutlet weak var pickerView: UIPickerView!
-    
-    /// 개봉 날짜 표시하는 라벨
-    @IBOutlet weak var openDateLabel: UILabel!
+
     
     /// 유리병 데이터 전달하는 델리게이트
     var delegate: DataProvider?
@@ -81,7 +79,6 @@ final class NewBottleDatePickerViewController: UIViewController {
     /// 라벨 초기 세팅하는 함수
     private func initializeLabel() {
         setTopLabel()
-        setOpenDateLabel()
     }
     
     /// 상단 라벨 세팅
@@ -89,19 +86,6 @@ final class NewBottleDatePickerViewController: UIViewController {
         self.topLabel.text = StringLiteral.topLabel
         self.topLabel.font = .systemFont(ofSize: FontSize.topLabelText)
         self.topLabel.textColor = .customLabel
-    }
-    
-    /// 개봉 예정일 라벨 세팅
-    private func setOpenDateLabel() {
-        guard let periodIndex = self.viewModel.bottleData?.periodIndex
-        else { return }
-        let endDate = viewModel.endDate(
-            from: Date(),
-            after: periodIndex
-        )
-        self.openDateLabel.text = viewModel.openDateString(of: endDate)
-        self.openDateLabel.font = .systemFont(ofSize: FontSize.openDateLabelText)
-        self.openDateLabel.textColor = .customTint
     }
     
     /// 피커 뷰 초기 상태 세팅하는 함수
@@ -220,6 +204,5 @@ extension NewBottleDatePickerViewController: UIPickerViewDelegate {
         else { return }
 
         rowView.textColor = .customTint
-        setOpenDateLabel()
     }
 }
