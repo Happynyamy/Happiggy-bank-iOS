@@ -471,7 +471,7 @@ extension NewBottleDatePickerViewController {
     enum StringLiteral {
         
         /// 상단 라벨의 문자열
-        static let topLabel = "저금통을 개봉할 기간을 선택해주세요"
+        static let topLabel = "저금통을 개봉할 날짜를 선택해주세요."
     }
     
     /// NewBottleDatePickerViewController에서 사용하는 폰트 크기
