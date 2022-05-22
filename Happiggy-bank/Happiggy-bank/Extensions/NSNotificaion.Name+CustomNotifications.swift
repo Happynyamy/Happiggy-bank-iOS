@@ -14,4 +14,7 @@ extension NSNotification.Name {
     
     /// 유저가 폰트 변경 시 보내는 알림 이름
     static let customFontDidChange = NSNotification.Name("custom-font-did-change")
+    
+    /// 앱스토어 정보를 불러왔을 때 보내는 알림 이름
+    static let appStoreInfoDidLoad = NSNotification.Name("app-store-info-did-load")
 }

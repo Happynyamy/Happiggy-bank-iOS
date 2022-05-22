@@ -12,6 +12,9 @@ import UIKit
 /// 팀 메일 주소
 let teamMail = "happynyamy@gmail.com"
 
+/// 앱 번들 아이디
+private let bundleID = "Happiggy.HappiggyBank"
+
 extension HomeViewController {
     
     /// HomeViewController 에서  설정하는 layout 에 적용할 상수값들을 모아놓은 enum
@@ -795,11 +798,6 @@ extension SettingsViewController {
             fontSelection.rawValue: "폰트 바꾸기"
         ]
         
-        /// 추가 정보 딕셔너리
-        static let informationText: [Int: String] = [
-            appVersion.rawValue: "최신 버전을 사용 중 입니다"
-        ]
-        
         /// 세그웨이 아이디 딕셔너리
         static let segueIdentifier: [Int: String] = [
             customerService.rawValue: segueIdentifier(for: customerService),
@@ -808,6 +806,19 @@ extension SettingsViewController {
         
         
         // MARK: - Functions
+        
+        /// 버전 정보 셀에 나타낼 문자열
+        static func versionString(forStatus updateIsNeeded: OptionalBool) -> String {
+            if updateIsNeeded == .true {
+                return "업데이트가 필요합니다"
+            }
+            
+            if updateIsNeeded == .false {
+                return "최신 버전을 사용 중 입니다"
+            }
+            
+            return .empty
+        }
         
         /// 케이스 이름을 카멜케이스로 변환
         private static func nameInCamelCase(_ contentCase: Content) -> String {
@@ -1279,5 +1290,25 @@ extension CustomTabBarController {
         
         /// 탭바 아이템 폰트 사이즈: 10
         static let tabBarItemSize = UIFont.smallSystemFontSize - 2
+    }
+}
+
+extension VersionManager {
+    
+    /// info 딕셔너리 키
+    enum InfoDictionaryKey {
+        
+        static let CFBundleShortVersionString = "CFBundleShortVersionString"
+        
+    }
+}
+
+extension URL {
+    
+    /// 문자열
+    enum StringLiteral {
+        
+        /// 앱스토어 앱 정보 url
+        static let appInfo = "https://itunes.apple.com/kr/lookup?bundleId=\(bundleID)"
     }
 }
