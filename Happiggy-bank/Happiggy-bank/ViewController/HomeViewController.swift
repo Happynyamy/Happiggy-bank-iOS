@@ -142,7 +142,6 @@ final class HomeViewController: UIViewController {
     
     // TODO: 삭제 (새로운 저금통 추가했을 때 보기 위한 임시 메서드)
     @objc private func refetch() {
-
         // 저금통 이름 바꿨을 때
         self.bottleTitleLabel.text = self.viewModel.bottle?.title
         
@@ -158,13 +157,16 @@ final class HomeViewController: UIViewController {
         
         // TODO: 1안 -> Notification + Object, 2안 -> refetch
         self.viewModel.executeFetchRequest()
-        self.bottleViewController.viewModel.bottle = self.viewModel.bottle
-        self.bottleViewController.initializeBottleView()
         
         // 최초에 만들었을 때
         // 캐릭터 교체, 라벨 추가
         hideLabelIfNeeded()
         initializeLabel()
+        
+        guard let bottle = self.viewModel.bottle
+        else { return }
+        
+        self.bottleViewController.bottleDidAdd(bottle)
     }
     
     /// 백그라운드에서 포어그라운드로 돌아왔을 때 실행되는 메서드
