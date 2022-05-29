@@ -26,16 +26,7 @@ final class BottleViewController: UIViewController {
     var gravity: Gravity?
     
     /// 쪽지를 넣기 위해 bottle note view 의 영역을 나눠줄 그리드
-    private lazy var grid: Grid = {
-        guard let bottle = self.viewModel.bottle
-        else { return Grid(frame: .zero, cellCount: .zero) }
-        
-        self.bottleNoteView.frame = self.viewModel.gridFrame(forView: self.view)
-        return Grid(
-            frame: self.bottleNoteView.bounds,
-            cellCount: self.viewModel.bottle?.duration ?? .zero
-        )
-    }()
+    private lazy var grid: Grid = self.makeGrid()
     
     /// 쪽지 노드
     private var noteNodes: [NoteView] {
@@ -99,16 +90,12 @@ final class BottleViewController: UIViewController {
     
     // MARK: - Functions
     
-    /// 저금통 유리병 애니메이션 초기 세팅: 쪽지 작성이 가능한 상태로 변경
-    func initializeBottleView() {
-        guard let bottle = self.viewModel.bottle
-        else { return }
-        
-        self.fillBottleNoteView(fromNotes: bottle.notes)
-        self.addGravity()
-        self.gravity?.enable()
+    /// 새로운 저금통이 추가되었을 때 호출되는 메서드
+    func bottleDidAdd(_ bottle: Bottle) {
+        self.viewModel.bottle = bottle
+        self.initializeBottleView()
     }
-    
+        
     /// 현재 뷰 컨트롤러로 unwind 하라는 호출을 받았을 때 실행되는 액션메서드로, 중력 효과 재개
     func unwindCallDidArrive(withNote note: Note?) {
         note == nil ? self.gravity?.startDeviceMotionUpdates() : nil
@@ -143,6 +130,26 @@ final class BottleViewController: UIViewController {
         ) {
             self.noteNodes.forEach { $0.removeFromSuperview() }
         }
+    }
+    
+    /// 저금통 유리병 애니메이션 초기 세팅: 쪽지 작성이 가능한 상태로 변경
+    private func initializeBottleView() {
+        guard let bottle = self.viewModel.bottle
+        else { return }
+        
+        self.grid = self.makeGrid()
+        self.fillBottleNoteView(fromNotes: bottle.notes)
+        self.addGravity()
+        self.gravity?.enable()
+    }
+    
+    /// 저금통 기간에 따른 그리드 생성
+    private func makeGrid() -> Grid {
+        guard let bottle = self.viewModel.bottle
+        else { return Grid(frame: .zero, cellCount: .zero) }
+        
+        self.bottleNoteView.frame = self.viewModel.gridFrame(forView: self.view)
+        return Grid(frame: self.bottleNoteView.bounds, cellCount: bottle.duration)
     }
     
     /// NotificationCenter.default 에 observer 들을 추가
