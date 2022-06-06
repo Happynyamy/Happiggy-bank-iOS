@@ -13,81 +13,104 @@ import Then
 /// 노티피케이션 스위치 on/off에 따라 노티피케이션 추가/삭제하는 뷰 컨트롤러
 final class NotificationSettingViewController: UIViewController {
     
-    /// 알림 설정하는 스위치
-    lazy var notificationControl: UISwitch = UISwitch().then {
-        $0.isOn = UserDefaults.standard.bool(forKey: StringLiteral.hasNotificationOn)
-        
-    }
+    // MARK: - IBOutlets
+
+    /// 알림 table view
+    @IBOutlet weak var tableView: UITableView!
+
+    /// 하단 메일 보낼 수 있는 팀 라벨
+    @IBOutlet weak var teamLabel: UIStackView!
+    
+//    /// 알림 설정하는 스위치
+//    lazy var notificationControl: UISwitch = UISwitch().then {
+//        $0.isOn = UserDefaults.standard.bool(forKey: StringLiteral.hasNotificationOn)
+//
+//    }
+    
+    // MARK: - Properties
     
     /// 날짜 관련 데이터 처리해주는 뷰 모델
-    private var viewModel: NotificationSettingViewModel = NotificationSettingViewModel()
+    private var viewModel = NotificationSettingViewModel()
     
     
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerCells()
         
-        configureSwitch()
-        configureSwitchConstraints()
+//        configureSwitch()
+//        configureSwitchConstraints()
     }
     
+    // MARK: - Functions
     
-    // MARK: @objc functions
-    
-    /// 스위치에 변화가 있을 때 호출되는 objc 함수
-    @objc func switchDidTap(_ sender: UISwitch) {
-        if sender.isOn {
-            requestNotification()
-            scheduleNotifications()
-            return
-        }
-        if !sender.isOn {
-            removeNotifications()
-            return
-        }
+    /// 테이블 뷰 셀 등록
+    private func registerCells() {
+        self.tableView.register(
+            UINib(nibName: SettingsToggleButtonCell.name, bundle: nil),
+            forCellReuseIdentifier: SettingsToggleButtonCell.name
+        )
     }
+}
+
+extension NotificationSettingViewController {
+    
+    // MARK: - @objc functions
+    
+//    /// 스위치에 변화가 있을 때 호출되는 objc 함수
+//    @objc func switchDidTap(_ sender: UISwitch) {
+//        if sender.isOn {
+//            requestNotification()
+//            scheduleNotifications()
+//            return
+//        }
+//        if !sender.isOn {
+//            removeNotifications()
+//            return
+//        }
+//    }
     
     
     // MARK: - Configure UI Components
     
     /// 스위치 설정
-    private func configureSwitch() {
-        self.notificationControl.addTarget(
-            self,
-            action: #selector(switchDidTap),
-            for: .valueChanged
-        )
-        self.view.addSubview(notificationControl)
-        UNUserNotificationCenter.current().requestAuthorization { granted, _ in
-            if !granted {
-                DispatchQueue.main.async {
-                    self.notificationControl.isOn = false
-                }
-            }
-        }
-    }
+//    private func configureSwitch() {
+//        self.notificationControl.addTarget(
+//            self,
+//            action: #selector(switchDidTap),
+//            for: .valueChanged
+//        )
+//        self.view.addSubview(notificationControl)
+//        UNUserNotificationCenter.current().requestAuthorization { granted, _ in
+//            if !granted {
+//                DispatchQueue.main.async {
+//                    self.notificationControl.isOn = false
+//                }
+//            }
+//        }
+//    }
     
     
     // MARK: - Notification related functions
     
     /// 노티피케이션 요청
-    private func requestNotification() {
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound]) { granted, error in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-            
-            if !granted {
-                UserDefaults.standard.set(false, forKey: StringLiteral.hasNotificationOn)
-                DispatchQueue.main.async {
-                    self.notificationControl.isOn = false
-                    self.alertDisabledState()
-                }
-            }
-        }
-    }
+//    private func requestNotification() {
+//        let center = UNUserNotificationCenter.current()
+//        center.requestAuthorization(options: [.alert, .sound]) { granted, error in
+//            if let error = error {
+//                print(error.localizedDescription)
+//            }
+//
+//            if !granted {
+//                UserDefaults.standard.set(false, forKey: StringLiteral.hasNotificationOn)
+//                DispatchQueue.main.async {
+//                    self.notificationControl.isOn = false
+//                    self.alertDisabledState()
+//                }
+//            }
+//        }
+//    }
     
     /// 설정에서 알림 꺼져있을 때 나타내는 알림창
     private func alertDisabledState() {
@@ -172,20 +195,37 @@ final class NotificationSettingViewController: UIViewController {
         center.removeAllPendingNotificationRequests()
         UserDefaults.standard.set(false, forKey: StringLiteral.hasNotificationOn)
     }
+}
+
+// MARK: - UITableViewDataSource
+extension NotificationSettingViewController: UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        self.viewModel.numberOfRowsInSection
+    }
     
-    // MARK: - Constraints
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        
+        self.toggleButtonCell(in: tableView, indexPath: indexPath)
+    }
     
-    /// 스위치 오토레이아웃 설정
-    private func configureSwitchConstraints() {
-        self.notificationControl.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.notificationControl.centerYAnchor.constraint(
-                equalTo: self.view.centerYAnchor
-            ),
-            self.notificationControl.trailingAnchor.constraint(
-                equalTo: self.view.trailingAnchor, constant: Metric.trailingPadding
-            )
-        ])
+    /// 라벨 버튼 셀 모습 설정
+    private func toggleButtonCell(
+        in tableView: UITableView,
+        indexPath: IndexPath
+    ) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: SettingsToggleButtonCell.name,
+            for: indexPath
+        ) as? SettingsToggleButtonCell
+        else { return SettingsToggleButtonCell() }
+        
+        cell.titleLabel.text = self.viewModel.title(of: indexPath.row)
+        
+        return cell
     }
 }

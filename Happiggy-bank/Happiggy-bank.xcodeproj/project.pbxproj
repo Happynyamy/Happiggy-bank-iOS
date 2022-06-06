@@ -113,6 +113,7 @@
 		A843332127DA026D00A12A54 /* NewBottleDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A843332027DA026D00A12A54 /* NewBottleDatePickerViewController.swift */; };
 		A843332427DA397800A12A54 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A843332327DA397800A12A54 /* DataProvider.swift */; };
 		A8509E6E27C89A1200855153 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509E6D27C89A1200855153 /* UIColor+Extension.swift */; };
+		A86A3FD9284DF715001345C9 /* SettingsToggleButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A86A3FD8284DF715001345C9 /* SettingsToggleButtonCell.xib */; };
 		A89CBEDB27CBDD99005549F6 /* BottleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89CBEDA27CBDD99005549F6 /* BottleCell.swift */; };
 		A89CBEDD27CBDEA2005549F6 /* BottleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89CBEDC27CBDEA2005549F6 /* BottleListViewController.swift */; };
 		A8BD833327BE104900E0DE41 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833227BE104900E0DE41 /* HomeViewController.swift */; };
@@ -245,6 +246,7 @@
 		A843332027DA026D00A12A54 /* NewBottleDatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBottleDatePickerViewController.swift; sourceTree = "<group>"; };
 		A843332327DA397800A12A54 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		A8509E6D27C89A1200855153 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		A86A3FD8284DF715001345C9 /* SettingsToggleButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsToggleButtonCell.xib; sourceTree = "<group>"; };
 		A89CBEDA27CBDD99005549F6 /* BottleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleCell.swift; sourceTree = "<group>"; };
 		A89CBEDC27CBDEA2005549F6 /* BottleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleListViewController.swift; sourceTree = "<group>"; };
 		A8BD833227BE104900E0DE41 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 				A466A3152801DF1400D655F4 /* SettingsLabelButtonCell.xib */,
 				A4569CCE28128B4B001E3FD6 /* SettingsNonIconButtonCell.xib */,
 				A49B25E92812B17B00399630 /* FontSelectionCell.xib */,
+				A86A3FD8284DF715001345C9 /* SettingsToggleButtonCell.xib */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -633,6 +636,7 @@
 				A46B11122814618C004AB185 /* Cafe24Ssurround.ttf in Resources */,
 				A46B110528146157004AB185 /* Gaegu-Bold.ttf in Resources */,
 				A41DE62C27F36E95002A7669 /* NoteCell.xib in Resources */,
+				A86A3FD9284DF715001345C9 /* SettingsToggleButtonCell.xib in Resources */,
 				A8FC07D127B3ECF30077A758 /* Assets.xcassets in Resources */,
 				A8FC07CF27B3ECF00077A758 /* Main.storyboard in Resources */,
 				A4F5715227DB715100E7DF9B /* ColorButton.xib in Resources */,

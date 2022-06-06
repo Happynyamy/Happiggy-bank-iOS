@@ -1284,3 +1284,9 @@ extension CustomTabBarController {
         static let tabBarItemSize = UIFont.smallSystemFontSize - 2
     }
 }
+
+enum LocalNotification: String, CaseIterable {
+    case daily = "일일 알림"
+    case reminder = "리마인드 알림"
+    case openDate = "저금통 개봉 알림"
+}

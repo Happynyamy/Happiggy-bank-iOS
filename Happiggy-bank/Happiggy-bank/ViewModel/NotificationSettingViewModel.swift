@@ -10,6 +10,9 @@ import UIKit
 /// 노티피케이션 관련 데이터 처리하는 뷰 모델
 final class NotificationSettingViewModel {
     
+    /// 행 개수
+    let numberOfRowsInSection: Int = LocalNotification.allCases.count
+    
     lazy var bottle: Bottle = {
         let request = Bottle.fetchRequest(isOpen: false)
         let bottles = PersistenceStore.shared.fetch(request: request)
@@ -30,5 +33,10 @@ final class NotificationSettingViewModel {
             )
         }
         return DateComponents()
+    }
+    
+    /// 알림 라벨 이름 설정
+    func title(of index: Int) -> String {
+        return LocalNotification.allCases[index].rawValue
     }
 }

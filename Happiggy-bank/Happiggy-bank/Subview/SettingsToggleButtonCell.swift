@@ -12,15 +12,16 @@ final class SettingsToggleButtonCell: SettingsViewCell {
     
     // MARK: - @IBOutlets
     
-    /// 제목 라벨
     @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var toggleSwitch: UISwitch!
     
     // MARK: - Override Functions
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        prepareForReuse()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -31,5 +32,6 @@ final class SettingsToggleButtonCell: SettingsViewCell {
     
     override func prepareForReuse() {
         self.titleLabel.text = .empty
+        self.toggleSwitch.isOn = false
     }
 }
