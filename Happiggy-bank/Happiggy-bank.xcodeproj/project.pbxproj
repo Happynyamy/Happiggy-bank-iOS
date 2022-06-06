@@ -19,7 +19,6 @@
 		A425F8B827EDF59A00A005AB /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A425F8B727EDF59A00A005AB /* TagCell.swift */; };
 		A439F53A27EEFC28002851F4 /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A439F53927EEFC27002851F4 /* SettingsViewCell.swift */; };
 		A439F53D27EEFCF6002851F4 /* SettingsToggleButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A439F53B27EEFCF6002851F4 /* SettingsToggleButtonCell.swift */; };
-		A439F53E27EEFCF6002851F4 /* SettingsToggleButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A439F53C27EEFCF6002851F4 /* SettingsToggleButtonCell.xib */; };
 		A439F54527EF0698002851F4 /* SettingsLabelButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A439F54327EF0698002851F4 /* SettingsLabelButtonCell.swift */; };
 		A44E901727D5EB130053AC57 /* Happiggy-bank.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A44E901527D5EB130053AC57 /* Happiggy-bank.xcdatamodeld */; };
 		A456657C27CC66FD007CF70A /* DefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A817430027C112D00016C921 /* DefaultButton.swift */; };
@@ -153,7 +152,6 @@
 		A425F8B727EDF59A00A005AB /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
 		A439F53927EEFC27002851F4 /* SettingsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
 		A439F53B27EEFCF6002851F4 /* SettingsToggleButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsToggleButtonCell.swift; sourceTree = "<group>"; };
-		A439F53C27EEFCF6002851F4 /* SettingsToggleButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsToggleButtonCell.xib; sourceTree = "<group>"; };
 		A439F54327EF0698002851F4 /* SettingsLabelButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLabelButtonCell.swift; sourceTree = "<group>"; };
 		A44E901627D5EB130053AC57 /* Happigy-bank.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Happigy-bank.xcdatamodel"; sourceTree = "<group>"; };
 		A456657D27CC77A9007CF70A /* Date+Formatted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatted.swift"; sourceTree = "<group>"; };
@@ -443,7 +441,6 @@
 				A8ECD4A427E30FF300886BC0 /* BottleCell.xib */,
 				A41DE62A27F36E95002A7669 /* NoteCell.xib */,
 				A48E183D27E737B600B44477 /* CapsuleButton.xib */,
-				A439F53C27EEFCF6002851F4 /* SettingsToggleButtonCell.xib */,
 				A466A3152801DF1400D655F4 /* SettingsLabelButtonCell.xib */,
 				A4569CCE28128B4B001E3FD6 /* SettingsNonIconButtonCell.xib */,
 				A49B25E92812B17B00399630 /* FontSelectionCell.xib */,
@@ -628,7 +625,6 @@
 				A49B25EB2812B17C00399630 /* FontSelectionCell.xib in Resources */,
 				A8FC07D427B3ECF30077A758 /* LaunchScreen.storyboard in Resources */,
 				A48E183E27E737B600B44477 /* CapsuleButton.xib in Resources */,
-				A439F53E27EEFCF6002851F4 /* SettingsToggleButtonCell.xib in Resources */,
 				A49B25F22812BF6B00399630 /* dovemayo.otf in Resources */,
 				A466A3162801DF1400D655F4 /* SettingsLabelButtonCell.xib in Resources */,
 				A46B110E2814617B004AB185 /* IBMPlexSansKR-Bold.otf in Resources */,

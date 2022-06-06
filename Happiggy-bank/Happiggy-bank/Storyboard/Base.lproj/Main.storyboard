@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dSD-O6-Yej">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dSD-O6-Yej">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -467,6 +467,7 @@
                         <outlet property="teamLabel" destination="b4d-oF-HEA" id="NyI-hP-fmw"/>
                         <segue destination="Tl4-Fc-9VF" kind="show" identifier="showCustomerServiceView" id="qcB-dq-xct"/>
                         <segue destination="lLe-9H-9eT" kind="show" identifier="showFontSelectionView" id="5w8-lC-lb8"/>
+                        <segue destination="ZsG-CD-pXh" kind="show" identifier="showNotificationView" id="20q-1z-lsQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aNi-4h-ywR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1416,6 +1417,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M4E-La-x5M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3111" y="2432"/>
+        </scene>
+        <!--알림 설정-->
+        <scene sceneID="9Mi-T5-KSY">
+            <objects>
+                <viewController id="ZsG-CD-pXh" customClass="NotificationSettingViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Uxn-9C-i1X">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="xc1-dM-pkj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="알림 설정" id="V0Z-bB-Xwh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ImF-Qi-0yB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5633" y="2446"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

@@ -767,7 +767,7 @@ extension SettingsViewController {
     /// 각 셀 별 내용
     enum Content: Int, CaseIterable {
         /// 저금통 개봉 알림 설정
-        case bottleAlert
+        case notification
         
         /// 앱 버전 정보
         case appVersion
@@ -783,6 +783,7 @@ extension SettingsViewController {
         
         /// 아이콘 딕셔너리
         static let icon: [Int: UIImage?] = [
+            notification.rawValue: UIImage(named: imageName(for: .notification)),
             appVersion.rawValue: UIImage(named: imageName(for: .appVersion)),
             customerService.rawValue: UIImage(named: imageName(for: .customerService)),
             fontSelection.rawValue: UIImage(named: imageName(for: .fontSelection))
@@ -790,6 +791,7 @@ extension SettingsViewController {
         
         /// 제목 딕셔너리
         static let title: [Int: String] = [
+            notification.rawValue: "알림",
             appVersion.rawValue: "버전 정보",
             customerService.rawValue: "고객 지원",
             fontSelection.rawValue: "폰트 바꾸기"
@@ -802,6 +804,7 @@ extension SettingsViewController {
         
         /// 세그웨이 아이디 딕셔너리
         static let segueIdentifier: [Int: String] = [
+            notification.rawValue: segueIdentifier(for: notification),
             customerService.rawValue: segueIdentifier(for: customerService),
             fontSelection.rawValue: segueIdentifier(for: fontSelection)
         ]

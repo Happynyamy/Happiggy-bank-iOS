@@ -57,10 +57,6 @@ final class SettingsViewController: UIViewController {
             UINib(nibName: SettingsLabelButtonCell.name, bundle: nil),
             forCellReuseIdentifier: SettingsLabelButtonCell.name
         )
-        self.tableView.register(
-            UINib(nibName: SettingsToggleButtonCell.name, bundle: nil),
-            forCellReuseIdentifier: SettingsToggleButtonCell.name
-        )
     }
     
     /// 내비게이션 바 초기 설정
@@ -92,52 +88,11 @@ extension SettingsViewController: UITableViewDataSource {
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
         
-        if indexPath.row == Content.bottleAlert.rawValue {
-            
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: SettingsToggleButtonCell.name,
-                for: indexPath
-            ) as? SettingsToggleButtonCell
-            else { return SettingsToggleButtonCell() }
-            addNotificationSettingViewController(to: cell)
-            return cell
-        }
-        
-        if indexPath.row == Content.appVersion.rawValue ||
-            indexPath.row == Content.customerService.rawValue ||
-            indexPath.row == Content.fontSelection.rawValue {
-            
-            return self.labelButtonCell(
-                inTableView: tableView,
-                indexPath: indexPath,
-                navigationButtonIsHidden: indexPath.row == Content.appVersion.rawValue
-            )
-        }
-        
-        return SettingsViewCell()
-    }
-    
-    /// 노티피케이션 셀에 뷰 컨트롤러 추가
-    private func addNotificationSettingViewController(to cell: SettingsToggleButtonCell) {
-        let viewController = NotificationSettingViewController()
-        self.addChild(viewController)
-        cell.contentView.addSubview(viewController.view)
-        
-        viewController.view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            viewController.view.leadingAnchor.constraint(
-                equalTo: cell.contentView.leadingAnchor
-            ),
-            viewController.view.trailingAnchor.constraint(
-                equalTo: cell.contentView.trailingAnchor
-            ),
-            viewController.view.topAnchor.constraint(
-                equalTo: cell.contentView.topAnchor
-            ),
-            viewController.view.bottomAnchor.constraint(
-                equalTo: cell.contentView.bottomAnchor
-            )
-        ])
+        return self.labelButtonCell(
+            inTableView: tableView,
+            indexPath: indexPath,
+            navigationButtonIsHidden: indexPath.row == Content.appVersion.rawValue
+        )
     }
     
     /// 라벨 버튼 셀 모습 설정
