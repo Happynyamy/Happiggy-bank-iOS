@@ -28,7 +28,7 @@ extension HomeViewController {
         
         /// 버튼 길이(높이와 동일)
         static let buttonWidth: CGFloat = buttonHeight
-
+        
         /// Bottle Label의 Border Width
         static let bottleLabelBorderWidth: CGFloat = 1
         
@@ -52,15 +52,6 @@ extension HomeViewController {
     /// 문자열
     enum StringLiteral {
         
-        /// 저금통 개봉 확인 알림 제목
-        static let bottleOpenAlertTitle = "저금통 개봉날이에요! 개봉하시겠어요?"
-        
-        ///
-        static let bottleOpenAlertMessage = "현재 저금통 모습이 그대로 저장됩니다"
-        
-        /// 저금통 개봉 확인 알림 개봉 버튼 제목
-        static let bottleOpenAlertOpenButtonTitle = "개봉"
-        
         /// 저금통이 없는 경우 나타나는 상단 라벨 문자열
         static let emptyTopLabelText: String = "저금통이 없습니다."
         
@@ -81,12 +72,16 @@ extension HomeViewController {
         
         /// 작성 가능한 날짜가 없음을 알리는 알람의 제목
         static let noEmptyDateAlertTitle = "이미 모든 날짜에 행복을 기록했어요"
-
+        
         /// 작성 가능한 날짜가 없음을 알리는 알람의 메시지
         static let noEmptyDateAlertMessage = "미래의 날짜는 작성 불가능합니다."
         
         /// 저금통이 없을 때 나타나는 캐릭터 이미지 이름
         static let homeCharacterEmpty = "homeCharacter"
+        
+        /// 더보기 버튼을 눌러서 저금통 개봉이 가능함을 알리는 알림의 제목
+        static let tapMoreButtonToOpenBottleAlertTitle =
+        "오른쪽 위 더보기 버튼을 눌러 저금통을 개봉할 수 있어요!"
     }
     
     /// 폰트 크기
@@ -94,6 +89,75 @@ extension HomeViewController {
         
         /// 기한이 지났는데 저금통을 열지 않은 경우 나타내는 라벨 폰트 크기
         static let openDatePassedLabelFont: CGFloat = 15
+    }
+    
+    /// 저금통 개봉 알림 관련 문자열
+    enum BottleOpenAlert {
+        
+        /// 디데이 이후 개봉하는 경우
+        case `default`
+        
+        /// 디데이 전에 개봉하는 경우
+        case midOpen
+        
+        /// 알림 제목
+        var title: String {
+            switch self {
+            case .default:
+                return "저금통 개봉날이에요! 개봉하시겠어요?"
+            case .midOpen:
+                return "지금 저금통을 개봉하시겠어요?"
+            }
+        }
+        
+        /// 알림 메시지
+        var message: String {
+            switch self {
+            case .default:
+                return "현재 저금통 모습이 그대로 저장됩니다"
+            case .midOpen:
+                return """
+중도 개봉 시 더 이상 추가로 작성할 수 없으며,
+현재 저금통 모습이 그대로 저장됩니다
+"""
+            }
+        }
+        
+        /// 저금통 개봉 확인 알림 개봉 버튼 제목
+        static let openButtonTitle = "개봉"
+    }
+    
+    /// 더보기 버튼
+    enum MoreButton {
+        /// 저금통 이름 변경
+        case changeBottleName
+        /// 저금통 개봉
+        case openBottle(BottleStatus)
+        
+        /// 아이템 별 제목
+        var title: String {
+            switch self {
+            case .changeBottleName:
+                return "이름 변경"
+            case .openBottle(let bottleStatus):
+                if bottleStatus == .inProgress {
+                    return "중도 개봉"
+                }
+                if bottleStatus == .complete {
+                    return "개봉"
+                }
+                return .empty
+            }
+        }
+    }
+    
+    /// 저금통 상태
+    enum BottleStatus {
+        /// 진행 중
+        case inProgress
+        
+        /// 디데이 지남
+        case complete
     }
 }
 
@@ -134,7 +198,7 @@ extension BottleViewModel {
 }
 
 extension DefaultButton {
-
+    
     /// HomeViewButton 에서 설정하는 layout에 적용할 상수값
     enum Metric {
         
@@ -244,7 +308,7 @@ extension BottleCell {
     
     /// Bottle Cell에서 설정하는 layout 상수값
     enum Metric {
-
+        
         /// bottle  image 가로:세로 비율
         private static let imageSizeRatio: CGFloat = 306 / 165
         
@@ -288,7 +352,7 @@ extension Bottle {
     
     /// Bottle 엔티티에서 설정하는 문자열
     enum StringLiteral {
-
+        
         /// 제목 디폴트 값: "?"
         static let title = "?"
         
@@ -313,7 +377,7 @@ extension Note {
     
     /// Note 엔티티에서 설정하는 문자열
     enum StringLiteral {
-
+        
         /// 내용 디폴트 값: "?"
         static let content = "?"
     }
@@ -437,7 +501,7 @@ extension NewBottleNameFieldViewController {
         
         /// 하단 라벨 텍스트 크기
         static let bottomLabelText: CGFloat = 14
-    
+        
         /// 경고 라벨 텍스트 색상
         static let warningLabelText: CGFloat = 14
     }
@@ -541,7 +605,7 @@ enum Asset: String {
     
     /// 탭바 환경설정 아이콘 보통 상태
     case tabBarSettingsNormal
-
+    
     /// 탭바 홈 아이콘 선택 상태
     case tabBarHomeSelected
     
@@ -550,7 +614,7 @@ enum Asset: String {
     
     /// 탭바 환경설정 아이콘 선택 상태
     case tabBarSettingsSelected
-
+    
     
     // MARK: Home View Images
     
@@ -577,10 +641,10 @@ enum Asset: String {
     
     /// 저금통 리스트 셀 라이트 모드 배경화면
     case bottleCellBackgroundLight
-
+    
     /// 저금통 리스트 저금통 뒷면
     case bottleListBottleBack
-
+    
     /// 저금통 리스트 저금통 앞면
     case bottleListBottleFront
     
@@ -665,7 +729,7 @@ extension NewNoteTextViewController {
             let navigationBarHeight = navigationBarFrame.size.height
             let screenHeight = UIScreen.main.bounds.height
             let safeAreaTopInset = navigationBarFrame.origin.y
-
+            
             return screenHeight - safeAreaTopInset - navigationBarHeight - keyboardHeight
         }
         
@@ -963,13 +1027,12 @@ extension BottleMessageViewController {
         
         /// 탭 안내 라벨 딜레이: 0.5
         static let tapToContinueLabelDelay: TimeInterval = 0.5
-
+        
         /// 탭 안내 라벨 시간: 1.5
         static let tapToContinueLabel: TimeInterval = 1.5
         
         /// 페이드인 상대시간: 3/4
         static let tapToContinueLabelRelativeFadeIn: TimeInterval = 3/4
-
     }
     
     /// 문자열
@@ -980,6 +1043,12 @@ extension BottleMessageViewController {
         
         /// UserDefaults의 key로 사용할 문자열
         static let hasNotificationOn: String = "hasNotificationOn"
+    }
+    
+    /// 숫자
+    enum Metric {
+        /// 1
+        static let one = 1
     }
 }
 
@@ -1121,7 +1190,7 @@ extension BottleNameEditViewController {
         
         /// 하단 라벨 텍스트 크기
         static let bottomLabelText: CGFloat = 14
-    
+
         /// 경고 라벨 텍스트 색상
         static let warningLabelText: CGFloat = 14
     }
