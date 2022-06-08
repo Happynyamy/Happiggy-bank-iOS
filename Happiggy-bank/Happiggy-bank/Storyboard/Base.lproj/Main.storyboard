@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -90,6 +91,15 @@
                                     <constraint firstItem="u5P-Zi-qGu" firstAttribute="top" secondItem="gfd-IP-Gfv" secondAttribute="top" constant="4" id="vgl-Aj-EBu"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fI-uW-xzV">
+                                <rect key="frame" x="365" y="173.5" width="25" height="24"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="ellipsis.circle" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="moreButtonDidTap:" destination="BYZ-38-t0r" eventType="touchDown" id="on9-Wv-WIb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="homeBackground"/>
@@ -104,6 +114,7 @@
                             <constraint firstItem="dfo-Bk-tQ1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="D8I-Er-tZ3"/>
                             <constraint firstItem="gfd-IP-Gfv" firstAttribute="top" secondItem="Ox7-a2-qYT" secondAttribute="bottom" constant="4" id="EvP-Pn-pVN"/>
                             <constraint firstItem="u5P-Zi-qGu" firstAttribute="leading" secondItem="Ox7-a2-qYT" secondAttribute="leading" id="GH4-Ks-cx0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4fI-uW-xzV" secondAttribute="trailing" constant="24" id="Kvd-Wm-a7E"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mxw-FV-eBm" secondAttribute="trailing" symbolic="YES" id="LuX-hH-50l"/>
                             <constraint firstItem="JwR-oy-otr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LzX-yn-Ctk"/>
                             <constraint firstItem="ZlX-eS-Yvg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="OFr-if-N9z"/>
@@ -111,6 +122,7 @@
                             <constraint firstAttribute="trailing" secondItem="ZlX-eS-Yvg" secondAttribute="trailing" id="OkY-Ki-cEN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ox7-a2-qYT" secondAttribute="trailing" symbolic="YES" id="PEa-7N-X4Y"/>
                             <constraint firstItem="T4r-Fh-6oO" firstAttribute="top" secondItem="mxw-FV-eBm" secondAttribute="bottom" constant="18" id="SPr-4s-61q"/>
+                            <constraint firstItem="4fI-uW-xzV" firstAttribute="centerY" secondItem="Ox7-a2-qYT" secondAttribute="centerY" id="VQt-iI-CDi"/>
                             <constraint firstItem="JwR-oy-otr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="bottom" multiplier="498:812" id="Y31-zO-p3W"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="T4r-Fh-6oO" secondAttribute="trailing" symbolic="YES" id="Zz4-tv-PeK"/>
                             <constraint firstItem="mxw-FV-eBm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="86" id="adg-qC-y3E"/>
@@ -135,6 +147,7 @@
                         <outlet property="emptyTopLabel" destination="mxw-FV-eBm" id="p3m-Ek-xyl"/>
                         <outlet property="homeCharacter" destination="dfo-Bk-tQ1" id="pAM-Ay-Jl4"/>
                         <outlet property="homeView" destination="8bC-Xf-vdC" id="edO-Zc-7da"/>
+                        <outlet property="moreButton" destination="4fI-uW-xzV" id="aOr-ry-QUT"/>
                         <outlet property="tapToAddNoteLabel" destination="JwR-oy-otr" id="Slp-Bm-aZ3"/>
                         <segue destination="abG-42-vcb" kind="presentation" identifier="presentNewBottleNameField" id="aZQ-BA-T0f"/>
                         <segue destination="moi-e1-3hQ" kind="presentation" identifier="presentNewNoteDatePicker" id="5ln-YY-tck"/>
@@ -178,17 +191,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" verticalHuggingPriority="249" id="hvx-Jx-SEb">
-                                <rect key="frame" x="0.0" y="372" width="414" height="152"/>
+                                <rect key="frame" x="0.0" y="372" width="414" height="151"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="화면을 탭 하면 리스트로 넘어갑니다." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3XN-7E-k3f">
-                                <rect key="frame" x="106.5" y="540" width="201" height="17"/>
+                                <rect key="frame" x="106.5" y="539" width="201" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" name="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PmD-gO-jD3">
-                                <rect key="frame" x="181" y="581" width="52" height="26.5"/>
+                                <rect key="frame" x="181" y="580" width="52" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1405,6 +1418,7 @@
         <image name="characterWhite" width="40" height="40"/>
         <image name="characterYellow" width="40" height="40"/>
         <image name="checkmark" width="19" height="16"/>
+        <image name="ellipsis.circle" catalog="system" width="128" height="121"/>
         <image name="fontSelectionExampleBackground" width="327" height="168"/>
         <image name="homeBottleTitleLabel" width="248" height="40"/>
         <image name="homeBottleTitleLabelSmile" width="30" height="30"/>

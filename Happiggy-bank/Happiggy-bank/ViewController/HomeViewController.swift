@@ -8,7 +8,6 @@
 import CoreData
 import UIKit
 
-// TODO: Bottle Label 디자인 확정시 추가
 /// 메인 화면 전체를 관리하는 컨트롤러
 final class HomeViewController: UIViewController {
     
@@ -32,12 +31,14 @@ final class HomeViewController: UIViewController {
     /// 디데이 표시하는 라벨
     @IBOutlet weak var bottleDdayLabel: UILabel!
     
-    
     /// 저금통 이름 뷰로, 라벨과 라벨 이미지들을 담고 있음
     @IBOutlet weak var bottleTitleView: UIView!
     
     /// 저금통 이름 표시하는 라벨
     @IBOutlet weak var bottleTitleLabel: UILabel!
+    
+    /// 저금통 이름 변경, 중도 개봉 기능을 담은 메뉴 버튼
+    @IBOutlet weak var moreButton: UIButton!
     
     /// 유리병 뷰를 관리하는 컨트롤러
     var bottleViewController: BottleViewController!
@@ -53,25 +54,19 @@ final class HomeViewController: UIViewController {
         navigationItem.backButtonTitle = ""
         hideLabelIfNeeded()
         initializeLabel()
-
-        self.observe(
-            selector: #selector(refetch),
-            name: .NSManagedObjectContextDidSave
-        )
+        self.observe(selector: #selector(refetch), name: .NSManagedObjectContextDidSave)
         self.observe(
             selector: #selector(updateWhenEnterForeground),
             name: UIApplication.willEnterForegroundNotification
         )
         self.observeCustomFontChange()
+        self.configureMoreButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.observe(
-            selector: #selector(refetch),
-            name: .NSManagedObjectContextDidSave
-        )
+        self.observe(selector: #selector(refetch), name: .NSManagedObjectContextDidSave)
         self.observe(
             selector: #selector(updateWhenEnterForeground),
             name: UIApplication.willEnterForegroundNotification
@@ -90,51 +85,46 @@ final class HomeViewController: UIViewController {
     
     /// 홈 뷰를 탭했을 떄 호출되는 액션 메서드
     @IBAction func viewDidTap(_ sender: UITapGestureRecognizer) {
-        
         guard let bottle = self.viewModel.bottle
         else {
-            self.performSegue(
+            return self.performSegue(
                 withIdentifier: SegueIdentifier.presentNewBottleNameField,
                 sender: sender
             )
-            return
         }
         if !bottle.isInProgress {
-            self.present(self.bottleOpenConfirmationAlert(), animated: true)
-            self.bottleViewController.alertOrModalDidAppear()
-            return
+            return self.present(self.tapMoreButtonToOpenBottleAlert(), animated: true)
         }
         if !bottle.hasEmptyDate {
-            self.present(self.noEmptyDateAlert(), animated: true)
-            return
+            return self.present(self.noEmptyDateAlert(), animated: true)
         }
         if !bottle.isEmtpyToday {
-            self.performSegue(
+            return self.performSegue(
                 withIdentifier: SegueIdentifier.presentNewNoteDatePicker,
                 sender: sender
             )
-            return
         }
         if bottle.isEmtpyToday {
-            self.performSegue(
+            return self.performSegue(
                 withIdentifier: SegueIdentifier.presentNewNoteTextView,
                 sender: sender
             )
         }
     }
     
-    // FIXME: - sender 인식 안되므로 제거 필요, bottleViewController 의 unwindCallDidArrive 도 수정 필요
+    // FIXME: sender 인식 안되므로 제거 필요, bottleViewController 의 unwindCallDidArrive 도 수정 필요
     /// 홈 뷰로 언와인드할 떄 호출되는 액션 메서드
     @IBAction func unwindCallToHomeViewDidArrive(segue: UIStoryboardSegue, sender: Any? = nil) {
-        
         let note = sender as? Note
         self.bottleViewController.unwindCallDidArrive(withNote: note)
-        
     }
     
     /// 새 저금통 생성 창에서 홈 뷰로 언와인드
-    @IBAction func unwindCallToHomeViewFromNewBottleView(segue: UIStoryboardSegue) {
-        // unwind from new bottle view controller to home view controller
+    @IBAction func unwindCallToHomeViewFromNewBottleView(segue: UIStoryboardSegue) {}
+    
+    /// 더보기 버튼을 눌렀을 때 호출되는 메서드
+    @IBAction func moreButtonDidTap(_ sender: UIButton) {
+        self.configureMoreButton()
     }
     
     
@@ -159,7 +149,7 @@ final class HomeViewController: UIViewController {
         self.viewModel.executeFetchRequest()
         
         // 최초에 만들었을 때
-        // 캐릭터 교체, 라벨 추가
+        // 캐릭터 교체, 라벨 추가, 더보기 버튼에 항목 추가
         hideLabelIfNeeded()
         initializeLabel()
         
@@ -167,28 +157,15 @@ final class HomeViewController: UIViewController {
         else { return }
         
         self.bottleViewController.bottleDidAdd(bottle)
+        self.configureMoreButton()
     }
     
     /// 백그라운드에서 포어그라운드로 돌아왔을 때 실행되는 메서드
     @objc private func updateWhenEnterForeground() {
         hideLabelIfNeeded()
         initializeLabel()
+        self.configureMoreButton()
     }
-    
-    // swiftlint:disable force_cast
-    /// 저금통 제목 라벨 탭했을 때 실행되는 함수
-    @objc private func bottleTitleLabelDidTap(_ sender: UITapGestureRecognizer) {
-        // go to title label edit view
-        let bottleNameEditViewController = self.storyboard?.instantiateViewController(
-            withIdentifier: StringLiteral.bottleNameEditViewController
-        ) as! BottleNameEditViewController
-        
-        bottleNameEditViewController.bottle = self.viewModel.bottle
-        bottleNameEditViewController.delegate = self
-        self.present(bottleNameEditViewController, animated: true)
-        self.bottleViewController.alertOrModalDidAppear()
-    }
-    // swiftlint:enable force_cast
     
     
     // MARK: - Navigation
@@ -204,10 +181,8 @@ final class HomeViewController: UIViewController {
             let viewModel = BottleViewModel()
             viewModel.bottle = self.viewModel.bottle
             bottleViewController.viewModel = viewModel
-            
             self.bottleViewController = bottleViewController
         }
-        
         if segue.identifier == SegueIdentifier.presentNewNoteDatePicker {
             guard let dateViewController = segue.destination as? NewNoteDatePickerViewController,
                   let bottle = self.viewModel.bottle
@@ -216,7 +191,6 @@ final class HomeViewController: UIViewController {
             let viewModel = NewNoteDatePickerViewModel(initialDate: Date(), bottle: bottle)
             dateViewController.viewModel = viewModel
         }
-        
         if segue.identifier == SegueIdentifier.presentNewNoteTextView {
             guard let textViewController = segue.destination as? NewNoteTextViewController,
                   let bottle = self.viewModel.bottle
@@ -225,7 +199,6 @@ final class HomeViewController: UIViewController {
             let viewModel = NewNoteTextViewModel(date: Date(), bottle: bottle)
             textViewController.viewModel = viewModel
         }
-        
         if segue.identifier == SegueIdentifier.presentBottleMessageView {
             guard let bottleMessageController = segue.destination as? BottleMessageViewController,
                   let (fakeBackground, bottle) = sender as? (UIView, Bottle)
@@ -247,12 +220,12 @@ final class HomeViewController: UIViewController {
     
     /// 조건에 따라 라벨 감추기
     private func hideLabelIfNeeded() {
-        
         showLabels()
         
         // 저금통 없는 상태
         if !self.viewModel.hasBottle {
             self.bottleDdayLabel.isHidden = true
+            self.moreButton.isHidden = true
             self.bottleTitleView.isHidden = true
             self.tapToAddNoteLabel.isHidden = true
             return
@@ -280,16 +253,15 @@ final class HomeViewController: UIViewController {
         self.emptyBottomLabel.isHidden = false
         self.homeCharacter.isHidden = false
         self.bottleDdayLabel.isHidden = false
+        self.moreButton.isHidden = false
         self.bottleTitleView.isHidden = false
         self.tapToAddNoteLabel.isHidden = false
     }
     
     /// 라벨 초기화
     private func initializeLabel() {
-        
         // 저금통 있을 때
         if self.viewModel.hasBottle {
-            addTapGestureToTitleLabelView()
             self.bottleTitleLabel.text = self.viewModel.bottle?.title
             self.bottleDdayLabel.text = self.viewModel.dDay()
             
@@ -313,30 +285,28 @@ final class HomeViewController: UIViewController {
         }
     }
     
-    /// 저금통 제목 라벨 탭 제스처 추가
-    private func addTapGestureToTitleLabelView() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(bottleTitleLabelDidTap))
-        self.bottleTitleView.addGestureRecognizer(tap)
-    }
-    
     
     // MARK: - Functions
     
     /// 저금통 개봉 의사를 물어보는 알림을 띄움
-    private func bottleOpenConfirmationAlert() -> UIAlertController {
+    private func bottleOpenConfirmationAlertController(for bottle: Bottle) -> UIAlertController {
         let confirmAction = UIAlertAction.confirmAction(
-            title: StringLiteral.bottleOpenAlertOpenButtonTitle
+            title: BottleOpenAlert.openButtonTitle,
+            style: bottle.isInProgress ? .destructive : .default
         ) { _ in
             self.bottleDidOpen()
         }
-            
         let cancelAction = UIAlertAction.cancelAction { _ in
             self.bottleViewController.restoreStateBeforeAlertOrModalDidAppear()
         }
-        
+        let title = bottle.isInProgress ?
+        BottleOpenAlert.midOpen.title : BottleOpenAlert.default.title
+        let message = bottle.isInProgress ?
+        BottleOpenAlert.midOpen.message : BottleOpenAlert.default.message
         return UIAlertController.basic(
-            alertTitle: StringLiteral.bottleOpenAlertTitle,
-            alertMessage: StringLiteral.bottleOpenAlertMessage,
+            alertTitle: title,
+            alertMessage: message,
+            preferredStyle: bottle.isInProgress ? .actionSheet : .alert,
             confirmAction: confirmAction,
             cancelAction: cancelAction
         )
@@ -360,7 +330,7 @@ final class HomeViewController: UIViewController {
         self.viewModel.bottle = nil
     }
     
-    /// 모든 날짜에 쪽지를 작성했다는 알림을 띄움
+    /// 모든 날짜에 쪽지를 작성했다는 알림
     private func noEmptyDateAlert() -> UIAlertController {
         UIAlertController.basic(
             alertTitle: StringLiteral.noEmptyDateAlertTitle,
@@ -368,12 +338,64 @@ final class HomeViewController: UIViewController {
             confirmAction: UIAlertAction.confirmAction()
         )
     }
+    
+    // swiftlint:disable force_cast
+    /// 메뉴 버튼에서 저금통 제목 변경을 선택했을 때 실행되는 함수
+    private func changeBottleNameItemDidTap() {
+        guard let bottle = self.viewModel.bottle
+        else { return }
+        
+        // go to title label edit view
+        let bottleNameEditViewController = self.storyboard?.instantiateViewController(
+            withIdentifier: StringLiteral.bottleNameEditViewController
+        ) as! BottleNameEditViewController
+        
+        bottleNameEditViewController.bottle = bottle
+        bottleNameEditViewController.delegate = self
+        self.present(bottleNameEditViewController, animated: true)
+        self.bottleViewController.alertOrModalDidAppear()
+    }
+    // swiftlint:enable force_cast
+    
+    /// 유저가 저금통을 개봉하려고 할 때 호출되는 함수
+    private func openBottleItemDidTap(_ bottle: Bottle) {
+        self.bottleViewController.alertOrModalDidAppear()
+        self.present(self.bottleOpenConfirmationAlertController(for: bottle), animated: true)
+    }
+    
+    /// 더보기 버튼 설정
+    private func configureMoreButton() {
+        guard let bottle = self.viewModel.bottle
+        else { return }
+        
+        let changeBottleName = UIAction(title: MoreButton.changeBottleName.title) { _ in
+            self.changeBottleNameItemDidTap()
+        }
+        let openBottle = self.configureOpenBottleItem(forBottle: bottle)
+        self.moreButton.menu = UIMenu(children: [changeBottleName, openBottle])
+    }
+    
+    /// 더보기 버튼의 저금통 개봉 아이템 설정
+    private func configureOpenBottleItem(forBottle bottle: Bottle) -> UIAction {
+        let title = MoreButton.openBottle(bottle.isInProgress ? .inProgress : .complete).title
+        let attributes = bottle.isInProgress ? UIMenuElement.Attributes.destructive : []
+        return UIAction(title: title, attributes: attributes) { _ in
+            self.openBottleItemDidTap(bottle)
+        }
+    }
+    
+    /// 더보기 버튼을 눌러 저금통을 개봉하라고 알려주는 알림
+    private func tapMoreButtonToOpenBottleAlert() -> UIAlertController {
+        return UIAlertController.basic(
+            alertTitle: StringLiteral.tapMoreButtonToOpenBottleAlertTitle,
+            confirmAction: .confirmAction()
+        )
+    }
 }
 
 
 // MARK: - Presenter
 extension HomeViewController: Presenter {
-    
     func presentedViewControllerDidDismiss(withResult: CustomResult) {
         self.bottleViewController.restoreStateBeforeAlertOrModalDidAppear()
     }
