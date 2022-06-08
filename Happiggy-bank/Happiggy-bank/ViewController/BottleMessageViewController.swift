@@ -184,6 +184,7 @@ final class BottleMessageViewController: UIViewController {
     /// 저금통 상태를 업데이트하고 다른 뷰 컨트롤러로 이동
     private func saveBottleUpdates() -> Bool {
         self.bottle.isOpen.toggle()
+        self.updateBottleEndDateIfNeeded()
         removeAllNotifications()
         
         if self.bottle.notes.isEmpty {
@@ -223,5 +224,18 @@ final class BottleMessageViewController: UIViewController {
         center.removeAllDeliveredNotifications()
         center.removeAllPendingNotificationRequests()
         UserDefaults.standard.set(false, forKey: StringLiteral.hasNotificationOn)
+    }
+    
+    /// 중도 개봉인 경우 종료 날짜 변경
+    private func updateBottleEndDateIfNeeded() {
+        guard self.bottle.isInProgress
+        else { return }
+        
+        let startOfTomorrow = Calendar.current.date(
+            byAdding: .day,
+            value: Metric.one,
+            to: Calendar.current.startOfDay(for: Date())
+        )
+        bottle.endDate_ = startOfTomorrow
     }
 }
