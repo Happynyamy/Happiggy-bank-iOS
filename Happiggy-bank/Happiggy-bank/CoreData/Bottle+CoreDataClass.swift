@@ -121,20 +121,28 @@ public class Bottle: NSManagedObject {
     
     /// 오늘이 저금통 시작일을 포함해서 며칠째인지
     var numberOfDaysSinceStartDate: Int {
-        Calendar.daysBetween(start: self.startDate, end: Date())
+        let days = Calendar.daysBetween(start: self.startDate, end: Date())
+        guard days > .zero
+        else { return .zero }
+        
+        return days
     }
     
     /// 현재까지의 날짜 중에서 쪽지를 쓰지 않은 날짜가 있는지 나타냄
     var hasEmptyDate: Bool {
-        self.numberOfDaysSinceStartDate > self.notes.count
+        guard self.numberOfDaysSinceStartDate != .zero
+        else { return false }
+        
+        return self.numberOfDaysSinceStartDate > self.notes.count
     }
     
     /// 오늘 쪽지를 썼는지 여부
     var isEmtpyToday: Bool {
-        guard let mostRecentNote = self.notes.last?.date
-        else { return true }
-
-        return !Calendar.current.isDateInToday(mostRecentNote)
+        guard Date() >= Calendar.current.startOfDay(for: self.startDate) 
+        else { return false }
+        
+        let noteToday = self.notes.reversed().first { Calendar.current.isDateInToday($0.date) }
+        return (noteToday == nil) ? true : false
     }
     
     /// 시작 날짜부터 끝 날짜까지의 텍스트 라벨
