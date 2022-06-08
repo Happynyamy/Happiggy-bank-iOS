@@ -31,6 +31,9 @@ final class NewNoteDatePickerViewModel {
         
         /// 쪽지들 확인하면서 맞는 날짜에 색깔 기록
         for note in self.bottle.notes {
+            guard note.date < Date.startOfTomorrow
+            else { continue }
+            
             let index = Calendar.daysBetween(start: startDate, end: note.date) - 1
             source[index].color = note.color
         }

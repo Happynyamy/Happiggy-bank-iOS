@@ -22,6 +22,7 @@
 		A439F53E27EEFCF6002851F4 /* SettingsToggleButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A439F53C27EEFCF6002851F4 /* SettingsToggleButtonCell.xib */; };
 		A439F54527EF0698002851F4 /* SettingsLabelButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A439F54327EF0698002851F4 /* SettingsLabelButtonCell.swift */; };
 		A44E901727D5EB130053AC57 /* Happiggy-bank.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A44E901527D5EB130053AC57 /* Happiggy-bank.xcdatamodeld */; };
+		A4534714285071A800F77164 /* Date+Tomorrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4534713285071A800F77164 /* Date+Tomorrow.swift */; };
 		A456657C27CC66FD007CF70A /* DefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A817430027C112D00016C921 /* DefaultButton.swift */; };
 		A456657E27CC77A9007CF70A /* Date+Formatted.swift in Sources */ = {isa = PBXBuildFile; fileRef = A456657D27CC77A9007CF70A /* Date+Formatted.swift */; };
 		A4569CB8280FB979001E3FD6 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CB7280FB979001E3FD6 /* Presenter.swift */; };
@@ -164,6 +165,7 @@
 		A439F53C27EEFCF6002851F4 /* SettingsToggleButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsToggleButtonCell.xib; sourceTree = "<group>"; };
 		A439F54327EF0698002851F4 /* SettingsLabelButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLabelButtonCell.swift; sourceTree = "<group>"; };
 		A44E901627D5EB130053AC57 /* Happigy-bank.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Happigy-bank.xcdatamodel"; sourceTree = "<group>"; };
+		A4534713285071A800F77164 /* Date+Tomorrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Tomorrow.swift"; sourceTree = "<group>"; };
 		A456657D27CC77A9007CF70A /* Date+Formatted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatted.swift"; sourceTree = "<group>"; };
 		A4569CB7280FB979001E3FD6 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		A4569CB9280FBA23001E3FD6 /* CustomResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomResult.swift; sourceTree = "<group>"; };
@@ -522,6 +524,7 @@
 				A4D6EB7C2837901F00553E43 /* URL+AppStore.swift */,
 				A4D357DF283A43C7007819E3 /* UIViewController+VersionUpdating.swift */,
 				A4D357E1283A4429007819E3 /* URL+Open.swift */,
+				A4534713285071A800F77164 /* Date+Tomorrow.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -787,6 +790,7 @@
 				A4D6EB77282E307900553E43 /* VersionManager.swift in Sources */,
 				A89CBEDB27CBDD99005549F6 /* BottleCell.swift in Sources */,
 				A44E901727D5EB130053AC57 /* Happiggy-bank.xcdatamodeld in Sources */,
+				A4534714285071A800F77164 /* Date+Tomorrow.swift in Sources */,
 				A4C1AFD427E5E6120096CD3E /* UITextView+ParagraphStyle.swift in Sources */,
 				A46B10F228142F26004AB185 /* UIViewController+ObserveCustomFontChange.swift in Sources */,
 				A466A31A2802987700D655F4 /* UIAlertAction+ConfirmAndCancel.swift in Sources */,
