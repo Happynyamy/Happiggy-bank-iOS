@@ -1309,6 +1309,6 @@ extension URL {
     enum StringLiteral {
         
         /// 앱스토어 앱 정보 url
-        static let appInfo = "https://itunes.apple.com/kr/lookup?bundleId=\(bundleID)"
+        static let appInfo = "http://itunes.apple.com/kr/lookup?bundleId=\(bundleID)"
     }
 }

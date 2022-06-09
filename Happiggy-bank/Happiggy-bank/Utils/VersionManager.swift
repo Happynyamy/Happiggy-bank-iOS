@@ -21,7 +21,8 @@ final class VersionManager: VersionChecking {
               let latestVersion = self.latestVersion
         else { return .nil }
         
-        return (installedVersion == latestVersion) ? .false : .true
+        let comparison = installedVersion.compare(latestVersion, options: .numeric)
+        return (comparison == .orderedAscending) ? .true : .false
     }
     
     var needsForcedUpdate: Bool {
