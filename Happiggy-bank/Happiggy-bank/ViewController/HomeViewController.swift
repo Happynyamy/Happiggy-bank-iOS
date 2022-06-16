@@ -378,7 +378,12 @@ final class HomeViewController: UIViewController {
     /// 더보기 버튼의 저금통 개봉 아이템 설정
     private func configureOpenBottleItem(forBottle bottle: Bottle) -> UIAction {
         let title = MoreButton.openBottle(bottle.isInProgress ? .inProgress : .complete).title
-        let attributes = bottle.isInProgress ? UIMenuElement.Attributes.destructive : []
+        var attributes: UIMenuElement.Attributes = []
+        
+        if bottle.isInProgress {
+            attributes = (Date() >= bottle.startDate) ? .destructive : .disabled
+        }
+        
         return UIAction(title: title, attributes: attributes) { _ in
             self.openBottleItemDidTap(bottle)
         }
