@@ -91,10 +91,15 @@
                                     <constraint firstItem="u5P-Zi-qGu" firstAttribute="top" secondItem="gfd-IP-Gfv" secondAttribute="top" constant="4" id="vgl-Aj-EBu"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fI-uW-xzV">
-                                <rect key="frame" x="365" y="173.5" width="25" height="24"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fI-uW-xzV">
+                                <rect key="frame" x="344" y="150.5" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="Rg7-L1-U4Z"/>
+                                    <constraint firstAttribute="width" constant="70" id="yL5-Aw-ncE"/>
+                                </constraints>
                                 <state key="normal">
-                                    <imageReference key="image" image="ellipsis.circle" catalog="system" symbolScale="large"/>
+                                    <imageReference key="image" image="moreButton" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                 </state>
                                 <connections>
                                     <action selector="moreButtonDidTap:" destination="BYZ-38-t0r" eventType="touchDown" id="on9-Wv-WIb"/>
@@ -114,7 +119,7 @@
                             <constraint firstItem="dfo-Bk-tQ1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="D8I-Er-tZ3"/>
                             <constraint firstItem="gfd-IP-Gfv" firstAttribute="top" secondItem="Ox7-a2-qYT" secondAttribute="bottom" constant="4" id="EvP-Pn-pVN"/>
                             <constraint firstItem="u5P-Zi-qGu" firstAttribute="leading" secondItem="Ox7-a2-qYT" secondAttribute="leading" id="GH4-Ks-cx0"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4fI-uW-xzV" secondAttribute="trailing" constant="24" id="Kvd-Wm-a7E"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4fI-uW-xzV" secondAttribute="trailing" id="Kvd-Wm-a7E"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mxw-FV-eBm" secondAttribute="trailing" symbolic="YES" id="LuX-hH-50l"/>
                             <constraint firstItem="JwR-oy-otr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LzX-yn-Ctk"/>
                             <constraint firstItem="ZlX-eS-Yvg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="OFr-if-N9z"/>
@@ -1418,11 +1423,11 @@
         <image name="characterWhite" width="40" height="40"/>
         <image name="characterYellow" width="40" height="40"/>
         <image name="checkmark" width="19" height="16"/>
-        <image name="ellipsis.circle" catalog="system" width="128" height="121"/>
         <image name="fontSelectionExampleBackground" width="327" height="168"/>
         <image name="homeBottleTitleLabel" width="248" height="40"/>
         <image name="homeBottleTitleLabelSmile" width="30" height="30"/>
         <image name="homeCharacter" width="375" height="812"/>
+        <image name="moreButton" width="24" height="42"/>
         <image name="next" width="10" height="18"/>
         <image name="tabBarHomeNormal" width="36" height="26"/>
         <image name="tabBarHomeSelected" width="36" height="26"/>
