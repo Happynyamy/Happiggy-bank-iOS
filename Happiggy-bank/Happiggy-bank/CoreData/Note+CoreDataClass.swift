@@ -38,12 +38,12 @@ public class Note: NSManagedObject {
         }
     }
     
-    /// 저금통의 모든 쪽지를 호출하는 리퀘스트로 순서를 지정하지 않으면 날짜가 빠른 순으로 정렬
+    /// 저금통의 모든 쪽지를 호출하는 리퀘스트로 순서를 지정하지 않으면 (오래된) 날짜 순서로 정렬
     static func fetchRequest(
         bottle: Bottle,
         sortDescriptor: [NSSortDescriptor] = [NSSortDescriptor(
             key: "date_",
-            ascending: false
+            ascending: true
         )]
     ) -> NSFetchRequest<Note> {
         NSFetchRequest<Note>(entityName: Note.name).then {
