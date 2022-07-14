@@ -21,7 +21,7 @@ extension UIAlertController {
         let alert = UIAlertController(
             title: alertTitle,
             message: alertMessage,
-            preferredStyle: .alert
+            preferredStyle: preferredStyle
         )
         
         if let confirmAction = confirmAction {
