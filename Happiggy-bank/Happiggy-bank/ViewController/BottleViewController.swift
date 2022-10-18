@@ -107,11 +107,6 @@ final class BottleViewController: UIViewController {
         self.gravity?.resetAndBindGravityDirection()
     }
 
-    /// 현재 뷰 컨트롤러로 unwind 하라는 호출을 받았을 때 실행되는 액션메서드로, 중력 효과 재개
-    func unwindCallDidArrive() {
-        self.gravity?.startDeviceMotionUpdates()
-    }
-
     /// 알림/모달이 떴을 때 호출되는 메서드
     func alertOrModalDidAppear() {
         self.gravity?.disable()

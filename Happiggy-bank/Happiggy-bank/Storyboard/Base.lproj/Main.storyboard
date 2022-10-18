@@ -613,18 +613,34 @@
         <!--알림 설정-->
         <scene sceneID="rN9-Xp-rlk">
             <objects>
-                <viewController id="EmQ-Hc-N3T" sceneMemberID="viewController">
+                <viewController id="EmQ-Hc-N3T" customClass="NotificationSettingsViewController" customModule="Happiggy_bank" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pva-VA-rmO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="66" estimatedRowHeight="66" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="QTg-EF-ndL">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <inset key="separatorInset" minX="24" minY="0.0" maxX="24" maxY="0.0"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="RQx-ZO-Imx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="QTg-EF-ndL" firstAttribute="top" secondItem="RQx-ZO-Imx" secondAttribute="top" id="8nL-IY-Af9"/>
+                            <constraint firstItem="QTg-EF-ndL" firstAttribute="trailing" secondItem="RQx-ZO-Imx" secondAttribute="trailing" id="mZr-ub-Gi3"/>
+                            <constraint firstItem="QTg-EF-ndL" firstAttribute="bottom" secondItem="RQx-ZO-Imx" secondAttribute="bottom" id="tEh-p2-Knt"/>
+                            <constraint firstItem="QTg-EF-ndL" firstAttribute="leading" secondItem="RQx-ZO-Imx" secondAttribute="leading" id="tMT-LC-4z6"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="알림 설정" id="dNi-cG-kQt"/>
+                    <connections>
+                        <outlet property="tableView" destination="QTg-EF-ndL" id="q1r-qz-t8z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lKk-Cb-JtQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5575" y="2433"/>
+            <point key="canvasLocation" x="5573.913043478261" y="2432.8125"/>
         </scene>
         <!--Information Text View Controller-->
         <scene sceneID="av6-PB-qbi">
