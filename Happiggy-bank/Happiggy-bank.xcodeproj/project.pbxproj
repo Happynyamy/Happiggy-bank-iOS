@@ -19,7 +19,6 @@
 		A425F8B827EDF59A00A005AB /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A425F8B727EDF59A00A005AB /* TagCell.swift */; };
 		A439F53A27EEFC28002851F4 /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A439F53927EEFC27002851F4 /* SettingsViewCell.swift */; };
 		A439F53D27EEFCF6002851F4 /* SettingsToggleButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A439F53B27EEFCF6002851F4 /* SettingsToggleButtonCell.swift */; };
-		A439F53E27EEFCF6002851F4 /* SettingsToggleButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A439F53C27EEFCF6002851F4 /* SettingsToggleButtonCell.xib */; };
 		A439F54527EF0698002851F4 /* SettingsLabelButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A439F54327EF0698002851F4 /* SettingsLabelButtonCell.swift */; };
 		A44E901727D5EB130053AC57 /* Happiggy-bank.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A44E901527D5EB130053AC57 /* Happiggy-bank.xcdatamodeld */; };
 		A4534714285071A800F77164 /* Date+Tomorrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4534713285071A800F77164 /* Date+Tomorrow.swift */; };
@@ -139,7 +138,7 @@
 		A8FC07D127B3ECF30077A758 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8FC07D027B3ECF30077A758 /* Assets.xcassets */; };
 		A8FC07D427B3ECF30077A758 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8FC07D227B3ECF30077A758 /* LaunchScreen.storyboard */; };
 		A8FC07DD27B3EF030077A758 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A8FC07DC27B3EF030077A758 /* .swiftlint.yml */; };
-		D22ADF6327F5CE8F00ECB77B /* NotificationSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22ADF6227F5CE8F00ECB77B /* NotificationSettingViewController.swift */; };
+		D22ADF6327F5CE8F00ECB77B /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22ADF6227F5CE8F00ECB77B /* NotificationSettingsViewController.swift */; };
 		D22ADF7F27F72F7300ECB77B /* NotificationSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22ADF7E27F72F7300ECB77B /* NotificationSettingViewModel.swift */; };
 		D236DB8627FDC43200D7B8F0 /* NewBottleDatePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D236DB8527FDC43200D7B8F0 /* NewBottleDatePickerViewModel.swift */; };
 		D236DB8827FDD66900D7B8F0 /* NewBottleMessageFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D236DB8727FDD66900D7B8F0 /* NewBottleMessageFieldViewController.swift */; };
@@ -162,7 +161,6 @@
 		A425F8B727EDF59A00A005AB /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
 		A439F53927EEFC27002851F4 /* SettingsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
 		A439F53B27EEFCF6002851F4 /* SettingsToggleButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsToggleButtonCell.swift; sourceTree = "<group>"; };
-		A439F53C27EEFCF6002851F4 /* SettingsToggleButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsToggleButtonCell.xib; sourceTree = "<group>"; };
 		A439F54327EF0698002851F4 /* SettingsLabelButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLabelButtonCell.swift; sourceTree = "<group>"; };
 		A44E901627D5EB130053AC57 /* Happigy-bank.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Happigy-bank.xcdatamodel"; sourceTree = "<group>"; };
 		A4534713285071A800F77164 /* Date+Tomorrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Tomorrow.swift"; sourceTree = "<group>"; };
@@ -283,7 +281,7 @@
 		A8FC07D327B3ECF30077A758 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A8FC07D527B3ECF30077A758 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8FC07DC27B3EF030077A758 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		D22ADF6227F5CE8F00ECB77B /* NotificationSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingViewController.swift; sourceTree = "<group>"; };
+		D22ADF6227F5CE8F00ECB77B /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
 		D22ADF7E27F72F7300ECB77B /* NotificationSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingViewModel.swift; sourceTree = "<group>"; };
 		D236DB8527FDC43200D7B8F0 /* NewBottleDatePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBottleDatePickerViewModel.swift; sourceTree = "<group>"; };
 		D236DB8727FDD66900D7B8F0 /* NewBottleMessageFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBottleMessageFieldViewController.swift; sourceTree = "<group>"; };
@@ -428,7 +426,7 @@
 				A490AC4D27DD945E00B04CE1 /* NoteListViewController.swift */,
 				A41DE62527F36595002A7669 /* NoteDetailViewController.swift */,
 				A41DE63127F80115002A7669 /* BottleMessageViewController.swift */,
-				D22ADF6227F5CE8F00ECB77B /* NotificationSettingViewController.swift */,
+				D22ADF6227F5CE8F00ECB77B /* NotificationSettingsViewController.swift */,
 				D236DB8727FDD66900D7B8F0 /* NewBottleMessageFieldViewController.swift */,
 				D284A5DD27FF3EFB00D20699 /* BottleNameEditViewController.swift */,
 				A466A30B2801861000D655F4 /* ErrorViewController.swift */,
@@ -466,7 +464,6 @@
 				A8ECD4A427E30FF300886BC0 /* BottleCell.xib */,
 				A41DE62A27F36E95002A7669 /* NoteCell.xib */,
 				A48E183D27E737B600B44477 /* CapsuleButton.xib */,
-				A439F53C27EEFCF6002851F4 /* SettingsToggleButtonCell.xib */,
 				A466A3152801DF1400D655F4 /* SettingsLabelButtonCell.xib */,
 				A4569CCE28128B4B001E3FD6 /* SettingsNonIconButtonCell.xib */,
 				A49B25E92812B17B00399630 /* FontSelectionCell.xib */,
@@ -655,7 +652,6 @@
 				A49B25EB2812B17C00399630 /* FontSelectionCell.xib in Resources */,
 				A8FC07D427B3ECF30077A758 /* LaunchScreen.storyboard in Resources */,
 				A48E183E27E737B600B44477 /* CapsuleButton.xib in Resources */,
-				A439F53E27EEFCF6002851F4 /* SettingsToggleButtonCell.xib in Resources */,
 				A49B25F22812BF6B00399630 /* dovemayo.otf in Resources */,
 				A466A3162801DF1400D655F4 /* SettingsLabelButtonCell.xib in Resources */,
 				A46B110E2814617B004AB185 /* IBMPlexSansKR-Bold.otf in Resources */,
@@ -758,7 +754,7 @@
 				A4B285FD27D8A060008769EB /* Calendar+Duration.swift in Sources */,
 				A41DE63227F80115002A7669 /* BottleMessageViewController.swift in Sources */,
 				A4B2860527D9A546008769EB /* NewNoteDatePickerViewController.swift in Sources */,
-				D22ADF6327F5CE8F00ECB77B /* NotificationSettingViewController.swift in Sources */,
+				D22ADF6327F5CE8F00ECB77B /* NotificationSettingsViewController.swift in Sources */,
 				A491018527D6EDE90012DFDD /* PersistenceStore.swift in Sources */,
 				A46B10F028142DB1004AB185 /* UIFont+Weight.swift in Sources */,
 				A491018D27D7358B0012DFDD /* Bottle+CoreDataClass.swift in Sources */,

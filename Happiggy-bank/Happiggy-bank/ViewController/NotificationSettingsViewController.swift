@@ -1,5 +1,5 @@
 //
-//  NotificationSettingViewController.swift
+//  NotificationSettingsViewController.swift
 //  Happiggy-bank
 //
 //  Created by Eunbin Kwon on 2022/03/31.
@@ -10,8 +10,8 @@ import UserNotifications
 
 import Then
 
-/// 노티피케이션 스위치 on/off에 따라 노티피케이션 추가/삭제하는 뷰 컨트롤러
-final class NotificationSettingViewController: UIViewController {
+/// 노티피케이션(일일 알림, 리마인드 알림) 추가/삭제하는 뷰 컨트롤러
+final class NotificationSettingsViewController: UIViewController {
     
     /// 알림 설정하는 스위치
     lazy var notificationControl: UISwitch = UISwitch().then {
