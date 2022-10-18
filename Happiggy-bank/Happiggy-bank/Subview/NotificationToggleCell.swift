@@ -1,5 +1,5 @@
 //
-//  SettingsToggleButtonCell.swift
+//  NotificationToggleCell.swift
 //  Happiggy-bank
 //
 //  Created by sun on 2022/03/26.
@@ -8,13 +8,15 @@
 import UIKit
 
 /// 환경 설정 뷰 중 토글 스위치가 있는 항목을 위한 셀
-final class SettingsToggleButtonCell: SettingsViewCell {
+final class NotificationToggleCell: SettingsViewCell {
     
     // MARK: - @IBOutlets
     
     /// 제목 라벨
     @IBOutlet weak var titleLabel: UILabel!
     
+    /// 토글 버튼
+    @IBOutlet weak var toggleButton: UISwitch!
     
     // MARK: - Override Functions
     
@@ -30,6 +32,9 @@ final class SettingsToggleButtonCell: SettingsViewCell {
     }
     
     override func prepareForReuse() {
+        super.prepareForReuse()
+        
         self.titleLabel.text = .empty
+        self.toggleButton.isOn = false
     }
 }

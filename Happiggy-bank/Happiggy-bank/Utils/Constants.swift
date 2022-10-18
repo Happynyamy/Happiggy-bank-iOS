@@ -1055,16 +1055,13 @@ extension BottleMessageViewController {
     }
 }
 
-extension NotificationSettingsViewController {
+extension NotificationSettingsViewModel {
     
     /// 상수값
     enum Metric {
         
         /// 노티피케이션 반복할 날짜
-        static let repeatingDays: Int = 14
-        
-        /// 스위치 오른쪽 패딩
-        static let trailingPadding: CGFloat = -10
+        static let repeatingDays: Int = 3
     }
     
     /// 문자열
@@ -1093,6 +1090,25 @@ extension NotificationSettingsViewController {
         
         /// 알림 취소 액션 라벨
         static let cancel: String = "취소"
+    }
+    
+    /// 각 셀 별 내용
+    enum Content: Int, CaseIterable {
+        /// 일일 알림 설정
+        case daily
+        
+        /// 리마인드 알림 설정
+        case reminder
+        
+        
+        
+        // MARK: - Properties
+        
+        /// 제목 딕셔너리
+        static let title: [Int: String] = [
+            daily.rawValue: "일일 알림",
+            reminder.rawValue: "리마인드 알림"
+        ]
     }
 }
 
