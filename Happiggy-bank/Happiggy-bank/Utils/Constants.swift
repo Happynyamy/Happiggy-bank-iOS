@@ -850,6 +850,7 @@ extension SettingsViewController {
         
         /// 아이콘 딕셔너리
         static let icon: [Int: UIImage?] = [
+            bottleAlert.rawValue: UIImage(named: imageName(for: .bottleAlert)),
             appVersion.rawValue: UIImage(named: imageName(for: .appVersion)),
             customerService.rawValue: UIImage(named: imageName(for: .customerService)),
             fontSelection.rawValue: UIImage(named: imageName(for: .fontSelection))
@@ -857,6 +858,7 @@ extension SettingsViewController {
         
         /// 제목 딕셔너리
         static let title: [Int: String] = [
+            bottleAlert.rawValue: "알림 설정",
             appVersion.rawValue: "버전 정보",
             customerService.rawValue: "고객 지원",
             fontSelection.rawValue: "폰트 바꾸기"
@@ -864,6 +866,7 @@ extension SettingsViewController {
         
         /// 세그웨이 아이디 딕셔너리
         static let segueIdentifier: [Int: String] = [
+            bottleAlert.rawValue: segueIdentifier(for: bottleAlert),
             customerService.rawValue: segueIdentifier(for: customerService),
             fontSelection.rawValue: segueIdentifier(for: fontSelection)
         ]
@@ -1052,7 +1055,7 @@ extension BottleMessageViewController {
     }
 }
 
-extension NotificationSettingViewController {
+extension NotificationSettingsViewController {
     
     /// 상수값
     enum Metric {
