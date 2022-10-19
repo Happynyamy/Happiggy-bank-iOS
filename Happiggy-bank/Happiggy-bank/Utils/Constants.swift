@@ -219,19 +219,13 @@ extension ColorButton {
     enum Metric {
         
         /// 버튼 테두리 선 두께: 1
-        static let borderWidth: CGFloat = 1
-        
-        /// 컬러 버튼 상하좌우 패딩: 1
-        static let colorButtonInset: CGFloat = 1
+        static let borderWidth: CGFloat = 2
         
         /// 애니메이션 지속 시간: 0.2
         static let animationDuration = CATransition.transitionDuration
         
-        /// 버튼 테두리 둥근 정도: 7
-        static let buttonCornerRadius: CGFloat = 7
-        
-        /// 버튼 하이라이트 테두리 둥근 정도: 8
-        static let highlightViewCornerRadius = buttonCornerRadius + 1
+        /// 버튼 테두리 둥근 정도: 8
+        static let buttonCornerRadius: CGFloat = 8
     }
 }
 
@@ -729,15 +723,10 @@ extension NewNoteTextViewController {
             let navigationBarHeight = navigationBarFrame.size.height
             let screenHeight = UIScreen.main.bounds.height
             let safeAreaTopInset = navigationBarFrame.origin.y
-            
-            return screenHeight - safeAreaTopInset - navigationBarHeight - keyboardHeight
+            let removingHeight = safeAreaTopInset + navigationBarHeight + keyboardHeight
+
+            return screenHeight - removingHeight
         }
-        
-        /// 텍스트뷰 줄 간격: 8
-        static let lineSpacing: CGFloat = 8
-        
-        /// 텍스트뷰 자간: 0.5
-        static let characterSpacing: CGFloat = 0.5
         
         /// 컬러 버튼 컨테이너 뷰 페이드 인 지속 시간: 0.1
         static let colorButtonContainerViewFadeInDuration: TimeInterval = 0.1
@@ -794,18 +783,18 @@ extension NewNoteTextViewModel {
     /// NewNoteTextViewModel 에서 사용하는 문자열
     enum StringLiteral {
         
-        /// 쪽지 이미지 에셋 호출을 위해 앞에 붙일 접두사
-        static let textViewNote = "textViewNote"
-        
         /// 글자수 라벨 텍스트를 반환
         static let letterCountText = " / \(NewNoteTextViewController.Metric.noteTextMaxLength)"
+
+        /// 날짜 레이블 간격
+        static let spacing = "  "
     }
-    
+
     /// NewNoteTextViewModel 에서 사용하는 폰트 크기
     enum Font {
         
-        /// 글자수 라벨 폰트 크기: 15
-        static let letterCountLabel: CGFloat = 15
+        /// 날짜 버튼과 글자수 라벨 폰트 크기: 15
+        static let secondaryText: CGFloat = 15
     }
 }
 
@@ -1380,4 +1369,15 @@ extension URL {
         /// 앱스토어 앱 정보 url
         static let appInfo = "http://itunes.apple.com/kr/lookup?bundleId=\(bundleID)"
     }
+}
+
+
+/// 단락 자간, 행간 설정에 사용하는 상수값
+enum ParagraphStyle {
+
+    /// 행간: 8
+    static let lineSpacing: CGFloat = 8
+
+    /// 자간: 0.5
+    static let characterSpacing: CGFloat = 0.5
 }

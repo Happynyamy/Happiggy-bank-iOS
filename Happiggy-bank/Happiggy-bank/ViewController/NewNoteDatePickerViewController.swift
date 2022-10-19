@@ -70,7 +70,10 @@ final class NewNoteDatePickerViewController: UIViewController {
     @IBAction func cancelButtonDidTap(_ sender: UIBarButtonItem) {
         self.fadeOut()
         if self.isFromNoteTextView {
-            self.dismiss(animated: false, completion: nil)
+            self.performSegue(
+                withIdentifier: SegueIdentifier.unwindFromNoteDatePickerToTextView,
+                sender: sender
+            )
             return
         }
         if !self.isFromNoteTextView {

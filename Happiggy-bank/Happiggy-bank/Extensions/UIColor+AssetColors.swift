@@ -66,6 +66,6 @@ extension UIColor {
     
     /// 에셋에 추가한 쪽지 외곽선 색상을 반환하는 메서드
     static func noteBorder(for color: NoteColor) -> UIColor {
-        UIColor(named: Asset.noteBorder.rawValue + color.capitalizedString) ?? .customGray
+        UIColor(named: Asset.noteBorder.rawValue + color.capitalizedString) ?? .note(color: color)
     }
 }
