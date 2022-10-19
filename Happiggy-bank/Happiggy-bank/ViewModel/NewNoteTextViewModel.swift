@@ -15,14 +15,8 @@ final class NewNoteTextViewModel {
     /// 임시 쪽지 객체
     var newNote: NewNote!
     
-    /// 쪽지 이미지
-    var noteImage: UIImage {
-        UIImage(named: StringLiteral.textViewNote + self.newNote.color.capitalizedString)
-        ?? UIImage()
-    }
-    
-    /// 쪽지 색깔
-    var labelColor: UIColor {
+    /// 강조 색깔
+    var tintColor: UIColor {
         UIColor.noteHighlight(for: newNote.color)
     }
     
@@ -30,21 +24,29 @@ final class NewNoteTextViewModel {
     var backgroundColor: UIColor {
         UIColor.note(color: newNote.color)
     }
+
+    /// 달력 버튼 제목
+    var attributedDateButtonTitle: NSMutableAttributedString {
+        let string = self.attributedYearString
+        string.append(.init(string: StringLiteral.spacing))
+        string.append(self.attributedMonthDayString)
+
+        return string
+    }
     
     /// 색깔 적용하고 볼드처리한 연도 텍스트
-    var attributedYearString: NSMutableAttributedString {
+    private var attributedYearString: NSMutableAttributedString {
         self.newNote.date
             .yearString
             .nsMutableAttributedStringify()
-            .color(color: labelColor)
+            .bold(fontSize: Font.secondaryText)
     }
     
     /// 색깔 적용한 월, 일 텍스트
-    var attributedMonthDayString: NSMutableAttributedString {
+    private var attributedMonthDayString: NSMutableAttributedString {
         self.newNote.date
             .monthDotDayWithDayOfWeekString
             .nsMutableAttributedStringify()
-            .color(color: labelColor)
     }
     
     
@@ -60,11 +62,11 @@ final class NewNoteTextViewModel {
     /// 색깔 적용한 글자수 라벨 텍스트
     func attributedLetterCountString(count: Int) -> NSMutableAttributedString {
         let color = (count > NewNoteTextViewController.Metric.noteTextMaxLength) ?
-        UIColor.customWarningLabel : .noteHighlight(for: self.newNote.color)
+        UIColor.customWarningLabel : self.tintColor
         
         let countString = "\(count)"
             .nsMutableAttributedStringify()
-            .bold(fontSize: Font.letterCountLabel)
+            .bold(fontSize: Font.secondaryText)
             .color(color: color)
         
         countString.append(StringLiteral.letterCountText.nsMutableAttributedStringify())
