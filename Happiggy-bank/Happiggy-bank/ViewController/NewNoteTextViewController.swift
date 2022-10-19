@@ -12,41 +12,23 @@ final class NewNoteTextViewController: UIViewController {
     
     // MARK: - @IBOutlet
     
-    /// 쪽지 색깔 선택 버튼들
-    @IBOutlet var colorButtons: [ColorButton]!
-    
-    /// 컬러 버튼들을 담고 있는 컨테이너 뷰
-    @IBOutlet weak var colorButtonContainerView: UIView!
-    
     /// 취소 버튼과 저장 버튼을 담고 있는 내비게이션 바
     @IBOutlet weak var navigationBar: UINavigationBar!
     
     /// 저장 버튼
     @IBOutlet weak var saveButton: UIBarButtonItem!
+
+    /// 쪽지 입력 뷰
+    @IBOutlet weak var newtNoteInputView: NewNoteInputView!
+
+    /// 쪽지 입력 뷰  높이 제약 조건
+    @IBOutlet weak var newtNoteInputViewHeightConstraint: NSLayoutConstraint!
+
+    /// 포토 라이브러리 버튼과 컬러 버튼들이 들어있음
+    @IBOutlet weak var toolbar: UIToolbar!
     
-    /// 쪽지 에셋 이미지를 나타낼 뷰
-    @IBOutlet weak var imageView: UIImageView!
-    
-    /// 내용 스택 높이 제약 조건
-    @IBOutlet weak var contentStackHeightConstraint: NSLayoutConstraint!
-    
-    /// 연도 라벨
-    @IBOutlet weak var yearLabel: UILabel!
-    
-    /// 월, 일 라벨
-    @IBOutlet weak var monthAndDayLabel: UILabel!
-    
-    /// 쪽지 내용을 작성할 텍스트 뷰
-    @IBOutlet weak var textView: UITextView!
-    
-    /// 플레이스홀더 라벨
-    @IBOutlet weak var placeholderLabel: UILabel!
-    
-    /// 쪽지 내용 글자수를 세는 라벨
-    @IBOutlet weak var letterCountLabel: UILabel!
-    
-    /// 입력한 내용 없이 저장 버튼을 누를 때 표시하는 경고 라벨
-    @IBOutlet weak var warningLabel: UILabel!
+    /// 툴바에 있는 쪽지 색깔 팔레트
+    @IBOutlet weak var colorPicker: ColorPickerItem!
     
     
     // MARK: - Properties
@@ -62,20 +44,16 @@ final class NewNoteTextViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.navigationBar.clear()
         self.observe(
             selector: #selector(self.configureImageViewHeightConstraint(notification:)),
             name: UITextView.keyboardWillShowNotification
         )
-        self.updateImageView()
-        self.updateDateLabels()
-        self.configureTextView()
-        self.configurePlaceholderLabel()
-        self.updateColorButtons()
-        self.updateLetterCountLabel(count: .zero)
+        self.configureNewNoteInputView()
+        self.colorPicker.delegate = self
     }
-    
+
     
     // MARK: - @IBAction
     
@@ -89,134 +67,128 @@ final class NewNoteTextViewController: UIViewController {
     
     /// 저장버튼(v)을 눌렀을 때 호출되는 액션 메서드
     @IBAction func saveButtonDidTap(_ sender: UIBarButtonItem) {
-        
-        guard !textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        guard let textView = self.newtNoteInputView.textView,
+              !textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
         else {
             self.showWarningLabel = true
-            self.warningLabel.fadeIn()
+            self.newtNoteInputView.warningLabel.fadeIn()
             HapticManager.instance.notification(type: .error)
-            self.placeholderLabel.fadeOut()
+            self.newtNoteInputView.placeholderLabel.fadeOut()
             return
         }
 
-        self.textView.endEditing(true)
+        textView.endEditing(true)
         self.showNoteSavingConfirmationAlert()
     }
-    
-    /// 날짜 라벨을 눌렀을 때 호출되는 액션 메서드 : 날짜 피커 뷰로 넘어감
-    @IBAction func dateLabelsDidTap(_ sender: UITapGestureRecognizer) {
-        self.performSegue(
-            withIdentifier: SegueIdentifier.presentDatePickerFromNoteTextView,
-            sender: self
-        )
-    }
-    
-    /// 색깔 버튼을 눌렀을 때 호출 되는 액션 메서드 : 선택한 쪽지 색깔을 바꿈
-    @IBAction func colorButtonDidTap(_ sender: ColorButton) {
-        guard sender.color != self.viewModel.newNote.color
-        else { return }
-        
-        self.colorButtons.forEach { $0.updateState(isSelected: $0.color == sender.color)}
-        self.viewModel.newNote.color = sender.color
-        
-        UIView.transition(with: self.view, duration: Metric.animationDuration, options: .transitionCrossDissolve) {
-            self.updateImageView()
-            self.updateColorButtons()
-            self.updateLabelColors()
-        }
+
+    /// 툴바의 포토 라이브러리 버튼을 눌렀을 때 호출되는 메서드
+    @IBAction func photoButtonDidTap(_ sender: UIBarButtonItem) {
+        // TODO: 구현
     }
     
     /// 날짜 라벨을 눌러서 띄운 날짜 피커에서 되돌아 올 때 호출되는 메서드
     @IBAction func unwindCallToNoteTexViewDidArrive(segue: UIStoryboardSegue) {
+        self.newtNoteInputView.textView.becomeFirstResponder()
         if segue.identifier == SegueIdentifier.unwindFromNoteDatePickerToTextView {
-    
+
             /// 날짜 선택이 바뀐 경우에만 업데이트
             guard let datePickerViewController = segue.source as? NewNoteDatePickerViewController,
                   self.viewModel.newNote.date != datePickerViewController.viewModel.selectedDate
             else { return }
-            
+
             self.viewModel.newNote.date = datePickerViewController.viewModel.selectedDate
-            self.updateDateLabels()
+            self.updateDateButton()
         }
     }
-    
-    
+
+    /// 버튼과 텍스트 뷰 외의 영역을 터치했을 때 키보드를 내림
+    @IBAction func backgroundDidTap(_ sender: Any) {
+        self.newtNoteInputView.textView.resignFirstResponder()
+        let safeArea = self.view.safeAreaInsets
+        let verticalSafeAreaInsets = safeArea.top + safeArea.bottom
+        let heightThatFits = min(
+            self.newtNoteInputView.contentHeight,
+            self.view.bounds.height - verticalSafeAreaInsets
+        )
+        self.newtNoteInputViewHeightConstraint.constant = heightThatFits
+    }
+
+
     // MARK: - Functions
-    
+
     /// 내용 스택 높이가 키보드를 제외한 영역을 차지하도록 업데이트
     @objc private func configureImageViewHeightConstraint(notification: NSNotification) {
-        
+
         guard let info = notification.userInfo,
               let keyboardFrame = info[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect
         else { return }
-        
+
         let contentStackHeight = Metric.contentStackHeight(
             keyboardFrame: keyboardFrame,
             navigationBarFrame: self.navigationBar.frame
         )
-        self.contentStackHeightConstraint.constant = contentStackHeight
+        self.newtNoteInputViewHeightConstraint.constant = contentStackHeight
     }
-    
-    /// 색깔 버튼들 상태 설정
-    private func updateColorButtons() {
-        for (button, color) in zip(self.colorButtons, NoteColor.allCases) {
-            button.color = color
-            button.initialSetup(isSelected: button.color == self.viewModel.newNote.color)
-        }
+
+    /// 쪽지 입력 뷰 관련 초기화
+    private func configureNewNoteInputView() {
+        self.updateColor()
+        self.configureTextView()
+        self.configureDateButton()
+        self.updateLetterCountLabel(count: .zero)
+
     }
-    
-    /// 선택한 색깔에 따라 쪽지 이미지 설정
-    private func updateImageView() {
-        self.view.backgroundColor = self.viewModel.backgroundColor
-        self.imageView.image = self.viewModel.noteImage
-    }
-    
-    /// 연도 라벨 볼드 처리 및 연도 라벨, 월일 라벨 날짜 업데이트
-    private func updateDateLabels() {
-        self.yearLabel.attributedText = self.viewModel.attributedYearString
-        self.monthAndDayLabel.attributedText = self.viewModel.attributedMonthDayString
-    }
-    
-    /// 텍스트 뷰 관련 초기 설정
+
+    /// 쪽지 입력 뷰의 텍스트 뷰 델리게이트 및 악세서리 뷰 설정
     private func configureTextView() {
-        /// 바로 활성화
-        self.textView.becomeFirstResponder()
-        /// 인셋 설정
-        self.textView.textContainerInset = .zero
-        self.textView.configureParagraphStyle(
-            lineSpacing: Metric.lineSpacing,
-            characterSpacing: Metric.characterSpacing
+        self.newtNoteInputView.textView.inputAccessoryView = self.toolbar
+        self.newtNoteInputView.textView.delegate = self
+        self.newtNoteInputView.textView.becomeFirstResponder()
+    }
+
+    /// 쪽지 입력 뷰의 날짜 버튼에 액션 추가 및 색상 반영
+    private func configureDateButton() {
+        let action = UIAction { _ in
+            self.performSegue(
+                withIdentifier: SegueIdentifier.presentDatePickerFromNoteTextView,
+                sender: self
+            )
+            self.newtNoteInputView.textView.resignFirstResponder()
+        }
+        self.newtNoteInputView.dateButton.addAction(action, for: .touchUpInside)
+        self.updateDateButton()
+    }
+
+    
+    /// 유저가 선택한 색깔에 따라 배경, 테두리, 레이블 글자, 아이콘의 색상을 적절히 변경
+    private func updateColor() {
+        let backgroundColor = self.viewModel.backgroundColor
+        let tintColor = self.viewModel.tintColor
+
+        self.view.backgroundColor = backgroundColor
+        self.newtNoteInputView.backgroundNoteImageView.tintColor = tintColor
+        self.newtNoteInputView.dateButton.tintColor = tintColor
+        self.newtNoteInputView.letterCountLabel.textColor = tintColor
+    }
+    
+    /// 쪽지 입력 뷰의 날짜 버튼 제목 업데이트
+    private func updateDateButton() {
+        self.newtNoteInputView.dateButton.setAttributedTitle(
+            self.viewModel.attributedDateButtonTitle,
+            for: .normal
         )
     }
     
-    /// 플레이스홀더 라벨 초기 설정
-    private func configurePlaceholderLabel() {
-        self.placeholderLabel.configureParagraphStyle(
-            lineSpacing: Metric.lineSpacing,
-            characterSpacing: Metric.characterSpacing
-        )
-    }
-    
-    /// 글자수 라벨 업데이트
+    /// 쪽지 입력 뷰의 글자수 라벨 업데이트
     private func updateLetterCountLabel(count: Int) {
-        self.letterCountLabel.attributedText = self.viewModel
+        self.newtNoteInputView.letterCountLabel.attributedText = self.viewModel
             .attributedLetterCountString(count: count)
     }
     
     /// 100자를 초과하면 초과분을 자르고, 화면 닫을 때 매끄러운 효과를 위해 키보드를 내리고, 페이드아웃 효과를 줌
     private func endEditingAndFadeOut() {
-        self.textView.endEditing(true)
+        self.newtNoteInputView.textView.endEditing(true)
         self.fadeOut()
-    }
-    
-    /// 날짜 라벨들, 글자수 라벨의 색상 업데이트
-    private func updateLabelColors() {
-        self.yearLabel.textColor = self.viewModel.labelColor
-        self.monthAndDayLabel.textColor = self.viewModel.labelColor
-        self.letterCountLabel.textColor = self.viewModel.labelColor
-        self.letterCountLabel.attributedText = self.viewModel.attributedLetterCountString(
-            count: self.textView.text.count
-        )
     }
     
     /// 새로운 노트 엔티티를 생성
@@ -224,7 +196,7 @@ final class NewNoteTextViewController: UIViewController {
         Note.create(
             date: self.viewModel.newNote.date,
             color: self.viewModel.newNote.color,
-            content: self.textView.text,
+            content: self.newtNoteInputView.textView.text,
             bottle: self.viewModel.newNote.bottle
         )
     }
@@ -271,7 +243,7 @@ final class NewNoteTextViewController: UIViewController {
         }
         
         let cancelAction = UIAlertAction.cancelAction { _ in
-            self.textView.becomeFirstResponder()
+            self.newtNoteInputView.textView.becomeFirstResponder()
         }
         
         return UIAlertController.basic(
@@ -340,7 +312,7 @@ extension NewNoteTextViewController: UITextViewDelegate {
         /// 경고 라벨이 나와 있으면 숨김처리
         if self.showWarningLabel {
             self.showWarningLabel = false
-            self.warningLabel.fadeOut()
+            self.newtNoteInputView.warningLabel.fadeOut()
         }
 
         var overflowCap = Metric.noteTextMaxLength
@@ -358,7 +330,7 @@ extension NewNoteTextViewController: UITextViewDelegate {
         else {
             /// 내용이 빈 상태에서 백스페이스를 누르는 경우 
             if textView.text.isEmpty, text.isEmpty {
-                self.placeholderLabel.fadeIn()
+                self.newtNoteInputView.placeholderLabel.fadeIn()
             }
             return true
         }
@@ -383,7 +355,29 @@ extension NewNoteTextViewController: UITextViewDelegate {
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        (textView.text.isEmpty) ? self.placeholderLabel.fadeIn() : self.placeholderLabel.fadeOut()
+        let placeholderLabel = self.newtNoteInputView.placeholderLabel
+        if textView.text.isEmpty {
+            placeholderLabel?.fadeIn()
+        } else {
+            placeholderLabel?.fadeOut()
+        }
         self.updateLetterCountLabel(count: textView.text.count)
+    }
+}
+
+
+// MARK: - ColorPickerDelegate
+
+extension NewNoteTextViewController: ColorPickerDelegate {
+
+    func selectedColorDidChange(to color: NoteColor) {
+        self.viewModel.newNote.color = color
+        UIView.transition(
+            with: self.view,
+            duration: Metric.animationDuration,
+            options: .transitionCrossDissolve
+        ) {
+            self.updateColor()
+        }
     }
 }
