@@ -1055,6 +1055,25 @@ extension BottleMessageViewController {
     }
 }
 
+extension NotificationSettingsViewController {
+    
+    /// 문자열
+    enum StringLiteral {
+        
+        /// 알림 타이틀
+        static let disabledAlertTitle: String = "알림을 허용해주세요."
+        
+        /// 알림 메시지
+        static let disabledAlertMessage: String = "알림을 받으려면 시스템 설정에서 행복저금통 알림을 허용해주세요."
+        
+        /// 알림 이동 액션 라벨
+        static let move: String = "설정으로 이동"
+        
+        /// 알림 취소 액션 라벨
+        static let cancel: String = "취소"
+    }
+}
+
 extension NotificationSettingsViewModel {
     
     /// 상수값
@@ -1067,29 +1086,8 @@ extension NotificationSettingsViewModel {
     /// 문자열
     enum StringLiteral {
         
-        /// 노티피케이션 제목
-        static let notificationTitle: String = "행복한 소식!"
-        
-        /// 노티피케이션 내용
-        static let notificationBody: String = "저금통을 열어볼 준비가 되었어요 :)"
-        
         /// 노티피케이션 식별자
         static let notificationIdentifier: String = "repeatingNotification"
-        
-        /// UserDefaults의 key로 사용할 문자열
-        static let hasNotificationOn: String = "hasNotificationOn"
-        
-        /// 알림 타이틀
-        static let disabledAlertTitle: String = "알림을 허용해주세요."
-        
-        /// 알림 메시지
-        static let disabledAlertMessage: String = "저금통 개봉 알림을 받으려면 시스템 설정에서 행복저금통 알림을 허용해주세요."
-        
-        /// 알림 이동 액션 라벨
-        static let move: String = "설정으로 이동"
-        
-        /// 알림 취소 액션 라벨
-        static let cancel: String = "취소"
     }
     
     /// 각 셀 별 내용
@@ -1101,13 +1099,35 @@ extension NotificationSettingsViewModel {
         case reminder
         
         
-        
         // MARK: - Properties
         
         /// 제목 딕셔너리
         static let title: [Int: String] = [
             daily.rawValue: "일일 알림",
             reminder.rawValue: "리마인드 알림"
+        ]
+        
+        /// userDefault key 딕셔너리
+        static let userDefaultsKey: [Content: String] = [
+            daily: "hasDailyNotificationOn",
+            reminder: "hasRemindNotificationOn"
+        ]
+        
+        /// NotificationCenter의 식별자 딕셔너리
+        static let identifier: [Int: String] = [
+            daily.rawValue: "dailyNotification",
+            reminder.rawValue: "remindNotification"
+        ]
+        
+        static let message: [Content: [String]] = [
+            .daily: [
+                "오늘의 기분은?",
+                "오늘 느낀 행복을 저장해보세요 :)"
+            ],
+            .reminder: [
+                "행복한 소식!",
+                "저금통을 열어볼 준비가 되었어요 :)"
+            ]
         ]
     }
 }
