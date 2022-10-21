@@ -39,6 +39,64 @@ final class NotificationSettingsViewController: UIViewController {
             forCellReuseIdentifier: NotificationToggleCell.name
         )
     }
+    
+    /// 노티피케이션 요청
+    private func requestNotification(of content: NotificationSettingsViewModel.Content) {
+        self.viewModel.notificationCenter.requestAuthorization(
+            options: [.alert, .sound]
+        ) { granted, error in
+        
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            
+            if !granted {
+                UserDefaults.standard.set(
+                    false,
+                    forKey: NotificationSettingsViewModel.Content.userDefaultsKey[content] ?? ""
+                )
+                DispatchQueue.main.async {
+                    self.alertDisabledState()
+                }
+            }
+        }
+    }
+    
+    /// 설정에서 알림 꺼져있을 때 나타내는 알림창
+    private func alertDisabledState() {
+        let alert = UIAlertController(
+            title: StringLiteral.disabledAlertTitle,
+            message: StringLiteral.disabledAlertMessage,
+            preferredStyle: .alert
+        )
+        
+        alert.addAction(
+            UIAlertAction(
+                title: StringLiteral.move,
+                style: .default
+            ) { _ in
+                self.openSettings()
+            }
+        )
+        alert.addAction(
+            UIAlertAction(
+                title: StringLiteral.cancel,
+                style: .cancel
+            )
+        )
+        
+        self.present(alert, animated: true)
+    }
+    
+    /// 설정으로 이동
+    private func openSettings() {
+        if let bundle = Bundle.main.bundleIdentifier,
+           let settings = URL(string: UIApplication.openSettingsURLString + bundle) {
+            if UIApplication.shared.canOpenURL(settings) {
+                UIApplication.shared.open(settings)
+            }
+        }
+    }
 }
 
 extension NotificationSettingsViewController: UITableViewDataSource {
@@ -47,7 +105,7 @@ extension NotificationSettingsViewController: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        return self.viewModel.contents.count
+        return NotificationSettingsViewModel.Content.allCases.count
     }
     
     func tableView(
@@ -64,6 +122,15 @@ extension NotificationSettingsViewController: UITableViewDataSource {
         // TODO: - 알림 관련 설정 정리
         cell.titleLabel.text = NotificationSettingsViewModel.Content.title[indexPath.row]
         cell.toggleButton.isOn = false
+        
+        // TODO: - Daily Noti에 TimePicker 추가 및 설정
+        if indexPath.row == NotificationSettingsViewModel.Content.daily.rawValue {
+            self.viewModel.configureDailyNotificationCell(cell.toggleButton)
+        }
+        
+        if indexPath.row == NotificationSettingsViewModel.Content.reminder.rawValue {
+            self.viewModel.configureRemindNotificationCell(cell.toggleButton)
+        }
         
         return cell
     }
