@@ -10,19 +10,58 @@ import UIKit
 /// 노티피케이션 관련 데이터 처리하는 뷰 모델
 final class NotificationSettingsViewModel {
     
-    let contents = NotificationSettingsViewModel.Content.allCases
+    /// UserNotificationCenter
+    let notificationCenter = UNUserNotificationCenter.current()
     
-    lazy var bottle: Bottle = {
+    /// Notification Content의 allCases
+    let content = NotificationSettingsViewModel.Content.allCases
+    
+    /// 저금통이 끝나는 날짜
+    lazy var endDate: Date? = {
         let request = Bottle.fetchRequest(isOpen: false)
         let bottles = PersistenceStore.shared.fetch(request: request)
         guard let bottle = bottles.first
-        else { return Bottle() }
-        return bottle
+        else { return nil }
+        return bottle.endDate
     }()
+
     
+    // MARK: - @objc functions
+    
+    /// 일일 알림 토글 버튼에 변화가 있을 때 호출되는 objc 함수
+    @objc private func dailyNotificationToggleButtonDidTap(_ sender: UISwitch) {
+        if sender.isOn {
+            // TODO: request Notification and Alert
+            scheduleNotifications(of: .daily)
+            return
+        }
+        if !sender.isOn {
+            removeNotifications(of: .daily)
+            return
+        }
+    }
+    
+    /// 리마인드 알림 토글 버튼에 변화가 있을 때 호출되는 objc 함수
+    @objc private func remindNotificationToggleButtonDidTap(_ sender: UISwitch) {
+        if sender.isOn {
+            // TODO: request Notification and Alert
+            scheduleNotifications(of: .reminder)
+            return
+        }
+        
+        if !sender.isOn {
+            removeNotifications(of: .reminder)
+            return
+        }
+    }
+    
+    
+    // MARK: - Functions
+    
+    /// day만큼 반복되는 DateComponents 만드는 함수
     func repeatingDateComponent(byAdding day: Int) -> DateComponents {
-        let endDate = bottle.endDate
-        if let repeatingDate = Calendar.current.date(
+        if let endDate = endDate,
+           let repeatingDate = Calendar.current.date(
             byAdding: DateComponents(day: day),
             to: endDate
         ) {
@@ -34,91 +73,130 @@ final class NotificationSettingsViewModel {
         return DateComponents()
     }
     
-    // MARK: - Notification related functions
     
-    /// 노티피케이션 요청
-    private func requestNotification() {
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound]) { granted, error in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-            
+    // MARK: - Configure Cell with UIComponents
+    
+    // TODO: TimePicker 설정 해야함
+    /// 일일 알림 셀 설정
+    func configureDailyNotificationCell(_ button: UISwitch) {
+        button.addTarget(
+            self,
+            action: #selector(dailyNotificationToggleButtonDidTap),
+            for: .valueChanged
+        )
+        
+        self.notificationCenter.requestAuthorization { granted, _ in
             if !granted {
-                UserDefaults.standard.set(false, forKey: StringLiteral.hasNotificationOn)
                 DispatchQueue.main.async {
-                    self.alertDisabledState()
+                    button.isOn = false
                 }
             }
         }
     }
     
-    /// 설정에서 알림 꺼져있을 때 나타내는 알림창
-    private func alertDisabledState() {
-        let alert = UIAlertController(
-            title: StringLiteral.disabledAlertTitle,
-            message: StringLiteral.disabledAlertMessage,
-            preferredStyle: .alert
+    /// 리마인드 알림 셀 설정
+    func configureRemindNotificationCell(_ button: UISwitch) {
+        button.addTarget(
+            self,
+            action: #selector(remindNotificationToggleButtonDidTap),
+            for: .valueChanged
         )
         
-        alert.addAction(
-            UIAlertAction(
-                title: StringLiteral.move,
-                style: .default
-            ) { _ in
-                self.openSettings()
-            }
-        )
-        alert.addAction(
-            UIAlertAction(
-                title: StringLiteral.cancel,
-                style: .cancel
-            )
-        )
-        
-//        self.present(alert, animated: true)
-    }
-    
-    /// 설정으로 이동
-    private func openSettings() {
-        if let bundle = Bundle.main.bundleIdentifier,
-           let settings = URL(string: UIApplication.openSettingsURLString + bundle) {
-            if UIApplication.shared.canOpenURL(settings) {
-                UIApplication.shared.open(settings)
+        self.notificationCenter.requestAuthorization { granted, _ in
+            if !granted {
+                DispatchQueue.main.async {
+                    button.isOn = false
+                }
             }
         }
     }
     
     /// 노티피케이션 스케줄링
-    private func scheduleNotifications() {
-        let center = UNUserNotificationCenter.current()
+    private func scheduleNotifications(of content: NotificationSettingsViewModel.Content) {
         
-        center.getNotificationSettings { settings in
+        self.notificationCenter.getNotificationSettings { settings in
             guard settings.authorizationStatus == .authorized
             else { return }
             
-            // 특정 기간동안 반복되는 알림 설정
-            for day in 0...Metric.repeatingDays {
-                let repeatingNotificationRequest = self.repeatingNotificationRequest(byAdding: day)
-                center.add(repeatingNotificationRequest) { error in
+            switch content {
+            case .daily:
+                let request = self.notificationRequest()
+                self.notificationCenter.add(request) { error in
                     if let error = error {
                         print(error.localizedDescription)
                     }
                 }
+            case .reminder:
+                for day in 0...Metric.repeatingDays {
+                    let request = self.notificationRequest(byAdding: day)
+                    self.notificationCenter.add(request) { error in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        }
+                    }
+                }
             }
-            UserDefaults.standard.set(true, forKey: StringLiteral.hasNotificationOn)
+            
+            UserDefaults.standard.set(
+                true,
+                forKey: NotificationSettingsViewModel.Content.userDefaultsKey[content] ?? ""
+            )
         }
     }
     
-    /// 노티피케이션 리퀘스트 만들어주는 함수
-    private func repeatingNotificationRequest(byAdding day: Int) -> UNNotificationRequest {
+    /// 전달된, 대기중인 모든 노티피케이션 삭제
+    private func removeNotifications(of content: NotificationSettingsViewModel.Content) {
+        switch content {
+        case .daily:
+            self.notificationCenter.removeDeliveredNotifications(withIdentifiers: [
+                StringLiteral.notificationIdentifier
+            ])
+            self.notificationCenter.removePendingNotificationRequests(withIdentifiers: [
+                StringLiteral.notificationIdentifier
+            ])
+        case .reminder:
+            for day in 0...Metric.repeatingDays {
+                self.notificationCenter.removeDeliveredNotifications(withIdentifiers: [
+                    StringLiteral.notificationIdentifier + "\(day)"
+                ])
+                self.notificationCenter.removePendingNotificationRequests(withIdentifiers: [
+                    StringLiteral.notificationIdentifier + "\(day)"
+                ])
+            }
+        }
+        UserDefaults.standard.set(
+            false,
+            forKey: NotificationSettingsViewModel.Content.userDefaultsKey[content] ?? ""
+        )
+    }
+    
+    /// 일일 알림 리퀘스트 만들어주는 함수
+    private func notificationRequest() -> UNNotificationRequest {
+        let content = UNMutableNotificationContent()
+        let trigger = UNCalendarNotificationTrigger(
+            dateMatching: Calendar.current.dateComponents([.year, .month, .day], from: Date()),
+            repeats: true
+        )
+        content.title = NotificationSettingsViewModel.Content.message[.daily]?.first ?? ""
+        content.body = NotificationSettingsViewModel.Content.message[.daily]?.last ?? ""
+        content.sound = .default
+        
+        return UNNotificationRequest(
+            identifier: StringLiteral.notificationIdentifier,
+            content: content,
+            trigger: trigger
+        )
+    }
+    
+    /// 리마인드 알림 리퀘스트 만들어주는 함수
+    private func notificationRequest(byAdding day: Int) -> UNNotificationRequest {
         let content = UNMutableNotificationContent()
         let trigger = UNCalendarNotificationTrigger(
             dateMatching: self.repeatingDateComponent(byAdding: day),
             repeats: false
         )
-        content.title = StringLiteral.notificationTitle
-        content.body = StringLiteral.notificationBody
+        content.title = NotificationSettingsViewModel.Content.message[.reminder]?.first ?? ""
+        content.body = NotificationSettingsViewModel.Content.message[.reminder]?.last ?? ""
         content.sound = .default
         
         return UNNotificationRequest(
@@ -127,49 +205,4 @@ final class NotificationSettingsViewModel {
             trigger: trigger
         )
     }
-    
-    /// 전달된, 대기중인 모든 노티피케이션 삭제
-    private func removeNotifications() {
-        let center = UNUserNotificationCenter.current()
-        
-        center.removeAllDeliveredNotifications()
-        center.removeAllPendingNotificationRequests()
-        UserDefaults.standard.set(false, forKey: StringLiteral.hasNotificationOn)
-    }
-    
-    
-    //    // MARK: - @objc functions
-    //
-    //    /// 스위치에 변화가 있을 때 호출되는 objc 함수
-    //    @objc func switchDidTap(_ sender: UISwitch) {
-    //        if sender.isOn {
-    //            requestNotification()
-    //            scheduleNotifications()
-    //            return
-    //        }
-    //        if !sender.isOn {
-    //            removeNotifications()
-    //            return
-    //        }
-    //    }
-        
-        
-    //    // MARK: - Configure UI Components
-    //
-    //    /// 스위치 설정
-    //    private func configureSwitch() {
-    //        self.notificationControl.addTarget(
-    //            self,
-    //            action: #selector(switchDidTap),
-    //            for: .valueChanged
-    //        )
-    //        self.view.addSubview(notificationControl)
-    //        UNUserNotificationCenter.current().requestAuthorization { granted, _ in
-    //            if !granted {
-    //                DispatchQueue.main.async {
-    //                    self.notificationControl.isOn = false
-    //                }
-    //            }
-    //        }
-    //    }
 }
