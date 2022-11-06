@@ -83,7 +83,13 @@ extension UIImage {
     /// 저금통 리스트 저금통 뒷면
     static let bottleListBottleFront = UIImage(named: Asset.bottleListBottleFront.rawValue)
 
-    
+
+    // MARK: BorderdNoteImage
+
+    /// 테두리가 있는 쪽지 배경 이미지
+    static let borderedNoteBackground = UIImage(named: "textViewNote")
+
+
     // MARK: - Functions
     
     /// 쪽지 에셋 이미지를 반환하는 메서드

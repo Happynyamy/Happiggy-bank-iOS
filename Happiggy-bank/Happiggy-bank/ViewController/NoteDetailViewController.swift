@@ -24,5 +24,4 @@ final class NoteDetailViewController: UIViewController {
         super.viewDidLoad()
 
     }
-    
 }
