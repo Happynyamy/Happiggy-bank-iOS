@@ -418,6 +418,7 @@
 				A4569CCD28128B4B001E3FD6 /* SettingsNonIconButtonCell.swift */,
 				A49B25E82812B17B00399630 /* FontSelectionCell.swift */,
 				A41DE62927F36E95002A7669 /* NoteCell.swift */,
+				A49AC5E22917C210009315BC /* PhotoNoteCell.swift */,
 			);
 			path = Subview;
 			sourceTree = "<group>";
@@ -545,6 +546,9 @@
 				A4D357E1283A4429007819E3 /* URL+Open.swift */,
 				A4534713285071A800F77164 /* Date+Tomorrow.swift */,
 				A4A55A0628FFC664004ABE00 /* UIView+ConfigureXib.swift */,
+				A49AC5E42917C6E2009315BC /* UILabel+ChangeFontSize.swift */,
+				A49AC5E62917CB47009315BC /* UIView+AddSubviews.swift */,
+				A49AC5E82917CBFB009315BC /* UIStackView+AddArrangedSubviews.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -726,6 +730,7 @@
 				A819CFA127DE034F00DE8E72 /* NewBottle.swift in Sources */,
 				A4569CBC2810455B001E3FD6 /* CustomerServiceViewController.swift in Sources */,
 				A4EDFE812902D72A0056C2DC /* ColorPickerBarItem.swift in Sources */,
+				A49AC5E92917CBFB009315BC /* UIStackView+AddArrangedSubviews.swift in Sources */,
 				A4569CC628111EFA001E3FD6 /* InformationTextViewDataSource.swift in Sources */,
 				A456657C27CC66FD007CF70A /* DefaultButton.swift in Sources */,
 				D236DB8627FDC43200D7B8F0 /* NewBottleDatePickerViewModel.swift in Sources */,
@@ -762,6 +767,7 @@
 				A48E183A27E71D9300B44477 /* UILabel+ParagraphStyle.swift in Sources */,
 				A4B2860B27D9B434008769EB /* UIViewController+FadeOut.swift in Sources */,
 				D22ADF7F27F72F7300ECB77B /* NotificationSettingsViewModel.swift in Sources */,
+				A49AC5E52917C6E2009315BC /* UILabel+ChangeFontSize.swift in Sources */,
 				D22ADF7F27F72F7300ECB77B /* NotificationSettingViewModel.swift in Sources */,
 				A4A55A0928FFC675004ABE00 /* NewNoteInputView.swift in Sources */,
 				A4B2860927D9A56A008769EB /* NewNoteTextViewController.swift in Sources */,
@@ -770,6 +776,7 @@
 				A4D6EB75282E2E6700553E43 /* VersionChecking.swift in Sources */,
 				A8FC07CA27B3ECF00077A758 /* SceneDelegate.swift in Sources */,
 				A4F5715427DB8B6500E7DF9B /* NewNote.swift in Sources */,
+				A49AC5E32917C210009315BC /* PhotoNoteCell.swift in Sources */,
 				A466A31028018CD800D655F4 /* UIWindowScene+TopMostViewController.swift in Sources */,
 				A4569CC428111E1D001E3FD6 /* LicenseViewModel.swift in Sources */,
 				A466A30E28018BBD00D655F4 /* UIVIewController+TopMostViewController.swift in Sources */,
@@ -835,6 +842,7 @@
 				A41DE62627F36595002A7669 /* NoteDetailViewController.swift in Sources */,
 				A4F5714727DA467900E7DF9B /* DateFormat.swift in Sources */,
 				A4845B5D2900DF0B00A6007C /* ColorPicker.swift in Sources */,
+				A49AC5E72917CB47009315BC /* UIView+AddSubviews.swift in Sources */,
 				A89CBEDD27CBDEA2005549F6 /* BottleListViewController.swift in Sources */,
 				A439F53A27EEFC28002851F4 /* SettingsViewCell.swift in Sources */,
 				A46B10F62814458C004AB185 /* UILabel+ChangeOnlyFontFamily.swift in Sources */,
