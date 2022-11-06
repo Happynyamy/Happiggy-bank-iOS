@@ -1444,3 +1444,13 @@ enum ParagraphStyle {
     /// 자간: 0.5
     static let characterSpacing: CGFloat = 0.5
 }
+
+/// 폰트 크기
+enum FontSize {
+
+    /// 본문 폰트 사이즈: 18
+    static let body: CGFloat = 18
+
+    /// 부가 설명 레이블 폰트 사이즈: 15
+    static let secondaryLabel: CGFloat = 15
+}
