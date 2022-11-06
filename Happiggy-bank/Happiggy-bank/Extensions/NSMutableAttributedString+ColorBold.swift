@@ -22,7 +22,6 @@ extension NSMutableAttributedString {
         let boldFont = UIFont.boldSystemFont(ofSize: fontSize)
         let range = self.mutableString.range(of: targetString)
         self.addAttribute(.font, value: boldFont, range: range)
-        
         return self
     }
     

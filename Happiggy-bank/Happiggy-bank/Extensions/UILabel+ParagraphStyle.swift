@@ -11,8 +11,8 @@ extension UILabel {
     
     /// 자간, 행간, 폰트 설정 메서드
     func configureParagraphStyle(
-        lineSpacing: CGFloat? = nil,
-        characterSpacing: CGFloat? = nil,
+        lineSpacing: CGFloat? = ParagraphStyle.lineSpacing,
+        characterSpacing: CGFloat? = ParagraphStyle.characterSpacing,
         font: UIFont? = nil
     ) {
         var mutableAttributedString = self.attributedText?.mutableCopy()
