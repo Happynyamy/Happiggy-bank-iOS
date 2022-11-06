@@ -76,6 +76,11 @@
 		A499318127BF3A38009FF5A8 /* BottleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499318027BF3A38009FF5A8 /* BottleViewModel.swift */; };
 		A499318327BF5158009FF5A8 /* BottleNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499318227BF5158009FF5A8 /* BottleNoteView.swift */; };
 		A49931A527BFD20E009FF5A8 /* UIImage+AssetImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49931A427BFD20E009FF5A8 /* UIImage+AssetImages.swift */; };
+		A49AC5E32917C210009315BC /* PhotoNoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49AC5E22917C210009315BC /* PhotoNoteCell.swift */; };
+		A49AC5E52917C6E2009315BC /* UILabel+ChangeFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49AC5E42917C6E2009315BC /* UILabel+ChangeFontSize.swift */; };
+		A49AC5E72917CB47009315BC /* UIView+AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49AC5E62917CB47009315BC /* UIView+AddSubviews.swift */; };
+		A49AC5E92917CBFB009315BC /* UIStackView+AddArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49AC5E82917CBFB009315BC /* UIStackView+AddArrangedSubviews.swift */; };
+		A49AC5EB2917FFAB009315BC /* PhotoNoteCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49AC5EA2917FFAB009315BC /* PhotoNoteCellViewModel.swift */; };
 		A49B25E72812AC2800399630 /* FontSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B25E62812AC2800399630 /* FontSelectionViewController.swift */; };
 		A49B25EA2812B17C00399630 /* FontSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B25E82812B17B00399630 /* FontSelectionCell.swift */; };
 		A49B25EB2812B17C00399630 /* FontSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49B25E92812B17B00399630 /* FontSelectionCell.xib */; };
@@ -221,6 +226,11 @@
 		A499318027BF3A38009FF5A8 /* BottleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleViewModel.swift; sourceTree = "<group>"; };
 		A499318227BF5158009FF5A8 /* BottleNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleNoteView.swift; sourceTree = "<group>"; };
 		A49931A427BFD20E009FF5A8 /* UIImage+AssetImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AssetImages.swift"; sourceTree = "<group>"; };
+		A49AC5E22917C210009315BC /* PhotoNoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoNoteCell.swift; sourceTree = "<group>"; };
+		A49AC5E42917C6E2009315BC /* UILabel+ChangeFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+ChangeFontSize.swift"; sourceTree = "<group>"; };
+		A49AC5E62917CB47009315BC /* UIView+AddSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubviews.swift"; sourceTree = "<group>"; };
+		A49AC5E82917CBFB009315BC /* UIStackView+AddArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+AddArrangedSubviews.swift"; sourceTree = "<group>"; };
+		A49AC5EA2917FFAB009315BC /* PhotoNoteCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoNoteCellViewModel.swift; sourceTree = "<group>"; };
 		A49B25E62812AC2800399630 /* FontSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSelectionViewController.swift; sourceTree = "<group>"; };
 		A49B25E82812B17B00399630 /* FontSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSelectionCell.swift; sourceTree = "<group>"; };
 		A49B25E92812B17B00399630 /* FontSelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FontSelectionCell.xib; sourceTree = "<group>"; };
@@ -336,6 +346,7 @@
 				A466A3172801E99500D655F4 /* SettingsViewModel.swift */,
 				A4569CBD28105051001E3FD6 /* CustomerServiceViewModel.swift */,
 				A4569CC328111E1D001E3FD6 /* LicenseViewModel.swift */,
+				A49AC5EA2917FFAB009315BC /* PhotoNoteCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -745,6 +756,7 @@
 				A819CF9F27DDD97C00DE8E72 /* HapticManager.swift in Sources */,
 				A4569CCF28128B4B001E3FD6 /* SettingsNonIconButtonCell.swift in Sources */,
 				A8ECD4A727E33BFA00886BC0 /* BottleListViewModel.swift in Sources */,
+				A49AC5EB2917FFAB009315BC /* PhotoNoteCellViewModel.swift in Sources */,
 				A4A55A0728FFC664004ABE00 /* UIView+ConfigureXib.swift in Sources */,
 				A843332427DA397800A12A54 /* DataProvider.swift in Sources */,
 				A48E183A27E71D9300B44477 /* UILabel+ParagraphStyle.swift in Sources */,
