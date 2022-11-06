@@ -685,19 +685,6 @@ extension NoteListViewController {
     }
 }
 
-extension NoteCell {
-    
-    /// NoteCell 에서 사용하는 상수들
-    enum Metric {
-        
-        /// 내용 라벨 줄 간격: 8
-        static let lineSpacing: CGFloat = 8
-        
-        /// 내용 라벨 자간: 0.5
-        static let characterSpacing: CGFloat = 0.5
-    }
-}
-
 extension NewNoteTextViewController {
     
     /// NewNoteTextViewController에서 사용하는 상수값
@@ -1433,7 +1420,6 @@ extension URL {
         static let appInfo = "http://itunes.apple.com/kr/lookup?bundleId=\(bundleID)"
     }
 }
-
 
 /// 단락 자간, 행간 설정에 사용하는 상수값
 enum ParagraphStyle {

@@ -1,16 +1,17 @@
+
 //
-//  NoteCell.swift
+//  PhotoNoteCell.swift
 //  Happiggy-bank
 //
-//  Created by sun on 2022/03/30.
+//  Created by sun on 2022/11/06.
 //
 
 import UIKit
 
 import Then
 
-// 쪽지 디테일 뷰에서 사용하는 쪽지 셀
-final class NoteCell: UITableViewCell {
+// 쪽지 디테일 뷰에서 사용하는 이미지를 나타낼 수 있는 쪽지 셀
+final class PhotoNoteCell: UITableViewCell {
 
     // MARK: - Properties
 
@@ -34,6 +35,9 @@ final class NoteCell: UITableViewCell {
         $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         $0.textColor = .customGray
     }
+
+    /// 저장한 사진을 나타내는 이미지 뷰
+    private let photoView = UIImageView()
 
     /// 내용 레이블
     private let contentLabel = UILabel().then {
@@ -81,7 +85,7 @@ final class NoteCell: UITableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        
+
         self.viewModel = nil
     }
 
@@ -98,6 +102,8 @@ final class NoteCell: UITableViewCell {
         self.indexLabel.configureParagraphStyle()
         self.contentLabel.attributedText = self.viewModel?.attributedContentString
         self.contentLabel.configureParagraphStyle()
+        self.photoView.image = self.viewModel?.photo
+        self.photoView.isHidden = self.viewModel?.photo == nil
     }
 
     /// 뷰 초기 설정
@@ -111,7 +117,8 @@ final class NoteCell: UITableViewCell {
     private func configureViewHierarchy() {
         self.contentView.addSubview(self.validView)
         self.validView.addSubviews(self.backgroundImageView, self.contentStack)
-        self.contentStack.addArrangedSubviews(self.dateAndIndexStack, self.contentLabel)
+        let contentStackSubviews = [self.dateAndIndexStack, self.photoView, self.contentLabel]
+        self.contentStack.addArrangedSubviews(contentStackSubviews)
         self.dateAndIndexStack.addArrangedSubviews(self.dateLabel, self.indexLabel)
     }
 
@@ -120,6 +127,7 @@ final class NoteCell: UITableViewCell {
         self.configureValidViewLayout()
         self.configureBackgroundImageViewLayout()
         self.configureContentStackLayout()
+        self.configurePhotoViewLayout()
     }
 
     /// 셀 간 간격이 있는 것처럼 나타내기 위해 validView의 레이아웃을 설정
@@ -165,11 +173,18 @@ final class NoteCell: UITableViewCell {
             )
         ])
     }
+
+    /// photoView 레이아웃 설정
+    private func configurePhotoViewLayout() {
+        NSLayoutConstraint.activate([
+            photoView.heightAnchor.constraint(equalTo: photoView.widthAnchor)
+        ])
+    }
 }
 
 
 // MARK: - Constants
-fileprivate extension NoteCell {
+fileprivate extension PhotoNoteCell {
 
     /// 상수
     enum Metric {
