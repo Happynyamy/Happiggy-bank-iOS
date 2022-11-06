@@ -196,17 +196,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" verticalHuggingPriority="249" id="hvx-Jx-SEb">
-                                <rect key="frame" x="-1" y="371" width="414" height="151"/>
+                                <rect key="frame" x="-2" y="371" width="413" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="화면을 탭 하면 리스트로 넘어갑니다." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3XN-7E-k3f">
-                                <rect key="frame" x="106.5" y="538" width="201" height="17"/>
+                                <rect key="frame" x="106.5" y="537" width="201" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" name="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PmD-gO-jD3">
-                                <rect key="frame" x="181" y="579" width="52" height="26.5"/>
+                                <rect key="frame" x="181" y="578" width="52" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -995,10 +995,25 @@
                     <view key="view" contentMode="scaleToFill" id="XRY-6G-qf4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="pGT-UQ-wu1">
+                                <rect key="frame" x="0.0" y="92" width="414" height="672"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="9s0-Wc-gt2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pGT-UQ-wu1" firstAttribute="leading" secondItem="9s0-Wc-gt2" secondAttribute="leading" id="11W-jE-kRr"/>
+                            <constraint firstItem="pGT-UQ-wu1" firstAttribute="top" secondItem="9s0-Wc-gt2" secondAttribute="top" id="Cqc-T0-STH"/>
+                            <constraint firstItem="9s0-Wc-gt2" firstAttribute="bottom" secondItem="pGT-UQ-wu1" secondAttribute="bottom" id="ZkB-6E-OhO"/>
+                            <constraint firstItem="9s0-Wc-gt2" firstAttribute="trailing" secondItem="pGT-UQ-wu1" secondAttribute="trailing" id="dWA-jV-uFq"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Oof-lh-Pm3"/>
+                    <connections>
+                        <outlet property="tableView" destination="pGT-UQ-wu1" id="2PT-l6-cAX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vmB-E0-XWB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

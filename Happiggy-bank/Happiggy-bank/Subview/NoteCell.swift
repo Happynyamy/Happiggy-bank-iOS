@@ -97,7 +97,7 @@ final class NoteCell: UITableViewCell {
         self.indexLabel.attributedText = self.viewModel?.attributedIndexString
         self.indexLabel.configureParagraphStyle()
         self.contentLabel.attributedText = self.viewModel?.attributedContentString
-        self.contentLabel.configureParagraphStyle()
+        self.contentLabel.configureParagraphStyle(font: .systemFont(ofSize: FontSize.body))
     }
 
     /// 뷰 초기 설정

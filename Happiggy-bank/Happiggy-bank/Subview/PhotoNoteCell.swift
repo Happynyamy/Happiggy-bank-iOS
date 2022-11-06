@@ -101,7 +101,7 @@ final class PhotoNoteCell: UITableViewCell {
         self.indexLabel.attributedText = self.viewModel?.attributedIndexString
         self.indexLabel.configureParagraphStyle()
         self.contentLabel.attributedText = self.viewModel?.attributedContentString
-        self.contentLabel.configureParagraphStyle()
+        self.contentLabel.configureParagraphStyle(font: .systemFont(ofSize: FontSize.body))
         self.photoView.image = self.viewModel?.photo
         self.photoView.isHidden = self.viewModel?.photo == nil
     }
