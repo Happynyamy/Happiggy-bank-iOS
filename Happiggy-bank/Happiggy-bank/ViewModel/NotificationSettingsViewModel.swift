@@ -148,20 +148,20 @@ final class NotificationSettingsViewModel {
     private func removeNotifications(of content: NotificationSettingsViewModel.Content) {
         switch content {
         case .daily:
-            self.notificationCenter.removeDeliveredNotifications(withIdentifiers: [
-                StringLiteral.notificationIdentifier
-            ])
-            self.notificationCenter.removePendingNotificationRequests(withIdentifiers: [
-                StringLiteral.notificationIdentifier
-            ])
+            self.notificationCenter.removeDeliveredNotifications(
+                withIdentifiers: [StringLiteral.notificationIdentifier]
+            )
+            self.notificationCenter.removePendingNotificationRequests(
+                withIdentifiers: [StringLiteral.notificationIdentifier]
+            )
         case .reminder:
             for day in 0...Metric.repeatingDays {
-                self.notificationCenter.removeDeliveredNotifications(withIdentifiers: [
-                    StringLiteral.notificationIdentifier + "\(day)"
-                ])
-                self.notificationCenter.removePendingNotificationRequests(withIdentifiers: [
-                    StringLiteral.notificationIdentifier + "\(day)"
-                ])
+                self.notificationCenter.removeDeliveredNotifications(
+                    withIdentifiers: [StringLiteral.notificationIdentifier + "\(day)"]
+                )
+                self.notificationCenter.removePendingNotificationRequests(
+                    withIdentifiers: [StringLiteral.notificationIdentifier + "\(day)"]
+                )
             }
         }
         UserDefaults.standard.set(
