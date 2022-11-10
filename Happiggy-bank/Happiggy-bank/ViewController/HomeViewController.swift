@@ -111,12 +111,10 @@ final class HomeViewController: UIViewController {
             )
         }
     }
-    
-    // FIXME: sender 인식 안되므로 제거 필요, bottleViewController 의 unwindCallDidArrive 도 수정 필요
+
     /// 홈 뷰로 언와인드할 떄 호출되는 액션 메서드
-    @IBAction func unwindCallToHomeViewDidArrive(segue: UIStoryboardSegue, sender: Any? = nil) {
-        let note = sender as? Note
-        self.bottleViewController.unwindCallDidArrive(withNote: note)
+    @IBAction func unwindCallToHomeViewDidArrive(segue: UIStoryboardSegue) {
+        self.bottleViewController.unwindCallDidArrive()
     }
     
     /// 새 저금통 생성 창에서 홈 뷰로 언와인드

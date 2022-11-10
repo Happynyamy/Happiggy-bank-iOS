@@ -95,19 +95,23 @@ final class BottleViewController: UIViewController {
         self.viewModel.bottle = bottle
         self.initializeBottleView()
     }
-        
-    /// 현재 뷰 컨트롤러로 unwind 하라는 호출을 받았을 때 실행되는 액션메서드로, 중력 효과 재개
-    func unwindCallDidArrive(withNote note: Note?) {
-        note == nil ? self.gravity?.startDeviceMotionUpdates() : nil
-    }
     
+    /// 현재 뷰 컨트롤러로 unwind 하라는 호출을 받았을 때 실행되는 액션메서드로, 중력 효과 재개
+    func unwindCallDidArrive() {
+        self.gravity?.startDeviceMotionUpdates()
+    }
+
     /// 홈뷰에서 다른 뷰를 띄울 때 보틀뷰에 이를 알리기 위해 호출하는 메서드
     func prepareForSegue() {
         /// 새 쪽지가 떨어질 영역을 확보하기 위해 해당 탭 내에서 다른 뷰를 띄우면 중력 방향을 하단으로 변경해 기존 쪽지를 전부 하단으로 이동
         self.gravity?.resetAndBindGravityDirection()
-        
     }
-    
+
+    /// 현재 뷰 컨트롤러로 unwind 하라는 호출을 받았을 때 실행되는 액션메서드로, 중력 효과 재개
+    func unwindCallDidArrive() {
+        self.gravity?.startDeviceMotionUpdates()
+    }
+
     /// 알림/모달이 떴을 때 호출되는 메서드
     func alertOrModalDidAppear() {
         self.gravity?.disable()
