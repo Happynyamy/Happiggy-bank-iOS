@@ -24,36 +24,9 @@ final class NotificationSettingsViewModel {
         else { return nil }
         return bottle.endDate
     }()
-
     
-    // MARK: - @objc functions
-    
-    /// 일일 알림 토글 버튼에 변화가 있을 때 호출되는 objc 함수
-    @objc private func dailyNotificationToggleButtonDidTap(_ sender: UISwitch) {
-        if sender.isOn {
-            // TODO: request Notification and Alert
-            scheduleNotifications(of: .daily)
-            return
-        }
-        if !sender.isOn {
-            removeNotifications(of: .daily)
-            return
-        }
-    }
-    
-    /// 리마인드 알림 토글 버튼에 변화가 있을 때 호출되는 objc 함수
-    @objc private func remindNotificationToggleButtonDidTap(_ sender: UISwitch) {
-        if sender.isOn {
-            // TODO: request Notification and Alert
-            scheduleNotifications(of: .reminder)
-            return
-        }
-        
-        if !sender.isOn {
-            removeNotifications(of: .reminder)
-            return
-        }
-    }
+    /// 일일 알림이 설정된 시간
+    lazy var dailyNotificationTime: Date? = nil
     
     
     // MARK: - Functions
@@ -73,46 +46,8 @@ final class NotificationSettingsViewModel {
         return DateComponents()
     }
     
-    
-    // MARK: - Configure Cell with UIComponents
-    
-    // TODO: TimePicker 설정 해야함
-    /// 일일 알림 셀 설정
-    func configureDailyNotificationCell(_ button: UISwitch) {
-        button.addTarget(
-            self,
-            action: #selector(dailyNotificationToggleButtonDidTap),
-            for: .valueChanged
-        )
-        
-        self.notificationCenter.requestAuthorization { granted, _ in
-            if !granted {
-                DispatchQueue.main.async {
-                    button.isOn = false
-                }
-            }
-        }
-    }
-    
-    /// 리마인드 알림 셀 설정
-    func configureRemindNotificationCell(_ button: UISwitch) {
-        button.addTarget(
-            self,
-            action: #selector(remindNotificationToggleButtonDidTap),
-            for: .valueChanged
-        )
-        
-        self.notificationCenter.requestAuthorization { granted, _ in
-            if !granted {
-                DispatchQueue.main.async {
-                    button.isOn = false
-                }
-            }
-        }
-    }
-    
     /// 노티피케이션 스케줄링
-    private func scheduleNotifications(of content: NotificationSettingsViewModel.Content) {
+    func scheduleNotifications(of content: NotificationSettingsViewModel.Content) {
         
         self.notificationCenter.getNotificationSettings { settings in
             guard settings.authorizationStatus == .authorized
@@ -120,7 +55,7 @@ final class NotificationSettingsViewModel {
             
             switch content {
             case .daily:
-                let request = self.notificationRequest()
+                let request = self.notificationRequest(at: self.dailyNotificationTime)
                 self.notificationCenter.add(request) { error in
                     if let error = error {
                         print(error.localizedDescription)
@@ -141,11 +76,12 @@ final class NotificationSettingsViewModel {
                 true,
                 forKey: NotificationSettingsViewModel.Content.userDefaultsKey[content] ?? ""
             )
+            UserDefaults.standard.set(self.dailyNotificationTime, forKey: "timePickerDate")
         }
     }
     
     /// 전달된, 대기중인 모든 노티피케이션 삭제
-    private func removeNotifications(of content: NotificationSettingsViewModel.Content) {
+    func removeNotifications(of content: NotificationSettingsViewModel.Content) {
         switch content {
         case .daily:
             self.notificationCenter.removeDeliveredNotifications(
@@ -168,13 +104,17 @@ final class NotificationSettingsViewModel {
             false,
             forKey: NotificationSettingsViewModel.Content.userDefaultsKey[content] ?? ""
         )
+        UserDefaults.standard.removeObject(forKey: "timePickerDate")
     }
     
     /// 일일 알림 리퀘스트 만들어주는 함수
-    private func notificationRequest() -> UNNotificationRequest {
+    private func notificationRequest(at time: Date?) -> UNNotificationRequest {
         let content = UNMutableNotificationContent()
         let trigger = UNCalendarNotificationTrigger(
-            dateMatching: Calendar.current.dateComponents([.year, .month, .day], from: Date()),
+            dateMatching: Calendar.current.dateComponents(
+                [.year, .month, .day, .hour, .minute],
+                from: time == nil ? Date() : time!
+            ),
             repeats: true
         )
         content.title = NotificationSettingsViewModel.Content.message[.daily]?.first ?? ""
@@ -204,5 +144,21 @@ final class NotificationSettingsViewModel {
             content: content,
             trigger: trigger
         )
+    }
+    
+    // MARK: Function for Debug Notifications
+    
+    /// pending, delivered된 노티피케이션 출력하는 유틸리티 함수
+    private func printNotifications() {
+        self.notificationCenter.getPendingNotificationRequests { requests in
+            print("++++pending requests++++")
+            print(requests)
+            print("-----------------------")
+        }
+        self.notificationCenter.getDeliveredNotifications { notifications in
+            print("****delivered notifications****")
+            print(notifications)
+            print("-------------------------------")
+        }
     }
 }
