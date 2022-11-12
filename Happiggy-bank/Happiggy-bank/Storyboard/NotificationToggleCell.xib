@@ -16,8 +16,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="316" height="91"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="oMD-9J-Fxf">
+                        <rect key="frame" x="170" y="30" width="79" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="oMD-9J-Fxf" secondAttribute="height" multiplier="79:31" id="PWy-9i-RbS"/>
+                        </constraints>
+                    </datePicker>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="항목 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWi-hf-ScJ">
-                        <rect key="frame" x="10" y="36" width="60" height="19.5"/>
+                        <rect key="frame" x="10" y="35.5" width="60" height="20"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -29,13 +35,16 @@
                 <gestureRecognizers/>
                 <constraints>
                     <constraint firstItem="WZZ-YF-mT5" firstAttribute="centerY" secondItem="7U4-Bn-NN7" secondAttribute="centerY" id="89K-JQ-bmp"/>
+                    <constraint firstItem="WZZ-YF-mT5" firstAttribute="leading" secondItem="oMD-9J-Fxf" secondAttribute="trailing" constant="8" symbolic="YES" id="cJh-aB-0i3"/>
                     <constraint firstAttribute="trailing" secondItem="WZZ-YF-mT5" secondAttribute="trailing" constant="10" id="cwQ-x3-NYL"/>
                     <constraint firstItem="hWi-hf-ScJ" firstAttribute="leading" secondItem="7U4-Bn-NN7" secondAttribute="leading" constant="10" id="iQq-gc-Ujc"/>
                     <constraint firstItem="hWi-hf-ScJ" firstAttribute="centerY" secondItem="7U4-Bn-NN7" secondAttribute="centerY" id="oBN-gp-2oz"/>
+                    <constraint firstItem="oMD-9J-Fxf" firstAttribute="centerY" secondItem="7U4-Bn-NN7" secondAttribute="centerY" id="oKC-fD-Vls"/>
                 </constraints>
             </tableViewCellContentView>
             <gestureRecognizers/>
             <connections>
+                <outlet property="timePicker" destination="oMD-9J-Fxf" id="Y8s-Db-bJK"/>
                 <outlet property="titleLabel" destination="hWi-hf-ScJ" id="m2Y-eP-btf"/>
                 <outlet property="toggleButton" destination="WZZ-YF-mT5" id="3SP-Fo-v4N"/>
             </connections>

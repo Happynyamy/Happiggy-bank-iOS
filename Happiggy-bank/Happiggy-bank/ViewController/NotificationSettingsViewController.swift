@@ -30,6 +30,51 @@ final class NotificationSettingsViewController: UIViewController {
     }
     
     
+    // MARK: - @objc functions
+    
+    /// 일일 알림 토글 버튼에 변화가 있을 때 호출되는 objc 함수
+    @objc private func dailyNotificationToggleButtonDidTap(_ sender: UISwitch) {
+        if sender.isOn {
+            requestNotification(of: .daily) {
+                self.viewModel.scheduleNotifications(of: .daily)
+                DispatchQueue.main.async {
+                    self.updateCell(for: sender.tag)
+                }
+            }
+            return
+        }
+        if !sender.isOn {
+            self.viewModel.removeNotifications(of: .daily)
+            updateCell(for: sender.tag)
+            return
+        }
+    }
+    
+    /// 리마인드 알림 토글 버튼에 변화가 있을 때 호출되는 objc 함수
+    @objc private func remindNotificationToggleButtonDidTap(_ sender: UISwitch) {
+        if sender.isOn {
+            requestNotification(of: .reminder) {
+                self.viewModel.scheduleNotifications(of: .reminder)
+            }
+            return
+        }
+        
+        if !sender.isOn {
+            self.viewModel.removeNotifications(of: .reminder)
+            return
+        }
+    }
+    
+    /// 시간을 설정하는 데이트피커에 변화가 있을 때 호출되는 objc 함수
+    @objc private func timePickerDidChanged(_ sender: UIDatePicker) {
+        self.viewModel.dailyNotificationTime = sender.date
+        self.viewModel.removeNotifications(of: .daily)
+        self.viewModel.scheduleNotifications(of: .daily)
+        UserDefaults.standard.set(sender.date, forKey: "timePickerDate")
+        updateCell(for: sender.tag)
+    }
+    
+    
     // MARK: - Functions
     
     /// 테이블 뷰 셀 등록
@@ -41,7 +86,10 @@ final class NotificationSettingsViewController: UIViewController {
     }
     
     /// 노티피케이션 요청
-    private func requestNotification(of content: NotificationSettingsViewModel.Content) {
+    private func requestNotification(
+        of content: NotificationSettingsViewModel.Content,
+        _ completionHandler: @escaping () -> Void
+    ) {
         self.viewModel.notificationCenter.requestAuthorization(
             options: [.alert, .sound]
         ) { granted, error in
@@ -58,7 +106,14 @@ final class NotificationSettingsViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.alertDisabledState()
                 }
+            } else {
+                UserDefaults.standard.set(
+                    true,
+                    forKey: NotificationSettingsViewModel.Content.userDefaultsKey[content] ?? ""
+                )
             }
+            
+            completionHandler()
         }
     }
     
@@ -97,6 +152,63 @@ final class NotificationSettingsViewController: UIViewController {
             }
         }
     }
+    
+    // MARK: - Configure Cell with UIComponents
+    
+    /// 일일 알림 셀 설정
+    private func configureDailyNotificationCell(_ button: UISwitch, _ timePicker: UIDatePicker) {
+        button.addTarget(
+            self,
+            action: #selector(dailyNotificationToggleButtonDidTap),
+            for: .valueChanged
+        )
+        
+        timePicker.addTarget(
+            self,
+            action: #selector(timePickerDidChanged),
+            for: .valueChanged
+        )
+        
+        self.viewModel.notificationCenter.getNotificationSettings { settings in
+            guard settings.authorizationStatus == .authorized
+            else {
+                DispatchQueue.main.async {
+                    button.isOn = false
+                    timePicker.isHidden = true
+                }
+                return
+            }
+            
+            DispatchQueue.main.async {
+                button.isOn = UserDefaults.standard.bool(
+                    forKey: NotificationSettingsViewModel.Content.userDefaultsKey[.daily] ?? ""
+                )
+                timePicker.isHidden = !button.isOn
+                timePicker.date = UserDefaults.standard.object(
+                    forKey: "timePickerDate"
+                ) as? Date ?? Date()
+            }
+        }
+    }
+    
+    /// 리마인드 알림 셀 설정
+    private func configureRemindNotificationCell(_ button: UISwitch) {
+        button.addTarget(
+            self,
+            action: #selector(remindNotificationToggleButtonDidTap),
+            for: .valueChanged
+        )
+        
+        self.viewModel.notificationCenter.getNotificationSettings { settings in
+            guard settings.authorizationStatus == .authorized
+            else {
+                DispatchQueue.main.async {
+                    button.isOn = false
+                }
+                return
+            }
+        }
+    }
 }
 
 extension NotificationSettingsViewController: UITableViewDataSource {
@@ -119,19 +231,26 @@ extension NotificationSettingsViewController: UITableViewDataSource {
         ) as? NotificationToggleCell
         else { return NotificationToggleCell() }
         
-        // TODO: - 알림 관련 설정 정리
         cell.titleLabel.text = NotificationSettingsViewModel.Content.title[indexPath.row]
         cell.toggleButton.isOn = false
+        cell.toggleButton.tag = indexPath.row
+        cell.timePicker.isHidden = true
+        cell.timePicker.tag = indexPath.row
         
-        // TODO: - Daily Noti에 TimePicker 추가 및 설정
         if indexPath.row == NotificationSettingsViewModel.Content.daily.rawValue {
-            self.viewModel.configureDailyNotificationCell(cell.toggleButton)
+            configureDailyNotificationCell(cell.toggleButton, cell.timePicker)
         }
         
         if indexPath.row == NotificationSettingsViewModel.Content.reminder.rawValue {
-            self.viewModel.configureRemindNotificationCell(cell.toggleButton)
+            configureRemindNotificationCell(cell.toggleButton)
         }
         
         return cell
+    }
+    
+    /// indexRow에 Cell 업데이트하기
+    func updateCell(for indexRow: Int) {
+        let indexPathForUpdate = IndexPath(row: indexRow, section: 0)
+        self.tableView.reloadRows(at: [indexPathForUpdate], with: .automatic)
     }
 }
