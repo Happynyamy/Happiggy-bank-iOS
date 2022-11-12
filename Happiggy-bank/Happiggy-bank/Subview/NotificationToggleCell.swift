@@ -18,6 +18,10 @@ final class NotificationToggleCell: SettingsViewCell {
     /// 토글 버튼
     @IBOutlet weak var toggleButton: UISwitch!
     
+    /// 타임 피커
+    @IBOutlet weak var timePicker: UIDatePicker!
+    
+    
     // MARK: - Override Functions
     
     override func awakeFromNib() {
@@ -36,5 +40,6 @@ final class NotificationToggleCell: SettingsViewCell {
         
         self.titleLabel.text = .empty
         self.toggleButton.isOn = false
+        self.timePicker.isHidden = true
     }
 }
