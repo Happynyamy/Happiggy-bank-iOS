@@ -8,11 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A41A506F27FF2B2E005381EF /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41A506E27FF2B2E005381EF /* CustomTabBar.swift */; };
-		A41DE62427F34ABB002A7669 /* UPCarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41DE62327F34ABB002A7669 /* UPCarouselFlowLayout.swift */; };
 		A41DE62627F36595002A7669 /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41DE62527F36595002A7669 /* NoteDetailViewController.swift */; };
 		A41DE62827F368BF002A7669 /* NoteDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41DE62727F368BF002A7669 /* NoteDetailViewModel.swift */; };
 		A41DE62B27F36E95002A7669 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41DE62927F36E95002A7669 /* NoteCell.swift */; };
-		A41DE62C27F36E95002A7669 /* NoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A41DE62A27F36E95002A7669 /* NoteCell.xib */; };
 		A41DE62E27F5F2C1002A7669 /* UIView+ZoomAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41DE62D27F5F2C1002A7669 /* UIView+ZoomAnimation.swift */; };
 		A41DE63227F80115002A7669 /* BottleMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41DE63127F80115002A7669 /* BottleMessageViewController.swift */; };
 		A425F8B627EDF4FB00A005AB /* TagViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A425F8B527EDF4FB00A005AB /* TagViewFlowLayout.swift */; };
@@ -156,11 +154,9 @@
 
 /* Begin PBXFileReference section */
 		A41A506E27FF2B2E005381EF /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
-		A41DE62327F34ABB002A7669 /* UPCarouselFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UPCarouselFlowLayout.swift; sourceTree = "<group>"; };
 		A41DE62527F36595002A7669 /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
 		A41DE62727F368BF002A7669 /* NoteDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewModel.swift; sourceTree = "<group>"; };
 		A41DE62927F36E95002A7669 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
-		A41DE62A27F36E95002A7669 /* NoteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteCell.xib; sourceTree = "<group>"; };
 		A41DE62D27F5F2C1002A7669 /* UIView+ZoomAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ZoomAnimation.swift"; sourceTree = "<group>"; };
 		A41DE63127F80115002A7669 /* BottleMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleMessageViewController.swift; sourceTree = "<group>"; };
 		A425F8B527EDF4FB00A005AB /* TagViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewFlowLayout.swift; sourceTree = "<group>"; };
@@ -461,7 +457,6 @@
 				D2C48BFE27E9D60A006FC59E /* Gravity.swift */,
 				A459003927E95D6B003010A0 /* Grid.swift */,
 				A425F8B527EDF4FB00A005AB /* TagViewFlowLayout.swift */,
-				A41DE62327F34ABB002A7669 /* UPCarouselFlowLayout.swift */,
 				A4569CC728112657001E3FD6 /* LicenseText.swift */,
 				A4D6EB76282E307900553E43 /* VersionManager.swift */,
 			);
@@ -475,7 +470,6 @@
 				A467B5C927DA289500AC702D /* NewNoteDatePickerRowView.xib */,
 				A8FC07D227B3ECF30077A758 /* LaunchScreen.storyboard */,
 				A8ECD4A427E30FF300886BC0 /* BottleCell.xib */,
-				A41DE62A27F36E95002A7669 /* NoteCell.xib */,
 				A48E183D27E737B600B44477 /* CapsuleButton.xib */,
 				A466A3152801DF1400D655F4 /* SettingsLabelButtonCell.xib */,
 				A804425C28FEA27700EF2CE3 /* NotificationToggleCell.xib */,
@@ -827,7 +821,6 @@
 				A4569CC0281118DE001E3FD6 /* InformationTextViewController.swift in Sources */,
 				A4569CCC28119B41001E3FD6 /* UINavigationBar+Clear.swift in Sources */,
 				A41DE62627F36595002A7669 /* NoteDetailViewController.swift in Sources */,
-				A41DE62427F34ABB002A7669 /* UPCarouselFlowLayout.swift in Sources */,
 				A4F5714727DA467900E7DF9B /* DateFormat.swift in Sources */,
 				A4845B5D2900DF0B00A6007C /* ColorPicker.swift in Sources */,
 				A89CBEDD27CBDEA2005549F6 /* BottleListViewController.swift in Sources */,
