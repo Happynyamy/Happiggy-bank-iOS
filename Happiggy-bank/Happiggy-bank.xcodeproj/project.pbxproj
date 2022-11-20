@@ -266,6 +266,7 @@
 		A4D6EB78282E432400553E43 /* OptionalBool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalBool.swift; sourceTree = "<group>"; };
 		A4D6EB7A2837825500553E43 /* LookUpResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookUpResult.swift; sourceTree = "<group>"; };
 		A4D6EB7C2837901F00553E43 /* URL+AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+AppStore.swift"; sourceTree = "<group>"; };
+		A4EB25B12929FC08002D129A /* Happigy-bank v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Happigy-bank v2.xcdatamodel"; sourceTree = "<group>"; };
 		A4EDFE7E2902D5CB0056C2DC /* ColorPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerDelegate.swift; sourceTree = "<group>"; };
 		A4EDFE802902D72A0056C2DC /* ColorPickerBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerBarItem.swift; sourceTree = "<group>"; };
 		A4F5714627DA467900E7DF9B /* DateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
@@ -1101,9 +1102,10 @@
 		A44E901527D5EB130053AC57 /* Happiggy-bank.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				A4EB25B12929FC08002D129A /* Happigy-bank v2.xcdatamodel */,
 				A44E901627D5EB130053AC57 /* Happigy-bank.xcdatamodel */,
 			);
-			currentVersion = A44E901627D5EB130053AC57 /* Happigy-bank.xcdatamodel */;
+			currentVersion = A4EB25B12929FC08002D129A /* Happigy-bank v2.xcdatamodel */;
 			path = "Happiggy-bank.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
