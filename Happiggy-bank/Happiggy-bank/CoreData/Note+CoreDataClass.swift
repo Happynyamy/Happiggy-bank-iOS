@@ -17,8 +17,14 @@ public class Note: NSManagedObject {
     
     /// 새로운 노트 엔티티를 생성하고 저금통과 연결해서 리턴함
     @discardableResult
-    static func create(date: Date, color: NoteColor, content: String, bottle: Bottle) -> Note {
-        let note = Note(date: date, color: color, content: content)
+    static func create(
+        date: Date,
+        color: NoteColor,
+        content: String,
+        imageURL: String? = nil,
+        bottle: Bottle
+    ) -> Note {
+        let note = Note(date: date, color: color, content: content, imageURL: imageURL)
         bottle.addToNotes_(note)
         
         return note
@@ -59,12 +65,13 @@ public class Note: NSManagedObject {
     /// 주어진 날짜, 색깔, 내용을 갖는 쪽지 인스턴스를 코어데이터에 새로 생성하고 저금통과도 연결함
     /// 아이디는 자체적으로 생성하고 isOpen 은 자동으로 false 로 설정
     /// 저장은 별도로 해야 함
-    convenience init(date: Date, color: NoteColor, content: String) {
+    convenience init(date: Date, color: NoteColor, content: String, imageURL: String?) {
         self.init(context: PersistenceStore.shared.context)
         self.id_ = UUID()
         self.date_ = date
         self.color_ = color.rawValue
         self.content_ = content
+        self.imageURL = imageURL
     }
     
     
