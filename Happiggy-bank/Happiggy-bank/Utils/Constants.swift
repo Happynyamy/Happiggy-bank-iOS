@@ -1088,6 +1088,9 @@ extension NotificationSettingsViewModel {
         
         /// 노티피케이션 식별자
         static let notificationIdentifier: String = "repeatingNotification"
+        
+        /// 노티피케이션 시간을 저장하는 userDefaults 데이터의 key
+        static let datePickerUserDefaultsKey: String = "timePickerDate"
     }
     
     /// 각 셀 별 내용

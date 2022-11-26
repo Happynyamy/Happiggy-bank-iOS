@@ -184,7 +184,7 @@ final class NotificationSettingsViewController: UIViewController {
                 )
                 timePicker.isHidden = !button.isOn
                 timePicker.date = UserDefaults.standard.object(
-                    forKey: "timePickerDate"
+                    forKey: NotificationSettingsViewModel.StringLiteral.datePickerUserDefaultsKey
                 ) as? Date ?? Date()
             }
         }
