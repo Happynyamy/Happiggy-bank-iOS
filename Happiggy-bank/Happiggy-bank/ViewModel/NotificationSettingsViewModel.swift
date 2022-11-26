@@ -76,7 +76,10 @@ final class NotificationSettingsViewModel {
                 true,
                 forKey: NotificationSettingsViewModel.Content.userDefaultsKey[content] ?? ""
             )
-            UserDefaults.standard.set(self.dailyNotificationTime, forKey: "timePickerDate")
+            UserDefaults.standard.set(
+                self.dailyNotificationTime,
+                forKey: StringLiteral.datePickerUserDefaultsKey
+            )
         }
     }
     
@@ -104,7 +107,6 @@ final class NotificationSettingsViewModel {
             false,
             forKey: NotificationSettingsViewModel.Content.userDefaultsKey[content] ?? ""
         )
-        UserDefaults.standard.removeObject(forKey: "timePickerDate")
     }
     
     /// 일일 알림 리퀘스트 만들어주는 함수
