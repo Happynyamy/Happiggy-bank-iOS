@@ -1,4 +1,3 @@
-
 //
 //  PhotoNoteCell.swift
 //  Happiggy-bank
