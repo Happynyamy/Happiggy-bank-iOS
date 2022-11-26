@@ -31,11 +31,13 @@ final class NotificationSettingsViewController: UIViewController {
     
     // MARK: - @objc functions
     
-    /// 일일 알림 토글 버튼에 변화가 있을 때 호출되는 objc 함수
-    @objc private func dailyNotificationToggleButtonDidTap(_ sender: UISwitch) {
+    /// 알림 토글 버튼에 변화가 있을 때 호출되는 objc 함수
+    @objc private func notificationToggleButtonDidTap(_ sender: UISwitch) {
+        let content = NotificationSettingsViewModel.Content.allCases[sender.tag]
+        
         if sender.isOn {
-            requestNotification(of: .daily) {
-                self.viewModel.scheduleNotifications(of: .daily)
+            requestNotification(of: content) {
+                self.viewModel.scheduleNotifications(of: content)
                 DispatchQueue.main.async {
                     self.updateCell(for: sender.tag)
                 }
@@ -43,24 +45,8 @@ final class NotificationSettingsViewController: UIViewController {
             return
         }
         if !sender.isOn {
-            self.viewModel.removeNotifications(of: .daily)
+            self.viewModel.removeNotifications(of: content)
             updateCell(for: sender.tag)
-            return
-        }
-    }
-    
-    /// 리마인드 알림 토글 버튼에 변화가 있을 때 호출되는 objc 함수
-    @objc private func remindNotificationToggleButtonDidTap(_ sender: UISwitch) {
-        if sender.isOn {
-            requestNotification(of: .reminder) {
-                self.viewModel.scheduleNotifications(of: .reminder)
-            }
-            return
-        }
-        
-        if !sender.isOn {
-            self.viewModel.removeNotifications(of: .reminder)
-            return
         }
     }
     
@@ -69,7 +55,10 @@ final class NotificationSettingsViewController: UIViewController {
         self.viewModel.dailyNotificationTime = sender.date
         self.viewModel.removeNotifications(of: .daily)
         self.viewModel.scheduleNotifications(of: .daily)
-        UserDefaults.standard.set(sender.date, forKey: "timePickerDate")
+        UserDefaults.standard.set(
+            sender.date,
+            forKey: NotificationSettingsViewModel.StringLiteral.datePickerUserDefaultsKey
+        )
         updateCell(for: sender.tag)
     }
     
@@ -158,7 +147,7 @@ final class NotificationSettingsViewController: UIViewController {
     private func configureDailyNotificationCell(_ button: UISwitch, _ timePicker: UIDatePicker) {
         button.addTarget(
             self,
-            action: #selector(dailyNotificationToggleButtonDidTap),
+            action: #selector(notificationToggleButtonDidTap),
             for: .valueChanged
         )
         
@@ -194,7 +183,7 @@ final class NotificationSettingsViewController: UIViewController {
     private func configureRemindNotificationCell(_ button: UISwitch) {
         button.addTarget(
             self,
-            action: #selector(remindNotificationToggleButtonDidTap),
+            action: #selector(notificationToggleButtonDidTap),
             for: .valueChanged
         )
         
@@ -205,6 +194,12 @@ final class NotificationSettingsViewController: UIViewController {
                     button.isOn = false
                 }
                 return
+            }
+            
+            DispatchQueue.main.async {
+                button.isOn = UserDefaults.standard.bool(
+                    forKey: NotificationSettingsViewModel.Content.userDefaultsKey[.reminder] ?? ""
+                )
             }
         }
     }
