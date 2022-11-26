@@ -26,7 +26,9 @@ final class NotificationSettingsViewModel {
     }()
     
     /// 일일 알림이 설정된 시간
-    lazy var dailyNotificationTime: Date? = nil
+    lazy var dailyNotificationTime: Date? = UserDefaults.standard.object(
+        forKey: StringLiteral.datePickerUserDefaultsKey
+    ) as? Date
     
     
     // MARK: - Functions
@@ -114,7 +116,7 @@ final class NotificationSettingsViewModel {
         let content = UNMutableNotificationContent()
         let trigger = UNCalendarNotificationTrigger(
             dateMatching: Calendar.current.dateComponents(
-                [.year, .month, .day, .hour, .minute],
+                [.hour, .minute],
                 from: time == nil ? Date() : time!
             ),
             repeats: true
