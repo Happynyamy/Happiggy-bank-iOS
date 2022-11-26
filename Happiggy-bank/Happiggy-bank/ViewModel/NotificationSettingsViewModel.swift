@@ -5,7 +5,7 @@
 //  Created by Eunbin Kwon on 2022/04/01.
 //
 
-import UIKit
+import UserNotifications
 
 /// 노티피케이션 관련 데이터 처리하는 뷰 모델
 final class NotificationSettingsViewModel {
