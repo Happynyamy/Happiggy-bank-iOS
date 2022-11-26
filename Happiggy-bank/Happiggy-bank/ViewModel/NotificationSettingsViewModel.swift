@@ -64,6 +64,7 @@ final class NotificationSettingsViewModel {
                     }
                 }
             case .reminder:
+                if self.endDate == nil { return }
                 for day in 0...Metric.repeatingDays {
                     let request = self.notificationRequest(byAdding: day)
                     self.notificationCenter.add(request) { error in
@@ -96,6 +97,7 @@ final class NotificationSettingsViewModel {
                 withIdentifiers: [StringLiteral.notificationIdentifier]
             )
         case .reminder:
+            if self.endDate == nil { break }
             for day in 0...Metric.repeatingDays {
                 self.notificationCenter.removeDeliveredNotifications(
                     withIdentifiers: [StringLiteral.notificationIdentifier + "\(day)"]

@@ -188,7 +188,8 @@ final class NotificationSettingsViewController: UIViewController {
         )
         
         self.viewModel.notificationCenter.getNotificationSettings { settings in
-            guard settings.authorizationStatus == .authorized
+            guard settings.authorizationStatus == .authorized,
+                  self.viewModel.endDate != nil
             else {
                 DispatchQueue.main.async {
                     button.isOn = false
