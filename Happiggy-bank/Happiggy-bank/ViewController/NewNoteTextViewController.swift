@@ -142,6 +142,7 @@ final class NewNoteTextViewController: UIViewController {
         self.updateLetterCountLabel(count: .zero)
         self.newNoteInputView.removePhotoButton.addAction(UIAction(handler: { [weak self] _ in
             self?.newNoteInputView.photo = nil
+            self?.viewModel.newNote.imageID = nil
             self?.photoButton.isEnabled = true
         }), for: .touchUpInside)
 
@@ -200,11 +201,13 @@ final class NewNoteTextViewController: UIViewController {
     }
     
     /// 새로운 노트 엔티티를 생성
-    private func makeNewNote() -> Note {
+    private func makeNewNote(withImageURL imageURL: String? = nil) -> Note {
         Note.create(
+            id: self.viewModel.newNote.id,
             date: self.viewModel.newNote.date,
             color: self.viewModel.newNote.color,
             content: self.newNoteInputView.textView.text,
+            imageURL: imageURL,
             bottle: self.viewModel.newNote.bottle
         )
     }
@@ -217,8 +220,8 @@ final class NewNoteTextViewController: UIViewController {
         let alert = PersistenceStore.shared.makeErrorAlert(
             title: errorTitle,
             message: errorMessage
-        ) { _ in
-            self.dismissWithAnimation()
+        ) { [weak self] _ in
+            self?.dismissWithAnimation()
         }
         self.present(alert, animated: true)
         
@@ -235,23 +238,47 @@ final class NewNoteTextViewController: UIViewController {
     private func makeConfirmationAlert() -> UIAlertController {
         let confirmAction = UIAlertAction.confirmAction(
             title: StringLiteral.confirmButtonTitle
-        ) { _ in
+        ) { [weak self] _ in
+
+            var imageURL = String?.none
+
+            if let image = self?.newNoteInputView.photo,
+               let errorImage = UIImage.error,
+               image != errorImage {
+                guard let url = self?.viewModel.saveImage(image)
+                else {
+                    let alert = UIAlertController.basic(
+                        alertTitle: "저장에 실패했습니다.",
+                        preferredStyle: .alert,
+                        confirmAction: .confirmAction()
+                    )
+                    self?.present(alert, animated: true)
+                    return
+                }
+                imageURL = url
+            }
             
-            let note = self.makeNewNote()
+            guard let note = self?.makeNewNote(withImageURL: imageURL)
+            else {
+                return
+            }
             
-            guard self.saveAndPostNewNote() == true
+            guard self?.saveAndPostNewNote() == true
             else {
                 PersistenceStore.shared.delete(note)
+                if let imageURL = note.imageURL {
+                    self?.viewModel.deleteImage(withImageURL: imageURL)
+                }
                 return
             }
             
             let noteAndDelay = (note: note, delay: CATransition.transitionDuration)
-            self.post(name: .noteDidAdd, object: noteAndDelay)
-            self.dismissWithAnimation()
+            self?.post(name: .noteDidAdd, object: noteAndDelay)
+            self?.dismissWithAnimation()
         }
         
-        let cancelAction = UIAlertAction.cancelAction { _ in
-            self.newNoteInputView.textView.becomeFirstResponder()
+        let cancelAction = UIAlertAction.cancelAction { [weak self] _ in
+            self?.newNoteInputView.textView.becomeFirstResponder()
         }
         
         return UIAlertController.basic(
@@ -412,22 +439,31 @@ extension NewNoteTextViewController: PHPickerViewControllerDelegate {
         self.dismiss(animated: true)
         self.newNoteInputView.textView.becomeFirstResponder()
 
-        guard let itemProvider = results.first?.itemProvider,
-              itemProvider.canLoadObject(ofClass: UIImage.self)
+        guard let result = results.first,
+              result.itemProvider.canLoadObject(ofClass: UIImage.self)
         else {
             newNoteInputView.photo = results.isEmpty ? nil : .error
+            viewModel.newNote.imageID = nil
             self.photoButton.isEnabled = results.isEmpty
             return
         }
 
         saveButton.isEnabled = false
         // TODO: Use Progress View
-        _ = itemProvider.loadObject(ofClass: UIImage.self) { [weak self] object, _ in
+        _ = result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] object, _ in
             DispatchQueue.main.async {
-
-                self?.newNoteInputView.photo = (object as? UIImage) ?? .error
                 self?.saveButton.isEnabled = true
                 self?.photoButton.isEnabled = false
+
+                guard let image = object as? UIImage
+                else {
+                    self?.viewModel.newNote.imageID = nil
+                    self?.newNoteInputView.photo = .error
+                    return
+                }
+
+                self?.newNoteInputView.photo = image
+                self?.viewModel.newNote.imageID = result.assetIdentifier ?? UUID().uuidString
             }
         }
     }

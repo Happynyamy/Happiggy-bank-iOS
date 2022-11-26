@@ -15,6 +15,7 @@
 		A41DE63227F80115002A7669 /* BottleMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41DE63127F80115002A7669 /* BottleMessageViewController.swift */; };
 		A425F8B627EDF4FB00A005AB /* TagViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A425F8B527EDF4FB00A005AB /* TagViewFlowLayout.swift */; };
 		A425F8B827EDF59A00A005AB /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A425F8B727EDF59A00A005AB /* TagCell.swift */; };
+		A4396B1929323131005D9D3A /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4396B1829323131005D9D3A /* ImageManager.swift */; };
 		A439F53A27EEFC28002851F4 /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A439F53927EEFC27002851F4 /* SettingsViewCell.swift */; };
 		A439F53D27EEFCF6002851F4 /* NotificationToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A439F53B27EEFCF6002851F4 /* NotificationToggleCell.swift */; };
 		A439F54527EF0698002851F4 /* SettingsLabelButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A439F54327EF0698002851F4 /* SettingsLabelButtonCell.swift */; };
@@ -166,6 +167,7 @@
 		A41DE63127F80115002A7669 /* BottleMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleMessageViewController.swift; sourceTree = "<group>"; };
 		A425F8B527EDF4FB00A005AB /* TagViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewFlowLayout.swift; sourceTree = "<group>"; };
 		A425F8B727EDF59A00A005AB /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
+		A4396B1829323131005D9D3A /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		A439F53927EEFC27002851F4 /* SettingsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
 		A439F53B27EEFCF6002851F4 /* NotificationToggleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationToggleCell.swift; sourceTree = "<group>"; };
 		A439F54327EF0698002851F4 /* SettingsLabelButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLabelButtonCell.swift; sourceTree = "<group>"; };
@@ -472,6 +474,7 @@
 				A425F8B527EDF4FB00A005AB /* TagViewFlowLayout.swift */,
 				A4569CC728112657001E3FD6 /* LicenseText.swift */,
 				A4D6EB76282E307900553E43 /* VersionManager.swift */,
+				A4396B1829323131005D9D3A /* ImageManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -821,6 +824,7 @@
 				A46B10FE281450F6004AB185 /* CustomNavigationController.swift in Sources */,
 				A8BD833327BE104900E0DE41 /* HomeViewController.swift in Sources */,
 				A499318127BF3A38009FF5A8 /* BottleViewModel.swift in Sources */,
+				A4396B1929323131005D9D3A /* ImageManager.swift in Sources */,
 				A4D6EB77282E307900553E43 /* VersionManager.swift in Sources */,
 				A89CBEDB27CBDD99005549F6 /* BottleCell.swift in Sources */,
 				A44E901727D5EB130053AC57 /* Happiggy-bank.xcdatamodeld in Sources */,
