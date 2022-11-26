@@ -16,6 +16,9 @@ final class PhotoNoteCellViewModel {
     var hasPhoto: Bool {
         self.note.imageURL != nil
     }
+    
+    /// 사진을 탭했을 때 호출되는 클로저
+    var photoDidTap: ((UIImage) -> Void)?
 
     /// 색상, 부분 강조 표시를 적용한 날짜 문자열
     private(set) lazy var attributedDateString: NSMutableAttributedString = {

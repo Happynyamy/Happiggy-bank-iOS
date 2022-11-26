@@ -42,6 +42,7 @@ final class PhotoNoteCell: UITableViewCell {
         $0.layer.cornerRadius = Metric.photoCornerRadius
         $0.layer.borderWidth = Metric.photoBorderWidth
         $0.layer.borderColor = UIColor.reversedLabel.cgColor
+        $0.isUserInteractionEnabled = true
     }
 
     /// 내용 레이블
@@ -117,6 +118,7 @@ final class PhotoNoteCell: UITableViewCell {
         self.selectionStyle = .none
         self.configureViewHierarchy()
         self.configureViewLayout()
+        self.configurePhotoView()
     }
 
     /// 하위 뷰 추가
@@ -185,6 +187,25 @@ final class PhotoNoteCell: UITableViewCell {
         NSLayoutConstraint.activate([
             photoView.heightAnchor.constraint(equalTo: photoView.widthAnchor)
         ])
+    }
+
+    /// photoView에 tapGestureRecognizer 추가
+    private func configurePhotoView() {
+        let tapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(self.photoDidTap(_:))
+        )
+        self.photoView.addGestureRecognizer(tapGestureRecognizer)
+    }
+
+    /// 사진을 탭했을 때 호출
+    @objc private func photoDidTap(_ sender: UITapGestureRecognizer) {
+        guard let photo = self.photoView.image,
+              photo != .error ?? UIImage()
+        else {
+            return
+        }
+        self.viewModel?.photoDidTap?(photo)
     }
 }
 
