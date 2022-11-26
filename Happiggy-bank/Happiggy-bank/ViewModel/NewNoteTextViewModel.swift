@@ -11,6 +11,9 @@ import UIKit
 final class NewNoteTextViewModel {
     
     // MARK: - Properties
+
+    /// 이미지 처리 객체
+    let imageMananger = ImageManager()
     
     /// 임시 쪽지 객체
     var newNote: NewNote!
@@ -72,5 +75,27 @@ final class NewNoteTextViewModel {
         countString.append(StringLiteral.letterCountText.nsMutableAttributedStringify())
 
         return countString
+    }
+
+    /// 이미지를 저장하고, 성공한 경우 경로 엔드포인트를, 실패한 경우 nil 리턴
+    func saveImage(_ image: UIImage) -> String? {
+        guard let imageID = newNote.imageID
+        else {
+            return nil
+        }
+
+        return self.imageMananger.saveImage(image, noteID: newNote.id, imageID: imageID)
+    }
+
+    /// 인자로 주어진 경로에 있는 이미지를 삭제
+    /// 
+    /// 삭제에 실패하는 경우 한 번 더 시도하고 리턴
+    func deleteImage(withImageURL imageURL: String) {
+        guard !self.imageMananger.deleteImage(forNote: newNote.id, imageURL: imageURL)
+        else {
+            return
+        }
+
+        self.imageMananger.deleteImage(forNote: newNote.id, imageURL: imageURL)
     }
 }

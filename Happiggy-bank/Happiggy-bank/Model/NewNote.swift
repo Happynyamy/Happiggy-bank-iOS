@@ -9,6 +9,9 @@ import Foundation
 
 /// 새 쪽지를 추가할 때 사용하는 모델
 struct NewNote: Equatable {
+
+    /// 고유 아이디
+    let id = UUID()
     
     /// 작성 날짜
     var date: Date
@@ -18,4 +21,7 @@ struct NewNote: Equatable {
     
     /// 담을 저금통
     var bottle: Bottle
+
+    /// 이미지 아이디
+    var imageID: String?
 }
