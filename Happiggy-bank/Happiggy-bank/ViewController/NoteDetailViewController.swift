@@ -34,6 +34,7 @@ final class NoteDetailViewController: UIViewController {
 
     private func configureNavitationBar() {
         self.navigationItem.title = self.viewModel.bottleTitle
+        self.navigationItem.backButtonTitle = .empty
     }
 
     /// 셀 등록
@@ -73,6 +74,7 @@ extension NoteDetailViewController: UITableViewDataSource {
             ) as? NoteCell
             else { return UITableViewCell() }
 
+            viewModel.photoDidTap = nil
             cell.viewModel = viewModel
             return cell
         }
@@ -83,6 +85,11 @@ extension NoteDetailViewController: UITableViewDataSource {
             ) as? PhotoNoteCell
         else { return UITableViewCell() }
 
+        viewModel.photoDidTap = { [weak self] image in
+            let photoViewController = PhotoViewController(photo: image)
+//            photoViewController.view.backgroundColor = .systemBackground
+            self?.show(photoViewController, sender: self)
+        }
         cell.viewModel = viewModel
         return cell
     }

@@ -243,8 +243,7 @@ final class NewNoteTextViewController: UIViewController {
             var imageURL = String?.none
 
             if let image = self?.newNoteInputView.photo,
-               let errorImage = UIImage.error,
-               image != errorImage {
+               image != (.error ?? UIImage()) {
                 guard let url = self?.viewModel.saveImage(image)
                 else {
                     let alert = UIAlertController.basic(
