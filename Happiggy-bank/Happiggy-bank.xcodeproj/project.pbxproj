@@ -16,6 +16,7 @@
 		A425F8B627EDF4FB00A005AB /* TagViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A425F8B527EDF4FB00A005AB /* TagViewFlowLayout.swift */; };
 		A425F8B827EDF59A00A005AB /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A425F8B727EDF59A00A005AB /* TagCell.swift */; };
 		A4396B1929323131005D9D3A /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4396B1829323131005D9D3A /* ImageManager.swift */; };
+		A4396B1B29325D70005D9D3A /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4396B1A29325D70005D9D3A /* PhotoViewController.swift */; };
 		A439F53A27EEFC28002851F4 /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A439F53927EEFC27002851F4 /* SettingsViewCell.swift */; };
 		A439F53D27EEFCF6002851F4 /* NotificationToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A439F53B27EEFCF6002851F4 /* NotificationToggleCell.swift */; };
 		A439F54527EF0698002851F4 /* SettingsLabelButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A439F54327EF0698002851F4 /* SettingsLabelButtonCell.swift */; };
@@ -168,6 +169,7 @@
 		A425F8B527EDF4FB00A005AB /* TagViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewFlowLayout.swift; sourceTree = "<group>"; };
 		A425F8B727EDF59A00A005AB /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
 		A4396B1829323131005D9D3A /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		A4396B1A29325D70005D9D3A /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		A439F53927EEFC27002851F4 /* SettingsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
 		A439F53B27EEFCF6002851F4 /* NotificationToggleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationToggleCell.swift; sourceTree = "<group>"; };
 		A439F54327EF0698002851F4 /* SettingsLabelButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLabelButtonCell.swift; sourceTree = "<group>"; };
@@ -460,6 +462,7 @@
 				A49B25E62812AC2800399630 /* FontSelectionViewController.swift */,
 				A46B10FB28144D76004AB185 /* CustomTabBarController.swift */,
 				A46B10FD281450F6004AB185 /* CustomNavigationController.swift */,
+				A4396B1A29325D70005D9D3A /* PhotoViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -764,6 +767,7 @@
 				A4CF2C8227C73B42001B01B1 /* UIColor+AssetColors.swift in Sources */,
 				A819CF9F27DDD97C00DE8E72 /* HapticManager.swift in Sources */,
 				A4569CCF28128B4B001E3FD6 /* SettingsNonIconButtonCell.swift in Sources */,
+				A4396B1B29325D70005D9D3A /* PhotoViewController.swift in Sources */,
 				A8ECD4A727E33BFA00886BC0 /* BottleListViewModel.swift in Sources */,
 				A49AC5EB2917FFAB009315BC /* PhotoNoteCellViewModel.swift in Sources */,
 				A4A55A0728FFC664004ABE00 /* UIView+ConfigureXib.swift in Sources */,
