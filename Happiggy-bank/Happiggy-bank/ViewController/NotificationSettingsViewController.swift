@@ -8,7 +8,6 @@
 import UIKit
 import UserNotifications
 
-import Then
 
 /// 노티피케이션(일일 알림, 리마인드 알림) 추가/삭제하는 뷰 컨트롤러
 final class NotificationSettingsViewController: UIViewController {
