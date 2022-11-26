@@ -5,6 +5,7 @@
 //  Created by sun on 2022/03/10.
 //
 
+import PhotosUI
 import UIKit
 
 /// 새로운 쪽지의 내용을 작성하는 텍스트 뷰를 관리하는 뷰 컨트롤러
@@ -19,14 +20,17 @@ final class NewNoteTextViewController: UIViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
 
     /// 쪽지 입력 뷰
-    @IBOutlet weak var newtNoteInputView: NewNoteInputView!
+    @IBOutlet weak var newNoteInputView: NewNoteInputView!
 
     /// 쪽지 입력 뷰  높이 제약 조건
     @IBOutlet weak var newtNoteInputViewHeightConstraint: NSLayoutConstraint!
 
     /// 포토 라이브러리 버튼과 컬러 버튼들이 들어있음
     @IBOutlet weak var toolbar: UIToolbar!
-    
+
+    /// 사진 추가 버튼
+    @IBOutlet weak var photoButton: UIBarButtonItem!
+
     /// 툴바에 있는 쪽지 색깔 팔레트
     @IBOutlet weak var colorPicker: ColorPickerItem!
     
@@ -67,13 +71,13 @@ final class NewNoteTextViewController: UIViewController {
     
     /// 저장버튼(v)을 눌렀을 때 호출되는 액션 메서드
     @IBAction func saveButtonDidTap(_ sender: UIBarButtonItem) {
-        guard let textView = self.newtNoteInputView.textView,
+        guard let textView = self.newNoteInputView.textView,
               !textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
         else {
             self.showWarningLabel = true
-            self.newtNoteInputView.warningLabel.fadeIn()
+            self.newNoteInputView.warningLabel.fadeIn()
             HapticManager.instance.notification(type: .error)
-            self.newtNoteInputView.placeholderLabel.fadeOut()
+            self.newNoteInputView.placeholderLabel.fadeOut()
             return
         }
 
@@ -83,12 +87,12 @@ final class NewNoteTextViewController: UIViewController {
 
     /// 툴바의 포토 라이브러리 버튼을 눌렀을 때 호출되는 메서드
     @IBAction func photoButtonDidTap(_ sender: UIBarButtonItem) {
-        // TODO: 구현
+        self.presentPhotoPicker()
     }
     
     /// 날짜 라벨을 눌러서 띄운 날짜 피커에서 되돌아 올 때 호출되는 메서드
     @IBAction func unwindCallToNoteTexViewDidArrive(segue: UIStoryboardSegue) {
-        self.newtNoteInputView.textView.becomeFirstResponder()
+        self.newNoteInputView.textView.becomeFirstResponder()
         if segue.identifier == SegueIdentifier.unwindFromNoteDatePickerToTextView {
 
             /// 날짜 선택이 바뀐 경우에만 업데이트
@@ -103,11 +107,11 @@ final class NewNoteTextViewController: UIViewController {
 
     /// 버튼과 텍스트 뷰 외의 영역을 터치했을 때 키보드를 내림
     @IBAction func backgroundDidTap(_ sender: Any) {
-        self.newtNoteInputView.textView.resignFirstResponder()
+        self.newNoteInputView.textView.resignFirstResponder()
         let safeArea = self.view.safeAreaInsets
         let verticalSafeAreaInsets = safeArea.top + safeArea.bottom
         let heightThatFits = min(
-            self.newtNoteInputView.contentHeight,
+            self.newNoteInputView.contentHeight,
             self.view.bounds.height - verticalSafeAreaInsets
         )
         self.newtNoteInputViewHeightConstraint.constant = heightThatFits
@@ -136,26 +140,30 @@ final class NewNoteTextViewController: UIViewController {
         self.configureTextView()
         self.configureDateButton()
         self.updateLetterCountLabel(count: .zero)
+        self.newNoteInputView.removePhotoButton.addAction(UIAction(handler: { [weak self] _ in
+            self?.newNoteInputView.photo = nil
+            self?.photoButton.isEnabled = true
+        }), for: .touchUpInside)
 
     }
 
     /// 쪽지 입력 뷰의 텍스트 뷰 델리게이트 및 악세서리 뷰 설정
     private func configureTextView() {
-        self.newtNoteInputView.textView.inputAccessoryView = self.toolbar
-        self.newtNoteInputView.textView.delegate = self
-        self.newtNoteInputView.textView.becomeFirstResponder()
+        self.newNoteInputView.textView.inputAccessoryView = self.toolbar
+        self.newNoteInputView.textView.delegate = self
+        self.newNoteInputView.textView.becomeFirstResponder()
     }
 
     /// 쪽지 입력 뷰의 날짜 버튼에 액션 추가 및 색상 반영
     private func configureDateButton() {
-        let action = UIAction { _ in
-            self.performSegue(
+        let action = UIAction { [weak self] _ in
+            self?.performSegue(
                 withIdentifier: SegueIdentifier.presentDatePickerFromNoteTextView,
                 sender: self
             )
-            self.newtNoteInputView.textView.resignFirstResponder()
+            self?.newNoteInputView.textView.resignFirstResponder()
         }
-        self.newtNoteInputView.dateButton.addAction(action, for: .touchUpInside)
+        self.newNoteInputView.dateButton.addAction(action, for: .touchUpInside)
         self.updateDateButton()
     }
 
@@ -166,14 +174,14 @@ final class NewNoteTextViewController: UIViewController {
         let tintColor = self.viewModel.tintColor
 
         self.view.backgroundColor = backgroundColor
-        self.newtNoteInputView.backgroundNoteImageView.tintColor = tintColor
-        self.newtNoteInputView.dateButton.tintColor = tintColor
-        self.newtNoteInputView.letterCountLabel.textColor = tintColor
+        self.newNoteInputView.backgroundNoteImageView.tintColor = tintColor
+        self.newNoteInputView.dateButton.tintColor = tintColor
+        self.newNoteInputView.letterCountLabel.textColor = tintColor
     }
     
     /// 쪽지 입력 뷰의 날짜 버튼 제목 업데이트
     private func updateDateButton() {
-        self.newtNoteInputView.dateButton.setAttributedTitle(
+        self.newNoteInputView.dateButton.setAttributedTitle(
             self.viewModel.attributedDateButtonTitle,
             for: .normal
         )
@@ -181,13 +189,13 @@ final class NewNoteTextViewController: UIViewController {
     
     /// 쪽지 입력 뷰의 글자수 라벨 업데이트
     private func updateLetterCountLabel(count: Int) {
-        self.newtNoteInputView.letterCountLabel.attributedText = self.viewModel
+        self.newNoteInputView.letterCountLabel.attributedText = self.viewModel
             .attributedLetterCountString(count: count)
     }
     
     /// 100자를 초과하면 초과분을 자르고, 화면 닫을 때 매끄러운 효과를 위해 키보드를 내리고, 페이드아웃 효과를 줌
     private func endEditingAndFadeOut() {
-        self.newtNoteInputView.textView.endEditing(true)
+        self.newNoteInputView.textView.endEditing(true)
         self.fadeOut()
     }
     
@@ -196,7 +204,7 @@ final class NewNoteTextViewController: UIViewController {
         Note.create(
             date: self.viewModel.newNote.date,
             color: self.viewModel.newNote.color,
-            content: self.newtNoteInputView.textView.text,
+            content: self.newNoteInputView.textView.text,
             bottle: self.viewModel.newNote.bottle
         )
     }
@@ -243,7 +251,7 @@ final class NewNoteTextViewController: UIViewController {
         }
         
         let cancelAction = UIAlertAction.cancelAction { _ in
-            self.newtNoteInputView.textView.becomeFirstResponder()
+            self.newNoteInputView.textView.becomeFirstResponder()
         }
         
         return UIAlertController.basic(
@@ -262,6 +270,21 @@ final class NewNoteTextViewController: UIViewController {
             sender: self
         )
     }
+
+
+    // MARK: - Photo Selecting Functions
+
+    private func presentPhotoPicker() {
+        var configuration = PHPickerConfiguration(photoLibrary: .shared())
+        configuration.filter = .images
+
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        self.newNoteInputView.textView.resignFirstResponder()
+        self.present(picker, animated: true)
+    }
+
+
     
     // MARK: - Navigation
 
@@ -312,14 +335,14 @@ extension NewNoteTextViewController: UITextViewDelegate {
         /// 경고 라벨이 나와 있으면 숨김처리
         if self.showWarningLabel {
             self.showWarningLabel = false
-            self.newtNoteInputView.warningLabel.fadeOut()
+            self.newNoteInputView.warningLabel.fadeOut()
         }
 
         var overflowCap = Metric.noteTextMaxLength
-//        if textView.textInputMode?.primaryLanguage == StringLiteral.korean {
-//            /// 한글의 경우 초성, 중성, 종성으로 이루어져 있어서 100자를 제대로 받기 위해 제한을 1글자 키움
-//            overflowCap = Metric.krOverflowCap
-//        }
+        //        if textView.textInputMode?.primaryLanguage == StringLiteral.korean {
+        //            /// 한글의 경우 초성, 중성, 종성으로 이루어져 있어서 100자를 제대로 받기 위해 제한을 1글자 키움
+        //            overflowCap = Metric.krOverflowCap
+        //        }
         overflowCap = Metric.krOverflowCap
         
         let updatedTextLength = textView.text.count - range.length + text.count
@@ -328,9 +351,9 @@ extension NewNoteTextViewController: UITextViewDelegate {
         guard updatedTextLength > overflowCap,
               text.count >= trimLength
         else {
-            /// 내용이 빈 상태에서 백스페이스를 누르는 경우 
+            /// 내용이 빈 상태에서 백스페이스를 누르는 경우
             if textView.text.isEmpty, text.isEmpty {
-                self.newtNoteInputView.placeholderLabel.fadeIn()
+                self.newNoteInputView.placeholderLabel.fadeIn()
             }
             return true
         }
@@ -347,7 +370,7 @@ extension NewNoteTextViewController: UITextViewDelegate {
               ),
               let textRange = textView.textRange(from: startPosition, to: endPosition)
         else { return false }
-              
+
         textView.replace(textRange, withText: String(trimmedReplacementText))
         self.updateLetterCountLabel(count: textView.text.count)
         
@@ -355,7 +378,7 @@ extension NewNoteTextViewController: UITextViewDelegate {
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        let placeholderLabel = self.newtNoteInputView.placeholderLabel
+        let placeholderLabel = self.newNoteInputView.placeholderLabel
         if textView.text.isEmpty {
             placeholderLabel?.fadeIn()
         } else {
@@ -378,6 +401,34 @@ extension NewNoteTextViewController: ColorPickerDelegate {
             options: .transitionCrossDissolve
         ) {
             self.updateColor()
+        }
+    }
+}
+
+
+// MARK: - PHPickerViewControllerDelegate
+extension NewNoteTextViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        self.dismiss(animated: true)
+        self.newNoteInputView.textView.becomeFirstResponder()
+
+        guard let itemProvider = results.first?.itemProvider,
+              itemProvider.canLoadObject(ofClass: UIImage.self)
+        else {
+            newNoteInputView.photo = results.isEmpty ? nil : .error
+            self.photoButton.isEnabled = results.isEmpty
+            return
+        }
+
+        saveButton.isEnabled = false
+        // TODO: Use Progress View
+        _ = itemProvider.loadObject(ofClass: UIImage.self) { [weak self] object, _ in
+            DispatchQueue.main.async {
+
+                self?.newNoteInputView.photo = (object as? UIImage) ?? .error
+                self?.saveButton.isEnabled = true
+                self?.photoButton.isEnabled = false
+            }
         }
     }
 }

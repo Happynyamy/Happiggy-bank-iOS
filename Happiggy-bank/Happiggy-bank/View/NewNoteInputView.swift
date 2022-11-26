@@ -13,6 +13,14 @@ final class NewNoteInputView: UIView {
 
     // MARK: - @IBOulets
 
+    var photo: UIImage? {
+        get { self.photoView.image }
+        set {
+            self.removablePhotoView.isHidden = newValue == nil
+            self.photoView.image = newValue
+        }
+    }
+
     /// 배경이 되는 쪽지 이미지 뷰
     @IBOutlet weak var backgroundNoteImageView: UIImageView!
 
@@ -41,7 +49,7 @@ final class NewNoteInputView: UIView {
     @IBOutlet weak private var scrollView: UIScrollView!
 
     /// photoView와 removePhotoButton을 하위 뷰로 갖는 뷰
-    @IBOutlet private weak var removablePhotoView: UIView!
+    @IBOutlet weak var removablePhotoView: UIView!
 
 
     // MARK: Properties
@@ -78,6 +86,7 @@ final class NewNoteInputView: UIView {
         self.configureXib()
         self.configureTextView()
         self.configureLabels(self.placeholderLabel, self.warningLabel)
+        self.photoView.contentMode = .scaleAspectFill
     }
 
     /// 텍스트 뷰 관련 초기 설정
