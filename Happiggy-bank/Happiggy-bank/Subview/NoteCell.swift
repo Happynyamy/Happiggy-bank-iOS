@@ -40,6 +40,7 @@ final class NoteCell: UITableViewCell {
         $0.changeFontSize(to: FontSize.body)
         $0.lineBreakMode = .byWordWrapping
         $0.numberOfLines = .zero
+        $0.textColor = .black
     }
 
     /// 배경 이미지 뷰
