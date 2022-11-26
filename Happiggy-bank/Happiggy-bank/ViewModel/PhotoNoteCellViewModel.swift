@@ -12,6 +12,11 @@ final class PhotoNoteCellViewModel {
 
     // MARK: - Properties
 
+    /// 사진 있는지 여부
+    var hasPhoto: Bool {
+        self.note.imageURL != nil
+    }
+
     /// 색상, 부분 강조 표시를 적용한 날짜 문자열
     private(set) lazy var attributedDateString: NSMutableAttributedString = {
         var date = String.empty.nsMutableAttributedStringify()
@@ -42,9 +47,6 @@ final class PhotoNoteCellViewModel {
         return result
     }()
 
-    /// 유저가 기록한 사진
-    private(set) lazy var photo: UIImage? = nil
-
     /// 유저가 작성한 내용
     private(set) lazy var attributedContentString: NSMutableAttributedString = {
         self.note.content.nsMutableAttributedStringify()
@@ -65,12 +67,28 @@ final class PhotoNoteCellViewModel {
     /// 현재 쪽지의 인덱스 값
     private let index: Int
 
+    private let imageManager: ImageManager
+
 
     // MARK: - Init(s)
 
-    init(note: Note, index: Int, numberOfTotalNotes: Int) {
+    init(note: Note, index: Int, numberOfTotalNotes: Int, imageManager: ImageManager) {
         self.note = note
         self.index = index + 1
         self.numberOfTotalNotes = numberOfTotalNotes
+        self.imageManager = imageManager
+    }
+
+
+    // MARK: - Functions
+
+    /// 유저가 저장한 사진을 리턴
+    func photo() -> UIImage? {
+        guard let url = note.imageURL
+        else {
+            return nil
+        }
+
+        return self.imageManager.image(forNote: note.id, imageURL: url) ?? .error
     }
 }

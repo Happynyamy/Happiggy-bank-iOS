@@ -26,8 +26,14 @@ final class NoteDetailViewModel {
     
     init(notes: [Note], selectedIndex: Int, bottleTitle: String) {
         let count = notes.count
+        let imageManager = ImageManager()
         self.noteViewModels = notes.enumerated().map {
-            PhotoNoteCellViewModel(note: $0.element, index: $0.offset, numberOfTotalNotes: count)
+            PhotoNoteCellViewModel(
+                note: $0.element,
+                index: $0.offset,
+                numberOfTotalNotes: count,
+                imageManager: imageManager
+            )
         }
         self.selectedIndex = selectedIndex
         self.bottleTitle = bottleTitle
