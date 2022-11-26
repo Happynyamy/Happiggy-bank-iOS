@@ -84,6 +84,11 @@ extension UIImage {
     static let bottleListBottleFront = UIImage(named: Asset.bottleListBottleFront.rawValue)
 
 
+    // MARK: - Error Images
+
+    static let error = UIImage(systemName: "exclamationmark.circle")
+
+
     // MARK: BorderdNoteImage
 
     /// 테두리가 있는 쪽지 배경 이미지

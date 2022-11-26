@@ -52,14 +52,14 @@ final class ColorPicker: UIStackView {
 
     /// 색상 버튼에 액션 추가 및 하위 뷰로 추가
     private func configureColorButtons() {
-        let action = UIAction {
+        let action = UIAction { [weak self] in
             guard let button = $0.sender as? ColorButton,
-                  button.color != self.selectedColor
+                  button.color != self?.selectedColor
             else { return }
 
-            self.selectedColor = button.color
-            self.delegate?.selectedColorDidChange(to: self.selectedColor)
-            self.colorButtons.forEach {
+            self?.selectedColor = button.color
+            self?.delegate?.selectedColorDidChange(to: button.color)
+            self?.colorButtons.forEach {
                 $0.isSelected = $0 == button
             }
         }

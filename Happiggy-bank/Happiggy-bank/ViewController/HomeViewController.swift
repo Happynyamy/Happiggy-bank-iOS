@@ -368,8 +368,8 @@ final class HomeViewController: UIViewController {
         guard let bottle = self.viewModel.bottle
         else { return }
         
-        let changeBottleName = UIAction(title: MoreButton.changeBottleName.title) { _ in
-            self.changeBottleNameItemDidTap()
+        let changeBottleName = UIAction(title: MoreButton.changeBottleName.title) { [weak self] _ in
+            self?.changeBottleNameItemDidTap()
         }
         let openBottle = self.configureOpenBottleItem(forBottle: bottle)
         self.moreButton.menu = UIMenu(children: [changeBottleName, openBottle])
@@ -384,8 +384,8 @@ final class HomeViewController: UIViewController {
             attributes = (Date() >= bottle.startDate) ? .destructive : .disabled
         }
         
-        return UIAction(title: title, attributes: attributes) { _ in
-            self.openBottleItemDidTap(bottle)
+        return UIAction(title: title, attributes: attributes) { [weak self] _ in
+            self?.openBottleItemDidTap(bottle)
         }
     }
     
