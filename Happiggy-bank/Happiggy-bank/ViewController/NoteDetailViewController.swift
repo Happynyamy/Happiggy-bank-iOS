@@ -7,7 +7,6 @@
 
 import UIKit
 
-/// 쪽지 디테일 뷰 컨트롤러로 캐러셀 뷰 구현을 위해 컬렉션 뷰 사용
 final class NoteDetailViewController: UIViewController {
 
     // MARK: - @IBOutlets
@@ -67,7 +66,7 @@ extension NoteDetailViewController: UITableViewDataSource {
 
         let viewModel = self.viewModel.noteViewModels[indexPath.row]
 
-        if viewModel.photo == nil {
+        if !viewModel.hasPhoto {
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: NoteCell.name,
                 for: indexPath

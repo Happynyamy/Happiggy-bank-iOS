@@ -36,13 +36,20 @@ final class PhotoNoteCell: UITableViewCell {
     }
 
     /// 저장한 사진을 나타내는 이미지 뷰
-    private let photoView = UIImageView()
+    private let photoView = UIImageView().then {
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
+        $0.layer.cornerRadius = Metric.photoCornerRadius
+        $0.layer.borderWidth = Metric.photoBorderWidth
+        $0.layer.borderColor = UIColor.reversedLabel.cgColor
+    }
 
     /// 내용 레이블
     private let contentLabel = UILabel().then {
         $0.changeFontSize(to: FontSize.body)
         $0.lineBreakMode = .byWordWrapping
         $0.numberOfLines = .zero
+        $0.textColor = .black
     }
 
     /// 배경 이미지 뷰
@@ -101,7 +108,7 @@ final class PhotoNoteCell: UITableViewCell {
         self.indexLabel.configureParagraphStyle()
         self.contentLabel.attributedText = self.viewModel?.attributedContentString
         self.contentLabel.configureParagraphStyle(font: .systemFont(ofSize: FontSize.body))
-        self.photoView.image = self.viewModel?.photo
+        self.photoView.image = self.viewModel?.photo()
         self.photoView.isHidden = self.viewModel?.photo == nil
     }
 
@@ -187,6 +194,12 @@ fileprivate extension PhotoNoteCell {
 
     /// 상수
     enum Metric {
+
+        /// 사진 테두리 둥근 정도
+        static let photoCornerRadius:  CGFloat = 8
+
+        /// 사진 테두리 굵기
+        static let photoBorderWidth: CGFloat = 1
 
         /// 간격: 16
         static let spacing: CGFloat = 16
