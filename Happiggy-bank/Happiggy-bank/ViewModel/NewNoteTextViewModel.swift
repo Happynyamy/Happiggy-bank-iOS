@@ -28,6 +28,11 @@ final class NewNoteTextViewModel {
         UIColor.note(color: newNote.color)
     }
 
+    /// 테두리 색깔
+    var borderColor: UIColor {
+        UIColor.noteBorder(for: newNote.color)
+    }
+
     /// 달력 버튼 제목
     var attributedDateButtonTitle: NSMutableAttributedString {
         let string = self.attributedYearString

@@ -46,8 +46,6 @@ extension UIColor {
     
     /// 라이트모드 흰색, 다크모드 검정색
     static let reversedLabel = UIColor(named: "tabBarBackground") ?? .customTint
-
-    static let subBrown02 = UIColor(named: "subBrown02") ?? .systemBrown
     
     
     // MARK: - Functions
