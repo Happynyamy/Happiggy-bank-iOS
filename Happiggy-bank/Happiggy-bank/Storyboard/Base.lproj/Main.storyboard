@@ -184,19 +184,19 @@
                                 <gestureRecognizers/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="248" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="the-XF-3HV">
-                                <rect key="frame" x="181" y="219.5" width="52" height="26.5"/>
+                                <rect key="frame" x="181" y="218.5" width="52" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="저금통이 비어있어요, 빈 저금통은 저장되지 않습니다." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32V-cq-SOU">
-                                <rect key="frame" x="60.5" y="270" width="293.5" height="17"/>
+                                <rect key="frame" x="60.5" y="269" width="293.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" name="warningLabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" verticalHuggingPriority="249" id="hvx-Jx-SEb">
-                                <rect key="frame" x="-4" y="370" width="413" height="151"/>
+                                <rect key="frame" x="-4" y="369" width="412" height="152"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="화면을 탭 하면 리스트로 넘어갑니다." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3XN-7E-k3f">
@@ -793,14 +793,12 @@
                                 <items>
                                     <navigationItem id="rjR-Ha-zae">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" image="xmark" id="zKb-tM-XLc">
-                                            <inset key="imageInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
-                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" systemColor="labelColor"/>
                                             <connections>
                                                 <action selector="cancelButtonDidTap:" destination="FuI-qc-1fd" id="KZ1-Lf-r9d"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Save" image="checkmark" id="HRF-q1-cdw">
-                                            <inset key="imageInsets" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
                                             <color key="tintColor" name="customGray"/>
                                             <connections>
                                                 <action selector="saveButtonDidTap:" destination="FuI-qc-1fd" id="syQ-nR-mdU"/>
@@ -1267,7 +1265,7 @@
     <resources>
         <image name="back" width="10" height="18"/>
         <image name="bottleMessageCharacter" width="375" height="812"/>
-        <image name="checkmark" width="19" height="16"/>
+        <image name="checkmark" width="42" height="42"/>
         <image name="fontSelectionExampleBackground" width="327" height="168"/>
         <image name="homeBottleTitleLabel" width="248" height="40"/>
         <image name="homeBottleTitleLabelSmile" width="30" height="30"/>
@@ -1304,7 +1302,7 @@
             <color red="0.77254901960784317" green="0.71764705882352942" blue="0.61568627450980395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="subBrown02">
-            <color red="0.73333334920000004" green="0.70980393890000004" blue="0.66666668650000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.73299998044967651" green="0.70999997854232788" blue="0.66699999570846558" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="tabBarBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
