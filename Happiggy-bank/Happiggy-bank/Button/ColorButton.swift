@@ -20,14 +20,14 @@ final class ColorButton: UIButton {
     let color: NoteColor
 
     /// 버튼의 테두리 색깔
-    private let borderColor: CGColor?
+    private let borderColor: UIColor
 
 
     // MARK: - Init
 
     init(color: NoteColor, frame: CGRect = .zero) {
         self.color = color
-        self.borderColor = UIColor.noteBorder(for: self.color).cgColor
+        self.borderColor = .noteBorder(for: self.color)
         super.init(frame: frame)
 
         self.tintColor = .noteHighlight(for: self.color)
@@ -48,23 +48,28 @@ final class ColorButton: UIButton {
 
     /// 선택 여부에 따라 모습 업데이트
     private func updateState() {
+        let isLightMode = self.traitCollection.userInterfaceStyle == .light
+
         /// 선택된 경우 하이라이트 효과 나타냄
         if self.isSelected {
-            UIView.animate(withDuration: Metric.animationDuration) {
-                self.layer.borderColor = self.tintColor.cgColor
-            }
+            self.layer.borderWidth = Metric.borderWidth
+            let tintColor = isLightMode ? self.tintColor.cgColor : UIColor.white.cgColor
+            self.layer.borderColor = tintColor
             return
         }
         /// 선택되지 않은 경우 하이라이트 효과를 끔
         if !self.isSelected {
-            self.layer.borderColor = self.borderColor
+            if isLightMode, self.color == .white {
+                self.layer.borderColor = self.borderColor.cgColor
+                return
+            }
+            self.layer.borderWidth = .zero
         }
     }
 
     /// 뷰 초기화
     private func configure() {
         self.backgroundColor = .note(color: self.color)
-        self.layer.borderWidth = Metric.borderWidth
         self.layer.cornerRadius = Metric.buttonCornerRadius
     }
 }

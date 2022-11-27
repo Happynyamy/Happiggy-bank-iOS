@@ -173,9 +173,10 @@ final class NewNoteTextViewController: UIViewController {
     private func updateColor() {
         let backgroundColor = self.viewModel.backgroundColor
         let tintColor = self.viewModel.tintColor
+        let borderColor = self.viewModel.borderColor
 
         self.view.backgroundColor = backgroundColor
-        self.newNoteInputView.backgroundNoteImageView.tintColor = tintColor
+        self.newNoteInputView.backgroundNoteImageView.tintColor = borderColor
         self.newNoteInputView.dateButton.tintColor = tintColor
         self.newNoteInputView.letterCountLabel.textColor = tintColor
     }
