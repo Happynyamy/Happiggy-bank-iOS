@@ -113,7 +113,7 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="하루 한 번, 100자로 행복을 기록하세요:)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gwe-rE-1XN">
                                     <rect key="frame" x="29" y="73" width="286.5" height="21.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                    <color key="textColor" name="placeholderTextColor"/>
+                                    <color key="textColor" name="noteTextPlaceholderTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용을 입력해주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="25j-Bc-NK7">
@@ -163,9 +163,9 @@
         <image name="newNoteInputViewXmark" width="24" height="24"/>
         <image name="textViewNote" width="375" height="375"/>
         <namedColor name="noteHighlightPink">
-            <color red="0.96078431372549022" green="0.58039215686274515" blue="0.70980392156862748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.93725490196078431" green="0.4823529411764706" blue="0.55686274509803924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="placeholderTextColor">
+        <namedColor name="noteTextPlaceholderTextColor">
             <color red="0.73333333333333328" green="0.73333333333333328" blue="0.73333333333333328" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="warningLabelColor">
