@@ -40,6 +40,9 @@ extension HomeViewController {
         
         /// 기한이 지났는데 저금통을 열지 않은 경우 나타내는 라벨 앞쪽 패딩
         static let openDatePassedLabelLeadingPadding: CGFloat = 16
+        
+        /// 리마인드 알림이 반복되는 날짜
+        static let repeatingDays: Int = 3
     }
     
     /// 애니메이션 시간
@@ -82,6 +85,9 @@ extension HomeViewController {
         /// 더보기 버튼을 눌러서 저금통 개봉이 가능함을 알리는 알림의 제목
         static let tapMoreButtonToOpenBottleAlertTitle =
         "오른쪽 위 더보기 버튼을 눌러 저금통을 개봉할 수 있어요!"
+        
+        /// 노티피케이션 식별자
+        static let notificationIdentifier: String = "repeatingNotification"
     }
     
     /// 폰트 크기

@@ -326,6 +326,8 @@ final class HomeViewController: UIViewController {
             sender: (fakeBackground, bottle)
         )
         self.viewModel.bottle = nil
+        
+        removeAllRemindNotifications()
     }
     
     /// 모든 날짜에 쪽지를 작성했다는 알림
@@ -392,6 +394,25 @@ final class HomeViewController: UIViewController {
         return UIAlertController.basic(
             alertTitle: StringLiteral.tapMoreButtonToOpenBottleAlertTitle,
             confirmAction: .confirmAction()
+        )
+    }
+    
+    // TODO: - 중도개봉 후 리마인드 알림 버튼 UI가 자동으로 OFF되지 않는 현상 수정
+    /// 전달된, 대기중인 모든 노티피케이션 삭제
+    private func removeAllRemindNotifications() {
+        let notificationCenter = UNUserNotificationCenter.current()
+        
+        for day in 0...Metric.repeatingDays {
+            notificationCenter.removeDeliveredNotifications(
+                withIdentifiers: [StringLiteral.notificationIdentifier + "\(day)"]
+            )
+            notificationCenter.removePendingNotificationRequests(
+                withIdentifiers: [StringLiteral.notificationIdentifier + "\(day)"]
+            )
+        }
+        UserDefaults.standard.set(
+            false,
+            forKey: NotificationSettingsViewModel.Content.userDefaultsKey[.reminder] ?? ""
         )
     }
 }
