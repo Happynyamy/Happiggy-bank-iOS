@@ -636,6 +636,7 @@
                     <navigationItem key="navigationItem" title="알림 설정" id="dNi-cG-kQt"/>
                     <connections>
                         <outlet property="tableView" destination="QTg-EF-ndL" id="q1r-qz-t8z"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="segueFromSettingsViewToHomeView" animates="NO" id="nkv-jJ-cFz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lKk-Cb-JtQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1446,6 +1447,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="utJ-Hb-n6A"/>
         <segue reference="7wk-af-F5w"/>
+        <segue reference="5ln-YY-tck"/>
+        <segue reference="QkS-Gy-beP"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="back" width="10" height="18"/>

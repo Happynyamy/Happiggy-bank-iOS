@@ -1071,6 +1071,21 @@ extension NotificationSettingsViewController {
         
         /// 알림 취소 액션 라벨
         static let cancel: String = "취소"
+        
+        /// 리마인드 알림 불가시 알림 타이틀
+        static let reminderDisabledAlertTitle: String = "저금통이 없어요!"
+        
+        /// 리마인드 알림 불가시 알림 메시지
+        static let reminderDisabledAlertMessage: String = "리마인드 알림을 받으려면 저금통을 생성해주세요."
+        
+        /// 홈 화면으로 이동
+        static let moveToHome: String = "만들러 가기"
+        
+        /// 취소 액션
+        static let cancelAlert: String = "취소"
+        
+        /// 현재 화면에서 홈 화면으로 이동하는 segue의 식별자
+        static let segueIdentifier: String = "segueFromSettingsViewToHomeView"
     }
 }
 
