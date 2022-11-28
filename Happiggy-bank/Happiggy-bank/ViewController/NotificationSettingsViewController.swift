@@ -39,6 +39,9 @@ final class NotificationSettingsViewController: UIViewController {
             requestNotification(of: content) {
                 self.viewModel.scheduleNotifications(of: content)
                 DispatchQueue.main.async {
+                    if content == .reminder && self.viewModel.canUpdateRemindNotification == false {
+                        self.alertReminderDisabledState()
+                    }
                     self.updateCell(for: sender.tag)
                 }
             }
@@ -131,6 +134,32 @@ final class NotificationSettingsViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
+    private func alertReminderDisabledState() {
+        let alert = UIAlertController(
+            title: StringLiteral.reminderDisabledAlertTitle,
+            message: StringLiteral.reminderDisabledAlertMessage,
+            preferredStyle: .alert
+        )
+        
+        alert.addAction(
+            UIAlertAction(
+                title: StringLiteral.moveToHome,
+                style: .default
+            ) { _ in
+                self.moveToHomeView()
+            }
+        )
+        
+        alert.addAction(
+            UIAlertAction(
+                title: StringLiteral.cancelAlert,
+                style: .cancel
+            )
+        )
+        
+        self.present(alert, animated: true)
+    }
+    
     /// 설정으로 이동
     private func openSettings() {
         if let bundle = Bundle.main.bundleIdentifier,
@@ -139,6 +168,11 @@ final class NotificationSettingsViewController: UIViewController {
                 UIApplication.shared.open(settings)
             }
         }
+    }
+    
+    /// 홈 화면으로 이동
+    private func moveToHomeView() {
+        self.tabBarController?.selectedIndex = 0
     }
     
     // MARK: - Configure Cell with UIComponents
@@ -189,7 +223,8 @@ final class NotificationSettingsViewController: UIViewController {
         
         self.viewModel.notificationCenter.getNotificationSettings { settings in
             guard settings.authorizationStatus == .authorized,
-                  self.viewModel.endDate != nil
+                  self.viewModel.endDate != nil,
+                  self.viewModel.canUpdateRemindNotification != false
             else {
                 DispatchQueue.main.async {
                     button.isOn = false

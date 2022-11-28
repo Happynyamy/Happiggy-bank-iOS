@@ -30,6 +30,11 @@ final class NotificationSettingsViewModel {
         forKey: StringLiteral.datePickerUserDefaultsKey
     ) as? Date
     
+    /// 리마인드 알림을 설정할 수 있는지 없는지 판단하는 Bool값
+    lazy var canUpdateRemindNotification: Bool? = {
+        return self.endDate != nil
+    }()
+    
     
     // MARK: - Functions
     
@@ -51,12 +56,13 @@ final class NotificationSettingsViewModel {
     /// 노티피케이션 스케줄링
     func scheduleNotifications(of content: NotificationSettingsViewModel.Content) {
         
+        fetchBottleEndDate()
+        
         self.notificationCenter.getNotificationSettings { settings in
-            guard settings.authorizationStatus == .authorized
-            else { return }
-            
             switch content {
             case .daily:
+                guard settings.authorizationStatus == .authorized
+                else { return }
                 let request = self.notificationRequest(at: self.dailyNotificationTime)
                 self.notificationCenter.add(request) { error in
                     if let error = error {
@@ -64,7 +70,12 @@ final class NotificationSettingsViewModel {
                     }
                 }
             case .reminder:
-                if self.endDate == nil { return }
+                guard settings.authorizationStatus == .authorized,
+                      self.endDate != nil
+                else {
+                    self.canUpdateRemindNotification = false
+                    return
+                }
                 for day in 0...Metric.repeatingDays {
                     let request = self.notificationRequest(byAdding: day)
                     self.notificationCenter.add(request) { error in
@@ -111,6 +122,19 @@ final class NotificationSettingsViewModel {
             false,
             forKey: NotificationSettingsViewModel.Content.userDefaultsKey[content] ?? ""
         )
+    }
+    
+    private func fetchBottleEndDate() {
+        let request = Bottle.fetchRequest(isOpen: false)
+        let bottles = PersistenceStore.shared.fetch(request: request)
+        guard let bottle = bottles.first
+        else {
+            self.canUpdateRemindNotification = false
+            return
+        }
+        
+        self.endDate = bottle.endDate
+        self.canUpdateRemindNotification = nil
     }
     
     /// 일일 알림 리퀘스트 만들어주는 함수
