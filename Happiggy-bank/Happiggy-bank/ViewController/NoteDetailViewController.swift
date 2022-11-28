@@ -87,7 +87,6 @@ extension NoteDetailViewController: UITableViewDataSource {
 
         viewModel.photoDidTap = { [weak self] image in
             let photoViewController = PhotoViewController(photo: image)
-//            photoViewController.view.backgroundColor = .systemBackground
             self?.show(photoViewController, sender: self)
         }
         cell.viewModel = viewModel
