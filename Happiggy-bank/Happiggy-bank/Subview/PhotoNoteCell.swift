@@ -102,11 +102,9 @@ final class PhotoNoteCell: UITableViewCell {
     /// 셀을 내용을 채우는 메서드
     private func render() {
         self.validView.backgroundColor = self.viewModel?.basicColor
-        self.backgroundImageView.tintColor = self.viewModel?.tintColor
+        self.backgroundImageView.tintColor = self.viewModel?.borderColor
         self.dateLabel.attributedText = self.viewModel?.attributedDateString
-        self.dateLabel.configureParagraphStyle()
         self.indexLabel.attributedText = self.viewModel?.attributedIndexString
-        self.indexLabel.configureParagraphStyle()
         self.contentLabel.attributedText = self.viewModel?.attributedContentString
         self.contentLabel.configureParagraphStyle(font: .systemFont(ofSize: FontSize.body))
         self.photoView.image = self.viewModel?.photo()

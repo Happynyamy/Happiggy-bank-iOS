@@ -22,12 +22,18 @@ final class PhotoNoteCellViewModel {
 
     /// 색상, 부분 강조 표시를 적용한 날짜 문자열
     private(set) lazy var attributedDateString: NSMutableAttributedString = {
-        var date = String.empty.nsMutableAttributedStringify()
+        let date = String.empty.nsMutableAttributedStringify()
         let year = note.date.yearString
             .nsMutableAttributedStringify()
             .bold(fontSize: FontSize.secondaryLabel)
         let spacedMonthAndDay = " \(note.date.monthDotDayWithDayOfWeekString)"
             .nsMutableAttributedStringify()
+        let range = spacedMonthAndDay.mutableString.range(of: spacedMonthAndDay.string)
+        spacedMonthAndDay.addAttribute(
+            .font,
+            value: UIFont.systemFont(ofSize: FontSize.secondaryLabel),
+            range: range
+        )
 
         date.append(year)
         date.append(spacedMonthAndDay)
@@ -38,16 +44,22 @@ final class PhotoNoteCellViewModel {
 
     /// 색상, 부분 강조 표시를 적용한 인덱스 문자열
     private(set) lazy var attributedIndexString: NSMutableAttributedString = {
-        var result = String.empty.nsMutableAttributedStringify()
-        let index = self.index.description.nsMutableAttributedStringify()
-            .color(color: self.tintColor)
+        let index = self.index.description
+            .nsMutableAttributedStringify()
             .bold(fontSize: FontSize.secondaryLabel)
-        let total = "/\(self.numberOfTotalNotes.description)".nsMutableAttributedStringify()
+        let total = "\(StringLiteral.slash)\(self.numberOfTotalNotes)"
+            .nsMutableAttributedStringify()
+        let range = total.mutableString.range(of: total.string)
+        total.addAttribute(
+            .font,
+            value: UIFont.systemFont(ofSize: FontSize.secondaryLabel),
+            range: range
+        )
 
-        result.append(index)
-        result.append(total)
+        index.append(total)
+        index.color(color: self.tintColor)
 
-        return result
+        return index
     }()
 
     /// 유저가 작성한 내용
@@ -58,8 +70,11 @@ final class PhotoNoteCellViewModel {
     /// 기본 색상
     private(set) lazy var basicColor: UIColor = { .note(color: self.note.color) }()
 
+    /// 테두리 색상
+    private(set) lazy var borderColor: UIColor = { .noteBorder(for: self.note.color) }()
+
     /// 강조 색상
-    private(set) lazy var tintColor: UIColor = { .noteHighlight(for: self.note.color) }()
+    private lazy var tintColor: UIColor = { .noteHighlight(for: self.note.color) }()
 
     /// 쪽지 객체
     private let note: Note
@@ -93,5 +108,14 @@ final class PhotoNoteCellViewModel {
         }
 
         return self.imageManager.image(forNote: note.id, imageURL: url) ?? .error
+    }
+}
+
+
+// MARK: - Constants
+fileprivate extension PhotoNoteCellViewModel {
+
+    enum StringLiteral {
+        static let slash = "/"
     }
 }
