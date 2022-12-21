@@ -79,6 +79,8 @@
 		A499318327BF5158009FF5A8 /* BottleNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499318227BF5158009FF5A8 /* BottleNoteView.swift */; };
 		A49931A527BFD20E009FF5A8 /* UIImage+AssetImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49931A427BFD20E009FF5A8 /* UIImage+AssetImages.swift */; };
 		A49A8C212952F54900D5468A /* DebugPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49A8C202952F54900D5468A /* DebugPrint.swift */; };
+		A49A8C2329530FDF00D5468A /* AssetColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49A8C2229530FDF00D5468A /* AssetColor.swift */; };
+		A49A8C25295331B000D5468A /* AssetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49A8C24295331B000D5468A /* AssetImage.swift */; };
 		A49AC5E32917C210009315BC /* PhotoNoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49AC5E22917C210009315BC /* PhotoNoteCell.swift */; };
 		A49AC5E52917C6E2009315BC /* UILabel+ChangeFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49AC5E42917C6E2009315BC /* UILabel+ChangeFontSize.swift */; };
 		A49AC5E72917CB47009315BC /* UIView+AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49AC5E62917CB47009315BC /* UIView+AddSubviews.swift */; };
@@ -233,6 +235,8 @@
 		A499318227BF5158009FF5A8 /* BottleNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleNoteView.swift; sourceTree = "<group>"; };
 		A49931A427BFD20E009FF5A8 /* UIImage+AssetImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AssetImages.swift"; sourceTree = "<group>"; };
 		A49A8C202952F54900D5468A /* DebugPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugPrint.swift; sourceTree = "<group>"; };
+		A49A8C2229530FDF00D5468A /* AssetColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetColor.swift; sourceTree = "<group>"; };
+		A49A8C24295331B000D5468A /* AssetImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetImage.swift; sourceTree = "<group>"; };
 		A49AC5E22917C210009315BC /* PhotoNoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoNoteCell.swift; sourceTree = "<group>"; };
 		A49AC5E42917C6E2009315BC /* UILabel+ChangeFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+ChangeFontSize.swift"; sourceTree = "<group>"; };
 		A49AC5E62917CB47009315BC /* UIView+AddSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubviews.swift"; sourceTree = "<group>"; };
@@ -483,6 +487,8 @@
 				A4D6EB76282E307900553E43 /* VersionManager.swift */,
 				A4396B1829323131005D9D3A /* ImageManager.swift */,
 				A49A8C202952F54900D5468A /* DebugPrint.swift */,
+				A49A8C2229530FDF00D5468A /* AssetColor.swift */,
+				A49A8C24295331B000D5468A /* AssetImage.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -767,6 +773,7 @@
 				A8FC07C827B3ECF00077A758 /* AppDelegate.swift in Sources */,
 				A459003827E8D107003010A0 /* SettingsViewController.swift in Sources */,
 				A4C1AFCE27E4F8150096CD3E /* UIView+FadeInOut.swift in Sources */,
+				A49A8C25295331B000D5468A /* AssetImage.swift in Sources */,
 				A491018727D6F37C0012DFDD /* NSObject+Name.swift in Sources */,
 				A8BD833527BE106C00E0DE41 /* BottleViewController.swift in Sources */,
 				A4CF2C8027C733FE001B01B1 /* ColorButton.swift in Sources */,
@@ -826,6 +833,7 @@
 				A425F8B627EDF4FB00A005AB /* TagViewFlowLayout.swift in Sources */,
 				A4C1AFC427E47DC50096CD3E /* String+NSMutableAttributedStringify.swift in Sources */,
 				A46B10EC2813E73F004AB185 /* UserDefaults+Keys.swift in Sources */,
+				A49A8C2329530FDF00D5468A /* AssetColor.swift in Sources */,
 				A4C1AFC027E477180096CD3E /* NSMutableAttributedString+ColorBold.swift in Sources */,
 				A4D6EB79282E432400553E43 /* OptionalBool.swift in Sources */,
 				A491018F27D735920012DFDD /* Note+CoreDataClass.swift in Sources */,
@@ -1011,7 +1019,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = mainGreen;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1.1.221202;
@@ -1042,7 +1050,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = mainGreen;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1.1.221202;
