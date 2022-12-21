@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ico_home_nyam.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

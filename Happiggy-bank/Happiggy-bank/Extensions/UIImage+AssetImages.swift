@@ -7,6 +7,7 @@
 
 import UIKit
 
+// TODO: 전체 리팩토링 완료 후 error 제외하고 다 삭제
 extension UIImage {
     
     // MARK: - Properties

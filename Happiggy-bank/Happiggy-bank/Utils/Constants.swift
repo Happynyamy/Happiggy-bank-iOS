@@ -15,6 +15,43 @@ let teamMail = "happynyamy@gmail.com"
 /// 앱 번들 아이디
 private let bundleID = "Happiggy.HappiggyBank"
 
+/// 폰트 사이즈
+enum FontSize {
+
+    /// 46
+    static let headline1: CGFloat = 46
+    /// 30
+    static let headline2: CGFloat = 30
+
+    /// 22
+    static let title1: CGFloat = 22
+    /// 20
+    static let title2: CGFloat = 20
+
+    /// 18
+    static let body1: CGFloat = 18
+    /// 17
+    static let body2: CGFloat = 17
+    /// 16
+    static let body3: CGFloat = 16
+    /// 14
+    static let body4: CGFloat = 14
+
+    /// 12
+    static let caption1: CGFloat = 12
+    /// 10
+    static let caption2: CGFloat = 10
+
+
+    // TODO: 아래 2개는 전체 리팩토링 후 삭제
+
+    /// 본문 폰트 사이즈: 18
+    static let body: CGFloat = 18
+
+    /// 부가 설명 레이블 폰트 사이즈: 15
+    static let secondaryLabel: CGFloat = 15
+}
+
 extension HomeViewController {
     
     /// HomeViewController 에서  설정하는 layout 에 적용할 상수값들을 모아놓은 enum
@@ -562,6 +599,7 @@ extension NewBottleDatePickerViewController {
     }
 }
 
+// TODO: 전체 리팩토링 후 삭제
 /// 애셋에 추가한 색깔/이미지들의 이름을 쉽게 불러오기 위한 enum
 enum Asset: String {
     
@@ -1429,14 +1467,4 @@ enum ParagraphStyle {
 
     /// 자간: 0.5
     static let characterSpacing: CGFloat = 0.5
-}
-
-/// 폰트 크기
-enum FontSize {
-
-    /// 본문 폰트 사이즈: 18
-    static let body: CGFloat = 18
-
-    /// 부가 설명 레이블 폰트 사이즈: 15
-    static let secondaryLabel: CGFloat = 15
 }
