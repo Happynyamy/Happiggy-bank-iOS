@@ -140,6 +140,7 @@
 		A8BD833F27BE30B400E0DE41 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833E27BE30B400E0DE41 /* Constants.swift */; };
 		A8BD834727BE337900E0DE41 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD834627BE337900E0DE41 /* HomeView.swift */; };
 		A8BD834D27BE39D600E0DE41 /* NoteProgressLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD834C27BE39D600E0DE41 /* NoteProgressLabel.swift */; };
+		A8C972032952C88D00CB59F9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A8C972022952C88D00CB59F9 /* SnapKit */; };
 		A8EB5E8B27C8B087005704F2 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EB5E8A27C8B087005704F2 /* UIButton+Extension.swift */; };
 		A8ECD4A527E30FF300886BC0 /* BottleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8ECD4A427E30FF300886BC0 /* BottleCell.xib */; };
 		A8ECD4A727E33BFA00886BC0 /* BottleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ECD4A627E33BFA00886BC0 /* BottleListViewModel.swift */; };
@@ -320,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A824A0B027CE72C000B99E9A /* Then in Frameworks */,
+				A8C972032952C88D00CB59F9 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,6 +632,7 @@
 			name = "Happiggy-bank";
 			packageProductDependencies = (
 				A824A0AF27CE72C000B99E9A /* Then */,
+				A8C972022952C88D00CB59F9 /* SnapKit */,
 			);
 			productName = "Happiggy-bank";
 			productReference = A8FC07C427B3ECF00077A758 /* Happiggy-bank.app */;
@@ -661,6 +664,7 @@
 			mainGroup = A8FC07BB27B3ECF00077A758;
 			packageReferences = (
 				A824A0AE27CE72C000B99E9A /* XCRemoteSwiftPackageReference "Then" */,
+				A8C972012952C88D00CB59F9 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = A8FC07C527B3ECF00077A758 /* Products */;
 			projectDirPath = "";
@@ -1095,6 +1099,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		A8C972012952C88D00CB59F9 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1102,6 +1114,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A824A0AE27CE72C000B99E9A /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
+		};
+		A8C972022952C88D00CB59F9 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A8C972012952C88D00CB59F9 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 
