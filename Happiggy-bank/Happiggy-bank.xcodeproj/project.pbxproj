@@ -78,6 +78,7 @@
 		A499318127BF3A38009FF5A8 /* BottleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499318027BF3A38009FF5A8 /* BottleViewModel.swift */; };
 		A499318327BF5158009FF5A8 /* BottleNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499318227BF5158009FF5A8 /* BottleNoteView.swift */; };
 		A49931A527BFD20E009FF5A8 /* UIImage+AssetImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49931A427BFD20E009FF5A8 /* UIImage+AssetImages.swift */; };
+		A49A8C212952F54900D5468A /* DebugPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49A8C202952F54900D5468A /* DebugPrint.swift */; };
 		A49AC5E32917C210009315BC /* PhotoNoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49AC5E22917C210009315BC /* PhotoNoteCell.swift */; };
 		A49AC5E52917C6E2009315BC /* UILabel+ChangeFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49AC5E42917C6E2009315BC /* UILabel+ChangeFontSize.swift */; };
 		A49AC5E72917CB47009315BC /* UIView+AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49AC5E62917CB47009315BC /* UIView+AddSubviews.swift */; };
@@ -231,6 +232,7 @@
 		A499318027BF3A38009FF5A8 /* BottleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleViewModel.swift; sourceTree = "<group>"; };
 		A499318227BF5158009FF5A8 /* BottleNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleNoteView.swift; sourceTree = "<group>"; };
 		A49931A427BFD20E009FF5A8 /* UIImage+AssetImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AssetImages.swift"; sourceTree = "<group>"; };
+		A49A8C202952F54900D5468A /* DebugPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugPrint.swift; sourceTree = "<group>"; };
 		A49AC5E22917C210009315BC /* PhotoNoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoNoteCell.swift; sourceTree = "<group>"; };
 		A49AC5E42917C6E2009315BC /* UILabel+ChangeFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+ChangeFontSize.swift"; sourceTree = "<group>"; };
 		A49AC5E62917CB47009315BC /* UIView+AddSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubviews.swift"; sourceTree = "<group>"; };
@@ -480,6 +482,7 @@
 				A4569CC728112657001E3FD6 /* LicenseText.swift */,
 				A4D6EB76282E307900553E43 /* VersionManager.swift */,
 				A4396B1829323131005D9D3A /* ImageManager.swift */,
+				A49A8C202952F54900D5468A /* DebugPrint.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -773,6 +776,7 @@
 				A4396B1B29325D70005D9D3A /* PhotoViewController.swift in Sources */,
 				A8ECD4A727E33BFA00886BC0 /* BottleListViewModel.swift in Sources */,
 				A49AC5EB2917FFAB009315BC /* PhotoNoteCellViewModel.swift in Sources */,
+				A49A8C212952F54900D5468A /* DebugPrint.swift in Sources */,
 				A4A55A0728FFC664004ABE00 /* UIView+ConfigureXib.swift in Sources */,
 				A843332427DA397800A12A54 /* DataProvider.swift in Sources */,
 				A48E183A27E71D9300B44477 /* UILabel+ParagraphStyle.swift in Sources */,
