@@ -23,6 +23,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene)
         else { return }
         
+        window = UIWindow(frame: scene.coordinateSpace.bounds)
+        window?.windowScene = scene
+        window?.rootViewController = CustomTabBarController()
+        window?.makeKeyAndVisible()
+        
         guard let errorMessage = PersistenceStore.fatalErrorDescription
         else {
             /// 정상적인 경우
