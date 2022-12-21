@@ -11,7 +11,7 @@ import UIKit
 final class CustomTabBarController: UITabBarController {
     
     // MARK: - Life cycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,6 +39,8 @@ final class CustomTabBarController: UITabBarController {
         else { return }
         
         self.changeTabBarFont(to: font)
+        self.setColors()
+        self.setNavigationControllers()
     }
     
     /// 내비게이션 바 아이템 폰트 변경
@@ -51,5 +53,73 @@ final class CustomTabBarController: UITabBarController {
             $0.setTitleTextAttributes(attributes, for: .normal)
             $0.setTitleTextAttributes(attributes, for: .selected)
         }
+    }
+    
+    /// 탭 바 컨트롤러 기본 색상 설정
+    private func setColors() {
+        self.view.backgroundColor = .systemBackground
+        self.tabBar.barTintColor = .tabBarDivider
+        self.tabBar.tintColor = .customTint
+    }
+    
+    
+    // TODO: - 각 NavigationController에 들어갈 ViewController 수정/교체
+    /// 탭 바의 내비게이션 컨트롤러 배열 설정
+    private func setNavigationControllers() {
+        self.viewControllers = [
+            createNavigationController(
+                for: UIViewController(),
+                title: StringLiteral.home,
+                image: UIImage.homeIconNormal,
+                selectedImage: UIImage.homeIconSelected
+            ),
+            createNavigationController(
+                for: UIViewController(),
+                title: StringLiteral.bottleList,
+                image: UIImage.listIconNormal,
+                selectedImage: UIImage.listIconSelected
+            ),
+            createNavigationController(
+                for: UIViewController(),
+                title: StringLiteral.settings,
+                image: UIImage.settingsIconNormal,
+                selectedImage: UIImage.settingsIconSelected
+            )
+        ]
+    }
+    
+    /// 각 내비게이션 컨트롤러 기본 설정
+    fileprivate func createNavigationController(
+        for rootViewController: UIViewController,
+        title: String,
+        image: UIImage?,
+        selectedImage: UIImage?
+    ) -> UIViewController {
+        
+        let navigationController = UINavigationController(rootViewController: rootViewController)
+        
+        navigationController.tabBarItem.title = title
+        navigationController.tabBarItem.image = image
+        navigationController.tabBarItem.selectedImage = selectedImage
+        navigationController.navigationBar.isHidden = true
+        
+        return navigationController
+    }
+}
+
+
+extension CustomTabBarController {
+    
+    /// 탭 바 컨트롤러에서 사용하는 문자열
+    enum StringLiteral {
+        
+        /// 홈 화면 탭 바 아이템 타이틀
+        static let home: String = "홈"
+        
+        /// 저금통 목록 화면 탭 바 아이템 타이틀
+        static let bottleList: String = "저금통 목록"
+        
+        /// 환경설정 화면 탭 바 아이템 타이틀
+        static let settings: String = "환경설정"
     }
 }
