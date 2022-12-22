@@ -19,7 +19,7 @@ final class NotificationSettingsViewModel {
     /// 저금통이 끝나는 날짜
     lazy var endDate: Date? = {
         let request = Bottle.fetchRequest(isOpen: false)
-        let bottles = PersistenceStore.shared.fetch(request: request)
+        let bottles = PersistenceStore.shared.fetchOld(request: request)
         guard let bottle = bottles.first
         else { return nil }
         return bottle.endDate
@@ -126,7 +126,7 @@ final class NotificationSettingsViewModel {
     
     private func fetchBottleEndDate() {
         let request = Bottle.fetchRequest(isOpen: false)
-        let bottles = PersistenceStore.shared.fetch(request: request)
+        let bottles = PersistenceStore.shared.fetchOld(request: request)
         guard let bottle = bottles.first
         else {
             self.canUpdateRemindNotification = false

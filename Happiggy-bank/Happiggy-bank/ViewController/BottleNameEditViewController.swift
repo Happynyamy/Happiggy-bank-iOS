@@ -123,7 +123,7 @@ final class BottleNameEditViewController: UIViewController {
     private func saveBottleData(with text: String) -> Bool {
         self.bottle.title = text
         
-        guard let (errorTitle, errorMessage) = PersistenceStore.shared.save()
+        guard let (errorTitle, errorMessage) = PersistenceStore.shared.saveOld()
         else { return true }
         
         let alert = PersistenceStore.shared.makeErrorAlert(
