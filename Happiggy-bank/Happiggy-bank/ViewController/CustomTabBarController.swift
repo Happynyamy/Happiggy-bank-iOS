@@ -69,21 +69,21 @@ final class CustomTabBarController: UITabBarController {
         self.viewControllers = [
             createNavigationController(
                 for: UIViewController(),
-                title: StringLiteral.home,
-                image: UIImage.homeIconNormal,
-                selectedImage: UIImage.homeIconSelected
+                title: Tab.home.title,
+                image: Tab.home.image,
+                selectedImage: Tab.home.selectedImage
             ),
             createNavigationController(
                 for: UIViewController(),
-                title: StringLiteral.bottleList,
-                image: UIImage.listIconNormal,
-                selectedImage: UIImage.listIconSelected
+                title: Tab.bottleList.title,
+                image: Tab.bottleList.image,
+                selectedImage: Tab.bottleList.selectedImage
             ),
             createNavigationController(
                 for: UIViewController(),
-                title: StringLiteral.settings,
-                image: UIImage.settingsIconNormal,
-                selectedImage: UIImage.settingsIconSelected
+                title: Tab.settings.title,
+                image: Tab.settings.image,
+                selectedImage: Tab.settings.selectedImage
             )
         ]
     }
@@ -110,16 +110,45 @@ final class CustomTabBarController: UITabBarController {
 
 extension CustomTabBarController {
     
-    /// 탭 바 컨트롤러에서 사용하는 문자열
-    enum StringLiteral {
+    enum Tab: Int {
+        case home
+        case bottleList
+        case settings
         
-        /// 홈 화면 탭 바 아이템 타이틀
-        static let home: String = "홈"
+        /// 탭 바 아이템 타이틀
+        var title: String {
+            switch self {
+            case .home:
+                return "홈"
+            case .bottleList:
+                return "저금통 목록"
+            case .settings:
+                return "환경설정"
+            }
+        }
         
-        /// 저금통 목록 화면 탭 바 아이템 타이틀
-        static let bottleList: String = "저금통 목록"
+        /// 탭 바 아이템 이미지
+        var image: UIImage? {
+            switch self {
+            case .home:
+                return UIImage.homeIconNormal
+            case .bottleList:
+                return UIImage.listIconNormal
+            case .settings:
+                return UIImage.settingsIconNormal
+            }
+        }
         
-        /// 환경설정 화면 탭 바 아이템 타이틀
-        static let settings: String = "환경설정"
+        /// 탭 바 아이템 선택됐을 때 이미지
+        var selectedImage: UIImage? {
+            switch self {
+            case .home:
+                return UIImage.homeIconSelected
+            case .bottleList:
+                return UIImage.listIconSelected
+            case .settings:
+                return UIImage.settingsIconSelected
+            }
+        }
     }
 }
