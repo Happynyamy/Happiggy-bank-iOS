@@ -91,7 +91,7 @@ final class NewBottleMessageFieldViewController: UIViewController {
             )
         }
         
-        guard let (errorTitle, errorMessage) = PersistenceStore.shared.save()
+        guard let (errorTitle, errorMessage) = PersistenceStore.shared.saveOld()
         else { return true }
         
         let alert = PersistenceStore.shared.makeErrorAlert(

@@ -191,7 +191,7 @@ final class BottleMessageViewController: UIViewController {
             PersistenceStore.shared.delete(self.bottle)
         }
         
-        guard let (errorTitle, errorMessage) = PersistenceStore.shared.save()
+        guard let (errorTitle, errorMessage) = PersistenceStore.shared.saveOld()
         else { return true }
         
         let alert = PersistenceStore.shared.makeErrorAlert(

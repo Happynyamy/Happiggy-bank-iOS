@@ -215,7 +215,7 @@ final class NewNoteTextViewController: UIViewController {
     
     /// 새로 생성한 노트 엔티티를 저장하고 성공 여부에 따라 불 리턴
     private func saveAndPostNewNote() -> Bool {
-        guard let (errorTitle, errorMessage) = PersistenceStore.shared.save()
+        guard let (errorTitle, errorMessage) = PersistenceStore.shared.saveOld()
         else { return true }
         
         let alert = PersistenceStore.shared.makeErrorAlert(

@@ -11,7 +11,7 @@ import UIKit
 import Then
 
 /// 싱글턴 패턴을 사용해 앱 전체에서 하나의 Persistence Container 를 통해 엔티티 인스턴스를  저장, 삭제하도록 함
-class PersistenceStore {
+final class PersistenceStore {
     
     // MARK: - Core Data Stack
     
@@ -56,9 +56,10 @@ class PersistenceStore {
     
     
     // MARK: - Core Data Fetching support
-    
+
+    // TODO: 리팩토링 완료 후 삭제
     /// 코어데이터를 불러오기 위한 syntactic sugar
-    func fetch<T: NSManagedObject>(request: NSFetchRequest<T>) -> [T] {
+    func fetchOld<T: NSManagedObject>(request: NSFetchRequest<T>) -> [T] {
         do {
             let items = try self.context.fetch(request)
             return items
@@ -67,21 +68,32 @@ class PersistenceStore {
             return []
         }
     }
+
+    /// 성공 시 [T]의 형태로 배열 리턴, 실패 시 에러 리턴
+    func fetch<T: NSManagedObject>(request: NSFetchRequest<T>) -> Result<[T], Error> {
+        do {
+            let items = try self.context.fetch(request)
+            return .success(items)
+        } catch {
+            return .failure(error)
+        }
+    }
     
     
     // MARK: - Core Data Saving support
-    
+
+    // TODO: 리팩토링 완료 후 삭제
     /// 현재 context 를 저장, 에러가 발생하면 발생한 에러 메시지(기본은 에러 이름)를 출력함
     @discardableResult
-    func save() -> (String, String)? {
+    func saveOld() -> (String, String)? {
         if self.context.hasChanges {
             do {
                 try self.context.save()
                 return nil
-                
+
             } catch {
                 let nserror = error as NSError
-                
+
                 let title = StringLiteral.saveErrorTitle
                 let message = """
 \(StringLiteral.saveErrorMessage)
@@ -94,6 +106,22 @@ class PersistenceStore {
         }
         return nil
     }
+
+    /// 변화가 없거나 저장에 성공하면 리턴값이 없고, 저장 실패 시 에러 리턴
+    @discardableResult
+    func save() -> Result<Void, Error> {
+        guard self.context.hasChanges
+        else {
+            return .success(())
+        }
+
+        do {
+            try self.context.save()
+            return .success(())
+        } catch {
+            return .failure(error)
+        }
+    }
     
     
     // MARK: - Core Data Deleting support
@@ -105,20 +133,22 @@ class PersistenceStore {
     }
     
     /// 엔티티의 모든 인스턴스 삭제
-    func deleteAll<T: NSManagedObject>(_ type: T.Type) {
+    func deleteAll<T: NSManagedObject>(_ type: T.Type) -> Result<Void, Error> {
         let request = type.fetchRequest()
         let delete = NSBatchDeleteRequest(fetchRequest: request)
         
         do {
             try self.context.execute(delete)
+            return .success(())
         } catch {
-            print(error.localizedDescription)
+            return .failure(error)
         }
     }
     
     
     // MARK: - Alert
-    
+
+    // TODO: 리팩토링 완료 후 삭제
     /// 알림
     func makeErrorAlert(
         title: String?,

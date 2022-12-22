@@ -27,7 +27,7 @@ final class BottleListViewModel {
     /// 지난 저금통 리스트 가져오기
     func executeFetchRequest() {
         let request = Bottle.fetchRequest(isOpen: true)
-        let list = PersistenceStore.shared.fetch(request: request)
+        let list = PersistenceStore.shared.fetchOld(request: request)
         self.bottleList = list
     }
 }
