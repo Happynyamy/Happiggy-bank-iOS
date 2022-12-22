@@ -45,7 +45,7 @@ final class CustomTabBarController: UITabBarController {
     
     /// 내비게이션 바 아이템 폰트 변경
     private func changeTabBarFont(to customFont: CustomFont) {
-        guard let font = UIFont(name: customFont.regular, size: Font.tabBarItemSize)
+        guard let font = UIFont(name: customFont.regular, size: FontSize.caption2)
         else { return }
         
         self.tabBar.items?.forEach {
@@ -58,8 +58,6 @@ final class CustomTabBarController: UITabBarController {
     /// 탭 바 컨트롤러 기본 색상 설정
     private func setColors() {
         self.view.backgroundColor = .systemBackground
-        self.tabBar.barTintColor = .tabBarDivider
-        self.tabBar.tintColor = .customTint
     }
     
     
@@ -131,23 +129,23 @@ extension CustomTabBarController {
         var image: UIImage? {
             switch self {
             case .home:
-                return UIImage.homeIconNormal
+                return AssetImage.homeNormal
             case .bottleList:
-                return UIImage.listIconNormal
+                return AssetImage.listNormal
             case .settings:
-                return UIImage.settingsIconNormal
+                return AssetImage.settingsNormal
             }
         }
-        
+
         /// 탭 바 아이템 선택됐을 때 이미지
         var selectedImage: UIImage? {
             switch self {
             case .home:
-                return UIImage.homeIconSelected
+                return AssetImage.homeSelected
             case .bottleList:
-                return UIImage.listIconSelected
+                return AssetImage.listSelected
             case .settings:
-                return UIImage.settingsIconSelected
+                return AssetImage.settingsSelected
             }
         }
     }
