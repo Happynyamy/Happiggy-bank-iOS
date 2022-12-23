@@ -31,15 +31,15 @@ final class CustomTabBarController: UITabBarController {
     
     // MARK: - Functions
     
-    /// 내비게이션 바 초기 설정
+    /// 탭 바 초기 설정
     private func configureTabBar() {
         let key = UserDefaults.Key.font.rawValue
         guard let rawValue = UserDefaults.standard.value(forKey: key) as? Int,
               let font = CustomFont(rawValue: rawValue)
         else { return }
         
+        self.configureBasicSettings()
         self.changeTabBarFont(to: font)
-        self.setColors()
         self.setNavigationControllers()
     }
     
@@ -55,9 +55,11 @@ final class CustomTabBarController: UITabBarController {
         }
     }
     
-    /// 탭 바 컨트롤러 기본 색상 설정
-    private func setColors() {
-        self.view.backgroundColor = .systemBackground
+    /// 탭 바 기본 설정
+    private func configureBasicSettings() {
+        object_setClass(self.tabBar, CustomTabBar.self)
+        self.tabBar.backgroundColor = .systemBackground
+        self.tabBar.isTranslucent = false
     }
     
     
@@ -66,7 +68,7 @@ final class CustomTabBarController: UITabBarController {
     private func setNavigationControllers() {
         self.viewControllers = [
             createNavigationController(
-                for: UIViewController(),
+                for: HomeTabViewController(),
                 title: Tab.home.title,
                 image: Tab.home.image,
                 selectedImage: Tab.home.selectedImage

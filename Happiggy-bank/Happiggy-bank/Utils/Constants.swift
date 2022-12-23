@@ -1283,30 +1283,6 @@ extension BottleNameEditViewController {
     }
 }
 
-extension CustomTabBar {
-    
-    /// 상수값
-    enum Metric {
-        
-        /// 높이 : 89
-        static let height: CGFloat = 89
-        
-        /// 아이템 제목 오프셋: 4
-        static let titleOffset: CGFloat = 4
-        
-        /// 아이템 인셋: (4, 0, -4, 0)
-        static let imageInset = UIEdgeInsets(
-            top: titleOffset,
-            left: .zero,
-            bottom: -titleOffset,
-            right: .zero
-        )
-        
-        /// 커스텀 탭바 크기를 적용할 디바이스 최소 높이
-        static let heightCap: CGFloat = 800
-    }
-}
-
 extension HomeViewModel {
     
     /// 상수값
