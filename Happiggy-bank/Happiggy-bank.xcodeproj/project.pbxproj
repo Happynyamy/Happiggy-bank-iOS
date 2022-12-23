@@ -141,6 +141,7 @@
 		A4F5715427DB8B6500E7DF9B /* NewNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F5715327DB8B6400E7DF9B /* NewNote.swift */; };
 		A4F5715827DC459B00E7DF9B /* NoteColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F5715727DC459B00E7DF9B /* NoteColor.swift */; };
 		A804425D28FEA27700EF2CE3 /* NotificationToggleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A804425C28FEA27700EF2CE3 /* NotificationToggleCell.xib */; };
+		A81148E0295571A2004A35E7 /* HomeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81148DF295571A1004A35E7 /* HomeTabViewController.swift */; };
 		A81742FF27C108DC0016C921 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81742FE27C108DC0016C921 /* HomeViewModel.swift */; };
 		A819CF9F27DDD97C00DE8E72 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A819CF9E27DDD97C00DE8E72 /* HapticManager.swift */; };
 		A819CFA127DE034F00DE8E72 /* NewBottle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A819CFA027DE034F00DE8E72 /* NewBottle.swift */; };
@@ -311,6 +312,7 @@
 		A4F5715327DB8B6400E7DF9B /* NewNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNote.swift; sourceTree = "<group>"; };
 		A4F5715727DC459B00E7DF9B /* NoteColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteColor.swift; sourceTree = "<group>"; };
 		A804425C28FEA27700EF2CE3 /* NotificationToggleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationToggleCell.xib; sourceTree = "<group>"; };
+		A81148DF295571A1004A35E7 /* HomeTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewController.swift; sourceTree = "<group>"; };
 		A81742FE27C108DC0016C921 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		A817430027C112D00016C921 /* DefaultButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButton.swift; sourceTree = "<group>"; };
 		A819CF9E27DDD97C00DE8E72 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
@@ -455,6 +457,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		A81148DE2955718E004A35E7 /* Refactor */ = {
+			isa = PBXGroup;
+			children = (
+				A81148DF295571A1004A35E7 /* HomeTabViewController.swift */,
+			);
+			path = Refactor;
+			sourceTree = "<group>";
+		};
+		A81148E1295571CB004A35E7 /* Refactor */ = {
+			isa = PBXGroup;
+			children = (
+				A8BD834627BE337900E0DE41 /* HomeView.swift */,
+			);
+			path = Refactor;
+			sourceTree = "<group>";
+		};
 		A843332227DA2CBF00A12A54 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
@@ -503,6 +521,7 @@
 		A8BD834327BE330000E0DE41 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				A81148DE2955718E004A35E7 /* Refactor */,
 				A8BD833227BE104900E0DE41 /* HomeViewController.swift */,
 				A8BD833427BE106C00E0DE41 /* BottleViewController.swift */,
 				A843331E27DA013800A12A54 /* NewBottleNameFieldViewController.swift */,
@@ -567,8 +586,8 @@
 		A8BD834827BE338200E0DE41 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A81148E1295571CB004A35E7 /* Refactor */,
 				A467B5C727DA258700AC702D /* NewNoteDatePickerRowView.swift */,
-				A8BD834627BE337900E0DE41 /* HomeView.swift */,
 				A499318227BF5158009FF5A8 /* BottleNoteView.swift */,
 				A41A506E27FF2B2E005381EF /* CustomTabBar.swift */,
 				A4A55A0828FFC675004ABE00 /* NewNoteInputView.swift */,
@@ -796,6 +815,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A81148E0295571A2004A35E7 /* HomeTabViewController.swift in Sources */,
 				A425F8B827EDF59A00A005AB /* TagCell.swift in Sources */,
 				A4B2860F27D9F539008769EB /* NewNoteDatePickerViewModel.swift in Sources */,
 				A467B5C827DA258700AC702D /* NewNoteDatePickerRowView.swift in Sources */,
