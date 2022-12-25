@@ -66,6 +66,10 @@
 		A46B11122814618C004AB185 /* Cafe24Ssurround.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46B110F28146181004AB185 /* Cafe24Ssurround.ttf */; };
 		A46BC1EF2800626A00C2E5B4 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46BC1EE2800626A00C2E5B4 /* TabItem.swift */; };
 		A4845B5D2900DF0B00A6007C /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4845B5C2900DF0B00A6007C /* ColorPicker.swift */; };
+		A484A3032958936300A58312 /* BaseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A484A3022958936300A58312 /* BaseLabel.swift */; };
+		A484A3052958945E00A58312 /* BaseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A484A3042958945E00A58312 /* BaseTextView.swift */; };
+		A484A3072958949700A58312 /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A484A3062958949700A58312 /* BaseTextField.swift */; };
+		A484A3092958953600A58312 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A484A3082958953600A58312 /* BaseButton.swift */; };
 		A48E183A27E71D9300B44477 /* UILabel+ParagraphStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E183927E71D9300B44477 /* UILabel+ParagraphStyle.swift */; };
 		A48E183C27E7379100B44477 /* CapsuleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E183B27E7379100B44477 /* CapsuleButton.swift */; };
 		A48E183E27E737B600B44477 /* CapsuleButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = A48E183D27E737B600B44477 /* CapsuleButton.xib */; };
@@ -222,6 +226,10 @@
 		A46B111028146188004AB185 /* Cafe24SsurroundAir.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24SsurroundAir.ttf; sourceTree = "<group>"; };
 		A46BC1EE2800626A00C2E5B4 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		A4845B5C2900DF0B00A6007C /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
+		A484A3022958936300A58312 /* BaseLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLabel.swift; sourceTree = "<group>"; };
+		A484A3042958945E00A58312 /* BaseTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextView.swift; sourceTree = "<group>"; };
+		A484A3062958949700A58312 /* BaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
+		A484A3082958953600A58312 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		A48E183927E71D9300B44477 /* UILabel+ParagraphStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+ParagraphStyle.swift"; sourceTree = "<group>"; };
 		A48E183B27E7379100B44477 /* CapsuleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleButton.swift; sourceTree = "<group>"; };
 		A48E183D27E737B600B44477 /* CapsuleButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CapsuleButton.xib; sourceTree = "<group>"; };
@@ -432,6 +440,10 @@
 				A49B25E82812B17B00399630 /* FontSelectionCell.swift */,
 				A41DE62927F36E95002A7669 /* NoteCell.swift */,
 				A49AC5E22917C210009315BC /* PhotoNoteCell.swift */,
+				A484A3022958936300A58312 /* BaseLabel.swift */,
+				A484A3042958945E00A58312 /* BaseTextView.swift */,
+				A484A3062958949700A58312 /* BaseTextField.swift */,
+				A484A3082958953600A58312 /* BaseButton.swift */,
 			);
 			path = Subview;
 			sourceTree = "<group>";
@@ -744,6 +756,7 @@
 				A425F8B827EDF59A00A005AB /* TagCell.swift in Sources */,
 				A4B2860F27D9F539008769EB /* NewNoteDatePickerViewModel.swift in Sources */,
 				A467B5C827DA258700AC702D /* NewNoteDatePickerRowView.swift in Sources */,
+				A484A3052958945E00A58312 /* BaseTextView.swift in Sources */,
 				A41DE62B27F36E95002A7669 /* NoteCell.swift in Sources */,
 				A4C1AFD227E5C60E0096CD3E /* NewNoteTextViewModel.swift in Sources */,
 				A819CFA127DE034F00DE8E72 /* NewBottle.swift in Sources */,
@@ -767,6 +780,7 @@
 				A4D357E0283A43C7007819E3 /* UIViewController+VersionUpdating.swift in Sources */,
 				A8BD834727BE337900E0DE41 /* HomeView.swift in Sources */,
 				A46B10FC28144D76004AB185 /* CustomTabBarController.swift in Sources */,
+				A484A3072958949700A58312 /* BaseTextField.swift in Sources */,
 				A4CF2C7C27C71FF5001B01B1 /* CATransition+PopupAnimation.swift in Sources */,
 				A49B25F42812FFB400399630 /* UILabel+BoldAndColor.swift in Sources */,
 				A4D6EB7D2837901F00553E43 /* URL+AppStore.swift in Sources */,
@@ -820,6 +834,7 @@
 				A41DE62E27F5F2C1002A7669 /* UIView+ZoomAnimation.swift in Sources */,
 				A4D6EB7B2837825500553E43 /* LookUpResult.swift in Sources */,
 				A439F54527EF0698002851F4 /* SettingsLabelButtonCell.swift in Sources */,
+				A484A3032958936300A58312 /* BaseLabel.swift in Sources */,
 				A41A506F27FF2B2E005381EF /* CustomTabBar.swift in Sources */,
 				A490AC5027DD9D2E00B04CE1 /* NoteListViewModel.swift in Sources */,
 				A4569CB8280FB979001E3FD6 /* Presenter.swift in Sources */,
@@ -859,6 +874,7 @@
 				A46B10F42814362A004AB185 /* UIView+AllFontUsingSubviews.swift in Sources */,
 				A4C1AFC227E47AD80096CD3E /* String+EmptyString.swift in Sources */,
 				A4C1AFC627E482E10096CD3E /* CGFloat+Values.swift in Sources */,
+				A484A3092958953600A58312 /* BaseButton.swift in Sources */,
 				A8BD833F27BE30B400E0DE41 /* Constants.swift in Sources */,
 				A41DE62827F368BF002A7669 /* NoteDetailViewModel.swift in Sources */,
 				A4569CC0281118DE001E3FD6 /* InformationTextViewController.swift in Sources */,
