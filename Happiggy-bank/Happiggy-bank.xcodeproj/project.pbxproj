@@ -70,6 +70,11 @@
 		A484A3052958945E00A58312 /* BaseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A484A3042958945E00A58312 /* BaseTextView.swift */; };
 		A484A3072958949700A58312 /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A484A3062958949700A58312 /* BaseTextField.swift */; };
 		A484A3092958953600A58312 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A484A3082958953600A58312 /* BaseButton.swift */; };
+		A484A317295D619A00A58312 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A484A316295D619A00A58312 /* NetworkManager.swift */; };
+		A484A31A295D756D00A58312 /* NetworkServiceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A484A319295D756D00A58312 /* NetworkServiceable.swift */; };
+		A484A31C295D75F900A58312 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A484A31B295D75F900A58312 /* NetworkError.swift */; };
+		A484A31E295D7B1400A58312 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = A484A31D295D7B1400A58312 /* HTTPMethod.swift */; };
+		A484A320295D7B2A00A58312 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A484A31F295D7B2A00A58312 /* Requestable.swift */; };
 		A48E183A27E71D9300B44477 /* UILabel+ParagraphStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E183927E71D9300B44477 /* UILabel+ParagraphStyle.swift */; };
 		A48E183C27E7379100B44477 /* CapsuleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E183B27E7379100B44477 /* CapsuleButton.swift */; };
 		A48E183E27E737B600B44477 /* CapsuleButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = A48E183D27E737B600B44477 /* CapsuleButton.xib */; };
@@ -230,6 +235,11 @@
 		A484A3042958945E00A58312 /* BaseTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextView.swift; sourceTree = "<group>"; };
 		A484A3062958949700A58312 /* BaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
 		A484A3082958953600A58312 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
+		A484A316295D619A00A58312 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		A484A319295D756D00A58312 /* NetworkServiceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceable.swift; sourceTree = "<group>"; };
+		A484A31B295D75F900A58312 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		A484A31D295D7B1400A58312 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		A484A31F295D7B2A00A58312 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		A48E183927E71D9300B44477 /* UILabel+ParagraphStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+ParagraphStyle.swift"; sourceTree = "<group>"; };
 		A48E183B27E7379100B44477 /* CapsuleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleButton.swift; sourceTree = "<group>"; };
 		A48E183D27E737B600B44477 /* CapsuleButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CapsuleButton.xib; sourceTree = "<group>"; };
@@ -342,6 +352,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A484A318295D664B00A58312 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A484A319295D756D00A58312 /* NetworkServiceable.swift */,
+				A484A316295D619A00A58312 /* NetworkManager.swift */,
+				A484A31B295D75F900A58312 /* NetworkError.swift */,
+				A484A31D295D7B1400A58312 /* HTTPMethod.swift */,
+				A484A31F295D7B2A00A58312 /* Requestable.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		A491016F27D605C40012DFDD /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -501,6 +523,7 @@
 				A49A8C202952F54900D5468A /* DebugPrint.swift */,
 				A49A8C2229530FDF00D5468A /* AssetColor.swift */,
 				A49A8C24295331B000D5468A /* AssetImage.swift */,
+				A484A318295D664B00A58312 /* Network */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -780,6 +803,7 @@
 				A4D357E0283A43C7007819E3 /* UIViewController+VersionUpdating.swift in Sources */,
 				A8BD834727BE337900E0DE41 /* HomeView.swift in Sources */,
 				A46B10FC28144D76004AB185 /* CustomTabBarController.swift in Sources */,
+				A484A31A295D756D00A58312 /* NetworkServiceable.swift in Sources */,
 				A484A3072958949700A58312 /* BaseTextField.swift in Sources */,
 				A4CF2C7C27C71FF5001B01B1 /* CATransition+PopupAnimation.swift in Sources */,
 				A49B25F42812FFB400399630 /* UILabel+BoldAndColor.swift in Sources */,
@@ -797,11 +821,13 @@
 				A4396B1B29325D70005D9D3A /* PhotoViewController.swift in Sources */,
 				A8ECD4A727E33BFA00886BC0 /* BottleListViewModel.swift in Sources */,
 				A49AC5EB2917FFAB009315BC /* PhotoNoteCellViewModel.swift in Sources */,
+				A484A317295D619A00A58312 /* NetworkManager.swift in Sources */,
 				A49A8C212952F54900D5468A /* DebugPrint.swift in Sources */,
 				A4A55A0728FFC664004ABE00 /* UIView+ConfigureXib.swift in Sources */,
 				A843332427DA397800A12A54 /* DataProvider.swift in Sources */,
 				A48E183A27E71D9300B44477 /* UILabel+ParagraphStyle.swift in Sources */,
 				A4B2860B27D9B434008769EB /* UIViewController+FadeOut.swift in Sources */,
+				A484A31C295D75F900A58312 /* NetworkError.swift in Sources */,
 				D22ADF7F27F72F7300ECB77B /* NotificationSettingsViewModel.swift in Sources */,
 				A49AC5E52917C6E2009315BC /* UILabel+ChangeFontSize.swift in Sources */,
 				D22ADF7F27F72F7300ECB77B /* NotificationSettingsViewModel.swift in Sources */,
@@ -835,11 +861,13 @@
 				A4D6EB7B2837825500553E43 /* LookUpResult.swift in Sources */,
 				A439F54527EF0698002851F4 /* SettingsLabelButtonCell.swift in Sources */,
 				A484A3032958936300A58312 /* BaseLabel.swift in Sources */,
+				A484A320295D7B2A00A58312 /* Requestable.swift in Sources */,
 				A41A506F27FF2B2E005381EF /* CustomTabBar.swift in Sources */,
 				A490AC5027DD9D2E00B04CE1 /* NoteListViewModel.swift in Sources */,
 				A4569CB8280FB979001E3FD6 /* Presenter.swift in Sources */,
 				A466A3182801E99500D655F4 /* SettingsViewModel.swift in Sources */,
 				A4F5714927DA589100E7DF9B /* NoteDatePickerData.swift in Sources */,
+				A484A31E295D7B1400A58312 /* HTTPMethod.swift in Sources */,
 				D2C48BFF27E9D60A006FC59E /* Gravity.swift in Sources */,
 				A8EB5E8B27C8B087005704F2 /* UIButton+Extension.swift in Sources */,
 				A4D357DE283A3E01007819E3 /* VersionUpdating.swift in Sources */,
