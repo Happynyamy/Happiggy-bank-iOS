@@ -12,8 +12,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // MARK: - Properties
     
     var window: UIWindow?
-    
-    
+
+    private let versionManager = VersionManager(networkManager: NetworkManager())
+
+
     // MARK: - Functions
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -23,11 +25,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene)
         else { return }
         
+        let rootViewController = CustomTabBarController()
         window = UIWindow(frame: scene.coordinateSpace.bounds)
         window?.windowScene = scene
-        window?.rootViewController = CustomTabBarController()
+        window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
-        
+        self.subscribeToVersionManager(rootViewController: rootViewController)
+
         guard let errorMessage = PersistenceStore.fatalErrorDescription
         else {
             /// 정상적인 경우
@@ -49,25 +53,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
     }
-    
+
     func sceneWillResignActive(_ scene: UIScene) {
         // Called when the scene will move from an active state to an inactive state.
         // This may occur due to temporary interruptions (ex. an incoming phone call).
     }
-    
+
     func sceneWillEnterForeground(_ scene: UIScene) {
-        VersionManager.shared.checkVersionOnAppStore { [weak self] forcedUpdateIsNeeded in
-            DispatchQueue.main.async {
-                NotificationCenter.default.post(name: .appStoreInfoDidLoad, object: nil)
-                
-                guard forcedUpdateIsNeeded
-                else { return }
-
-                self?.window?.rootViewController?.topMostViewController()?
-                    .presentForceUpdateAlertIfNeeded()
-            }
+        Task {
+            await self.versionManager.fetchVersionStatus()
         }
-
     }
     
     func sceneDidEnterBackground(_ scene: UIScene) {
@@ -77,5 +72,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // Save changes in the application's managed object context when the application transitions to the background.
         PersistenceStore.shared.saveOld()
-    }    
+    }
+
+    private func subscribeToVersionManager(rootViewController: UIViewController) {
+        self.versionManager.addSubscriber(rootViewController) { [weak rootViewController] status in
+            switch status {
+            case .needsUpdate(let shouldForceUpdate):
+                guard shouldForceUpdate
+                else {
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    rootViewController?.topMostViewController()?.presentForcedUpdateAlert()
+                }
+            default:
+                break
+            }
+        }
+    }
 }
