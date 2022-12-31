@@ -7,23 +7,17 @@
 
 import Foundation
 
-/// 앱 설치된 버전, 앱스토어 최신 버전 확인 기능
-protocol VersionChecking {
-    
-    // MARK: - Properties
-    
-    /// 업데이트 필요 여부
-    var needsUpdate: OptionalBool { get }
-    
-    /// 강제 업데이트 필요 여부
-    var needsForcedUpdate: Bool { get }
-    
-    /// 설치된 버전
-    var installedVersion: String? { get }
-    
-    /// 최신 버전
-    var latestVersion: String? { get }
-    
-    /// 앱스토어 앱 버전 확인 후 필요한 작업을 수행
-    func checkVersionOnAppStore(completionHandler: ((Bool) -> Void)?)
+/// 최신 버전과 설치된 버전을 비교하여 상태를 파악하고 상태가 변경될 때마다 발행함
+protocol VersionChecking: Publisher where Value == Version.Status {
+
+    // MARK: - Properteis
+
+    /// 설치된 버전의 상태
+    var status: Version.Status { get }
+
+
+    // MARK: - Functions
+
+    /// 앱스토어에서 앱의 최신 버전을 받아와 설치된 버전과 비교하여 현재 버전의 상태를 체크
+    func fetchVersionStatus() async
 }

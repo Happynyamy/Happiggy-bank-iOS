@@ -12,9 +12,6 @@ import UIKit
 /// 팀 메일 주소
 let teamMail = "happynyamy@gmail.com"
 
-/// 앱 번들 아이디
-private let bundleID = "Happiggy.HappiggyBank"
-
 /// 폰트 사이즈
 enum FontSize {
 
@@ -1436,26 +1433,6 @@ extension CustomTabBarController {
         
         /// 탭바 아이템 폰트 사이즈: 10
         static let tabBarItemSize = UIFont.smallSystemFontSize - 2
-    }
-}
-
-extension VersionManager {
-    
-    /// info 딕셔너리 키
-    enum InfoDictionaryKey {
-        
-        static let CFBundleShortVersionString = "CFBundleShortVersionString"
-        
-    }
-}
-
-extension URL {
-    
-    /// 문자열
-    enum StringLiteral {
-        
-        /// 앱스토어 앱 정보 url
-        static let appInfo = "http://itunes.apple.com/kr/lookup?bundleId=\(bundleID)"
     }
 }
 
