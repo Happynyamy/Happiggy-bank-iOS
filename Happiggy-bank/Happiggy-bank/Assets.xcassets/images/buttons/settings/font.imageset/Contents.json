@@ -1,7 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Group 156.svg",
+      "filename" : "ico=ico_font.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "ico=환경설정_아이콘_L, Property 2=ico5.svg",
       "idiom" : "universal"
     }
   ],
@@ -10,6 +20,6 @@
     "version" : 1
   },
   "properties" : {
-    "template-rendering-intent" : "template"
+    "template-rendering-intent" : "original"
   }
 }

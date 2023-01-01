@@ -7,6 +7,7 @@
 
 import UIKit
 
+// TODO: 리팩토링 완료 후 제거
 /// 환경설정 뷰에서 라벨이 있는 항목을 위한 셀
 final class SettingsLabelButtonCell: SettingsViewCell {
     

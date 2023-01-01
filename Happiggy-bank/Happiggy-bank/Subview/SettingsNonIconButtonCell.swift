@@ -7,6 +7,7 @@
 
 import UIKit
 
+// TODO: 리팩토링 완료 후 제거
 /// 환경설정 하위 항목들에서 사용하는 아이콘이 없는 셀
 final class SettingsNonIconButtonCell: SettingsViewCell {
     

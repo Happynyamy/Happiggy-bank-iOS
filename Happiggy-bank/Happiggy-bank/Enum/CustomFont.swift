@@ -33,6 +33,17 @@ extension CustomFont {
     
     
     // MARK: - Properties
+
+    /// 현재 폰트
+    static var current: CustomFont {
+        let key = UserDefaults.Key.font.rawValue
+        guard let rawValue = UserDefaults.standard.value(forKey: key) as? Int
+        else {
+            return .system
+        }
+
+        return CustomFont(rawValue: rawValue) ?? .system
+    }
     
     /// 뷰에 표시할 이름
     static var displayName: [Int: String] = [

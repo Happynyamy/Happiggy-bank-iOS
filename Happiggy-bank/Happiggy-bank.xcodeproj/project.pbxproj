@@ -81,6 +81,9 @@
 		A484A329296004D200A58312 /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = A484A328296004D200A58312 /* Subscriber.swift */; };
 		A484A32B296004E600A58312 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = A484A32A296004E600A58312 /* Version.swift */; };
 		A484A32D296015D600A58312 /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A484A32C296015D600A58312 /* Publisher.swift */; };
+		A484A33129608C8700A58312 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A484A33029608C8700A58312 /* SettingsTableViewCell.swift */; };
+		A484A33329608D1700A58312 /* SettingsTableViewButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A484A33229608D1700A58312 /* SettingsTableViewButtonCell.swift */; };
+		A484A335296147AC00A58312 /* VersionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A484A334296147AC00A58312 /* VersionStatus.swift */; };
 		A48E183A27E71D9300B44477 /* UILabel+ParagraphStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E183927E71D9300B44477 /* UILabel+ParagraphStyle.swift */; };
 		A48E183C27E7379100B44477 /* CapsuleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E183B27E7379100B44477 /* CapsuleButton.swift */; };
 		A48E183E27E737B600B44477 /* CapsuleButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = A48E183D27E737B600B44477 /* CapsuleButton.xib */; };
@@ -253,6 +256,9 @@
 		A484A328296004D200A58312 /* Subscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscriber.swift; sourceTree = "<group>"; };
 		A484A32A296004E600A58312 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		A484A32C296015D600A58312 /* Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Publisher.swift; sourceTree = "<group>"; };
+		A484A33029608C8700A58312 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		A484A33229608D1700A58312 /* SettingsTableViewButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewButtonCell.swift; sourceTree = "<group>"; };
+		A484A334296147AC00A58312 /* VersionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionStatus.swift; sourceTree = "<group>"; };
 		A48E183927E71D9300B44477 /* UILabel+ParagraphStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+ParagraphStyle.swift"; sourceTree = "<group>"; };
 		A48E183B27E7379100B44477 /* CapsuleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleButton.swift; sourceTree = "<group>"; };
 		A48E183D27E737B600B44477 /* CapsuleButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CapsuleButton.xib; sourceTree = "<group>"; };
@@ -509,6 +515,8 @@
 				A484A3042958945E00A58312 /* BaseTextView.swift */,
 				A484A3062958949700A58312 /* BaseTextField.swift */,
 				A484A3082958953600A58312 /* BaseButton.swift */,
+				A484A33029608C8700A58312 /* SettingsTableViewCell.swift */,
+				A484A33229608D1700A58312 /* SettingsTableViewButtonCell.swift */,
 			);
 			path = Subview;
 			sourceTree = "<group>";
@@ -861,6 +869,7 @@
 				A8BD834727BE337900E0DE41 /* HomeView.swift in Sources */,
 				A46B10FC28144D76004AB185 /* CustomTabBarController.swift in Sources */,
 				A484A31A295D756D00A58312 /* NetworkServiceable.swift in Sources */,
+				A484A33129608C8700A58312 /* SettingsTableViewCell.swift in Sources */,
 				A484A3072958949700A58312 /* BaseTextField.swift in Sources */,
 				A4CF2C7C27C71FF5001B01B1 /* CATransition+PopupAnimation.swift in Sources */,
 				A49B25F42812FFB400399630 /* UILabel+BoldAndColor.swift in Sources */,
@@ -933,6 +942,7 @@
 				A459003C27E9C5C9003010A0 /* CGSize+Area.swift in Sources */,
 				A425F8B627EDF4FB00A005AB /* TagViewFlowLayout.swift in Sources */,
 				A4C1AFC427E47DC50096CD3E /* String+NSMutableAttributedStringify.swift in Sources */,
+				A484A33329608D1700A58312 /* SettingsTableViewButtonCell.swift in Sources */,
 				A46B10EC2813E73F004AB185 /* UserDefaults+Keys.swift in Sources */,
 				A49A8C2329530FDF00D5468A /* AssetColor.swift in Sources */,
 				A4C1AFC027E477180096CD3E /* NSMutableAttributedString+ColorBold.swift in Sources */,

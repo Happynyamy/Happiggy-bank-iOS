@@ -27,6 +27,15 @@ extension UIViewController {
 
     // MARK: - Properties
 
+    /// 앱스토어를 열 수 없을 때 나타나는 알림
+    var selfUpdateAlert: UIAlertController {
+        UIAlertController.basic(
+            alertTitle: StringLiteral.appStoreOpenErrorAlertTitle,
+            alertMessage: StringLiteral.appStoreOpenErrorAlertMessage,
+            confirmAction: UIAlertAction.confirmAction()
+        )
+    }
+
     /// 강제 업데이트 알림
     private var forcedUpdateAlert: UIAlertController {
         let confirmActionTitle = StringLiteral.forcedUpdateAlertConfirmActionTitle
@@ -59,15 +68,6 @@ extension UIViewController {
             alertTitle: StringLiteral.appStoreOpenErrorAlertTitle,
             alertMessage: StringLiteral.appStoreOpenErrorAlertMessage,
             confirmAction: confirmAction
-        )
-    }
-
-    /// 앱스토어를 열 수 없을 때 나타나는 알림
-    private var selfUpdateAlert: UIAlertController {
-        UIAlertController.basic(
-            alertTitle: StringLiteral.appStoreOpenErrorAlertTitle,
-            alertMessage: StringLiteral.appStoreOpenErrorAlertMessage,
-            confirmAction: UIAlertAction.confirmAction()
         )
     }
 

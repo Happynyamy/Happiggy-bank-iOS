@@ -5,180 +5,171 @@
 //  Created by sun on 2022/03/22.
 //
 
-import MessageUI
 import UIKit
+
+import Then
 
 /// 환경 설정 뷰 컨트롤러
 final class SettingsViewController: UIViewController {
-//    
-//    // MARK: - @IBOutlets
-//    
-//    /// 환경 설정 각 항목을 담고 있는 테이블 뷰
-//    @IBOutlet weak var tableView: UITableView!
-//    
-//    /// 누르면 메일 앱을 띄우는 팀 소개 라벨
-//    @IBOutlet weak var teamLabel: UIStackView!
-//    
-//    
-//    // MARK: - Properties
-//    
-//    private var viewModel = SettingsViewModel()
-//    
-//    
-//    // MARK: - Life Cycle
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        self.registerCells()
-//        self.configureNavigationBar()
-//        self.addObservers()
-//    }
-//    
-//    
-//    // MARK: - @objc
-//    
-//    /// 커스텀 폰트 변화 시 변경 사항을 필요한 하위 뷰에 적용
-//    @objc private func customFontDidChange(_ notification: Notification) {
-//        
-//        guard let customFont = notification.object as? CustomFont
-//        else { return }
-//        
-//        self.updateAllFontUsingViews(customFont)
-//        self.updateFontSelectionCellFontName(to: customFont)
-//    }
-//    
-//    /// 백그라운드에서 포어그라운드로 돌아올 때 버전 셀 업데이트
-//    @objc private func updateVersionCell() {
-//        
-//        let indexPath = IndexPath(row: Content.appVersion.rawValue, section: .zero)
-//        guard let versionCell = self.tableView.cellForRow(
-//                at: indexPath
-//              ) as? SettingsLabelButtonCell
-//        else { return }
-//        
-//        versionCell.informationLabel.attributedText = self.viewModel.informationText(
-//            forContentAt: indexPath
-//        )
-////        versionCell.buttonImageView.isHidden = (VersionManager.shared.needsUpdate != .true)
-//    }
-//    
-//    
-//    // MARK: - Functions
-//    
-//    /// 테이블 뷰 셀 등록
-//    private func registerCells() {
-//        self.tableView.register(
-//            UINib(nibName: SettingsLabelButtonCell.name, bundle: nil),
-//            forCellReuseIdentifier: SettingsLabelButtonCell.name
-//        )
-//    }
-//    
-//    /// 내비게이션 바 초기 설정
-//    private func configureNavigationBar() {
-//        self.navigationItem.backButtonTitle = .empty
-//        self.navigationController?.navigationBar.clear()
-//    }
-//    
-//    /// 폰트 변경 시 현재 폰트 이름으로 폰트 선택 셀의 정보 라벨 텍스트 업데이트
-//    private func updateFontSelectionCellFontName(to customFont: CustomFont) {
-//        let indexPath = IndexPath(row: Content.fontSelection.rawValue, section: .zero)
-//        guard let cell = self.tableView.cellForRow(at: indexPath) as? SettingsLabelButtonCell
-//        else { return }
-//        
-//        cell.informationLabel.text = customFont.displayName
-//    }
-//    
-//    /// 옵저버들 추가
-//    private func addObservers() {
-//        self.observeCustomFontChange(selector: #selector(customFontDidChange(_:)))
-//        self.observe(selector: #selector(self.updateVersionCell), name: .appStoreInfoDidLoad)
-//    }
-//}
-//
-//
-//// MARK: - UITableViewDataSource
-//extension SettingsViewController: UITableViewDataSource {
-//    
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        Content.allCases.count
-//    }
-//    
-//    func tableView(
-//        _ tableView: UITableView,
-//        cellForRowAt indexPath: IndexPath
-//    ) -> UITableViewCell {
-//        
-//        if indexPath.row == Content.appVersion.rawValue {
-//            return self.labelButtonCell(
-//                inTableView: tableView,
-//                indexPath: indexPath,
-//                navigationButtonIsHidden: VersionManager.shared.needsUpdate != .true
-//            )
-//        }
-//            
-//        return self.labelButtonCell(
-//            inTableView: tableView,
-//            indexPath: indexPath,
-//            navigationButtonIsHidden: false
-//        )
-//    }
-//    
-//    /// 라벨 버튼 셀 모습 설정
-//    private func labelButtonCell(
-//        inTableView tableView: UITableView,
-//        indexPath: IndexPath,
-//        navigationButtonIsHidden: Bool = false
-//    ) -> UITableViewCell {
-//        
-//        guard let cell = tableView.dequeueReusableCell(
-//            withIdentifier: SettingsLabelButtonCell.name,
-//            for: indexPath
-//        ) as? SettingsLabelButtonCell
-//        else { return SettingsLabelButtonCell() }
-//        
-//        cell.iconImageView.image = self.viewModel.icon(forContentAt: indexPath)
-//        cell.titleLabel.attributedText = self.viewModel.title(forContentAt: indexPath)
-//        cell.informationLabel.attributedText = self.viewModel.informationText(
-//            forContentAt: indexPath
-//        )
-//        cell.buttonImageView.isHidden = navigationButtonIsHidden
-//        
-//        return cell
-//    }
-//}
-//
-//
-//// MARK: - MFMailComposeViewControllerDelegate
-///// 메일 관련 메서드, 프로퍼티
-//extension SettingsViewController: MFMailComposeViewControllerDelegate {
-//    
-//    func mailComposeController(
-//        _ controller: MFMailComposeViewController,
-//        didFinishWith result: MFMailComposeResult,
-//        error: Error?
-//    ) {
-//        controller.dismiss(animated: true)
-//    }
-//}
-//
-//
-//// MARK: - UITableViewDelegate
-//extension SettingsViewController: UITableViewDelegate {
-//    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        
-//        tableView.deselectRow(at: indexPath, animated: false)
-//        
-//        if indexPath.row == Content.appVersion.rawValue,
-//           VersionManager.shared.needsUpdate == .true {
-//            return self.openAppStore()
-//        }
-//        
-//        guard let segueIdentifier = self.viewModel.segueIdentifier(forContentAt: indexPath)
-//        else { return }
-//        
-//        self.performSegue(withIdentifier: segueIdentifier, sender: self)
-//        HapticManager.instance.selection()
-//    }
+
+    // MARK: - Properties
+
+    private let tableView = UITableView().then {
+        $0.rowHeight = Metric.rowHeight
+        $0.separatorStyle = .none
+        $0.isScrollEnabled = false
+        $0.showsVerticalScrollIndicator = false
+    }
+
+    private let viewModel: SettingsViewModel
+
+
+    // MARK: - Init(s)
+
+    init(versionManager: any VersionChecking) {
+        self.viewModel = SettingsViewModel(versionManager: versionManager)
+
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+
+    // MARK: - Life Cycle
+
+    override func loadView() {
+        self.view = self.tableView
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.configureNavigationBar()
+        self.configureTableView()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        self.subscribeToVersionManager()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        self.viewModel.versionManager.removeSubscriber(self)
+    }
+
+
+    // MARK: - Configuration Functions
+
+    /// 내비게이션 바 초기 설정
+    private func configureNavigationBar() {
+        self.navigationItem.backButtonTitle = .empty
+        self.navigationController?.navigationBar.clear()
+        self.navigationItem.title = StringLiteral.navigationTitle
+    }
+
+    /// 테이블 뷰 셀 등록, datsource, delegate 설정
+    private func configureTableView() {
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.register(
+            SettingsTableViewButtonCell.self,
+            forCellReuseIdentifier: SettingsTableViewButtonCell.name
+        )
+    }
+
+    private func subscribeToVersionManager() {
+        let indexPath = IndexPath(row: SettingsViewModel.RowType.version.rawValue, section: .zero)
+        self.viewModel.versionManager.addSubscriber(self) { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.tableView.reloadRows(at: [indexPath], with: .none)
+            }
+        }
+    }
+}
+
+
+// MARK: - UITableViewDataSource
+extension SettingsViewController: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        self.viewModel.numberOfRows
+    }
+
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: SettingsTableViewButtonCell.name,
+            for: indexPath
+        ) as? SettingsTableViewButtonCell ?? SettingsTableViewButtonCell()
+
+        cell.icon = self.viewModel.icon(for: indexPath)
+        cell.title = self.viewModel.title(for: indexPath)
+        cell.buttonTitle = self.viewModel.buttonTitle(for: indexPath)
+        cell.buttonImage = self.viewModel.buttonImage(for: indexPath)
+        cell.buttonTextColor = self.viewModel.buttonTitleColor(for: indexPath)
+
+        return cell
+    }
+}
+
+
+// MARK: - UITableViewDelegate
+extension SettingsViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let rowType = self.viewModel.rowType(for: indexPath)
+        else {
+            return
+        }
+
+        // TODO: 항목별 컨트롤러 구현 후 삭제
+        let tempVC = UIViewController().then { $0.view.backgroundColor = .systemBackground }
+
+        switch rowType {
+        case .alert:
+            self.show(tempVC, sender: self)
+        case .version:
+            self.openAppStoreIfNeeded()
+            return
+        case .font:
+            self.show(tempVC, sender: self)
+        case .customerService:
+            self.show(tempVC, sender: self)
+        }
+
+        HapticManager.instance.selection()
+    }
+
+    private func openAppStoreIfNeeded() {
+        self.openAppStore { [weak self] didOpen in
+            guard !didOpen,
+                  let selfUpdateAlert = self?.selfUpdateAlert
+            else {
+                return
+            }
+
+            self?.present(selfUpdateAlert, animated: true)
+        }
+    }
+}
+
+
+// MARK: - Constants
+fileprivate extension SettingsViewController {
+
+    enum Metric {
+        static let rowHeight: CGFloat = 67
+    }
+
+    enum StringLiteral {
+        static let navigationTitle = "환경설정"
+    }
 }
