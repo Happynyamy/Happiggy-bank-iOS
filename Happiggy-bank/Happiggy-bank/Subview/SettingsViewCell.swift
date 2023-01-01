@@ -9,6 +9,7 @@ import UIKit
 
 import Then
 
+// TODO: 리팩토링 완료 후 제거
 /// 환경 설정 뷰에서 사용하는 셀로 이를 상속해서 각 행에 들어갈 셀 생성
 class SettingsViewCell: UITableViewCell {
     

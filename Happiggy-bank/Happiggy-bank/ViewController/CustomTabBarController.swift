@@ -9,6 +9,25 @@ import UIKit
 
 /// 커스텀 탭바 컨트롤러
 final class CustomTabBarController: UITabBarController {
+
+    // MARK: - Properties
+
+    private let versionManager: any VersionChecking
+
+
+    // MARK: - Init
+
+    init(versionManager: any VersionChecking) {
+        self.versionManager = versionManager
+
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     
     // MARK: - Life cycle
     
@@ -80,7 +99,7 @@ final class CustomTabBarController: UITabBarController {
                 selectedImage: Tab.bottleList.selectedImage
             ),
             createNavigationController(
-                for: UIViewController(),
+                for: SettingsViewController(versionManager: self.versionManager),
                 title: Tab.settings.title,
                 image: Tab.settings.image,
                 selectedImage: Tab.settings.selectedImage
