@@ -13,6 +13,8 @@ import UIKit
 /// Home Tab 뷰 컨트롤러
 final class HomeTabViewController: UIViewController {
     
+    private var viewModel: HomeTabViewModel = HomeTabViewModel()
+    
     // MARK: - Life Cycle
 
     override func viewDidLoad() {

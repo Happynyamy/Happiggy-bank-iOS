@@ -152,6 +152,7 @@
 		A8509E6E27C89A1200855153 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509E6D27C89A1200855153 /* UIColor+Extension.swift */; };
 		A89CBEDB27CBDD99005549F6 /* BottleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89CBEDA27CBDD99005549F6 /* BottleCell.swift */; };
 		A89CBEDD27CBDEA2005549F6 /* BottleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89CBEDC27CBDEA2005549F6 /* BottleListViewController.swift */; };
+		A89FF2F12959902C00BF0E1B /* HomeTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89FF2F02959902C00BF0E1B /* HomeTabViewModel.swift */; };
 		A8BD833327BE104900E0DE41 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833227BE104900E0DE41 /* HomeViewController.swift */; };
 		A8BD833527BE106C00E0DE41 /* BottleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833427BE106C00E0DE41 /* BottleViewController.swift */; };
 		A8BD833F27BE30B400E0DE41 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833E27BE30B400E0DE41 /* Constants.swift */; };
@@ -323,6 +324,7 @@
 		A8509E6D27C89A1200855153 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		A89CBEDA27CBDD99005549F6 /* BottleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleCell.swift; sourceTree = "<group>"; };
 		A89CBEDC27CBDEA2005549F6 /* BottleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleListViewController.swift; sourceTree = "<group>"; };
+		A89FF2F02959902C00BF0E1B /* HomeTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewModel.swift; sourceTree = "<group>"; };
 		A8BD833227BE104900E0DE41 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A8BD833427BE106C00E0DE41 /* BottleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleViewController.swift; sourceTree = "<group>"; };
 		A8BD833E27BE30B400E0DE41 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 		A499317F27BF3A2C009FF5A8 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				A89FF2F22959903100BF0E1B /* Refactor */,
 				A499318027BF3A38009FF5A8 /* BottleViewModel.swift */,
 				A81742FE27C108DC0016C921 /* HomeViewModel.swift */,
 				A4B2860E27D9F539008769EB /* NewNoteDatePickerViewModel.swift */,
@@ -505,6 +508,14 @@
 				A484A3082958953600A58312 /* BaseButton.swift */,
 			);
 			path = Subview;
+			sourceTree = "<group>";
+		};
+		A89FF2F22959903100BF0E1B /* Refactor */ = {
+			isa = PBXGroup;
+			children = (
+				A89FF2F02959902C00BF0E1B /* HomeTabViewModel.swift */,
+			);
+			path = Refactor;
 			sourceTree = "<group>";
 		};
 		A8BD834227BE32EB00E0DE41 /* Button */ = {
@@ -953,6 +964,7 @@
 				A41DE62627F36595002A7669 /* NoteDetailViewController.swift in Sources */,
 				A4F5714727DA467900E7DF9B /* DateFormat.swift in Sources */,
 				A484A323295E858900A58312 /* AppStoreEndpoint.swift in Sources */,
+				A89FF2F12959902C00BF0E1B /* HomeTabViewModel.swift in Sources */,
 				A4845B5D2900DF0B00A6007C /* ColorPicker.swift in Sources */,
 				A49AC5E72917CB47009315BC /* UIView+AddSubviews.swift in Sources */,
 				A89CBEDD27CBDEA2005549F6 /* BottleListViewController.swift in Sources */,
