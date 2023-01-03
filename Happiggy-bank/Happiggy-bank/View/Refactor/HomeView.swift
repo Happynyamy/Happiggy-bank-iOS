@@ -54,12 +54,6 @@ final class HomeView: UIView {
         $0.color(AssetColor.subBrown02)
     }
     
-    /// 저금통이 진행중일 때 나타나는 더보기 버튼
-    lazy var moreButton: UIButton = BaseButton().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.setImage(AssetImage.more, for: .normal)
-    }
-    
     /// 저금통이 없거나, 저금통이 진행중이지만 쪽지가 없을 때 나타나는 캐릭터 이미지 뷰
     lazy var imageView: UIImageView = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -96,7 +90,6 @@ final class HomeView: UIView {
         configureImageView()
         configureLabels()
         configureBottleTitleView()
-        configureButton()
     }
     
     override init(frame: CGRect) {
@@ -105,7 +98,6 @@ final class HomeView: UIView {
         configureImageView()
         configureLabels()
         configureBottleTitleView()
-        configureButton()
     }
     
     required init?(coder: NSCoder) {
@@ -204,23 +196,6 @@ final class HomeView: UIView {
             make.trailing.equalTo(self.bottleTitleStack.snp.trailing)
             make.top.equalTo(self.bottleTitleStack.snp.top)
             make.bottom.equalTo(self.bottleTitleStack.snp.bottom)
-        }
-    }
-    
-    // TODO: - Add Action
-    /// 더보기 버튼 세팅
-    private func configureButton() {
-        guard dDay != nil
-        else { return }
-
-        
-        self.addSubview(self.moreButton)
-        
-        self.moreButton.snp.makeConstraints { make in
-            make.width.equalTo(70)
-            make.height.equalTo(70)
-            make.trailing.equalTo(self.safeAreaLayoutGuide.snp.trailing)
-            make.centerY.equalTo(self.dDayLabel.snp.centerY)
         }
     }
 }
