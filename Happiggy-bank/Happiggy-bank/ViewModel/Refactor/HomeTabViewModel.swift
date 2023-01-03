@@ -8,9 +8,13 @@
 import CoreData
 import Foundation
 
-final class HomeTabViewModel: NSFetchedResultsController<Bottle> {
+final class HomeTabViewModel {
     
     // MARK: - Properties
+    
+    /// fetchedResultsController
+    var fetchedResultsController: NSFetchedResultsController<Bottle>?
+    
     /// 현재 저금통
     var bottle: Bottle?
     
@@ -45,24 +49,11 @@ final class HomeTabViewModel: NSFetchedResultsController<Bottle> {
     }
     
     
-    override init() {
-        super.init()
-
-        let request = Bottle.fetchRequest()
-        let result = PersistenceStore.shared.fetch(request: request)
-        
-        switch result {
-        case .success(let bottles):
-            guard let firstBottle = bottles.first
-            else { return }
-            
-            self.bottle = firstBottle
-        case .failure(let error):
-            // TODO: Error Alert
-            print(error.localizedDescription)
-        }
+    init() {
+        configureFetchedResultsController()
     }
     
+    /// 현재 진행중인 저금통의 D-day 계산
     func dDay() -> String? {
         var dDay: String = ""
         guard let endDate = bottle?.endDate
@@ -86,6 +77,29 @@ final class HomeTabViewModel: NSFetchedResultsController<Bottle> {
         }
         
         return dDay
+    }
+    
+    /// fetchedResultsController를 설정
+    private func configureFetchedResultsController() {
+        let request = Bottle.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(
+            key: "startDate_",
+            ascending: false
+        )]
+        self.fetchedResultsController = NSFetchedResultsController(
+            fetchRequest: request,
+            managedObjectContext: PersistenceStore.shared.context,
+            sectionNameKeyPath: nil,
+            cacheName: nil
+        )
+        
+        do {
+            try self.fetchedResultsController?.performFetch()
+            let result = self.fetchedResultsController?.fetchedObjects
+            self.bottle = result?.first
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
 }
