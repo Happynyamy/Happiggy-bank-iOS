@@ -15,6 +15,12 @@ final class HomeTabViewController: UIViewController {
     
     // MARK: - Properties
     
+    /// 저금통이 진행중일 때 나타나는 더보기 버튼
+    lazy var moreButton: UIButton = BaseButton().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.setImage(AssetImage.more, for: .normal)
+    }
+    
     private var viewModel: HomeTabViewModel = HomeTabViewModel()
     
     
@@ -22,15 +28,18 @@ final class HomeTabViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureButton()
         navigationItem.backButtonTitle = ""
     }
     
     override func loadView() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.viewDidTap))
         let homeView = HomeView(
             title: self.viewModel.bottle?.title,
             dDay: self.viewModel.dDay(),
             hasNotes: self.viewModel.hasNotes
         )
+        homeView.addGestureRecognizer(tap)
         self.view = homeView
     }
     
@@ -45,4 +54,34 @@ final class HomeTabViewController: UIViewController {
         
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+    
+    @objc private func viewDidTap(_ sender: UITapGestureRecognizer) {
+        print("view Did Tap")
+    }
+    
+    @objc private func buttonDidTap(_ sender: BaseButton) {
+        print("button Did Tap")
+    }
+    
+    // swiftlint:disable force_cast
+    /// 더보기 버튼 세팅
+    private func configureButton() {
+        guard self.viewModel.hasBottle == true
+        else { return }
+
+        self.moreButton.addTarget(
+            self,
+            action: #selector(buttonDidTap),
+            for: .touchUpInside
+        )
+        self.view.addSubview(self.moreButton)
+        
+        self.moreButton.snp.makeConstraints { make in
+            make.width.equalTo(70)
+            make.height.equalTo(70)
+            make.trailing.equalTo(self.view.safeAreaLayoutGuide.snp.trailing)
+            make.centerY.equalTo((self.view as! HomeView).dDayLabel.snp.centerY)
+        }
+    }
+    // swiftlint:enable force_cast
 }
