@@ -13,30 +13,36 @@ import UIKit
 /// Home Tab 뷰 컨트롤러
 final class HomeTabViewController: UIViewController {
     
+    // MARK: - Properties
+    
     private var viewModel: HomeTabViewModel = HomeTabViewModel()
+    
     
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        navigationItem.backButtonTitle = ""
     }
     
     override func loadView() {
-        let homeView = HomeView()
+        let homeView = HomeView(
+            title: self.viewModel.bottle?.title,
+            dDay: self.viewModel.dDay(),
+            hasNotes: self.viewModel.hasNotes
+        )
         self.view = homeView
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-    */
-
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
 }

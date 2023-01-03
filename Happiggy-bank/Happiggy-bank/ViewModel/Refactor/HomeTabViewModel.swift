@@ -63,4 +63,29 @@ final class HomeTabViewModel: NSFetchedResultsController<Bottle> {
         }
     }
     
+    func dDay() -> String? {
+        var dDay: String = ""
+        guard let endDate = bottle?.endDate
+        else { return nil }
+        let prefix = "D"
+        let startDate = Date()
+        let daysCount = Calendar.current.dateComponents(
+            [.day],
+            from: Calendar.current.startOfDay(for: endDate),
+            to: Calendar.current.startOfDay(for: startDate)
+        )
+        guard let days = daysCount.day
+        else { return "" }
+        
+        if days == 0 {
+            dDay = prefix + "-" + "\(days)"
+        } else if days > 0 {
+            dDay = prefix + "+" + "\(days)"
+        } else {
+            dDay = prefix + "\(days)"
+        }
+        
+        return dDay
+    }
+    
 }

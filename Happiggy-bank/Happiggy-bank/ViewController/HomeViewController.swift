@@ -424,3 +424,155 @@ extension HomeViewController: Presenter {
         self.bottleViewController.restoreStateBeforeAlertOrModalDidAppear()
     }
 }
+
+extension HomeViewController {
+    
+    /// HomeViewController 에서  설정하는 layout 에 적용할 상수값들을 모아놓은 enum
+    enum Metric {
+        
+        /// 좌우 패딩 값 : 24
+        static let verticalPadding: CGFloat = 24
+        
+        /// 버튼 높이 : 48
+        static let buttonHeight: CGFloat = 48
+        
+        /// 버튼 길이(높이와 동일)
+        static let buttonWidth: CGFloat = buttonHeight
+        
+        /// Bottle Label의 Border Width
+        static let bottleLabelBorderWidth: CGFloat = 1
+        
+        /// Bottle Label의 Corner Radius
+        static let bottleLabelCornerRadius: CGFloat = 10
+        
+        /// Bottle Label의 배경 투명도
+        static let bottleLabelBackgroundOpacity: CGFloat = 0.6
+        
+        /// 기한이 지났는데 저금통을 열지 않은 경우 나타내는 라벨 앞쪽 패딩
+        static let openDatePassedLabelLeadingPadding: CGFloat = 16
+        
+        /// 리마인드 알림이 반복되는 날짜
+        static let repeatingDays: Int = 3
+    }
+    
+    /// 애니메이션 시간
+    enum Duration {
+        
+        /// 저금통 개봉 애니메이션 시간
+        static let bottleOpeningAnimation: TimeInterval = 1.0
+    }
+    
+    /// 문자열
+    enum StringLiteral {
+        
+        /// 저금통이 없는 경우 나타나는 상단 라벨 문자열
+        static let emptyTopLabelText: String = "저금통이 없습니다."
+        
+        /// 저금통이 없는 경우 나타나는 아래 라벨 문자열
+        static let emptyBottomLabelText: String = "탭해서 행복저금통을 추가해주세요."
+        
+        /// 기한이 지났는데 저금통을 열지 않은 경우 나타내는 문자열
+        static let openDatePassedMessage: String = "저금통을 개봉해주세요!"
+        
+        /// BottleNameEditViewController identifier
+        static let bottleNameEditViewController = "BottleNameEditViewController"
+        
+        /// 저금통 생성 후 쪽지가 없을 때 나타내는 라벨 문자열
+        static let tapToAddNoteLabelText: String = "화면을 탭해서 첫 행복을 작성하세요."
+        
+        /// 저금통 생성 후 쪽지가 없을 때 나타내는 캐릭터 이미지 이름
+        static let homeCharacterInitialName: String = "homeCharacterInitial"
+        
+        /// 작성 가능한 날짜가 없음을 알리는 알람의 제목
+        static let noEmptyDateAlertTitle = "이미 모든 날짜에 행복을 기록했어요"
+        
+        /// 작성 가능한 날짜가 없음을 알리는 알람의 메시지
+        static let noEmptyDateAlertMessage = "미래의 날짜는 작성 불가능합니다."
+        
+        /// 저금통이 없을 때 나타나는 캐릭터 이미지 이름
+        static let homeCharacterEmpty = "homeCharacter"
+        
+        /// 더보기 버튼을 눌러서 저금통 개봉이 가능함을 알리는 알림의 제목
+        static let tapMoreButtonToOpenBottleAlertTitle =
+        "오른쪽 위 더보기 버튼을 눌러 저금통을 개봉할 수 있어요!"
+        
+        /// 노티피케이션 식별자
+        static let notificationIdentifier: String = "repeatingNotification"
+    }
+    
+    /// 폰트 크기
+    enum FontSize {
+        
+        /// 기한이 지났는데 저금통을 열지 않은 경우 나타내는 라벨 폰트 크기
+        static let openDatePassedLabelFont: CGFloat = 15
+    }
+    
+    /// 저금통 개봉 알림 관련 문자열
+    enum BottleOpenAlert {
+        
+        /// 디데이 이후 개봉하는 경우
+        case `default`
+        
+        /// 디데이 전에 개봉하는 경우
+        case midOpen
+        
+        /// 알림 제목
+        var title: String {
+            switch self {
+            case .default:
+                return "저금통 개봉날이에요! 개봉하시겠어요?"
+            case .midOpen:
+                return "지금 저금통을 개봉하시겠어요?"
+            }
+        }
+        
+        /// 알림 메시지
+        var message: String {
+            switch self {
+            case .default:
+                return "현재 저금통 모습이 그대로 저장됩니다"
+            case .midOpen:
+                return """
+중도 개봉 시 더 이상 추가로 작성할 수 없으며,
+현재 저금통 모습이 그대로 저장됩니다
+"""
+            }
+        }
+        
+        /// 저금통 개봉 확인 알림 개봉 버튼 제목
+        static let openButtonTitle = "개봉"
+    }
+    
+    /// 더보기 버튼
+    enum MoreButton {
+        /// 저금통 이름 변경
+        case changeBottleName
+        /// 저금통 개봉
+        case openBottle(BottleStatus)
+        
+        /// 아이템 별 제목
+        var title: String {
+            switch self {
+            case .changeBottleName:
+                return "이름 변경"
+            case .openBottle(let bottleStatus):
+                if bottleStatus == .inProgress {
+                    return "중도 개봉"
+                }
+                if bottleStatus == .complete {
+                    return "개봉"
+                }
+                return .empty
+            }
+        }
+    }
+    
+    /// 저금통 상태
+    enum BottleStatus {
+        /// 진행 중
+        case inProgress
+        
+        /// 디데이 지남
+        case complete
+    }
+}

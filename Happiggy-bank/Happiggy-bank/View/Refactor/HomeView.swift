@@ -13,10 +13,19 @@ import Then
 /// BottleViewController의 뷰, InitialImage 뷰를 나타낼 HomeView
 final class HomeView: UIView {
     
+    /// 저금통 이름. nil일 때 저금통이 없음.
+    var title: String?
+    
+    /// D-day 문자열.
+    var dDay: String?
+    
+    /// 쪽지가 있는지 없는지에 대한 불리언 값
+    var hasNotes: Bool = false
+    
     /// 저금통이 비어있을 때 나타나는 상단 라벨
     lazy var emptyBottleLabel: UILabel = BaseLabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "저금통이 없습니다."
+        $0.text = StringLiteral.emptyBottleLabelText
         $0.changeFontSize(to: FontSize.headline2)
         $0.boldAndColor()
     }
@@ -24,7 +33,7 @@ final class HomeView: UIView {
     /// 저금통이 비어있을 때 나타나는 하단 라벨
     lazy var emptyBottleDescription: UILabel = BaseLabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "탭해서 행복저금통을 추가해주세요."
+        $0.text = StringLiteral.emptyBottleDescriptionText
         $0.changeFontSize(to: FontSize.title2)
         $0.color(AssetColor.subBrown02)
     }
@@ -40,7 +49,7 @@ final class HomeView: UIView {
     /// 저금통이 진행중일 때, 쪽지를 추가하지 않았을 때 나타나는 하단 라벨
     lazy var emptyNoteDescription: UILabel = BaseLabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "화면을 탭 해서 첫 행복을 작성해보세요!"
+        $0.text = StringLiteral.emptyNoteDescriptionText
         $0.changeFontSize(to: FontSize.body3)
         $0.color(AssetColor.subBrown02)
     }
@@ -78,6 +87,18 @@ final class HomeView: UIView {
     }
     
     
+    init(title: String?, dDay: String?, hasNotes: Bool) {
+        super.init(frame: .zero)
+        self.title = title
+        self.dDay = dDay
+        self.hasNotes = hasNotes
+        configureHomeView()
+        configureImageView()
+        configureLabels()
+        configureBottleTitleView()
+        configureButton()
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureHomeView()
@@ -99,46 +120,75 @@ final class HomeView: UIView {
     
     /// 홈 뷰 중간에 있는 캐릭터 이미지 뷰 세팅
     private func configureImageView() {
-        self.addSubview(imageView)
+        if self.title == nil || !self.hasNotes {
+            self.addSubview(imageView)
+            
+            self.imageView.snp.makeConstraints { make in
+                make.centerX.equalTo(self.safeAreaLayoutGuide)
+                make.centerY.equalTo(self.safeAreaLayoutGuide)
+            }
+        }
         
-        self.imageView.snp.makeConstraints { make in
-            make.centerX.equalTo(self.safeAreaLayoutGuide)
-            make.centerY.equalTo(self.safeAreaLayoutGuide)
+        if self.title == nil {
+            self.imageView.image = AssetImage.homeCharacter
+            return
+        }
+        if !self.hasNotes {
+            self.imageView.image = AssetImage.homeCharacterInitial
+            return
         }
     }
     
     /// 라벨 레이아웃 세팅
     private func configureLabels() {
-        self.addSubviews([
-            self.emptyBottleLabel,
-            self.emptyBottleDescription,
-            self.dDayLabel,
-            self.emptyNoteDescription
-        ])
-        
-        self.emptyBottleLabel.snp.makeConstraints { make in
-            make.leading.equalTo(self.safeAreaLayoutGuide.snp.leading).offset(23)
-            make.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(86)
+        if self.title == nil {
+            self.addSubviews([
+                self.emptyBottleLabel,
+                self.emptyBottleDescription
+            ])
+            
+            self.emptyBottleLabel.snp.makeConstraints { make in
+                make.leading.equalTo(self.safeAreaLayoutGuide.snp.leading).offset(23)
+                make.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(86)
+            }
+            
+            self.emptyBottleDescription.snp.makeConstraints { make in
+                make.leading.equalTo(self.emptyBottleLabel.snp.leading)
+                make.top.equalTo(self.emptyBottleLabel.snp.bottom).offset(18)
+            }
+            
+            return
         }
         
-        self.emptyBottleDescription.snp.makeConstraints { make in
-            make.leading.equalTo(self.emptyBottleLabel.snp.leading)
-            make.top.equalTo(self.emptyBottleLabel.snp.bottom).offset(18)
+        if self.dDay != nil {
+            
+            self.dDayLabel.text = self.dDay
+            
+            self.addSubview(dDayLabel)
+            
+            self.dDayLabel.snp.makeConstraints { make in
+                make.leading.equalTo(self.safeAreaLayoutGuide.snp.leading).offset(23)
+                make.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(70)
+            }
         }
         
-        self.dDayLabel.snp.makeConstraints { make in
-            make.leading.equalTo(self.safeAreaLayoutGuide.snp.leading).offset(23)
-            make.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(70)
-        }
-        
-        self.emptyNoteDescription.snp.makeConstraints { make in
-            make.centerX.equalTo(self.safeAreaLayoutGuide.snp.centerX)
-            make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).offset(-202)
+        if !self.hasNotes {
+            self.addSubview(emptyNoteDescription)
+            
+            self.emptyNoteDescription.snp.makeConstraints { make in
+                make.centerX.equalTo(self.safeAreaLayoutGuide.snp.centerX)
+                make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).offset(-202)
+            }
         }
     }
     
     /// 저금통 이름 뷰 및 하위 뷰들 레이아웃 세팅
     private func configureBottleTitleView() {
+        guard let bottleTitle = self.title
+        else { return }
+        
+        self.bottleTitleStack.bottleTitleLabel.text = bottleTitle
+        
         self.addSubview(self.bottleTitleView)
         
         self.bottleTitleView.snp.makeConstraints { make in
@@ -160,6 +210,10 @@ final class HomeView: UIView {
     // TODO: - Add Action
     /// 더보기 버튼 세팅
     private func configureButton() {
+        guard dDay != nil
+        else { return }
+
+        
         self.addSubview(self.moreButton)
         
         self.moreButton.snp.makeConstraints { make in
@@ -168,5 +222,21 @@ final class HomeView: UIView {
             make.trailing.equalTo(self.safeAreaLayoutGuide.snp.trailing)
             make.centerY.equalTo(self.dDayLabel.snp.centerY)
         }
+    }
+}
+
+extension HomeView {
+    
+    /// 문자열
+    enum StringLiteral {
+        
+        /// 저금통이 없는 경우 나타나는 라벨 문자열
+        static let emptyBottleLabelText: String = "저금통이 없습니다."
+        
+        /// 저금통이 없는 경우 나타나는 라벨 문자열
+        static let emptyBottleDescriptionText: String = "탭해서 행복저금통을 추가해주세요."
+        
+        /// 저금통 생성 후 쪽지가 없을 때 나타내는 라벨 문자열
+        static let emptyNoteDescriptionText: String = "화면을 탭해서 첫 행복을 작성하세요."
     }
 }
