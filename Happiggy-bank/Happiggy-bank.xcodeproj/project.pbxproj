@@ -140,6 +140,7 @@
 		A4F5714927DA589100E7DF9B /* NoteDatePickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F5714827DA589100E7DF9B /* NoteDatePickerData.swift */; };
 		A4F5715427DB8B6500E7DF9B /* NewNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F5715327DB8B6400E7DF9B /* NewNote.swift */; };
 		A4F5715827DC459B00E7DF9B /* NoteColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F5715727DC459B00E7DF9B /* NoteColor.swift */; };
+		A80248252963E58A00F2EA81 /* BottleTitleStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80248242963E58A00F2EA81 /* BottleTitleStack.swift */; };
 		A804425D28FEA27700EF2CE3 /* NotificationToggleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A804425C28FEA27700EF2CE3 /* NotificationToggleCell.xib */; };
 		A81148E0295571A2004A35E7 /* HomeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81148DF295571A1004A35E7 /* HomeTabViewController.swift */; };
 		A81742FF27C108DC0016C921 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81742FE27C108DC0016C921 /* HomeViewModel.swift */; };
@@ -312,6 +313,7 @@
 		A4F5714827DA589100E7DF9B /* NoteDatePickerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDatePickerData.swift; sourceTree = "<group>"; };
 		A4F5715327DB8B6400E7DF9B /* NewNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNote.swift; sourceTree = "<group>"; };
 		A4F5715727DC459B00E7DF9B /* NoteColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteColor.swift; sourceTree = "<group>"; };
+		A80248242963E58A00F2EA81 /* BottleTitleStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleTitleStack.swift; sourceTree = "<group>"; };
 		A804425C28FEA27700EF2CE3 /* NotificationToggleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationToggleCell.xib; sourceTree = "<group>"; };
 		A81148DF295571A1004A35E7 /* HomeTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewController.swift; sourceTree = "<group>"; };
 		A81742FE27C108DC0016C921 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -472,6 +474,7 @@
 			isa = PBXGroup;
 			children = (
 				A8BD834627BE337900E0DE41 /* HomeView.swift */,
+				A80248242963E58A00F2EA81 /* BottleTitleStack.swift */,
 			);
 			path = Refactor;
 			sourceTree = "<group>";
@@ -840,6 +843,7 @@
 				A49AC5E92917CBFB009315BC /* UIStackView+AddArrangedSubviews.swift in Sources */,
 				A4569CC628111EFA001E3FD6 /* InformationTextViewDataSource.swift in Sources */,
 				A456657C27CC66FD007CF70A /* DefaultButton.swift in Sources */,
+				A80248252963E58A00F2EA81 /* BottleTitleStack.swift in Sources */,
 				D236DB8627FDC43200D7B8F0 /* NewBottleDatePickerViewModel.swift in Sources */,
 				A499318327BF5158009FF5A8 /* BottleNoteView.swift in Sources */,
 				A4CF2C8E27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift in Sources */,
