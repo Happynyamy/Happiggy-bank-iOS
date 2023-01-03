@@ -33,9 +33,10 @@ extension UILabel {
     }
     
     /// 라벨 글자 색상 변경
-    func color(_ color: UIColor = .customTint, target: String? = nil) {
+    func color(_ color: UIColor? = AssetColor.mainYellow, target: String? = nil) {
         guard let fullText = self.text,
-              !fullText.isEmpty
+              !fullText.isEmpty,
+              let color = color
         else { return }
         
         var attributedString = fullText.nsMutableAttributedStringify()
@@ -51,7 +52,7 @@ extension UILabel {
     }
     
     /// 라벨 볼드처리 및 글자 색상 변경
-    func boldAndColor(target: String? = nil, color: UIColor = .customTint) {
+    func boldAndColor(target: String? = nil, color: UIColor? = AssetColor.mainYellow) {
         self.color(color, target: target)
         self.bold(target: target)
     }
