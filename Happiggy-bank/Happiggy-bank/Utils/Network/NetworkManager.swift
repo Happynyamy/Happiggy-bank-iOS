@@ -17,7 +17,7 @@ struct NetworkManager: NetworkServiceable {
 
     // MARK: - Functions
 
-    func fetchDecodedData<T: Decodable>(for endpoint: Requestable) async throws -> T {
+    func resume<T: Decodable>(for endpoint: Requestable) async throws -> T {
         let request = try self.makeRequest(for: endpoint)
         let data = try await self.fetchData(for: request)
 
