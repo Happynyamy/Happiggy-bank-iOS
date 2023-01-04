@@ -41,7 +41,7 @@ final class HomeView: UIView {
     /// 저금통이 진행중일 때 나타나는 D-day 라벨
     lazy var dDayLabel: UILabel = BaseLabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "D-365"
+        $0.text = StringLiteral.dDayLabelText
         $0.changeFontSize(to: FontSize.headline1)
         $0.boldAndColor()
     }
@@ -80,12 +80,16 @@ final class HomeView: UIView {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     
+    /// 저금통이 진행중인지 여부
+    private var hasBottle: Bool = false
+    
     
     init(title: String?, dDay: String?, hasNotes: Bool) {
         super.init(frame: .zero)
         self.title = title
         self.dDay = dDay
         self.hasNotes = hasNotes
+        self.hasBottle = title == nil ? false : true
         configureHomeView()
         configureImageView()
         configureLabels()
@@ -112,7 +116,7 @@ final class HomeView: UIView {
     
     /// 홈 뷰 중간에 있는 캐릭터 이미지 뷰 세팅
     private func configureImageView() {
-        if self.title == nil || !self.hasNotes {
+        if !self.hasBottle || !self.hasNotes {
             self.addSubview(imageView)
             
             self.imageView.snp.makeConstraints { make in
@@ -121,7 +125,7 @@ final class HomeView: UIView {
             }
         }
         
-        if self.title == nil {
+        if !self.hasBottle {
             self.imageView.image = AssetImage.homeCharacter
             return
         }
@@ -133,7 +137,7 @@ final class HomeView: UIView {
     
     /// 라벨 레이아웃 세팅
     private func configureLabels() {
-        if self.title == nil {
+        if !self.hasBottle {
             self.addSubviews([
                 self.emptyBottleLabel,
                 self.emptyBottleDescription
@@ -204,6 +208,9 @@ extension HomeView {
     
     /// 문자열
     enum StringLiteral {
+        
+        /// D-day 기본 문자열
+        static let dDayLabelText: String = "D-Day"
         
         /// 저금통이 없는 경우 나타나는 라벨 문자열
         static let emptyBottleLabelText: String = "저금통이 없습니다."
