@@ -7,6 +7,7 @@
 
 import UIKit
 
+import Then
 
 // TODO: - 기존에 있는 HomeViewController 삭제
 
@@ -33,7 +34,10 @@ final class HomeTabViewController: UIViewController {
     }
     
     override func loadView() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.viewDidTap))
+        let tap = UITapGestureRecognizer(
+            target: self,
+            action: #selector(self.viewDidTap)
+        )
         let homeView = HomeView(
             title: self.viewModel.bottle?.title,
             dDay: self.viewModel.dDay(),
@@ -55,13 +59,22 @@ final class HomeTabViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
+    
+    // MARK: - Objc Functions
+    // TODO: - 화면 연결
+    
+    /// 화면 탭했을 때 액션
     @objc private func viewDidTap(_ sender: UITapGestureRecognizer) {
         print("view Did Tap")
     }
     
+    /// 버튼 탭했을 때 액션
     @objc private func buttonDidTap(_ sender: BaseButton) {
         print("button Did Tap")
     }
+    
+    
+    // MARK: - Functions
     
     // swiftlint:disable force_cast
     /// 더보기 버튼 세팅

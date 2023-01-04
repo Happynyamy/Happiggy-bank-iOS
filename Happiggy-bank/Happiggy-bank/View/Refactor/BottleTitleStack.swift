@@ -63,5 +63,4 @@ final class BottleTitleStack: UIStackView {
             make.height.equalTo(self.bottleTitleSmileImage.snp.height)
         }
     }
-    
 }

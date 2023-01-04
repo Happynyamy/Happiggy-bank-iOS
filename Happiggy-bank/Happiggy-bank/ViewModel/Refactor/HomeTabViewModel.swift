@@ -55,28 +55,22 @@ final class HomeTabViewModel {
     
     /// 현재 진행중인 저금통의 D-day 계산
     func dDay() -> String? {
-        var dDay: String = ""
         guard let endDate = bottle?.endDate
         else { return nil }
-        let prefix = "D"
         let startDate = Date()
         let daysCount = Calendar.current.dateComponents(
             [.day],
-            from: Calendar.current.startOfDay(for: endDate),
-            to: Calendar.current.startOfDay(for: startDate)
+            from: Calendar.current.startOfDay(for: startDate),
+            to: Calendar.current.startOfDay(for: endDate)
         )
         guard let days = daysCount.day
-        else { return "" }
+        else { return nil }
         
-        if days == 0 {
-            dDay = prefix + "-" + "\(days)"
-        } else if days > 0 {
-            dDay = prefix + "+" + "\(days)"
+        if days >= 0 {
+            return "D-\(days)"
         } else {
-            dDay = prefix + "\(days)"
+            return "D+\(days)"
         }
-        
-        return dDay
     }
     
     /// fetchedResultsController를 설정
@@ -98,6 +92,8 @@ final class HomeTabViewModel {
             let result = self.fetchedResultsController?.fetchedObjects
             self.bottle = result?.first
         } catch {
+            
+            // TODO: Alert Error
             print(error.localizedDescription)
         }
     }
