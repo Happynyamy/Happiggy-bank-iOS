@@ -16,9 +16,10 @@ final class HomeTabViewController: UIViewController {
     
     // MARK: - Properties
     
+    var homeView: HomeView!
+
     /// 저금통이 진행중일 때 나타나는 더보기 버튼
     lazy var moreButton: UIButton = BaseButton().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setImage(AssetImage.more, for: .normal)
     }
     
@@ -26,25 +27,21 @@ final class HomeTabViewController: UIViewController {
     
     
     // MARK: - Life Cycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureButton()
-        navigationItem.backButtonTitle = ""
-    }
     
     override func loadView() {
-        let tap = UITapGestureRecognizer(
-            target: self,
-            action: #selector(self.viewDidTap)
-        )
-        let homeView = HomeView(
+        self.homeView = HomeView(
             title: self.viewModel.bottle?.title,
             dDay: self.viewModel.dDay(),
             hasNotes: self.viewModel.hasNotes
         )
-        homeView.addGestureRecognizer(tap)
         self.view = homeView
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureHomeView()
+        configureButton()
+        navigationItem.backButtonTitle = ""
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,7 +73,17 @@ final class HomeTabViewController: UIViewController {
     
     // MARK: - Functions
     
-    // swiftlint:disable force_cast
+    private func configureHomeView() {
+        let tap = UITapGestureRecognizer(
+            target: self,
+            action: #selector(self.viewDidTap)
+        )
+        self.homeView.addGestureRecognizer(tap)
+        self.homeView.title = self.viewModel.bottle?.title
+        self.homeView.dDay = self.viewModel.dDay()
+        self.homeView.hasNotes = self.viewModel.hasNotes
+    }
+    
     /// 더보기 버튼 세팅
     private func configureButton() {
         guard self.viewModel.hasBottle == true
@@ -93,8 +100,7 @@ final class HomeTabViewController: UIViewController {
             make.width.equalTo(70)
             make.height.equalTo(70)
             make.trailing.equalTo(self.view.safeAreaLayoutGuide.snp.trailing)
-            make.centerY.equalTo((self.view as! HomeView).dDayLabel.snp.centerY)
+            make.centerY.equalTo(self.homeView.dDayLabel.snp.centerY)
         }
     }
-    // swiftlint:enable force_cast
 }

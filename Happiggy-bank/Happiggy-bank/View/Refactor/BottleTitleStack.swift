@@ -15,25 +15,23 @@ final class BottleTitleStack: UIStackView {
     
     /// 저금통이 진행중일 때 나타나는 저금통 이름 라벨
     lazy var bottleTitleLabel: UILabel = BaseLabel().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "bottle title"
         $0.changeFontSize(to: FontSize.title1)
     }
     
     /// 저금통이 진행중일 때 나타나는 저금통 이름 라벨 옆 스마일 이미지
     lazy var bottleTitleSmileImage: UIImageView = UIImageView().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.image = AssetImage.smile
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         configureStackView()
         configureImage()
         configureLabel()
     }
     
+    @available(*, unavailable)
     required init(coder: NSCoder) {
         super.init(coder: coder)
     }
