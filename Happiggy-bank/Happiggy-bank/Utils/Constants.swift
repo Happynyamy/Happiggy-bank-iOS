@@ -85,19 +85,6 @@ extension BottleViewModel {
     }
 }
 
-extension DefaultButton {
-    
-    /// HomeViewButton 에서 설정하는 layout에 적용할 상수값
-    enum Metric {
-        
-        /// 버튼 높이
-        static let buttonHeight: CGFloat = HomeViewController.Metric.buttonHeight
-        
-        /// 버튼 너비
-        static let buttonWidth: CGFloat = HomeViewController.Metric.buttonWidth
-    }
-}
-
 /// 대한민국 local identifier
 let krLocalIdentifier = "ko_KR"
 
@@ -671,16 +658,6 @@ extension NewNoteTextViewModel {
         
         /// 날짜 버튼과 글자수 라벨 폰트 크기: 15
         static let secondaryText: CGFloat = 15
-    }
-}
-
-extension CapsuleButton {
-    
-    /// CapsuleButton 에서 사용하는 상수
-    enum Metric {
-        
-        /// 외곽선 굵기: 1
-        static let borderWidth: CGFloat = 1
     }
 }
 
