@@ -52,13 +52,8 @@ final class CustomTabBarController: UITabBarController {
     
     /// 탭 바 초기 설정
     private func configureTabBar() {
-        let key = UserDefaults.Key.font.rawValue
-        guard let rawValue = UserDefaults.standard.value(forKey: key) as? Int,
-              let font = CustomFont(rawValue: rawValue)
-        else { return }
-        
         self.configureBasicSettings()
-        self.changeTabBarFont(to: font)
+        self.changeTabBarFont(to: CustomFont.current)
         self.setNavigationControllers()
     }
     
