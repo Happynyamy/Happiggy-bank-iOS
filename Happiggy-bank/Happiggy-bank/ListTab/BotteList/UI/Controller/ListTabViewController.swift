@@ -40,7 +40,6 @@ final class ListTabViewController: UIViewController {
 
         configureNavigationBar()
         configureEmptyLabel()
-        registerBottleCell()
         layoutCells()
     }
     
@@ -118,9 +117,9 @@ extension ListTabViewController: UICollectionViewDataSource {
         
         let bottle = viewModel.bottleList[indexPath.row]
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: BottleCell.reuseIdentifier,
+            withReuseIdentifier: BottleCollectionCell.reuseIdentifier,
             for: indexPath
-        ) as? BottleCell
+        ) as? BottleCollectionCell
         else { return UICollectionViewCell() }
 
         resetReusableCellAttribute(cell)
@@ -133,17 +132,9 @@ extension ListTabViewController: UICollectionViewDataSource {
         return cell
         
     }
-    
-    /// 인터페이스 빌더로 만든 저금통 셀 사용 등록
-    private func registerBottleCell() {
-        self.collectionView.register(
-            UINib(nibName: BottleCell.nibName, bundle: nil),
-            forCellWithReuseIdentifier: BottleCell.reuseIdentifier
-        )
-    }
 
     /// 리유저블 셀의 속성 초기화하는 함수
-    private func resetReusableCellAttribute(_ cell: BottleCell) {
+    private func resetReusableCellAttribute(_ cell: BottleCollectionCell) {
         cell.bottleTitleLabel.text = .empty
         cell.bottleDateLabel.text = .empty
     }
