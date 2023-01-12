@@ -86,7 +86,7 @@ final class CustomTabBarController: UITabBarController {
                 of: Tab.home
             ),
             createNavigationController(
-                for: UIViewController(),
+                for: ListTabViewController(),
                 of: Tab.list
             ),
             createNavigationController(
@@ -106,7 +106,7 @@ final class CustomTabBarController: UITabBarController {
         let title: String
         let image: UIImage?
         let selectedImage: UIImage?
-        let navigationBarHidden: Bool = tab == .settings ? false : true
+        let navigationBarHidden: Bool = tab == .home ? true : false
         
         switch tab {
         case .home:

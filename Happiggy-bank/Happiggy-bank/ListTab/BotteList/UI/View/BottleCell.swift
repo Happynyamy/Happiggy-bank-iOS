@@ -9,6 +9,7 @@ import UIKit
 
 import Then
 
+// TODO: Label -> BaseLabel
 /// 저금통 리스트의 셀
 final class BottleCell: UICollectionViewCell {
     
@@ -45,5 +46,35 @@ final class BottleCell: UICollectionViewCell {
         self.bottleTitleLabel.font = .systemFont(ofSize: FontSize.titleLabel)
         self.bottleDateLabel.font = .systemFont(ofSize: FontSize.dateLabel)
         self.bottleDateLabel.textColor = .customLabel
+    }
+}
+
+extension BottleCell {
+    
+    /// 리유저블 ID 이름
+    static var reuseIdentifier: String {
+        return "\(self)"
+    }
+    
+    /// 인터페이스 빌더 파일 이름
+    static var nibName: String {
+        return "\(self)"
+    }
+    
+    /// Bottle Cell에서 설정하는 layout 상수값
+    enum Metric {
+        
+        /// corner radius
+        static let cornerRadius: CGFloat = 7
+    }
+    
+    /// Bottle Cell에서 설정하는 글자 크기
+    enum FontSize {
+        
+        /// 유리병 제목 라벨 글자 크기
+        static let titleLabel: CGFloat = 16
+        
+        /// 유리병 기간 라벨 글자 크기
+        static let dateLabel: CGFloat = 12
     }
 }
