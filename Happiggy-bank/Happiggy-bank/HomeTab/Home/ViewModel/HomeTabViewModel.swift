@@ -6,7 +6,8 @@
 //
 
 import CoreData
-import Foundation
+// TODO: ViewModel에 UIKit 제거
+import UIKit
 
 final class HomeTabViewModel {
     
@@ -98,4 +99,44 @@ final class HomeTabViewModel {
         }
     }
     
+    /// 저금통의 현재 상태 스냅샷 생성
+    func takeBottleSnapshot(inContainerView containerView: UIView) -> UIImage {
+        
+        let snapshotSize = Metric.snapshotSize(forView: containerView)
+        
+        /// 이미지 생성
+        let renderer = UIGraphicsImageRenderer(size: containerView.bounds.size)
+        let image = renderer.image { _ in
+            containerView.drawHierarchy(in: containerView.bounds, afterScreenUpdates: true)
+        }
+        
+        /// 리사이징
+        let resizedImageRenderer = UIGraphicsImageRenderer(size: snapshotSize)
+        let resizedImage = resizedImageRenderer.image { _ in
+            image.draw(in: CGRect(origin: .zero, size: snapshotSize))
+        }
+        
+        return resizedImage
+    }
+    
+}
+
+extension HomeTabViewModel {
+    
+    /// 상수값
+    enum Metric {
+        
+        /// 저금통 스냅샷 사이즈
+        static func snapshotSize(forView containerView: UIView) -> CGSize {
+            let bottleListWidth = UIScreen.main.bounds.width
+            let snapshotWidth = (bottleListWidth - 3 * interSnapshotSpacingInBottleList) / 2
+            let scale = snapshotWidth / containerView.frame.width
+            let snapShotheight = containerView.frame.height * scale
+            
+            return CGSize(width: snapshotWidth, height: snapShotheight)
+        }
+        
+        /// 저금통 리스트에서 스냅샷 간 간격
+        private static let interSnapshotSpacingInBottleList: CGFloat = 24
+    }
 }
