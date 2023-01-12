@@ -29,8 +29,8 @@ final class ListTabViewController: UIViewController {
     
     override func loadView() {
         self.collectionView = UICollectionView(
-            frame: .zero,
-            collectionViewLayout: UICollectionViewLayout()
+            frame: UIScreen.main.bounds,
+            collectionViewLayout: UICollectionViewFlowLayout()
         )
         self.view = self.collectionView
     }
@@ -39,6 +39,7 @@ final class ListTabViewController: UIViewController {
         super.viewDidLoad()
 
         configureNavigationBar()
+        configureCollectionView()
         configureEmptyLabel()
         layoutCells()
     }
@@ -52,6 +53,16 @@ final class ListTabViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.title = StringLiteral.navigationBarTitle
         self.navigationItem.backButtonTitle = .empty
+    }
+    
+    private func configureCollectionView() {
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        self.collectionView.register(
+            BottleCollectionCell.self,
+            forCellWithReuseIdentifier: BottleCollectionCell.reuseIdentifier
+        )
+        layoutCells()
     }
     
     /// 리스트 비었을 때 표시되는 라벨 설정
@@ -127,7 +138,8 @@ extension ListTabViewController: UICollectionViewDataSource {
         cell.bottleTitleLabel.text = bottle.title
         cell.bottleDateLabel.text = bottle.dateLabel
         cell.bottleDateLabel.textColor = AssetColor.mainYellow
-        cell.bottleImage.image = bottle.image
+        // TODO: - bottle.image로 변경
+        cell.bottleImage.image = AssetImage.yellowNote
         
         return cell
         
@@ -142,11 +154,9 @@ extension ListTabViewController: UICollectionViewDataSource {
 
 extension ListTabViewController: UICollectionViewDelegate {
     
+    // TODO: - NoteListViewController와 연결
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(
-            withIdentifier: SegueIdentifier.showNoteList,
-            sender: viewModel.bottleList[indexPath.row]
-        )
+        self.present(UIViewController().then { $0.view.backgroundColor = .cyan }, animated: true)
     }
 }
 

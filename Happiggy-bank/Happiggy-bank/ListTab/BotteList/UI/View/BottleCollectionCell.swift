@@ -8,6 +8,7 @@
 import UIKit
 
 import Then
+import SnapKit
 
 final class BottleCollectionCell: UICollectionViewCell {
     
@@ -28,6 +29,42 @@ final class BottleCollectionCell: UICollectionViewCell {
     lazy var bottleDateLabel: BaseLabel = BaseLabel().then {
         $0.changeFontSize(to: FontSize.caption1)
         $0.textColor = AssetColor.mainYellow
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.addSubviews([
+            bottleImage,
+            bottleTitleLabel,
+            bottleDateLabel
+        ])
+        configureImageView()
+        configureLabels()
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configureImageView() {
+        self.bottleImage.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalToSuperview().multipliedBy(0.86)
+        }
+    }
+    
+    private func configureLabels() {
+        self.bottleTitleLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(self.bottleImage.snp.bottom).offset(8)
+        }
+        
+        self.bottleDateLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(self.bottleTitleLabel.snp.bottom).offset(4)
+        }
     }
 }
 
