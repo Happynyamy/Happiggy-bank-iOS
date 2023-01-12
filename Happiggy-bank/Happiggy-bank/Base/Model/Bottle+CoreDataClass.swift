@@ -14,7 +14,7 @@ import Then
 @objc(Bottle)
 /// 코어데이터의 저금통 엔티티
 public class Bottle: NSManagedObject {
-
+    
     // MARK: - Static functions
     
     /// sortDescriptor 를 설정하지 않으면 (생성 날짜) 최신순으로 정렬
@@ -105,7 +105,7 @@ public class Bottle: NSManagedObject {
         
         return notes.map { $0 }.sorted { $0.date < $1.date }
     }
-
+    
     
     // MARK: - Properties
     
@@ -138,7 +138,7 @@ public class Bottle: NSManagedObject {
     
     /// 오늘 쪽지를 썼는지 여부
     var isEmtpyToday: Bool {
-        guard Date() >= Calendar.current.startOfDay(for: self.startDate) 
+        guard Date() >= Calendar.current.startOfDay(for: self.startDate)
         else { return false }
         
         let noteToday = self.notes.reversed().first { Calendar.current.isDateInToday($0.date) }
@@ -153,4 +153,81 @@ public class Bottle: NSManagedObject {
         + (Calendar.current.date(byAdding: .day, value: -1, to: self.endDate) ?? endDate)
             .customFormatted(type: .abbreviatedDot)
     }
+}
+
+// TODO: 목데이터 - 추후 삭제
+extension Bottle {
+    
+    // swiftlint:disable line_length
+    private static func nthDayFromToday(_ value: Int) -> Date {
+        Calendar.current.date(byAdding: .day, value: value, to: Date())!
+    }
+    
+    private static func makeMockData(duration: Int, isOpen: Bool = true) -> Bottle {
+        let startDate = nthDayFromToday(-duration)
+        let endDate = nthDayFromToday(-1)
+        
+        let bottle = Bottle(
+            title: "행복냠냠이",
+            startDate: startDate,
+            endDate: endDate,
+            message: "마지막 멘트"
+        )
+        bottle.isOpen = isOpen
+        
+        makeMockNote(inBottle: bottle, count: duration)
+        
+        return bottle
+    }
+    
+    private static func makeMockNote(inBottle bottle: Bottle, count: Int) {
+        for index in -count..<0 {
+            Note.create(
+                id: UUID(),
+                date: nthDayFromToday(index),
+                color: NoteColor.allCases.randomElement()!,
+                content:
+                    "일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십",
+                bottle: bottle
+            )
+        }
+    }
+    
+    static let fooOpenBottles: [Bottle] = {
+        var bottles = [Bottle]()
+        
+        for duration in [365, 90, 60, 30, 7] {
+            bottles.append(makeMockData(duration: duration))
+        }
+        
+        return bottles
+    }()
+    
+    /// 테스트용 목 데이터
+    static let foo: Bottle = {
+        let count = 300
+        let startDate = nthDayFromToday(-count)
+        let endDate = nthDayFromToday(5)
+//        let endDate = nthDayFromToday(10)
+        
+        let bottle = Bottle(title: "행복냠냠이", startDate: startDate, endDate: endDate, message: "마지막멘트")
+        
+        // swiftlint:disable line_length
+        Note.create(id: UUID(), date: startDate, color: NoteColor.green, content: "시작!", bottle: bottle)
+        Note.create(id: UUID(), date: nthDayFromToday(-9), color: NoteColor.pink, content: "일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십", bottle: bottle)
+        Note.create(id: UUID(), date: nthDayFromToday(-3), color: NoteColor.white, content: "100자 좀 적은가? 근데 괜찮은 것 같기도 하고...늘리기는 또 귀찮은데...", bottle: bottle)
+        Note.create(id: UUID(), date: nthDayFromToday(-8), color: NoteColor.purple, content: "왜냐면 한줄만 쓰는 날도 백퍼 있을 것이기 때문", bottle: bottle)
+        Note.create(id: UUID(), date: nthDayFromToday(-1), color: NoteColor.yellow, content: "졸리다 졸려 졸려", bottle: bottle)
+        Note.create(id: UUID(), date: nthDayFromToday(0), color: NoteColor.yellow, content: "누가 뚝딱 만들어주면 좋겠다 한 3줄 정도까지 채우고 싶은데 아무거나 써보기 이모지도 써보기 시험 시험 테스트 ☀️", bottle: bottle)
+        for index in (10-count)..<(-10) {
+            let note = Note.create(
+                id: UUID(),
+                date: nthDayFromToday(index),
+                color: NoteColor.allCases.randomElement()!,
+                content: "일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십",
+                bottle: bottle)
+        }
+        // swiftlint:enable line_length
+        return bottle
+    }()
 }

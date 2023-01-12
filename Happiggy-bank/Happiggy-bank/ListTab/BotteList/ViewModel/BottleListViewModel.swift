@@ -26,8 +26,8 @@ final class BottleListViewModel {
     // TODO: 확인용으로 주석처리된 foo 데이터 사용. 추후 삭제
     /// 지난 저금통 리스트 가져오기
     func executeFetchRequest() {
-        let request = Bottle.fetchRequest(isOpen: true)
-        let list = PersistenceStore.shared.fetchOld(request: request)
-        self.bottleList = list
+//        let request = Bottle.fetchRequest(isOpen: true)
+//        let list = PersistenceStore.shared.fetchOld(request: request)
+        self.bottleList = Bottle.fooOpenBottles
     }
 }
