@@ -83,21 +83,15 @@ final class CustomTabBarController: UITabBarController {
         self.viewControllers = [
             createNavigationController(
                 for: HomeTabViewController(),
-                title: Tab.home.title,
-                image: Tab.home.image,
-                selectedImage: Tab.home.selectedImage
+                of: Tab.home
             ),
             createNavigationController(
                 for: UIViewController(),
-                title: Tab.bottleList.title,
-                image: Tab.bottleList.image,
-                selectedImage: Tab.bottleList.selectedImage
+                of: Tab.list
             ),
             createNavigationController(
                 for: SettingsViewController(versionManager: self.versionManager),
-                title: Tab.settings.title,
-                image: Tab.settings.image,
-                selectedImage: Tab.settings.selectedImage
+                of: Tab.settings
             )
         ]
     }
@@ -105,17 +99,34 @@ final class CustomTabBarController: UITabBarController {
     /// 각 내비게이션 컨트롤러 기본 설정
     fileprivate func createNavigationController(
         for rootViewController: UIViewController,
-        title: String,
-        image: UIImage?,
-        selectedImage: UIImage?
+        of tab: Tab
     ) -> UIViewController {
         
         let navigationController = UINavigationController(rootViewController: rootViewController)
+        let title: String
+        let image: UIImage?
+        let selectedImage: UIImage?
+        let navigationBarHidden: Bool = tab == .settings ? false : true
+        
+        switch tab {
+        case .home:
+            title = Tab.home.title
+            image = Tab.home.image
+            selectedImage = Tab.home.selectedImage
+        case .list:
+            title = Tab.list.title
+            image = Tab.list.image
+            selectedImage = Tab.list.selectedImage
+        case .settings:
+            title = Tab.settings.title
+            image = Tab.settings.image
+            selectedImage = Tab.settings.selectedImage
+        }
         
         navigationController.tabBarItem.title = title
         navigationController.tabBarItem.image = image
         navigationController.tabBarItem.selectedImage = selectedImage
-        navigationController.navigationBar.isHidden = true
+        navigationController.navigationBar.isHidden = navigationBarHidden
         
         return navigationController
     }
@@ -126,7 +137,7 @@ extension CustomTabBarController {
     
     enum Tab: Int {
         case home
-        case bottleList
+        case list
         case settings
         
         /// 탭 바 아이템 타이틀
@@ -134,7 +145,7 @@ extension CustomTabBarController {
             switch self {
             case .home:
                 return "홈"
-            case .bottleList:
+            case .list:
                 return "저금통 목록"
             case .settings:
                 return "환경설정"
@@ -146,7 +157,7 @@ extension CustomTabBarController {
             switch self {
             case .home:
                 return AssetImage.homeNormal
-            case .bottleList:
+            case .list:
                 return AssetImage.listNormal
             case .settings:
                 return AssetImage.settingsNormal
@@ -158,7 +169,7 @@ extension CustomTabBarController {
             switch self {
             case .home:
                 return AssetImage.homeSelected
-            case .bottleList:
+            case .list:
                 return AssetImage.listSelected
             case .settings:
                 return AssetImage.settingsSelected
