@@ -150,7 +150,6 @@
 		A843332127DA026D00A12A54 /* NewBottleDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A843332027DA026D00A12A54 /* NewBottleDatePickerViewController.swift */; };
 		A843332427DA397800A12A54 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A843332327DA397800A12A54 /* DataProvider.swift */; };
 		A8509E6E27C89A1200855153 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8509E6D27C89A1200855153 /* UIColor+Extension.swift */; };
-		A89CBEDB27CBDD99005549F6 /* BottleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89CBEDA27CBDD99005549F6 /* BottleCell.swift */; };
 		A89CBEDD27CBDEA2005549F6 /* BottleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89CBEDC27CBDEA2005549F6 /* BottleListViewController.swift */; };
 		A89FF2F12959902C00BF0E1B /* HomeTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89FF2F02959902C00BF0E1B /* HomeTabViewModel.swift */; };
 		A8BD833327BE104900E0DE41 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833227BE104900E0DE41 /* HomeViewController.swift */; };
@@ -159,9 +158,9 @@
 		A8BD834727BE337900E0DE41 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD834627BE337900E0DE41 /* HomeView.swift */; };
 		A8C972032952C88D00CB59F9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A8C972022952C88D00CB59F9 /* SnapKit */; };
 		A8EB5E8B27C8B087005704F2 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EB5E8A27C8B087005704F2 /* UIButton+Extension.swift */; };
-		A8ECD4A527E30FF300886BC0 /* BottleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8ECD4A427E30FF300886BC0 /* BottleCell.xib */; };
 		A8ECD4A727E33BFA00886BC0 /* BottleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ECD4A627E33BFA00886BC0 /* BottleListViewModel.swift */; };
 		A8F985E0296FDE6000E5ACC6 /* ListTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F985DF296FDE6000E5ACC6 /* ListTabViewController.swift */; };
+		A8F985E2296FF37000E5ACC6 /* BottleCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F985E1296FF37000E5ACC6 /* BottleCollectionCell.swift */; };
 		A8FC07C827B3ECF00077A758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC07C727B3ECF00077A758 /* AppDelegate.swift */; };
 		A8FC07CA27B3ECF00077A758 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC07C927B3ECF00077A758 /* SceneDelegate.swift */; };
 		A8FC07CF27B3ECF00077A758 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8FC07CD27B3ECF00077A758 /* Main.storyboard */; };
@@ -320,7 +319,6 @@
 		A843332027DA026D00A12A54 /* NewBottleDatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBottleDatePickerViewController.swift; sourceTree = "<group>"; };
 		A843332327DA397800A12A54 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		A8509E6D27C89A1200855153 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
-		A89CBEDA27CBDD99005549F6 /* BottleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleCell.swift; sourceTree = "<group>"; };
 		A89CBEDC27CBDEA2005549F6 /* BottleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleListViewController.swift; sourceTree = "<group>"; };
 		A89FF2F02959902C00BF0E1B /* HomeTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewModel.swift; sourceTree = "<group>"; };
 		A8BD833227BE104900E0DE41 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -328,9 +326,9 @@
 		A8BD833E27BE30B400E0DE41 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A8BD834627BE337900E0DE41 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A8EB5E8A27C8B087005704F2 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
-		A8ECD4A427E30FF300886BC0 /* BottleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottleCell.xib; sourceTree = "<group>"; };
 		A8ECD4A627E33BFA00886BC0 /* BottleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleListViewModel.swift; sourceTree = "<group>"; };
 		A8F985DF296FDE6000E5ACC6 /* ListTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTabViewController.swift; sourceTree = "<group>"; };
+		A8F985E1296FF37000E5ACC6 /* BottleCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleCollectionCell.swift; sourceTree = "<group>"; };
 		A8FC07C427B3ECF00077A758 /* Happiggy-bank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Happiggy-bank.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8FC07C727B3ECF00077A758 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8FC07C927B3ECF00077A758 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -419,8 +417,7 @@
 		A4450C012966AEAF0088CC2C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A89CBEDA27CBDD99005549F6 /* BottleCell.swift */,
-				A8ECD4A427E30FF300886BC0 /* BottleCell.xib */,
+				A8F985E1296FF37000E5ACC6 /* BottleCollectionCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1277,7 +1274,6 @@
 			files = (
 				A46B110A28146171004AB185 /* GowunBatang-Regular.ttf in Resources */,
 				A49B25F12812BF6800399630 /* dovemayo_bold.otf in Resources */,
-				A8ECD4A527E30FF300886BC0 /* BottleCell.xib in Resources */,
 				A46B110D2814617B004AB185 /* IBMPlexSansKR-Regular.otf in Resources */,
 				A4A55A0528FFC64A004ABE00 /* NewNoteInputView.xib in Resources */,
 				A8FC07DD27B3EF030077A758 /* .swiftlint.yml in Resources */,
@@ -1381,6 +1377,7 @@
 				A4A55A0728FFC664004ABE00 /* UIView+ConfigureXib.swift in Sources */,
 				A843332427DA397800A12A54 /* DataProvider.swift in Sources */,
 				A48E183A27E71D9300B44477 /* UILabel+ParagraphStyle.swift in Sources */,
+				A8F985E2296FF37000E5ACC6 /* BottleCollectionCell.swift in Sources */,
 				A4B2860B27D9B434008769EB /* UIViewController+FadeOut.swift in Sources */,
 				A484A31C295D75F900A58312 /* NetworkError.swift in Sources */,
 				A49AC5E52917C6E2009315BC /* UILabel+ChangeFontSize.swift in Sources */,
@@ -1441,7 +1438,6 @@
 				A499318127BF3A38009FF5A8 /* BottleViewModel.swift in Sources */,
 				A4396B1929323131005D9D3A /* ImageManager.swift in Sources */,
 				A4D6EB77282E307900553E43 /* VersionManager.swift in Sources */,
-				A89CBEDB27CBDD99005549F6 /* BottleCell.swift in Sources */,
 				A44E901727D5EB130053AC57 /* Happiggy-bank.xcdatamodeld in Sources */,
 				A4534714285071A800F77164 /* Date+Tomorrow.swift in Sources */,
 				A4C1AFD427E5E6120096CD3E /* UITextView+ParagraphStyle.swift in Sources */,
