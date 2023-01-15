@@ -26,28 +26,30 @@ final class HomeView: UIView {
     lazy var emptyBottleLabel: BaseLabel = BaseLabel().then {
         $0.text = StringLiteral.emptyBottleLabelText
         $0.changeFontSize(to: FontSize.headline2)
-        $0.boldAndColor()
+        $0.bold()
+        $0.textColor = AssetColor.mainYellow
     }
-    
+
     /// 저금통이 비어있을 때 나타나는 하단 라벨
     lazy var emptyBottleDescription: BaseLabel = BaseLabel().then {
         $0.text = StringLiteral.emptyBottleDescriptionText
         $0.changeFontSize(to: FontSize.title2)
-        $0.color(AssetColor.subBrown02)
+        $0.textColor = AssetColor.subBrown02
     }
-    
+
     /// 저금통이 진행중일 때 나타나는 D-day 라벨
     lazy var dDayLabel: BaseLabel = BaseLabel().then {
         $0.text = StringLiteral.dDayLabelText
         $0.changeFontSize(to: FontSize.headline1)
-        $0.boldAndColor()
+        $0.bold()
+        $0.textColor = AssetColor.mainYellow
     }
     
     /// 저금통이 진행중일 때, 쪽지를 추가하지 않았을 때 나타나는 하단 라벨
     lazy var emptyNoteDescription: BaseLabel = BaseLabel().then {
         $0.text = StringLiteral.emptyNoteDescriptionText
         $0.changeFontSize(to: FontSize.body3)
-        $0.color(AssetColor.subBrown02)
+        $0.textColor = AssetColor.subBrown02
     }
     
     /// 저금통이 없거나, 저금통이 진행중이지만 쪽지가 없을 때 나타나는 캐릭터 이미지 뷰

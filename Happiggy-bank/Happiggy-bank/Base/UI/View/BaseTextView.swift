@@ -13,7 +13,7 @@ final class BaseTextView: UITextView {
 
     // MARK: - Properties
 
-    private let fontManager: FontPublishing = FontManager.shared
+    private let fontManager: FontManager = FontManager.shared
     private var cancellable: AnyCancellable?
 
 
@@ -32,17 +32,25 @@ final class BaseTextView: UITextView {
     }
 
 
-    // MARK: - Functions
+    // MARK: - Attribute Modifying Functions
+
+    /// 강조 처리
+    func bold() {
+        self.updateFont(to: self.fontManager.font, isBold: true)
+    }
+
+
+    // MARK: - Configuration Functions
 
     private func subscribeToFontPublisher() {
         self.cancellable = fontManager.fontPublisher
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] in self?.updateFont(to: $0) }
+            .sink { [weak self] in self?.updateFont(to: $0, isBold: self?.font?.isBold == true) }
     }
 
-    private func updateFont(to newFont: CustomFont) {
+    private func updateFont(to newFont: CustomFont, isBold: Bool) {
         let font = self.font ?? .systemFont(ofSize: FontSize.body1)
-        let fontName = font.isBold ? newFont.bold : newFont.regular
+        let fontName = isBold ? newFont.bold : newFont.regular
         self.font = UIFont(name: fontName, size: font.pointSize)
     }
 }
