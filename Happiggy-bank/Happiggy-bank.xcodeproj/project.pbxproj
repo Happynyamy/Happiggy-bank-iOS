@@ -112,7 +112,7 @@
 		A49B25ED2812B5A400399630 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B25EC2812B5A400399630 /* CustomFont.swift */; };
 		A49B25F12812BF6800399630 /* dovemayo_bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A49B25F02812BF4100399630 /* dovemayo_bold.otf */; };
 		A49B25F22812BF6B00399630 /* dovemayo.otf in Resources */ = {isa = PBXBuildFile; fileRef = A49B25EF2812BF4100399630 /* dovemayo.otf */; };
-		A49B25F42812FFB400399630 /* UILabel+BoldAndColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B25F32812FFB400399630 /* UILabel+BoldAndColor.swift */; };
+		A49B25F42812FFB400399630 /* UILabel+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B25F32812FFB400399630 /* UILabel+Color.swift */; };
 		A4A55A0528FFC64A004ABE00 /* NewNoteInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4A55A0428FFC64A004ABE00 /* NewNoteInputView.xib */; };
 		A4A55A0728FFC664004ABE00 /* UIView+ConfigureXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A55A0628FFC664004ABE00 /* UIView+ConfigureXib.swift */; };
 		A4A55A0928FFC675004ABE00 /* NewNoteInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A55A0828FFC675004ABE00 /* NewNoteInputView.swift */; };
@@ -286,7 +286,7 @@
 		A49B25EC2812B5A400399630 /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
 		A49B25EF2812BF4100399630 /* dovemayo.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dovemayo.otf; sourceTree = "<group>"; };
 		A49B25F02812BF4100399630 /* dovemayo_bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dovemayo_bold.otf; sourceTree = "<group>"; };
-		A49B25F32812FFB400399630 /* UILabel+BoldAndColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+BoldAndColor.swift"; sourceTree = "<group>"; };
+		A49B25F32812FFB400399630 /* UILabel+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Color.swift"; sourceTree = "<group>"; };
 		A4A55A0428FFC64A004ABE00 /* NewNoteInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewNoteInputView.xib; sourceTree = "<group>"; };
 		A4A55A0628FFC664004ABE00 /* UIView+ConfigureXib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ConfigureXib.swift"; sourceTree = "<group>"; };
 		A4A55A0828FFC675004ABE00 /* NewNoteInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewNoteInputView.swift; sourceTree = "<group>"; };
@@ -1058,7 +1058,7 @@
 			isa = PBXGroup;
 			children = (
 				A48E183927E71D9300B44477 /* UILabel+ParagraphStyle.swift */,
-				A49B25F32812FFB400399630 /* UILabel+BoldAndColor.swift */,
+				A49B25F32812FFB400399630 /* UILabel+Color.swift */,
 				A46B10F52814458C004AB185 /* UILabel+ChangeOnlyFontFamily.swift */,
 				A49AC5E42917C6E2009315BC /* UILabel+ChangeFontSize.swift */,
 			);
@@ -1381,7 +1381,7 @@
 				A47D83612973C3990028AA1D /* FontManaging.swift in Sources */,
 				A484A3072958949700A58312 /* BaseTextField.swift in Sources */,
 				A4CF2C7C27C71FF5001B01B1 /* CATransition+PopupAnimation.swift in Sources */,
-				A49B25F42812FFB400399630 /* UILabel+BoldAndColor.swift in Sources */,
+				A49B25F42812FFB400399630 /* UILabel+Color.swift in Sources */,
 				A8FC07C827B3ECF00077A758 /* AppDelegate.swift in Sources */,
 				A47D83592973A60D0028AA1D /* FontChanging.swift in Sources */,
 				A459003827E8D107003010A0 /* SettingsViewController.swift in Sources */,

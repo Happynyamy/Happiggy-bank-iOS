@@ -126,7 +126,7 @@ extension FontSelectionViewController: UITableViewDataSource {
         guard self.userdefaults.value(forKey: self.fontKey) as? Int == indexPath.row
         else { return cell }
         
-        cell.fontNameLabel.boldAndColor()
+//        cell.fontNameLabel.boldAndColor()
         cell.checkmarkImageView.isHidden = false
         
         return cell
@@ -177,7 +177,7 @@ extension FontSelectionViewController: UITableViewDelegate {
                     .nsMutableAttributedStringify()
                 continue
             }
-            cell.fontNameLabel.boldAndColor()
+//            cell.fontNameLabel.boldAndColor()
         }
     }
     
