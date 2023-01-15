@@ -1005,22 +1005,6 @@ extension LicenseViewModel {
     }
 }
 
-extension FontSelectionViewController {
-    
-    /// 상수
-    enum Metric {
-        
-        /// 모서리 둥근 정도: 8
-        static let tableViewCornerRadius: CGFloat = 8
-        
-        /// 예시 라벨 줄 간격: 8
-        static let lineSpacing: CGFloat = 8
-        
-        /// 예시 라벨 자간: 0.5
-        static let characterSpacing: CGFloat = 0.5
-    }
-}
-
 /// 단락 자간, 행간 설정에 사용하는 상수값
 enum ParagraphStyle {
 

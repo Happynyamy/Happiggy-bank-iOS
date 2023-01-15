@@ -148,7 +148,7 @@ extension SettingsViewController: UITableViewDelegate {
             self.openAppStoreIfNeeded()
             return
         case .font:
-            self.show(tempVC, sender: self)
+            self.show(FontSelectionViewController(fontManager: self.viewModel.fontManager), sender: self)
         case .customerService:
             self.show(tempVC, sender: self)
         }

@@ -135,6 +135,7 @@
 		A4CF2C9027CBA66F001B01B1 /* NSNotificaion.Name+CustomNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C8F27CBA66F001B01B1 /* NSNotificaion.Name+CustomNotifications.swift */; };
 		A4D357E0283A43C7007819E3 /* UIViewController+VersionUpdating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D357DF283A43C7007819E3 /* UIViewController+VersionUpdating.swift */; };
 		A4D357E2283A4429007819E3 /* URL+Open.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D357E1283A4429007819E3 /* URL+Open.swift */; };
+		A4D3D20429745578002041D1 /* UIViewController+ShowTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D3D20329745578002041D1 /* UIViewController+ShowTabBar.swift */; };
 		A4D6EB75282E2E6700553E43 /* VersionChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6EB74282E2E6700553E43 /* VersionChecking.swift */; };
 		A4D6EB77282E307900553E43 /* VersionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6EB76282E307900553E43 /* VersionManager.swift */; };
 		A4D6EB7B2837825500553E43 /* LookUpResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6EB7A2837825500553E43 /* LookUpResult.swift */; };
@@ -309,6 +310,7 @@
 		A4CF2C8F27CBA66F001B01B1 /* NSNotificaion.Name+CustomNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotificaion.Name+CustomNotifications.swift"; sourceTree = "<group>"; };
 		A4D357DF283A43C7007819E3 /* UIViewController+VersionUpdating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+VersionUpdating.swift"; sourceTree = "<group>"; };
 		A4D357E1283A4429007819E3 /* URL+Open.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Open.swift"; sourceTree = "<group>"; };
+		A4D3D20329745578002041D1 /* UIViewController+ShowTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ShowTabBar.swift"; sourceTree = "<group>"; };
 		A4D6EB74282E2E6700553E43 /* VersionChecking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionChecking.swift; sourceTree = "<group>"; };
 		A4D6EB76282E307900553E43 /* VersionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionManager.swift; sourceTree = "<group>"; };
 		A4D6EB7A2837825500553E43 /* LookUpResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookUpResult.swift; sourceTree = "<group>"; };
@@ -1042,6 +1044,7 @@
 				A466A30D28018BBD00D655F4 /* UIVIewController+TopMostViewController.swift */,
 				A46B10F128142F26004AB185 /* UIViewController+ObserveCustomFontChange.swift */,
 				A4D357DF283A43C7007819E3 /* UIViewController+VersionUpdating.swift */,
+				A4D3D20329745578002041D1 /* UIViewController+ShowTabBar.swift */,
 			);
 			path = UIViewController;
 			sourceTree = "<group>";
@@ -1470,6 +1473,7 @@
 				A4C1AFD427E5E6120096CD3E /* UITextView+ParagraphStyle.swift in Sources */,
 				A46B10F228142F26004AB185 /* UIViewController+ObserveCustomFontChange.swift in Sources */,
 				A466A31A2802987700D655F4 /* UIAlertAction+ConfirmAndCancel.swift in Sources */,
+				A4D3D20429745578002041D1 /* UIViewController+ShowTabBar.swift in Sources */,
 				A4D357E2283A4429007819E3 /* URL+Open.swift in Sources */,
 				A49B25ED2812B5A400399630 /* CustomFont.swift in Sources */,
 				A4569CC828112657001E3FD6 /* LicenseText.swift in Sources */,
