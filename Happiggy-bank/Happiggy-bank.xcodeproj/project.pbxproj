@@ -920,6 +920,7 @@
 				A49B25E82812B17B00399630 /* FontSelectionCell.swift */,
 				A49B25E92812B17B00399630 /* FontSelectionCell.xib */,
 				A47D83472966D3870028AA1D /* FontSelectionView.swift */,
+				A47D8349296716BF0028AA1D /* FontCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1375,6 +1376,7 @@
 				A490AC4E27DD945E00B04CE1 /* NoteListViewController.swift in Sources */,
 				A47D83542973A4860028AA1D /* FontPublishing.swift in Sources */,
 				A4D357E0283A43C7007819E3 /* UIViewController+VersionUpdating.swift in Sources */,
+				A47D834A296716BF0028AA1D /* FontCell.swift in Sources */,
 				A8BD834727BE337900E0DE41 /* HomeView.swift in Sources */,
 				A46B10FC28144D76004AB185 /* CustomTabBarController.swift in Sources */,
 				A484A31A295D756D00A58312 /* NetworkServiceable.swift in Sources */,
