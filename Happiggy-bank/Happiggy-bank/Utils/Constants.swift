@@ -42,10 +42,10 @@ enum FontSize {
 
     // TODO: 아래 2개는 전체 리팩토링 후 삭제
 
-    /// 본문 폰트 사이즈: 18
+    /// 이거 대신 body1 사용!!!
     static let body: CGFloat = 18
 
-    /// 부가 설명 레이블 폰트 사이즈: 15
+    /// 이거 사용 x
     static let secondaryLabel: CGFloat = 15
 }
 

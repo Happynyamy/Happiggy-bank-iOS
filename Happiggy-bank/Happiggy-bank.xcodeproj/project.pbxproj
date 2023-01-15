@@ -919,6 +919,7 @@
 			children = (
 				A49B25E82812B17B00399630 /* FontSelectionCell.swift */,
 				A49B25E92812B17B00399630 /* FontSelectionCell.xib */,
+				A47D83472966D3870028AA1D /* FontSelectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1471,6 +1472,7 @@
 				A49B25ED2812B5A400399630 /* CustomFont.swift in Sources */,
 				A4569CC828112657001E3FD6 /* LicenseText.swift in Sources */,
 				A49931A527BFD20E009FF5A8 /* UIImage+AssetImages.swift in Sources */,
+				A47D83482966D3870028AA1D /* FontSelectionView.swift in Sources */,
 				A459003A27E95D6B003010A0 /* Grid.swift in Sources */,
 				A46B10F42814362A004AB185 /* UIView+AllFontUsingSubviews.swift in Sources */,
 				A4C1AFC227E47AD80096CD3E /* String+EmptyString.swift in Sources */,
