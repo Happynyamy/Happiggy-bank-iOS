@@ -65,6 +65,12 @@
 		A46B11122814618C004AB185 /* Cafe24Ssurround.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46B110F28146181004AB185 /* Cafe24Ssurround.ttf */; };
 		A46BC1EF2800626A00C2E5B4 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46BC1EE2800626A00C2E5B4 /* TabItem.swift */; };
 		A47D83462966C0C60028AA1D /* NotificationSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22ADF7E27F72F7300ECB77B /* NotificationSettingsViewModel.swift */; };
+		A47D83482966D3870028AA1D /* FontSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D83472966D3870028AA1D /* FontSelectionView.swift */; };
+		A47D834A296716BF0028AA1D /* FontCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D8349296716BF0028AA1D /* FontCell.swift */; };
+		A47D83542973A4860028AA1D /* FontPublishing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D83532973A4860028AA1D /* FontPublishing.swift */; };
+		A47D83562973A4970028AA1D /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D83552973A4970028AA1D /* FontManager.swift */; };
+		A47D83592973A60D0028AA1D /* FontChanging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D83582973A60D0028AA1D /* FontChanging.swift */; };
+		A47D83612973C3990028AA1D /* FontManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D83602973C3990028AA1D /* FontManaging.swift */; };
 		A4845B5D2900DF0B00A6007C /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4845B5C2900DF0B00A6007C /* ColorPicker.swift */; };
 		A484A3032958936300A58312 /* BaseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A484A3022958936300A58312 /* BaseLabel.swift */; };
 		A484A3052958945E00A58312 /* BaseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A484A3042958945E00A58312 /* BaseTextView.swift */; };
@@ -234,6 +240,12 @@
 		A46B110F28146181004AB185 /* Cafe24Ssurround.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24Ssurround.ttf; sourceTree = "<group>"; };
 		A46B111028146188004AB185 /* Cafe24SsurroundAir.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24SsurroundAir.ttf; sourceTree = "<group>"; };
 		A46BC1EE2800626A00C2E5B4 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
+		A47D83472966D3870028AA1D /* FontSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSelectionView.swift; sourceTree = "<group>"; };
+		A47D8349296716BF0028AA1D /* FontCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontCell.swift; sourceTree = "<group>"; };
+		A47D83532973A4860028AA1D /* FontPublishing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontPublishing.swift; sourceTree = "<group>"; };
+		A47D83552973A4970028AA1D /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
+		A47D83582973A60D0028AA1D /* FontChanging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontChanging.swift; sourceTree = "<group>"; };
+		A47D83602973C3990028AA1D /* FontManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManaging.swift; sourceTree = "<group>"; };
 		A4845B5C2900DF0B00A6007C /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 		A484A3022958936300A58312 /* BaseLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLabel.swift; sourceTree = "<group>"; };
 		A484A3042958945E00A58312 /* BaseTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextView.swift; sourceTree = "<group>"; };
@@ -445,6 +457,17 @@
 				A41DE62727F368BF002A7669 /* NoteDetailViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A47D83522973A46E0028AA1D /* FontManager */ = {
+			isa = PBXGroup;
+			children = (
+				A47D83582973A60D0028AA1D /* FontChanging.swift */,
+				A47D83532973A4860028AA1D /* FontPublishing.swift */,
+				A47D83602973C3990028AA1D /* FontManaging.swift */,
+				A47D83552973A4970028AA1D /* FontManager.swift */,
+			);
+			path = FontManager;
 			sourceTree = "<group>";
 		};
 		A484A318295D664B00A58312 /* Network */ = {
@@ -1087,6 +1110,7 @@
 		A896FC1F2966BE8F00A3400B /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				A47D83522973A46E0028AA1D /* FontManager */,
 				A819CF9E27DDD97C00DE8E72 /* HapticManager.swift */,
 				A4396B1829323131005D9D3A /* ImageManager.swift */,
 				A484A321295E857C00A58312 /* VersionManager */,
@@ -1338,6 +1362,7 @@
 				A4569CC628111EFA001E3FD6 /* InformationTextViewDataSource.swift in Sources */,
 				A80248252963E58A00F2EA81 /* BottleTitleStack.swift in Sources */,
 				D236DB8627FDC43200D7B8F0 /* NewBottleDatePickerViewModel.swift in Sources */,
+				A47D83562973A4970028AA1D /* FontManager.swift in Sources */,
 				A499318327BF5158009FF5A8 /* BottleNoteView.swift in Sources */,
 				A4CF2C8E27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift in Sources */,
 				A46BC1EF2800626A00C2E5B4 /* TabItem.swift in Sources */,
@@ -1350,15 +1375,18 @@
 				A484A313295A972200A58312 /* Array+SafeIndex.swift in Sources */,
 				A4569CCA28113F0F001E3FD6 /* NSMutableAttributedString+Hyperlink.swift in Sources */,
 				A490AC4E27DD945E00B04CE1 /* NoteListViewController.swift in Sources */,
+				A47D83542973A4860028AA1D /* FontPublishing.swift in Sources */,
 				A4D357E0283A43C7007819E3 /* UIViewController+VersionUpdating.swift in Sources */,
 				A8BD834727BE337900E0DE41 /* HomeView.swift in Sources */,
 				A46B10FC28144D76004AB185 /* CustomTabBarController.swift in Sources */,
 				A484A31A295D756D00A58312 /* NetworkServiceable.swift in Sources */,
 				A484A33129608C8700A58312 /* SettingsTableViewCell.swift in Sources */,
+				A47D83612973C3990028AA1D /* FontManaging.swift in Sources */,
 				A484A3072958949700A58312 /* BaseTextField.swift in Sources */,
 				A4CF2C7C27C71FF5001B01B1 /* CATransition+PopupAnimation.swift in Sources */,
 				A49B25F42812FFB400399630 /* UILabel+BoldAndColor.swift in Sources */,
 				A8FC07C827B3ECF00077A758 /* AppDelegate.swift in Sources */,
+				A47D83592973A60D0028AA1D /* FontChanging.swift in Sources */,
 				A459003827E8D107003010A0 /* SettingsViewController.swift in Sources */,
 				A4C1AFCE27E4F8150096CD3E /* UIView+FadeInOut.swift in Sources */,
 				A49A8C25295331B000D5468A /* AssetImage.swift in Sources */,
