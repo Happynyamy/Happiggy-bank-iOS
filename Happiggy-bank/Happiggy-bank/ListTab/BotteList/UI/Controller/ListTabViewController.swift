@@ -59,7 +59,7 @@ final class ListTabViewController: UIViewController {
         self.collectionView.dataSource = self
         self.collectionView.register(
             BottleCollectionCell.self,
-            forCellWithReuseIdentifier: BottleCollectionCell.reuseIdentifier
+            forCellWithReuseIdentifier: BottleCollectionCell.name
         )
         layoutCells()
     }

@@ -75,7 +75,7 @@ final class FontSelectionViewController: UIViewController {
     /// 뷰 초기 설정
     private func configureView() {
         self.tableView.layer.cornerRadius = Metric.tableViewCornerRadius
-        self.fontNameLabel.text = self.currentFont.displayName
+        self.fontNameLabel.text = self.currentFont.description
         self.configureParagraphStyle(forLabel: self.fontNameLabel)
         self.configureParagraphStyle(forLabel: self.exampleLabel)
         self.configureParagraphStyle(forLabel: self.englishExampleLabel)
@@ -116,7 +116,7 @@ extension FontSelectionViewController: UITableViewDataSource {
         else { return FontSelectionCell() }
         
         cell.fontNameLabel.attributedText = currentCellFont
-            .displayName
+            .description
             .nsMutableAttributedStringify()
         cell.fontNameLabel.font = UIFont(
             name: currentCellFont.regular,
@@ -153,7 +153,7 @@ extension FontSelectionViewController: UITableViewDelegate {
     
     /// 예시 라벨들 폰트 업데이트
     private func updateExamplesAccordingToSelctedFont(_ font: CustomFont) {
-        self.fontNameLabel.text = font.displayName
+        self.fontNameLabel.text = font.description
         self.fontNameLabel.changeFont(to: font.bold)
         self.exampleLabel.changeFont(to: font.regular)
         self.englishExampleLabel.changeFont(to: font.regular)

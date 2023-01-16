@@ -25,7 +25,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene)
         else { return }
         
-        let rootViewController = CustomTabBarController(versionManager: self.versionManager)
+        let rootViewController = CustomTabBarController(
+            versionManager: self.versionManager,
+            fontManager: FontManager.shared
+        )
         window = UIWindow(frame: scene.coordinateSpace.bounds)
         window?.windowScene = scene
         window?.rootViewController = rootViewController
