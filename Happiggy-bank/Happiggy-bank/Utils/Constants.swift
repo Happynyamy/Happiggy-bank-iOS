@@ -1018,17 +1018,6 @@ extension FontSelectionViewController {
         
         /// 예시 라벨 자간: 0.5
         static let characterSpacing: CGFloat = 0.5
-        
-    }
-}
-
-extension CustomTabBarController {
-    
-    /// 폰트
-    enum Font {
-        
-        /// 탭바 아이템 폰트 사이즈: 10
-        static let tabBarItemSize = UIFont.smallSystemFontSize - 2
     }
 }
 

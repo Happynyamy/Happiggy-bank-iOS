@@ -56,20 +56,8 @@ final class SettingsViewModel {
             }
         }
 
-        fileprivate var buttonTitle: String? {
-            switch self {
-            case .font:
-                return CustomFont.current.displayName
-            default:
-                return nil
-            }
-        }
-
         fileprivate var buttonImage: UIImage? {
-            switch self {
-            default:
-                return AssetImage.next
-            }
+            AssetImage.next
         }
     }
 
@@ -77,6 +65,7 @@ final class SettingsViewModel {
     // MARK: - Properties
 
     let versionManager: any VersionChecking
+    let fontManager: FontManaging
 
     var numberOfRows: Int {
         RowType.allCases.count
@@ -85,8 +74,9 @@ final class SettingsViewModel {
 
     // MARK: - Inits
 
-    init(versionManager: any VersionChecking) {
+    init(versionManager: any VersionChecking, fontManager: FontManaging) {
         self.versionManager = versionManager
+        self.fontManager = fontManager
     }
 
 
@@ -105,13 +95,19 @@ final class SettingsViewModel {
     }
 
     func buttonTitle(for indexPath: IndexPath) -> String? {
-        let type = RowType(rawValue: indexPath.row)
-        guard type == .version
+        guard let type = RowType(rawValue: indexPath.row)
         else {
-            return RowType(rawValue: indexPath.row)?.buttonTitle
+            return nil
         }
 
-        return versionManager.status.description
+        switch type {
+        case .version:
+            return self.versionManager.status.description
+        case .font:
+            return self.fontManager.font.description
+        default:
+            return nil
+        }
     }
 
     func buttonImage(for indexPath: IndexPath) -> UIImage? {
@@ -121,7 +117,7 @@ final class SettingsViewModel {
             return type?.buttonImage
         }
 
-        switch versionManager.status {
+        switch self.versionManager.status {
         case .latestVersion, .default:
             return nil
         default:

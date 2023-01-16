@@ -5,6 +5,7 @@
 //  Created by sun on 2022/04/24.
 //
 
+import Combine
 import UIKit
 
 /// 커스텀 탭바 컨트롤러
@@ -13,12 +14,15 @@ final class CustomTabBarController: UITabBarController {
     // MARK: - Properties
 
     private let versionManager: any VersionChecking
+    private let fontManager: FontManaging
+    private var cancellable: AnyCancellable?
 
 
     // MARK: - Init
 
-    init(versionManager: any VersionChecking) {
+    init(versionManager: any VersionChecking, fontManager: FontManaging) {
         self.versionManager = versionManager
+        self.fontManager = fontManager
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -35,47 +39,40 @@ final class CustomTabBarController: UITabBarController {
         super.viewDidLoad()
         
         self.configureTabBar()
-        self.observeCustomFontChange(selector: #selector(customFontDidChange(_:)))
     }
-    
-    // MARK: - @objc
-    
-    /// 폰트 변경 시 호출되는 메서드
-    @objc private func customFontDidChange(_ notification: NSNotification) {
-        guard let font = notification.object as? CustomFont
-        else { return }
-        
-        self.changeTabBarFont(to: font)
-    }
+
     
     // MARK: - Functions
     
     /// 탭 바 초기 설정
     private func configureTabBar() {
         self.configureBasicSettings()
-        self.changeTabBarFont(to: CustomFont.current)
+        self.subscribeToFontPublisher()
         self.setNavigationControllers()
-    }
-    
-    /// 내비게이션 바 아이템 폰트 변경
-    private func changeTabBarFont(to customFont: CustomFont) {
-        guard let font = UIFont(name: customFont.regular, size: FontSize.caption2)
-        else { return }
-        
-        self.tabBar.items?.forEach {
-            let attributes = [NSAttributedString.Key.font: font]
-            $0.setTitleTextAttributes(attributes, for: .normal)
-            $0.setTitleTextAttributes(attributes, for: .selected)
-        }
     }
     
     /// 탭 바 기본 설정
     private func configureBasicSettings() {
         object_setClass(self.tabBar, CustomTabBar.self)
+        self.view.backgroundColor = .systemBackground
         self.tabBar.backgroundColor = .systemBackground
         self.tabBar.isTranslucent = false
     }
-    
+
+    private func subscribeToFontPublisher() {
+        self.cancellable = fontManager.fontPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in self?.updateFont(to: $0) }
+    }
+
+    private func updateFont(to newFont: CustomFont) {
+        guard let font = UIFont(name: newFont.regular, size: FontSize.caption2)
+        else {
+            return
+        }
+
+        UITabBarItem.appearance().setTitleTextAttributes([.font: font], for: .normal)
+    }
     
     // TODO: - 각 NavigationController에 들어갈 ViewController 수정/교체
     /// 탭 바의 내비게이션 컨트롤러 배열 설정
@@ -90,7 +87,10 @@ final class CustomTabBarController: UITabBarController {
                 of: Tab.list
             ),
             createNavigationController(
-                for: SettingsViewController(versionManager: self.versionManager),
+                for: SettingsViewController(
+                    versionManager: self.versionManager,
+                    fontManager: self.fontManager
+                ),
                 of: Tab.settings
             )
         ]
@@ -101,22 +101,16 @@ final class CustomTabBarController: UITabBarController {
         for rootViewController: UIViewController,
         of tab: Tab
     ) -> UIViewController {
-        
-        let navigationController = UINavigationController(rootViewController: rootViewController)
-        let title: String
-        let image: UIImage?
-        let selectedImage: UIImage?
-        let navigationBarHidden: Bool = tab == .home ? true : false
-        
-        title = tab.title
-        image = tab.image
-        selectedImage = tab.selectedImage
-        
-        navigationController.tabBarItem.title = title
-        navigationController.tabBarItem.image = image
-        navigationController.tabBarItem.selectedImage = selectedImage
-        navigationController.navigationBar.isHidden = navigationBarHidden
-        
+
+        let navigationController = CustomNavigationController(
+            rootViewController: rootViewController,
+            fontManager: self.fontManager
+        )
+        navigationController.tabBarItem.title = tab.title
+        navigationController.tabBarItem.image = tab.image
+        navigationController.tabBarItem.selectedImage = tab.selectedImage
+        navigationController.navigationBar.isHidden = tab == .home
+
         return navigationController
     }
 }

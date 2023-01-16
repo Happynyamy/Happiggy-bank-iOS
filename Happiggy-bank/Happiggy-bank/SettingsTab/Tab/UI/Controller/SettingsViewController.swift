@@ -5,6 +5,7 @@
 //  Created by sun on 2022/03/22.
 //
 
+import Combine
 import UIKit
 
 import Then
@@ -20,14 +21,14 @@ final class SettingsViewController: UIViewController {
         $0.isScrollEnabled = false
         $0.showsVerticalScrollIndicator = false
     }
-
     private let viewModel: SettingsViewModel
+    private var cancellable: AnyCancellable?
 
 
     // MARK: - Init(s)
 
-    init(versionManager: any VersionChecking) {
-        self.viewModel = SettingsViewModel(versionManager: versionManager)
+    init(versionManager: any VersionChecking, fontManager: FontManaging) {
+        self.viewModel = SettingsViewModel(versionManager: versionManager, fontManager: fontManager)
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -49,6 +50,7 @@ final class SettingsViewController: UIViewController {
 
         self.configureNavigationBar()
         self.configureTableView()
+        self.subscribeToFontPublisher()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -65,6 +67,12 @@ final class SettingsViewController: UIViewController {
 
 
     // MARK: - Configuration Functions
+
+    private func subscribeToFontPublisher() {
+        self.cancellable = self.viewModel.fontManager.fontPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in self?.tableView.reloadData() }
+    }
 
     /// 내비게이션 바 초기 설정
     private func configureNavigationBar() {
