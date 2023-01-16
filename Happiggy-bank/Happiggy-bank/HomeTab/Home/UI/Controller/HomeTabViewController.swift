@@ -72,7 +72,10 @@ final class HomeTabViewController: UIViewController {
         guard let bottle = self.viewModel.bottle
         else {
             // NewBottleNameViewController
-            self.present(UIViewController().then { $0.view.backgroundColor = .yellow }, animated: true)
+            self.navigationController?.pushViewController(
+                UIViewController().then { $0.view.backgroundColor = .yellow },
+                animated: false
+            )
             return
         }
         
@@ -85,10 +88,16 @@ final class HomeTabViewController: UIViewController {
         
         if bottle.isEmtpyToday {
             // NewNoteTextViewController
-            self.present(UIViewController().then { $0.view.backgroundColor = .gray }, animated: true)
+            self.navigationController?.pushViewController(
+                UIViewController().then { $0.view.backgroundColor = .gray },
+                animated: false
+            )
         } else {
             // NewNoteDatePickerViewController
-            self.present(UIViewController().then { $0.view.backgroundColor = .orange }, animated: true)
+            self.navigationController?.pushViewController(
+                UIViewController().then { $0.view.backgroundColor = .orange },
+                animated: false
+            )
         }
     }
     
@@ -180,7 +189,10 @@ extension HomeTabViewController {
     
     /// 메뉴 버튼에서 저금통 제목 변경을 선택했을 때 실행되는 함수
     private func changeBottleNameItemDidTap() {
-        self.present(UIViewController().then { $0.view.backgroundColor = .blue }, animated: true)
+        self.navigationController?.pushViewController(
+            UIViewController().then { $0.view.backgroundColor = .blue },
+            animated: false
+        )
         self.bottleViewController.alertOrModalDidAppear()
     }
     
@@ -225,7 +237,10 @@ extension HomeTabViewController {
         )
         HapticManager.instance.notification(type: .success)
         self.bottleViewController.bottleDidOpen(withDuration: Duration.bottleOpeningAnimation)
-        self.present(UIViewController().then { $0.view.backgroundColor = .red }, animated: true)
+        self.navigationController?.pushViewController(
+            UIViewController().then { $0.view.backgroundColor = .red },
+            animated: false
+        )
         self.viewModel.bottle = nil
 
 //        removeAllRemindNotifications()
