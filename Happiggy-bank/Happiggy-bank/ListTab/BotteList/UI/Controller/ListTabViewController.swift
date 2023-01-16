@@ -49,7 +49,6 @@ final class ListTabViewController: UIViewController {
     
     /// 내비게이션 바 속성 설정
     private func configureNavigationBar() {
-        self.navigationController?.navigationBar.clear()
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.title = StringLiteral.navigationBarTitle
         self.navigationItem.backButtonTitle = .empty
@@ -156,7 +155,10 @@ extension ListTabViewController: UICollectionViewDelegate {
     
     // TODO: - NoteListViewController와 연결
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.present(UIViewController().then { $0.view.backgroundColor = .cyan }, animated: true)
+        self.navigationController?.pushViewController(
+            UIViewController().then { $0.view.backgroundColor = .cyan },
+            animated: false
+        )
     }
 }
 
