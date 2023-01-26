@@ -131,8 +131,6 @@ extension ListTabViewController: UICollectionViewDataSource {
             for: indexPath
         ) as? BottleCollectionCell
         else { return UICollectionViewCell() }
-
-        resetReusableCellAttribute(cell)
         
         cell.bottleTitleLabel.text = bottle.title
         cell.bottleDateLabel.text = bottle.dateLabel
@@ -142,12 +140,6 @@ extension ListTabViewController: UICollectionViewDataSource {
         
         return cell
         
-    }
-
-    /// 리유저블 셀의 속성 초기화하는 함수
-    private func resetReusableCellAttribute(_ cell: BottleCollectionCell) {
-        cell.bottleTitleLabel.text = .empty
-        cell.bottleDateLabel.text = .empty
     }
 }
 

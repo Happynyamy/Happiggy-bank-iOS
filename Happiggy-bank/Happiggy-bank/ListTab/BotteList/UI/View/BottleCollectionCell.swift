@@ -47,6 +47,13 @@ final class BottleCollectionCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.bottleImage = UIImageView()
+        self.bottleTitleLabel = BaseLabel()
+        self.bottleDateLabel = BaseLabel()
+    }
+    
     private func configureImageView() {
         self.bottleImage.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
