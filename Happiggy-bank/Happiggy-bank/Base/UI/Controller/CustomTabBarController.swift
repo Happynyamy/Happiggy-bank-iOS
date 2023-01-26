@@ -108,20 +108,9 @@ final class CustomTabBarController: UITabBarController {
         let selectedImage: UIImage?
         let navigationBarHidden: Bool = tab == .home ? true : false
         
-        switch tab {
-        case .home:
-            title = Tab.home.title
-            image = Tab.home.image
-            selectedImage = Tab.home.selectedImage
-        case .list:
-            title = Tab.list.title
-            image = Tab.list.image
-            selectedImage = Tab.list.selectedImage
-        case .settings:
-            title = Tab.settings.title
-            image = Tab.settings.image
-            selectedImage = Tab.settings.selectedImage
-        }
+        title = tab.title
+        image = tab.image
+        selectedImage = tab.selectedImage
         
         navigationController.tabBarItem.title = title
         navigationController.tabBarItem.image = image
