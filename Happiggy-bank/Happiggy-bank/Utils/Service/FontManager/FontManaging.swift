@@ -7,8 +7,17 @@
 
 import Foundation
 
-/// FontChanging 프로토콜과 FontPublishing 프로토콜을 채택
-protocol FontManaging: FontChanging, FontPublishing {
-    
+/// Font 변경을 관리하며 FontPublishing 프로토콜을 채택
+protocol FontManaging: FontPublishing {
+
+    // MARK: - Properties
+
+    /// 현재 폰트
     var font: CustomFont { get }
+
+
+    // MARK: - Functions
+
+    /// 폰트를 변경
+    func fontDidChange(to font: CustomFont)
 }
