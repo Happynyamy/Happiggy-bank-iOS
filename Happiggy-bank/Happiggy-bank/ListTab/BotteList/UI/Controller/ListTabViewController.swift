@@ -127,7 +127,7 @@ extension ListTabViewController: UICollectionViewDataSource {
         
         let bottle = viewModel.bottleList[indexPath.row]
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: BottleCollectionCell.reuseIdentifier,
+            withReuseIdentifier: BottleCollectionCell.name,
             for: indexPath
         ) as? BottleCollectionCell
         else { return UICollectionViewCell() }

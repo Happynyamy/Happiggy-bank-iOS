@@ -77,11 +77,6 @@ final class BottleCollectionCell: UICollectionViewCell {
 
 extension BottleCollectionCell {
     
-    /// 리유저블 ID 이름
-    static var reuseIdentifier: String {
-        return "\(self)"
-    }
-    
     /// Bottle Cell에서 설정하는 layout 상수값
     enum Metric {
         
