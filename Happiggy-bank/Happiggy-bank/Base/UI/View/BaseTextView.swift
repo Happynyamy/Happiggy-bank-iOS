@@ -13,8 +13,9 @@ final class BaseTextView: UITextView {
 
     // MARK: - Properties
 
-    private let fontManager: FontManager = FontManager.shared
+    private let fontManager: FontPublishing = FontManager.shared
     private var cancellable: AnyCancellable?
+    private var customFont: CustomFont?
 
 
     // MARK: - Inits
@@ -36,7 +37,7 @@ final class BaseTextView: UITextView {
 
     /// 강조 처리
     func bold() {
-        self.updateFont(to: self.fontManager.font, isBold: true)
+        self.updateFont(to: self.customFont ?? .system, isBold: true)
     }
 
 
@@ -49,8 +50,8 @@ final class BaseTextView: UITextView {
     }
 
     private func updateFont(to newFont: CustomFont, isBold: Bool) {
-        let font = self.font ?? .systemFont(ofSize: FontSize.body1)
+        self.customFont = newFont
         let fontName = isBold ? newFont.bold : newFont.regular
-        self.font = UIFont(name: fontName, size: font.pointSize)
+        self.font = UIFont(name: fontName, size: self.font?.pointSize ?? FontSize.body1)
     }
 }

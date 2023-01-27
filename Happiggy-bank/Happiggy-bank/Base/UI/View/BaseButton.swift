@@ -13,8 +13,9 @@ final class BaseButton: UIButton {
 
     // MARK: - Properties
 
-    private let fontManager: FontManager = FontManager.shared
+    private let fontManager: FontPublishing = FontManager.shared
     private var cancellable: AnyCancellable?
+    private var customFont: CustomFont?
 
 
     // MARK: - Inits
@@ -36,7 +37,7 @@ final class BaseButton: UIButton {
 
     /// 강조 처리
     func bold() {
-        self.updateFont(to: self.fontManager.font, isBold: true)
+        self.updateFont(to: self.customFont ?? .system, isBold: true)
     }
 
 
@@ -51,6 +52,7 @@ final class BaseButton: UIButton {
     }
 
     private func updateFont(to newFont: CustomFont, isBold: Bool) {
+        self.customFont = newFont
         let font = self.titleLabel?.font ?? .systemFont(ofSize: FontSize.body1)
         let fontName = isBold ? newFont.bold : newFont.regular
         self.titleLabel?.font = UIFont(name: fontName, size: font.pointSize)
