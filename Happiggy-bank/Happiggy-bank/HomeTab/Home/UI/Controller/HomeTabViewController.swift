@@ -73,7 +73,7 @@ final class HomeTabViewController: UIViewController {
         else {
             // NewBottleNameViewController
             self.navigationController?.pushViewController(
-                UIViewController().then { $0.view.backgroundColor = .yellow },
+                NewBottleNameViewController(),
                 animated: false
             )
             return
