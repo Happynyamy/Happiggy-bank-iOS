@@ -103,7 +103,7 @@ extension NewBottleNameView {
         
         static let warningLabel: String = "저금통 이름이 없어요!"
         
-        static let placeholder: String = "최대 15자까지 가능합니다"
+        static let placeholder: String = "최대 10자까지 가능합니다"
     }
     
     enum Metric {
