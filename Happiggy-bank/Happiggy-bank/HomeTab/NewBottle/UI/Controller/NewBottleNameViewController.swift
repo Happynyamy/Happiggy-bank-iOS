@@ -52,8 +52,20 @@ final class NewBottleNameViewController: UIViewController {
             self.newBottleNameView.warningLabel.isHidden = false
             self.newBottleNameView.warningLabel.fadeIn()
         } else {
+            let newBottleDateViewController = NewBottleDateViewController()
+            
+            newBottleDateViewController.delegate = self
+            newBottleDateViewController.viewModel.bottleData = NewBottle(
+                name: self.newBottleNameView.textField.text,
+                periodIndex: self.bottleData?.periodIndex,
+                openMessage: self.bottleData?.openMessage
+            )
+            
             self.newBottleNameView.textField.endEditing(true)
-            // TODO: - 다음 viewController로 이동
+            self.navigationController?.pushViewController(
+                newBottleDateViewController,
+                animated: false
+            )
         }
     }
     
