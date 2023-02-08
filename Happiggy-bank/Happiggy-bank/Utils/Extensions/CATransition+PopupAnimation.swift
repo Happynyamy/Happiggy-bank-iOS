@@ -9,7 +9,7 @@ import UIKit
 
 extension CATransition {
     
-    /// 뷰가 사라질 때 페이드 아웃 효과를 나타냄
+    /// 뷰가 사라질 때 페이드 인/아웃 효과를 나타냄
     static func fadeTransition() -> CATransition {
         let transition = CATransition()
         transition.duration = self.transitionDuration

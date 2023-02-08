@@ -48,8 +48,7 @@ class NewBottleMessageViewController: UIViewController {
         self.bottleData.openMessage = message
         self.delegate?.send(self.bottleData ?? NewBottle())
         
-        self.fadeOut()
-        self.navigationController?.popViewController(animated: false)
+        self.navigationController?.popViewControllerWithFade()
     }
     
     /// 새 유리병 데이터를 코어데이터에 저장하고 홈 뷰 컨트롤러로 되돌아가는 save button 액션
@@ -124,8 +123,7 @@ class NewBottleMessageViewController: UIViewController {
             title: errorTitle,
             message: errorMessage
         ) { _ in
-            self.fadeOut()
-            self.navigationController?.popToRootViewController(animated: false)
+            self.navigationController?.popToRootViewControllerWithFade()
         }
         
         PersistenceStore.shared.delete(bottle)
@@ -141,8 +139,7 @@ class NewBottleMessageViewController: UIViewController {
             guard self.saveNewBottle() == true
             else { return }
             
-            self.fadeOut()
-            self.navigationController?.popToRootViewController(animated: false)
+            self.navigationController?.popToRootViewControllerWithFade()
         }
         
         let cancelAction = UIAlertAction.cancelAction { _ in

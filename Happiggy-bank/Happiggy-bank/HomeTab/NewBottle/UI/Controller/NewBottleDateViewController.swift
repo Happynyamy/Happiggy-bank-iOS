@@ -52,16 +52,13 @@ class NewBottleDateViewController: UIViewController {
         // 이전 화면으로 돌아가기
         self.delegate?.send(self.viewModel.bottleData ?? NewBottle())
         
-        self.fadeOut()
-        self.navigationController?.popViewController(animated: false)
+        self.navigationController?.popViewControllerWithFade()
     }
     
     /// 새 유리병 개봉 멘트 입력 뷰 컨트롤러로 이동하는 next button 액션
     @objc func nextButtonDidTap(_ sender: Any) {
-        self.fadeOut()
-        self.navigationController?.pushViewController(
-            prepareNextViewController(),
-            animated: false
+        self.navigationController?.pushViewControllerWithFade(
+            to: prepareNextViewController()
         )
     }
     
