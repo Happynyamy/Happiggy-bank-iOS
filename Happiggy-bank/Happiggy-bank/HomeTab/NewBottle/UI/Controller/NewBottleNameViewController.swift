@@ -38,8 +38,7 @@ final class NewBottleNameViewController: UIViewController {
     
     /// back 버튼이 눌렸을 때 호출되는 함수
     @objc func cancelButtonDidTap(_ sender: UIBarButtonItem) {
-        self.fadeOut()
-        self.navigationController?.popToRootViewController(animated: false)
+        self.navigationController?.popToRootViewControllerWithFade()
     }
     
     /// next 버튼이 눌렸을 때 호출되는 함수
@@ -53,9 +52,8 @@ final class NewBottleNameViewController: UIViewController {
             self.newBottleNameView.warningLabel.fadeIn()
         } else {
             self.newBottleNameView.textField.endEditing(true)
-            self.navigationController?.pushViewController(
-                prepareNextViewController(),
-                animated: false
+            self.navigationController?.pushViewControllerWithFade(
+                to: prepareNextViewController()
             )
         }
     }
@@ -151,9 +149,8 @@ extension NewBottleNameViewController: UITextFieldDelegate {
         if let text = self.newBottleNameView.textField.text,
            !text.isEmpty {
             self.newBottleNameView.textField.endEditing(true)
-            self.navigationController?.pushViewController(
-                prepareNextViewController(),
-                animated: false
+            self.navigationController?.pushViewControllerWithFade(
+                to: prepareNextViewController()
             )
             return true
         } else {
