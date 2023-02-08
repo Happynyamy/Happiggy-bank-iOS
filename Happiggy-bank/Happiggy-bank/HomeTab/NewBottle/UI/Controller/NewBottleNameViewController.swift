@@ -111,6 +111,7 @@ final class NewBottleNameViewController: UIViewController {
         )
     }
     
+    /// 다음 뷰 컨트롤러 설정
     private func prepareNextViewController() -> UIViewController {
         let newBottleDateViewController = NewBottleDateViewController()
         
