@@ -58,7 +58,11 @@ class NewBottleDateViewController: UIViewController {
     
     /// 새 유리병 개봉 멘트 입력 뷰 컨트롤러로 이동하는 next button 액션
     @objc func nextButtonDidTap(_ sender: Any) {
-        // navigate to newBottleMessageViewController
+        self.fadeOut()
+        self.navigationController?.pushViewController(
+            prepareNextViewController(),
+            animated: false
+        )
     }
     
     
@@ -136,6 +140,16 @@ class NewBottleDateViewController: UIViewController {
             make.width.equalTo(defaultHightlightView.snp.width)
             make.height.equalTo(defaultHightlightView.snp.height)
         }
+    }
+    
+    /// 다음 뷰 컨트롤러 설정
+    private func prepareNextViewController() -> UIViewController {
+        let newBottleMessageViewController = NewBottleMessageViewController()
+        
+        newBottleMessageViewController.delegate = self
+        newBottleMessageViewController.bottleData = self.viewModel.bottleData
+        
+        return newBottleMessageViewController
     }
 }
 

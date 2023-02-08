@@ -149,6 +149,8 @@
 		A819CF9F27DDD97C00DE8E72 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A819CF9E27DDD97C00DE8E72 /* HapticManager.swift */; };
 		A819CFA127DE034F00DE8E72 /* NewBottle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A819CFA027DE034F00DE8E72 /* NewBottle.swift */; };
 		A824A0B027CE72C000B99E9A /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = A824A0AF27CE72C000B99E9A /* Then */; };
+		A83CA2AF2993587300081E07 /* NewBottleMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83CA2AE2993587300081E07 /* NewBottleMessageView.swift */; };
+		A83CA2B1299359DB00081E07 /* NewBottleMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83CA2B0299359DB00081E07 /* NewBottleMessageViewController.swift */; };
 		A843331F27DA013800A12A54 /* NewBottleNameFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A843331E27DA013800A12A54 /* NewBottleNameFieldViewController.swift */; };
 		A843332127DA026D00A12A54 /* NewBottleDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A843332027DA026D00A12A54 /* NewBottleDatePickerViewController.swift */; };
 		A843332427DA397800A12A54 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A843332327DA397800A12A54 /* DataProvider.swift */; };
@@ -325,6 +327,8 @@
 		A81742FE27C108DC0016C921 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		A819CF9E27DDD97C00DE8E72 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		A819CFA027DE034F00DE8E72 /* NewBottle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBottle.swift; sourceTree = "<group>"; };
+		A83CA2AE2993587300081E07 /* NewBottleMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBottleMessageView.swift; sourceTree = "<group>"; };
+		A83CA2B0299359DB00081E07 /* NewBottleMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBottleMessageViewController.swift; sourceTree = "<group>"; };
 		A843331E27DA013800A12A54 /* NewBottleNameFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBottleNameFieldViewController.swift; sourceTree = "<group>"; };
 		A843332027DA026D00A12A54 /* NewBottleDatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBottleDatePickerViewController.swift; sourceTree = "<group>"; };
 		A843332327DA397800A12A54 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
@@ -570,6 +574,7 @@
 			children = (
 				A85B38852990CE7700ED8C72 /* NewBottleNameView.swift */,
 				A8D58DAF299286A700FD52A1 /* NewBottleDateView.swift */,
+				A83CA2AE2993587300081E07 /* NewBottleMessageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -853,6 +858,7 @@
 				A843332027DA026D00A12A54 /* NewBottleDatePickerViewController.swift */,
 				D236DB8727FDD66900D7B8F0 /* NewBottleMessageFieldViewController.swift */,
 				A8D58DB129928AA900FD52A1 /* NewBottleDateViewController.swift */,
+				A83CA2B0299359DB00081E07 /* NewBottleMessageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1393,12 +1399,14 @@
 				A47D834A296716BF0028AA1D /* FontCell.swift in Sources */,
 				A8BD834727BE337900E0DE41 /* HomeView.swift in Sources */,
 				A46B10FC28144D76004AB185 /* CustomTabBarController.swift in Sources */,
+				A83CA2AF2993587300081E07 /* NewBottleMessageView.swift in Sources */,
 				A484A31A295D756D00A58312 /* NetworkServiceable.swift in Sources */,
 				A484A33129608C8700A58312 /* SettingsTableViewCell.swift in Sources */,
 				A47D83612973C3990028AA1D /* FontManaging.swift in Sources */,
 				A484A3072958949700A58312 /* BaseTextField.swift in Sources */,
 				A4CF2C7C27C71FF5001B01B1 /* CATransition+PopupAnimation.swift in Sources */,
 				A49B25F42812FFB400399630 /* UILabel+Color.swift in Sources */,
+				A83CA2B1299359DB00081E07 /* NewBottleMessageViewController.swift in Sources */,
 				A8FC07C827B3ECF00077A758 /* AppDelegate.swift in Sources */,
 				A459003827E8D107003010A0 /* SettingsViewController.swift in Sources */,
 				A4C1AFCE27E4F8150096CD3E /* UIView+FadeInOut.swift in Sources */,
