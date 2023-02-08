@@ -52,18 +52,9 @@ final class NewBottleNameViewController: UIViewController {
             self.newBottleNameView.warningLabel.isHidden = false
             self.newBottleNameView.warningLabel.fadeIn()
         } else {
-            let newBottleDateViewController = NewBottleDateViewController()
-            
-            newBottleDateViewController.delegate = self
-            newBottleDateViewController.viewModel.bottleData = NewBottle(
-                name: self.newBottleNameView.textField.text,
-                periodIndex: self.bottleData?.periodIndex,
-                openMessage: self.bottleData?.openMessage
-            )
-            
             self.newBottleNameView.textField.endEditing(true)
             self.navigationController?.pushViewController(
-                newBottleDateViewController,
+                prepareNextViewController(),
                 animated: false
             )
         }
@@ -119,6 +110,19 @@ final class NewBottleNameViewController: UIViewController {
             for: .editingChanged
         )
     }
+    
+    private func prepareNextViewController() -> UIViewController {
+        let newBottleDateViewController = NewBottleDateViewController()
+        
+        newBottleDateViewController.delegate = self
+        newBottleDateViewController.viewModel.bottleData = NewBottle(
+            name: self.newBottleNameView.textField.text,
+            periodIndex: self.bottleData?.periodIndex,
+            openMessage: self.bottleData?.openMessage
+        )
+        
+        return newBottleDateViewController
+    }
 }
 
 extension NewBottleNameViewController: DataProvider {
@@ -145,10 +149,10 @@ extension NewBottleNameViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let text = self.newBottleNameView.textField.text,
            !text.isEmpty {
-            textField.endEditing(true)
-            self.performSegue(
-                withIdentifier: SegueIdentifier.presentNewBottleDatePicker,
-                sender: nil
+            self.newBottleNameView.textField.endEditing(true)
+            self.navigationController?.pushViewController(
+                prepareNextViewController(),
+                animated: false
             )
             return true
         } else {
