@@ -22,8 +22,6 @@ final class NewBottleNameViewController: UIViewController {
     // MARK: - Life Cycles
     
     override func loadView() {
-        super.loadView()
-        
         self.view = self.newBottleNameView
     }
     
