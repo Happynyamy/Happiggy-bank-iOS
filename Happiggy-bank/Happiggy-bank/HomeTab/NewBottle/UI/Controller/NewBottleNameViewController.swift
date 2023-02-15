@@ -7,9 +7,6 @@
 
 import UIKit
 
-// TODO: - 1. fade in 효과 적용
-// TODO: - 2. prepare에 해당하는 함수 정의
-
 final class NewBottleNameViewController: UIViewController {
     
     // MARK: - Properties

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewBottleMessageViewController: UIViewController {
+final class NewBottleMessageViewController: UIViewController {
 
     // MARK: - Properties
     

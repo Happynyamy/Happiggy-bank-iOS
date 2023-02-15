@@ -12,7 +12,7 @@ import SnapKit
 
 // MARK: - Ver2부터 뷰모델, 해당 뷰 컨트롤러, 뷰 모두 변경될 예정이라 코드 수정 별도로 안 했습니다
 
-class NewBottleDateViewController: UIViewController {
+final class NewBottleDateViewController: UIViewController {
     
     // MARK: - Properties
     
