@@ -29,8 +29,6 @@ class NewBottleDateViewController: UIViewController {
     // MARK: - Life Cycle
     
     override func loadView() {
-        super.loadView()
-        
         self.view = self.newBottleDateView
     }
     

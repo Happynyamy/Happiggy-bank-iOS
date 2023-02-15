@@ -24,8 +24,6 @@ class NewBottleMessageViewController: UIViewController {
     // MARK: - Life Cycles
     
     override func loadView() {
-        super.loadView()
-        
         self.view = self.newBottleMessageView
     }
     
