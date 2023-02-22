@@ -5,6 +5,7 @@
 //  Created by 권은빈 on 2023/01/12.
 //
 
+import CoreData
 import UIKit
 
 import SnapKit
@@ -22,7 +23,7 @@ final class ListTabViewController: UIViewController {
     }
     
     /// 뷰모델
-    private(set) var viewModel: BottleListViewModel = BottleListViewModel()
+    private(set) var viewModel: ListTabViewModel = ListTabViewModel()
     
     
     // MARK: - Lifecycle
@@ -38,6 +39,7 @@ final class ListTabViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.viewModel.controller.delegate = self
         configureNavigationBar()
         configureCollectionView()
         configureEmptyLabel()
@@ -73,7 +75,10 @@ final class ListTabViewController: UIViewController {
     
     /// 유리병 리스트가 차있는 경우, 테이블뷰에 표시되는 라벨 감추기
     private func hideEmptyListLabelIfNeeded() {
-        if !viewModel.bottleList.isEmpty {
+        guard let list = viewModel.bottleList
+        else { return }
+        
+        if !list.isEmpty {
             self.emptyListLabel.isHidden = true
         }
     }
@@ -117,7 +122,10 @@ extension ListTabViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return self.viewModel.bottleList.count
+        guard let list = self.viewModel.bottleList
+        else { return 0 }
+        
+        return list.count
     }
     
     func collectionView(
@@ -125,12 +133,14 @@ extension ListTabViewController: UICollectionViewDataSource {
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         
-        let bottle = viewModel.bottleList[indexPath.row]
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: BottleCollectionCell.name,
-            for: indexPath
-        ) as? BottleCollectionCell
+        guard let list = viewModel.bottleList,
+              let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: BottleCollectionCell.name,
+                for: indexPath
+              ) as? BottleCollectionCell
         else { return UICollectionViewCell() }
+        
+        let bottle = list[indexPath.row]
         
         cell.bottleTitleLabel.text = bottle.title
         cell.bottleDateLabel.text = bottle.dateLabel
@@ -151,6 +161,12 @@ extension ListTabViewController: UICollectionViewDelegate {
             UIViewController().then { $0.view.backgroundColor = .cyan },
             animated: false
         )
+    }
+}
+
+extension ListTabViewController: NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        collectionView.reloadData()
     }
 }
 
