@@ -31,6 +31,19 @@ final class PersistenceStore {
     
     weak var windowScene: UIWindowScene?
     
+    /// FetchedResultsController
+    lazy var controller: NSFetchedResultsController<Bottle> = {
+        let request = Bottle.fetchRequest(isOpen: true)
+        let controller = NSFetchedResultsController(
+            fetchRequest: request,
+            managedObjectContext: context,
+            sectionNameKeyPath: nil,
+            cacheName: nil
+        )
+        
+        return controller
+    }()
+    
     
     // MARK: - Init(s)
     private init(name: String) {
