@@ -20,6 +20,9 @@ final class NewBottleMessageViewController: UIViewController {
     /// 저금통 데이터 전달하는 델리게이트
     var delegate: DataProvider?
     
+    /// 뷰 모델
+    private var viewModel: NewBottleViewModel = NewBottleViewModel()
+    
     
     // MARK: - Life Cycles
     
@@ -87,46 +90,30 @@ final class NewBottleMessageViewController: UIViewController {
     
     // MARK: - Functions
     
-    // TODO: - fetchedResultsController로 변경
+    // TODO: - check -> save -> alert -> root 되는 과정 다시 손보기..
+    
     /// 새 저금통 저장하는 메서드
-    private func saveNewBottle() -> Bool {
+    private func checkNewBottleData() -> Bool {
         self.bottleData.openMessage = self.newBottleMessageView.textField.text
+        let result = self.viewModel.createNewBottle(with: self.bottleData)
         
-        guard let title = self.bottleData?.name,
-              let endDate = self.bottleData?.endDate
-        else { return false }
-        
-        var bottle: Bottle
-        
-        if let openMessage = self.bottleData.openMessage, !openMessage.isEmpty {
-            bottle = Bottle(
-                title: title,
-                startDate: Date(),
-                endDate: endDate,
-                message: openMessage
-            )
-        } else {
-            bottle = Bottle(
-                title: title,
-                startDate: Date(),
-                endDate: endDate,
-                message: Text.defaultMessage
-            )
+        switch result {
+        case .success:
+            if saveBottle() == true { return true }
+            else { return false }
+        case .failure:
+            self.present(invalidDataFailureAlert(), animated: false)
+            return false
         }
-        
-        guard let (errorTitle, errorMessage) = PersistenceStore.shared.saveOld()
-        else { return true }
-        
-        let alert = PersistenceStore.shared.makeErrorAlert(
-            title: errorTitle,
-            message: errorMessage
-        ) { _ in
-            self.navigationController?.popToRootViewControllerWithFade()
+    }
+    
+    private func saveBottle() -> Bool {
+        switch PersistenceStore.shared.save() {
+        case .success:
+            return true
+        case .failure:
+            return false
         }
-        
-        PersistenceStore.shared.delete(bottle)
-        self.present(alert, animated: true)
-        return false
     }
     
     /// 생성 확인 알림을 나타냄
@@ -134,9 +121,8 @@ final class NewBottleMessageViewController: UIViewController {
         let confirmAction = UIAlertAction.confirmAction(
             title: Text.confirmationAlertConfirmButtonTitle
         ) { _ in
-            guard self.saveNewBottle() == true
-            else { return }
-            
+            guard self.checkNewBottleData() == true
+            else { fatalError("Save failed") }
             self.navigationController?.popToRootViewControllerWithFade()
         }
         
@@ -148,6 +134,32 @@ final class NewBottleMessageViewController: UIViewController {
             alertTitle: Text.confirmationAlertTitle,
             alertMessage: Text.confirmationAlertMessage,
             confirmAction: confirmAction,
+            cancelAction: cancelAction
+        )
+    }
+    
+    /// 데이터가 조건에 맞지 않을 때 나타나는 알림
+    private func invalidDataFailureAlert() -> UIAlertController {
+        let cancelAction = UIAlertAction.cancelAction { _ in
+            self.newBottleMessageView.textField.becomeFirstResponder()
+        }
+        
+        return UIAlertController.cancel(
+            alertTitle: Text.cancelAlertTitle,
+            alertMessage: Text.cancelAlertMessage,
+            cancelAction: cancelAction
+        )
+    }
+    
+    /// 에러 발생시 나타나는 알림
+    private func fetchFailureAlert() -> UIAlertController {
+        let cancelAction = UIAlertAction.cancelAction { _ in
+            self.newBottleMessageView.textField.becomeFirstResponder()
+        }
+        
+        return UIAlertController.cancel(
+            alertTitle: Text.errorAlertTitle,
+            alertMessage: Text.errorAlertMessage,
             cancelAction: cancelAction
         )
     }
@@ -250,5 +262,20 @@ extension NewBottleMessageViewController {
         
         /// 생성 확인 알림 확인 버튼 제목: 추가
         static let confirmationAlertConfirmButtonTitle = "추가"
+        
+        /// 생성 정보 부적합 알림 제목
+        static let cancelAlertTitle = "정보가 정상적으로 입력되지 않았습니다."
+        
+        /// 생성 정보 부적합 알림 내용
+        static let cancelAlertMessage = "저금통 이름, 날짜, 개봉 메시지를 다시 확인해주세요."
+        
+        /// 정보 저장 실패 알림 제목
+        static let errorAlertTitle: String = "변경사항 저장에 실패했습니다"
+        
+        /// 정보 저장 실패 알림 내용
+        static let errorAlertMessage: String = """
+        디바이스의 저장 공간이 충분한지 확인해주세요.
+        같은 문제가 계속 발생하는 경우 \(teamMail) 으로 문의 부탁드립니다.
+        """
     }
 }
