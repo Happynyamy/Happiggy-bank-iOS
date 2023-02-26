@@ -34,4 +34,26 @@ extension UIAlertController {
         
         return alert
     }
+    
+    /// 취소 버튼만 있는 알림 컨트롤러 생성
+    /// failuer에 알림 보내기 용이
+    static func cancel(
+        alertTitle: String? = nil,
+        alertMessage: String? = nil,
+        preferredStyle: UIAlertController.Style = .alert,
+        cancelAction: UIAlertAction? = nil
+    ) -> UIAlertController {
+        
+        let alert = UIAlertController(
+            title: alertTitle,
+            message: alertMessage,
+            preferredStyle: preferredStyle
+        )
+        
+        if let cancelAction = cancelAction {
+            alert.addAction(cancelAction)
+        }
+        
+        return alert
+    }
 }
