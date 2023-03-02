@@ -156,16 +156,77 @@ public class Bottle: NSManagedObject {
 }
 
 // TODO: 목데이터 - 추후 삭제
+
+enum FooBottleDuration: Int, CaseIterable {
+    case week = 7
+    case month = 30
+    case threeMonths = 90
+    case halfYear = 180
+    case year = 365
+}
+
 extension Bottle {
-    
-    // swiftlint:disable line_length
-    private static func nthDayFromToday(_ value: Int) -> Date {
-        Calendar.current.date(byAdding: .day, value: value, to: Date())!
+
+    /// 모든 기간 저금통 배열
+    static let fooOpenBottles = FooBottleDuration.allCases
+        .shuffled()
+        .enumerated()
+        .map { fooOpened(duration: $0.element, openedNdaysBefore: UInt8($0.offset)) }
+
+    /// 인자를 별도로 설정하지 않으면 하루 전이 종료일이었던 1년 짜리 저금통 리턴
+    static func fooOpened(duration: FooBottleDuration = .year, openedNdaysBefore: UInt8 = 1) -> Bottle {
+        let daysPassed = Int(openedNdaysBefore) + duration.rawValue
+        let startDate = nthDayFromDate(value: -daysPassed)
+        let endDate = Calendar.current.startOfDay(for: nthDayFromDate(startDate, value: duration.rawValue))
+
+        let bottle = Bottle(
+            title: "\(duration.rawValue) 가짜냠냠이🥸",
+            startDate: startDate,
+            endDate: endDate,
+            message: "축 가짜 냠냠이 개봉🎉"
+        )
+        bottle.isOpen = true
+
+        for index in 0..<duration.rawValue {
+            Note.createRandomNote(for: bottle, date: nthDayFromDate(startDate, value: index))
+        }
+
+        return bottle
     }
+
+    /// 인자를 별도로 설정하지 않으면 종료까지 이틀 남은 1년 짜리 저금통 리턴
+    static func fooInProgress(duration: FooBottleDuration = .year, daysLeft: UInt8 = 2) -> Bottle {
+        let daysLeft = 0..<duration.rawValue ~= Int(daysLeft) ? Int(daysLeft) : 2
+        let daysPassed = duration.rawValue - daysLeft
+        let startDate = nthDayFromDate(value: -daysPassed)
+        let endDate = Calendar.current.startOfDay(for: nthDayFromDate(startDate, value: duration.rawValue))
+
+        let bottle = Bottle(
+            title: "가짜냠냠이🥸",
+            startDate: startDate,
+            endDate: endDate,
+            message: "축 가짜 냠냠이 개봉🎉"
+        )
+
+        for index in 0..<daysPassed {
+            Note.createRandomNote(for: bottle, date: nthDayFromDate(startDate, value: index))
+        }
+
+        return bottle
+    }
+
+    private static func nthDayFromDate(_ date: Date = Date(), value: Int) -> Date {
+        Calendar.current.date(byAdding: .day, value: value, to: date)!
+    }
+
+
+    // MARK: - Old Version
+
+    // swiftlint:disable line_length
     
     private static func makeMockData(duration: Int, isOpen: Bool = true) -> Bottle {
-        let startDate = nthDayFromToday(-duration)
-        let endDate = nthDayFromToday(-1)
+        let startDate = nthDayFromDate(value: -duration)
+        let endDate = nthDayFromDate(value: -1)
         
         let bottle = Bottle(
             title: "행복냠냠이",
@@ -184,7 +245,7 @@ extension Bottle {
         for index in -count..<0 {
             Note.create(
                 id: UUID(),
-                date: nthDayFromToday(index),
+                date: nthDayFromDate(value: index),
                 color: NoteColor.allCases.randomElement()!,
                 content:
                     "일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십",
@@ -192,37 +253,27 @@ extension Bottle {
             )
         }
     }
-    
-    static let fooOpenBottles: [Bottle] = {
-        var bottles = [Bottle]()
-        
-        for duration in [365, 90, 60, 30, 7] {
-            bottles.append(makeMockData(duration: duration))
-        }
-        
-        return bottles
-    }()
-    
+
     /// 테스트용 목 데이터
     static let foo: Bottle = {
         let count = 300
-        let startDate = nthDayFromToday(-count)
-        let endDate = nthDayFromToday(5)
+        let startDate = nthDayFromDate(value: -count)
+        let endDate = nthDayFromDate(value: 5)
 //        let endDate = nthDayFromToday(10)
         
         let bottle = Bottle(title: "행복냠냠이", startDate: startDate, endDate: endDate, message: "마지막멘트")
         
         // swiftlint:disable line_length
         Note.create(id: UUID(), date: startDate, color: NoteColor.green, content: "시작!", bottle: bottle)
-        Note.create(id: UUID(), date: nthDayFromToday(-9), color: NoteColor.pink, content: "일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십", bottle: bottle)
-        Note.create(id: UUID(), date: nthDayFromToday(-3), color: NoteColor.white, content: "100자 좀 적은가? 근데 괜찮은 것 같기도 하고...늘리기는 또 귀찮은데...", bottle: bottle)
-        Note.create(id: UUID(), date: nthDayFromToday(-8), color: NoteColor.purple, content: "왜냐면 한줄만 쓰는 날도 백퍼 있을 것이기 때문", bottle: bottle)
-        Note.create(id: UUID(), date: nthDayFromToday(-1), color: NoteColor.yellow, content: "졸리다 졸려 졸려", bottle: bottle)
-        Note.create(id: UUID(), date: nthDayFromToday(0), color: NoteColor.yellow, content: "누가 뚝딱 만들어주면 좋겠다 한 3줄 정도까지 채우고 싶은데 아무거나 써보기 이모지도 써보기 시험 시험 테스트 ☀️", bottle: bottle)
+        Note.create(id: UUID(), date: nthDayFromDate(value: -9), color: NoteColor.pink, content: "일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십", bottle: bottle)
+        Note.create(id: UUID(), date: nthDayFromDate(value: -3), color: NoteColor.white, content: "100자 좀 적은가? 근데 괜찮은 것 같기도 하고...늘리기는 또 귀찮은데...", bottle: bottle)
+        Note.create(id: UUID(), date: nthDayFromDate(value: -8), color: NoteColor.purple, content: "왜냐면 한줄만 쓰는 날도 백퍼 있을 것이기 때문", bottle: bottle)
+        Note.create(id: UUID(), date: nthDayFromDate(value: -1), color: NoteColor.yellow, content: "졸리다 졸려 졸려", bottle: bottle)
+        Note.create(id: UUID(), date: nthDayFromDate(value: 0), color: NoteColor.yellow, content: "누가 뚝딱 만들어주면 좋겠다 한 3줄 정도까지 채우고 싶은데 아무거나 써보기 이모지도 써보기 시험 시험 테스트 ☀️", bottle: bottle)
         for index in (10-count)..<(-10) {
             let note = Note.create(
                 id: UUID(),
-                date: nthDayFromToday(index),
+                date: nthDayFromDate(value: index),
                 color: NoteColor.allCases.randomElement()!,
                 content: "일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십",
                 bottle: bottle)

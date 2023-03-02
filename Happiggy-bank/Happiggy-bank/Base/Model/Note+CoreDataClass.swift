@@ -112,3 +112,121 @@ public class Note: NSManagedObject {
         return firstWord
     }()
 }
+
+// MARK: - Mock Data
+
+extension Note {
+
+    private static let lyrics = { """
+    🍎
+    I'm standing on the edge 🙌
+    난 가장 높은 곳에서 123
+    456 Everything is upside down
+    ☺️ 두렵지 않아 break it down
+    당당히 서 있어 ✅ with my toes
+    Everybody listen up now
+    No 더 이상은 no turnin' back
+    No turnin' 🔥back, no turnin' back
+    789 No, don't be scared
+    003 아슬하게, 아찔하게 ˊ°̮ˋ
+    두 손을 펼쳐 12329 up in the air
+    Up in the air☀️, up in the air
+    망설이지 마, 뭐 어때? (‘∀`)ゝ”
+    When I move (  ¯⌓¯)
+    너의 body를 흔들어봐 🤬 when I move
+    When I move ~!@!)(
+    더 자유롭게 breakin' all the rules
+    When I 🤬 moveXD
+    리듬에 맡겨 느낀 그대로 🥬
+    이런 move 나의 move $%#^@$
+    Oh, when I move:(
+    Oh, whats the problem? ː̗̀(ꙨꙨ)ː̖́
+    점점 빠져드는 123~~~ 이 공간의 flow
+    나조차도 어림잡지 못해 out of my control
+    홀린 듯 몸을 맡겨, 이 끌림이 싫진 않잖아
+    그치? 🎉 나를 따라 너를 던져봐 (너를 던져봐)
+    No 더 이상은 no 10^^ turnin' back
+    No turnin' back, no turnin' back
+    No, don't be scared:)
+    아슬하게,✿◕ ‿ ◕✿ 아찔하게
+    두 손을 펼쳐 up in the air 🥳
+    Up in the air, up in the air
+    ヽ(ﾟДﾟ)ﾉ 망설이지 마 we just dance~~~
+    When I move📱
+    너의 body를 흔들어봐 when I move
+    When I move ʕ•ᴥ•ʔ
+    더 자유롭게 breakin' all the rules
+    When I move!!#$%^&*()_+~
+    리듬에 맡겨 느낀 그대로
+    이런 ❁_❁ move 나의 move
+    Oh, when ✉️ I move
+    다시 move again 109238
+    We 1231waited for this time
+    아찔하게 흔들어 roller coaster ride
+    😃아스팔트에서 피운 꽃 strong survive
+    ≧◡≦ 춤춰봐, 더 자유롭게 미쳐봐
+    Shake your body, bounce your body
+    왔어 우리에게 너무 좋은 날이 (날이)
+    Move your body 들려, 내 말이?
+    너가 원했던 이 순간이🍎☺️🧐💤👏
+    멈추지 마, 계속 on my way
+    I'll never look back oh, baby
+    움츠렸던 마음을 녹여, 어제의 너를 잊어
+    Moving (๑°ㅁ°๑)‼✧ on baby 셣
+    When I (ง︡'-'︠)ง (move)
+    너의 body를 🫥흔들어봐 when I move
+    When I move (and I move, and I move)
+    더 자유롭게 🧚‍♀️ breakin' all the rules
+    When I (〃⌒▽⌒〃)ゝ move fJDAF
+    ( °࿁° ) 리듬에 맡겨 느낀 그대로 뷁
+    이런 move 🧶 나의 move $#@$*
+    Oh, when 🐱 I move
+    When I move !@FDSfhi
+    😎 끝까지 손을 뻗어 when I move
+    When I move 그래~~~욜ㅇ뛣
+    We goin' higher breakin' all the rules
+    Watch 🧐me move
+    널 사로잡은 우리만의 move ( ͡❛ ͜ʖ ͡❛)
+    When I move, when I move
+    Oh, when I move 띠용 🥰
+    """
+        .split(separator: "\n")
+        .map { String($0) } + Array(repeating: "\n", count: 10)
+    }()
+
+    /// 인자를 별도로 설정하지 않으면 오늘 날짜의 3줄 짜리 사진이 있는 노랑 쪽지 리턴
+    @discardableResult
+    static func createMockNote(
+        for bottle: Bottle,
+        date: Date,
+        numberOfLines: Int = 3,
+        hasPhoto: Bool = true,
+        color: NoteColor = .yellow
+    ) -> Note {
+        let imageURL = hasPhoto ? "someURL" : nil
+        let numberOfLines = 1...20 ~= numberOfLines ? numberOfLines : 1
+        let lyrics = lyrics.shuffled()
+        let content = (0..<numberOfLines).map { lyrics[$0] }
+
+        return Note.create(
+            id: UUID(),
+            date: date,
+            color: color,
+            content: content.joined(separator: "\n"),
+            imageURL: imageURL,
+            bottle: bottle
+        )
+    }
+
+    /// 줄 수와 색상과 사진 여부가 랜덤이 쪽지 리턴
+    @discardableResult
+    static func createRandomNote(for bottle: Bottle, date: Date) -> Note {
+        createMockNote(
+            for: bottle,
+            date: date,
+            numberOfLines: (1...20).randomElement()!,
+            hasPhoto: [true, false].randomElement()!,
+            color: NoteColor.allCases.randomElement()!
+        )
+    }
+}
