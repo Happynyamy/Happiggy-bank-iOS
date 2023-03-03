@@ -30,14 +30,12 @@ final class CustomTabBar: UITabBar {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.configureDivider()
         self.configureItemPositionsIfNeeded()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        
-        self.configureDivider()
+
         self.configureItemPositionsIfNeeded()
     }
     
@@ -56,21 +54,7 @@ final class CustomTabBar: UITabBar {
 
     
     // MARK: - Functions
-    
-    /// 상단에 구분선 생성
-    private func configureDivider() {
-        let dividerView = UIView().then {
-            $0.frame = CGRect(
-                x: .zero,
-                y: .zero,
-                width: UIScreen.main.bounds.width,
-                height: .one
-            )
-            $0.backgroundColor = .tabBarDivider
-        }
-        self.addSubview(dividerView)
-    }
-    
+
     /// 탭 아이템 위치 조정
     private func configureItemPositionsIfNeeded() {
         guard UIScreen.main.bounds.height >= Metric.heightCap

@@ -23,6 +23,7 @@ final class CustomNavigationController: UINavigationController {
         self.fontManager = fontManager
 
         super.init(rootViewController: rootViewController)
+        self.view.backgroundColor = .systemBackground
     }
 
     @available(*, unavailable)
@@ -36,11 +37,23 @@ final class CustomNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.configureNavigationBar()
         self.subscribeToFontPublisher()
     }
 
 
     // MARK: - Functions
+
+    private func configureNavigationBar() {
+        self.navigationBar.standardAppearance = self.navigationBar.standardAppearance.then {
+            $0.shadowColor = .clear
+            $0.backgroundEffect = .none
+            $0.backgroundColor = .systemBackground
+
+            // FIXME: 정렬이 이상함...
+            $0.setBackIndicatorImage(AssetImage.back, transitionMaskImage: AssetImage.back)
+        }
+    }
 
     private func subscribeToFontPublisher() {
         self.cancellable = fontManager.fontPublisher
@@ -54,6 +67,9 @@ final class CustomNavigationController: UINavigationController {
             return
         }
 
-        self.navigationBar.titleTextAttributes = [.font: font]
+        self.navigationBar.standardAppearance = self.navigationBar.standardAppearance.then {
+            $0.titleTextAttributes = [.font: font]
+            $0.largeTitleTextAttributes = [.font: font]
+        }
     }
 }

@@ -32,32 +32,48 @@ final class CustomTabBarController: UITabBarController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    
+
     // MARK: - Life cycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.configureTabBar()
     }
 
-    
+
     // MARK: - Functions
-    
+
     /// 탭 바 초기 설정
     private func configureTabBar() {
         self.configureBasicSettings()
         self.subscribeToFontPublisher()
         self.setNavigationControllers()
     }
-    
+
     /// 탭 바 기본 설정
     private func configureBasicSettings() {
         object_setClass(self.tabBar, CustomTabBar.self)
         self.view.backgroundColor = .systemBackground
         self.tabBar.backgroundColor = .systemBackground
         self.tabBar.isTranslucent = false
+        self.tabBar.standardAppearance = self.tabBar.standardAppearance.then {
+            $0.shadowColor = .clear
+            $0.backgroundEffect = .none
+        }
+        self.configureDivider()
     }
+
+    /// 탭 바 상단에 경계선 생성
+    private func configureDivider() {
+        let dividerView = UIView().then { $0.backgroundColor = AssetColor.subGrayBG }
+        self.tabBar.addSubview(dividerView)
+        dividerView.snp.makeConstraints {
+            $0.horizontalEdges.top.equalToSuperview()
+            $0.height.equalTo(CGFloat.one)
+        }
+    }
+
 
     private func subscribeToFontPublisher() {
         self.cancellable = fontManager.fontPublisher
@@ -71,9 +87,12 @@ final class CustomTabBarController: UITabBarController {
             return
         }
 
-        UITabBarItem.appearance().setTitleTextAttributes([.font: font], for: .normal)
+        self.tabBar.standardAppearance = self.tabBar.standardAppearance.then {
+            $0.stackedLayoutAppearance.normal.titleTextAttributes = [.font: font]
+            $0.stackedLayoutAppearance.selected.titleTextAttributes = [.font: font]
+        }
     }
-    
+
     // TODO: - 각 NavigationController에 들어갈 ViewController 수정/교체
     /// 탭 바의 내비게이션 컨트롤러 배열 설정
     private func setNavigationControllers() {
@@ -95,7 +114,7 @@ final class CustomTabBarController: UITabBarController {
             )
         ]
     }
-    
+
     /// 각 내비게이션 컨트롤러 기본 설정
     fileprivate func createNavigationController(
         for rootViewController: UIViewController,
@@ -117,12 +136,12 @@ final class CustomTabBarController: UITabBarController {
 
 
 extension CustomTabBarController {
-    
+
     enum Tab: Int {
         case home
         case list
         case settings
-        
+
         /// 탭 바 아이템 타이틀
         var title: String {
             switch self {
@@ -134,7 +153,7 @@ extension CustomTabBarController {
                 return "환경설정"
             }
         }
-        
+
         /// 탭 바 아이템 이미지
         var image: UIImage? {
             switch self {
