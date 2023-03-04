@@ -13,8 +13,8 @@
 		A41DE62B27F36E95002A7669 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41DE62927F36E95002A7669 /* NoteCell.swift */; };
 		A41DE62E27F5F2C1002A7669 /* UIView+ZoomAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41DE62D27F5F2C1002A7669 /* UIView+ZoomAnimation.swift */; };
 		A41DE63227F80115002A7669 /* BottleMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41DE63127F80115002A7669 /* BottleMessageViewController.swift */; };
-		A425F8B627EDF4FB00A005AB /* TagViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A425F8B527EDF4FB00A005AB /* TagViewFlowLayout.swift */; };
-		A425F8B827EDF59A00A005AB /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A425F8B727EDF59A00A005AB /* TagCell.swift */; };
+		A425F8B627EDF4FB00A005AB /* NotePreviewListFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A425F8B527EDF4FB00A005AB /* NotePreviewListFlowLayout.swift */; };
+		A425F8B827EDF59A00A005AB /* NotePreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A425F8B727EDF59A00A005AB /* NotePreviewCell.swift */; };
 		A4396B1929323131005D9D3A /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4396B1829323131005D9D3A /* ImageManager.swift */; };
 		A4396B1B29325D70005D9D3A /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4396B1A29325D70005D9D3A /* PhotoViewController.swift */; };
 		A439F53A27EEFC28002851F4 /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A439F53927EEFC27002851F4 /* SettingsViewCell.swift */; };
@@ -88,8 +88,8 @@
 		A484A33129608C8700A58312 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A484A33029608C8700A58312 /* SettingsTableViewCell.swift */; };
 		A484A33329608D1700A58312 /* SettingsTableViewButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A484A33229608D1700A58312 /* SettingsTableViewButtonCell.swift */; };
 		A48E183A27E71D9300B44477 /* UILabel+ParagraphStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E183927E71D9300B44477 /* UILabel+ParagraphStyle.swift */; };
-		A490AC4E27DD945E00B04CE1 /* NoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A490AC4D27DD945E00B04CE1 /* NoteListViewController.swift */; };
-		A490AC5027DD9D2E00B04CE1 /* NoteListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A490AC4F27DD9D2E00B04CE1 /* NoteListViewModel.swift */; };
+		A490AC4E27DD945E00B04CE1 /* NotePreviewListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A490AC4D27DD945E00B04CE1 /* NotePreviewListController.swift */; };
+		A490AC5027DD9D2E00B04CE1 /* NotePreviewListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A490AC4F27DD9D2E00B04CE1 /* NotePreviewListViewModel.swift */; };
 		A491018527D6EDE90012DFDD /* PersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A491018427D6EDE90012DFDD /* PersistenceStore.swift */; };
 		A491018727D6F37C0012DFDD /* NSObject+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = A491018627D6F37C0012DFDD /* NSObject+Name.swift */; };
 		A491018D27D7358B0012DFDD /* Bottle+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A491018C27D7358B0012DFDD /* Bottle+CoreDataClass.swift */; };
@@ -194,8 +194,8 @@
 		A41DE62927F36E95002A7669 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		A41DE62D27F5F2C1002A7669 /* UIView+ZoomAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ZoomAnimation.swift"; sourceTree = "<group>"; };
 		A41DE63127F80115002A7669 /* BottleMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleMessageViewController.swift; sourceTree = "<group>"; };
-		A425F8B527EDF4FB00A005AB /* TagViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewFlowLayout.swift; sourceTree = "<group>"; };
-		A425F8B727EDF59A00A005AB /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
+		A425F8B527EDF4FB00A005AB /* NotePreviewListFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePreviewListFlowLayout.swift; sourceTree = "<group>"; };
+		A425F8B727EDF59A00A005AB /* NotePreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePreviewCell.swift; sourceTree = "<group>"; };
 		A4396B1829323131005D9D3A /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		A4396B1A29325D70005D9D3A /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		A439F53927EEFC27002851F4 /* SettingsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
@@ -268,8 +268,8 @@
 		A484A33029608C8700A58312 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		A484A33229608D1700A58312 /* SettingsTableViewButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewButtonCell.swift; sourceTree = "<group>"; };
 		A48E183927E71D9300B44477 /* UILabel+ParagraphStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+ParagraphStyle.swift"; sourceTree = "<group>"; };
-		A490AC4D27DD945E00B04CE1 /* NoteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewController.swift; sourceTree = "<group>"; };
-		A490AC4F27DD9D2E00B04CE1 /* NoteListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewModel.swift; sourceTree = "<group>"; };
+		A490AC4D27DD945E00B04CE1 /* NotePreviewListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePreviewListController.swift; sourceTree = "<group>"; };
+		A490AC4F27DD9D2E00B04CE1 /* NotePreviewListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePreviewListViewModel.swift; sourceTree = "<group>"; };
 		A491018427D6EDE90012DFDD /* PersistenceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceStore.swift; sourceTree = "<group>"; };
 		A491018627D6F37C0012DFDD /* NSObject+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Name.swift"; sourceTree = "<group>"; };
 		A491018C27D7358B0012DFDD /* Bottle+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bottle+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -455,7 +455,7 @@
 		A4450C082966AF1A0088CC2C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				A490AC4F27DD9D2E00B04CE1 /* NoteListViewModel.swift */,
+				A490AC4F27DD9D2E00B04CE1 /* NotePreviewListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -604,7 +604,7 @@
 		A896FBD52966B19600A3400B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A490AC4D27DD945E00B04CE1 /* NoteListViewController.swift */,
+				A490AC4D27DD945E00B04CE1 /* NotePreviewListController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -612,8 +612,8 @@
 		A896FBD62966B19A00A3400B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A425F8B527EDF4FB00A005AB /* TagViewFlowLayout.swift */,
-				A425F8B727EDF59A00A005AB /* TagCell.swift */,
+				A425F8B527EDF4FB00A005AB /* NotePreviewListFlowLayout.swift */,
+				A425F8B727EDF59A00A005AB /* NotePreviewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1372,7 +1372,7 @@
 			files = (
 				A47D83462966C0C60028AA1D /* NotificationSettingsViewModel.swift in Sources */,
 				A81148E0295571A2004A35E7 /* HomeTabViewController.swift in Sources */,
-				A425F8B827EDF59A00A005AB /* TagCell.swift in Sources */,
+				A425F8B827EDF59A00A005AB /* NotePreviewCell.swift in Sources */,
 				A4B2860F27D9F539008769EB /* NewNoteDatePickerViewModel.swift in Sources */,
 				A85B38862990CE7700ED8C72 /* NewBottleNameView.swift in Sources */,
 				A467B5C827DA258700AC702D /* NewNoteDatePickerRowView.swift in Sources */,
@@ -1399,7 +1399,7 @@
 				D236DB8827FDD66900D7B8F0 /* NewBottleMessageFieldViewController.swift in Sources */,
 				A484A313295A972200A58312 /* Array+SafeIndex.swift in Sources */,
 				A4569CCA28113F0F001E3FD6 /* NSMutableAttributedString+Hyperlink.swift in Sources */,
-				A490AC4E27DD945E00B04CE1 /* NoteListViewController.swift in Sources */,
+				A490AC4E27DD945E00B04CE1 /* NotePreviewListController.swift in Sources */,
 				A47D83542973A4860028AA1D /* FontPublishing.swift in Sources */,
 				A4D357E0283A43C7007819E3 /* UIViewController+VersionUpdating.swift in Sources */,
 				A47D834A296716BF0028AA1D /* FontCell.swift in Sources */,
@@ -1470,7 +1470,7 @@
 				A484A3032958936300A58312 /* BaseLabel.swift in Sources */,
 				A484A320295D7B2A00A58312 /* Requestable.swift in Sources */,
 				A41A506F27FF2B2E005381EF /* CustomTabBar.swift in Sources */,
-				A490AC5027DD9D2E00B04CE1 /* NoteListViewModel.swift in Sources */,
+				A490AC5027DD9D2E00B04CE1 /* NotePreviewListViewModel.swift in Sources */,
 				A4569CB8280FB979001E3FD6 /* Presenter.swift in Sources */,
 				A466A3182801E99500D655F4 /* SettingsViewModel.swift in Sources */,
 				A4F5714927DA589100E7DF9B /* NoteDatePickerData.swift in Sources */,
@@ -1480,7 +1480,7 @@
 				A8EB5E8B27C8B087005704F2 /* UIButton+Extension.swift in Sources */,
 				A843331F27DA013800A12A54 /* NewBottleNameFieldViewController.swift in Sources */,
 				A459003C27E9C5C9003010A0 /* CGSize+Area.swift in Sources */,
-				A425F8B627EDF4FB00A005AB /* TagViewFlowLayout.swift in Sources */,
+				A425F8B627EDF4FB00A005AB /* NotePreviewListFlowLayout.swift in Sources */,
 				A4C1AFC427E47DC50096CD3E /* String+NSMutableAttributedStringify.swift in Sources */,
 				A484A33329608D1700A58312 /* SettingsTableViewButtonCell.swift in Sources */,
 				A46B10EC2813E73F004AB185 /* UserDefaults+Keys.swift in Sources */,

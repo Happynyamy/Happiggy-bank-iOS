@@ -1,5 +1,5 @@
 //
-//  TagCell.swift
+//  NotePreviewCell.swift
 //  Happiggy-bank
 //
 //  Created by sun on 2022/03/25.
@@ -7,15 +7,19 @@
 
 import UIKit
 
-/// NoteCollectionView 에서 사용하는 셀
-final class TagCell: UICollectionViewCell {
+import SnapKit
+import Then
+
+/// NoteDetailListView 에서 사용하는 셀
+final class NotePreviewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
     /// 첫 단어 라벨
-    let firstWordLabel = UILabel().then {
-        $0.font = .boldSystemFont(ofSize: Font.firstWordLabel)
+    let firstWordLabel = BaseLabel().then {
         $0.textAlignment = .center
+        $0.changeFontSize(to: FontSize.body1)
+        $0.bold()
     }
     
     
@@ -27,7 +31,8 @@ final class TagCell: UICollectionViewCell {
         self.configureHierarchy()
         self.configureFirstWordLabelConstraints()
     }
-    
+
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
@@ -47,18 +52,11 @@ final class TagCell: UICollectionViewCell {
     
     /// 뷰 체계 설정
     private func configureHierarchy() {
-        self.firstWordLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         self.contentView.addSubview(self.firstWordLabel)
     }
     
     /// 단어 라벨 오토레이아웃
     private func configureFirstWordLabelConstraints() {
-        NSLayoutConstraint.activate([
-            self.firstWordLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            self.firstWordLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.firstWordLabel.topAnchor.constraint(equalTo: self.topAnchor),
-            self.firstWordLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-        ])
+        self.firstWordLabel.snp.makeConstraints { $0.edges.equalTo(self.contentView) }
     }
 }

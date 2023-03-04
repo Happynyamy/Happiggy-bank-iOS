@@ -412,36 +412,6 @@ enum Asset: String {
     case settings
 }
 
-extension NoteListViewController {
-    
-    /// NoteListViewController 에서 사용하는 상수값
-    enum Metric {
-        
-        /// 첫 단어 라벨 위아래 패딩: 16
-        static let firstWordLabelVerticalPadding: CGFloat = 16
-        
-        /// 첫 단어 라벨 좌우 패딩: 24
-        static let firstWordLabelHorizontalPadding: CGFloat = 24
-        
-        /// 2
-        static let two = 2.0
-        
-    }
-    
-    /// 줌 애니메이션
-    enum ZoomAnimation {
-        
-        /// 화면이 최초로 나타날 때 줌 효과 시간: 0.5
-        static let initialDisplayDuration: CGFloat = 0.5
-        
-        /// 순차적 효과를 위한 딜레이: 0.1
-        static let initialDisplayDelayBase: TimeInterval = 0.1
-        
-        /// 셀 선택 시 줌 효과 시간: 0.3
-        static let selectionDuration: Double = 0.3
-    }
-}
-
 extension NewNoteTextViewController {
     
     /// NewNoteTextViewController에서 사용하는 상수값
@@ -518,16 +488,6 @@ extension NewNoteDatePickerViewModel {
     }
 }
 
-extension NoteListViewModel {
-    
-    /// NoteListViewModel 에서 사용하는 문자열
-    enum StringLiteral {
-        
-        /// 쪽지 개수 라벨에서 개수 뒤에 붙일 문자열: 리턴 "행복 n개"
-        static func noteCountLabelString(count: Int) -> String { "행복 \(count)개" }
-    }
-}
-
 extension NewNoteTextViewModel {
     
     /// NewNoteTextViewModel 에서 사용하는 문자열
@@ -548,16 +508,6 @@ extension NewNoteTextViewModel {
     }
 }
 
-extension TagCell {
-    
-    /// TagCell 폰트
-    enum Font {
-        
-        /// 첫 단어 라벨 폰트 크기: 18
-        static let firstWordLabel: CGFloat = 18
-    }
-}
-
 extension SettingsViewCell {
     
     /// 상수값
@@ -567,7 +517,6 @@ extension SettingsViewCell {
         static let HorizontalPadding: CGFloat = 24
     }
 }
-
 
 extension NoteView {
     

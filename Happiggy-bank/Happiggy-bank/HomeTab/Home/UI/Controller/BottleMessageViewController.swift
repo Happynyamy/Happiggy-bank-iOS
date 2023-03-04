@@ -140,38 +140,39 @@ final class BottleMessageViewController: UIViewController {
             self.moveToNoteList()
         }
     }
-    
+
+    // TODO: 나중에 변경...! NotePreviewListViewModelDelegate 설정 잊지말기..
     /// 쪽지리스트로 이동
     private func moveToNoteList() {
+        print("move to note list")
         
         /// 메인 탭바의 선택 인덱스를 저금통 리스트 인덱스로 변경
         self.mainTabBarController?.selectedIndex = TabItem.bottleList.rawValue
-
-        let storyboard = UIStoryboard(name: mainStoryboardName, bundle: Bundle.main)
-
-        /// 저금통 리스트를 건너뛰고 쪽지리스트가 바로 보이는 것처럼 보이도록 스토리보드를 사용해서 뷰 컨트롤러를 생성하여 뷰 체계 설정
-        guard let navigationController = self.mainTabBarController?.selectedViewController as?
-                UINavigationController,
-              let noteListViewController = storyboard.instantiateViewController(
-                withIdentifier: NoteListViewController.name
-              ) as? NoteListViewController
-        else { return }
-        
-        let bottleListViewController = storyboard.instantiateViewController(
-            withIdentifier: BottleListViewController.name
-        )
-        let noteListViewModel = NoteListViewModel(
-            bottle: self.bottle,
-            fadeIn: true,
-            fetchedResultContollerDelegate: noteListViewController
-        )
-        noteListViewController.viewModel = noteListViewModel
-        
-        navigationController.setViewControllers(
-            [bottleListViewController, noteListViewController],
-            animated: false
-        )
-        navigationController.navigationBar.backItem?.backButtonTitle = .empty
+//
+//        let storyboard = UIStoryboard(name: mainStoryboardName, bundle: Bundle.main)
+//
+//        /// 저금통 리스트를 건너뛰고 쪽지리스트가 바로 보이는 것처럼 보이도록 스토리보드를 사용해서 뷰 컨트롤러를 생성하여 뷰 체계 설정
+//        guard let navigationController = self.mainTabBarController?.selectedViewController as?
+//                UINavigationController,
+//              let noteListViewController = storyboard.instantiateViewController(
+//                withIdentifier: NotePreviewListController.name
+//              ) as? NotePreviewListController
+//        else { return }
+//
+//        let bottleListViewController = storyboard.instantiateViewController(
+//            withIdentifier: BottleListViewController.name
+//        )
+//        let noteListViewModel = NotePreviewListViewModel(
+//            bottle: self.bottle,
+//            fadeIn: true
+//        )
+//        noteListViewController.viewModel = noteListViewModel
+//        
+//        navigationController.setViewControllers(
+//            [bottleListViewController, noteListViewController],
+//            animated: false
+//        )
+//        navigationController.navigationBar.backItem?.backButtonTitle = .empty
         
         self.dismiss(animated: false, completion: nil)
     }

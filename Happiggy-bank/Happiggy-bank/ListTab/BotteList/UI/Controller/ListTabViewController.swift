@@ -180,13 +180,16 @@ extension ListTabViewController: UICollectionViewDataSource {
 }
 
 extension ListTabViewController: UICollectionViewDelegate {
-    
-    // TODO: - NoteListViewController와 연결
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.navigationController?.pushViewController(
-            UIViewController().then { $0.view.backgroundColor = .cyan },
-            animated: false
-        )
+        guard let bottle = self.viewModel.bottleList?[safe: indexPath.row]
+        else {
+            return
+        }
+
+        let viewModel = NotePreviewListViewModel(bottle: bottle)
+        let viewController = NotePreviewListController(viewModel: viewModel)
+        self.navigationController?.show(viewController, sender: self)
     }
 }
 
