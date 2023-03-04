@@ -1,5 +1,5 @@
 //
-//  TagViewFlowLayout.swift
+//  NotePreviewListFlowLayout.swift
 //  Happiggy-bank
 //
 //  Created by sun on 2022/03/25.
@@ -7,7 +7,8 @@
 
 import UIKit
 
-final class TagViewFlowLayout: UICollectionViewFlowLayout {
+/// NotePreviewList의 태그 모음같은 레이아웃
+final class NotePreviewListFlowLayout: UICollectionViewFlowLayout {
     
     override func prepare() {
         super.prepare()
@@ -53,7 +54,7 @@ final class TagViewFlowLayout: UICollectionViewFlowLayout {
         /// 섹션 가운데 정렬 작업
         let bottomInset = self.sectionInset.bottom
         let contentHeight = self.collectionViewContentSize.height
-        guard let collectionViewHeight = self.collectionView?.visibleSize.height,
+        guard let collectionViewHeight = self.collectionView?.safeAreaLayoutGuide.layoutFrame.height,
               contentHeight <= collectionViewHeight - bottomInset
         else { return attributes }
         

@@ -102,7 +102,7 @@ public class Note: NSManagedObject {
         
         var firstWord = self.content
             .components(separatedBy: NSCharacterSet.whitespacesAndNewlines)
-            .first { !$0.isEmpty } ?? .empty
+            .first { !$0.isEmpty } ?? " "
 
         /// 첫 단어가 10글자를 넘으면 1...10 의 범위에서 랜덤으로 길이 설정
         if firstWord.count > Metric.firstWordMaxLength {

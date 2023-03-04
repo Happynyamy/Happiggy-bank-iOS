@@ -63,4 +63,55 @@ enum AssetColor {
     static let noteYellowBG = UIColor(named: "noteYellowBG")
     static let noteYellowLine = UIColor(named: "noteYellowLine")
     static let noteYellowText = UIColor(named: "noteYellowText")
+
+
+    // MARK: - Functions
+
+    /// 쪽지 색깔에 따른 적절한 배경 색상 리턴
+    static func noteBG(for color: NoteColor) -> UIColor? {
+        switch color {
+        case .white:
+            return noteWhiteBG
+        case .pink:
+            return notePinkBG
+        case .purple:
+            return notePurpleBG
+        case .green:
+            return noteGreenBG
+        case .yellow:
+            return noteYellowBG
+        }
+    }
+
+    /// 쪽지 색깔에 따른 적절한 테두리 선 색상 리턴
+    static func noteLine(for color: NoteColor) -> UIColor? {
+        switch color {
+        case .white:
+            return noteWhiteLine
+        case .pink:
+            return notePinkLine
+        case .purple:
+            return notePurpleLine
+        case .green:
+            return noteGreenLine
+        case .yellow:
+            return noteYellowLine
+        }
+    }
+
+    /// 쪽지 색깔에 따른 적절한 글자/강조 색상 리턴
+    static func noteText(for color: NoteColor) -> UIColor? {
+        switch color {
+        case .white:
+            return noteWhiteText
+        case .pink:
+            return notePinkText
+        case .purple:
+            return notePurpleText
+        case .green:
+            return noteGreenText
+        case .yellow:
+            return noteYellowText
+        }
+    }
 }
