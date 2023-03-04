@@ -90,23 +90,19 @@ final class NewBottleMessageViewController: UIViewController {
     
     // MARK: - Functions
     
-    // TODO: - check -> save -> alert -> root 되는 과정 다시 손보기..
-    
-    /// 새 저금통 저장하는 메서드
+    /// 새 저금통 데이터가 유효한지 체크하는 메서드
     private func checkNewBottleData() -> Bool {
         self.bottleData.openMessage = self.newBottleMessageView.textField.text
-        let result = self.viewModel.createNewBottle(with: self.bottleData)
         
-        switch result {
+        switch self.viewModel.createNewBottle(with: self.bottleData) {
         case .success:
-            if saveBottle() == true { return true }
-            else { return false }
+            return true
         case .failure:
-            self.present(invalidDataFailureAlert(), animated: false)
             return false
         }
     }
     
+    /// 새 저금통 저장하는 메서드
     private func saveBottle() -> Bool {
         switch PersistenceStore.shared.save() {
         case .success:
@@ -121,9 +117,19 @@ final class NewBottleMessageViewController: UIViewController {
         let confirmAction = UIAlertAction.confirmAction(
             title: Text.confirmationAlertConfirmButtonTitle
         ) { _ in
-            guard self.checkNewBottleData() == true
-            else { fatalError("Save failed") }
             self.navigationController?.popToRootViewControllerWithFade()
+            guard self.checkNewBottleData() == true
+            else {
+                // 새 저금통 데이터가 유효하지 않을 때 팝업
+                self.present(self.invalidDataFailureAlert(), animated: false)
+                return
+            }
+            guard self.saveBottle() == true
+            else {
+                // 저장에 실패했을 때 팝업
+                self.present(self.fetchFailureAlert(), animated: false)
+                return
+            }
         }
         
         let cancelAction = UIAlertAction.cancelAction { _ in
