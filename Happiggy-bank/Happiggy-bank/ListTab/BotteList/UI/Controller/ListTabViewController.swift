@@ -63,7 +63,7 @@ final class ListTabViewController: UIViewController {
     /// 내비게이션 바 속성 설정
     private func configureNavigationBar() {
         self.navigationController?.navigationBar.tintColor = UIColor.white
-        self.title = StringLiteral.navigationBarTitle
+        self.navigationItem.title = StringLiteral.navigationBarTitle
         self.navigationItem.backButtonTitle = .empty
     }
     
