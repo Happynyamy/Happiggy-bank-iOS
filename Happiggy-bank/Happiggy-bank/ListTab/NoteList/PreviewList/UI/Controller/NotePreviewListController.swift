@@ -13,13 +13,13 @@ final class NotePreviewListController: UIViewController {
 
     // MARK: - Properties
 
-    private let listView: UICollectionView = {
+    private let listView: LabeledCollectionView = {
         let layout = NotePreviewListFlowLayout().then {
             $0.minimumLineSpacing = Metric.spacing10
             $0.minimumInteritemSpacing = Metric.spacing10
         }
 
-        return UICollectionView(frame: .zero, collectionViewLayout: layout)
+        return .init(frame: .zero, collectionViewLayout: layout)
     }()
     
     /// 쪽지 데이터를 갖고 있는 뷰모델
@@ -96,6 +96,7 @@ final class NotePreviewListController: UIViewController {
         )
         self.listView.delegate = self
         self.listView.dataSource = self
+        self.listView.noticeLabel.text = self.viewModel.notes.isEmpty ? StringLiteral.emptyLabel : nil
     }
 
     /// 처음 화면이 나타날 때만 셀들을 순차적 줌 효과와 함께 나타냄
@@ -133,7 +134,10 @@ extension NotePreviewListController: UICollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
         
-        let firstWord = self.viewModel.note(at: indexPath).firstWord
+        guard let firstWord = self.viewModel.note(at: indexPath)?.firstWord
+        else {
+            return .zero
+        }
         
         /// 현재 셀의 첫 번째 단어 길이를 재기 위한 라벨
         let dummyLabel = BaseLabel().then {
@@ -215,7 +219,10 @@ extension NotePreviewListController: UICollectionViewDataSource {
     
     /// 쪽지 색깔, 첫 번째 단어를 사용해서 셀 모습 생성
     private func configureCell(_ cell: NotePreviewCell, at indexPath: IndexPath) {
-        let note = self.viewModel.note(at: indexPath)
+        guard let note = self.viewModel.note(at: indexPath)
+        else {
+            return
+        }
 
         cell.firstWordLabel.attributedText = self.viewModel.attributedFirstWordString(
             forNote: note
@@ -237,7 +244,10 @@ fileprivate extension NotePreviewListController {
         static let spacing16: CGFloat = 16
         static let spacing24: CGFloat = 24
         static let two = 2.0
+    }
 
+    enum StringLiteral {
+        static let emptyLabel = "쪽지를 가져오지 못했어요"
     }
 
     /// 줌 애니메이션
