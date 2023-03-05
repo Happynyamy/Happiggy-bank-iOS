@@ -71,12 +71,6 @@ final class NotePreviewListController: UIViewController {
         self.displayVisibleCellsWithZoomAnimation()
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        self.showTabBar()
-    }
-
     
     // MARK: - Functions
     
@@ -173,19 +167,11 @@ extension NotePreviewListController: UICollectionViewDelegate {
     }
 
     private func showDetailList(startingWithRow row: Int) {
-        print("show detail list")
-//        guard !self.viewModel.notes.isEmpty
-//        else { return }
-//
-//        let viewController = NoteDetailViewController()
-//        let viewModel = NoteDetailViewModel(
-//            notes: self.viewModel.notes,
-//            selectedIndex: row,
-//            bottleTitle: self.viewModel.bottleTitle
-//        )
-//        viewController.viewModel = viewModel
-//
-//        self.show(viewController, sender: self)
+        guard !self.viewModel.notes.isEmpty
+        else { return }
+
+        // TODO: - DetailList와 연결
+        print(row + 1, ":", self.viewModel.notes[row].content.split(separator: "\n").first ?? "none")
     }
 }
 
