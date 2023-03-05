@@ -22,13 +22,13 @@ final class NotePreviewListViewModel {
     /// FetchedResultsController 의 델리게이트 역할을 할 컨트롤러 : NotePreviewListController
     weak var fetchedResultsControllerDelegate: NSFetchedResultsControllerDelegate?
 
-    var notes: [Note] { self.fetchedResultController.fetchedObjects ?? [] }
+    var notes: [Note] { self.fetchedResultController?.fetchedObjects ?? [] }
 
     /// 리스트에서 나타낼 저금통
     private var bottle: Bottle
 
     /// 코어데이터로 불러온 쪽지 엔티티들을 관리하는 fetchedResultController
-    private lazy var fetchedResultController: NSFetchedResultsController<Note> = {
+    private lazy var fetchedResultController: NSFetchedResultsController<Note>? = {
         let fetchRequest = Note.fetchRequest(bottle: self.bottle)
 
         let context = self.bottle.managedObjectContext ?? PersistenceStore.shared.context
@@ -45,8 +45,7 @@ final class NotePreviewListViewModel {
         do {
             try controller.performFetch()
         } catch {
-            // FIXME: - 제거...
-            fatalError("Failed to fetch entities")
+            return nil
         }
 
         return controller
@@ -64,8 +63,8 @@ final class NotePreviewListViewModel {
     
     // MARK: - Functions
 
-    func note(at indexPath: IndexPath) -> Note {
-        self.fetchedResultController.object(at: indexPath)
+    func note(at indexPath: IndexPath) -> Note? {
+        self.fetchedResultController?.object(at: indexPath)
     }
     
     /// 태그 셀의 배경 색깔 리턴
