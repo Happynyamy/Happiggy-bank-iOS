@@ -560,55 +560,6 @@ extension Gravity {
     }
 }
 
-extension NoteDetailViewModel {
-    
-    /// 폰트 관련 설정
-    enum Font {
-        
-        /// 인덱스라벨 폰트 크기: 16
-        static let indexLabel: CGFloat = 16
-    }
-    
-    /// 문자열
-    enum StringLiteral {
-        
-        /// 쪽지 이미지 에셋 호출을 위해 앞에 붙일 접두사
-        static let listNote: String = "listNote"
-    }
-}
-
-extension NoteDetailViewController {
-    
-    /// 상수값
-    enum Metric {
-        
-        /// 양 옆에 보일 아이템의 너비: 30
-        static let sideItemVisibleWidth: CGFloat = 30
-        
-        /// 중앙 아이템 사이즈(아이폰 12 기준)
-        static let itemSize = CGSize(
-            width: 294,
-            height: 367.5
-        )
-    }
-    
-    /// 애니메이션 관련 상수
-    enum Animation {
-        
-        /// 상단 캐릭터 애니메이션 시간: 0.3
-        static let topCharacterDuration: Double = 0.3
-        
-        /// 하단 캐릭터 애니메이션 시간: 0.2
-        static let bottomCharacterDuration: Double = 0.2
-        
-        /// 하단 캐릭터 애니메이션 딜레이 시간: 0.1
-        static let bottomCharacterDelay: Double = 0.1
-        
-        /// 인덱스 라벨 업데이트 애니메이션 시간: 0.2
-        static let IndexLabelDuration: Double = 0.2
-    }
-}
-
 extension BottleMessageViewController {
     
     /// 애니메이션 시간
