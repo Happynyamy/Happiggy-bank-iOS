@@ -13,9 +13,9 @@ final class BaseButton: UIButton {
 
     // MARK: - Properties
 
+    var customFont: CustomFont?
     private let fontManager: FontPublishing = FontManager.shared
     private var cancellable: AnyCancellable?
-    private var customFont: CustomFont?
 
 
     // MARK: - Inits

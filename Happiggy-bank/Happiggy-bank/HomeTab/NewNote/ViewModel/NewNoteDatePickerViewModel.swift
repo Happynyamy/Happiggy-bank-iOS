@@ -73,10 +73,7 @@ final class NewNoteDatePickerViewModel {
             .customFormatted(type: .spaceAndDotWithDayOfWeek)
             .nsMutableAttributedStringify()
             .color(color: color)
-            .bold(
-                targetString: source.date.monthDotDayWithDayOfWeekString,
-                fontSize: Font.dateLabelFontSize
-            )
+            .bold(targetString: source.date.monthDotDayWithDayOfWeekString)
     }
     
     /// 쪽지 에셋 이미지 리턴

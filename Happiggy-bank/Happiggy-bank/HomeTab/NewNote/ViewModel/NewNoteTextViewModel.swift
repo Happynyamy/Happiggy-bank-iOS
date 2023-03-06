@@ -47,9 +47,9 @@ final class NewNoteTextViewModel {
         self.newNote.date
             .yearString
             .nsMutableAttributedStringify()
-            .bold(fontSize: Font.secondaryText)
+            .bold()
     }
-    
+
     /// 색깔 적용한 월, 일 텍스트
     private var attributedMonthDayString: NSMutableAttributedString {
         self.newNote.date
@@ -74,7 +74,7 @@ final class NewNoteTextViewModel {
         
         let countString = "\(count)"
             .nsMutableAttributedStringify()
-            .bold(fontSize: Font.secondaryText)
+            .bold()
             .color(color: color)
         
         countString.append(StringLiteral.letterCountText.nsMutableAttributedStringify())

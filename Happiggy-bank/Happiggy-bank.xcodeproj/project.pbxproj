@@ -60,6 +60,8 @@
 		A46B111128146188004AB185 /* Cafe24SsurroundAir.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46B111028146188004AB185 /* Cafe24SsurroundAir.ttf */; };
 		A46B11122814618C004AB185 /* Cafe24Ssurround.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46B110F28146181004AB185 /* Cafe24Ssurround.ttf */; };
 		A46B2E7729B493D7006A7870 /* LabeledCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B2E7629B493D7006A7870 /* LabeledCollectionView.swift */; };
+		A46B2E7D29B5EB14006A7870 /* NoteDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B2E7C29B5EB14006A7870 /* NoteDetailCell.swift */; };
+		A46B2E7F29B5EB74006A7870 /* NoteDetailCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B2E7E29B5EB74006A7870 /* NoteDetailCellViewModel.swift */; };
 		A46BC1EF2800626A00C2E5B4 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46BC1EE2800626A00C2E5B4 /* TabItem.swift */; };
 		A47D83462966C0C60028AA1D /* NotificationSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22ADF7E27F72F7300ECB77B /* NotificationSettingsViewModel.swift */; };
 		A47D83482966D3870028AA1D /* FontSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D83472966D3870028AA1D /* FontSelectionView.swift */; };
@@ -237,6 +239,8 @@
 		A46B110F28146181004AB185 /* Cafe24Ssurround.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24Ssurround.ttf; sourceTree = "<group>"; };
 		A46B111028146188004AB185 /* Cafe24SsurroundAir.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24SsurroundAir.ttf; sourceTree = "<group>"; };
 		A46B2E7629B493D7006A7870 /* LabeledCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledCollectionView.swift; sourceTree = "<group>"; };
+		A46B2E7C29B5EB14006A7870 /* NoteDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailCell.swift; sourceTree = "<group>"; };
+		A46B2E7E29B5EB74006A7870 /* NoteDetailCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailCellViewModel.swift; sourceTree = "<group>"; };
 		A46BC1EE2800626A00C2E5B4 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		A47D83472966D3870028AA1D /* FontSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSelectionView.swift; sourceTree = "<group>"; };
 		A47D8349296716BF0028AA1D /* FontCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontCell.swift; sourceTree = "<group>"; };
@@ -455,6 +459,7 @@
 		A4450C0D2966AF7D0088CC2C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				A46B2E7E29B5EB74006A7870 /* NoteDetailCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -628,6 +633,7 @@
 		A896FBDA2966B1BC00A3400B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A46B2E7C29B5EB14006A7870 /* NoteDetailCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1381,6 +1387,7 @@
 				A4569CBE28105052001E3FD6 /* CustomerServiceViewModel.swift in Sources */,
 				A8F985E0296FDE6000E5ACC6 /* ListTabViewController.swift in Sources */,
 				D284A5DE27FF3EFB00D20699 /* BottleNameEditViewController.swift in Sources */,
+				A46B2E7F29B5EB74006A7870 /* NoteDetailCellViewModel.swift in Sources */,
 				A466A31C28029D7400D655F4 /* UIAlertController+BasicFormat.swift in Sources */,
 				A8509E6E27C89A1200855153 /* UIColor+Extension.swift in Sources */,
 				D236DB8827FDD66900D7B8F0 /* NewBottleMessageFieldViewController.swift in Sources */,
@@ -1464,6 +1471,7 @@
 				A4F5714927DA589100E7DF9B /* NoteDatePickerData.swift in Sources */,
 				A484A329296004D200A58312 /* Subscriber.swift in Sources */,
 				A484A31E295D7B1400A58312 /* HTTPMethod.swift in Sources */,
+				A46B2E7D29B5EB14006A7870 /* NoteDetailCell.swift in Sources */,
 				D2C48BFF27E9D60A006FC59E /* Gravity.swift in Sources */,
 				A8EB5E8B27C8B087005704F2 /* UIButton+Extension.swift in Sources */,
 				A843331F27DA013800A12A54 /* NewBottleNameFieldViewController.swift in Sources */,
