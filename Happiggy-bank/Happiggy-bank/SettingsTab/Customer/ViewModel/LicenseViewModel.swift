@@ -20,7 +20,7 @@ final class LicenseViewModel: InformationTextViewDataSource {
             .addHyperLinks(hyperlinks: hyperlinks)
         
         openSourceLibraries.forEach {
-            attributedString.bold(targetString: $0, fontSize: Font.boldFontSize)
+            attributedString.bold(targetString: $0)
         }
         
         return attributedString
