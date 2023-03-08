@@ -62,6 +62,8 @@
 		A46B2E7729B493D7006A7870 /* LabeledCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B2E7629B493D7006A7870 /* LabeledCollectionView.swift */; };
 		A46B2E7D29B5EB14006A7870 /* NoteDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B2E7C29B5EB14006A7870 /* NoteDetailCell.swift */; };
 		A46B2E7F29B5EB74006A7870 /* NoteDetailCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B2E7E29B5EB74006A7870 /* NoteDetailCellViewModel.swift */; };
+		A46B2E8129B5EBDA006A7870 /* NoteDetailListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B2E8029B5EBDA006A7870 /* NoteDetailListViewModel.swift */; };
+		A46B2E8329B5EBE6006A7870 /* NoteDetailListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B2E8229B5EBE6006A7870 /* NoteDetailListViewController.swift */; };
 		A46BC1EF2800626A00C2E5B4 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46BC1EE2800626A00C2E5B4 /* TabItem.swift */; };
 		A47D83462966C0C60028AA1D /* NotificationSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22ADF7E27F72F7300ECB77B /* NotificationSettingsViewModel.swift */; };
 		A47D83482966D3870028AA1D /* FontSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D83472966D3870028AA1D /* FontSelectionView.swift */; };
@@ -241,6 +243,8 @@
 		A46B2E7629B493D7006A7870 /* LabeledCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledCollectionView.swift; sourceTree = "<group>"; };
 		A46B2E7C29B5EB14006A7870 /* NoteDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailCell.swift; sourceTree = "<group>"; };
 		A46B2E7E29B5EB74006A7870 /* NoteDetailCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailCellViewModel.swift; sourceTree = "<group>"; };
+		A46B2E8029B5EBDA006A7870 /* NoteDetailListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailListViewModel.swift; sourceTree = "<group>"; };
+		A46B2E8229B5EBE6006A7870 /* NoteDetailListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailListViewController.swift; sourceTree = "<group>"; };
 		A46BC1EE2800626A00C2E5B4 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		A47D83472966D3870028AA1D /* FontSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSelectionView.swift; sourceTree = "<group>"; };
 		A47D8349296716BF0028AA1D /* FontCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontCell.swift; sourceTree = "<group>"; };
@@ -460,6 +464,7 @@
 			isa = PBXGroup;
 			children = (
 				A46B2E7E29B5EB74006A7870 /* NoteDetailCellViewModel.swift */,
+				A46B2E8029B5EBDA006A7870 /* NoteDetailListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -626,6 +631,7 @@
 			isa = PBXGroup;
 			children = (
 				A4396B1A29325D70005D9D3A /* PhotoViewController.swift */,
+				A46B2E8229B5EBE6006A7870 /* NoteDetailListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1395,6 +1401,7 @@
 				A4569CCA28113F0F001E3FD6 /* NSMutableAttributedString+Hyperlink.swift in Sources */,
 				A490AC4E27DD945E00B04CE1 /* NotePreviewListController.swift in Sources */,
 				A47D83542973A4860028AA1D /* FontPublishing.swift in Sources */,
+				A46B2E8129B5EBDA006A7870 /* NoteDetailListViewModel.swift in Sources */,
 				A4D357E0283A43C7007819E3 /* UIViewController+VersionUpdating.swift in Sources */,
 				A47D834A296716BF0028AA1D /* FontCell.swift in Sources */,
 				A8BD834727BE337900E0DE41 /* HomeView.swift in Sources */,
@@ -1434,6 +1441,7 @@
 				A484A31C295D75F900A58312 /* NetworkError.swift in Sources */,
 				A49AC5E52917C6E2009315BC /* UILabel+ChangeFontSize.swift in Sources */,
 				A4A55A0928FFC675004ABE00 /* NewNoteInputView.swift in Sources */,
+				A46B2E8329B5EBE6006A7870 /* NoteDetailListViewController.swift in Sources */,
 				A4B2860927D9A56A008769EB /* NewNoteTextViewController.swift in Sources */,
 				A843332127DA026D00A12A54 /* NewBottleDatePickerViewController.swift in Sources */,
 				A4D6EB75282E2E6700553E43 /* VersionChecking.swift in Sources */,
