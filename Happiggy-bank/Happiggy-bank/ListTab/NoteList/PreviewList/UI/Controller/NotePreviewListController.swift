@@ -170,8 +170,13 @@ extension NotePreviewListController: UICollectionViewDelegate {
         guard !self.viewModel.notes.isEmpty
         else { return }
 
-        // TODO: - DetailList와 연결
-        print(row + 1, ":", self.viewModel.notes[row].content.split(separator: "\n").first ?? "none")
+        let viewModel = NoteDetailListViewModel(
+            notes: self.viewModel.notes,
+            selectedIndex: row,
+            bottleTitle: self.viewModel.bottleTitle
+        )
+
+        self.show(NoteDetailListViewController(viewModel: viewModel), sender: self)
     }
 }
 
