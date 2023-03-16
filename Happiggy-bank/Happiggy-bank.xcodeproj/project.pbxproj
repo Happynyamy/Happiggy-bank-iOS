@@ -65,6 +65,7 @@
 		A46B2E8129B5EBDA006A7870 /* NoteDetailListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B2E8029B5EBDA006A7870 /* NoteDetailListViewModel.swift */; };
 		A46B2E8329B5EBE6006A7870 /* NoteDetailListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B2E8229B5EBE6006A7870 /* NoteDetailListViewController.swift */; };
 		A46BC1EF2800626A00C2E5B4 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46BC1EE2800626A00C2E5B4 /* TabItem.swift */; };
+		A472C5F529C2DCEA00097432 /* NewNoteInputToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A472C5F429C2DCEA00097432 /* NewNoteInputToolbar.swift */; };
 		A47D83462966C0C60028AA1D /* NotificationSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22ADF7E27F72F7300ECB77B /* NotificationSettingsViewModel.swift */; };
 		A47D83482966D3870028AA1D /* FontSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D83472966D3870028AA1D /* FontSelectionView.swift */; };
 		A47D834A296716BF0028AA1D /* FontCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D8349296716BF0028AA1D /* FontCell.swift */; };
@@ -245,6 +246,7 @@
 		A46B2E8029B5EBDA006A7870 /* NoteDetailListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailListViewModel.swift; sourceTree = "<group>"; };
 		A46B2E8229B5EBE6006A7870 /* NoteDetailListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailListViewController.swift; sourceTree = "<group>"; };
 		A46BC1EE2800626A00C2E5B4 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
+		A472C5F429C2DCEA00097432 /* NewNoteInputToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteInputToolbar.swift; sourceTree = "<group>"; };
 		A47D83472966D3870028AA1D /* FontSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSelectionView.swift; sourceTree = "<group>"; };
 		A47D8349296716BF0028AA1D /* FontCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontCell.swift; sourceTree = "<group>"; };
 		A47D83532973A4860028AA1D /* FontPublishing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontPublishing.swift; sourceTree = "<group>"; };
@@ -821,6 +823,7 @@
 				A4CF2C7F27C733FE001B01B1 /* ColorButton.swift */,
 				A4EDFE802902D72A0056C2DC /* ColorPickerBarItem.swift */,
 				A4845B5C2900DF0B00A6007C /* ColorPicker.swift */,
+				A472C5F429C2DCEA00097432 /* NewNoteInputToolbar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1420,6 +1423,7 @@
 				A4CF2C8227C73B42001B01B1 /* UIColor+AssetColors.swift in Sources */,
 				A819CF9F27DDD97C00DE8E72 /* HapticManager.swift in Sources */,
 				A4569CCF28128B4B001E3FD6 /* SettingsNonIconButtonCell.swift in Sources */,
+				A472C5F529C2DCEA00097432 /* NewNoteInputToolbar.swift in Sources */,
 				A4396B1B29325D70005D9D3A /* PhotoViewController.swift in Sources */,
 				A8ECD4A727E33BFA00886BC0 /* ListTabViewModel.swift in Sources */,
 				A49AC5EB2917FFAB009315BC /* PhotoNoteCellViewModel.swift in Sources */,

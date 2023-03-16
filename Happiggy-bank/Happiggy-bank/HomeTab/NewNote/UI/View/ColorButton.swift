@@ -20,17 +20,17 @@ final class ColorButton: UIButton {
     let color: NoteColor
 
     /// 버튼의 테두리 색깔
-    private let borderColor: UIColor
+    private let lineColor: UIColor?
 
 
     // MARK: - Init
 
     init(color: NoteColor, frame: CGRect = .zero) {
         self.color = color
-        self.borderColor = .noteBorder(for: self.color)
+        self.lineColor = AssetColor.noteLine(for: self.color)
         super.init(frame: frame)
 
-        self.tintColor = .noteHighlight(for: self.color)
+        self.tintColor = AssetColor.noteText(for: self.color)
         self.configure()
     }
 
@@ -60,7 +60,7 @@ final class ColorButton: UIButton {
         /// 선택되지 않은 경우 하이라이트 효과를 끔
         if !self.isSelected {
             if isLightMode, self.color == .white {
-                self.layer.borderColor = self.borderColor.cgColor
+                self.layer.borderColor = self.lineColor?.cgColor
                 return
             }
             self.layer.borderWidth = .zero
@@ -69,7 +69,7 @@ final class ColorButton: UIButton {
 
     /// 뷰 초기화
     private func configure() {
-        self.backgroundColor = .note(color: self.color)
+        self.backgroundColor = AssetColor.noteBG(for: self.color)
         self.layer.cornerRadius = Metric.buttonCornerRadius
     }
 }
