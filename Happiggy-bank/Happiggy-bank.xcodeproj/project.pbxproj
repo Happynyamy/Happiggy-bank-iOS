@@ -66,6 +66,8 @@
 		A46B2E8329B5EBE6006A7870 /* NoteDetailListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B2E8229B5EBE6006A7870 /* NoteDetailListViewController.swift */; };
 		A46BC1EF2800626A00C2E5B4 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46BC1EE2800626A00C2E5B4 /* TabItem.swift */; };
 		A472C5F529C2DCEA00097432 /* NewNoteInputToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A472C5F429C2DCEA00097432 /* NewNoteInputToolbar.swift */; };
+		A472C5F729C2DDFF00097432 /* NewNoteInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A472C5F629C2DDFF00097432 /* NewNoteInputViewModel.swift */; };
+		A472C5F929C2ED5000097432 /* HBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A472C5F829C2ED5000097432 /* HBError.swift */; };
 		A47D83462966C0C60028AA1D /* NotificationSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22ADF7E27F72F7300ECB77B /* NotificationSettingsViewModel.swift */; };
 		A47D83482966D3870028AA1D /* FontSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D83472966D3870028AA1D /* FontSelectionView.swift */; };
 		A47D834A296716BF0028AA1D /* FontCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D8349296716BF0028AA1D /* FontCell.swift */; };
@@ -247,6 +249,8 @@
 		A46B2E8229B5EBE6006A7870 /* NoteDetailListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailListViewController.swift; sourceTree = "<group>"; };
 		A46BC1EE2800626A00C2E5B4 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		A472C5F429C2DCEA00097432 /* NewNoteInputToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteInputToolbar.swift; sourceTree = "<group>"; };
+		A472C5F629C2DDFF00097432 /* NewNoteInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteInputViewModel.swift; sourceTree = "<group>"; };
+		A472C5F829C2ED5000097432 /* HBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HBError.swift; sourceTree = "<group>"; };
 		A47D83472966D3870028AA1D /* FontSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSelectionView.swift; sourceTree = "<group>"; };
 		A47D8349296716BF0028AA1D /* FontCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontCell.swift; sourceTree = "<group>"; };
 		A47D83532973A4860028AA1D /* FontPublishing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontPublishing.swift; sourceTree = "<group>"; };
@@ -548,6 +552,7 @@
 				A46BC1EE2800626A00C2E5B4 /* TabItem.swift */,
 				A4569CB9280FBA23001E3FD6 /* CustomResult.swift */,
 				A49B25EC2812B5A400399630 /* CustomFont.swift */,
+				A472C5F829C2ED5000097432 /* HBError.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -792,6 +797,7 @@
 			children = (
 				A4B2860E27D9F539008769EB /* NewNoteDatePickerViewModel.swift */,
 				A4C1AFD127E5C60E0096CD3E /* NewNoteTextViewModel.swift */,
+				A472C5F629C2DDFF00097432 /* NewNoteInputViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1381,10 +1387,12 @@
 				A819CFA127DE034F00DE8E72 /* NewBottle.swift in Sources */,
 				A4569CBC2810455B001E3FD6 /* CustomerServiceViewController.swift in Sources */,
 				A4EDFE812902D72A0056C2DC /* ColorPickerBarItem.swift in Sources */,
+				A472C5F929C2ED5000097432 /* HBError.swift in Sources */,
 				A49AC5E92917CBFB009315BC /* UIStackView+AddArrangedSubviews.swift in Sources */,
 				A4569CC628111EFA001E3FD6 /* InformationTextViewDataSource.swift in Sources */,
 				A80248252963E58A00F2EA81 /* BottleTitleStack.swift in Sources */,
 				D236DB8627FDC43200D7B8F0 /* NewBottleDatePickerViewModel.swift in Sources */,
+				A472C5F729C2DDFF00097432 /* NewNoteInputViewModel.swift in Sources */,
 				A47D83562973A4970028AA1D /* FontManager.swift in Sources */,
 				A499318327BF5158009FF5A8 /* BottleNoteView.swift in Sources */,
 				A4CF2C8E27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift in Sources */,
