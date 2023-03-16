@@ -110,7 +110,6 @@
 		A49B25F12812BF6800399630 /* dovemayo_bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A49B25F02812BF4100399630 /* dovemayo_bold.otf */; };
 		A49B25F22812BF6B00399630 /* dovemayo.otf in Resources */ = {isa = PBXBuildFile; fileRef = A49B25EF2812BF4100399630 /* dovemayo.otf */; };
 		A49B25F42812FFB400399630 /* UILabel+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B25F32812FFB400399630 /* UILabel+Color.swift */; };
-		A4A55A0528FFC64A004ABE00 /* NewNoteInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4A55A0428FFC64A004ABE00 /* NewNoteInputView.xib */; };
 		A4A55A0728FFC664004ABE00 /* UIView+ConfigureXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A55A0628FFC664004ABE00 /* UIView+ConfigureXib.swift */; };
 		A4A55A0928FFC675004ABE00 /* NewNoteInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A55A0828FFC675004ABE00 /* NewNoteInputView.swift */; };
 		A4B285FD27D8A060008769EB /* Calendar+Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B285FC27D8A060008769EB /* Calendar+Duration.swift */; };
@@ -290,7 +289,6 @@
 		A49B25EF2812BF4100399630 /* dovemayo.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dovemayo.otf; sourceTree = "<group>"; };
 		A49B25F02812BF4100399630 /* dovemayo_bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dovemayo_bold.otf; sourceTree = "<group>"; };
 		A49B25F32812FFB400399630 /* UILabel+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Color.swift"; sourceTree = "<group>"; };
-		A4A55A0428FFC64A004ABE00 /* NewNoteInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewNoteInputView.xib; sourceTree = "<group>"; };
 		A4A55A0628FFC664004ABE00 /* UIView+ConfigureXib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ConfigureXib.swift"; sourceTree = "<group>"; };
 		A4A55A0828FFC675004ABE00 /* NewNoteInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewNoteInputView.swift; sourceTree = "<group>"; };
 		A4B285FC27D8A060008769EB /* Calendar+Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Duration.swift"; sourceTree = "<group>"; };
@@ -817,7 +815,6 @@
 		A896FBEF2966B5DE00A3400B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A4A55A0428FFC64A004ABE00 /* NewNoteInputView.xib */,
 				A467B5C927DA289500AC702D /* NewNoteDatePickerRowView.xib */,
 				A4A55A0828FFC675004ABE00 /* NewNoteInputView.swift */,
 				A467B5C727DA258700AC702D /* NewNoteDatePickerRowView.swift */,
@@ -1324,7 +1321,6 @@
 				A46B110A28146171004AB185 /* GowunBatang-Regular.ttf in Resources */,
 				A49B25F12812BF6800399630 /* dovemayo_bold.otf in Resources */,
 				A46B110D2814617B004AB185 /* IBMPlexSansKR-Regular.otf in Resources */,
-				A4A55A0528FFC64A004ABE00 /* NewNoteInputView.xib in Resources */,
 				A8FC07DD27B3EF030077A758 /* .swiftlint.yml in Resources */,
 				A467B5CA27DA289600AC702D /* NewNoteDatePickerRowView.xib in Resources */,
 				A46B111128146188004AB185 /* Cafe24SsurroundAir.ttf in Resources */,

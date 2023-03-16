@@ -20,7 +20,7 @@ final class NewNoteTextViewController: UIViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
 
     /// 쪽지 입력 뷰
-    @IBOutlet weak var newNoteInputView: NewNoteInputView!
+    private var newNoteInputView: NewNoteInputView = NewNoteInputView()
 
     /// 쪽지 입력 뷰  높이 제약 조건
     @IBOutlet weak var newtNoteInputViewHeightConstraint: NSLayoutConstraint!
@@ -71,8 +71,8 @@ final class NewNoteTextViewController: UIViewController {
     
     /// 저장버튼(v)을 눌렀을 때 호출되는 액션 메서드
     @IBAction func saveButtonDidTap(_ sender: UIBarButtonItem) {
-        guard let textView = self.newNoteInputView.textView,
-              !textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        let textView = self.newNoteInputView.textView
+        guard !textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
         else {
             self.showWarningLabel = true
             self.newNoteInputView.warningLabel.fadeIn()
@@ -111,7 +111,7 @@ final class NewNoteTextViewController: UIViewController {
         let safeArea = self.view.safeAreaInsets
         let verticalSafeAreaInsets = safeArea.top + safeArea.bottom
         let heightThatFits = min(
-            self.newNoteInputView.contentHeight,
+            self.newNoteInputView.contentSize.height,
             self.view.bounds.height - verticalSafeAreaInsets
         )
         self.newtNoteInputViewHeightConstraint.constant = heightThatFits
@@ -164,7 +164,7 @@ final class NewNoteTextViewController: UIViewController {
             )
             self?.newNoteInputView.textView.resignFirstResponder()
         }
-        self.newNoteInputView.dateButton.addAction(action, for: .touchUpInside)
+        self.newNoteInputView.calendarButton.addAction(action, for: .touchUpInside)
         self.updateDateButton()
     }
 
@@ -177,13 +177,13 @@ final class NewNoteTextViewController: UIViewController {
 
         self.view.backgroundColor = backgroundColor
         self.newNoteInputView.backgroundNoteImageView.tintColor = borderColor
-        self.newNoteInputView.dateButton.tintColor = tintColor
+        self.newNoteInputView.calendarButton.tintColor = tintColor
         self.newNoteInputView.letterCountLabel.textColor = tintColor
     }
     
     /// 쪽지 입력 뷰의 날짜 버튼 제목 업데이트
     private func updateDateButton() {
-        self.newNoteInputView.dateButton.setAttributedTitle(
+        self.newNoteInputView.calendarButton.setAttributedTitle(
             self.viewModel.attributedDateButtonTitle,
             for: .normal
         )
@@ -407,9 +407,9 @@ extension NewNoteTextViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         let placeholderLabel = self.newNoteInputView.placeholderLabel
         if textView.text.isEmpty {
-            placeholderLabel?.fadeIn()
+            placeholderLabel.fadeIn()
         } else {
-            placeholderLabel?.fadeOut()
+            placeholderLabel.fadeOut()
         }
         self.updateLetterCountLabel(count: textView.text.count)
     }

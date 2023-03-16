@@ -83,7 +83,7 @@ enum AssetImage {
     // MARK: - Note input view
 
     static let gallery = UIImage(named: "gallery")
-    static let date = UIImage(named: "date")
+    static let calendar = UIImage(named: "calendar")
     static let deleteImage = UIImage(named: "deleteImage")
 
 
