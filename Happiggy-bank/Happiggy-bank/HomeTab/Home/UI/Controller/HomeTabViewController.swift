@@ -5,6 +5,8 @@
 //  Created by 권은빈 on 2022/12/23.
 //
 
+import Combine
+import CoreData
 import UIKit
 
 import Then
@@ -28,7 +30,10 @@ final class HomeTabViewController: UIViewController {
     private var bottleViewController: BottleViewController!
     
     /// 뷰모델
-    private var viewModel: HomeTabViewModel = HomeTabViewModel()
+    var viewModel: HomeTabViewModel = HomeTabViewModel()
+    
+    /// Bottle에 대한 Subscriber 저장
+    private var cancellableBag = Set<AnyCancellable>()
     
     
     // MARK: - Life Cycle
@@ -44,9 +49,11 @@ final class HomeTabViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.viewModel.controller.delegate = self
         configureHomeView()
         configureButton()
-        configureMoreButton()
+        configureButtonMenu()
         configureBottleViewController()
         navigationItem.backButtonTitle = ""
     }
@@ -97,13 +104,31 @@ final class HomeTabViewController: UIViewController {
         }
     }
     
-    /// 버튼 탭했을 때 액션
-    @objc private func buttonDidTap(_ sender: BaseButton) {
-        
-    }
     
     // MARK: - Functions
     
+    /// 새로 fetch한 Bottle이 있다면, 그 내용을 받아서 업데이트
+    private func observePublishedValue() {
+        guard let publishedBottle = self.viewModel.fetchController()
+        else { return }
+        
+        publishedBottle
+            .receive(on: DispatchQueue.main)
+            .sink { [unowned self] bottle in
+                self.viewModel.bottle = bottle
+                self.homeView = HomeView(
+                    title: self.viewModel.bottle?.title,
+                    dDay: self.viewModel.dDay(),
+                    hasNotes: self.viewModel.hasNotes
+                )
+                self.view = self.homeView
+                configureHomeView()
+                configureButton()
+            }
+            .store(in: &cancellableBag)
+    }
+    
+    /// BottleViewController 설정
     private func configureBottleViewController() {
         let bottleViewController = BottleViewController()
         let viewModel = BottleViewModel()
@@ -124,6 +149,7 @@ final class HomeTabViewController: UIViewController {
     
     // MARK: - Configurations
     
+    /// UI 업데이트시 홈뷰 재설정
     private func configureHomeView() {
         let tap = UITapGestureRecognizer(
             target: self,
@@ -135,16 +161,12 @@ final class HomeTabViewController: UIViewController {
         self.homeView.hasNotes = self.viewModel.hasNotes
     }
     
-    /// 더보기 버튼 세팅
+    /// 더보기 버튼 초기화
     private func configureButton() {
         guard self.viewModel.hasBottle == true
         else { return }
-        
-        self.moreButton.addTarget(
-            self,
-            action: #selector(buttonDidTap),
-            for: .touchUpInside
-        )
+
+        configureButtonMenu()
         self.view.addSubview(self.moreButton)
         
         self.moreButton.snp.makeConstraints { make in
@@ -158,11 +180,11 @@ final class HomeTabViewController: UIViewController {
 
 
 // MARK: - More Button
-// TODO: - 메뉴별 액션 설정
 extension HomeTabViewController {
     
+    // TODO: - 메뉴별 액션 설정!
     /// 더보기 버튼 설정
-    private func configureMoreButton() {
+    private func configureButtonMenu() {
         guard let bottle = self.viewModel.bottle
         else { return }
         let attributes: UIMenuElement.Attributes = (Date() >= bottle.startDate) ? .destructive : .disabled
@@ -235,8 +257,8 @@ extension HomeTabViewController {
         self.navigationController?.pushViewControllerWithFade(
             to: UIViewController().then { $0.view.backgroundColor = .red }
         )
-        self.viewModel.bottle = nil
-
+        
+        // TODO: - bottle = nil일 때 UI update
 //        removeAllRemindNotifications()
     }
     
@@ -249,8 +271,17 @@ extension HomeTabViewController {
     }
 }
 
+extension HomeTabViewController: NSFetchedResultsControllerDelegate {
+    
+    /// fetchedResultsController에 수정사항이 생겼을 때 실행되는 함수
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.observePublishedValue()
+    }
+}
+
 // MARK: - Presenter
 extension HomeTabViewController: Presenter {
+    
     func presentedViewControllerDidDismiss(withResult: CustomResult) {
         self.bottleViewController.restoreStateBeforeAlertOrModalDidAppear()
     }
