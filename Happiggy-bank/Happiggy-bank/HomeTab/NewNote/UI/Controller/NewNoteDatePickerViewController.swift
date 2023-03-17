@@ -272,7 +272,7 @@ extension NewNoteDatePickerViewController: UIPickerViewDelegate {
         
         /// 데이터에 맞게 행의 모습(날짜 라벨 텍스트와 쪽지 이미지 색깔) 업데이트
         rowView.dateLabel.attributedText = self.viewModel.attributedDateString(for: noteData)
-        rowView.colorImageView.image = self.viewModel.image(for: noteData)
+        rowView.noteImageView.image = self.viewModel.image(for: noteData)
     
         return rowView
     }

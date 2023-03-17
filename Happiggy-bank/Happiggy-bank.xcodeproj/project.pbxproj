@@ -43,7 +43,6 @@
 		A466A31A2802987700D655F4 /* UIAlertAction+ConfirmAndCancel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A466A3192802987700D655F4 /* UIAlertAction+ConfirmAndCancel.swift */; };
 		A466A31C28029D7400D655F4 /* UIAlertController+BasicFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = A466A31B28029D7400D655F4 /* UIAlertController+BasicFormat.swift */; };
 		A467B5C827DA258700AC702D /* NewNoteDatePickerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A467B5C727DA258700AC702D /* NewNoteDatePickerRowView.swift */; };
-		A467B5CA27DA289600AC702D /* NewNoteDatePickerRowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A467B5C927DA289500AC702D /* NewNoteDatePickerRowView.xib */; };
 		A46B10EC2813E73F004AB185 /* UserDefaults+Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B10EB2813E73F004AB185 /* UserDefaults+Keys.swift */; };
 		A46B10F028142DB1004AB185 /* UIFont+Weight.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B10EF28142DB1004AB185 /* UIFont+Weight.swift */; };
 		A46B10F228142F26004AB185 /* UIViewController+ObserveCustomFontChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B10F128142F26004AB185 /* UIViewController+ObserveCustomFontChange.swift */; };
@@ -69,6 +68,7 @@
 		A472C5F729C2DDFF00097432 /* NewNoteInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A472C5F629C2DDFF00097432 /* NewNoteInputViewModel.swift */; };
 		A472C5F929C2ED5000097432 /* HBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A472C5F829C2ED5000097432 /* HBError.swift */; };
 		A472C5FB29C2F21600097432 /* NewNoteSavingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A472C5FA29C2F21600097432 /* NewNoteSavingDelegate.swift */; };
+		A472C60329C408D000097432 /* NewNoteDatePickingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A472C60229C408D000097432 /* NewNoteDatePickingView.swift */; };
 		A47D83462966C0C60028AA1D /* NotificationSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22ADF7E27F72F7300ECB77B /* NotificationSettingsViewModel.swift */; };
 		A47D83482966D3870028AA1D /* FontSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D83472966D3870028AA1D /* FontSelectionView.swift */; };
 		A47D834A296716BF0028AA1D /* FontCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D8349296716BF0028AA1D /* FontCell.swift */; };
@@ -226,7 +226,6 @@
 		A466A3192802987700D655F4 /* UIAlertAction+ConfirmAndCancel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+ConfirmAndCancel.swift"; sourceTree = "<group>"; };
 		A466A31B28029D7400D655F4 /* UIAlertController+BasicFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+BasicFormat.swift"; sourceTree = "<group>"; };
 		A467B5C727DA258700AC702D /* NewNoteDatePickerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteDatePickerRowView.swift; sourceTree = "<group>"; };
-		A467B5C927DA289500AC702D /* NewNoteDatePickerRowView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewNoteDatePickerRowView.xib; sourceTree = "<group>"; };
 		A46B10EB2813E73F004AB185 /* UserDefaults+Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Keys.swift"; sourceTree = "<group>"; };
 		A46B10EF28142DB1004AB185 /* UIFont+Weight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Weight.swift"; sourceTree = "<group>"; };
 		A46B10F128142F26004AB185 /* UIViewController+ObserveCustomFontChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ObserveCustomFontChange.swift"; sourceTree = "<group>"; };
@@ -252,6 +251,7 @@
 		A472C5F629C2DDFF00097432 /* NewNoteInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteInputViewModel.swift; sourceTree = "<group>"; };
 		A472C5F829C2ED5000097432 /* HBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HBError.swift; sourceTree = "<group>"; };
 		A472C5FA29C2F21600097432 /* NewNoteSavingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteSavingDelegate.swift; sourceTree = "<group>"; };
+		A472C60229C408D000097432 /* NewNoteDatePickingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteDatePickingView.swift; sourceTree = "<group>"; };
 		A47D83472966D3870028AA1D /* FontSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSelectionView.swift; sourceTree = "<group>"; };
 		A47D8349296716BF0028AA1D /* FontCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontCell.swift; sourceTree = "<group>"; };
 		A47D83532973A4860028AA1D /* FontPublishing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontPublishing.swift; sourceTree = "<group>"; };
@@ -823,13 +823,13 @@
 		A896FBEF2966B5DE00A3400B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A467B5C927DA289500AC702D /* NewNoteDatePickerRowView.xib */,
 				A4A55A0828FFC675004ABE00 /* NewNoteInputView.swift */,
 				A467B5C727DA258700AC702D /* NewNoteDatePickerRowView.swift */,
 				A4CF2C7F27C733FE001B01B1 /* ColorButton.swift */,
 				A4EDFE802902D72A0056C2DC /* ColorPickerBarItem.swift */,
 				A4845B5C2900DF0B00A6007C /* ColorPicker.swift */,
 				A472C5F429C2DCEA00097432 /* NewNoteInputToolbar.swift */,
+				A472C60229C408D000097432 /* NewNoteDatePickingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1331,7 +1331,6 @@
 				A49B25F12812BF6800399630 /* dovemayo_bold.otf in Resources */,
 				A46B110D2814617B004AB185 /* IBMPlexSansKR-Regular.otf in Resources */,
 				A8FC07DD27B3EF030077A758 /* .swiftlint.yml in Resources */,
-				A467B5CA27DA289600AC702D /* NewNoteDatePickerRowView.xib in Resources */,
 				A46B111128146188004AB185 /* Cafe24SsurroundAir.ttf in Resources */,
 				A8FC07D427B3ECF30077A758 /* LaunchScreen.storyboard in Resources */,
 				A49B25F22812BF6B00399630 /* dovemayo.otf in Resources */,
@@ -1396,6 +1395,7 @@
 				A499318327BF5158009FF5A8 /* BottleNoteView.swift in Sources */,
 				A4CF2C8E27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift in Sources */,
 				A46BC1EF2800626A00C2E5B4 /* TabItem.swift in Sources */,
+				A472C60329C408D000097432 /* NewNoteDatePickingView.swift in Sources */,
 				A4569CBE28105052001E3FD6 /* CustomerServiceViewModel.swift in Sources */,
 				A8F985E0296FDE6000E5ACC6 /* ListTabViewController.swift in Sources */,
 				D284A5DE27FF3EFB00D20699 /* BottleNameEditViewController.swift in Sources */,

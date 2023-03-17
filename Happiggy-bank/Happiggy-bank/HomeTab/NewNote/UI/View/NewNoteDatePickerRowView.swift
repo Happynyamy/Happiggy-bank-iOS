@@ -8,41 +8,70 @@
 import UIKit
 
 /// 새로운 쪽지 추가 시 사용하는 날짜 피커의 각 행을 나타내는 뷰
-class NewNoteDatePickerRowView: UIView {
-    
-    // MARK: - @IBOutlet
-    
-    /// 이미지 뷰와 날짜 라벨을 담고 있는 스택 뷰 DatePickerRowView.xib 과 연결
-    @IBOutlet var contentView: UIStackView!
-    
+final class NewNoteDatePickerRowView: UIView {
+
+    // MARK: - Properties
+
     /// 해당 날짜에 쪽지를 썼는지 나타낼 이미지 뷰
-    @IBOutlet var colorImageView: UIImageView!
+    let noteImageView = UIImageView().then {
+        $0.clipsToBounds = true
+        $0.isUserInteractionEnabled = true
+        $0.contentMode = .scaleAspectFit
+    }
+
+    let dateLabel = BaseLabel().then {
+        $0.changeFontSize(to: FontSize.body1)
+    }
+
+    private let contentStack = UIStackView().then {
+        $0.spacing = Metric.spacing11
+    }
     
-    /// 날짜 라벨
-    @IBOutlet var dateLabel: UILabel!
-    
-    
-    // MARK: - Init
-    
+
+    // MARK: - Init(s)
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.commonInit()
-        
+
+        self.configureViews()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        self.commonInit()
+
+        self.configureViews()
     }
-    
-    
-    // MARK: - Functions
-    
-    /// contentview 를 하위 뷰로 추가하고, frame, autoresizingMask 설정
-    private func commonInit() {
-        Bundle.main.loadNibNamed(NewNoteDatePickerRowView.name, owner: self, options: nil)
-        self.addSubview(self.contentView)
-        self.contentView.frame = self.bounds
-        self.contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+
+    // MARK: - Configuration Functions
+
+    private func configureViews() {
+        self.configureSubviews()
+        self.configureConstraints()
+    }
+
+    private func configureSubviews() {
+        self.addSubview(self.contentStack)
+        self.contentStack.addArrangedSubviews(self.noteImageView, self.dateLabel)
+    }
+
+    private func configureConstraints() {
+        self.contentStack.snp.makeConstraints {
+            $0.verticalEdges.equalToSuperview().inset(Metric.spacing4)
+        }
+        self.dateLabel.snp.makeConstraints { $0.centerX.equalTo(self) }
+        self.noteImageView.snp.makeConstraints {
+            $0.width.equalTo(self.noteImageView.snp.height).multipliedBy(CGFloat.one)
+        }
+    }
+}
+
+
+// MARK: - Constants
+fileprivate extension NewNoteDatePickerRowView {
+
+    enum Metric {
+        static let spacing4: CGFloat = 4
+        static let spacing11: CGFloat = 11
     }
 }
