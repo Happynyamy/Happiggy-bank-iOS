@@ -5,16 +5,17 @@
 //  Created by 권은빈 on 2022/12/26.
 //
 
+import Combine
 import CoreData
 // TODO: ViewModel에 UIKit 제거
 import UIKit
 
-final class HomeTabViewModel {
+final class HomeTabViewModel: ObservableObject {
     
     // MARK: - Properties
     
     /// fetchedResultsController
-    var fetchedResultsController: NSFetchedResultsController<Bottle>?
+    lazy var controller: NSFetchedResultsController = PersistenceStore.shared.controller
     
     /// 현재 저금통
     var bottle: Bottle?
@@ -51,7 +52,10 @@ final class HomeTabViewModel {
     
     
     init() {
-        configureFetchedResultsController()
+        // MARK: - Mock Data 삭제용
+//        PersistenceStore.shared.deleteAll(Bottle.self)
+        
+        fetchController()
     }
     
     /// 현재 진행중인 저금통의 D-day 계산
@@ -74,28 +78,23 @@ final class HomeTabViewModel {
         }
     }
     
+    // TODO: - 조금 더 깔끔하게 변경
     /// fetchedResultsController를 설정
-    private func configureFetchedResultsController() {
-        let request = Bottle.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(
-            key: "startDate_",
-            ascending: false
-        )]
-        self.fetchedResultsController = NSFetchedResultsController(
-            fetchRequest: request,
-            managedObjectContext: PersistenceStore.shared.context,
-            sectionNameKeyPath: nil,
-            cacheName: nil
-        )
-        
+    func fetchController() -> AnyPublisher<Bottle, Never>? {
         do {
-            try self.fetchedResultsController?.performFetch()
-            let result = self.fetchedResultsController?.fetchedObjects
-            self.bottle = result?.first
+            try controller.performFetch()
+            guard let result = controller.fetchedObjects,
+                  let firstBottle = result.first
+            else {
+                self.bottle = nil
+                return nil
+            }
+            self.bottle = firstBottle.isOpen ? nil : firstBottle
+            return self.bottle.publisher.eraseToAnyPublisher()
         } catch {
-            
             // TODO: Alert Error
             print(error.localizedDescription)
+            return nil
         }
     }
     

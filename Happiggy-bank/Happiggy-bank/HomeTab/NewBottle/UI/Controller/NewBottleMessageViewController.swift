@@ -5,6 +5,8 @@
 //  Created by 권은빈 on 2023/02/08.
 //
 
+import Combine
+import CoreData
 import UIKit
 
 final class NewBottleMessageViewController: UIViewController {
@@ -22,6 +24,8 @@ final class NewBottleMessageViewController: UIViewController {
     
     /// 뷰 모델
     private var viewModel: NewBottleViewModel = NewBottleViewModel()
+    
+    private var cancellableBag = Set<AnyCancellable>()
     
     
     // MARK: - Life Cycles

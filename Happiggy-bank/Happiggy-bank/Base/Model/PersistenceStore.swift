@@ -33,7 +33,12 @@ final class PersistenceStore {
     
     /// FetchedResultsController
     lazy var controller: NSFetchedResultsController<Bottle> = {
-        let request = Bottle.fetchRequest(isOpen: true)
+        let request = Bottle.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(
+            key: "startDate_",
+            ascending: false
+        )]
+        
         let controller = NSFetchedResultsController(
             fetchRequest: request,
             managedObjectContext: context,
