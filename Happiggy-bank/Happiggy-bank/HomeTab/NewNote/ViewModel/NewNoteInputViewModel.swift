@@ -14,7 +14,7 @@ final class NewNoteInputViewModel {
     /// 이미지 처리 객체
 
     /// 임시 쪽지 객체
-    var newNote: NewNote
+    let newNote: NewNote
 
     /// 배경 색상
     var backgroundColor: UIColor? { AssetColor.noteBG(for: self.newNote.color) }
@@ -34,8 +34,8 @@ final class NewNoteInputViewModel {
 
     // MARK: - Inits
 
-    init(date: Date, bottle: Bottle) {
-        self.newNote = NewNote(date: date, bottle: bottle)
+    init(newNote: NewNote) {
+        self.newNote = newNote
     }
 
 

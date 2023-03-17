@@ -195,11 +195,7 @@ final class NewNoteDatePickerViewController: UIViewController {
         guard let rowView = pickerView.view(forRow: row, forComponent: component)
                 as? NewNoteDatePickerRowView
         else { return }
-        
-        rowView.dateLabel.attributedText = self.viewModel.attributedDateString(
-            for: noteData,
-            isSelected: true
-        )
+
     }
     
     /// 이전 상태와 같게 틴트 컬러 및 경고 라벨 상태 복구
@@ -212,13 +208,7 @@ final class NewNoteDatePickerViewController: UIViewController {
             forComponent: .zero
         ) as? NewNoteDatePickerRowView
         else { return }
-        
-        /// 선택 가능하면 틴트컬러 적용
-        rowView.dateLabel.attributedText = self.viewModel.attributedDateString(
-            for: noteDatePickerData,
-            isSelected: true
-        )
-        
+
         guard noteDatePickerData.color != nil
         else { return }
         
@@ -271,7 +261,6 @@ extension NewNoteDatePickerViewController: UIPickerViewDelegate {
         let rowView = view as? NewNoteDatePickerRowView ?? NewNoteDatePickerRowView()
         
         /// 데이터에 맞게 행의 모습(날짜 라벨 텍스트와 쪽지 이미지 색깔) 업데이트
-        rowView.dateLabel.attributedText = self.viewModel.attributedDateString(for: noteData)
         rowView.noteImageView.image = self.viewModel.image(for: noteData)
     
         return rowView

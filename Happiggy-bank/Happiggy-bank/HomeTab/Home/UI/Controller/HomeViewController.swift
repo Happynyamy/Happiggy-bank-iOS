@@ -186,7 +186,7 @@ final class HomeViewController: UIViewController {
                   let bottle = self.viewModel.bottle
             else { return }
             
-            let viewModel = NewNoteDatePickerViewModel(initialDate: Date(), bottle: bottle)
+            let viewModel = NewNoteDatePickerViewModel(newNote: .init(date: Date(), bottle: bottle))
             dateViewController.viewModel = viewModel
         }
         

@@ -8,7 +8,9 @@
 import Foundation
 
 /// 새 쪽지를 추가할 때 사용하는 모델
-struct NewNote: Equatable {
+final class NewNote {
+
+    // MARK: - Properties
 
     /// 고유 아이디
     let id = UUID()
@@ -24,4 +26,20 @@ struct NewNote: Equatable {
 
     /// 이미지 아이디
     var imageID: String?
+
+
+    // MARK: - Init(s)
+
+    init(date: Date, bottle: Bottle) {
+        self.date = date
+        self.bottle = bottle
+    }
+}
+
+
+// MARK: - Equtable
+extension NewNote: Equatable {
+    static func == (lhs: NewNote, rhs: NewNote) -> Bool {
+        lhs.id == rhs.id
+    }
 }

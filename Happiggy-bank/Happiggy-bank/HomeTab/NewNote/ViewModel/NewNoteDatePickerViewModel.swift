@@ -11,17 +11,24 @@ import UIKit
 final class NewNoteDatePickerViewModel {
     
     // MARK: - Properties
-    
+
+    let newNote: NewNote
+
+    /// 오늘 날짜 혹은 이전에 선택한 날짜에 해당하는 행 위치를 리턴
+    let initialRow: Int
+
+    /// 날짜 피커 전체 행 개수
+    let numberOfRows: Int
+
     /// 선택한 날짜
-    var selectedDate: Date!
-    
-    /// 쪽지를 넣을 저금통: 보틀 뷰 컨트롤러에서 주입받음
-    private(set) var bottle: Bottle!
+    ///
+    /// 피커를 스크롤만 하고 체크 버튼으로 확정하지 않는 경우를 분리하기 위해 별도로 선언
+    var selectedDate: Date
     
     /// 날짜 피커에 나타낼 데이터 소스 : 시작일부터의 오늘까지의 모든 날짜와, 해당 날짜에 쪽지를 이미 썼으면 컬러가 없으면 nil이 담겨있음
     private(set) lazy var noteData: [NoteDatePickerData] = {
         var source = [NoteDatePickerData]()
-        let startDate = self.bottle.startDate
+        let startDate = self.newNote.bottle.startDate
         
         /// 날짜 먼저 전부 기록
         for value in .zero..<self.numberOfRows {
@@ -30,62 +37,50 @@ final class NewNoteDatePickerViewModel {
         }
         
         /// 쪽지들 확인하면서 맞는 날짜에 색깔 기록
-        for note in self.bottle.notes {
+        for note in self.newNote.bottle.notes {
             guard note.date < Date.startOfTomorrow
             else { continue }
             
             let index = Calendar.daysBetween(start: startDate, end: note.date) - 1
+            guard source[safe: index] != nil
+            else {
+                continue
+            }
+
             source[index].color = note.color
         }
+        
         return source
     }()
-    
-    /// 날짜 피커 전체 행 개수
-    private(set) lazy var numberOfRows: Int =  {
-        self.bottle.numberOfDaysSinceStartDate
-    }()
-    
-    /// 오늘 날짜 혹은 이전에 선택한 날짜에 해당하는 행 위치를 리턴
-    private(set) lazy var initialRow: Int = {
-        Calendar.daysBetween(start: self.bottle.startDate, end: self.selectedDate) - 1
-    }()
-    
+
     
     // MARK: - Init
-    
-    init(initialDate date: Date, bottle: Bottle) {
-        self.selectedDate = date
-        self.bottle = bottle
+
+    init(newNote: NewNote) {
+        self.newNote = newNote
+        self.initialRow = Calendar.daysBetween(start: newNote.bottle.startDate, end: newNote.date) - 1
+        self.numberOfRows = newNote.bottle.numberOfDaysSinceStartDate
+        self.selectedDate = newNote.date
     }
     
     
     // MARK: - Function
     
-    /// 날짜를 "2022 02.05  금" 형태의 문자열로 월, 일만 볼드 처리해서 변환
-    func attributedDateString(
-        for source: NoteDatePickerData,
-        isSelected: Bool = false
-    ) -> NSMutableAttributedString {
-
-        let color = isSelected && (source.color == nil) ?  UIColor.customTint : .label
-        
-        return source.date
-            .customFormatted(type: .spaceAndDotWithDayOfWeek)
-            .nsMutableAttributedStringify()
-            .color(color: color)
-            .bold(targetString: source.date.monthDotDayWithDayOfWeekString)
-    }
-    
     /// 쪽지 에셋 이미지 리턴
     func image(for noteData: NoteDatePickerData) -> UIImage? {
         guard let color = noteData.color
-        else { return nil}
+        else { return nil }
         
-        return .note(color: color)
+        return AssetImage.note(ofColor: color)
     }
     
     /// 선택한 행의 날짜에 쪽지를 쓸 수 있는 지 리턴
     func selectedDateIsAvailable(for row: Int) -> Bool {
-        noteData[row].color == nil
+        guard noteData.indices ~= row
+        else {
+            return false
+        }
+
+        return noteData[row].color == nil
     }
 }
