@@ -27,7 +27,7 @@ final class HomeTabViewController: UIViewController {
     }
     
     /// 유리병 뷰를 관리하는 컨트롤러
-    private var bottleViewController: BottleViewController!
+    private lazy var bottleViewController = BottleMotionViewController(bottle: self.viewModel.bottle)
     
     /// 뷰모델
     var viewModel: HomeTabViewModel = HomeTabViewModel()
@@ -135,15 +135,18 @@ final class HomeTabViewController: UIViewController {
     }
     
     /// BottleViewController 설정
+    /// 현재 컨트롤러의 자식 컨트롤러로 추가
     private func configureBottleViewController() {
-        let bottleViewController = BottleViewController()
-        let viewModel = BottleViewModel()
-        
-        viewModel.bottle = self.viewModel.bottle
-        bottleViewController.viewModel = viewModel
-        self.bottleViewController = bottleViewController
+        self.addChild(self.bottleViewController)
+        self.view.insertSubview(self.bottleViewController.view, at: .zero)
+
+        self.bottleViewController.view.snp.makeConstraints {
+            $0.edges.equalTo(self.view.safeAreaLayoutGuide)
+        }
+
+        self.bottleViewController.didMove(toParent: self)
     }
-    
+
     /// 모든 날짜에 쪽지를 작성했다는 알림
     private func noEmptyDateAlert() -> UIAlertController {
         UIAlertController.basic(

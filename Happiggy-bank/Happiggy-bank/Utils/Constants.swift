@@ -49,42 +49,6 @@ enum FontSize {
     static let secondaryLabel: CGFloat = 15
 }
 
-extension BottleViewController {
-    
-    /// BottleViewController 에서 설정하는 layout 에 적용할 상수값들을 모아놓은 enum
-    enum Metric {
-        
-        /// 현재 뷰를 기준으로 충돌 영역 설정을 위해 넣을 상하좌우 마진
-        static let collisionBoundaryInsets = UIEdgeInsets(top: .zero, left: 3, bottom: 3, right: 3)
-        
-        /// 쪽지들이 바운더리와 부딪칠 때 햅틱 반응의 강도: 0.4
-        static let impactHapticIntensity: CGFloat = 0.4
-    }
-}
-
-extension BottleViewModel {
-    /// 상수값
-    enum Metric {
-        
-        /// 그리드 인셋
-        static let gridEdgeInsets = UIEdgeInsets(
-            top: 30,
-            left: gridVerticalInset,
-            bottom: .zero,
-            right: gridVerticalInset
-        )
-        
-        /// 1년 짜리 제외 다 영역 축소
-        static let durationCap = 300
-        
-        /// 일주일, 한 달인 경우 높이를 축소하기 위해 감산해줄 값: 40
-        static let shorterDurationHeightRemovalConstant: CGFloat = 40
-        
-        /// 그리드 좌우 인셋: 7
-        private static let gridVerticalInset: CGFloat = 7
-    }
-}
-
 /// 대한민국 local identifier
 let krLocalIdentifier = "ko_KR"
 

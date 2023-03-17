@@ -91,20 +91,16 @@ struct Grid {
             width: CGFloat(self.dimensions.columnCount) * cellSize.width,
             height: CGFloat(self.dimensions.rowCount) * cellSize.height
         )
-        
-        let offset = (
-            dx: (self.frame.width - boundingSize.width) / 2,
-            dy: (self.frame.height - boundingSize.height) / 2
-        )
+
+        let offsetX = (self.frame.width - boundingSize.width) / 2
         
         /// 셀들이 실제로 그리드 내부 영역을 딱 맞게 채우지는 못하는 경우 가운데 정렬을 위해서 오프셋을 계산해 시작점을 옮겨줌
-        var origin = self.frame.origin
-        origin.x += offset.dx
-        origin.y += (self.frame.maxY - cellSize.height)
+        var origin = CGPoint(x: self.frame.origin.x + offsetX, y: self.frame.maxY - cellSize.height)
 
         guard self.cellCount > .zero
         else { return }
-        
+
+        let maxValidX = round(self.frame.maxX - cellSize.width)
         /// 맨 아래 행부터 좌->우 방향으로 cellFrame 배열 업데이트
         for _ in .zero..<self.cellCount {
             self.cellFrames.append(CGRect(origin: origin, size: cellSize))
@@ -113,8 +109,8 @@ struct Grid {
             origin.x += cellSize.width
             
             /// 이번 행에 더 이상 셀을 넣을 수 없는 경우 한 행 위로 위치를 옮김
-            if round(origin.x) > round(frame.maxX - cellSize.width) {
-                origin.x = self.frame.origin.x + offset.dx
+            if round(origin.x) > maxValidX {
+                origin.x = self.frame.origin.x + offsetX
                 origin.y -= cellSize.height
             }
         }

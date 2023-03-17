@@ -100,7 +100,6 @@
 		A491018727D6F37C0012DFDD /* NSObject+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = A491018627D6F37C0012DFDD /* NSObject+Name.swift */; };
 		A491018D27D7358B0012DFDD /* Bottle+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A491018C27D7358B0012DFDD /* Bottle+CoreDataClass.swift */; };
 		A491018F27D735920012DFDD /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A491018E27D735920012DFDD /* Note+CoreDataClass.swift */; };
-		A499318127BF3A38009FF5A8 /* BottleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499318027BF3A38009FF5A8 /* BottleViewModel.swift */; };
 		A499318327BF5158009FF5A8 /* BottleNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A499318227BF5158009FF5A8 /* BottleNoteView.swift */; };
 		A49931A527BFD20E009FF5A8 /* UIImage+AssetImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49931A427BFD20E009FF5A8 /* UIImage+AssetImages.swift */; };
 		A49A8C212952F54900D5468A /* DebugPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49A8C202952F54900D5468A /* DebugPrint.swift */; };
@@ -164,7 +163,7 @@
 		A89CBEDD27CBDEA2005549F6 /* BottleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89CBEDC27CBDEA2005549F6 /* BottleListViewController.swift */; };
 		A89FF2F12959902C00BF0E1B /* HomeTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89FF2F02959902C00BF0E1B /* HomeTabViewModel.swift */; };
 		A8BD833327BE104900E0DE41 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833227BE104900E0DE41 /* HomeViewController.swift */; };
-		A8BD833527BE106C00E0DE41 /* BottleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833427BE106C00E0DE41 /* BottleViewController.swift */; };
+		A8BD833527BE106C00E0DE41 /* BottleMotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833427BE106C00E0DE41 /* BottleMotionViewController.swift */; };
 		A8BD833F27BE30B400E0DE41 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD833E27BE30B400E0DE41 /* Constants.swift */; };
 		A8BD834727BE337900E0DE41 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD834627BE337900E0DE41 /* HomeView.swift */; };
 		A8C972032952C88D00CB59F9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A8C972022952C88D00CB59F9 /* SnapKit */; };
@@ -282,7 +281,6 @@
 		A491018627D6F37C0012DFDD /* NSObject+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Name.swift"; sourceTree = "<group>"; };
 		A491018C27D7358B0012DFDD /* Bottle+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bottle+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A491018E27D735920012DFDD /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
-		A499318027BF3A38009FF5A8 /* BottleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleViewModel.swift; sourceTree = "<group>"; };
 		A499318227BF5158009FF5A8 /* BottleNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleNoteView.swift; sourceTree = "<group>"; };
 		A49931A427BFD20E009FF5A8 /* UIImage+AssetImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AssetImages.swift"; sourceTree = "<group>"; };
 		A49A8C202952F54900D5468A /* DebugPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugPrint.swift; sourceTree = "<group>"; };
@@ -346,7 +344,7 @@
 		A89CBEDC27CBDEA2005549F6 /* BottleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleListViewController.swift; sourceTree = "<group>"; };
 		A89FF2F02959902C00BF0E1B /* HomeTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewModel.swift; sourceTree = "<group>"; };
 		A8BD833227BE104900E0DE41 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		A8BD833427BE106C00E0DE41 /* BottleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleViewController.swift; sourceTree = "<group>"; };
+		A8BD833427BE106C00E0DE41 /* BottleMotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleMotionViewController.swift; sourceTree = "<group>"; };
 		A8BD833E27BE30B400E0DE41 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A8BD834627BE337900E0DE41 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A8D58DAF299286A700FD52A1 /* NewBottleDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBottleDateView.swift; sourceTree = "<group>"; };
@@ -676,7 +674,6 @@
 			isa = PBXGroup;
 			children = (
 				A896FBE12966B41800A3400B /* UI */,
-				A896FBE02966B41300A3400B /* ViewModel */,
 			);
 			path = BottleMotion;
 			sourceTree = "<group>";
@@ -688,14 +685,6 @@
 				A896FBE72966B5C100A3400B /* ViewModel */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		A896FBE02966B41300A3400B /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				A499318027BF3A38009FF5A8 /* BottleViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		A896FBE12966B41800A3400B /* UI */ = {
@@ -710,7 +699,7 @@
 		A896FBE22966B41A00A3400B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A8BD833427BE106C00E0DE41 /* BottleViewController.swift */,
+				A8BD833427BE106C00E0DE41 /* BottleMotionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1425,7 +1414,7 @@
 				A4C1AFCE27E4F8150096CD3E /* UIView+FadeInOut.swift in Sources */,
 				A49A8C25295331B000D5468A /* AssetImage.swift in Sources */,
 				A491018727D6F37C0012DFDD /* NSObject+Name.swift in Sources */,
-				A8BD833527BE106C00E0DE41 /* BottleViewController.swift in Sources */,
+				A8BD833527BE106C00E0DE41 /* BottleMotionViewController.swift in Sources */,
 				A4CF2C8027C733FE001B01B1 /* ColorButton.swift in Sources */,
 				A4CF2C8227C73B42001B01B1 /* UIColor+AssetColors.swift in Sources */,
 				A819CF9F27DDD97C00DE8E72 /* HapticManager.swift in Sources */,
@@ -1503,7 +1492,6 @@
 				A4F5715827DC459B00E7DF9B /* NoteColor.swift in Sources */,
 				A46B10FE281450F6004AB185 /* CustomNavigationController.swift in Sources */,
 				A8BD833327BE104900E0DE41 /* HomeViewController.swift in Sources */,
-				A499318127BF3A38009FF5A8 /* BottleViewModel.swift in Sources */,
 				A4396B1929323131005D9D3A /* ImageManager.swift in Sources */,
 				A8D58DB0299286A700FD52A1 /* NewBottleDateView.swift in Sources */,
 				A4D6EB77282E307900553E43 /* VersionManager.swift in Sources */,

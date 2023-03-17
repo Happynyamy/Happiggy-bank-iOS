@@ -41,7 +41,7 @@ final class HomeViewController: UIViewController {
     @IBOutlet weak var moreButton: UIButton!
     
     /// 유리병 뷰를 관리하는 컨트롤러
-    var bottleViewController: BottleViewController!
+    var bottleViewController: BottleMotionViewController!
     
     /// 데이터를 홈뷰에 맞게 변환해주는 ViewModel
     private var viewModel = HomeViewModel()
@@ -173,12 +173,12 @@ final class HomeViewController: UIViewController {
         self.bottleViewController?.prepareForSegue()
         
         if segue.identifier == SegueIdentifier.showBottleView {
-            guard let bottleViewController = segue.destination as? BottleViewController
+            guard let bottleViewController = segue.destination as? BottleMotionViewController
             else { return }
-            
-            let viewModel = BottleViewModel()
-            viewModel.bottle = self.viewModel.bottle
-            bottleViewController.viewModel = viewModel
+
+            if let bottle = self.viewModel.bottle {
+                bottleViewController.bottleDidAdd(bottle)
+            }
             self.bottleViewController = bottleViewController
         }
         if segue.identifier == SegueIdentifier.presentNewNoteDatePicker {
