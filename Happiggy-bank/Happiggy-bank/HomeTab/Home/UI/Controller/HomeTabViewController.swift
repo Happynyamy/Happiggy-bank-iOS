@@ -90,18 +90,17 @@ final class HomeTabViewController: UIViewController {
         if !bottle.hasEmptyDate {
             return self.present(self.noEmptyDateAlert(), animated: true)
         }
-        
         if bottle.isEmtpyToday {
-            // NewNoteInputViewController
             self.navigationController?.pushViewControllerWithFade(
                 to: NewNoteInputViewController(
                     viewModel: .init(newNote: .init(date: Date(), bottle: bottle))
                 )
             )
         } else {
-            // NewNoteDatePickerViewController
             self.navigationController?.pushViewControllerWithFade(
-                to: UIViewController().then { $0.view.backgroundColor = .orange }
+                to: NewNoteDatePickerViewController(
+                    viewModel: .init(newNote: .init(date: Date(), bottle: bottle)),
+                    parent: .home)
             )
         }
     }

@@ -218,16 +218,6 @@ extension CATransition {
     static let transitionDuration: CFTimeInterval = 0.2
 }
 
-extension NewNoteDatePickerViewController {
-    
-    /// NewNoteDatePickerViewController 에서 사용하는 상수값
-    enum Metric {
-        
-        /// 영역 수: 1개
-        static let numberOfComponents = 1
-    }
-}
-
 extension NewBottleNameFieldViewController {
     
     /// NewBottleNameFieldViewController에서 사용하는 문자열
@@ -410,16 +400,6 @@ enum Asset: String {
     
     /// 환경설정 아이콘 에셋 호출을 위함
     case settings
-}
-
-extension NewNoteDatePickerViewModel {
-    
-    /// NoteNoteDatePickerViewModel 에서 지정하는 폰트 크기
-    enum Font {
-        
-        /// 날짜라벨 폰트 크기: 18
-        static let dateLabelFontSize: CGFloat = 18
-    }
 }
 
 extension SettingsViewCell {

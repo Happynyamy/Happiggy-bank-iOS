@@ -163,8 +163,8 @@ final class NewNoteInputViewController: UIViewController {
         self.noteInputView.textView.resignFirstResponder()
 
         self.toolbarBottomConstraint?.update(inset: Int.zero)
+        
         let toolbarHeight = self.toolbar.frame.height
-
         self.noteInputViewBotttomConstraint?.deactivate()
         self.noteInputView.snp.makeConstraints {
             self.noteInputViewBotttomConstraint = $0.bottom.equalTo(self.view.safeAreaLayoutGuide)
@@ -184,8 +184,16 @@ final class NewNoteInputViewController: UIViewController {
 
     private func configureCalendarButton() {
         let action = UIAction { [weak self] _ in
-            print("move to date select view controller ")
-            self?.navigationController?.pushViewControllerWithFade(to: UIViewController())
+            guard let newNote = self?.viewModel.newNote
+            else {
+                return
+            }
+
+            let dateViewController = NewNoteDatePickerViewController(
+                viewModel: .init(newNote: newNote),
+                parent: .noteInput
+            )
+            self?.navigationController?.pushViewControllerWithFade(to: dateViewController)
             self?.noteInputView.textView.resignFirstResponder()
         }
         self.noteInputView.calendarButton.addAction(action, for: .touchUpInside)

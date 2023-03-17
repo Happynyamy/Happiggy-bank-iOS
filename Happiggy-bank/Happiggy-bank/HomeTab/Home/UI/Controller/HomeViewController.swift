@@ -187,7 +187,6 @@ final class HomeViewController: UIViewController {
             else { return }
             
             let viewModel = NewNoteDatePickerViewModel(newNote: .init(date: Date(), bottle: bottle))
-            dateViewController.viewModel = viewModel
         }
         
         if segue.identifier == SegueIdentifier.presentBottleMessageView {

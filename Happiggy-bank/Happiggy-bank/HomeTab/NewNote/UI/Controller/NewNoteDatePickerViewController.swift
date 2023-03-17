@@ -7,181 +7,177 @@
 
 import UIKit
 
+import SnapKit
+import Then
+
 // FIXME: - 다른 앱 갔다 오면 선택 시 색깔 바꾼 게 사라짐
 /// 새로운 쪽지를 추가하기 위한 날짜 피커 뷰를 관리하는 뷰 컨트롤러
 final class NewNoteDatePickerViewController: UIViewController {
-    
-    // MARK: - @IBOutlet
-    
-    /// 취소 버튼과 다음 버튼을 담고 있는 내비게이션 바
-    @IBOutlet weak var navigationBar: UINavigationBar!
-    
-    /// 컬러피커로 넘어가거나 쪽지 텍스트뷰로 돌아가는 버튼
-    @IBOutlet weak var rightButton: UIBarButtonItem!
-    
-    /// 새로 쪽지를 작성할 날짜를 나타내는 날짜 피커
-    @IBOutlet weak var datePickerView: UIPickerView!
-    
-    /// 이미 쪽지를 작성한 날짜를 선택했을 때 나타나는 경고 라벨
-    @IBOutlet weak var warningLabel: UILabel!
-    
-    
+
+    // MARK: - Enum
+
+    enum Parent {
+        case home
+        case noteInput
+    }
+
+    private enum Section: Int, CaseIterable {
+        case main
+    }
+
+
     // MARK: - Properties
+
+    private let rootView = NewNoteDatePickingView()
     
     /// 날짜 피커에서 필요한 형태로 데이터를 변환해주는 뷰모델
-    var viewModel: NewNoteDatePickerViewModel!
+    private let viewModel: NewNoteDatePickerViewModel
     
-    /// source 가 어디인지에 따라 기본 셋팅과 메서드 작동 방식 다르게 하기 위함
-    var isFromNoteTextView = false
+    /// 부모 컨트롤러에 따라 내비게이션 방향 설정
+    private let parentType: Parent
     
     /// 경고 라벨 애니메이션을 위해 필요
-    var showWarningLabel = false
-    
+    private var showWarningLabel = false
+
+
+    // MARK: - Inits
+
+    init(viewModel: NewNoteDatePickerViewModel, parent: Parent) {
+        self.viewModel = viewModel
+        self.parentType = parent
+
+        super.init(nibName: nil, bundle: nil)
+        self.hidesBottomBarWhenPushed = true
+        self.view.backgroundColor = AssetColor.subGrayBG
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     
     // MARK: - Life Cycle
+
+    override func loadView() {
+        self.view = self.rootView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationBar.clear()
-        self.scrollToInitialPosition()
-        self.configureRightButton()
-        self.configureSelectionIndicator()
+
+        self.configureNavigationBar()
         self.observe(
             selector: #selector(viewWillEnterForeground),
             name: UIApplication.willEnterForegroundNotification,
             object: nil
         )
+        self.rootView.datePicker.delegate = self
+        self.scrollToInitialPosition()
     }
-    
+
+    // FIXME: 다른 방법 찾아보기..
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
 
-        guard !self.isFromNoteTextView
+        guard self.parentType == .home
         else { return }
-        
+
         self.fadeInWarningLabel()
     }
-    
-    
-    // MARK: - @IBAction
-    
-    /// 취소 버튼(x)을 눌렀을 때 호출되는 액션 메서드 : 보틀뷰(홈뷰)/쪽지 텍스트뷰로 돌아감
-    @IBAction func cancelButtonDidTap(_ sender: UIBarButtonItem) {
-        self.fadeOut()
-        if self.isFromNoteTextView {
-            self.performSegue(
-                withIdentifier: SegueIdentifier.unwindFromNoteDatePickerToTextView,
-                sender: sender
-            )
-            return
-        }
-        if !self.isFromNoteTextView {
-            self.performSegue(
-                withIdentifier: SegueIdentifier.unwindFromNoteDatePickerToHomeView,
-                sender: self
-            )
-        }
-    }
-    
-    /// 오른쪽 버튼을 눌렀을 때 호출되는 액션 메서드 : 컬러 피커를 띄우거나 쪽지 텍스트뷰로 돌아감
-    @IBAction func rightButtonDidTap(_ sender: UIBarButtonItem) {
-        
-        let row = self.datePickerView.selectedRow(inComponent: .zero)
-        
-        guard row >= .zero,
-              self.viewModel.selectedDateIsAvailable(for: row)
-        else {
-            /// 이미 작성한 날짜를 선택한 상태에서 오른쪽 버튼을 누르는 경우 햅틱 알림
-            HapticManager.instance.notification(type: .error)
-            return
-        }
-        
-        if !self.isFromNoteTextView {
-            self.performSegue(
-                withIdentifier: SegueIdentifier.presentNewNoteTextViewFromDatePicker,
-                sender: sender
-            )
-            return
-        }
-        if self.isFromNoteTextView {
-            self.performSegue(
-                withIdentifier: SegueIdentifier.unwindFromNoteDatePickerToTextView,
-                sender: sender
-            )
-        }
-    }
-    
-    
+
+
     // MARK: - @objc
-    
+
     /// 다시 앱으로 돌아왔을 때 호출
     @objc private func viewWillEnterForeground() {
         self.restoreTintColorAndWarningLabelStatus()
     }
-    
-    
-    // MARK: - Functions
-    
-    /// 날짜 피커의 셀렉션 인디케이터를 흰색으로 변경
-    private func configureSelectionIndicator() {
-        /// 기존 인디케이터 투명 처리
-        let formerSelectionIndicator = self.datePickerView.subviews[1]
-        formerSelectionIndicator.backgroundColor = .clear
-        
-        /// 흰색의 새로운 인디케이터 생성
-        let newSelectionIndictor = UIView().then {
-            $0.frame = formerSelectionIndicator.frame
-            $0.layer.cornerRadius = formerSelectionIndicator.layer.cornerRadius
-            $0.backgroundColor = .pickerSelectionColor
+
+
+    // MARK: - Configuration Functions
+
+    private func configureNavigationBar() {
+        let cancelButton = UIBarButtonItem(
+            image: AssetImage.xmark,
+            primaryAction: .init { [weak self] _ in
+                self?.navigationController?.popViewControllerWithFade()
+            }
+        )
+        let showNoteInputView = UIAction { [weak self] _ in
+            guard let row = self?.rootView.datePicker.selectedRow(inComponent: Section.main.rawValue),
+                  self?.viewModel.selectedDateIsAvailable(for: row) == true,
+                  let date = self?.viewModel.selectedDate
+            else {
+                /// 이미 작성한 날짜를 선택한 상태에서 오른쪽 버튼을 누르는 경우 햅틱 알림
+                HapticManager.instance.notification(type: .error)
+                return
+            }
+
+            self?.viewModel.newNote.date = date
+            if self?.parentType == .noteInput {
+                /// 부모가 쪽지 작성 컨트롤러인 경우 기존 컨트롤러로 되돌아감
+                self?.navigationController?.popViewControllerWithFade()
+            } else if self?.parentType == .home,
+                      let newNote = self?.viewModel.newNote,
+                      let controllers = self?.navigationController?.viewControllers.dropLast() {
+
+                /// 부모가 홈 컨트롤러인 경우 쪽지 작성 컨트롤러를 생성해서 푸시
+                let noteInputViewController = NewNoteInputViewController(
+                    viewModel: .init(newNote: newNote)
+                )
+
+                self?.fadeIn()
+                self?.navigationController?.setViewControllers(controllers + [noteInputViewController], animated: false)
+            }
         }
-        
-        /// 뷰 체계에 삽입 및 오토 레이아웃 설정
-        self.view.insertSubview(newSelectionIndictor, belowSubview: self.datePickerView)
-        newSelectionIndictor.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            newSelectionIndictor.centerXAnchor.constraint(
-                equalTo: formerSelectionIndicator.centerXAnchor
-            ),
-            newSelectionIndictor.centerYAnchor.constraint(
-                equalTo: formerSelectionIndicator.centerYAnchor
-            ),
-            newSelectionIndictor.widthAnchor.constraint(
-                equalTo: formerSelectionIndicator.widthAnchor
-            ),
-            newSelectionIndictor.heightAnchor.constraint(
-                equalTo: formerSelectionIndicator.heightAnchor
-            )
-        ])
+
+        let checkButton = UIBarButtonItem(image: AssetImage.checkmark, primaryAction: showNoteInputView)
+
+        self.navigationItem.setLeftBarButton(cancelButton, animated: true)
+        self.navigationItem.setRightBarButton(checkButton, animated: true)
+    }
+
+    /// 날짜를 "2022 02.05  금" 형태의 문자열로 월, 일만 볼드 처리해서 변환
+    func attributedDateString(
+        forLabel label: BaseLabel,
+        source: NoteDatePickerData,
+        isSelected: Bool
+    ) -> NSMutableAttributedString {
+        let customFont = (label.customFont ?? .current)
+        let fontSize = label.font.pointSize
+        let font = UIFont(name: customFont.regular, size: fontSize) ?? .systemFont(ofSize: fontSize)
+        let boldFont = UIFont(name: customFont.bold, size: fontSize) ?? .boldSystemFont(ofSize: fontSize)
+        let color = (isSelected && source.color == nil) ?  AssetColor.mainGreen : .label
+
+        return source.date
+            .customFormatted(type: .spaceAndDotWithDayOfWeek)
+            .nsMutableAttributedStringify()
+            .color(color: color ?? .systemGreen)
+            .font(font)
+            .bold(font: boldFont, targetString: source.date.monthDotDayWithDayOfWeekString)
     }
     
     /// 오늘 날짜 혹은 이전에 선택한 날짜로 스크롤
     private func scrollToInitialPosition() {
         let row = self.viewModel.initialRow
-        self.datePickerView.selectRow(
-            row,
-            inComponent: .zero,
-            animated: false
-        )
-        
+        guard let noteData = self.viewModel.noteData[safe: row]
+        else {
+            return
+        }
+
+        self.rootView.datePicker.selectRow(row, inComponent: Section.main.rawValue, animated: false)
         self.updateSelectedRowView(
-            self.datePickerView,
+            self.rootView.datePicker,
             forRow: row,
             forComponent: .zero,
-            noteData: self.viewModel.noteData[row]
+            noteData: noteData
         )
-    }
-    
-    /// 소스가 보틀뷰면 그대로 사용하고 쪽지 텍스트뷰면 확인 버튼으로 변경
-    private func configureRightButton() {
-        if self.isFromNoteTextView {
-            rightButton.image = .customCheckmark
-        }
     }
     
     /// 경고 라벨 나타내는 메서드
     private func fadeInWarningLabel() {
-        self.warningLabel.fadeIn()
+        self.rootView.warningLabel.fadeIn()
         self.showWarningLabel = true
     }
     
@@ -196,39 +192,40 @@ final class NewNoteDatePickerViewController: UIViewController {
                 as? NewNoteDatePickerRowView
         else { return }
 
+        rowView.dateLabel.attributedText = self.attributedDateString(
+            forLabel: rowView.dateLabel,
+            source: noteData,
+            isSelected: true
+        )
     }
     
     /// 이전 상태와 같게 틴트 컬러 및 경고 라벨 상태 복구
     private func restoreTintColorAndWarningLabelStatus() {
-        let selectedRow = self.validatedRow(self.datePickerView.selectedRow(inComponent: .zero))
-        let noteDatePickerData = self.viewModel.noteData[selectedRow]
-        
-        guard let rowView = self.datePickerView.view(
-            forRow: selectedRow,
-            forComponent: .zero
-        ) as? NewNoteDatePickerRowView
-        else { return }
+        let selectedRow = self.rootView.datePicker.selectedRow(inComponent: Section.main.rawValue)
 
+        guard let noteDatePickerData = self.viewModel.noteData[safe: selectedRow],
+            let rowView = self.rootView.datePicker.view(
+            forRow: selectedRow,
+            forComponent: Section.main.rawValue
+        ) as? NewNoteDatePickerRowView
+        else {
+            return
+        }
+        
+        /// 선택 가능하면 틴트컬러 적용
+        rowView.dateLabel.attributedText = self.attributedDateString(
+            forLabel: rowView.dateLabel,
+            source: noteDatePickerData,
+            isSelected: true
+        )
+        
         guard noteDatePickerData.color != nil
-        else { return }
+        else {
+            return
+        }
         
         /// 선택 불가능하면 경고 라벨
-        self.showWarningLabel = true
         self.fadeInWarningLabel()
-    }
-    
-    
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueIdentifier.presentNewNoteTextViewFromDatePicker {
-//            
-//            guard let textViewController = segue.destination as? NewNoteTextViewController
-//            else { return }
-//            
-//            let viewModel = NewNoteTextViewModel(date: self.viewModel.selectedDate, bottle: self.viewModel.bottle)
-//            textViewController.viewModel = viewModel
-        }
     }
 }
 
@@ -237,7 +234,7 @@ final class NewNoteDatePickerViewController: UIViewController {
 extension NewNoteDatePickerViewController: UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        Metric.numberOfComponents
+        Section.allCases.count
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -255,12 +252,20 @@ extension NewNoteDatePickerViewController: UIPickerViewDelegate {
         forComponent component: Int,
         reusing view: UIView?
     ) -> UIView {
-        
-        let row = self.validatedRow(row)
-        let noteData = self.viewModel.noteData[row]
+
+        guard let noteData = self.viewModel.noteData[safe: row]
+        else {
+            return UIView()
+        }
+
         let rowView = view as? NewNoteDatePickerRowView ?? NewNoteDatePickerRowView()
         
         /// 데이터에 맞게 행의 모습(날짜 라벨 텍스트와 쪽지 이미지 색깔) 업데이트
+        rowView.dateLabel.attributedText = self.attributedDateString(
+            forLabel: rowView.dateLabel,
+            source: noteData,
+            isSelected: false
+        )
         rowView.noteImageView.image = self.viewModel.image(for: noteData)
     
         return rowView
@@ -271,8 +276,10 @@ extension NewNoteDatePickerViewController: UIPickerViewDelegate {
         didSelectRow row: Int,
         inComponent component: Int
     ) {
-        let row = self.validatedRow(row)
-        let noteData = self.viewModel.noteData[row]
+        guard let noteData = self.viewModel.noteData[safe: row]
+        else {
+            return
+        }
         
         self.updateSelectedRowView(
             pickerView,
@@ -293,19 +300,7 @@ extension NewNoteDatePickerViewController: UIPickerViewDelegate {
         guard self.showWarningLabel
         else { return }
         
-        self.warningLabel.fadeOut()
+        self.rootView.warningLabel.fadeOut()
         self.showWarningLabel = false
-    }
-    
-    /// 0보다 작은 인덱스가 들어오면 0, 최대 개수보다 큰 값이 들어오면 마지막 인덱스로 바꿔주는 메서드
-    private func validatedRow(_ row: Int) -> Int {
-        var selectedRow = row
-        if selectedRow < .zero {
-            selectedRow = .zero
-        }
-        if selectedRow > self.viewModel.numberOfRows {
-            selectedRow = self.viewModel.numberOfRows - 1
-        }
-        return selectedRow
     }
 }
