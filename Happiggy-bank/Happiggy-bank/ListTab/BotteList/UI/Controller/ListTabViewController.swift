@@ -5,6 +5,7 @@
 //  Created by 권은빈 on 2023/01/12.
 //
 
+import Combine
 import CoreData
 import UIKit
 
@@ -24,6 +25,9 @@ final class ListTabViewController: UIViewController {
     
     /// 뷰모델
     private(set) var viewModel: ListTabViewModel = ListTabViewModel()
+    
+    /// Subscriber 모아두는 프로퍼티
+    private var cancellableBag: Set<AnyCancellable> = []
     
     
     // MARK: - Lifecycle
@@ -46,6 +50,13 @@ final class ListTabViewController: UIViewController {
         layoutCells()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        // TODO: 시점, 결과 확인
+        self.cancellableBag.removeAll()
+    }
+    
     
     // MARK: - View Configuration
     
@@ -56,6 +67,7 @@ final class ListTabViewController: UIViewController {
         self.navigationItem.backButtonTitle = .empty
     }
     
+    /// 컬렉션 뷰 설정
     private func configureCollectionView() {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
@@ -93,6 +105,20 @@ final class ListTabViewController: UIViewController {
     
     
     // MARK: - Functions
+    
+    /// Published된 저금통 리스트 관련 로직 수행
+    private func observePublishedValue() {
+        guard let publishedList = self.viewModel.fetchAndPublish()
+        else { return }
+        
+        publishedList
+            .receive(on: DispatchQueue.main)
+            .sink { list in
+                self.viewModel.bottleList = list
+                self.collectionView.reloadData()
+            }
+            .store(in: &cancellableBag)
+    }
     
     /// 셀에 대한 레이아웃 설정하는 함수
     private func layoutCells() {
@@ -166,7 +192,7 @@ extension ListTabViewController: UICollectionViewDelegate {
 
 extension ListTabViewController: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        collectionView.reloadData()
+        observePublishedValue()
     }
 }
 

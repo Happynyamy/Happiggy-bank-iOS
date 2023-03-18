@@ -54,8 +54,7 @@ final class HomeTabViewModel: ObservableObject {
     init() {
         // MARK: - Mock Data 삭제용
 //        PersistenceStore.shared.deleteAll(Bottle.self)
-        
-        fetchController()
+        fetch()
     }
     
     /// 현재 진행중인 저금통의 D-day 계산
@@ -80,7 +79,7 @@ final class HomeTabViewModel: ObservableObject {
     
     // TODO: - 조금 더 깔끔하게 변경
     /// fetchedResultsController를 설정
-    func fetchController() -> AnyPublisher<Bottle, Never>? {
+    func fetchAndPublish() -> AnyPublisher<Bottle, Never>? {
         do {
             try controller.performFetch()
             guard let result = controller.fetchedObjects,
@@ -118,6 +117,21 @@ final class HomeTabViewModel: ObservableObject {
         return resizedImage
     }
     
+    private func fetch() {
+        do {
+            try controller.performFetch()
+            guard let result = controller.fetchedObjects,
+                  let firstBottle = result.first
+            else {
+                self.bottle = nil
+                return
+            }
+            self.bottle = firstBottle.isOpen ? nil : firstBottle
+        } catch {
+            // TODO: Alert Error
+            print(error.localizedDescription)
+        }
+    }
 }
 
 extension HomeTabViewModel {
