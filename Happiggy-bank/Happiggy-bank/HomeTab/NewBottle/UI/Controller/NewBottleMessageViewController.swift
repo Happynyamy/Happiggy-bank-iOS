@@ -97,8 +97,9 @@ final class NewBottleMessageViewController: UIViewController {
     /// 새 저금통 데이터가 유효한지 체크하는 메서드
     private func checkNewBottleData() -> Bool {
         self.bottleData.openMessage = self.newBottleMessageView.textField.text
+        let result = self.viewModel.createNewBottle(with: self.bottleData)
         
-        switch self.viewModel.createNewBottle(with: self.bottleData) {
+        switch result {
         case .success:
             return true
         case .failure:
@@ -108,7 +109,9 @@ final class NewBottleMessageViewController: UIViewController {
     
     /// 새 저금통 저장하는 메서드
     private func saveBottle() -> Bool {
-        switch PersistenceStore.shared.save() {
+        let result = PersistenceStore.shared.save()
+        
+        switch result {
         case .success:
             return true
         case .failure:
@@ -118,20 +121,27 @@ final class NewBottleMessageViewController: UIViewController {
     
     /// 생성 확인 알림을 나타냄
     private func confirmationAlert() -> UIAlertController {
+        
         let confirmAction = UIAlertAction.confirmAction(
             title: Text.confirmationAlertConfirmButtonTitle
         ) { _ in
+            let isNewBottleDataValid = self.checkNewBottleData()
             self.navigationController?.popToRootViewControllerWithFade()
-            guard self.checkNewBottleData() == true
+            
+            guard isNewBottleDataValid == true
             else {
-                // 새 저금통 데이터가 유효하지 않을 때 팝업
-                self.present(self.invalidDataFailureAlert(), animated: false)
+                self.present(
+                    self.invalidDataFailureAlert(),
+                    animated: false
+                )
                 return
             }
             guard self.saveBottle() == true
             else {
-                // 저장에 실패했을 때 팝업
-                self.present(self.fetchFailureAlert(), animated: false)
+                self.present(
+                    self.fetchFailureAlert(),
+                    animated: false
+                )
                 return
             }
         }

@@ -109,7 +109,7 @@ final class HomeTabViewController: UIViewController {
     
     /// 새로 fetch한 Bottle이 있다면, 그 내용을 받아서 업데이트
     private func observePublishedValue() {
-        guard let publishedBottle = self.viewModel.fetchController()
+        guard let publishedBottle = self.viewModel.fetchAndPublish()
         else { return }
         
         publishedBottle

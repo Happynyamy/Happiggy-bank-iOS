@@ -7,10 +7,12 @@
 
 import CoreData
 
+/// Fetch시 발생하는 Error 타입
 enum FetchError: Error {
     case invalidData
 }
 
+/// 새 저금통 생성 관련 비즈니스 로직 처리하는 뷰모델
 final class NewBottleViewModel {
     lazy var controller: NSFetchedResultsController = PersistenceStore.shared.controller
     
