@@ -10,7 +10,7 @@ import CoreData
 // TODO: ViewModel에 UIKit 제거
 import UIKit
 
-final class HomeTabViewModel: ObservableObject {
+final class HomeTabViewModel {
     
     // MARK: - Properties
     

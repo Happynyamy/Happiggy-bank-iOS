@@ -114,7 +114,7 @@ final class HomeTabViewController: UIViewController {
         
         publishedBottle
             .receive(on: DispatchQueue.main)
-            .sink { [unowned self] bottle in
+            .sink { [weak self] bottle in
                 self.viewModel.bottle = bottle
                 self.homeView = HomeView(
                     title: self.viewModel.bottle?.title,
