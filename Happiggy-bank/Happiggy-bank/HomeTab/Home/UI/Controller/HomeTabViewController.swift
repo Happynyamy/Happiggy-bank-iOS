@@ -115,15 +115,20 @@ final class HomeTabViewController: UIViewController {
         publishedBottle
             .receive(on: DispatchQueue.main)
             .sink { [weak self] bottle in
-                self.viewModel.bottle = bottle
-                self.homeView = HomeView(
-                    title: self.viewModel.bottle?.title,
-                    dDay: self.viewModel.dDay(),
-                    hasNotes: self.viewModel.hasNotes
+                guard let viewModel = self?.viewModel
+                else {
+                    return
+                }
+
+                self?.viewModel.bottle = bottle
+                self?.homeView = HomeView(
+                    title: viewModel.bottle?.title,
+                    dDay: viewModel.dDay(),
+                    hasNotes: viewModel.hasNotes
                 )
-                self.view = self.homeView
-                configureHomeView()
-                configureButton()
+                self?.view = self?.homeView
+                self?.configureHomeView()
+                self?.configureButton()
             }
             .store(in: &cancellableBag)
     }
