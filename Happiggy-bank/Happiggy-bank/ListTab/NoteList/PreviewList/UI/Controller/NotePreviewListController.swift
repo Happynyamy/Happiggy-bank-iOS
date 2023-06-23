@@ -199,8 +199,7 @@ extension NotePreviewListController: UICollectionViewDataSource {
     ) -> Int {
         self.viewModel.notes.count
     }
-    
-    // swiftlint:disable force_cast
+
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
@@ -209,13 +208,12 @@ extension NotePreviewListController: UICollectionViewDataSource {
         let cell = self.listView.dequeueReusableCell(
             withReuseIdentifier: NotePreviewCell.name,
             for: indexPath
-        ) as! NotePreviewCell
+        ) as? NotePreviewCell ?? NotePreviewCell()
         
         self.configureCell(cell, at: indexPath)
         
         return cell
     }
-    // swiftlint:enable force_cast
     
     /// 쪽지 색깔, 첫 번째 단어를 사용해서 셀 모습 생성
     private func configureCell(_ cell: NotePreviewCell, at indexPath: IndexPath) {
