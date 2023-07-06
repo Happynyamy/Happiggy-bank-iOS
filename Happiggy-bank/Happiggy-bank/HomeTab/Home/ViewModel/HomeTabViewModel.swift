@@ -69,11 +69,16 @@ final class HomeTabViewModel {
         )
         guard let days = daysCount.day
         else { return nil }
-        
-        if days >= 0 {
-            return "D-\(days)"
-        } else {
-            return "D+\(days)"
+      
+        switch days {
+        case 0:
+          return "D-Day"
+        case Int.min ... -1:
+          return "D+\(-1 * days)"
+        case 1 ... Int.max:
+          return "D-\(days)"
+        default:
+          return nil
         }
     }
     
