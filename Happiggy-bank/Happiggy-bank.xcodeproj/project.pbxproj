@@ -150,6 +150,8 @@
 		A819CF9F27DDD97C00DE8E72 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A819CF9E27DDD97C00DE8E72 /* HapticManager.swift */; };
 		A819CFA127DE034F00DE8E72 /* NewBottle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A819CFA027DE034F00DE8E72 /* NewBottle.swift */; };
 		A824A0B027CE72C000B99E9A /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = A824A0AF27CE72C000B99E9A /* Then */; };
+		A831E4472A56871B00FA92A3 /* BottleNameEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A831E4462A56871B00FA92A3 /* BottleNameEditView.swift */; };
+		A831E4492A56882300FA92A3 /* HomeBottleNameEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A831E4482A56882300FA92A3 /* HomeBottleNameEditViewController.swift */; };
 		A83CA2AF2993587300081E07 /* NewBottleMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83CA2AE2993587300081E07 /* NewBottleMessageView.swift */; };
 		A83CA2B1299359DB00081E07 /* NewBottleMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83CA2B0299359DB00081E07 /* NewBottleMessageViewController.swift */; };
 		A83CA2B32993669800081E07 /* UINavigationController+transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83CA2B22993669800081E07 /* UINavigationController+transition.swift */; };
@@ -330,6 +332,8 @@
 		A81742FE27C108DC0016C921 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		A819CF9E27DDD97C00DE8E72 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		A819CFA027DE034F00DE8E72 /* NewBottle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBottle.swift; sourceTree = "<group>"; };
+		A831E4462A56871B00FA92A3 /* BottleNameEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleNameEditView.swift; sourceTree = "<group>"; };
+		A831E4482A56882300FA92A3 /* HomeBottleNameEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottleNameEditViewController.swift; sourceTree = "<group>"; };
 		A83CA2AE2993587300081E07 /* NewBottleMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBottleMessageView.swift; sourceTree = "<group>"; };
 		A83CA2B0299359DB00081E07 /* NewBottleMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBottleMessageViewController.swift; sourceTree = "<group>"; };
 		A83CA2B22993669800081E07 /* UINavigationController+transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+transition.swift"; sourceTree = "<group>"; };
@@ -766,6 +770,7 @@
 				D284A5DD27FF3EFB00D20699 /* BottleNameEditViewController.swift */,
 				A8BD833227BE104900E0DE41 /* HomeViewController.swift */,
 				A81148DF295571A1004A35E7 /* HomeTabViewController.swift */,
+				A831E4482A56882300FA92A3 /* HomeBottleNameEditViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -775,6 +780,7 @@
 			children = (
 				A8BD834627BE337900E0DE41 /* HomeView.swift */,
 				A80248242963E58A00F2EA81 /* BottleTitleStack.swift */,
+				A831E4462A56871B00FA92A3 /* BottleNameEditView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1374,6 +1380,7 @@
 				A81148E0295571A2004A35E7 /* HomeTabViewController.swift in Sources */,
 				A425F8B827EDF59A00A005AB /* TagCell.swift in Sources */,
 				A4B2860F27D9F539008769EB /* NewNoteDatePickerViewModel.swift in Sources */,
+				A831E4492A56882300FA92A3 /* HomeBottleNameEditViewController.swift in Sources */,
 				A85B38862990CE7700ED8C72 /* NewBottleNameView.swift in Sources */,
 				A467B5C827DA258700AC702D /* NewNoteDatePickerRowView.swift in Sources */,
 				A484A3052958945E00A58312 /* BaseTextView.swift in Sources */,
@@ -1511,6 +1518,7 @@
 				A46B10F42814362A004AB185 /* UIView+AllFontUsingSubviews.swift in Sources */,
 				A4C1AFC227E47AD80096CD3E /* String+EmptyString.swift in Sources */,
 				A4C1AFC627E482E10096CD3E /* CGFloat+Values.swift in Sources */,
+				A831E4472A56871B00FA92A3 /* BottleNameEditView.swift in Sources */,
 				A484A3092958953600A58312 /* BaseButton.swift in Sources */,
 				A8BD833F27BE30B400E0DE41 /* Constants.swift in Sources */,
 				A41DE62827F368BF002A7669 /* NoteDetailViewModel.swift in Sources */,
