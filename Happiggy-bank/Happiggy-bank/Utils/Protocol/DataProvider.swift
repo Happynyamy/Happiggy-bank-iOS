@@ -16,6 +16,9 @@ protocol DataProvider {
     
     /// 새 유리병 데이터를 전송하는 함수
     func send(_ data: NewBottle)
+  
+    /// 기존에 있던 유리병 데이터를 전송하는 함수
+    func sendOriginalData(_ data: Bottle)
 }
 
 // Optional Protocol을 위한 정의
@@ -25,4 +28,6 @@ extension DataProvider {
     func sendNewBottleData(_ data: NewBottle) { }
     
     func send(_ data: NewBottle) { }
+  
+    func sendOriginalData(_ data: Bottle) { }
 }

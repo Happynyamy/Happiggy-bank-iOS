@@ -212,8 +212,13 @@ extension HomeTabViewController {
     
     /// 메뉴 버튼에서 저금통 제목 변경을 선택했을 때 실행되는 함수
     private func changeBottleNameItemDidTap() {
+        guard let currentBottle = viewModel.bottle
+        else { return }
+      
+        let nameEditViewController = HomeBottleNameEditViewController()
+        nameEditViewController.sendOriginalData(currentBottle)
         self.navigationController?.pushViewControllerWithFade(
-            to: UIViewController().then { $0.view.backgroundColor = .blue }
+            to: nameEditViewController
         )
         self.bottleViewController.alertOrModalDidAppear()
     }
