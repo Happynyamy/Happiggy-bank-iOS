@@ -11,7 +11,7 @@ final class HomeBottleNameEditViewController: UIViewController {
     
     // MARK: - Properties
     
-    var nameEditView = BottleNameEditView()
+    private let nameEditView = BottleNameEditView()
     
     var bottleData: Bottle?
     
