@@ -172,6 +172,9 @@
 		A8D58DB229928AA900FD52A1 /* NewBottleDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D58DB129928AA900FD52A1 /* NewBottleDateViewController.swift */; };
 		A8EB5E8B27C8B087005704F2 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EB5E8A27C8B087005704F2 /* UIButton+Extension.swift */; };
 		A8ECD4A727E33BFA00886BC0 /* ListTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ECD4A627E33BFA00886BC0 /* ListTabViewModel.swift */; };
+		A8F6821F2A70F81700DA692E /* NotificationSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F6821E2A70F81700DA692E /* NotificationSettingViewController.swift */; };
+		A8F682212A70F87000DA692E /* NotificationSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F682202A70F87000DA692E /* NotificationSettingTableViewCell.swift */; };
+		A8F682232A78FC9100DA692E /* NotificationSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F682222A78FC9100DA692E /* NotificationSettingViewModel.swift */; };
 		A8F985E0296FDE6000E5ACC6 /* ListTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F985DF296FDE6000E5ACC6 /* ListTabViewController.swift */; };
 		A8F985E2296FF37000E5ACC6 /* BottleCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F985E1296FF37000E5ACC6 /* BottleCollectionCell.swift */; };
 		A8FC07C827B3ECF00077A758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC07C727B3ECF00077A758 /* AppDelegate.swift */; };
@@ -353,6 +356,9 @@
 		A8D58DB129928AA900FD52A1 /* NewBottleDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBottleDateViewController.swift; sourceTree = "<group>"; };
 		A8EB5E8A27C8B087005704F2 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		A8ECD4A627E33BFA00886BC0 /* ListTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTabViewModel.swift; sourceTree = "<group>"; };
+		A8F6821E2A70F81700DA692E /* NotificationSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingViewController.swift; sourceTree = "<group>"; };
+		A8F682202A70F87000DA692E /* NotificationSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingTableViewCell.swift; sourceTree = "<group>"; };
+		A8F682222A78FC9100DA692E /* NotificationSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingViewModel.swift; sourceTree = "<group>"; };
 		A8F985DF296FDE6000E5ACC6 /* ListTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTabViewController.swift; sourceTree = "<group>"; };
 		A8F985E1296FF37000E5ACC6 /* BottleCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleCollectionCell.swift; sourceTree = "<group>"; };
 		A8FC07C427B3ECF00077A758 /* Happiggy-bank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Happiggy-bank.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -967,6 +973,7 @@
 			isa = PBXGroup;
 			children = (
 				D22ADF7E27F72F7300ECB77B /* NotificationSettingsViewModel.swift */,
+				A8F682222A78FC9100DA692E /* NotificationSettingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -984,6 +991,7 @@
 			isa = PBXGroup;
 			children = (
 				D22ADF6227F5CE8F00ECB77B /* NotificationSettingsViewController.swift */,
+				A8F6821E2A70F81700DA692E /* NotificationSettingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -993,6 +1001,7 @@
 			children = (
 				A439F53B27EEFCF6002851F4 /* NotificationToggleCell.swift */,
 				A804425C28FEA27700EF2CE3 /* NotificationToggleCell.xib */,
+				A8F682202A70F87000DA692E /* NotificationSettingTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1432,9 +1441,9 @@
 				A819CF9F27DDD97C00DE8E72 /* HapticManager.swift in Sources */,
 				A4569CCF28128B4B001E3FD6 /* SettingsNonIconButtonCell.swift in Sources */,
 				A4396B1B29325D70005D9D3A /* PhotoViewController.swift in Sources */,
+				A8F6821F2A70F81700DA692E /* NotificationSettingViewController.swift in Sources */,
 				A8ECD4A727E33BFA00886BC0 /* ListTabViewModel.swift in Sources */,
-				A49AC5EB2917FFAB009315BC /* PhotoNoteCellViewModel.swift in Sources */,
-				A8ECD4A727E33BFA00886BC0 /* BottleListViewModel.swift in Sources */,
+				A8ECD4A727E33BFA00886BC0 /* ListTabViewModel.swift in Sources */,
 				A484A32B296004E600A58312 /* Version.swift in Sources */,
 				A46B2E7729B493D7006A7870 /* LabeledCollectionView.swift in Sources */,
 				A85B38882990D5F000ED8C72 /* NewBottleNameViewController.swift in Sources */,
@@ -1477,6 +1486,7 @@
 				A41DE62E27F5F2C1002A7669 /* UIView+ZoomAnimation.swift in Sources */,
 				A4D6EB7B2837825500553E43 /* LookUpResult.swift in Sources */,
 				A439F54527EF0698002851F4 /* SettingsLabelButtonCell.swift in Sources */,
+				A8F682232A78FC9100DA692E /* NotificationSettingViewModel.swift in Sources */,
 				A484A3032958936300A58312 /* BaseLabel.swift in Sources */,
 				A484A320295D7B2A00A58312 /* Requestable.swift in Sources */,
 				A41A506F27FF2B2E005381EF /* CustomTabBar.swift in Sources */,
@@ -1533,6 +1543,7 @@
 				A4845B5D2900DF0B00A6007C /* ColorPicker.swift in Sources */,
 				A49AC5E72917CB47009315BC /* UIView+AddSubviews.swift in Sources */,
 				A89CBEDD27CBDEA2005549F6 /* BottleListViewController.swift in Sources */,
+				A8F682212A70F87000DA692E /* NotificationSettingTableViewCell.swift in Sources */,
 				A439F53A27EEFC28002851F4 /* SettingsViewCell.swift in Sources */,
 				A46B10F62814458C004AB185 /* UILabel+ChangeOnlyFontFamily.swift in Sources */,
 				A4569CBA280FBA23001E3FD6 /* CustomResult.swift in Sources */,

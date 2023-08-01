@@ -143,7 +143,7 @@ extension SettingsViewController: UITableViewDelegate {
 
         switch rowType {
         case .alert:
-            self.show(tempVC, sender: self)
+            self.show(NotificationSettingViewController(), sender: self)
         case .version:
             self.openAppStoreIfNeeded()
             return
