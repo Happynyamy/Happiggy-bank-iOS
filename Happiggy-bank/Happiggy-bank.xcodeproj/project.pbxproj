@@ -65,6 +65,10 @@
 		A46B2E8129B5EBDA006A7870 /* NoteDetailListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B2E8029B5EBDA006A7870 /* NoteDetailListViewModel.swift */; };
 		A46B2E8329B5EBE6006A7870 /* NoteDetailListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B2E8229B5EBE6006A7870 /* NoteDetailListViewController.swift */; };
 		A46BC1EF2800626A00C2E5B4 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46BC1EE2800626A00C2E5B4 /* TabItem.swift */; };
+		A472C5F529C2DCEA00097432 /* NewNoteInputToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A472C5F429C2DCEA00097432 /* NewNoteInputToolbar.swift */; };
+		A472C5F729C2DDFF00097432 /* NewNoteInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A472C5F629C2DDFF00097432 /* NewNoteInputViewModel.swift */; };
+		A472C5F929C2ED5000097432 /* HBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A472C5F829C2ED5000097432 /* HBError.swift */; };
+		A472C5FB29C2F21600097432 /* NewNoteSavingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A472C5FA29C2F21600097432 /* NewNoteSavingDelegate.swift */; };
 		A47D83462966C0C60028AA1D /* NotificationSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22ADF7E27F72F7300ECB77B /* NotificationSettingsViewModel.swift */; };
 		A47D83482966D3870028AA1D /* FontSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D83472966D3870028AA1D /* FontSelectionView.swift */; };
 		A47D834A296716BF0028AA1D /* FontCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D8349296716BF0028AA1D /* FontCell.swift */; };
@@ -110,12 +114,11 @@
 		A49B25F12812BF6800399630 /* dovemayo_bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A49B25F02812BF4100399630 /* dovemayo_bold.otf */; };
 		A49B25F22812BF6B00399630 /* dovemayo.otf in Resources */ = {isa = PBXBuildFile; fileRef = A49B25EF2812BF4100399630 /* dovemayo.otf */; };
 		A49B25F42812FFB400399630 /* UILabel+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B25F32812FFB400399630 /* UILabel+Color.swift */; };
-		A4A55A0528FFC64A004ABE00 /* NewNoteInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4A55A0428FFC64A004ABE00 /* NewNoteInputView.xib */; };
 		A4A55A0728FFC664004ABE00 /* UIView+ConfigureXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A55A0628FFC664004ABE00 /* UIView+ConfigureXib.swift */; };
 		A4A55A0928FFC675004ABE00 /* NewNoteInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A55A0828FFC675004ABE00 /* NewNoteInputView.swift */; };
 		A4B285FD27D8A060008769EB /* Calendar+Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B285FC27D8A060008769EB /* Calendar+Duration.swift */; };
 		A4B2860527D9A546008769EB /* NewNoteDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2860427D9A546008769EB /* NewNoteDatePickerViewController.swift */; };
-		A4B2860927D9A56A008769EB /* NewNoteTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2860827D9A56A008769EB /* NewNoteTextViewController.swift */; };
+		A4B2860927D9A56A008769EB /* NewNoteInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2860827D9A56A008769EB /* NewNoteInputViewController.swift */; };
 		A4B2860B27D9B434008769EB /* UIViewController+FadeInOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2860A27D9B434008769EB /* UIViewController+FadeInOut.swift */; };
 		A4B2860F27D9F539008769EB /* NewNoteDatePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B2860E27D9F539008769EB /* NewNoteDatePickerViewModel.swift */; };
 		A4C1AFC027E477180096CD3E /* NSMutableAttributedString+ColorBold.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1AFBF27E477180096CD3E /* NSMutableAttributedString+ColorBold.swift */; };
@@ -123,7 +126,6 @@
 		A4C1AFC427E47DC50096CD3E /* String+NSMutableAttributedStringify.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1AFC327E47DC50096CD3E /* String+NSMutableAttributedStringify.swift */; };
 		A4C1AFC627E482E10096CD3E /* CGFloat+Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1AFC527E482E10096CD3E /* CGFloat+Values.swift */; };
 		A4C1AFCE27E4F8150096CD3E /* UIView+FadeInOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1AFCD27E4F8150096CD3E /* UIView+FadeInOut.swift */; };
-		A4C1AFD227E5C60E0096CD3E /* NewNoteTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1AFD127E5C60E0096CD3E /* NewNoteTextViewModel.swift */; };
 		A4C1AFD427E5E6120096CD3E /* UITextView+ParagraphStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C1AFD327E5E6120096CD3E /* UITextView+ParagraphStyle.swift */; };
 		A4CF2C7C27C71FF5001B01B1 /* CATransition+PopupAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C7B27C71FF5001B01B1 /* CATransition+PopupAnimation.swift */; };
 		A4CF2C8027C733FE001B01B1 /* ColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CF2C7F27C733FE001B01B1 /* ColorButton.swift */; };
@@ -251,6 +253,10 @@
 		A46B2E8029B5EBDA006A7870 /* NoteDetailListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailListViewModel.swift; sourceTree = "<group>"; };
 		A46B2E8229B5EBE6006A7870 /* NoteDetailListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailListViewController.swift; sourceTree = "<group>"; };
 		A46BC1EE2800626A00C2E5B4 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
+		A472C5F429C2DCEA00097432 /* NewNoteInputToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteInputToolbar.swift; sourceTree = "<group>"; };
+		A472C5F629C2DDFF00097432 /* NewNoteInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteInputViewModel.swift; sourceTree = "<group>"; };
+		A472C5F829C2ED5000097432 /* HBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HBError.swift; sourceTree = "<group>"; };
+		A472C5FA29C2F21600097432 /* NewNoteSavingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteSavingDelegate.swift; sourceTree = "<group>"; };
 		A47D83472966D3870028AA1D /* FontSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSelectionView.swift; sourceTree = "<group>"; };
 		A47D8349296716BF0028AA1D /* FontCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontCell.swift; sourceTree = "<group>"; };
 		A47D83532973A4860028AA1D /* FontPublishing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontPublishing.swift; sourceTree = "<group>"; };
@@ -295,12 +301,11 @@
 		A49B25EF2812BF4100399630 /* dovemayo.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dovemayo.otf; sourceTree = "<group>"; };
 		A49B25F02812BF4100399630 /* dovemayo_bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dovemayo_bold.otf; sourceTree = "<group>"; };
 		A49B25F32812FFB400399630 /* UILabel+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Color.swift"; sourceTree = "<group>"; };
-		A4A55A0428FFC64A004ABE00 /* NewNoteInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewNoteInputView.xib; sourceTree = "<group>"; };
 		A4A55A0628FFC664004ABE00 /* UIView+ConfigureXib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ConfigureXib.swift"; sourceTree = "<group>"; };
 		A4A55A0828FFC675004ABE00 /* NewNoteInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewNoteInputView.swift; sourceTree = "<group>"; };
 		A4B285FC27D8A060008769EB /* Calendar+Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Duration.swift"; sourceTree = "<group>"; };
 		A4B2860427D9A546008769EB /* NewNoteDatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteDatePickerViewController.swift; sourceTree = "<group>"; };
-		A4B2860827D9A56A008769EB /* NewNoteTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteTextViewController.swift; sourceTree = "<group>"; };
+		A4B2860827D9A56A008769EB /* NewNoteInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteInputViewController.swift; sourceTree = "<group>"; };
 		A4B2860A27D9B434008769EB /* UIViewController+FadeInOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+FadeInOut.swift"; sourceTree = "<group>"; };
 		A4B2860E27D9F539008769EB /* NewNoteDatePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteDatePickerViewModel.swift; sourceTree = "<group>"; };
 		A4C1AFBF27E477180096CD3E /* NSMutableAttributedString+ColorBold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+ColorBold.swift"; sourceTree = "<group>"; };
@@ -308,7 +313,6 @@
 		A4C1AFC327E47DC50096CD3E /* String+NSMutableAttributedStringify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+NSMutableAttributedStringify.swift"; sourceTree = "<group>"; };
 		A4C1AFC527E482E10096CD3E /* CGFloat+Values.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Values.swift"; sourceTree = "<group>"; };
 		A4C1AFCD27E4F8150096CD3E /* UIView+FadeInOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+FadeInOut.swift"; sourceTree = "<group>"; };
-		A4C1AFD127E5C60E0096CD3E /* NewNoteTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteTextViewModel.swift; sourceTree = "<group>"; };
 		A4C1AFD327E5E6120096CD3E /* UITextView+ParagraphStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+ParagraphStyle.swift"; sourceTree = "<group>"; };
 		A4CF2C7B27C71FF5001B01B1 /* CATransition+PopupAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CATransition+PopupAnimation.swift"; sourceTree = "<group>"; };
 		A4CF2C7F27C733FE001B01B1 /* ColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorButton.swift; path = "Happiggy-bank/HomeTab/NewNote/UI/View/ColorButton.swift"; sourceTree = SOURCE_ROOT; };
@@ -558,6 +562,7 @@
 				A46BC1EE2800626A00C2E5B4 /* TabItem.swift */,
 				A4569CB9280FBA23001E3FD6 /* CustomResult.swift */,
 				A49B25EC2812B5A400399630 /* CustomFont.swift */,
+				A472C5F829C2ED5000097432 /* HBError.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -579,6 +584,7 @@
 				A4569CB7280FB979001E3FD6 /* Presenter.swift */,
 				A4569CC528111EFA001E3FD6 /* InformationTextViewDataSource.swift */,
 				A4EDFE7E2902D5CB0056C2DC /* ColorPickerDelegate.swift */,
+				A472C5FA29C2F21600097432 /* NewNoteSavingDelegate.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -803,7 +809,7 @@
 			isa = PBXGroup;
 			children = (
 				A4B2860E27D9F539008769EB /* NewNoteDatePickerViewModel.swift */,
-				A4C1AFD127E5C60E0096CD3E /* NewNoteTextViewModel.swift */,
+				A472C5F629C2DDFF00097432 /* NewNoteInputViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -821,7 +827,7 @@
 			isa = PBXGroup;
 			children = (
 				A4B2860427D9A546008769EB /* NewNoteDatePickerViewController.swift */,
-				A4B2860827D9A56A008769EB /* NewNoteTextViewController.swift */,
+				A4B2860827D9A56A008769EB /* NewNoteInputViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -829,13 +835,13 @@
 		A896FBEF2966B5DE00A3400B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A4A55A0428FFC64A004ABE00 /* NewNoteInputView.xib */,
 				A467B5C927DA289500AC702D /* NewNoteDatePickerRowView.xib */,
 				A4A55A0828FFC675004ABE00 /* NewNoteInputView.swift */,
 				A467B5C727DA258700AC702D /* NewNoteDatePickerRowView.swift */,
 				A4CF2C7F27C733FE001B01B1 /* ColorButton.swift */,
 				A4EDFE802902D72A0056C2DC /* ColorPickerBarItem.swift */,
 				A4845B5C2900DF0B00A6007C /* ColorPicker.swift */,
+				A472C5F429C2DCEA00097432 /* NewNoteInputToolbar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1339,7 +1345,6 @@
 				A46B110A28146171004AB185 /* GowunBatang-Regular.ttf in Resources */,
 				A49B25F12812BF6800399630 /* dovemayo_bold.otf in Resources */,
 				A46B110D2814617B004AB185 /* IBMPlexSansKR-Regular.otf in Resources */,
-				A4A55A0528FFC64A004ABE00 /* NewNoteInputView.xib in Resources */,
 				A8FC07DD27B3EF030077A758 /* .swiftlint.yml in Resources */,
 				A467B5CA27DA289600AC702D /* NewNoteDatePickerRowView.xib in Resources */,
 				A46B111128146188004AB185 /* Cafe24SsurroundAir.ttf in Resources */,
@@ -1394,14 +1399,15 @@
 				A467B5C827DA258700AC702D /* NewNoteDatePickerRowView.swift in Sources */,
 				A484A3052958945E00A58312 /* BaseTextView.swift in Sources */,
 				A484A327295EE22000A58312 /* String+SubstringsMatchingRegex.swift in Sources */,
-				A4C1AFD227E5C60E0096CD3E /* NewNoteTextViewModel.swift in Sources */,
 				A819CFA127DE034F00DE8E72 /* NewBottle.swift in Sources */,
 				A4569CBC2810455B001E3FD6 /* CustomerServiceViewController.swift in Sources */,
 				A4EDFE812902D72A0056C2DC /* ColorPickerBarItem.swift in Sources */,
+				A472C5F929C2ED5000097432 /* HBError.swift in Sources */,
 				A49AC5E92917CBFB009315BC /* UIStackView+AddArrangedSubviews.swift in Sources */,
 				A4569CC628111EFA001E3FD6 /* InformationTextViewDataSource.swift in Sources */,
 				A80248252963E58A00F2EA81 /* BottleTitleStack.swift in Sources */,
 				D236DB8627FDC43200D7B8F0 /* NewBottleDatePickerViewModel.swift in Sources */,
+				A472C5F729C2DDFF00097432 /* NewNoteInputViewModel.swift in Sources */,
 				A47D83562973A4970028AA1D /* FontManager.swift in Sources */,
 				A499318327BF5158009FF5A8 /* BottleNoteView.swift in Sources */,
 				A4CF2C8E27CBA49D001B01B1 /* UIViewController+NotificationCenter.swift in Sources */,
@@ -1440,6 +1446,7 @@
 				A4CF2C8227C73B42001B01B1 /* UIColor+AssetColors.swift in Sources */,
 				A819CF9F27DDD97C00DE8E72 /* HapticManager.swift in Sources */,
 				A4569CCF28128B4B001E3FD6 /* SettingsNonIconButtonCell.swift in Sources */,
+				A472C5F529C2DCEA00097432 /* NewNoteInputToolbar.swift in Sources */,
 				A4396B1B29325D70005D9D3A /* PhotoViewController.swift in Sources */,
 				A8F6821F2A70F81700DA692E /* NotificationSettingViewController.swift in Sources */,
 				A8ECD4A727E33BFA00886BC0 /* ListTabViewModel.swift in Sources */,
@@ -1458,7 +1465,7 @@
 				A49AC5E52917C6E2009315BC /* UILabel+ChangeFontSize.swift in Sources */,
 				A4A55A0928FFC675004ABE00 /* NewNoteInputView.swift in Sources */,
 				A46B2E8329B5EBE6006A7870 /* NoteDetailListViewController.swift in Sources */,
-				A4B2860927D9A56A008769EB /* NewNoteTextViewController.swift in Sources */,
+				A4B2860927D9A56A008769EB /* NewNoteInputViewController.swift in Sources */,
 				A843332127DA026D00A12A54 /* NewBottleDatePickerViewController.swift in Sources */,
 				A4D6EB75282E2E6700553E43 /* VersionChecking.swift in Sources */,
 				A8FC07CA27B3ECF00077A758 /* SceneDelegate.swift in Sources */,
@@ -1466,6 +1473,7 @@
 				A466A31028018CD800D655F4 /* UIWindowScene+TopMostViewController.swift in Sources */,
 				A4569CC428111E1D001E3FD6 /* LicenseViewModel.swift in Sources */,
 				A466A30E28018BBD00D655F4 /* UIVIewController+TopMostViewController.swift in Sources */,
+				A472C5FB29C2F21600097432 /* NewNoteSavingDelegate.swift in Sources */,
 				D2C48C0127E9DFA1006FC59E /* NoteView.swift in Sources */,
 				A49B25E72812AC2800399630 /* FontSelectionViewController.swift in Sources */,
 				A456657E27CC77A9007CF70A /* Date+Formatted.swift in Sources */,

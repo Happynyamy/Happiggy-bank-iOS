@@ -92,9 +92,10 @@ final class HomeTabViewController: UIViewController {
         }
         
         if bottle.isEmtpyToday {
-            // NewNoteTextViewController
+            // NewNoteInputViewController
+            let viewModel = NewNoteInputViewModel(date: Date(), bottle: bottle)
             self.navigationController?.pushViewControllerWithFade(
-                to: UIViewController().then { $0.view.backgroundColor = .gray }
+                to: NewNoteInputViewController(viewModel: viewModel)
             )
         } else {
             // NewNoteDatePickerViewController

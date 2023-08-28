@@ -232,12 +232,12 @@ final class NewNoteDatePickerViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.presentNewNoteTextViewFromDatePicker {
-            
-            guard let textViewController = segue.destination as? NewNoteTextViewController
-            else { return }
-            
-            let viewModel = NewNoteTextViewModel(date: self.viewModel.selectedDate, bottle: self.viewModel.bottle)
-            textViewController.viewModel = viewModel
+//            
+//            guard let textViewController = segue.destination as? NewNoteTextViewController
+//            else { return }
+//            
+//            let viewModel = NewNoteTextViewModel(date: self.viewModel.selectedDate, bottle: self.viewModel.bottle)
+//            textViewController.viewModel = viewModel
         }
     }
 }

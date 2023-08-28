@@ -45,7 +45,7 @@ final class BaseTextField: UITextField {
 
     private func subscribeToFontPublisher() {
         self.cancellable = fontManager.fontPublisher
-            .receive(on: DispatchQueue.main)
+//            .receive(on: DispatchQueue.main)
             .sink { [weak self] in self?.updateFont(to: $0, isBold: self?.font?.isBold == true) }
     }
 

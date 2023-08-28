@@ -412,72 +412,6 @@ enum Asset: String {
     case settings
 }
 
-extension NewNoteTextViewController {
-    
-    /// NewNoteTextViewController에서 사용하는 상수값
-    enum Metric {
-        
-        /// 텍스트 뷰 컨테이너 인셋: (위: 16, 왼쪽: 24, 아래: 24, 오른쪽: 24)
-        static let textViewInset = UIEdgeInsets(
-            top: 16,
-            left: 24,
-            bottom: 24,
-            right: 24
-        )
-        
-        /// note 의 최대 작성 가능 길이 : 100 자
-        static let noteTextMaxLength = 100
-        
-        /// 한국 글자수 제한을 위한 오버플로우 cap 추가 값: 1
-        static let krOverflowCap = noteTextMaxLength + 1
-        
-        /// 애니메이션 지속 시간: 0.2
-        static let animationDuration = CATransition.transitionDuration
-        
-        /// 내용 스택이 내비게이션바, safe area top inset, 키보드 크기를 제외한 나머지 영역을 다 차지할 수 있도록 높이를 계산해서 리턴
-        static func contentStackHeight(
-            keyboardFrame: CGRect,
-            navigationBarFrame: CGRect
-        ) -> CGFloat {
-            let keyboardHeight = keyboardFrame.size.height
-            let navigationBarHeight = navigationBarFrame.size.height
-            let screenHeight = UIScreen.main.bounds.height
-            let safeAreaTopInset = navigationBarFrame.origin.y
-            let removingHeight = safeAreaTopInset + navigationBarHeight + keyboardHeight
-
-            return screenHeight - removingHeight
-        }
-        
-        /// 컬러 버튼 컨테이너 뷰 페이드 인 지속 시간: 0.1
-        static let colorButtonContainerViewFadeInDuration: TimeInterval = 0.1
-        
-        /// 컬러 버튼 컨테이너 뷰 페이드 아웃 지속 시간: 0.1
-        static let colorButtonContainerViewFadeOutDuration: TimeInterval = 0.1
-    }
-    
-    /// NewNoteTextViewController 에서 설정하는 제목들
-    enum StringLiteral {
-        
-        /// 키보드 언어 설정이 한글인 경우
-        static let korean = "ko-KR"
-        
-        /// 저장 확인 알림 제목
-        static let alertTitle = "쪽지를 추가하시겠어요?"
-        
-        /// 알림 내용
-        static let message = """
-쪽지는 하루에 한 번 작성할 수 있고,
-추가 후에는 수정/삭제가 불가능합니다
-"""
-        
-        /// 취소 버튼 제목: "취소"
-        static let cancelButtonTitle = "취소"
-        
-        /// 확인 버튼 제목: "추가"
-        static let confirmButtonTitle = "추가"
-    }
-}
-
 extension NewNoteDatePickerViewModel {
     
     /// NoteNoteDatePickerViewModel 에서 지정하는 폰트 크기
@@ -485,26 +419,6 @@ extension NewNoteDatePickerViewModel {
         
         /// 날짜라벨 폰트 크기: 18
         static let dateLabelFontSize: CGFloat = 18
-    }
-}
-
-extension NewNoteTextViewModel {
-    
-    /// NewNoteTextViewModel 에서 사용하는 문자열
-    enum StringLiteral {
-        
-        /// 글자수 라벨 텍스트를 반환
-        static let letterCountText = " / \(NewNoteTextViewController.Metric.noteTextMaxLength)"
-
-        /// 날짜 레이블 간격
-        static let spacing = "  "
-    }
-
-    /// NewNoteTextViewModel 에서 사용하는 폰트 크기
-    enum Font {
-        
-        /// 날짜 버튼과 글자수 라벨 폰트 크기: 15
-        static let secondaryText: CGFloat = 15
     }
 }
 

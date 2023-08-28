@@ -7,11 +7,13 @@
 
 import UIKit
 
-/// 쪽지 작성 시 나타나는 뷰
-@IBDesignable
-final class NewNoteInputView: UIView {
+import SnapKit
+import Then
 
-    // MARK: - @IBOulets
+/// 쪽지 작성 시 나타나는 뷰
+final class NewNoteInputView: UIScrollView {
+
+    // MARK: - Properties
 
     var photo: UIImage? {
         get { self.photoView.image }
@@ -22,41 +24,99 @@ final class NewNoteInputView: UIView {
     }
 
     /// 배경이 되는 쪽지 이미지 뷰
-    @IBOutlet weak var backgroundNoteImageView: UIImageView!
+    let backgroundNoteImageView = UIImageView().then {
+        $0.clipsToBounds = true
+        $0.isUserInteractionEnabled = true
+        let inset = UIEdgeInsets(
+            top: Metric.spacing16,
+            left: Metric.spacing16,
+            bottom: Metric.spacing16,
+            right: Metric.spacing16
+        )
+        $0.image = AssetImage.noteLine?.resizableImage(withCapInsets: inset, resizingMode: .stretch)
+        $0.setContentHuggingPriority(.defaultLow, for: .vertical)
+    }
 
     /// 날짜 피커를 띄우는 버튼
-    @IBOutlet weak var dateButton: UIButton!
-
-    /// 유저가 선택한 사진을 띄우는 이미지 뷰
-    @IBOutlet weak var photoView: UIImageView!
+    let calendarButton = BaseButton().then {
+        $0.setImage(AssetImage.calendar, for: .normal)
+        $0.titleLabel?.changeFontSize(to: FontSize.body3)
+        $0.adjustsImageWhenHighlighted = false
+    }
 
     /// 유저가 선택한 사진을 제거하는 버튼
-    @IBOutlet weak var removePhotoButton: UIButton!
+    let removePhotoButton = BaseButton().then {
+        $0.setImage(AssetImage.deleteImage, for: .normal)
+    }
+
+    /// 쪽지 내용을 작성하는 텍스트 뷰
+    let textView = BaseTextView().then {
+        $0.font = $0.font?.withSize(FontSize.body1)
+        $0.configureParagraphStyle(
+            lineSpacing: ParagraphStyle.lineSpacing,
+            characterSpacing: ParagraphStyle.characterSpacing
+        )
+        $0.backgroundColor = .clear
+        $0.isScrollEnabled = false
+        $0.setContentHuggingPriority(.defaultHigh, for: .vertical)
+    }
 
     /// 쪽지 텍스트 뷰의 플레이스 홀더
-    @IBOutlet weak var placeholderLabel: UILabel!
+    let placeholderLabel = BaseLabel().then {
+        $0.textColor = AssetColor.noteWhiteText
+        $0.changeFontSize(to: FontSize.body1)
+        $0.configureParagraphStyle(
+            lineSpacing: ParagraphStyle.lineSpacing,
+            characterSpacing: ParagraphStyle.characterSpacing
+        )
+        $0.attributedText = NSAttributedString(string: StringLiteral.placeholder)
+    }
 
     /// 내용이 비었음을 경고하는 레이블
-    @IBOutlet weak var warningLabel: UILabel!
-    
-    /// 쪽지 내용을 작성하는 텍스트 뷰
-    @IBOutlet weak var textView: UITextView!
+    let warningLabel = BaseLabel().then {
+        $0.textColor = AssetColor.etcAlert
+        $0.changeFontSize(to: FontSize.body1)
+        $0.configureParagraphStyle(
+            lineSpacing: ParagraphStyle.lineSpacing,
+            characterSpacing: ParagraphStyle.characterSpacing
+        )
+        $0.attributedText = NSAttributedString(string: StringLiteral.warning)
+        $0.isHidden = true
+    }
 
     /// 쪽지 글자 수를 나타내는 레이블
-    @IBOutlet weak var letterCountLabel: UILabel!
+    let letterCountLabel = BaseLabel().then {
+        $0.text = .empty
+        $0.setContentHuggingPriority(.required, for: .vertical)
+        $0.sizeToFit()
+        $0.changeFontSize(to: FontSize.body3)
+        $0.configureParagraphStyle(
+            lineSpacing: ParagraphStyle.lineSpacing,
+            characterSpacing: ParagraphStyle.characterSpacing
+        )
+        $0.textAlignment = .right
+    }
 
-    /// 모든 하위 뷰를 담고 있는 스크롤 뷰
-    @IBOutlet weak private var scrollView: UIScrollView!
+    /// 캘린더 버튼 태그, 텍스트뷰, 글자 수 레이블이 들어가는 스택 뷰
+    private let contentStack = UIStackView().then {
+        $0.axis = .vertical
+        $0.spacing = Metric.spacing16
+    }
+
+    private let calendarStack = UIStackView()
+
+    private let calendarStackSpacer = UIView()
 
     /// photoView와 removePhotoButton을 하위 뷰로 갖는 뷰
-    @IBOutlet weak var removablePhotoView: UIView!
+    private let removablePhotoView = UIView().then {
+        $0.isHidden = true
+    }
 
-
-    // MARK: Properties
-
-    /// 내용의 길이(높이)
-    var contentHeight: CGFloat {
-        self.scrollView.contentSize.height
+    /// 유저가 선택한 사진을 띄우는 이미지 뷰
+    private let photoView = UIImageView().then {
+        $0.isUserInteractionEnabled = true
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
     }
 
 
@@ -65,45 +125,81 @@ final class NewNoteInputView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        self.configure()
+        self.configureViews()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
 
-        self.configure()
+        self.configureViews()
     }
 
 
-    // MARK: - Funtions
+    // MARK: - Configuration Functions
 
-    override func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
+    private func configureViews() {
+        self.showsVerticalScrollIndicator = false
+        self.showsHorizontalScrollIndicator = false
+        self.configureSubviews()
+        self.configureConstraints()
     }
 
-    /// 뷰 초기 설정
-    private func configure() {
-        self.configureXib()
-        self.configureTextView()
-        self.configureLabels(self.placeholderLabel, self.warningLabel)
-        self.photoView.contentMode = .scaleAspectFill
-    }
-
-    /// 텍스트 뷰 관련 초기 설정
-    private func configureTextView() {
-        self.textView.configureParagraphStyle(
-            lineSpacing: ParagraphStyle.lineSpacing,
-            characterSpacing: ParagraphStyle.characterSpacing
+    private func configureSubviews() {
+        self.addSubview(backgroundNoteImageView)
+        self.backgroundNoteImageView.addSubview(self.contentStack)
+        self.contentStack.addArrangedSubviews(
+            self.calendarStack,
+            self.removablePhotoView,
+            self.textView,
+            self.letterCountLabel
         )
+        self.calendarStack.addArrangedSubviews(self.calendarButton, self.calendarStackSpacer)
+        self.removablePhotoView.addSubviews(self.photoView, self.removePhotoButton)
+        self.textView.addSubviews(self.placeholderLabel, self.warningLabel)
     }
 
-    /// 플레이스홀더 라벨 초기 설정
-    private func configureLabels(_ labels: UILabel...) {
-        labels.forEach {
-            $0.configureParagraphStyle(
-                lineSpacing: ParagraphStyle.lineSpacing,
-                characterSpacing: ParagraphStyle.characterSpacing
-            )
+    private func configureConstraints() {
+        self.backgroundNoteImageView.snp.makeConstraints {
+            $0.edges.equalTo(self.contentLayoutGuide)
+            $0.width.equalTo(self.frameLayoutGuide)
+            $0.height.equalTo(self.frameLayoutGuide).priority(.low)
         }
+        self.contentStack.snp.makeConstraints {
+            $0.edges.equalTo(self.backgroundNoteImageView).inset(Metric.spacing24)
+        }
+        self.calendarStack.snp.makeConstraints { $0.height.equalTo(Metric.spacing24) }
+        self.photoView.snp.makeConstraints {
+            $0.verticalEdges.centerX.equalTo(self.removablePhotoView)
+            $0.width.equalTo(self.photoView.snp.height).multipliedBy(CGFloat.one)
+            $0.horizontalEdges.equalTo(self.backgroundNoteImageView).inset(Metric.spacing75)
+        }
+        self.removePhotoButton.snp.makeConstraints {
+            $0.width.height.equalTo(Metric.spacing24)
+            $0.top.right.equalTo(self.photoView).inset(Metric.spacing10)
+        }
+        self.placeholderLabel.snp.makeConstraints {
+            $0.top.equalTo(self.textView).offset(Metric.spacing9)
+            $0.leading.equalTo(self.textView).offset(Metric.spacing5)
+        }
+        self.warningLabel.snp.makeConstraints { $0.top.leading.equalTo(self.placeholderLabel) }
+    }
+}
+
+
+// MARK: - Constants
+fileprivate extension NewNoteInputView {
+
+    enum Metric {
+        static let spacing5: CGFloat = 5
+        static let spacing9: CGFloat = 9
+        static let spacing10: CGFloat = 10
+        static let spacing16: CGFloat = 16
+        static let spacing24: CGFloat = 24
+        static let spacing75: CGFloat = 75
+    }
+
+    enum StringLiteral {
+        static let placeholder = "하루 한 번, 100자로 행복을 기록하세요:)"
+        static let warning = "내용을 입력해주세요!"
     }
 }
