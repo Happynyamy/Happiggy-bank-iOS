@@ -67,13 +67,6 @@ final class NotificationSettingTableViewCell: UITableViewCell {
         initializeLayout()
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        titleLabel.text = .empty
-        timePicker.isHidden = true
-        toggleButton.isOn = false
-    }
     
     private func initializeLayout() {
         self.contentView.addSubview(contentAndSeparatorStackView)
