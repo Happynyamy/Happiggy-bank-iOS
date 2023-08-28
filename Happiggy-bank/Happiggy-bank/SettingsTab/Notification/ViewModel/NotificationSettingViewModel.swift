@@ -13,7 +13,7 @@ final class NotificationSettingViewModel {
     let notificationCenter = UNUserNotificationCenter.current()
     
     /// UserDefaults
-    let userDefaults = UserDefaults.standard
+    private let userDefaults = UserDefaults.standard
     
     /// 저금통이 끝나는 날짜
     lazy var endDate: Date? = {
