@@ -12,7 +12,7 @@ import Then
 
 final class NotificationSettingTableViewCell: UITableViewCell {
   
-    let cellContentView: UIView = UIView()
+    private let cellContentView: UIView = UIView()
     
     var title: String? {
         get { self.titleLabel.text }
